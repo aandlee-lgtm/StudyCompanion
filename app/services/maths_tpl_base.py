@@ -152,8 +152,11 @@ def A_iv(intervals, var: str = "x", ends: str = "matter") -> dict:
     return {"type": "interval", "var": var, "intervals": rows, "ends": ends}
 
 
-def A_mcq(letter: str) -> dict:
-    return {"type": "mcq", "value": letter}
+def A_mcq(letter: str, options: list[str] | None = None) -> dict:
+    a = {"type": "mcq", "value": letter}
+    if options:
+        a["options"] = list(options)
+    return a
 
 
 def P(label: str, marks: int, answer: dict, prompt: str | None = None, options: list[str] | None = None) -> dict:

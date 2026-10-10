@@ -783,7 +783,7 @@ def _mark(response: str, answer: dict, marks: int, common_errors: list[dict], op
         return MathsResult(False, 0, marks, "incomplete reasoning", "No answer was given.", parsed=False)
 
     if kind == "mcq":
-        letter = mcq_letter(resp, options)
+        letter = mcq_letter(resp, options or answer.get("options"))
         ok = letter == str(answer.get("value", "")).upper()
         if not letter:
             return MathsResult(False, 0, marks, "notation", "Give the letter of one option (A, B, C or D).", resp[:60], parsed=False)
@@ -841,7 +841,19 @@ def _mark(response: str, answer: dict, marks: int, common_errors: list[dict], op
         for c in common_errors:
             try:
                 vals = [_stored(v.strip(), names) for v in str(c["answer"]).split(",")]
-                if len(vals) == len(got) and all(same(g, v, names) for g, v in zip(got, vals)):
+                if len(vals) != len(got):
+                    continue
+                if answer.get("ordered"):
+                    hit = all(same(g, v, names) for g, v in zip(got, vals))
+                else:
+                    left = list(vals)
+                    for g in got:
+                        j = next((i for i, v in enumerate(left) if same(g, v, names)), None)
+                        if j is None:
+                            break
+                        left.pop(j)
+                    hit = not left
+                if hit:
                     ce = c
                     break
             except (ParseError, KeyError):

@@ -13,3 +13,6 @@
 @media (max-width: 640px) {
   .maths-parts-table th:nth-child(3), .maths-parts-table td:nth-child(3) { display: none; }
 }
+.maths-mcq { border: none; padding: 0; margin: 8px 0 12px; }
+.maths-mcq label.check { padding: 4px 0; }
+.maths-part select { min-width: 12rem; }

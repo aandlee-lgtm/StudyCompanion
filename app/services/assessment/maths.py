@@ -35,7 +35,9 @@ def spec_display(a: dict, options: list[str] | None = None) -> str:
     """LaTeX for the correct answer of an answer spec (trusted, stored values only)."""
     kind = a.get("type")
     if kind == "mcq":
-        return next((o for o in (options or []) if o.strip().upper().startswith(str(a["value"]).upper())), str(a["value"]))
+        opts = options or a.get("options") or []
+        return next(("\\text{" + o.replace("{", "").replace("}", "") + "}" for o in opts if o.strip().upper().startswith(str(a["value"]).upper())),
+                    str(a["value"]))
     if kind == "set":
         return ", ".join(_latex_value(v) for v in a["values"])
     if kind == "interval":

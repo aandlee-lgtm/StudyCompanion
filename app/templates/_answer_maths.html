@@ -12,11 +12,25 @@
         <div class="maths-part" data-part="{{ p.label }}" hidden>
           <label for="ans-{{ p.label }}"><span class="maths-part-label">({{ p.label }})</span>{% if p.prompt %} <span class="small">{{ p.prompt }}</span>{% endif %}
             <span class="tiny muted">· {{ p.marks }} mark{{ 's' if p.marks != 1 }}{% if p.answer.type == 'interval' %} · give a region, e.g. -2 &lt; x &lt; 3{% elif p.answer.type == 'set' %} · separate values with commas{% elif p.answer.type == 'antiderivative' %} · include + C{% elif p.answer.units %} · {{ p.answer.units }}{% endif %}</span></label>
+          {% if p.answer.type == 'mcq' and p.answer.options %}
+          <select id="ans-{{ p.label }}" data-part-input="{{ p.label }}" data-kind="mcq">
+            <option value="">Choose…</option>
+            {% for o in p.answer.options %}<option value="{{ o[:1] }}">{{ o }}</option>{% endfor %}
+          </select>
+          {% else %}
           <input id="ans-{{ p.label }}" type="text" data-part-input="{{ p.label }}" data-kind="{{ p.answer.type }}" data-var="{{ p.answer.var or 'x' }}" autocomplete="off" spellcheck="false">
+          {% endif %}
           <div class="preview-math" data-preview-for="{{ p.label }}" aria-live="polite"></div>
         </div>
         {% endfor %}
       </div>
+{% elif akind == 'mcq' and spec.options %}
+      <fieldset class="field maths-mcq">
+        <legend class="label">Choose one</legend>
+        {% for o in spec.options %}
+        <label class="check"><input type="radio" name="answer" value="{{ o[:1] }}" {{ 'checked' if draft_answer == o[:1] }}> {{ o }}</label>
+        {% endfor %}
+      </fieldset>
 {% else %}
       <div class="field">
         <label for="ans">Final answer{% if spec.units and spec.units != '%' %} <span class="tiny muted">({{ spec.units|replace('^2','²')|replace('^3','³') }})</span>{% endif %}</label>
