@@ -28,6 +28,8 @@ class DailySession(Base):
     summary: Mapped[dict | None] = mapped_column(JSON, nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow)
     completed_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
+    last_active_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)  # v2-selection: last heartbeat/activity (active-time timer)
+    pause_note: Mapped[str | None] = mapped_column(String(200), nullable=True)  # v2-selection: why the timer was paused automatically
 
     questions: Mapped[list["SessionQuestion"]] = relationship(back_populates="session", order_by="SessionQuestion.position")
 

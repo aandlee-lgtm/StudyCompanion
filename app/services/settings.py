@@ -57,6 +57,27 @@ DEFAULTS: dict[str, Any] = {
 
 # ---- v2 package settings: each package adds its keys ONLY inside its own block (keeps merges clean) ----
 DEFAULTS.update({  # selection
+    # Share of the day's minutes each subject aims for (per-subject time envelopes, +/- 15%).
+    "selection_subject_shares": {"MATHS": 0.40, "ENGLISH": 0.33, "LEGAL": 0.27},
+    # Mode profiles (section 15). Counts may drop below 5/3/3 only in these special modes.
+    "light_day_counts": {"MATHS": 3, "ENGLISH": 2, "LEGAL": 2},
+    "exam_difficulty_floor": 2,  # exam mode: no foundation-level Maths
+    # A reading passage, once read, is not served again as an unseen text for this many days.
+    "unseen_passage_cooldown_days": 70,
+    # Legal extended responses per 4 weeks, by progress through the year ([progress, count] points).
+    "legal_extended_per_month": [[0.0, 1], [0.15, 2], [0.4, 3], [0.6, 4], [0.75, 6], [1.0, 8]],
+    "legal_extended_exam_per_month": 8,
+    "legal_extended_min_sessions": 8,  # no extended response in the first sessions of the year
+    # Legal weekly format mix (per 15 Legal questions) at the start and end of the year.
+    "legal_weekly_formats": {"start": {"mcq": 4, "short_answer": 8, "stimulus": 2},
+                             "end": {"mcq": 3, "short_answer": 6, "stimulus": 4}},
+    # Active-time timer: stop counting after this many minutes without activity.
+    "timer_idle_minutes": 10,
+    # Missed days are only counted from this date (stamped the first time the app plans a day).
+    "setup_completed_on": None,
+    # A day counts towards the streak at this share of questions answered, or this many active minutes.
+    "streak_min_fraction": 0.8,
+    "streak_min_minutes": 60,
 })
 DEFAULTS.update({  # maths
 })
