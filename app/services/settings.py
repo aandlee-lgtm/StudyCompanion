@@ -78,6 +78,8 @@ DEFAULTS.update({  # selection
     # A day counts towards the streak at this share of questions answered, or this many active minutes.
     "streak_min_fraction": 0.8,
     "streak_min_minutes": 60,
+    # An earlier Maths topic not practised for this many days gets a coverage slot, however strong.
+    "selection_coverage_days": 18,
 })
 DEFAULTS.update({  # maths
 })

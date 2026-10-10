@@ -176,7 +176,25 @@ def item_priority(ctx: StudentContext, item_id: int | None) -> tuple[float, dict
         flags.append("rebuild")
     if item_id in ctx.revision_items:
         flags.append("revision_due")
+    cov = coverage_overdue(ctx, item_id)
+    if cov is not None:  # every earlier Maths item comes back within a few weeks, however strong (selection-21)
+        p += min(1.0, 0.4 + 0.04 * cov)
+        flags.append("coverage_due")
     return round(p, 4), f, flags
+
+
+def coverage_overdue(ctx: StudentContext, item_id: int | None) -> int | None:
+    """Days past the coverage limit for an earlier (not currently learning) Maths item, or None.
+
+    Weak items rightly take most revision slots, so without this a strong Year 11 topic could go
+    months without a single question."""
+    item = ctx.plan.get(item_id or -1)
+    if item is None or item.status in (LEARNING, LOCKED) or item.subject.code != "MATHS":
+        return None
+    limit = int(ctx.settings.get("selection_coverage_days") or 18)
+    last = ctx.item_last_practised.get(item.id)
+    days = (ctx.today - last).days if last else (ctx.sessions_before * 7) // 5
+    return days - limit if days >= limit else None
 
 
 # ------------------------------------------------------------------ questions ---

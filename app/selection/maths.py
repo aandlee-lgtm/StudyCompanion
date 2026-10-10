@@ -140,6 +140,9 @@ def allocate(ctx: StudentContext, pool: Pool, n: int) -> tuple[list[Slot], dict]
         for i in _weakest(ctx, list(info), ctx.profile.weak_focus):
             info[i]["prio"] += 0.6
             info[i]["flags"].append("weak_focus")
+            for c in by_item.get(i, ()):  # item-level fact: the reason and the session row say so
+                if "weak_focus" not in c.facts.setdefault("flags", []):
+                    c.facts["flags"].append("weak_focus")
     learning_chapters = {v["chapter"] for v in info.values() if v["bucket"] == "learning"}
     for v in info.values():  # when the learning item is short of forms, prefer recent work from the same chapter
         if v["bucket"] == "recent" and v["chapter"] in learning_chapters:
@@ -171,7 +174,7 @@ def allocate(ctx: StudentContext, pool: Pool, n: int) -> tuple[list[Slot], dict]
         first = count.get(best, 0) == 0
         count[best] = count.get(best, 0) + 1
         fl = info[best]["flags"]
-        protected = bool({"catch_up", "rebuild", "revision_due", "weak_focus"} & set(fl)) or (info[best]["bucket"] == "learning" and first)
+        protected = bool({"catch_up", "rebuild", "revision_due", "weak_focus", "coverage_due"} & set(fl)) or (info[best]["bucket"] == "learning" and first)
         slots.append(Slot(best, info[best]["bucket"], round(best_v, 4), list(fl), protected, repeat_form_ok=repeat_form_ok))
         return True
 
@@ -242,7 +245,9 @@ def pick_maths(ctx: StudentContext, pool: Pool, n: int | None = None) -> tuple[l
                     pen = 0.0
                     if f in forms:
                         same = sum(1 for x in chosen if pool.form(x) == f)
-                        if slot.repeat_form_ok and same < 2:
+                        if same >= 2:
+                            continue  # never three instances of one form in a session
+                        if slot.repeat_form_ok:
                             pen += 0.4
                         elif not allow_same_form:
                             continue

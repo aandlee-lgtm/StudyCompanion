@@ -63,6 +63,10 @@ def reason_for(ctx: StudentContext, s: Scored, code: str) -> str:
         return f"Holiday focus on a weak area: {name}" + (f" ({acc})." if acc else ".")
     if "rebuild" in flags:
         return f"Rebuilding {name}: {acc}." if acc else f"Rebuilding {name}."
+    if "coverage_due" in flags and s.bucket != "learning":
+        last = ctx.item_last_practised.get(q.plan_item_id or -1)
+        return (f"Coverage: you have not practised {name} since {_d(last)}; every earlier topic comes back within a few weeks."
+                if last else f"Coverage: {name} has not been practised yet.")
     if "revision_due" in flags:
         due = ctx.revision_item_due.get(q.plan_item_id)
         return f"Scheduled revision of {name} (due {_d(due)}): a different question on a skill you found difficult."
