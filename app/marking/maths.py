@@ -977,3 +977,9 @@ def preview(text: str, kind: str = "expr", labels: list[str] | None = None, var:
         return {"ok": False, "message": str(exc) if str(exc) != "empty answer" else ""}
     except Exception:
         return {"ok": False, "message": "Keep typing… (e.g. 3x^2 - 2, sqrt(2)/2, e^(2x), 2pi/3)"}
+
+
+# Public names for the assessment layer (stored, trusted answer strings only).
+stored_ast = _stored
+rounded_value = _exact_rounded
+unit_label = _unit_label

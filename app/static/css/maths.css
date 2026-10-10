@@ -1,1 +1,15 @@
 /* v2 styles owned by the maths package */
+.maths-part { margin: 10px 0 4px; }
+.maths-part label { display: block; margin-bottom: 4px; }
+.maths-part-label { font-weight: 600; color: var(--maths); }
+.maths-part input { width: 100%; }
+.maths-parts.enhanced .maths-parts-raw, .maths-parts.enhanced .maths-parts-hint { display: none; }
+.preview-math.err { color: var(--warn); font-size: .85rem; }
+.maths-parts-table { margin: 12px 0 4px; }
+.maths-parts-table td { vertical-align: top; }
+.maths-parts-table tr.bad-row td:first-child { box-shadow: inset 3px 0 0 var(--bad); }
+.maths-parts-table tr.ok-row td:first-child { box-shadow: inset 3px 0 0 var(--good); }
+.maths-parts-table .nowrap { white-space: nowrap; }
+@media (max-width: 640px) {
+  .maths-parts-table th:nth-child(3), .maths-parts-table td:nth-child(3) { display: none; }
+}
