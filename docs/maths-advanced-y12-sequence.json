@@ -1,0 +1,475 @@
+{
+  "source": "CambridgeMATHS NSW Stage 6 Mathematics Advanced Year 12, Second Edition",
+  "authority": {
+    "when_introduced": "Cambridge sequence",
+    "what_is_examinable": "NESA syllabus (takes precedence where they differ)"
+  },
+  "statuses": [
+    "LOCKED",
+    "LEARNING",
+    "LEARNED",
+    "REVISION"
+  ],
+  "daily_mix_start": {
+    "current_learning": [
+      0.5,
+      0.6
+    ],
+    "recently_learned": [
+      0.2,
+      0.3
+    ],
+    "older_revision_and_year11": [
+      0.1,
+      0.2
+    ],
+    "adaptive": true,
+    "never_serve": "LOCKED"
+  },
+  "chapters": [
+    {
+      "chapter": 1,
+      "title": "Sequences and series",
+      "subtopics": [
+        {
+          "id": "1A",
+          "title": "Sequences and how to specify them",
+          "default_status": "LEARNING",
+          "enrichment": false
+        },
+        {
+          "id": "1B",
+          "title": "Arithmetic sequences",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "1C",
+          "title": "Geometric sequences",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "1D",
+          "title": "Solving problems involving APs and GPs",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "1E",
+          "title": "Adding up the terms of a sequence",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "1F",
+          "title": "Summing an arithmetic series",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "1G",
+          "title": "Summing a geometric series",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "1H",
+          "title": "The limiting sum of a geometric series",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "1I",
+          "title": "Recurring decimals and geometric series",
+          "default_status": "LOCKED",
+          "enrichment": false
+        }
+      ]
+    },
+    {
+      "chapter": 2,
+      "title": "Curve-sketching using the derivative",
+      "subtopics": [
+        {
+          "id": "2A",
+          "title": "Increasing, decreasing, and stationary at a point",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "2B",
+          "title": "Stationary points and turning points",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "2C",
+          "title": "Second and higher derivatives",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "2D",
+          "title": "Concavity and points of inflection",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "2E",
+          "title": "Systematic curve sketching with the derivative",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "2F",
+          "title": "Global maximum and minimum",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "2G",
+          "title": "Review of continuity and differentiability",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "2H",
+          "title": "Applications of maximisation and minimisation",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "2I",
+          "title": "Primitive functions",
+          "default_status": "LOCKED",
+          "enrichment": false
+        }
+      ]
+    },
+    {
+      "chapter": 3,
+      "title": "Integration",
+      "subtopics": [
+        {
+          "id": "3A",
+          "title": "Areas and the definite integral",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "3B",
+          "title": "The fundamental theorem of calculus",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "3C",
+          "title": "The definite integral and its properties",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "3D",
+          "title": "Challenge — proving the fundamental theorem",
+          "default_status": "LOCKED",
+          "enrichment": true
+        },
+        {
+          "id": "3E",
+          "title": "The indefinite integral",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "3F",
+          "title": "Finding areas by integration",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "3G",
+          "title": "The trapezoidal rule",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "3H",
+          "title": "The reverse chain rule",
+          "default_status": "LOCKED",
+          "enrichment": false
+        }
+      ]
+    },
+    {
+      "chapter": 4,
+      "title": "Exponential functions",
+      "subtopics": [
+        {
+          "id": "4A",
+          "title": "Review of the exponential function base e",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "4B",
+          "title": "Differentiation involving exponential functions",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "4C",
+          "title": "Applications of differentiation",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "4D",
+          "title": "Integration involving exponential functions",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "4E",
+          "title": "Applications of integration",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "4F",
+          "title": "Exponential functions with other bases",
+          "default_status": "LOCKED",
+          "enrichment": false
+        }
+      ]
+    },
+    {
+      "chapter": 5,
+      "title": "Logarithmic functions",
+      "subtopics": [
+        {
+          "id": "5A",
+          "title": "Review of the logarithmic function base e",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "5B",
+          "title": "Differentiation involving logarithmic functions",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "5C",
+          "title": "Applications of differentiation",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "5D",
+          "title": "Integration involving reciprocal functions",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "5E",
+          "title": "Applications of integration",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "5F",
+          "title": "Calculus with logarithms to other bases",
+          "default_status": "LOCKED",
+          "enrichment": false
+        }
+      ]
+    },
+    {
+      "chapter": 6,
+      "title": "The trigonometric functions",
+      "subtopics": [
+        {
+          "id": "6A",
+          "title": "Trigonometric graphs and modelling",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "6B",
+          "title": "Differentiation with trigonometric functions",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "6C",
+          "title": "Applications of differentiation",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "6D",
+          "title": "Integration with trigonometric functions",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "6E",
+          "title": "Applications of integration",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "6F",
+          "title": "Challenge — The derivative of sin x is cos x",
+          "default_status": "LOCKED",
+          "enrichment": true
+        }
+      ]
+    },
+    {
+      "chapter": 7,
+      "title": "Motion and rates",
+      "subtopics": [
+        {
+          "id": "7A",
+          "title": "Motion review plus acceleration",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "7B",
+          "title": "Motion and integration",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "7C",
+          "title": "Rates and differentiation",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "7D",
+          "title": "Rates and integration",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "7E",
+          "title": "Exponential growth and decay",
+          "default_status": "LOCKED",
+          "enrichment": false
+        }
+      ]
+    },
+    {
+      "chapter": 8,
+      "title": "Series and finance",
+      "subtopics": [
+        {
+          "id": "8A",
+          "title": "Applications of APs and GPs",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "8B",
+          "title": "The use of logarithms with GPs",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "8C",
+          "title": "Simple and compound interest",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "8D",
+          "title": "Investing money by regular instalments",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "8E",
+          "title": "Paying off a loan",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "8F",
+          "title": "The pension from a super fund or annuity",
+          "default_status": "LOCKED",
+          "enrichment": false
+        }
+      ]
+    },
+    {
+      "chapter": 9,
+      "title": "Discrete probability distributions",
+      "subtopics": [
+        {
+          "id": "9A",
+          "title": "The language of probability distributions",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "9B",
+          "title": "Mean or expected value",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "9C",
+          "title": "Variance and standard deviation",
+          "default_status": "LOCKED",
+          "enrichment": false
+        }
+      ]
+    },
+    {
+      "chapter": 10,
+      "title": "Continuous probability distributions",
+      "subtopics": [
+        {
+          "id": "10A",
+          "title": "Cumulative frequency and grouping",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "10B",
+          "title": "Continuous distributions",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "10C",
+          "title": "Mean and variance of a distribution",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "10D",
+          "title": "The standard normal distribution",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "10E",
+          "title": "General normal distributions",
+          "default_status": "LOCKED",
+          "enrichment": false
+        },
+        {
+          "id": "10F",
+          "title": "Applications of the normal distribution",
+          "default_status": "LOCKED",
+          "enrichment": false
+        }
+      ]
+    }
+  ]
+}

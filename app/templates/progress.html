@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="spread">
+  <div><h1>Progress</h1><p class="lead">Interpretation first, numbers second.</p></div>
+  <div class="row">
+    {% for w, l in [('7','7 days'),('30','30 days'),('60','60 days'),('90','90 days'),('all','All time')] %}
+    <a class="btn small {{ 'primary' if r.window == w }}" href="/progress?window={{ w }}">{{ l }}</a>{% endfor %}
+    <a class="btn small" href="/progress/week">Weekly review</a><a class="btn small" href="/progress/month">Monthly review</a>
+  </div>
+</div>
+<div class="card"><h2>What the data says</h2>{% for line in r.interpretation %}<p>{{ line }}</p>{% endfor %}</div>
+
+<div class="grid g3" style="margin-top:16px">
+  {% for code, sd in r.subjects.items() %}
+  <div class="card">
+    <h3 class="subj-{{ code }}">{{ sd.name }}</h3>
+    <div class="grid g3 small">
+      <div><div class="label">Answers</div>{{ sd.attempts }}</div>
+      <div><div class="label">Average</div>{{ sd.average if sd.average is not none else '—' }}{{ '%' if sd.average is not none }}</div>
+      <div><div class="label">Accuracy</div>{{ sd.accuracy if sd.accuracy is not none else '—' }}{{ '%' if sd.accuracy is not none }}</div>
+      <div><div class="label">Marks</div>{{ sd.marks }}</div>
+      <div><div class="label">Min / question</div>{{ sd.avg_minutes or '—' }}</div>
+      <div><div class="label">vs estimate</div>{{ (sd.time_ratio ~ '×') if sd.time_ratio else '—' }}</div>
+      {% if sd.avg_words %}<div><div class="label">Avg words</div>{{ sd.avg_words }}</div>{% endif %}
+      <div><div class="label">Skipped</div>{{ sd.skipped }}</div>
+    </div>
+    {% if sd.difficulty %}<h3>By difficulty</h3>
+    {% for d, v in sd.difficulty.items() %}<div class="spread small"><span>{{ ['','Foundation','HSC-standard','Challenging'][d] }}</span><span>{{ v[0] }}% ({{ v[1] }})</span></div>{% endfor %}{% endif %}
+    {% if sd.topics %}<h3>By topic (weakest first)</h3>
+    {% for t, pct, n in sd.topics[:8] %}<div class="spread small"><span>{{ t }}</span><span>{{ pct }}% ({{ n }})</span></div>{% endfor %}{% endif %}
+    {% if sd.outcomes %}<h3>By syllabus area</h3>
+    {% for t, pct, n in sd.outcomes %}<div class="spread small"><span>{{ t }}</span><span>{{ pct }}%</span></div>{% endfor %}{% endif %}
+  </div>
+  {% endfor %}
+</div>
+
+<div class="grid g2" style="margin-top:16px">
+  <div class="card"><h3>Revision performance</h3><p>{% if r.revision_performance is not none %}{{ r.revision_performance }}% on questions you had seen before ({{ r.revision_n }} answers).{% else %}<span class="muted">No repeated questions yet.</span>{% endif %}</p>
+    <h3>Repeated errors</h3>{% for (subj, cat), n in r.repeated_errors %}<div class="spread small"><span><span class="subj-{{ subj }}">{{ SUBJECT_SHORT[subj] }}</span> · {{ cat }}</span><span>{{ n }}×</span></div>{% else %}<p class="small muted">None recorded.</p>{% endfor %}
+  </div>
+  <div class="card" id="readiness"><h3>HSC READINESS: {{ readiness.score }}/100</h3>
+    <p class="small muted">{{ readiness.explanation }}</p>
+    <table>{% for c in readiness.components %}<tr><td class="small">{{ c.label }}</td><td class="small">{{ c.value if c.value is not none else 'not enough data' }}{{ '%' if c.value is not none }}</td><td class="small muted">weight {{ c.weight }}%</td></tr>{% endfor %}</table>
+  </div>
+</div>
+
+<h2>Historical question coverage (2027 syllabus)</h2>
+<p class="small muted">2027 is the first HSC for the new Mathematics Advanced and English Advanced syllabuses, so genuine past-paper coverage is incomplete. Where coverage is weak the app uses official sample material first, then directly transferable historical questions, then clearly labelled generated questions.</p>
+<div class="card"><table>
+  <tr><th>Subject</th><th>Syllabus area</th><th>Historical / NESA sample</th><th>Generated / adapted / trial</th><th>Coverage</th></tr>
+  {% for c in r.coverage %}<tr><td class="subj-{{ c.subject }}">{{ SUBJECT_SHORT[c.subject] }}</td><td>{{ c.topic }}{% if c.kind == 'year11' %} <span class="tiny muted">(Year 11)</span>{% endif %}</td><td>{{ c.historical }}</td><td>{{ c.generated }}</td><td><span class="pill {{ c.level }}">{{ c.level }}</span></td></tr>{% endfor %}
+</table></div>
+
+<h2>Not yet assessed</h2>
+<p class="small">{{ r.not_assessed | join(' · ') or 'Everything unlocked has been assessed at least once.' }}</p>
+<p><a class="btn small" href="/export/attempts.csv">Export all answers (CSV)</a></p>
+{% endblock %}

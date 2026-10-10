@@ -1,0 +1,9 @@
+<p>This question was skipped and has been scheduled for revision.</p>
+{% set sol = q.solution or {} %}
+{% if q.answer and q.answer.type != 'mcq' %}<h3>Answer</h3><p>\({{ answer_display(q) }}\)</p>{% endif %}
+{% if sol.steps %}<h3>Worked solution</h3><ol class="steps">{% for st in sol.steps %}<li>{{ st }}</li>{% endfor %}</ol>{% endif %}
+{% if sol.explanation %}<p>{{ sol.explanation }}</p>{% endif %}
+{% if q.options and q.answer %}<p>Correct option: <strong>{{ q.answer.value }}</strong></p>{% endif %}
+{% if q.model_answer %}<h3>Model response</h3><div class="model">{{ q.model_answer | paras }}</div>{% endif %}
+{% if sol.guidance %}<h3>What a strong response does</h3><ul>{% for g in sol.guidance %}<li>{{ g }}</li>{% endfor %}</ul>{% endif %}
+{% if q.marking_guideline %}<h3>Marking {{ 'guidelines (official NESA)' if q.guideline_official else 'criteria (app-authored, not official)' }}</h3>{{ q.marking_guideline | paras }}{% endif %}

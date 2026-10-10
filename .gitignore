@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+data/*.db
+data/*.db-*
+data/backups/
+data/renders/
+data/sources/
+imports/*
+!imports/README.md
+.pytest_cache/

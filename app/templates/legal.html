@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Legal Studies evidence bank</h1>
+<p class="lead">Dated, sourced legal material for answers and feedback. The app cites only items from this bank and shows when each was last checked. Never rely on an item until you have verified it against its source.</p>
+<form class="card row small" method="get">
+  <select name="topic"><option value="">All topics</option>{% for t in topics %}<option value="{{ t.id }}" {{ 'selected' if f.topic == t.id|string }}>{{ t.name }}</option>{% endfor %}</select>
+  <select name="item_type"><option value="">All types</option>{% for t in types %}<option value="{{ t }}" {{ 'selected' if f.item_type == t }}>{{ t|replace('_',' ') }}</option>{% endfor %}</select>
+  <input type="text" name="q" value="{{ f.q or '' }}" placeholder="Search issue, case, Act…"><button class="btn small">Filter</button>
+</form>
+{% for e in items %}
+<div class="card" id="ev{{ e.id }}" style="margin-top:12px">
+  <div class="spread"><h3 style="margin:0">{{ e.title }}</h3>
+    <span class="row"><span class="pill">{{ e.item_type|replace('_',' ') }}</span><span class="pill">{{ e.jurisdiction }}</span>
+      {% if e.last_verified_date %}<span class="pill good">verified {{ e.last_verified_date | fdate('%d %b %Y') }}</span>{% else %}<span class="pill bad">not yet verified</span>{% endif %}</span></div>
+  <p class="small muted">{{ e.date or 'date not recorded' }}{% if e.issue %} · {{ e.issue }}{% endif %} · {% for t in e.topics %}{{ tnames.get(t.topic_id, '') }}{% if not loop.last %}, {% endif %}{% endfor %}</p>
+  <p>{{ e.summary }}</p>
+  {% if e.legal_significance %}<p class="small"><strong>Legal significance:</strong> {{ e.legal_significance }}</p>{% endif %}
+  {% if e.syllabus_link %}<p class="small"><strong>Syllabus link:</strong> {{ e.syllabus_link }}</p>{% endif %}
+  <p class="small">Source: {% if e.source_url %}<a href="{{ e.source_url }}" target="_blank" rel="noopener">{{ e.source }}</a>{% else %}{{ e.source }}{% endif %} · {{ e.source_type }} · reliability {{ e.reliability }} · retrieved {{ e.retrieved_date | fdate('%d %b %Y') }}</p>
+  {% if e.verification_note %}<p class="tiny muted">{{ e.verification_note }}</p>{% endif %}
+  <div class="row"><form method="post" action="/legal-evidence/{{ e.id }}/verify"><button class="btn small">Mark verified today</button></form>
+    <form method="post" action="/legal-evidence/{{ e.id }}/delete" onsubmit="return confirm('Delete this item?')"><button class="btn small danger">Delete</button></form></div>
+</div>
+{% else %}<p class="muted">No items match.</p>{% endfor %}
+
+<div class="grid g2" style="margin-top:20px">
+  <form class="card" method="post" action="/legal-evidence/add">
+    <h3>Add an item</h3>
+    <div class="field"><label>Title (exact name of the Act, case, report…)</label><input type="text" name="title" required></div>
+    <div class="grid g3"><div class="field"><label>Type</label><select name="item_type">{% for t in types %}<option>{{ t }}</option>{% endfor %}</select></div>
+      <div class="field"><label>Date</label><input type="text" name="date" placeholder="2025-03-14"></div><div class="field"><label>Jurisdiction</label><input type="text" name="jurisdiction" value="NSW"></div></div>
+    <div class="field"><label>Issue</label><input type="text" name="issue"></div>
+    <div class="field"><label>Summary</label><textarea name="summary" rows="3" required></textarea></div>
+    <div class="field"><label>Legal significance</label><textarea name="legal_significance" rows="2"></textarea></div>
+    <div class="field"><label>Syllabus link</label><input type="text" name="syllabus_link"></div>
+    <div class="field"><label>Source URL</label><input type="url" name="source_url"></div>
+    <div class="field"><label>Topics</label>{% for t in topics %}<label class="check"><input type="checkbox" name="topic_ids" value="{{ t.id }}"> {{ t.name }}</label>{% endfor %}</div>
+    <label class="check"><input type="checkbox" name="verified" value="1"> I have checked this against the source today</label>
+    <p><button class="btn primary small">Add</button></p>
+  </form>
+  <form class="card" method="post" action="/legal-evidence/fetch">
+    <h3>Add from a web page</h3>
+    <p class="small muted">Fetches the page and asks the AI provider to summarise <em>only</em> its text. The item starts unverified. Prefer primary sources: NSW/Commonwealth legislation, courts, the AHRC, law reform commissions, parliaments.</p>
+    <div class="field"><label>URL</label><input type="url" name="url" required></div>
+    <div class="field"><label>Topics</label>{% for t in topics %}<label class="check"><input type="checkbox" name="topic_ids" value="{{ t.id }}"> {{ t.name }}</label>{% endfor %}</div>
+    <button class="btn small" {{ 'disabled' if not ai.generative }}>Fetch and summarise</button>{% if not ai.generative %}<span class="tiny muted"> Needs an AI provider.</span>{% endif %}
+  </form>
+</div>
+{% endblock %}

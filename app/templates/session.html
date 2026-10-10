@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Session {{ s.session_number }} · HSC Companion{% endblock %}
+{% block content %}
+<div class="spread">
+  <div>
+    <div class="label">{{ s.session_date | fdate('%A %d %B %Y') }} · Session {{ s.session_number }}{% if s.mode != 'normal' %} · {{ s.mode|capitalize }} mode{% endif %}</div>
+    <h1>Today's practice</h1>
+    <p class="lead">Expected duration {{ s.expected_minutes | minutes }} · about {{ p.remaining_minutes | minutes }} remaining</p>
+  </div>
+  <div class="card row">
+    <div><div class="label">Timer</div><div class="timer" id="session-timer" data-elapsed="{{ elapsed }}" data-running="{{ 1 if s.timer_started_at else 0 }}">0:00:00</div></div>
+    <form method="post" action="/session/{{ s.id }}/timer">
+      {% if s.timer_started_at %}<input type="hidden" name="action" value="pause"><button class="btn small">Pause</button>
+      {% else %}<input type="hidden" name="action" value="start"><button class="btn small">{{ 'Resume' if elapsed else 'Start' }}</button>{% endif %}
+    </form>
+  </div>
+</div>
+
+<div class="grid g4" style="margin:12px 0 6px">
+  {% for code in ['MATHS','ENGLISH','LEGAL'] %}
+  <div class="card kpi"><div class="label subj-{{ code }}">{{ SUBJECT_SHORT[code] }}</div><div class="stat">{{ p.done[code] }}/{{ p.total[code] }}</div></div>
+  {% endfor %}
+  <div class="card kpi"><div class="label">Overall</div><div class="stat">{{ p.pct }}%</div><div class="bar"><span style="width: {{ p.pct }}%"></span></div></div>
+</div>
+
+{% if s.status == 'completed' %}<div class="notice good spread"><span>Session complete.</span><a class="btn small" href="/session/{{ s.id }}/summary">See the summary</a></div>{% endif %}
+
+{% if s.explanation and show_why %}
+<details class="box" {{ 'open' if not p.n_done else '' }}>
+  <summary>Why these questions?</summary>
+  {% for line in s.explanation.lines %}<p class="small">{{ line }}</p>{% endfor %}
+  {% if s.explanation.mode_note %}<p class="small">{{ s.explanation.mode_note }}</p>{% endif %}
+  {% for n in s.explanation.notes or [] %}<p class="small muted">{{ n }}</p>{% endfor %}
+</details>
+{% endif %}
+
+{% for code in ['MATHS','ENGLISH','LEGAL'] %}
+<h2 class="subj-{{ code }}">{{ SUBJECT_NAMES[code] }}</h2>
+<div class="card qlist">
+  {% for sq in s.questions if sq.subject_code == code %}
+  {% set a = firsts.get(sq.id) %}
+  <a href="/session/{{ s.id }}/q/{{ sq.position }}">
+    <span><span class="status-dot {{ sq.status }}"></span><strong>Q{{ sq.position }}</strong> · <span class="clamp">{{ sq.question.question_text | striptags }}</span>
+      <br><span class="small muted">{{ sq.reason }}</span></span>
+    <span class="small muted" style="white-space:nowrap">{% if a %}<strong class="{{ 'ok' if a.fraction >= 0.85 else '' }}">{{ a.mark_awarded|round(1) }}/{{ a.mark_possible|int }}</strong>{% else %}{{ sq.question.marks }} mark{{ 's' if sq.question.marks != 1 }} · ~{{ sq.question.estimated_minutes|round|int }} min{% endif %}</span>
+  </a>
+  {% endfor %}
+</div>
+{% endfor %}
+
+{% if can_rebuild %}
+<details class="box no-print">
+  <summary>Change today's mode</summary>
+  <p class="small muted">Only possible before you answer anything. The new set is saved and will not change on refresh.</p>
+  <form method="post" action="/session/{{ s.id }}/mode" class="row">
+    <select name="mode">
+      {% for m, label in [('normal','Normal'),('light','Light day (shorter)'),('holiday','Holiday / revision'),('exam','Exam mode')] %}
+      <option value="{{ m }}" {{ 'selected' if s.mode == m }}>{{ label }}</option>{% endfor %}
+    </select>
+    <button class="btn small">Rebuild today's set</button>
+  </form>
+</details>
+{% endif %}
+{% endblock %}

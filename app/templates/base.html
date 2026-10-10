@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}HSC Companion 2027{% endblock %}</title>
+  <link rel="stylesheet" href="/static/vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="/static/app.css">
+  <script defer src="/static/vendor/katex/katex.min.js"></script>
+  <script defer src="/static/vendor/katex/contrib/auto-render.min.js"></script>
+  <script defer src="/static/app.js"></script>
+</head>
+<body>
+<header class="top">
+  <div class="inner">
+    <a class="brand" href="/">HSC Companion <small>2027</small></a>
+    <nav class="main">
+      {% for href, label in NAV %}
+        <a href="{{ href }}" class="{{ 'on' if (href == '/' and active == '/') or (href != '/' and active.startswith(href)) else '' }}">{{ label }}</a>
+      {% endfor %}
+    </nav>
+  </div>
+</header>
+<main class="{% block main_class %}{% endblock %}">
+{% block content %}{% endblock %}
+</main>
+<footer class="foot">
+  Private study application. Every question shows where it came from. AI marks are estimates, never official NESA judgements.
+  {% if ai %}· AI: {{ ai.provider }}{% if ai.model %} ({{ ai.model }}){% endif %}{% endif %}
+</footer>
+<div id="flash" class="flash" role="status" aria-live="polite"></div>
+</body>
+</html>

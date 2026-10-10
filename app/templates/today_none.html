@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block main_class %}narrow{% endblock %}
+{% block content %}
+<h1>No session scheduled today</h1>
+<p class="lead">{{ today | fdate('%A %d %B') }} is not one of your study days (change this in Settings).</p>
+<div class="card">
+  <p>You can still do an optional session. It is recorded like any other session but is never required.</p>
+  <form method="post" action="/today/extra" class="row">
+    <select name="mode"><option value="normal">Normal</option><option value="light">Light day</option><option value="holiday">Revision focus</option><option value="exam">Exam style</option></select>
+    <button class="btn primary">Start an optional session</button>
+    <a class="btn" href="/review">Revision queue instead</a>
+  </form>
+</div>
+{% endblock %}

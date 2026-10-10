@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Revision queue</h1>
+<p class="lead">Skills and questions scheduled for revision. Weak skills come back sooner with a <em>different</em> question; strong ones return after about two months.</p>
+<h2>Due now</h2>
+<div class="card qlist">
+  {% for r, item, sample in due %}
+  <a href="{{ '/practice/' ~ sample.id if sample else '#' }}">
+    <span><strong>{{ item.code ~ ' ' if item and item.chapter else '' }}{{ item.title if item else 'Question revision' }}</strong><br><span class="small muted">{{ r.reason }}</span></span>
+    <span class="small muted">due {{ r.due_date | fdate('%d %b') }}{% if not sample %} · no fresh question available{% endif %}</span>
+  </a>
+  {% else %}<p class="muted">Nothing is due. Your daily sessions already include scheduled revision.</p>{% endfor %}
+</div>
+<h2>Coming up</h2>
+<div class="card"><table>
+  <tr><th>Due</th><th>Skill</th><th>Reason</th></tr>
+  {% for r, item in upcoming %}<tr><td>{{ r.due_date | fdate('%a %d %b') }}</td><td>{{ item.code ~ ' ' if item and item.chapter else '' }}{{ item.title if item else '—' }}</td><td class="small">{{ r.reason }}</td></tr>
+  {% else %}<tr><td colspan="3" class="muted">Nothing scheduled.</td></tr>{% endfor %}
+</table></div>
+<h2>Questions due for an exact repeat</h2>
+<div class="card qlist">
+  {% for e, q in repeats %}<a href="/practice/{{ q.id }}"><span><span class="clamp">{{ q.question_text | striptags }}</span></span><span class="small muted">last {{ e.last_seen | fdate('%d %b') }} · {{ (e.score_history[-1]*100)|round|int if e.score_history else 0 }}%</span></a>
+  {% else %}<p class="muted small">None yet.</p>{% endfor %}
+</div>
+{% endblock %}

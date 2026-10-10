@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Administrator review</h1>
+<p class="lead">Imported questions whose 2027 mapping is uncertain (PARTIAL, ADAPTABLE or low confidence). Automated mapping is not infallible: nothing here reaches the student until you approve it. REJECT questions are never shown.</p>
+{% for q in queue %}
+{% set m = q.mappings[-1] if q.mappings else None %}
+<div class="card" style="margin-bottom:14px">
+  <div class="spread"><strong>{{ q.source.title }}{% if q.question_number %} · Q{{ q.question_number }}{% endif %}{% if q.source_page %} · p. {{ q.source_page }}{% endif %}</strong>
+    <span class="row"><span class="pill {{ q.historical_or_generated }}">{{ ORIGIN_LABELS[q.historical_or_generated] }}</span>{% if m %}<span class="pill {{ m.relevance_classification }}">{{ m.relevance_classification }}</span>{% endif %}</span></div>
+  <div class="side" style="margin-top:10px">
+    <div>{{ q.question_text | paras }}{% if q.options %}<ul class="small">{% for o in q.options %}<li>{{ o }}</li>{% endfor %}</ul>{% endif %}
+      {% if q.question_image %}<img src="/media/{{ q.question_image.split('/')[-1] }}" alt="" style="max-width:100%">{% endif %}
+      <p class="small muted">{{ q.marks }} marks{% if q.marking_guideline %} · marking guideline attached{% endif %}</p></div>
+    <div class="small">
+      {% if m %}<p><strong>Proposed 2027 topic:</strong> {{ m.focus_area or '—' }}</p><p><strong>Relevance:</strong> {{ m.relevance_classification }} · <strong>confidence</strong> {{ (m.mapping_confidence*100)|round|int }}%</p><p><strong>Explanation ({{ m.mapped_by }}):</strong> {{ m.mapping_reason }}</p>{% endif %}
+      <div class="row">
+        <form method="post" action="/admin/review/{{ q.id }}/approve"><button class="btn small primary">Approve</button></form>
+        <form method="post" action="/admin/review/{{ q.id }}/adapt"><button class="btn small" title="Approve and label ADAPTED FROM HISTORICAL QUESTION">Mark adaptable</button></form>
+        <form method="post" action="/admin/review/{{ q.id }}/reject" class="row"><input type="text" name="reason" placeholder="Reason (optional)"><button class="btn small danger">Reject</button></form>
+      </div>
+      <details style="margin-top:8px"><summary>Edit mapping</summary>
+        <form method="post" action="/admin/review/{{ q.id }}/edit">
+          <div class="field"><label>Learning-plan item</label><select name="plan_item_id">{% for it in plan_items if it.subject_id == q.subject_id %}<option value="{{ it.id }}" {{ 'selected' if it.id == q.plan_item_id }}>{{ it.code }} {{ it.title }}</option>{% endfor %}</select></div>
+          <div class="field"><label>Relevance</label><select name="relevance">{% for r in relevances %}<option {{ 'selected' if r == q.relevance_status }}>{{ r }}</option>{% endfor %}</select></div>
+          <div class="field"><label>Reason</label><input type="text" name="reason"></div>
+          {% if codes[q.subject_id] == 'MATHS' %}<div class="field"><label>Answer for automatic marking (optional)</label><div class="row"><select name="answer_type"><option value="">none</option><option value="num">number/exact value</option><option value="expr">expression</option><option value="set">list of values</option><option value="antiderivative">primitive</option></select><input type="text" name="answer_value" placeholder="e.g. 3/4 or 2*x*exp(x)"></div></div>{% endif %}
+          <button class="btn small">Save mapping</button> <span class="tiny muted">Then approve.</span>
+        </form>
+      </details>
+    </div>
+  </div>
+</div>
+{% else %}<div class="card"><p class="muted">The review queue is empty.</p></div>{% endfor %}
+{% endblock %}

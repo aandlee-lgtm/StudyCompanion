@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Learning plan</h1>
+<p class="lead">This controls what can appear in your daily sessions. <strong>LOCKED</strong> topics never appear; <strong>LEARNING</strong> topics get the most weight; <strong>LEARNED</strong> topics stay in spaced revision; <strong>REVISION</strong> topics get extra weight.</p>
+<div class="row" style="margin-bottom:10px">
+  {% for c in ['MATHS','ENGLISH','LEGAL'] %}<a class="btn small {{ 'primary' if subject == c }}" href="/curriculum?subject={{ c }}">{{ SUBJECT_NAMES[c] }}</a>{% endfor %}
+</div>
+
+{% if subject == 'MATHS' %}
+<div class="notice small">Sequence: CambridgeMATHS NSW Stage 6 Mathematics Advanced Year 12 (2nd ed.), as you confirmed. The Cambridge order decides <em>when</em> topics are introduced; the NESA syllabus decides <em>what</em> is examinable, and NESA wins where they differ. 3D and 6F are tagged ENRICHMENT and are excluded from normal sessions{% if not enrichment %} (turn enrichment practice on in Settings){% endif %}.</div>
+<div class="row" style="margin:8px 0">
+  <form method="post" action="/curriculum/MATHS/advance"><button class="btn small">Finished the current subtopic → move to the next</button></form>
+</div>
+{% endif %}
+
+<div class="card" data-reorder-url="/curriculum/{{ subject }}/reorder">
+  {% set ns = namespace(ch=None) %}
+  {% for it in items %}
+    {% if subject == 'MATHS' and it.chapter_title != ns.ch %}{% set ns.ch = it.chapter_title %}<div class="chapter">{% if it.chapter %}Chapter {{ it.chapter }} — {% endif %}{{ it.chapter_title or 'Other' }}</div>{% endif %}
+    <div class="plan-item" draggable="true" data-id="{{ it.id }}">
+      <span class="drag" title="Drag to reorder">⋮⋮</span>
+      <span class="small"><strong>{{ it.code if it.chapter or subject == 'MATHS' else '' }}</strong></span>
+      <span>{{ it.title }}
+        {% if it.enrichment %}<span class="pill warn">ENRICHMENT</span>{% endif %}
+        {% if it.is_assumed_knowledge %}<span class="pill">Year 11 assumed knowledge</span>{% endif %}
+        {% if it.topic %}<span class="tiny muted">→ {{ it.topic.name }}</span>{% endif %}
+        {% if subject == 'LEGAL' and it.topic and it.topic.is_option %}<span class="pill {{ 'good' if it.active else '' }}">{{ 'option selected' if it.active else 'option not selected' }}</span>{% endif %}
+        {% if mastery.get(it.id) %}<span class="tiny muted"> · mastery {{ (mastery[it.id].mastery*100)|round|int }}%</span>{% endif %}
+      </span>
+      <span class="row">
+        {% if subject == 'LEGAL' and it.topic and it.topic.is_option %}
+          <form method="post" action="/curriculum/item/{{ it.id }}/option"><input type="hidden" name="active" value="{{ 0 if it.active else 1 }}"><button class="btn small">{{ 'Deactivate' if it.active else 'Activate option' }}</button></form>
+        {% endif %}
+        {% if not (subject == 'LEGAL' and it.topic and it.topic.is_option and not it.active) %}
+        <form method="post" action="/curriculum/item/{{ it.id }}/status" class="row">
+          <select name="status" onchange="this.form.submit()" aria-label="Status of {{ it.title }}">
+            {% for stt in ['LOCKED','LEARNING','LEARNED','REVISION'] %}<option value="{{ stt }}" {{ 'selected' if it.status == stt }}>{{ stt }}</option>{% endfor %}
+          </select>
+        </form>
+        {% endif %}
+        {% if subject == 'MATHS' and not it.is_assumed_knowledge %}<form method="post" action="/curriculum/item/{{ it.id }}/start-here"><button class="btn small" title="Make this LEARNING, earlier LEARNED, later LOCKED">Start here</button></form>{% endif %}
+        <form method="post" action="/curriculum/item/{{ it.id }}/position" class="row"><input type="number" name="position" value="{{ loop.index }}" min="1" style="width:64px" aria-label="Position"><button class="btn small">Move</button></form>
+      </span>
+    </div>
+  {% endfor %}
+</div>
+
+<div class="grid g2" style="margin-top:16px">
+  <div class="card">
+    <h3>Add a {{ 'subtopic' if subject == 'MATHS' else 'topic' }}</h3>
+    <form method="post" action="/curriculum/{{ subject }}/add">
+      <div class="row"><input type="text" name="code" placeholder="Code (e.g. 4G)" style="width:120px"><input type="text" name="title" placeholder="Title" style="flex:1"></div>
+      <div class="row" style="margin-top:8px">
+        <select name="topic_id">{% for t in topics %}<option value="{{ t.id }}">{{ t.name }}</option>{% endfor %}</select>
+        <label class="check"><input type="checkbox" name="enrichment" value="1"> Enrichment</label>
+        <button class="btn small">Add</button>
+      </div>
+    </form>
+  </div>
+  {% if subject == 'MATHS' %}
+  <div class="card">
+    <h3>Import a textbook sequence</h3>
+    <p class="small muted">Paste a table of contents: "CHAPTER 1 — SEQUENCES AND SERIES" lines and "1A Sequences and how to specify them" lines. Existing statuses are kept. (Photo/PDF table-of-contents import is planned for a later version.)</p>
+    <form method="post" action="/curriculum/MATHS/import"><textarea name="text" rows="5"></textarea><p><button class="btn small">Import sequence</button></p></form>
+  </div>
+  {% endif %}
+</div>
+
+{% if subject == 'ENGLISH' %}
+<h2>Prescribed texts</h2>
+<div class="grid g2">
+  {% for t in texts %}
+  <form class="card" method="post" action="/curriculum/text/{{ t.id }}">
+    <h3>{{ t.title }} — {{ t.author }}</h3>
+    <p class="small muted">{{ t.form }}{% if t.topic_id %} · {{ topic_names[t.topic_id] }}{% endif %}</p>
+    {% if t.author == 'Emily Dickinson' %}
+    <div class="field"><label>Prescribed poems (one per line, exactly as listed by NESA)</label><textarea name="details" rows="6">{{ t.details or '' }}</textarea></div>
+    {% endif %}
+    <p class="small {{ '' if t.verified else 'notice warn' }}">{{ t.verification_note }}</p>
+    <label class="check"><input type="checkbox" name="verified" value="1" {{ 'checked' if t.verified }}> I have confirmed this against the official NESA prescriptions</label>
+    <p><button class="btn small">Save</button></p>
+  </form>
+  {% endfor %}
+</div>
+{% endif %}
+
+<h2>Syllabus outcomes</h2>
+<p class="small muted">Outcome codes were not seeded because they could not be verified. Add the official outcomes for each focus area from the NESA syllabus; questions mapped to the area will show them.</p>
+<div class="card"><table>
+  <tr><th>Focus area</th><th>Outcome</th><th>Official?</th></tr>
+  {% for o in outcomes %}<tr><td class="small">{{ topic_names[o.topic_id] }}</td><td class="small"><strong>{{ o.code }}</strong> {{ o.description }}</td><td>{{ 'yes' if o.official else 'placeholder' }}</td></tr>{% endfor %}
+</table>
+<form method="post" action="/curriculum/{{ subject }}/outcome" class="row" style="margin-top:12px">
+  <select name="topic_id">{% for t in topics %}<option value="{{ t.id }}">{{ t.name }}</option>{% endfor %}</select>
+  <input type="text" name="code" placeholder="Outcome code" style="width:140px"><input type="text" name="description" placeholder="Outcome wording" style="flex:1">
+  <button class="btn small">Add official outcome</button>
+</form></div>
+{% endblock %}

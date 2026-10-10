@@ -1,0 +1,7 @@
+<div class="notice warn">{{ fb.label }}</div>
+{% if fb.guideline %}<h3>Marking guideline{{ ' (official NESA)' if fb.guideline_official }}</h3>{{ fb.guideline | paras }}{% else %}<p>No marking guideline is attached to this question.</p>{% endif %}
+<form method="post" action="/attempt/{{ a.id }}/self-mark" class="row">
+  <input type="hidden" name="back" value="{{ base }}">
+  <label>Mark you earned</label><input type="number" name="mark" min="0" max="{{ q.marks }}" step="0.5" value="{{ a.mark_awarded }}">
+  <button class="btn small">Save self-mark</button>
+</form>

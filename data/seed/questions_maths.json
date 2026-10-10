@@ -1,0 +1,159 @@
+{
+ "_note": "Hand-written GENERATED questions (not from NESA papers) for areas templates don't cover well: multi-step and challenging problems. Answers are machine-checkable.",
+ "questions": [
+  {
+   "plan": "1D",
+   "marks": 4,
+   "difficulty": 3,
+   "verb": "Find",
+   "text": "An arithmetic sequence and a geometric sequence both have first term 2. The 3rd term of the arithmetic sequence equals the 2nd term of the geometric sequence, and the 4th term of the arithmetic sequence equals the 3rd term of the geometric sequence. Given that the common ratio \\(r \\ne 1\\), find \\(r\\).",
+   "answer": {
+    "type": "num",
+    "value": "1/2",
+    "tol": 0
+   },
+   "steps": [
+    "AP: \\(T_3 = 2 + 2d\\), \\(T_4 = 2 + 3d\\). GP: \\(T_2 = 2r\\), \\(T_3 = 2r^2\\).",
+    "\\(2 + 2d = 2r \\Rightarrow d = r - 1\\).",
+    "\\(2 + 3d = 2r^2 \\Rightarrow 2 + 3(r - 1) = 2r^2 \\Rightarrow 2r^2 - 3r + 1 = 0\\).",
+    "\\((2r - 1)(r - 1) = 0\\), so \\(r = \\tfrac12\\) (since \\(r \\ne 1\\))."
+   ],
+   "concept": "Linking AP and GP conditions creates simultaneous equations in \\(d\\) and \\(r\\).",
+   "technique": "Write each sequence's general term before equating, and use the given restriction to reject a root.",
+   "common_errors": [
+    {
+     "answer": "1",
+     "category": "interpretation",
+     "diagnosis": "\\(r = 1\\) is excluded by the question."
+    }
+   ]
+  },
+  {
+   "plan": "2E",
+   "marks": 4,
+   "difficulty": 3,
+   "verb": "Find",
+   "text": "For the curve \\(y = x^3 - 3x^2 - 9x + 5\\), find the coordinates of the point of inflection. Enter as a list \\(x, y\\).",
+   "answer": {
+    "type": "set",
+    "values": [
+     "1",
+     "-6"
+    ],
+    "ordered": true
+   },
+   "steps": [
+    "\\(y' = 3x^2 - 6x - 9\\), \\(y'' = 6x - 6\\).",
+    "\\(y'' = 0\\) at \\(x = 1\\); \\(y''\\) changes sign from negative to positive, so concavity changes.",
+    "\\(y(1) = 1 - 3 - 9 + 5 = -6\\). Point of inflection \\((1, -6)\\)."
+   ],
+   "concept": "Systematic curve sketching uses \\(y'\\) for turning points and \\(y''\\) for concavity and inflections.",
+   "technique": "Show the sign change of \\(y''\\) in a table to justify the inflection.",
+   "common_errors": []
+  },
+  {
+   "plan": "2G",
+   "marks": 2,
+   "difficulty": 2,
+   "verb": "Explain",
+   "text": "The function \\(f(x) = |x - 2|\\) is continuous at \\(x = 2\\). Is it differentiable at \\(x = 2\\)? Answer 'yes' or 'no' as option A (yes) or B (no).",
+   "answer": {
+    "type": "mcq",
+    "value": "B"
+   },
+   "question_type": "mcq",
+   "options": [
+    "A. Yes",
+    "B. No"
+   ],
+   "steps": [
+    "The left-hand gradient is \\(-1\\) and the right-hand gradient is \\(+1\\).",
+    "The gradients from each side differ (a sharp corner), so \\(f\\) is not differentiable at \\(x = 2\\)."
+   ],
+   "concept": "Differentiability requires the left and right gradients to agree; continuity alone is not enough.",
+   "technique": "Compare one-sided limits of the gradient."
+  },
+  {
+   "plan": "2H",
+   "marks": 4,
+   "difficulty": 3,
+   "verb": "Find",
+   "text": "An open box is made from a \\(12\\) cm by \\(12\\) cm square of card by cutting equal squares of side \\(x\\) cm from each corner and folding up the sides. Find the value of \\(x\\) that maximises the volume.",
+   "answer": {
+    "type": "num",
+    "value": "2",
+    "tol": 0,
+    "units": "cm"
+   },
+   "steps": [
+    "\\(V = x(12 - 2x)^2\\), \\(0 < x < 6\\).",
+    "\\(V' = (12 - 2x)^2 - 4x(12 - 2x) = (12 - 2x)(12 - 6x)\\).",
+    "\\(V' = 0\\) at \\(x = 2\\) (\\(x = 6\\) gives zero volume).",
+    "\\(V'\\) changes from positive to negative at \\(x = 2\\), so a maximum: \\(x = 2\\) cm (volume 128 cm³)."
+   ],
+   "concept": "Optimisation: model, restrict the domain, differentiate, justify the maximum.",
+   "technique": "State the domain of \\(x\\) — it justifies rejecting \\(x = 6\\).",
+   "common_errors": [
+    {
+     "answer": "6",
+     "category": "interpretation",
+     "diagnosis": "\\(x = 6\\) makes the base zero, so the volume is zero: reject it using the domain."
+    }
+   ]
+  },
+  {
+   "plan": "3F",
+   "marks": 4,
+   "difficulty": 3,
+   "verb": "Find",
+   "text": "Find the area enclosed between \\(y = x^2\\) and \\(y = 2x + 3\\).",
+   "answer": {
+    "type": "num",
+    "value": "32/3",
+    "tol": 0,
+    "units": "units^2"
+   },
+   "steps": [
+    "Intersections: \\(x^2 = 2x + 3 \\Rightarrow x = -1, 3\\).",
+    "The line is above the parabola between them.",
+    "\\(\\displaystyle\\int_{-1}^{3}(2x + 3 - x^2)\\,dx = \\left[x^2 + 3x - \\frac{x^3}{3}\\right]_{-1}^{3} = 9 - \\left(-\\frac{5}{3}\\right) = \\frac{32}{3}\\)."
+   ],
+   "concept": "Area between curves is \\(\\int (\\text{upper} - \\text{lower})\\,dx\\) between intersection points.",
+   "technique": "Find intersections first and decide which curve is on top.",
+   "common_errors": [
+    {
+     "answer": "-32/3",
+     "category": "sign",
+     "diagnosis": "You subtracted upper minus lower the wrong way round."
+    }
+   ]
+  },
+  {
+   "plan": "7A",
+   "marks": 4,
+   "difficulty": 3,
+   "verb": "Find",
+   "text": "A particle moves with displacement \\(x = t^3 - 6t^2 + 9t\\) metres. Find the total distance travelled in the first 4 seconds.",
+   "answer": {
+    "type": "num",
+    "value": "12",
+    "tol": 0,
+    "units": "m"
+   },
+   "steps": [
+    "\\(v = 3t^2 - 12t + 9 = 3(t-1)(t-3)\\): the particle changes direction at \\(t = 1\\) and \\(t = 3\\).",
+    "\\(x(0) = 0\\), \\(x(1) = 4\\), \\(x(3) = 0\\), \\(x(4) = 4\\).",
+    "Distance \\(= 4 + 4 + 4 = 12\\) m."
+   ],
+   "concept": "Distance travelled adds the lengths of each leg between changes of direction; displacement does not.",
+   "technique": "Find when \\(v = 0\\) first, then evaluate \\(x\\) at those times.",
+   "common_errors": [
+    {
+     "answer": "4",
+     "category": "interpretation",
+     "diagnosis": "That is the displacement \\(x(4) - x(0)\\), not the distance travelled."
+    }
+   ]
+  }
+ ]
+}

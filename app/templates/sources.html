@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Source registry</h1>
+<p class="lead">Tier 1: authoritative NESA (2027 syllabus) · Tier 2: historical NESA · Tier 3: trial / school (NON-NESA) · Tier 4: generated.</p>
+<div class="card"><table>
+  <tr><th>Tier</th><th>Title</th><th>Organisation</th><th>Year</th><th>Type</th><th>Official</th><th>Questions</th><th>Retrieved</th><th>File / URL</th></tr>
+  {% for s, n in rows %}<tr><td>{{ s.tier }}</td><td>{{ s.title }}{% if s.notes %}<br><span class="tiny muted">{{ s.notes }}</span>{% endif %}</td><td class="small">{{ s.organisation }}</td><td>{{ s.year or '—' }}</td><td class="small">{{ s.source_type }}</td><td>{{ 'yes' if s.official else 'no' }}</td><td>{{ n }}</td><td class="small">{{ s.retrieved_date | fdate('%d %b %Y') }}</td><td class="small">{{ s.local_file or s.url or '—' }}</td></tr>{% endfor %}
+</table></div>
+{% endblock %}

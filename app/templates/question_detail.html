@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<a class="small" href="/questions">← Question library</a>
+<h1>Question {{ q.id }}</h1>
+<div class="row small"><span class="pill {{ q.historical_or_generated }}">{{ ORIGIN_LABELS[q.historical_or_generated] }}</span><span class="pill {{ q.relevance_status }}">{{ q.relevance_status }}</span><span class="pill {{ q.approval_status }}">{{ q.approval_status }}</span>{% if q.is_extension %}<span class="pill bad">EXTENSION — never served</span>{% endif %}</div>
+<div class="grid g2" style="margin-top:14px">
+  <div class="card">
+    <h3>Original question</h3>
+    {% if q.stimulus %}{% for st in q.stimulus.reading_set() %}<details class="box"><summary>{{ st.title }} ({{ st.form }})</summary>{{ st.body | paras }}<p class="attribution">{{ st.attribution }}</p></details>{% endfor %}{% endif %}
+    {{ q.question_text | paras }}
+    {% if q.options %}<ul>{% for o in q.options %}<li>{{ o }}</li>{% endfor %}</ul>{% endif %}
+    {% if q.question_image %}<img src="/media/{{ q.question_image.split('/')[-1] }}" alt="Rendered from source" style="max-width:100%">{% endif %}
+    <p class="small muted">{{ q.marks }} marks · {{ q.question_type }} · difficulty {{ q.difficulty }} · ~{{ q.estimated_minutes }} min{% if q.directive_verb %} · {{ q.directive_verb }}{% endif %}</p>
+    <p><a class="btn small" href="/practice/{{ q.id }}">Practise this question</a></p>
+  </div>
+  <div class="card">
+    <h3>Where did this come from?</h3>
+    <table class="small">
+      <tr><td>Source</td><td>{{ q.source.title }} <span class="muted">(tier {{ q.source.tier }}{{ ', official' if q.source.official }})</span></td></tr>
+      <tr><td>Exam / year</td><td>{{ q.source_exam or '—' }} {{ q.source_year or '' }}</td></tr>
+      <tr><td>Question number</td><td>{{ q.question_number or '—' }}</td></tr>
+      <tr><td>Page</td><td>{{ q.source_page or '—' }}</td></tr>
+      <tr><td>Document</td><td>{{ q.source.local_file or q.source.url or '—' }}</td></tr>
+    </table>
+    <h3>Why is it relevant?</h3>
+    <table class="small">
+      <tr><td>2027 mapping</td><td>{{ item.topic.name if item and item.topic else '—' }}{% if item %} · {{ item.code }} {{ item.title }}{% endif %}</td></tr>
+      <tr><td>Relevance</td><td>{{ q.relevance_status }} (score {{ q.relevance_score }}, confidence {{ q.mapping_confidence }})</td></tr>
+      {% if q.legal_fact_currency %}<tr><td>Legal fact currency</td><td>{{ q.legal_fact_currency }}</td></tr>{% endif %}
+    </table>
+    <h3>Mapping history</h3>
+    {% for m in q.mappings %}<p class="small"><span class="pill {{ m.relevance_classification }}">{{ m.relevance_classification }}</span> {{ m.mapping_reason }} <span class="muted">({{ m.mapped_by }}, {{ m.review_status }}, {{ m.created_at | fdate('%d %b %Y') }})</span></p>{% endfor %}
+  </div>
+</div>
+{% if q.marking_guideline %}<div class="card" style="margin-top:16px"><h3>Marking {{ 'guidelines (official NESA)' if q.guideline_official else 'criteria (app-authored, not official NESA)' }}</h3>{{ q.marking_guideline | paras }}</div>{% endif %}
+{% if q.solution and q.solution.steps %}<details class="box"><summary>Worked solution</summary><ol class="steps">{% for s in q.solution.steps %}<li>{{ s }}</li>{% endfor %}</ol></details>{% endif %}
+{% if q.model_answer %}<details class="box"><summary>Model response</summary><div class="model">{{ q.model_answer | paras }}</div></details>{% endif %}
+<h2>Attempt history</h2>
+<div class="card"><table>
+  <tr><th>Date</th><th>Attempt</th><th>Mark</th><th>Confidence</th><th>Method</th><th>Feedback</th></tr>
+  {% for a in attempts %}<tr><td class="small">{{ a.submitted_at | fdate('%d %b %Y') }}</td><td>{{ a.attempt_number }}</td><td>{{ 'skipped' if a.skipped else (a.mark_awarded|round(1) ~ '/' ~ a.mark_possible|int) }}</td><td class="small">{{ a.confidence or '—' }}</td><td class="small">{{ a.marking_method }}</td>
+    <td class="small">{% if a.feedback %}{{ a.feedback.payload.label|truncate(80) }}{% if a.feedback.why_lost %}<br><em>{{ a.feedback.why_lost|truncate(120) }}</em>{% endif %}{% endif %}</td></tr>
+  {% else %}<tr><td colspan="6" class="muted">Not attempted yet.</td></tr>{% endfor %}
+</table>
+{% if exp %}<p class="small muted">First seen {{ exp.first_seen | fdate }} · last seen {{ exp.last_seen | fdate }} · {{ exp.attempts }} attempt(s) · mastery {{ (exp.mastery*100)|round|int }}% · next revision {{ exp.next_revision_date | fdate }}</p>{% endif %}
+</div>
+{% endblock %}

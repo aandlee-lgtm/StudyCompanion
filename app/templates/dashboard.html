@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="spread">
+  <div>
+    <h1>{{ 'Good evening' if hour >= 17 else ('Good afternoon' if hour >= 12 else 'Good morning') }}{% if name and name != 'Student' %}, {{ name }}{% endif %}</h1>
+    <p class="lead">{{ d.today | fdate('%A %d %B %Y') }}</p>
+  </div>
+</div>
+
+{% for m in d.missed[:3] %}
+<div class="notice warn spread">
+  <span>You missed the session for <strong>{{ m.session_date | fdate('%A %d %B') }}</strong>. Nothing has piled up.</span>
+  <span class="row">
+    <form method="post" action="/missed/{{ m.id }}/resume"><button class="btn small">Resume missed session</button></form>
+    <form method="post" action="/missed/{{ m.id }}/revision"><button class="btn small">Move important revision forward</button></form>
+    <form method="post" action="/missed/{{ m.id }}/skip"><button class="btn small">Skip</button></form>
+  </span>
+</div>
+{% endfor %}
+
+<div class="grid g2">
+  <div class="card hero">
+    <div class="label">Today</div>
+    {% if d.session and d.session.questions %}
+      {% set p = d.session_progress %}
+      <div class="stat">{{ p.n_done }} / {{ p.n_total }} questions</div>
+      <p class="muted">Expected {{ d.session.expected_minutes | minutes }} · about {{ p.remaining_minutes | minutes }} remaining</p>
+      <div class="bar"><span style="width: {{ p.pct }}%"></span></div>
+      <p class="row" style="margin-top:16px">
+        {% if d.session.status == 'completed' %}<a class="btn" href="/session/{{ d.session.id }}/summary">See today's summary</a>
+        {% else %}<a class="btn primary big" href="/today">{{ 'Continue' if p.n_done else 'Start today' }}</a>{% endif %}
+      </p>
+    {% elif d.is_study_day %}
+      <div class="stat">11 questions</div>
+      <p class="muted">5 Mathematics · 3 English · 3 Legal Studies · about {{ target }} minutes</p>
+      <p><a class="btn primary big" href="/today">Start today</a></p>
+    {% else %}
+      <div class="stat">No session today</div>
+      <p class="muted">Sessions run on your study days. You can still do an optional session or revision.</p>
+      <p class="row"><a class="btn" href="/today">Optional session</a><a class="btn" href="/review">Revision</a></p>
+    {% endif %}
+  </div>
+  <div class="grid g2">
+    <div class="card kpi"><div class="label">Streak</div><div class="stat">{{ d.streak }}</div><div class="small muted">study days completed in a row</div></div>
+    <div class="card kpi"><div class="label">This week</div><div class="stat">{{ d.week.questions }}</div><div class="small muted">questions · {{ d.week.minutes | minutes }}{% if d.week.average is not none %} · average {{ d.week.average }}%{% endif %}</div></div>
+    <div class="card kpi"><div class="label">Revision due</div><div class="stat">{{ d.revision_due | length }}</div><div class="small muted"><a href="/review">View revision queue</a></div></div>
+    <div class="card kpi"><div class="label">HSC readiness</div><div class="stat">{{ d.readiness }}</div><div class="small muted"><a href="/progress#readiness">How this is calculated</a></div></div>
+  </div>
+</div>
+
+<h2>Subjects</h2>
+<div class="grid g3">
+  {% for code, ps in d.plan_status.items() %}
+  <div class="card">
+    <h3 class="subj-{{ code }}">{{ SUBJECT_NAMES[code] }}</h3>
+    <div class="small"><span class="label">Learning now</span><br>
+      {% for it in ps.learning %}{{ it.code ~ ' ' if it.chapter else '' }}{{ it.title }}{% if not loop.last %}; {% endif %}{% else %}<span class="muted">Nothing marked LEARNING</span>{% endfor %}
+    </div>
+    <div class="small" style="margin-top:8px"><span class="label">Next</span><br>{% if ps.next %}{{ ps.next.code ~ ' ' if ps.next.chapter else '' }}{{ ps.next.title }}{% else %}—{% endif %}</div>
+    {% if ps.mastery is not none %}<div class="small" style="margin-top:8px"><span class="label">Average mastery</span> {{ ps.mastery }}%</div>{% endif %}
+  </div>
+  {% endfor %}
+</div>
+
+<div class="grid g3" style="margin-top:16px">
+  <div class="card">
+    <h3>Weak areas</h3>
+    {% for item, m in d.weak %}<div class="spread small"><span>{{ item.code ~ ' ' if item.chapter else '' }}{{ item.title }}</span><span class="pill bad">{{ (m.mastery*100)|round|int }}%</span></div>
+    {% else %}<p class="small muted">None identified yet.</p>{% endfor %}
+  </div>
+  <div class="card">
+    <h3>Recent improvement</h3>
+    {% for line in d.improvement %}<p class="small">{{ line }}</p>{% else %}<p class="small muted">Shown once there is a week of results to compare.</p>{% endfor %}
+  </div>
+  <div class="card">
+    <h3>Next topics</h3>
+    {% for code, ps in d.plan_status.items() %}{% if ps.next %}<p class="small"><span class="subj-{{ code }}">{{ SUBJECT_SHORT[code] }}</span>: {{ ps.next.code ~ ' ' if ps.next.chapter else '' }}{{ ps.next.title }}</p>{% endif %}{% endfor %}
+    <p class="small"><a href="/curriculum">Open the learning plan</a></p>
+  </div>
+</div>
+{% endblock %}

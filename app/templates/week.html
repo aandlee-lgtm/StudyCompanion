@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block main_class %}narrow{% endblock %}
+{% block content %}
+<h1>This week</h1><p class="lead">{{ w.start | fdate('%d %b') }} – {{ w.end | fdate('%d %b %Y') }}</p>
+<div class="card"><table>
+  <tr><td>Sessions completed</td><td>{{ w.sessions_completed }} of {{ w.sessions_total }}</td></tr>
+  <tr><td>Questions attempted</td><td>{{ w.questions }}</td></tr>
+  <tr><td>Study time</td><td>{{ w.study_minutes | minutes }}</td></tr>
+  <tr><td>Average</td><td>{{ w.average if w.average is not none else '—' }}{{ '%' if w.average is not none }}</td></tr>
+  <tr><td>Strongest improvement</td><td>{{ w.strongest_improvement }}</td></tr>
+  <tr><td>Persistent weakness</td><td>{{ w.persistent_weakness }}</td></tr>
+  <tr><td>Next week's priority</td><td>{{ w.next_priority }}</td></tr>
+  <tr><td>Revision coming due</td><td>{{ w.revision_due }}</td></tr>
+</table></div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Welcome · HSC Companion 2027{% endblock %}
+{% block main_class %}narrow{% endblock %}
+{% block content %}
+<h1>Welcome to HSC Companion 2027</h1>
+<p class="lead">A few details so your daily sessions match your course. Everything can be changed later in Settings and the Learning plan.</p>
+<form method="post" action="/setup" class="card">
+  <div class="grid g3">
+    <div class="field"><label for="name">Your first name (optional)</label><input id="name" type="text" name="student_name" value="{{ s.student_name if s.student_name != 'Student' else '' }}"></div>
+    <div class="field"><label for="hsc">HSC year</label><input id="hsc" type="number" name="hsc_year" value="{{ s.hsc_year }}" min="2026" max="2030"></div>
+    <div class="field"><label for="tz">Timezone</label><input id="tz" type="text" name="timezone" value="{{ s.timezone }}"></div>
+    <div class="field"><label for="target">Daily target (minutes)</label><input id="target" type="number" name="target_minutes" value="{{ s.target_minutes }}" min="20" max="180"></div>
+    <div class="field"><label for="start">Year 12 start date</label><input id="start" type="date" name="year12_start_date" value="{{ s.year12_start_date or today.isoformat() }}"></div>
+    <div class="field"><label for="hscd">HSC exams begin (estimate)</label><input id="hscd" type="date" name="hsc_start_date" value="{{ s.hsc_start_date }}"></div>
+  </div>
+
+  <h2>Subjects</h2>
+  <ul>
+    <li><strong>Mathematics Advanced</strong> — Advanced only (no Extension 1 or 2). 5 questions a day.</li>
+    <li><strong>English Advanced</strong> — 3 questions a day, mostly unseen-text comprehension.</li>
+    <li><strong>Legal Studies</strong> — 3 questions a day.</li>
+  </ul>
+
+  <h2>Mathematics: where are you up to?</h2>
+  <p class="small muted">The learning plan follows your CambridgeMATHS Year 12 sequence. Choose the subtopic you are learning now; earlier subtopics become LEARNED and later ones stay LOCKED, so no future topic is tested early.</p>
+  <div class="field">
+    <select name="maths_current">
+      {% for it in maths_items %}<option value="{{ it.id }}" {{ 'selected' if it.status == 'LEARNING' else '' }}>{{ it.code }} — {{ it.title }}</option>{% endfor %}
+    </select>
+  </div>
+
+  <h2>English Advanced texts</h2>
+  <ul class="small">
+    {% for t in texts %}<li>{{ t.title }} — {{ t.author }}{% if not t.verified %} <span class="pill warn">confirm against NESA list</span>{% endif %}</li>{% endfor %}
+  </ul>
+  <p class="small muted">The prescribed Emily Dickinson poems are <strong>not</strong> pre-filled: enter the exact list from the NESA prescriptions in the Learning plan.</p>
+  <div class="field">
+    <label>Module you are studying now</label>
+    <select name="english_current">
+      {% for it in english_items if it.code != 'EN-UNSEEN' %}<option value="{{ it.id }}" {{ 'selected' if it.code == 'EN-THE' else '' }}>{{ it.title }}</option>{% endfor %}
+    </select>
+  </div>
+
+  <h2>Legal Studies</h2>
+  <p class="small">Starting areas: <strong>Crime</strong> and <strong>Human rights</strong>. Option topics stay unselected until you know them (Learning plan → Legal Studies).</p>
+
+  <p><button class="btn primary big" type="submit">Save and go to the dashboard</button></p>
+</form>
+{% endblock %}

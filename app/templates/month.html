@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Monthly review</h1><p class="lead">The last 30 days, interpreted.</p>
+<div class="card"><h2>Interpretation</h2>{% for line in m.report.interpretation %}<p>{{ line }}</p>{% endfor %}</div>
+<div class="grid g2" style="margin-top:16px">
+  <div class="card"><h3>Suggested priorities</h3><ol>{% for p in m.priorities %}<li>{{ p }}</li>{% endfor %}</ol>
+    <h3>HSC readiness</h3><p>{{ m.readiness.score }}/100 <a class="small" href="/progress#readiness">(how it is calculated)</a></p>
+    <h3>Response quality (written)</h3><p class="small">English average: {{ m.written_quality.ENGLISH if m.written_quality.ENGLISH is not none else '—' }}{{ '%' if m.written_quality.ENGLISH is not none }} · Legal average: {{ m.written_quality.LEGAL if m.written_quality.LEGAL is not none else '—' }}{{ '%' if m.written_quality.LEGAL is not none }}</p>
+    <h3>Time management</h3>{% for code, v in m.time_management.items() %}<p class="small">{{ SUBJECT_SHORT[code] }}: {{ (v ~ '× the exam-style estimate') if v else 'no timing data' }}</p>{% endfor %}
+    <h3>Revision retention</h3><p class="small">{{ (m.report.revision_performance ~ '% on repeated questions') if m.report.revision_performance is not none else 'No repeated questions yet.' }}</p>
+  </div>
+  <div class="card"><h3>Topic mastery (weakest first)</h3>
+    {% for name, pct, n in m.mastery %}<div class="spread small"><span>{{ name }}</span><span><span class="pill {{ 'good' if pct >= 75 else ('warn' if pct >= 55 else 'bad') }}">{{ pct }}%</span> <span class="muted">({{ n }})</span></span></div>{% else %}<p class="small muted">No mastery data yet.</p>{% endfor %}
+  </div>
+</div>
+<h2>Syllabus coverage</h2>
+<p class="small">Not yet assessed: {{ m.report.not_assessed | join(' · ') or 'none' }}</p>
+{% endblock %}

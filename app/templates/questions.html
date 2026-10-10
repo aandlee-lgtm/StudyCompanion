@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="spread">
+  <div><h1>Question library</h1><p class="lead">{{ total }} question{{ 's' if total != 1 }}. Every question keeps its source and 2027 mapping.</p></div>
+  <div class="row"><a class="btn" href="/admin/review">Review queue{% if pending %} ({{ pending }}){% endif %}</a><a class="btn" href="/admin/import">Import a paper</a><a class="btn" href="/sources">Source registry</a></div>
+</div>
+<form class="card row small" method="get">
+  <select name="subject"><option value="">Subject</option>{% for c in ['MATHS','ENGLISH','LEGAL'] %}<option value="{{ c }}" {{ 'selected' if f.subject == c }}>{{ SUBJECT_SHORT[c] }}</option>{% endfor %}</select>
+  <input type="text" name="year" value="{{ f.year or '' }}" placeholder="Year" style="width:80px">
+  <select name="source"><option value="">Source</option>{% for s in sources %}<option value="{{ s.id }}" {{ 'selected' if f.source == s.id|string }}>{{ s.title|truncate(50) }}</option>{% endfor %}</select>
+  <select name="topic"><option value="">Topic / outcome</option>{% for t in topics %}<option value="{{ t.id }}" {{ 'selected' if f.topic == t.id|string }}>{{ t.name }}</option>{% endfor %}</select>
+  <input type="text" name="marks" value="{{ f.marks or '' }}" placeholder="Marks" style="width:70px">
+  <select name="difficulty"><option value="">Difficulty</option>{% for d, l in [(1,'Foundation'),(2,'HSC-standard'),(3,'Challenging')] %}<option value="{{ d }}" {{ 'selected' if f.difficulty == d|string }}>{{ l }}</option>{% endfor %}</select>
+  <select name="relevance"><option value="">Relevance</option>{% for r in relevances %}<option {{ 'selected' if f.relevance == r }}>{{ r }}</option>{% endfor %}</select>
+  <select name="approval"><option value="">Approval</option>{% for a in ['approved','pending','rejected'] %}<option {{ 'selected' if f.approval == a }}>{{ a }}</option>{% endfor %}</select>
+  <select name="origin"><option value="">Origin</option>{% for o, l in ORIGIN_LABELS.items() %}<option value="{{ o }}" {{ 'selected' if f.origin == o }}>{{ l }}</option>{% endfor %}</select>
+  <select name="attempted"><option value="">Attempted?</option><option value="yes" {{ 'selected' if f.attempted == 'yes' }}>Attempted</option><option value="no" {{ 'selected' if f.attempted == 'no' }}>Not attempted</option></select>
+  <button class="btn small">Filter</button>
+</form>
+<div class="card" style="margin-top:14px"><table>
+  <tr><th>#</th><th>Question</th><th>Subject</th><th>Marks</th><th>Diff.</th><th>Origin</th><th>Relevance</th><th>Status</th><th>Performance</th><th>Next revision</th></tr>
+  {% for q in qs %}{% set e = exposure.get(q.id) %}
+  <tr><td class="small"><a href="/questions/{{ q.id }}">{{ q.id }}</a></td><td class="small"><a href="/questions/{{ q.id }}">{{ q.question_text|striptags|truncate(90) }}</a></td>
+    <td class="small subj-{{ codes[q.subject_id] }}">{{ SUBJECT_SHORT[codes[q.subject_id]] }}</td><td>{{ q.marks }}</td><td>{{ q.difficulty }}</td>
+    <td><span class="pill {{ q.historical_or_generated }}">{{ ORIGIN_LABELS[q.historical_or_generated] }}</span></td><td><span class="pill {{ q.relevance_status }}">{{ q.relevance_status }}</span></td>
+    <td><span class="pill {{ q.approval_status }}">{{ q.approval_status }}</span></td>
+    <td class="small">{{ ((e.score_history[-1]*100)|round|int ~ '%') if e and e.score_history else '—' }}</td><td class="small">{{ e.next_revision_date | fdate('%d %b') if e else '—' }}</td></tr>
+  {% endfor %}
+</table>
+<div class="row" style="margin-top:10px">{% if page > 1 %}<a class="btn small" href="?page={{ page - 1 }}{% for k, v in f.items() if k != 'page' %}&{{ k }}={{ v|urlencode }}{% endfor %}">← Previous</a>{% endif %}{% if page * 50 < total %}<a class="btn small" href="?page={{ page + 1 }}{% for k, v in f.items() if k != 'page' %}&{{ k }}={{ v|urlencode }}{% endfor %}">Next →</a>{% endif %}</div>
+</div>
+{% endblock %}

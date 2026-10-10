@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Error journal</h1>
+<p class="lead">Recorded automatically after each assessed answer. Patterns matter more than single slips.</p>
+<form class="row" method="get">
+  <select name="subject"><option value="">All subjects</option>{% for c in ['MATHS','ENGLISH','LEGAL'] %}<option value="{{ c }}" {{ 'selected' if subject == c }}>{{ SUBJECT_NAMES[c] }}</option>{% endfor %}</select>
+  <label class="check"><input type="checkbox" name="show_resolved" value="1" {{ 'checked' if show_resolved }}> Show resolved</label>
+  <button class="btn small">Filter</button>
+</form>
+<div class="grid g3" style="margin-top:14px">
+  {% for (subj, cat), n in counts %}<div class="card spread"><span><span class="subj-{{ subj }}">{{ SUBJECT_SHORT[subj] }}</span> · {{ cat }}</span><span class="stat" style="font-size:1.3rem">{{ n }}</span></div>{% endfor %}
+</div>
+<h2>Entries</h2>
+<div class="card"><table>
+  <tr><th>Date</th><th>Subject</th><th>Error</th><th>What happened</th><th></th></tr>
+  {% for e in entries %}
+  <tr><td class="small">{{ e.created_at | fdate('%d %b') }}</td><td class="subj-{{ e.subject_code }} small">{{ SUBJECT_SHORT[e.subject_code] }}</td><td><span class="pill">{{ e.category }}</span></td>
+    <td class="small">{{ e.description }}<br><a href="/questions/{{ e.question_id }}">question</a></td>
+    <td>{% if not e.resolved %}<form method="post" action="/errors/{{ e.id }}/resolve"><button class="btn small">Resolved</button></form>{% else %}<span class="pill good">resolved</span>{% endif %}</td></tr>
+  {% else %}<tr><td colspan="5" class="muted">No errors recorded{{ ' for this filter' if subject }}.</td></tr>{% endfor %}
+</table></div>
+{% endblock %}

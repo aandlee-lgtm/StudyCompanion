@@ -1,0 +1,14 @@
+<div class="side">
+  <div><div class="label">Your answer</div><p>{{ fb.student_answer }}{% if fb.student_parsed and fb.student_parsed != fb.student_answer %} <span class="muted small">(read as {{ fb.student_parsed }})</span>{% endif %}</p></div>
+  <div><div class="label">Correct answer</div><p>\({{ fb.correct_answer }}\)</p></div>
+</div>
+{% if fb.divergence %}<div class="notice bad"><strong>Where your reasoning diverged.</strong> {{ fb.divergence }}{% if fb.error_category %} <span class="pill bad">{{ fb.error_category }}</span>{% endif %}</div>{% endif %}
+{% for n in fb.notes or [] %}<div class="notice">{{ n }}</div>{% endfor %}
+<h3>Complete worked solution</h3>
+<ol class="steps">{% for step in fb.worked_solution %}<li class="{{ 'diverge' if fb.divergence_step == loop.index }}">{{ step }}</li>{% endfor %}</ol>
+{% if fb.concept %}<h3>The concept</h3><p>{{ fb.concept }}</p>{% endif %}
+{% if fb.quicker %}<h3>A quicker method</h3><p>{{ fb.quicker }}</p>{% endif %}
+{% if fb.technique %}<h3>Exam technique</h3><p>{{ fb.technique }}</p>{% endif %}
+<h3>Syllabus</h3><p class="small">{{ fb.outcome or '—' }}</p>
+{% if fb.revision %}<h3>Recommended revision</h3><p class="small">{{ fb.revision }}</p>{% endif %}
+{% if fb.working %}<details><summary>Your working</summary>{{ fb.working | paras }}</details>{% endif %}

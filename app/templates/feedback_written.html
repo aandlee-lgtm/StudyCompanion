@@ -1,0 +1,47 @@
+{% set r = fb.result %}
+{% if fb.note %}<div class="notice warn">{{ fb.note }}</div>{% endif %}
+{% if fb.method == 'offline_estimate' %}<div class="notice warn small">{{ fb.label }}</div>{% else %}<p class="small"><strong>{{ fb.label }}</strong></p>{% endif %}
+<div class="grid g3">
+  <div><div class="label">Mark</div><div>{{ r.mark_awarded|round(1) }} / {{ r.mark_possible|int }}</div></div>
+  <div><div class="label">Estimated performance level</div><div>{{ r.performance_level or '—' }}</div></div>
+  <div><div class="label">Syllabus outcome</div><div class="small">{{ (r.outcomes|join('; ')) or '—' }}</div></div>
+</div>
+{% if r.criteria %}<h3>{{ 'NESA criteria' if fb.criteria_official else 'Criteria' }}</h3>
+<table>{% for c in r.criteria %}<tr><td>{{ c.name }}</td><td><span class="pill {{ 'good' if c.judgement in ['met','present'] else ('warn' if 'part' in c.judgement else 'bad') }}">{{ c.judgement }}</span></td><td class="small">{{ c.comment }}</td></tr>{% endfor %}</table>{% endif %}
+<div class="side">
+  <div><h3>What you did well</h3><ul>{% for s in r.strengths %}<li>{{ s }}</li>{% else %}<li class="muted">—</li>{% endfor %}</ul></div>
+  <div><h3>What prevented a higher mark</h3><ul>{% for s in r.weaknesses %}<li>{{ s }}</li>{% else %}<li class="muted">—</li>{% endfor %}</ul></div>
+</div>
+{% if r.dimensions %}<h3>Quality of your response</h3><table>{% for k, v in r.dimensions.items() %}<tr><td style="width:28%">{{ k|capitalize }}</td><td class="small">{{ v }}</td></tr>{% endfor %}</table>{% endif %}
+{% if fb.subject == 'LEGAL' %}
+  {% if r.marking_rationale and fb.method != 'offline_estimate' %}<h3>Marking rationale</h3><p>{{ r.marking_rationale }}</p>{% endif %}
+  {% if r.missing_elements %}<h3>Missing elements</h3><ul>{% for x in r.missing_elements %}<li>{{ x }}</li>{% endfor %}</ul>{% endif %}
+  {% if r.corrections %}<div class="notice bad"><strong>Factual / legal corrections</strong><ul>{% for x in r.corrections %}<li>{{ x }}</li>{% endfor %}</ul></div>{% endif %}
+  {% if r.evidence_suggestions %}<h3>Evidence you could have used</h3><ul>{% for x in r.evidence_suggestions %}<li>{{ x }}</li>{% endfor %}</ul>{% endif %}
+  {% if r.improved_argument %}<h3>Improved argument</h3><p>{{ r.improved_argument }}</p>{% endif %}
+{% endif %}
+{% if r.errors %}<h3>Errors</h3><ul>{% for e in r.errors %}<li><span class="pill">{{ e.category }}</span> {{ e.description }}</li>{% endfor %}</ul>{% endif %}
+{% if r.next_level %}<h3>What a marker expects at the next level</h3><p>{{ r.next_level }}</p>{% endif %}
+{% if r.improvements %}<h3>Concrete actions</h3><ul>{% for x in r.improvements %}<li>{{ x }}</li>{% endfor %}</ul>{% endif %}
+{% if r.improvement_task %}<p><strong>Improvement task:</strong> {{ r.improvement_task }}</p>{% endif %}
+
+<h3>Band 6 standard model response</h3>
+{% if fb.model_answer %}
+  <p><button class="btn small" data-toggle="model-{{ a.id }}" data-label-show="Show the model response" data-label-hide="Hide the model response">Show the model response</button>
+  <span class="tiny muted">Try rewriting first if you like — the model stays hidden until you open it.</span></p>
+  <div id="model-{{ a.id }}" hidden>
+    <div class="model">{{ fb.model_answer | paras }}</div>
+    <p class="tiny muted">{{ fb.model_answer_source }}. Not a reproduction of any published answer.</p>
+    {% if fb.comparison %}<h3>Comparison with your response</h3><p>{{ fb.comparison }}</p>{% endif %}
+    {% if fb.improved_answer %}<h3>Your answer — improved</h3><div class="model">{{ fb.improved_answer | paras }}</div>{% endif %}
+  </div>
+{% else %}
+  <p class="small muted">A model response for this question needs an AI provider (Settings → AI). {% if fb.guidance %}Meanwhile, this is what a strong response does:{% endif %}</p>
+{% endif %}
+{% if fb.guidance %}<ul>{% for g in fb.guidance %}<li>{{ g }}</li>{% endfor %}</ul>{% endif %}
+{% if fb.criteria_text %}<details><summary>{{ 'Official NESA marking guideline' if fb.criteria_official else 'Marking criteria (app-authored, not official NESA)' }}</summary>{{ fb.criteria_text | paras }}</details>{% endif %}
+{% if fb.subject == 'LEGAL' %}
+  {% if fb.unverified_references %}<div class="notice warn"><strong>Unverified references.</strong> These authorities appear in the AI's text but are not in your verified evidence bank, so treat them with caution: {{ fb.unverified_references|join('; ') }}</div>{% endif %}
+  <p class="small">Current information checked: <strong>{{ fb.facts_checked or 'not yet verified — open the Legal evidence bank to check the sources' }}</strong></p>
+  <p class="tiny muted">{{ fb.disclaimer }}</p>
+{% endif %}
