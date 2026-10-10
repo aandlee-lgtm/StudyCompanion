@@ -11,7 +11,7 @@ from sqlalchemy.orm import Session, selectinload
 
 from app.models import Question, Stimulus, Subject
 from app.selection.context import StudentContext, form_key
-from app.selection.scoring import EXCLUDED, REPEAT, Scored, eligibility, is_servable, score
+from app.selection.scoring import EXCLUDED, FRESH, REPEAT, Scored, eligibility, is_servable, score
 from app.services.fingerprint import NEAR_DUPLICATE, shingles
 
 READING_WPM = 110  # careful reading speed for unseen texts
@@ -63,6 +63,15 @@ class Pool:
                 self.fresh_left[q.plan_item_id] = self.fresh_left.get(q.plan_item_id, 0) + 1
             self.cands.append(score(ctx, q, code, tier, kind))
         self.cands.sort(key=lambda s: (s.tier, -s.score))
+        # Exam mode's difficulty floor is a real constraint while the bank can honour it: questions
+        # below the floor are dropped (they remain only as a penalised last resort otherwise).
+        self.floor_applied = False
+        floor = ctx.profile.difficulty_floor if code == "MATHS" else 1
+        if floor > 1:
+            above = [s for s in self.cands if (s.question.difficulty or 2) >= floor]
+            if sum(1 for s in above if s.tier == FRESH) >= 2 * max(1, ctx.profile.counts.get(code, 0)):
+                self.cands = above
+                self.floor_applied = True
         self._checked: set[int] = set()
         self._recent = [t for t in ctx.recent_texts if t]
         self._forms: dict[int, str] = {}

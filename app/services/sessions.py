@@ -34,6 +34,17 @@ def _answered(sess: DailySession) -> int:
     return sum(1 for q in sess.questions if q.status in ANSWERED)
 
 
+def _planned_on(sess: DailySession) -> date | None:
+    """The real day a session's set was planned, when that differs from its own date (a resumed
+    missed day)."""
+    expl = sess.explanation if isinstance(sess.explanation, dict) else {}
+    v = expl.get("resumed_on") or expl.get("planned_on")
+    try:
+        return date.fromisoformat(v) if v else None
+    except ValueError:
+        return None
+
+
 # ------------------------------------------------------------- missed days ---
 def setup_floor(db: Session, today: date) -> date:
     """Missed days are counted only from the later of the Year 12 start and the day the app was
@@ -63,8 +74,12 @@ def record_missed(db: Session, today: date, lookback_days: int = 14) -> list[Dai
             db.add(s)
             created.append(s)
     for s in db.execute(select(DailySession).where(DailySession.session_date < today, DailySession.status.in_(ACTIVE))).scalars():
+        planned_on = _planned_on(s)
+        if planned_on is not None and planned_on >= today:
+            continue  # a missed day resumed today: it stays open (and keeps its questions out of today's set)
         if _answered(s) == 0:
-            s.status = "missed"
+            # an untouched resumed day is not offered again: the student already had that choice
+            s.status = "skipped" if planned_on is not None else "missed"
         if s.timer_started_at is not None:
             pause_timer(db, s, "day_end")
     db.flush()
@@ -256,12 +271,13 @@ def rebuild(db: Session, sess: DailySession, mode: str, catch_up: dict[int, dict
 def resume_missed(db: Session, sess: DailySession) -> DailySession:
     """Restore a missed day's set: its own questions if it had some, otherwise a set planned with
     today's knowledge that shares nothing with today's set (selection-10)."""
+    today = clock.today(st.get(db, "timezone"))
     if sess.questions:
         sess.status = "in_progress" if _answered(sess) else "generated"
+        sess.explanation = {**(sess.explanation or {}), "resumed_on": today.isoformat()}
         db.flush()
         renumber(db)
         return sess
-    today = clock.today(st.get(db, "timezone"))
     today_sess = get_session(db, today)
     exclude = {q.question_id for q in today_sess.questions} if today_sess and today_sess.id != sess.id else set()
     return generate(db, sess.session_date, None, existing=sess, exclude_ids=exclude)

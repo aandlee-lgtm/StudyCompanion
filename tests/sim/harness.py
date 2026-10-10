@@ -240,10 +240,13 @@ def run_sim(data_dir: Path, profile: str = "mixed", weeks: int = 4, *, start: da
                 continue
             sessions.record_missed(db, day)
             overlap = None
+            resumed = None
             notice = sessions.missed_notice(db, day)
             if notice and missaction:
                 target = sessions.resolve_missed(db, day, missaction)
                 if missaction == "resume" and target is not None:
+                    sessions.record_missed(db, day)  # what /today does next: the resumed day must stay open
+                    resumed = target
                     today_sess = sessions.get_or_create_today(db)
                     overlap = len({q.question_id for q in target.questions} & {q.question_id for q in today_sess.questions})
             sess = sessions.get_or_create_today(db)
@@ -269,13 +272,14 @@ def run_sim(data_dir: Path, profile: str = "mixed", weeks: int = 4, *, start: da
                     "unit": tuple(s.id for s in stim.reading_set()) if stim else None, "form": form_key(q),
                     "prev": exp_before.get(q.id), "reason": sq.reason,
                 })
-            for sq in sess.questions:
-                q = sq.question
-                item = db.get(LearningPlanItem, q.plan_item_id)
-                good = rng.random() < p_correct(profile, sq.subject_code, item.code, q.difficulty or 2, study_n)
-                resp, conf = _respond(q, good)
-                assessment.submit(db, q, resp, sq=sq, confidence=conf, time_seconds=60)
-            sessions.maybe_complete(db, sess)
+            for s_ in ([resumed] if resumed is not None and resumed.id != sess.id else []) + [sess]:
+                for sq in s_.questions:
+                    q = sq.question
+                    item = db.get(LearningPlanItem, q.plan_item_id)
+                    good = rng.random() < p_correct(profile, sq.subject_code, item.code, q.difficulty or 2, study_n)
+                    resp, conf = _respond(q, good)
+                    assessment.submit(db, q, resp, sq=sq, confidence=conf, time_seconds=60)
+                sessions.maybe_complete(db, s_)
             db.commit()
             records.append(rec)
             study_n += 1
