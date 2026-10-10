@@ -44,6 +44,7 @@ class SourceDocument(Base):
     status: Mapped[str] = mapped_column(String(40), default="registered")  # registered|extracted|segmented|failed
     log: Mapped[str | None] = mapped_column(Text, nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow)
+    meta: Mapped[dict | None] = mapped_column(JSON, nullable=True)  # v2-ingestion: expected/detected counts, guideline match rate, report
 
     source: Mapped[Source] = relationship()
 
@@ -118,6 +119,10 @@ class Question(Base):
     facts_checked_on: Mapped[date | None] = mapped_column(Date, nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow)
     updated_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow, onupdate=utcnow)
+    # v2-ingestion: import provenance and review state (section, option, EITHER/OR group, page
+    # clip, validation issues, candidate subtopics, guideline kind, student-facing rationale,
+    # adaptation record). Never shown to the student except the rationale.
+    import_meta: Mapped[dict | None] = mapped_column(JSON, nullable=True)  # v2-ingestion
 
     source: Mapped[Source] = relationship()
     stimulus: Mapped[Stimulus | None] = relationship()
@@ -134,6 +139,8 @@ class QuestionPart(Base):
     marks: Mapped[int] = mapped_column(Integer, default=1)
     answer: Mapped[dict | None] = mapped_column(JSON, nullable=True)
     position: Mapped[int] = mapped_column(Integer, default=0)
+    guideline: Mapped[str | None] = mapped_column(Text, nullable=True)  # v2-ingestion: this part's marking guideline
+    meta: Mapped[dict | None] = mapped_column(JSON, nullable=True)  # v2-ingestion: page, clip, criteria, hence-dependency
 
     question: Mapped[Question] = relationship(back_populates="parts")
 
@@ -170,3 +177,8 @@ class MarkingGuideline(Base):
     text: Mapped[str] = mapped_column(Text)
     official: Mapped[bool] = mapped_column(Boolean, default=False)
     page: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    label: Mapped[str | None] = mapped_column(String(40), nullable=True)  # v2-ingestion: e.g. "11(b)(ii)"
+    kind: Mapped[str | None] = mapped_column(String(30), nullable=True)  # v2-ingestion: official_nesa|school_trial|app_authored|third_party
+    criteria: Mapped[list | None] = mapped_column(JSON, nullable=True)  # v2-ingestion: [{"criterion", "marks", "max"}]
+    sample_answer: Mapped[str | None] = mapped_column(Text, nullable=True)  # v2-ingestion
+    top_mark: Mapped[int | None] = mapped_column(Integer, nullable=True)  # v2-ingestion
