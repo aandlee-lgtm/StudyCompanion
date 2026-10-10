@@ -70,7 +70,8 @@ def pick_english(ctx: StudentContext, pool: Pool, n: int | None = None) -> tuple
             units.setdefault(unit_of(ctx, s), []).append(s)
     course = pool.ranked(lambda s: s.question.category != "unseen" and s.tier <= FRESH, k=6)
     if len(course) < n:
-        course = pool.ranked(lambda s: s.question.category != "unseen", k=6)
+        extra = pool.ranked(lambda s: s.question.category != "unseen" and s.tier > FRESH, k=6)
+        course = course + [s for s in extra if s not in course][: 6 - len(course)]
     recent_forms = _recent_forms(ctx, pool)
 
     passage_opts: list[Option] = []
@@ -79,8 +80,10 @@ def pick_english(ctx: StudentContext, pool: Pool, n: int | None = None) -> tuple
             continue
         last = max((ctx.stimulus_last_read[m] for m in key if m in ctx.stimulus_last_read), default=None)
         fresh_passage = last is None or (ctx.today - last).days >= cooldown
-        elig = [pool.verify(s) for s in members]
-        elig = sorted((s for s in elig if s.tier <= FRESH), key=lambda s: -s.score)[:6]
+        verified = [pool.verify(s) for s in members]
+        elig = sorted((s for s in verified if s.tier <= FRESH), key=lambda s: -s.score)[:6]
+        if len(elig) < min(2, n):  # last resort: questions from the fallback ladder (penalised by tier)
+            elig = sorted((s for s in verified if s.tier <= REPEAT), key=lambda s: (s.tier, -s.score))[:6]
         if not elig:
             continue
         stim = elig[0].question.stimulus
@@ -101,7 +104,7 @@ def pick_english(ctx: StudentContext, pool: Pool, n: int | None = None) -> tuple
                 marks = [s.question.marks for s in combo]
                 pen = base_pen + (DUP_MARKS_PENALTY if len(set(marks)) < len(marks) else 0.0)
                 if k_unseen == 1 and n > 2:
-                    pen += 0.3  # one question on a passage is a poor use of the reading
+                    pen += 1.0  # one question on a passage wastes the reading and strands its other questions
                 value = sum(s.score for s in combo) + _demand_bonus(ctx, list(combo)) - pen
                 if n_course == 0:
                     passage_opts.append(Option("ENGLISH", sorted(combo, key=lambda s: s.question.marks), round(value, 4),
@@ -122,6 +125,9 @@ def pick_english(ctx: StudentContext, pool: Pool, n: int | None = None) -> tuple
             v = sum(s.score for s in cc) - (0.2 * (n - len(modules))) - (COURSE_ONLY_PENALTY if has_fresh else 0.0)
             course_opts.append(Option("ENGLISH", list(cc), round(v, 4), round(sum(s.minutes for s in cc), 2), 0.0,
                                       facts={"unit": None, "course_only": True}))
+    if not course_opts and course and len(course) < n:  # fewer course tasks than slots: still offer them
+        course_opts.append(Option("ENGLISH", list(course), round(sum(s.score for s in course) - 3.0 * (n - len(course)), 4),
+                                  round(sum(s.minutes for s in course), 2), 0.0, facts={"unit": None, "course_only": True}))
     options = passage_opts + course_opts
     if not options and course:  # not enough of anything: give what exists
         options = [Option("ENGLISH", course[:n], round(sum(s.score for s in course[:n]) - 3.0, 4),
