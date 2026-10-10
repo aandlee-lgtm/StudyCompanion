@@ -80,6 +80,8 @@ DEFAULTS.update({  # selection
     "streak_min_minutes": 60,
     # An earlier Maths topic not practised for this many days gets a coverage slot, however strong.
     "selection_coverage_days": 18,
+    # Phases of the year as proportions of the span Year 12 start -> HSC start (selection-22).
+    "selection_phase_thresholds": {"consolidation": 0.2, "trials": 0.75, "final": 0.92},
 })
 DEFAULTS.update({  # maths
 })

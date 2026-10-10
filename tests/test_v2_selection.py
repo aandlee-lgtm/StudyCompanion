@@ -350,3 +350,38 @@ def test_generation_is_fast_with_a_large_bank(db):
     sel = build_daily_selection(db, build_context(db, TUESDAY))
     assert time.perf_counter() - t < 2.0  # about 0.1 s on a laptop; generous for CI
     assert len(sel.items) == 11
+
+
+# ------------------------------------------------------------------ phases ---
+def test_phases_make_the_year_more_exam_like(db):
+    """selection-22: phases come from progress; later phases time sessions and prefer exam-style work."""
+    from app.selection.phases import phase_for, timed_today
+
+    s = st.all_settings(db)
+    assert [phase_for(p, s).name for p in (0.05, 0.4, 0.8, 0.95)] == ["companion", "consolidation", "trials", "final"]
+    trials = phase_for(0.8, s)
+    assert timed_today(trials, 4, [0, 1, 2, 3, 4]) and not timed_today(trials, 2, [0, 1, 2, 3, 4])
+    # late in the year (Friday in Term 3): the session is timed and says why
+    day = date(2027, 8, 6)
+    assert day.weekday() == 4
+    clock.set_today(day)
+    ctx = build_context(db, day)
+    assert ctx.phase.name == "trials" and ctx.profile.timed
+    sel = build_daily_selection(db, ctx)
+    lines = " ".join(explain(ctx, sel)["lines"])
+    assert "Trial-preparation phase" in lines and "timed session" in lines
+
+
+def test_exam_style_bonus_prefers_multipart_questions(db):
+    from app.models import Question
+    from app.selection.phases import PHASES
+    from app.selection.scoring import question_score
+
+    _v2_bank(db)
+    ctx = build_context(db, TUESDAY)
+    multi = db.execute(select(Question).where(Question.question_text.like("(a)%"))).scalars().first()
+    assert multi is not None
+    base, _ = question_score(ctx, multi, "MATHS", "fresh")
+    ctx.phase = PHASES["trials"]
+    later, _ = question_score(ctx, multi, "MATHS", "fresh")
+    assert later > base

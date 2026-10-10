@@ -227,6 +227,10 @@ def explain(ctx: StudentContext, sel) -> dict:
     if repeats:
         lines.append(f"{len(repeats)} question{'s are repeats or rewrites' if len(repeats) != 1 else ' is a repeat or rewrite'} because "
                      "the fresh question bank for that area has run out (see each question's reason).")
+    if ctx.phase.name != "companion":
+        lines.append(ctx.phase.note)
+    if ctx.profile.timed and ctx.mode == "normal":
+        lines.append("Today is a timed session: work under exam conditions; the countdown shows the time left.")
     mode_note = " ".join(ctx.profile.notes) or None
     return {
         "lines": lines,
@@ -241,4 +245,5 @@ def explain(ctx: StudentContext, sel) -> dict:
         "bank": f.get("bank", {}),
         "extended": f.get("LEGAL", {}).get("extended"),
         "timed": ctx.profile.timed,
+        "phase": {"name": ctx.phase.name, "label": ctx.phase.label, "progress": round(ctx.progress, 3)},
     }

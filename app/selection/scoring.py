@@ -31,6 +31,7 @@ from app.models.common import (
     REVISION,
 )
 from app.selection.context import StudentContext
+from app.selection.phases import is_exam_style
 
 SOURCE_PRIORITY = {ORIGIN_SAMPLE: 1.0, ORIGIN_HISTORICAL: 0.95, ORIGIN_ADAPTED: 0.75, ORIGIN_TRIAL: 0.7, ORIGIN_GENERATED: 0.6}
 
@@ -218,6 +219,8 @@ def question_score(ctx: StudentContext, q: Question, subject: str, kind: str) ->
     s = sum(w.get(k, 0) * f[k] for k in STAGE2) / wsum
     if kind == "due":  # an exact question whose revision date has arrived
         s += 0.3 * min(1.0, ctx.revision_questions.get(q.id, 0.7))
+    if subject == "MATHS" and ctx.phase.exam_style_bonus and is_exam_style(q):
+        s += ctx.phase.exam_style_bonus  # more exam-like as the HSC approaches (selection-22)
     return round(s + jitter(ctx, q), 4), f
 
 

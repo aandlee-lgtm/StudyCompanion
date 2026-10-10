@@ -4,7 +4,7 @@
 {% set ex = s.explanation or {} %}
 <div class="spread">
   <div>
-    <div class="label">{{ s.session_date | fdate('%A %d %B %Y') }}{% if s.session_number %} · Session {{ s.session_number }}{% endif %}{% if s.mode != 'normal' %} · {{ {'light': 'Light day', 'holiday': 'Holiday / revision', 'exam': 'Exam'}.get(s.mode, s.mode|capitalize) }} mode{% endif %}</div>
+    <div class="label">{{ s.session_date | fdate('%A %d %B %Y') }}{% if s.session_number %} · Session {{ s.session_number }}{% endif %}{% if s.mode != 'normal' %} · {{ {'light': 'Light day', 'holiday': 'Holiday / revision', 'exam': 'Exam'}.get(s.mode, s.mode|capitalize) }} mode{% endif %}{% if ex.phase and ex.phase.name != 'companion' %} · {{ ex.phase.label }} phase{% endif %}{% if ex.timed %} · Timed{% endif %}</div>
     <h1>{{ "Today's practice" if not is_past else "Practice for " ~ (s.session_date | fdate('%A %d %B')) }}</h1>
     <p class="lead">Expected duration {{ s.expected_minutes | minutes }} · about {{ p.remaining_minutes | minutes }} remaining</p>
   </div>

@@ -24,6 +24,7 @@ from app.models import (
     Stimulus,
 )
 from app.models.common import LEARNED, LEARNING, REVISION, utcnow
+from app.selection.phases import PHASES, Phase, phase_for, timed_today
 from app.selection.profiles import ModeProfile, build_profile
 from app.services import settings as st
 
@@ -156,6 +157,7 @@ class StudentContext:
     learned_on: dict[int, date] = field(default_factory=dict)
     recent_course_share: float | None = None
     session_date: date | None = None  # the day being planned (a resumed missed day keeps its own date)
+    phase: Phase = PHASES["companion"]  # phase of the year (selection-22)
 
     # ---------------------------------------------------------------- derived ---
     @property
@@ -409,17 +411,23 @@ def build_context(db: Session, today: date, mode: str | None = None, student_id:
     total = sum(max(0.0, float(v)) for v in weights.values()) or 1.0
     weights = {k: max(0.0, float(v)) / total for k, v in weights.items()}
 
+    progress = _progress(today, s)
+    phase = phase_for(progress, s)
+    profile = build_profile(resolved, s)
+    if resolved == "normal" and timed_today(phase, session_date.weekday(), s.get("weekdays") or [0, 1, 2, 3, 4]):
+        profile.timed = True  # exam conditions on the phase's timed days
+
     return StudentContext(
-        today=today, session_date=session_date, mode=resolved, profile=build_profile(resolved, s), settings=s, plan=plan, mastery=mastery,
+        today=today, session_date=session_date, mode=resolved, profile=profile, settings=s, plan=plan, mastery=mastery,
         exposure=exposure, revision_items=rev_items, revision_item_due=rev_item_due, revision_questions=rev_qs, served=served,
         recent_texts=recent_texts, recent_plan_counts=recent_plan_counts, item_attempts=item_attempts, item_results=item_results,
         item_methods=item_methods, item_attempt_dates=item_attempt_dates, item_last_practised=item_last_practised,
-        performance=performance, performance_n={k: len(v) for k, v in perf_series.items()}, progress=_progress(today, s),
+        performance=performance, performance_n={k: len(v) for k, v in perf_series.items()}, progress=progress,
         stimulus_last_read=stimulus_last_read, stimulus_unit=stimulus_unit, recent_forms=recent_forms,
         english_history=english_hist, legal_history=legal_hist, sessions_before=len(session_order),
         last_session_items=last_session_items, previous_bands=sorted(bands.items(), reverse=True),
         reserved_ids=reserved, exclude_ids=set(exclude_ids or ()), catch_up=dict(catch_up or {}), weights=weights,
-        learned_on=_learned_on(plan, today), recent_course_share=course_share,
+        learned_on=_learned_on(plan, today), recent_course_share=course_share, phase=phase,
     )
 
 
