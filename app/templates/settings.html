@@ -49,6 +49,7 @@
   <div class="card">
     <h2>AI provider</h2>
     <p class="small">Current: <strong>{{ ai.provider }}</strong>{% if ai.model %} · model {{ ai.model }}{% endif %} · API key {{ 'present' if ai.api_key_present else 'not set' }}{% if ai.reason and ai.provider == 'offline' %} · {{ ai.reason }}{% endif %}</p>
+    <p class="small">To add an API key, edit <code>{{ data_dir }}/.env</code> (set <code>HSC_AI_PROVIDER=openai</code> and <code>OPENAI_API_KEY=…</code>), then restart the app.</p>
     <p class="small muted">API keys are read only from environment variables (.env). They are never stored in the database. Only the question, its context and your answer are sent to the AI service.</p>
     <div class="grid g2">
       <div class="field"><label>Provider</label><select name="ai_provider_override"><option value="" {{ 'selected' if not s.ai_provider_override }}>From .env</option><option value="openai" {{ 'selected' if s.ai_provider_override == 'openai' }}>OpenAI-compatible</option><option value="offline" {{ 'selected' if s.ai_provider_override == 'offline' }}>Offline</option></select></div>

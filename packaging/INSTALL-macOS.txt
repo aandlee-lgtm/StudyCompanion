@@ -1,0 +1,13 @@
+HSC Companion 2027 — installing on a Mac
+
+1. Drag "HSC Companion" onto the Applications folder.
+2. The first time, open Applications, right-click (or Control-click) HSC Companion and choose Open,
+   then click Open again. (The app is not notarised by Apple, so macOS asks once. If it still
+   refuses: System Settings → Privacy & Security → "Open Anyway".)
+3. A small window says the app is running, and Chrome opens at http://127.0.0.1:8000.
+   Keep the small window open while you study; closing it stops the app.
+
+Your data (answers, progress, settings, backups) lives in
+~/Library/Application Support/HSC Companion — it is kept when you update or delete the app.
+To use AI marking, edit the .env file in that folder (the app's Settings page shows the path)
+and restart the app.

@@ -1,0 +1,196 @@
+"""Desktop launcher used by the packaged app (macOS .app / Windows .exe).
+
+Keeps the data (database, backups, .env with an optional API key) in the user's
+application-data folder so reinstalling or updating the app never touches it. Starts the
+server on 127.0.0.1, opens Chrome (or the default browser) and shows a small window with
+"Open" and "Quit" buttons. If another copy is already running it simply opens the browser."""
+from __future__ import annotations
+
+import os
+import shutil
+import socket
+import subprocess
+import sys
+import threading
+import time
+import urllib.request
+import webbrowser
+from pathlib import Path
+
+APP_NAME = "HSC Companion"
+PREFERRED_PORT = 8000
+
+
+def user_data_dir() -> Path:
+    if sys.platform == "darwin":
+        base = Path.home() / "Library" / "Application Support"
+    elif os.name == "nt":
+        base = Path(os.environ.get("APPDATA", Path.home() / "AppData" / "Roaming"))
+    else:
+        base = Path(os.environ.get("XDG_DATA_HOME", Path.home() / ".local" / "share"))
+    return base / APP_NAME
+
+
+def bundle_dir() -> Path:
+    return Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parent.parent))
+
+
+def prepare_environment() -> Path:
+    data = Path(os.environ.get("HSC_DATA_DIR") or user_data_dir())
+    data.mkdir(parents=True, exist_ok=True)
+    os.environ["HSC_DATA_DIR"] = str(data)
+    env_file = data / ".env"
+    example = bundle_dir() / ".env.example"
+    if not env_file.exists() and example.exists():
+        text = example.read_text(encoding="utf-8").replace("HSC_DATA_DIR=./data", f"# Data folder: {data}")
+        env_file.write_text(text, encoding="utf-8")
+    return data
+
+
+def ours_running(port: int) -> bool:
+    try:
+        with urllib.request.urlopen(f"http://127.0.0.1:{port}/api/ping", timeout=1) as r:
+            return r.read().startswith(b"hsc-companion")
+    except Exception:
+        return False
+
+
+def port_free(port: int) -> bool:
+    with socket.socket() as s:
+        try:
+            s.bind(("127.0.0.1", port))
+            return True
+        except OSError:
+            return False
+
+
+def pick_port() -> int:
+    for p in (PREFERRED_PORT, 8001, 8002, 8765):
+        if port_free(p):
+            return p
+    with socket.socket() as s:
+        s.bind(("127.0.0.1", 0))
+        return s.getsockname()[1]
+
+
+def open_browser(url: str) -> None:
+    """Prefer Google Chrome, as the app is designed for it; fall back to the default browser."""
+    try:
+        if sys.platform == "darwin" and Path("/Applications/Google Chrome.app").exists():
+            subprocess.Popen(["open", "-a", "Google Chrome", url])
+            return
+        if os.name == "nt":
+            for c in (os.path.expandvars(r"%ProgramFiles%\Google\Chrome\Application\chrome.exe"),
+                      os.path.expandvars(r"%ProgramFiles(x86)%\Google\Chrome\Application\chrome.exe"),
+                      os.path.expandvars(r"%LocalAppData%\Google\Chrome\Application\chrome.exe")):
+                if os.path.exists(c):
+                    subprocess.Popen([c, url])
+                    return
+        chrome = shutil.which("google-chrome") or shutil.which("chromium")
+        if chrome:
+            subprocess.Popen([chrome, url])
+            return
+    except Exception:
+        pass
+    webbrowser.open(url)
+
+
+def self_test() -> int:
+    """Used by the build pipeline: create a database in a temp folder and render key pages."""
+    import tempfile
+
+    with tempfile.TemporaryDirectory() as tmp:
+        os.environ["HSC_DATA_DIR"] = tmp
+        from fastapi.testclient import TestClient
+
+        from app.config import config
+        from app.main import create_app
+
+        config.data_dir = Path(tmp)
+        client = TestClient(create_app(f"sqlite:///{Path(tmp) / 'selftest.db'}"))
+        ok = client.get("/setup").status_code == 200 and client.get("/api/ping").text.startswith("hsc-companion")
+        client.post("/setup", data={"student_name": "Test"})
+        for path in ("/", "/curriculum", "/questions", "/progress", "/legal-evidence", "/settings", "/static/vendor/katex/katex.min.js"):
+            code = client.get(path).status_code
+            print(f"{path}: {code}")
+            ok = ok and code == 200
+        from app.services.maths_templates import generate
+
+        ok = ok and generate("1B", 1, 2) is not None
+        print("SELF-TEST", "PASSED" if ok else "FAILED")
+        return 0 if ok else 1
+
+
+def main() -> None:
+    if "--self-test" in sys.argv:
+        sys.exit(self_test())
+    data = prepare_environment()
+    if ours_running(PREFERRED_PORT):
+        open_browser(f"http://127.0.0.1:{PREFERRED_PORT}")
+        return
+    port = pick_port()
+    url = f"http://127.0.0.1:{port}"
+
+    import logging
+
+    import uvicorn
+
+    log_file = data / "hsc_companion.log"
+    logging.basicConfig(filename=str(log_file), level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
+    from app.main import create_app
+
+    server = uvicorn.Server(uvicorn.Config(create_app(), host="127.0.0.1", port=port, log_level="warning", log_config=None))
+    thread = threading.Thread(target=server.run, daemon=True)
+    thread.start()
+    for _ in range(100):
+        if server.started:
+            break
+        time.sleep(0.1)
+    open_browser(url)
+    run_window(url, data, server)
+
+
+def run_window(url: str, data: Path, server) -> None:
+    try:
+        import tkinter as tk
+    except ImportError:  # no GUI toolkit: keep running until interrupted
+        print(f"{APP_NAME} is running at {url}  (data: {data}). Press Ctrl+C to quit.")
+        try:
+            while True:
+                time.sleep(1)
+        except KeyboardInterrupt:
+            server.should_exit = True
+        return
+
+    root = tk.Tk()
+    root.title(APP_NAME)
+    root.geometry("420x190")
+    root.resizable(False, False)
+    tk.Label(root, text=f"{APP_NAME} 2027 is running", font=("Helvetica", 15, "bold")).pack(pady=(18, 4))
+    tk.Label(root, text=url, fg="#2f5d8a").pack()
+    tk.Label(root, text="Keep this window open while you study.\nClosing it stops the app.", fg="#5d6470").pack(pady=6)
+    row = tk.Frame(root)
+    row.pack(pady=6)
+    tk.Button(row, text="Open in browser", width=16, command=lambda: open_browser(url)).pack(side="left", padx=6)
+    tk.Button(row, text="Data folder", width=12, command=lambda: reveal(data)).pack(side="left", padx=6)
+
+    def quit_app():
+        server.should_exit = True
+        root.destroy()
+
+    tk.Button(row, text="Quit", width=8, command=quit_app).pack(side="left", padx=6)
+    root.protocol("WM_DELETE_WINDOW", quit_app)
+    root.mainloop()
+
+
+def reveal(path: Path) -> None:
+    if sys.platform == "darwin":
+        subprocess.Popen(["open", str(path)])
+    elif os.name == "nt":
+        os.startfile(str(path))  # type: ignore[attr-defined]
+    else:
+        subprocess.Popen(["xdg-open", str(path)])
+
+
+if __name__ == "__main__":
+    main()

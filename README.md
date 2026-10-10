@@ -9,7 +9,28 @@ Every weekday it builds a personalised session of about 90 minutes: **5 Maths, 3
 learning, what you have learned, what you got wrong and what is due for revision. It never
 serves LOCKED (future) topics, Extension Maths, or REJECT questions.
 
-## Install (once)
+## Install with the installer (easiest)
+
+Download the installer for your computer from the repository's **Releases** page, or from the
+latest **Actions → Build installers** run:
+
+- **Mac (Apple silicon):** open `HSC-Companion-…-macOS-arm64.dmg` and drag *HSC Companion* to
+  Applications. The first time, right-click the app and choose **Open**: it is not notarised by
+  Apple, so macOS asks once.
+- **Windows:** run `HSC-Companion-…-Windows-Setup.exe`. It installs for your user only, with no
+  administrator rights needed. If SmartScreen warns you, choose *More info → Run anyway*.
+
+Starting the app opens Chrome at http://127.0.0.1:8000 and shows a small "running" window.
+Closing that window stops the app. Your data is kept apart from the app, so updating or
+uninstalling never deletes it:
+`~/Library/Application Support/HSC Companion` on Mac, `%APPDATA%\HSC Companion` on Windows.
+To turn on AI marking, edit the `.env` file in that folder and restart the app.
+
+To build the installers yourself, run `packaging/build_macos.sh` on a Mac or
+`packaging/build_windows.ps1` on Windows. GitHub Actions builds both on every push;
+pushing a `v*` tag publishes a Release.
+
+## Install from source (developers)
 
 You need Python 3.12 or newer.
 

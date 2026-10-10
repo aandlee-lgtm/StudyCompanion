@@ -212,6 +212,13 @@ def practice_skip(qid: int, db: Session = Depends(get_db)):
     return RedirectResponse(f"/practice/{qid}#feedback", status_code=303)
 
 
+@router.get("/api/ping")
+def ping():
+    from fastapi.responses import PlainTextResponse
+
+    return PlainTextResponse("hsc-companion 2027")
+
+
 @router.post("/api/math-preview")
 def math_preview(text: str = Form("")):
     import sympy as sp

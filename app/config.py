@@ -12,6 +12,10 @@ from pathlib import Path
 try:  # optional: python-dotenv
     from dotenv import load_dotenv
 
+    # The installed desktop app keeps its .env in the data folder (HSC_DATA_DIR); a source
+    # checkout uses the project folder. Real environment variables always take precedence.
+    if os.environ.get("HSC_DATA_DIR"):
+        load_dotenv(Path(os.environ["HSC_DATA_DIR"]) / ".env")
     load_dotenv(Path(__file__).resolve().parent.parent / ".env")
 except Exception:  # pragma: no cover - dotenv is optional
     pass
