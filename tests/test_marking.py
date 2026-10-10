@@ -74,6 +74,6 @@ def test_all_templates_mark_their_own_answer():
         for d in (1, 2, 3):
             g = maths_templates.generate(code, 3, d)
             a = g.answer
-            resp = ", ".join(a["values"]) if a["type"] == "set" else a["value"]
-            r = mark_answer(resp, a, g.marks, g.common_errors)
+            resp = maths_templates.model_response(a)  # v2: interval / parts / mcq answer types
+            r = mark_answer(resp, a, g.marks, g.common_errors, options=g.options)
             assert r.correct, f"{code} L{d}: {resp} not accepted"
