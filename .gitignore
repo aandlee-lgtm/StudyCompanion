@@ -10,3 +10,4 @@ data/sources/
 imports/*
 !imports/README.md
 .pytest_cache/
+hsc-selftest.log

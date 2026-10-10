@@ -96,29 +96,52 @@ def open_browser(url: str) -> None:
 
 
 def self_test() -> int:
-    """Used by the build pipeline: create a database in a temp folder and render key pages."""
+    """Used by the build pipeline: create a database in a temp folder and render key pages.
+    Results are also written to hsc-selftest.log in the working directory, because a
+    windowed Windows executable has no console to print to."""
     import tempfile
+    import traceback
 
-    with tempfile.TemporaryDirectory() as tmp:
+    lines: list[str] = []
+
+    def out(msg: str) -> None:
+        lines.append(msg)
+        if sys.stdout:
+            print(msg, flush=True)
+
+    ok = False
+    tmp = tempfile.mkdtemp(prefix="hsc-selftest-")
+    try:
         os.environ["HSC_DATA_DIR"] = tmp
         from fastapi.testclient import TestClient
 
         from app.config import config
+        from app.db import get_engine
         from app.main import create_app
 
         config.data_dir = Path(tmp)
-        client = TestClient(create_app(f"sqlite:///{Path(tmp) / 'selftest.db'}"))
-        ok = client.get("/setup").status_code == 200 and client.get("/api/ping").text.startswith("hsc-companion")
-        client.post("/setup", data={"student_name": "Test"})
-        for path in ("/", "/curriculum", "/questions", "/progress", "/legal-evidence", "/settings", "/static/vendor/katex/katex.min.js"):
-            code = client.get(path).status_code
-            print(f"{path}: {code}")
-            ok = ok and code == 200
+        with TestClient(create_app(f"sqlite:///{Path(tmp) / 'selftest.db'}")) as client:
+            ok = client.get("/setup").status_code == 200 and client.get("/api/ping").text.startswith("hsc-companion")
+            client.post("/setup", data={"student_name": "Test"})
+            for path in ("/", "/curriculum", "/questions", "/progress", "/legal-evidence", "/settings", "/static/vendor/katex/katex.min.js"):
+                code = client.get(path).status_code
+                out(f"{path}: {code}")
+                ok = ok and code == 200
         from app.services.maths_templates import generate
 
         ok = ok and generate("1B", 1, 2) is not None
-        print("SELF-TEST", "PASSED" if ok else "FAILED")
-        return 0 if ok else 1
+        get_engine().dispose()  # release the SQLite file so Windows can delete the folder
+    except Exception:
+        out(traceback.format_exc())
+        ok = False
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+    out("SELF-TEST " + ("PASSED" if ok else "FAILED"))
+    try:
+        Path("hsc-selftest.log").write_text("\n".join(lines), encoding="utf-8")
+    except OSError:
+        pass
+    return 0 if ok else 1
 
 
 def main() -> None:
@@ -146,6 +169,10 @@ def main() -> None:
         if server.started:
             break
         time.sleep(0.1)
+    if os.environ.get("HSC_HEADLESS"):  # used by the build smoke test: no browser, no window
+        print(f"{APP_NAME} serving {url} (headless)", flush=True)
+        thread.join()
+        return
     open_browser(url)
     run_window(url, data, server)
 
