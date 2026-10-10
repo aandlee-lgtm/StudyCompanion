@@ -1,5 +1,5 @@
 {
- "_note": "All stimuli below are ORIGINAL texts written for HSC Companion and are labelled GENERATED. None is a NESA text. Model answers are written for these specific questions; marking criteria are app-authored (not official NESA marking guidelines).",
+ "_note": "All stimuli below are ORIGINAL texts written for HSC Companion and are labelled GENERATED. None is a NESA text. Model answers are written for these specific questions; marking criteria are app-authored (not official NESA marking guidelines). v2: each question has an app-authored mark ladder, a checklist for guided self-marking and per-level next steps.",
  "stimuli": [
   {
    "key": "ferry",
@@ -8,16 +8,131 @@
    "author": "Original text (HSC Companion)",
    "body": "My mother insisted on the outside seat, though the wind came off the harbour in sheets and the spray had already found the cuffs of her good coat. She had not been on a ferry since my father died, and she held the rail the way she used to hold his elbow on stairs, lightly, as if it might be rude to need it.\n\n'They've painted the wharf,' she said. They had not. It was the same green it had always been, the paint lifting in long curls like the skin of something that had been in the sun too long. But I said yes, it looked brighter, because it was easier than asking what else she was remembering wrongly, and how much, and for how long.\n\nThe city slid by in pieces: a crane, a church spire, the glass towers that turned the water into a second, broken city underneath. My mother named the suburbs as we passed them, a roll call of the places she had lived, worked, been young. At each name she nodded, as though confirming that they were still there, that they had waited.\n\nHalfway across, the engine changed its note and the ferry seemed to pause, held between two shores. My mother turned to me. 'Your father always said this was the best part,' she said. 'When you can't see where you've come from and you can't quite see where you're going.'\n\nI looked back. The wharf was still there, plainly green. I did not tell her.",
    "questions": [
-    {"marks": 2, "verb": "Explain", "difficulty": 1, "text": "Explain how the narrator's response to the comment about the wharf reveals their relationship with their mother.",
-     "criteria": ["2 marks: explains the narrator's choice to agree and links it clearly to a protective/strained relationship, using the text", "1 mark: identifies the narrator agrees or makes a general comment about the relationship"],
-     "model": "The narrator agrees that the wharf 'looked brighter' even though 'They had not' painted it, choosing comfort over correction. The narrator explains that this was 'easier than asking what else she was remembering wrongly', which reveals a protective but anxious relationship: the narrator shields the mother from her memory lapses while privately fearing how far they extend."},
-    {"marks": 4, "verb": "Analyse", "difficulty": 2, "text": "Analyse how the writer uses imagery to represent the mother's experience of memory.",
-     "criteria": ["4 marks: skilful analysis of how specific images shape a representation of memory; well-integrated evidence", "3 marks: sound analysis of imagery with relevant evidence", "2 marks: describes imagery with some link to memory", "1 mark: identifies an image"],
-     "model": "The writer uses imagery to present the mother's memory as both precious and unreliable. The simile of paint 'lifting in long curls like the skin of something that had been in the sun too long' suggests decay and exposure, implying that time has worn away the surfaces of the past just as it has worn the wharf. In contrast, the reflection of glass towers turning the water into 'a second, broken city underneath' suggests that the remembered world exists alongside the present, but fractured and distorted. The mother's 'roll call' of suburbs, which she confirms with a nod 'as though ... they had waited', personifies place as loyal and unchanging, revealing her need for continuity. Together, these images construct memory as a fragile, partly broken reflection of reality that the mother clings to for reassurance."},
-    {"marks": 5, "verb": "Evaluate", "difficulty": 3, "text": "Evaluate the effectiveness of the final paragraph as a conclusion to the passage.",
-     "criteria": ["5 marks: perceptive evaluation of how the ending resolves/reframes ideas, with a clear judgement and precise evidence", "4 marks: well-developed evaluation with relevant evidence", "3 marks: sound explanation of the ending's effect with some judgement", "1-2 marks: describes the ending"],
-     "model": "The final paragraph is a highly effective conclusion because it compresses the passage's tension between memory and reality into a single, restrained act. The short declarative sentence 'I looked back' mirrors the father's remembered idea of not seeing 'where you've come from', so the narrator literally does what the mother's memory says cannot be done. The plain observation that the wharf 'was still there, plainly green' quietly confirms the mother's error, the adverb 'plainly' contrasting with her imagined brightness. The closing sentence, 'I did not tell her', echoes the narrator's earlier choice to agree, transforming a single kindness into a pattern of silence. Its brevity creates a poignant ambiguity: it is both an act of love and an evasion. By ending on withheld truth rather than resolution, the writer leaves the reader suspended 'between two shores', much like the ferry, which makes the conclusion structurally and thematically resonant."}
-    ]
+    {
+     "marks": 2,
+     "verb": "Explain",
+     "difficulty": 1,
+     "text": "Explain how the narrator's response to the comment about the wharf reveals their relationship with their mother.",
+     "criteria": [
+      {
+       "mark": 2,
+       "descriptor": "Explains the narrator's choice to agree and links it clearly to a protective/strained relationship, using the text"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Identifies the narrator agrees or makes a general comment about the relationship"
+      }
+     ],
+     "model": "The narrator agrees that the wharf 'looked brighter' even though 'They had not' painted it, choosing comfort over correction. The narrator explains that this was 'easier than asking what else she was remembering wrongly', which reveals a protective but anxious relationship: the narrator shields the mother from her memory lapses while privately fearing how far they extend.",
+     "demand": "explain",
+     "skill_tags": [
+      "characterisation",
+      "relationships"
+     ],
+     "checklist": [
+      "Points out that the narrator agrees the wharf 'looked brighter' although it had not been painted",
+      "Uses the narrator's reason, that agreeing was 'easier than asking what else she was remembering wrongly'",
+      "Explains what this shows about the relationship: protective of the mother but privately anxious about her memory"
+     ],
+     "next_steps": {
+      "0": "Find the moment the narrator answers 'They've painted the wharf' and say what the narrator does.",
+      "1": "Go beyond 'they agree': use the narrator's own reason ('easier than asking...') and say what it shows about how they treat their mother."
+     },
+     "response_type": "analytical"
+    },
+    {
+     "marks": 4,
+     "verb": "Analyse",
+     "difficulty": 2,
+     "text": "Analyse how the writer uses imagery to represent the mother's experience of memory.",
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Skilful analysis of how specific images shape a representation of memory; well-integrated evidence"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Sound analysis of imagery with relevant evidence"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Describes imagery with some link to memory"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Identifies an image"
+      }
+     ],
+     "model": "The writer uses imagery to present the mother's memory as both precious and unreliable. The simile of paint 'lifting in long curls like the skin of something that had been in the sun too long' suggests decay and exposure, implying that time has worn away the surfaces of the past just as it has worn the wharf. In contrast, the reflection of glass towers turning the water into 'a second, broken city underneath' suggests that the remembered world exists alongside the present, but fractured and distorted. The mother's 'roll call' of suburbs, which she confirms with a nod 'as though ... they had waited', personifies place as loyal and unchanging, revealing her need for continuity. Together, these images construct memory as a fragile, partly broken reflection of reality that the mother clings to for reassurance.",
+     "demand": "analyse",
+     "skill_tags": [
+      "imagery",
+      "memory",
+      "representation"
+     ],
+     "checklist": [
+      "Analyses at least two specific images (e.g. the paint 'like the skin of something', the 'second, broken city', the 'roll call' of suburbs)",
+      "Quotes each image briefly and accurately, integrated into the sentence",
+      "Explains what each image suggests about memory (worn by time, fractured or distorted, a need for continuity), not just what it describes",
+      "Draws the images together into an overall view of how memory is represented (e.g. fragile, partly broken, clung to)"
+     ],
+     "next_steps": {
+      "0": "Pick one image from the passage (the peeling paint, the reflected city, the roll call) and quote it.",
+      "1": "Say what your image suggests about the mother's memory, e.g. what the paint 'lifting in long curls' implies about time.",
+      "2": "Add a second, contrasting image, such as the 'second, broken city', and analyse how it shapes memory differently.",
+      "3": "Synthesise: end with how the images together construct memory, e.g. as a fractured reflection the mother clings to."
+     },
+     "response_type": "analytical"
+    },
+    {
+     "marks": 5,
+     "verb": "Evaluate",
+     "difficulty": 3,
+     "text": "Evaluate the effectiveness of the final paragraph as a conclusion to the passage.",
+     "criteria": [
+      {
+       "mark": 5,
+       "descriptor": "Perceptive evaluation of how the ending resolves/reframes ideas, with a clear judgement and precise evidence"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Well-developed evaluation with relevant evidence"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Sound explanation of the ending's effect with some judgement"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Describes the ending",
+       "low": 1
+      }
+     ],
+     "model": "The final paragraph is a highly effective conclusion because it compresses the passage's tension between memory and reality into a single, restrained act. The short declarative sentence 'I looked back' mirrors the father's remembered idea of not seeing 'where you've come from', so the narrator literally does what the mother's memory says cannot be done. The plain observation that the wharf 'was still there, plainly green' quietly confirms the mother's error, the adverb 'plainly' contrasting with her imagined brightness. The closing sentence, 'I did not tell her', echoes the narrator's earlier choice to agree, transforming a single kindness into a pattern of silence. Its brevity creates a poignant ambiguity: it is both an act of love and an evasion. By ending on withheld truth rather than resolution, the writer leaves the reader suspended 'between two shores', much like the ferry, which makes the conclusion structurally and thematically resonant.",
+     "demand": "evaluate",
+     "skill_tags": [
+      "structure",
+      "endings",
+      "evaluation"
+     ],
+     "checklist": [
+      "Makes a clear judgement about how effective the final paragraph is as a conclusion",
+      "Links 'I looked back' to the father's words about not seeing 'where you've come from'",
+      "Analyses the plain detail 'plainly green' as confirming the mother's error",
+      "Shows how 'I did not tell her' echoes the narrator's earlier choice to agree, making a pattern of silence",
+      "Explains the effect of ending on withheld truth or ambiguity (e.g. love and evasion, suspended 'between two shores')"
+     ],
+     "next_steps": {
+      "0": "State what happens in the final paragraph and whether it works as an ending.",
+      "1": "Make a judgement ('highly effective because...') and support it with one quoted detail.",
+      "2": "Connect the ending to earlier moments: 'I looked back' and the father's saying, or 'I did not tell her' and the earlier agreement.",
+      "3": "Analyse the style of the ending (short declaratives, the adverb 'plainly') and how it creates its effect.",
+      "4": "Weigh the ending's ambiguity: is the silence love, evasion or both? Tie your judgement to the passage's ideas of memory."
+     },
+     "response_type": "analytical"
+    }
+   ],
+   "complexity": 2
   },
   {
    "key": "recipes",
@@ -26,16 +141,120 @@
    "author": "Original text (HSC Companion)",
    "body": "After my grandmother's funeral, my aunts divided the furniture with a politeness that frightened me. I asked for nothing, and so I was given the shoebox.\n\nInside were her recipe cards, perhaps two hundred of them, held together with perished rubber bands that broke the moment I touched them. Most were written in blue biro, in the slanting, looping hand she had learned at a school where the nuns rapped knuckles for untidiness. Some were typed on a machine I never saw her use. A few were in my mother's handwriting, from the years when she still came to Sunday lunch.\n\nNone of them was complete. 'Flour — enough,' said one. 'Bake until right.' The scones card gave no oven temperature at all, only the instruction 'hot, but not angry'. I laughed out loud at that, alone in my flat, and then I did not laugh for some time.\n\nI understand now that the cards were never meant to be read by someone who had not stood beside her. They were reminders, not instructions; the knowledge lived in her wrists and in the way she tilted the bowl to the light. What she wrote down was only the part she was afraid of forgetting.\n\nI have tried the scones eleven times. They are getting better. They are not hers.",
    "questions": [
-    {"marks": 3, "verb": "Explain", "difficulty": 1, "text": "Explain how the writer uses the recipe cards to represent the grandmother.",
-     "criteria": ["3 marks: clear explanation of how details of the cards characterise the grandmother, with apt evidence", "2 marks: sound explanation with some evidence", "1 mark: simple statement about the cards"],
-     "model": "The writer uses the cards as a physical extension of the grandmother's identity. The 'slanting, looping hand' shaped by nuns who 'rapped knuckles' links her handwriting to her history and discipline. The incomplete instructions, such as 'hot, but not angry', reveal a cook who relied on intuition and personality rather than measurement, so the cards characterise her as warm, idiosyncratic and deeply practical, a woman whose knowledge was embodied rather than recorded."},
-    {"marks": 4, "verb": "Analyse", "difficulty": 2, "text": "Analyse how the writer shapes the reader's understanding of grief in this extract.",
-     "criteria": ["4 marks: insightful analysis of how structure and language shape an understanding of grief; integrated evidence", "3 marks: sound analysis with relevant evidence", "2 marks: some explanation of grief with limited analysis", "1 mark: identifies grief"],
-     "model": "The writer shapes grief as something that arrives indirectly, through objects and small moments rather than open mourning. The juxtaposition in 'I laughed out loud at that ... and then I did not laugh for some time' turns a comic instruction into a trigger for sorrow; the understatement and pause force the reader to infer the depth of feeling the writer does not state. The reflective paragraph reframes the cards as 'reminders, not instructions', suggesting that loss is the loss of embodied knowledge 'in her wrists' that cannot be transferred. Finally, the short, flat sentences of the ending, 'They are getting better. They are not hers.', enact a controlled acceptance: grief becomes an ongoing practice of trying, and of recognising what cannot be recovered."},
-    {"marks": 2, "verb": "Identify", "difficulty": 1, "text": "Identify ONE way the opening paragraph establishes tension, and explain its effect.",
-     "criteria": ["2 marks: identifies a relevant feature and explains its effect", "1 mark: identifies a feature"],
-     "model": "The oxymoronic idea of a 'politeness that frightened me' establishes tension by suggesting hidden conflict beneath civility. Its effect is to position the reader to sense family strain and the narrator's vulnerability, which makes the modest inheritance of the shoebox feel both overlooked and significant."}
-   ]
+    {
+     "marks": 3,
+     "verb": "Explain",
+     "difficulty": 1,
+     "text": "Explain how the writer uses the recipe cards to represent the grandmother.",
+     "criteria": [
+      {
+       "mark": 3,
+       "descriptor": "Clear explanation of how details of the cards characterise the grandmother, with apt evidence"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Sound explanation with some evidence"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Simple statement about the cards"
+      }
+     ],
+     "model": "The writer uses the cards as a physical extension of the grandmother's identity. The 'slanting, looping hand' shaped by nuns who 'rapped knuckles' links her handwriting to her history and discipline. The incomplete instructions, such as 'hot, but not angry', reveal a cook who relied on intuition and personality rather than measurement, so the cards characterise her as warm, idiosyncratic and deeply practical, a woman whose knowledge was embodied rather than recorded.",
+     "demand": "explain",
+     "skill_tags": [
+      "characterisation",
+      "symbolism"
+     ],
+     "checklist": [
+      "Explains that the cards act as an extension of the grandmother's identity",
+      "Uses a detail of the handwriting or its history (e.g. the 'slanting, looping hand', the nuns who 'rapped knuckles')",
+      "Uses an incomplete instruction (e.g. 'hot, but not angry') and explains what it shows about her (intuitive, idiosyncratic, practical)"
+     ],
+     "next_steps": {
+      "0": "Name one detail of the recipe cards and say what it tells you about the grandmother.",
+      "1": "Quote a detail and explain the quality it reveals, e.g. what 'hot, but not angry' shows about how she cooked.",
+      "2": "Add a second, different detail (the handwriting and its history) so your explanation covers more of her character."
+     },
+     "response_type": "analytical"
+    },
+    {
+     "marks": 4,
+     "verb": "Analyse",
+     "difficulty": 2,
+     "text": "Analyse how the writer shapes the reader's understanding of grief in this extract.",
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Insightful analysis of how structure and language shape an understanding of grief; integrated evidence"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Sound analysis with relevant evidence"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Some explanation of grief with limited analysis"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Identifies grief"
+      }
+     ],
+     "model": "The writer shapes grief as something that arrives indirectly, through objects and small moments rather than open mourning. The juxtaposition in 'I laughed out loud at that ... and then I did not laugh for some time' turns a comic instruction into a trigger for sorrow; the understatement and pause force the reader to infer the depth of feeling the writer does not state. The reflective paragraph reframes the cards as 'reminders, not instructions', suggesting that loss is the loss of embodied knowledge 'in her wrists' that cannot be transferred. Finally, the short, flat sentences of the ending, 'They are getting better. They are not hers.', enact a controlled acceptance: grief becomes an ongoing practice of trying, and of recognising what cannot be recovered.",
+     "demand": "analyse",
+     "skill_tags": [
+      "structure",
+      "tone",
+      "grief"
+     ],
+     "checklist": [
+      "Shows that grief is represented indirectly, through objects and small moments rather than open mourning",
+      "Analyses the shift from laughter to sorrow ('I laughed out loud ... and then I did not laugh for some time') and its understatement",
+      "Analyses the reframing of the cards as 'reminders, not instructions' and the loss of knowledge 'in her wrists'",
+      "Analyses the short, flat closing sentences ('They are getting better. They are not hers.') and the acceptance they suggest"
+     ],
+     "next_steps": {
+      "0": "Find one moment where the writer's grief shows and quote it.",
+      "1": "Explain how your moment conveys grief without stating it, e.g. the pause after the laugh.",
+      "2": "Add a second technique (the reflective reframing, or the short final sentences) and analyse its effect.",
+      "3": "Connect your points into an overall reading: grief as an ongoing practice of trying and recognising what cannot be recovered."
+     },
+     "response_type": "analytical"
+    },
+    {
+     "marks": 2,
+     "verb": "Identify",
+     "difficulty": 1,
+     "text": "Identify ONE way the opening paragraph establishes tension, and explain its effect.",
+     "criteria": [
+      {
+       "mark": 2,
+       "descriptor": "Identifies a relevant feature and explains its effect"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Identifies a feature"
+      }
+     ],
+     "model": "The paradoxical idea of a 'politeness that frightened me' establishes tension by suggesting hidden conflict beneath civility. Its effect is to position the reader to sense family strain and the narrator's vulnerability, which makes the modest inheritance of the shoebox feel both overlooked and significant.",
+     "demand": "identify",
+     "skill_tags": [
+      "tension",
+      "openings"
+     ],
+     "checklist": [
+      "Identifies a feature of the opening paragraph that creates tension (e.g. the 'politeness that frightened me', or 'I asked for nothing')",
+      "Explains its effect: hidden family conflict, the narrator's vulnerability, or the overlooked significance of the shoebox"
+     ],
+     "next_steps": {
+      "0": "Find one phrase in the first paragraph that feels uneasy and quote it.",
+      "1": "Explain the effect: what does the reader sense about the family or the narrator because of it?"
+     },
+     "response_type": "analytical"
+    }
+   ],
+   "complexity": 1
   },
   {
    "key": "inventory",
@@ -44,13 +263,94 @@
    "author": "Original text (HSC Companion)",
    "body": "The agent says the house is 'full of light',\nas if the light were something we had left,\nlike the hall table, or the crooked shelf\nmy father built and swore at, left and right.\n\nCount it: four bedrooms, one of them a room\nwe never named; two windows facing west\nthat held the burning ends of afternoons;\na kitchen where the tap would not be stilled.\n\nCount what is not on the list: the height\nmarks on the laundry door, painted over now;\nthe dent where someone's anger met the wall;\nthe silence after, how it filled the hall.\n\nThe buyers will not know which stair complains.\nThey'll learn. A house will teach you what it keeps.",
    "questions": [
-    {"marks": 3, "verb": "Explain", "difficulty": 2, "text": "Explain how the structure of the poem contributes to its meaning.",
-     "criteria": ["3 marks: explains how stanza organisation/list structure develops meaning, with evidence", "2 marks: describes structure with some link to meaning", "1 mark: identifies a structural feature"],
-     "model": "The poem is structured as an inventory that moves from the official to the private. The second stanza's imperative 'Count it' lists the saleable features, while the third stanza's 'Count what is not on the list' shifts to unrecorded family history, such as height marks and the 'dent where someone's anger met the wall'. This progression reveals that a house's real value lies in memories that cannot be sold, and the closing couplet's shorter, separate form gives the final insight, 'A house will teach you what it keeps', emphatic weight."},
-    {"marks": 5, "verb": "Analyse", "difficulty": 3, "text": "Analyse how the poet represents the relationship between people and place.",
-     "criteria": ["5 marks: perceptive, sustained analysis of how a range of techniques represent the relationship, with well-integrated evidence", "4 marks: well-developed analysis with relevant evidence", "3 marks: sound analysis of some techniques", "1-2 marks: descriptive response"],
-     "model": "The poet represents place as a living archive that absorbs and outlasts the people who inhabit it. The irony of the agent's cliché 'full of light', and the speaker's dry reply 'as if the light were something we had left', exposes the gap between marketing language and lived experience. Personification develops this idea: the 'windows facing west' that 'held the burning ends of afternoons' and the tap that 'would not be stilled' suggest a house with its own habits and memory. The list of private traces, the painted-over height marks and the dent from 'someone's anger', reveals that place records both growth and conflict, even when those traces are concealed. The half-rhymes, such as 'wall' and 'hall', create an echoing sound that mirrors the 'silence after' filling the space. Finally, the stair that 'complains' and the aphorism 'A house will teach you what it keeps' invert the usual relationship: people do not simply own places; places shape and instruct people."}
-   ]
+    {
+     "marks": 3,
+     "verb": "Explain",
+     "difficulty": 2,
+     "text": "Explain how the structure of the poem contributes to its meaning.",
+     "criteria": [
+      {
+       "mark": 3,
+       "descriptor": "Explains how stanza organisation/list structure develops meaning, with evidence"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Describes structure with some link to meaning"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Identifies a structural feature"
+      }
+     ],
+     "model": "The poem is structured as an inventory that moves from the official to the private. The second stanza's imperative 'Count it' lists the saleable features, while the third stanza's 'Count what is not on the list' shifts to unrecorded family history, such as height marks and the 'dent where someone's anger met the wall'. This progression reveals that a house's real value lies in memories that cannot be sold, and the closing couplet's shorter, separate form gives the final insight, 'A house will teach you what it keeps', emphatic weight.",
+     "demand": "explain",
+     "skill_tags": [
+      "structure",
+      "form",
+      "poetry"
+     ],
+     "checklist": [
+      "Identifies the inventory or list structure of the poem",
+      "Explains the shift from saleable features ('Count it') to unrecorded history ('Count what is not on the list')",
+      "Explains how the closing couplet, shorter and separate, gives the final insight emphasis"
+     ],
+     "next_steps": {
+      "0": "Name one structural feature of the poem, such as the list form or the separate final couplet.",
+      "1": "Explain how the second and third stanzas differ and what that shift means.",
+      "2": "Add the closing couplet: explain why its shorter, separate form gives 'A house will teach you what it keeps' weight."
+     },
+     "response_type": "analytical"
+    },
+    {
+     "marks": 5,
+     "verb": "Analyse",
+     "difficulty": 3,
+     "text": "Analyse how the poet represents the relationship between people and place.",
+     "criteria": [
+      {
+       "mark": 5,
+       "descriptor": "Perceptive, sustained analysis of how a range of techniques represent the relationship, with well-integrated evidence"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Well-developed analysis with relevant evidence"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Sound analysis of some techniques"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Descriptive response",
+       "low": 1
+      }
+     ],
+     "model": "The poet represents place as a living archive that absorbs and outlasts the people who inhabit it. The irony of the agent's cliché 'full of light', and the speaker's dry reply 'as if the light were something we had left', exposes the gap between marketing language and lived experience. Personification develops this idea: the 'windows facing west' that 'held the burning ends of afternoons' and the tap that 'would not be stilled' suggest a house with its own habits and memory. The list of private traces, the painted-over height marks and the dent from 'someone's anger', reveals that place records both growth and conflict, even when those traces are concealed. Sound reinforces this: half-rhymes such as 'left' and 'shelf' unsettle the opening stanza, while the full rhyme of 'wall' and 'hall' closes the third stanza with an echo that mirrors the 'silence after' filling the space. Finally, the stair that 'complains' and the aphorism 'A house will teach you what it keeps' invert the usual relationship: people do not simply own places; places shape and instruct people.",
+     "demand": "analyse",
+     "skill_tags": [
+      "personification",
+      "irony",
+      "sound",
+      "place"
+     ],
+     "checklist": [
+      "Presents a clear overall view of the relationship (e.g. place as a living archive that shapes people)",
+      "Analyses the irony of the agent's 'full of light' and the speaker's reply",
+      "Analyses personification of the house (the windows that 'held the burning ends of afternoons', the tap, the stair that 'complains')",
+      "Analyses the private traces (height marks, the 'dent where someone's anger met the wall') as records of growth and conflict",
+      "Analyses a sound or structural feature (rhyme, the final aphorism) and connects it to the relationship"
+     ],
+     "next_steps": {
+      "0": "Say in one sentence how the poem presents the link between people and the house.",
+      "1": "Support your idea with one quoted technique, such as the agent's phrase 'full of light'.",
+      "2": "Analyse how the technique shapes the relationship, then add a second technique (personification).",
+      "3": "Extend to a third, different technique (sound or the closing aphorism) and keep each linked to people and place.",
+      "4": "Open with a thesis and finish by showing how the final line inverts ownership: places shape and instruct people."
+     },
+     "response_type": "analytical"
+    }
+   ],
+   "complexity": 2
   },
   {
    "key": "speech",
@@ -59,16 +359,121 @@
    "author": "Original text (HSC Companion); the speaker is fictional",
    "body": "I want to begin with a confession. I grew up on this river and I did not love it. I thought it was brown, and slow, and boring, and I could not wait to leave.\n\nI left. I lived in cities with famous rivers, rivers on postcards, rivers with names that people say in songs. And every one of them, I eventually noticed, had been straightened. Concreted. Told where to go. They were beautiful the way a photograph of a person is beautiful: accurately, and without breathing.\n\nWhen I came home, our river was still brown, and still slow. But I understood something I had been too young to see. The brown is soil from a hundred kilometres upstream. The slowness is the river taking the long way round, through wetlands that filter it, past roots that hold the bank together. It is not boring. It is doing exactly what it needs to do, at exactly the speed it needs to do it.\n\nSo when people in this room talk about 'improving' the river — and I know some of you will, and I know you mean well — I want you to ask: improving it for whom? For the river? Or for the postcard?",
    "questions": [
-    {"marks": 3, "verb": "Explain", "difficulty": 1, "text": "Explain how the speaker builds a relationship with the audience.",
-     "criteria": ["3 marks: clear explanation of how specific rhetorical choices build the relationship, with evidence", "2 marks: sound explanation with limited evidence", "1 mark: general statement"],
-     "model": "The speaker builds trust by opening with a 'confession' that admits a youthful dislike of the river, which makes them relatable and honest rather than preachy. Direct address and inclusive concession, 'I know some of you will, and I know you mean well', acknowledges opposing views respectfully, positioning the audience as reasonable people who can be persuaded rather than opponents to be attacked."},
-    {"marks": 4, "verb": "Analyse", "difficulty": 2, "text": "Analyse how the speaker uses contrast to persuade the audience.",
-     "criteria": ["4 marks: skilful analysis of how contrasts construct the argument; integrated evidence", "3 marks: sound analysis with evidence", "2 marks: identifies contrasts with some explanation", "1 mark: identifies a contrast"],
-     "model": "The speaker uses contrast to reframe the audience's values. The famous city rivers, 'straightened. Concreted. Told where to go.', are contrasted with the local river's slowness, and the short fragments mimic the rigid control being described. The simile that these rivers are beautiful 'the way a photograph of a person is beautiful: accurately, and without breathing' contrasts surface appeal with life, suggesting that engineered beauty is lifeless. The speaker then reverses the opening judgement: the 'brown' and 'slow' qualities first dismissed as 'boring' are reinterpreted as soil and filtration, signs of ecological function. The final rhetorical question, 'For the river? Or for the postcard?', distils this contrast into a choice, persuading the audience that 'improvement' may serve image rather than the environment."},
-    {"marks": 2, "verb": "Identify", "difficulty": 1, "text": "Identify the purpose of the final paragraph and explain how it is achieved.",
-     "criteria": ["2 marks: identifies the persuasive purpose and explains a technique", "1 mark: identifies the purpose"],
-     "model": "The final paragraph aims to challenge the audience to question plans to 'improve' the river. It achieves this through a pointed rhetorical question that contrasts 'the river' with 'the postcard', making the audience reconsider whose interests such changes would serve."}
-   ]
+    {
+     "marks": 3,
+     "verb": "Explain",
+     "difficulty": 1,
+     "text": "Explain how the speaker builds a relationship with the audience.",
+     "criteria": [
+      {
+       "mark": 3,
+       "descriptor": "Clear explanation of how specific rhetorical choices build the relationship, with evidence"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Sound explanation with limited evidence"
+      },
+      {
+       "mark": 1,
+       "descriptor": "General statement"
+      }
+     ],
+     "model": "The speaker builds trust by opening with a 'confession' that admits a youthful dislike of the river, which makes them relatable and honest rather than preachy. Direct address and inclusive concession, 'I know some of you will, and I know you mean well', acknowledges opposing views respectfully, positioning the audience as reasonable people who can be persuaded rather than opponents to be attacked.",
+     "demand": "explain",
+     "skill_tags": [
+      "rhetoric",
+      "audience",
+      "persona"
+     ],
+     "checklist": [
+      "Explains the opening 'confession' as building honesty and trust",
+      "Explains the inclusive concession 'I know some of you will, and I know you mean well' and its effect on the audience",
+      "Explains how these choices position the audience as reasonable people to be persuaded, not opponents"
+     ],
+     "next_steps": {
+      "0": "Find how the speaker opens the speech and say what kind of speaker it makes them seem.",
+      "1": "Quote the 'confession' or the concession and explain how it affects the audience.",
+      "2": "Use both choices and explain the relationship they build: trust plus respect for opposing views."
+     },
+     "response_type": "analytical"
+    },
+    {
+     "marks": 4,
+     "verb": "Analyse",
+     "difficulty": 2,
+     "text": "Analyse how the speaker uses contrast to persuade the audience.",
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Skilful analysis of how contrasts construct the argument; integrated evidence"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Sound analysis with evidence"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Identifies contrasts with some explanation"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Identifies a contrast"
+      }
+     ],
+     "model": "The speaker uses contrast to reframe the audience's values. The famous city rivers, 'straightened. Concreted. Told where to go.', are contrasted with the local river's slowness, and the short fragments mimic the rigid control being described. The simile that these rivers are beautiful 'the way a photograph of a person is beautiful: accurately, and without breathing' contrasts surface appeal with life, suggesting that engineered beauty is lifeless. The speaker then reverses the opening judgement: the 'brown' and 'slow' qualities first dismissed as 'boring' are reinterpreted as soil and filtration, signs of ecological function. The final rhetorical question, 'For the river? Or for the postcard?', distils this contrast into a choice, persuading the audience that 'improving' the river may serve image rather than the environment.",
+     "demand": "analyse",
+     "skill_tags": [
+      "contrast",
+      "persuasion",
+      "rhetoric"
+     ],
+     "checklist": [
+      "Analyses the contrast between the controlled city rivers ('straightened. Concreted. Told where to go.') and the local river",
+      "Analyses the photograph simile ('accurately, and without breathing') as contrasting surface beauty with life",
+      "Analyses the reversal of 'brown', 'slow' and 'boring' into signs of ecological function",
+      "Analyses the final rhetorical question ('For the river? Or for the postcard?') as a persuasive choice"
+     ],
+     "next_steps": {
+      "0": "Identify one contrast in the speech and quote both sides of it.",
+      "1": "Explain how your contrast persuades: what does it make the audience value?",
+      "2": "Add a second contrast with a different technique (the simile or the fragments) and analyse its effect.",
+      "3": "Show how the contrasts build to the final question and turn the audience's opinion."
+     },
+     "response_type": "analytical"
+    },
+    {
+     "marks": 2,
+     "verb": "Identify",
+     "difficulty": 1,
+     "text": "Identify the purpose of the final paragraph and explain how it is achieved.",
+     "criteria": [
+      {
+       "mark": 2,
+       "descriptor": "Identifies the persuasive purpose and explains a technique"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Identifies the purpose"
+      }
+     ],
+     "model": "The final paragraph aims to challenge the audience to question plans for 'improving' the river. It achieves this through a pointed rhetorical question that contrasts 'the river' with 'the postcard', making the audience reconsider whose interests such changes would serve.",
+     "demand": "identify",
+     "skill_tags": [
+      "purpose",
+      "rhetorical question"
+     ],
+     "checklist": [
+      "Identifies the purpose: to make the audience question plans for 'improving' the river",
+      "Explains how it is achieved, e.g. the rhetorical questions contrasting 'the river' with 'the postcard'"
+     ],
+     "next_steps": {
+      "0": "State in a few words what the final paragraph wants the audience to do or think.",
+      "1": "Name the technique that achieves the purpose (the rhetorical questions) and explain how it works."
+     },
+     "response_type": "analytical"
+    }
+   ],
+   "complexity": 1
   },
   {
    "key": "city_a",
@@ -76,7 +481,8 @@
    "form": "Prose nonfiction",
    "author": "Original text (HSC Companion)",
    "pair": "city_b",
-   "body": "At three in the morning the city belongs to the people who keep it running. The cleaners move through office towers floor by floor, switching on rooms nobody will use until eight. Bakers' vans idle outside cafes that are still dark. A nurse on her break eats noodles on the hospital steps and watches a street sweeper drag its slow brush along the gutter. Nobody here is a tourist. Nobody is admiring the skyline. They are inside it, holding it up, and by sunrise they will be gone, and the city will wake and believe it did all this by itself."
+   "body": "At three in the morning the city belongs to the people who keep it running. The cleaners move through office towers floor by floor, switching on rooms nobody will use until eight. Bakers' vans idle outside cafes that are still dark. A nurse on her break eats noodles on the hospital steps and watches a street sweeper drag its slow brush along the gutter. Nobody here is a tourist. Nobody is admiring the skyline. They are inside it, holding it up, and by sunrise they will be gone, and the city will wake and believe it did all this by itself.",
+   "complexity": 1
   },
   {
    "key": "city_b",
@@ -85,28 +491,226 @@
    "author": "Original text (HSC Companion)",
    "body": "From the lookout the city is a jewel box,\nall glitter and no hinges.\nYou cannot see from here\nthe hands that wipe the glass,\nthe backs that bend to lay the light.\nYou only see it shine,\nand think: how beautiful,\nhow effortless,\nas if a thing could shine\nwithout someone to polish it.",
    "questions": [
-    {"marks": 5, "verb": "Compare", "difficulty": 3, "paired": true, "text": "Compare how Text 1 and Text 2 represent unseen labour in the city.",
-     "criteria": ["5 marks: perceptive comparison of how both texts represent the idea, integrating evidence from both and analysing form", "4 marks: well-developed comparison with evidence from both texts", "3 marks: sound comparison with some evidence", "1-2 marks: describes one or both texts"],
-     "model": "Both texts represent the city's beauty and function as dependent on labour that remains invisible, but they position the reader differently. Text 1 places the reader inside the night, using a cumulative series of concrete images, cleaners 'switching on rooms nobody will use', a nurse eating noodles on the steps, to make the workers visible and specific. Its closing irony, that the city will 'believe it did all this by itself', critiques collective ignorance. Text 2, by contrast, positions the reader at a distance, at 'the lookout', and uses the metaphor of the city as a 'jewel box, all glitter and no hinges' to suggest a polished surface hiding its mechanisms. Where Text 1 shows the workers directly, Text 2 reduces them to synecdoche, 'the hands that wipe the glass, the backs that bend', emphasising how they are fragmented and unseen. Both end with a similar ironic reversal: Text 2's final lines, 'as if a thing could shine / without someone to polish it', parallel Text 1's closing, together suggesting that admiration of the city is a form of forgetting."}
-   ]
+    {
+     "marks": 5,
+     "verb": "Compare",
+     "difficulty": 3,
+     "paired": true,
+     "text": "Compare how Text 1 and Text 2 represent unseen labour in the city.",
+     "criteria": [
+      {
+       "mark": 5,
+       "descriptor": "Perceptive comparison of how both texts represent the idea, integrating evidence from both and analysing form"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Well-developed comparison with evidence from both texts"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Sound comparison with some evidence"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Describes one or both texts",
+       "low": 1
+      }
+     ],
+     "model": "Both texts represent the city's beauty and function as dependent on labour that remains invisible, but they position the reader differently. Text 1 places the reader inside the night, using a cumulative series of concrete images, cleaners 'switching on rooms nobody will use', a nurse eating noodles on the steps, to make the workers visible and specific. Its closing irony, that the city will 'believe it did all this by itself', critiques collective ignorance. Text 2, by contrast, positions the reader at a distance, at 'the lookout', and uses the metaphor of the city as a 'jewel box, all glitter and no hinges' to suggest a polished surface hiding its mechanisms. Where Text 1 shows the workers directly, Text 2 reduces them to synecdoche, 'the hands that wipe the glass, the backs that bend', emphasising how they are fragmented and unseen. Both end with a similar ironic reversal: Text 2's final lines, 'as if a thing could shine / without someone to polish it', parallel Text 1's closing, together suggesting that admiration of the city is a form of forgetting.",
+     "demand": "compare",
+     "skill_tags": [
+      "comparison",
+      "perspective",
+      "imagery"
+     ],
+     "checklist": [
+      "Makes a comparative thesis covering BOTH texts (similar idea, different positioning of the reader)",
+      "Uses evidence from Text 1 (e.g. the cleaners 'switching on rooms nobody will use', the closing 'did all this by itself')",
+      "Uses evidence from Text 2 (e.g. the 'jewel box, all glitter and no hinges', 'the hands that wipe the glass')",
+      "Shows a DIFFERENCE in how the texts work (inside the night vs at 'the lookout'; named workers vs synecdoche)",
+      "Shows a SIMILARITY (e.g. both end with an ironic reversal about the city's apparent self-sufficiency)"
+     ],
+     "next_steps": {
+      "0": "Write one sentence saying what BOTH texts suggest about the people who keep the city running.",
+      "1": "Support your idea with a quotation from each text.",
+      "2": "Explain a difference in HOW the texts present the idea (where they position the reader, or how the workers are shown).",
+      "3": "Add a similarity in technique, such as both closing ironies, and analyse it in both texts.",
+      "4": "Integrate the comparison throughout ('whereas', 'both') and finish with a judgement about what the pairing reveals."
+     },
+     "response_type": "comparative"
+    }
+   ],
+   "complexity": 1
   }
  ],
  "course_questions": [
-  {"module": "EN-THE", "marks": 5, "verb": "Explain", "difficulty": 2, "text": "Explain how Jessica Au's Cold Enough for Snow represents the complexity of human relationships. Refer to TWO moments from the text.",
-   "guidance": ["Base your answer on two specific, well-chosen moments and integrate brief, accurate textual detail", "Show how Au's restrained first-person narration and what is left unsaid shape the relationship", "Link the relationship to the module's concern with human experiences and their representation", "Analyse form (narrative perspective, structure, imagery), not just plot"]},
-  {"module": "EN-THE", "marks": 6, "verb": "Analyse", "difficulty": 3, "text": "Analyse how Cold Enough for Snow invites readers to reflect on memory and the limits of understanding another person.",
-   "guidance": ["Develop a clear thesis about memory and understanding", "Analyse how Au's form (quiet, reflective narration; travel structure; digressions) shapes meaning", "Use precise textual references", "Consider the reader's role: what is invited, not just what is said"]},
-  {"module": "EN-TC", "marks": 6, "verb": "Analyse", "difficulty": 3, "text": "Analyse how reading Hamlet alongside Emily Dickinson's poetry deepens your understanding of how each text represents death or the inner self.",
-   "guidance": ["Frame the response as a conversation: what does each text illuminate in the other?", "Refer to specific scenes or soliloquies in Hamlet and to specific prescribed Dickinson poems (check your prescribed list)", "Analyse form: dramatic soliloquy versus lyric compression", "Consider context and values: how do the different eras shape each text's perspective?"]},
-  {"module": "EN-TC", "marks": 4, "verb": "Explain", "difficulty": 2, "text": "Explain how ONE soliloquy in Hamlet reveals the tension between thought and action.",
-   "guidance": ["Choose one soliloquy and refer to specific language from it", "Explain how the dramatic form of the soliloquy gives the audience access to Hamlet's mind", "Link the tension between thought and action to the play's broader concerns"]},
-  {"module": "EN-CSL", "marks": 6, "verb": "Evaluate", "difficulty": 3, "text": "Evaluate how Jane Austen's use of irony in Pride and Prejudice shapes the novel's critique of social values.",
-   "guidance": ["Make a clear judgement about how effectively irony works", "Refer to the narrator's voice and specific characters or episodes", "Connect irony to Regency values about marriage, class and reputation", "Show critical study: consider how the novel's construction sustains its meaning"]},
-  {"module": "EN-CSL", "marks": 4, "verb": "Analyse", "difficulty": 2, "text": "Analyse how Austen develops Elizabeth Bennet's character through ONE key episode.",
-   "guidance": ["Choose one well-known episode and analyse specific narrative choices (dialogue, free indirect discourse, narrator comment)", "Show how the episode reveals both strength and limitation in Elizabeth's judgement"]},
-  {"module": "EN-CRAFT", "marks": 6, "verb": "Compose", "difficulty": 2, "text": "Compose the opening of an imaginative text (about 250–300 words) in which a single object carries emotional weight. Then write a brief reflection (about 100 words) explaining ONE deliberate craft choice you made.",
-   "guidance": ["Make the object specific and sensory; let it carry meaning without explaining it", "Control point of view and tense deliberately", "Use a purposeful structure (e.g. withheld information, a turn at the end)", "In the reflection, name the choice, explain its intended effect, and link it to your purpose"]},
-  {"module": "EN-CRAFT", "marks": 4, "verb": "Explain", "difficulty": 1, "text": "Rewrite this sentence to show, rather than tell, the character's nervousness: 'Maya was very nervous before her interview.' Then explain your choices (about 80 words).",
-   "guidance": ["Use physical detail, action or setting to imply the emotion", "Avoid naming the emotion directly", "Explain how each choice creates the effect"]}
+  {
+   "module": "EN-THE",
+   "marks": 5,
+   "verb": "Explain",
+   "difficulty": 2,
+   "text": "Explain how Jessica Au's Cold Enough for Snow represents the complexity of human relationships. Refer to TWO moments from the text.",
+   "guidance": [
+    "Base your answer on two specific, well-chosen moments and integrate brief, accurate textual detail",
+    "Show how Au's restrained first-person narration and what is left unsaid shape the relationship",
+    "Link the relationship to the module's concern with human experiences and their representation",
+    "Analyse form (narrative perspective, structure, imagery), not just plot"
+   ],
+   "response_type": "analytical",
+   "demand": "explain",
+   "checklist": [
+    "Base your answer on two specific, well-chosen moments and integrate brief, accurate textual detail",
+    "Show how Au's restrained first-person narration and what is left unsaid shape the relationship",
+    "Link the relationship to the module's concern with human experiences and their representation",
+    "Analyse form (narrative perspective, structure, imagery), not just plot"
+   ]
+  },
+  {
+   "module": "EN-THE",
+   "marks": 6,
+   "verb": "Analyse",
+   "difficulty": 3,
+   "text": "Analyse how Cold Enough for Snow invites readers to reflect on memory and the limits of understanding another person.",
+   "guidance": [
+    "Develop a clear thesis about memory and understanding",
+    "Analyse how Au's form (quiet, reflective narration; travel structure; digressions) shapes meaning",
+    "Use precise textual references",
+    "Consider the reader's role: what is invited, not just what is said"
+   ],
+   "response_type": "analytical",
+   "demand": "analyse",
+   "checklist": [
+    "Develop a clear thesis about memory and understanding",
+    "Analyse how Au's form (quiet, reflective narration; travel structure; digressions) shapes meaning",
+    "Use precise textual references",
+    "Consider the reader's role: what is invited, not just what is said"
+   ]
+  },
+  {
+   "module": "EN-TC",
+   "marks": 6,
+   "verb": "Analyse",
+   "difficulty": 3,
+   "text": "Analyse how reading Hamlet alongside Emily Dickinson's poetry deepens your understanding of how each text represents death or the inner self.",
+   "guidance": [
+    "Frame the response as a conversation: what does each text illuminate in the other?",
+    "Refer to specific scenes or soliloquies in Hamlet and to specific prescribed Dickinson poems (check your prescribed list)",
+    "Analyse form: dramatic soliloquy versus lyric compression",
+    "Consider context and values: how do the different eras shape each text's perspective?"
+   ],
+   "response_type": "comparative",
+   "demand": "compare",
+   "checklist": [
+    "Frame the response as a conversation: what does each text illuminate in the other?",
+    "Refer to specific scenes or soliloquies in Hamlet and to specific prescribed Dickinson poems (check your prescribed list)",
+    "Analyse form: dramatic soliloquy versus lyric compression",
+    "Consider context and values: how do the different eras shape each text's perspective?"
+   ]
+  },
+  {
+   "module": "EN-TC",
+   "marks": 4,
+   "verb": "Explain",
+   "difficulty": 2,
+   "text": "Explain how ONE soliloquy in Hamlet reveals the tension between thought and action.",
+   "guidance": [
+    "Choose one soliloquy and refer to specific language from it",
+    "Explain how the dramatic form of the soliloquy gives the audience access to Hamlet's mind",
+    "Link the tension between thought and action to the play's broader concerns"
+   ],
+   "response_type": "analytical",
+   "demand": "explain",
+   "checklist": [
+    "Choose one soliloquy and refer to specific language from it",
+    "Explain how the dramatic form of the soliloquy gives the audience access to Hamlet's mind",
+    "Link the tension between thought and action to the play's broader concerns"
+   ]
+  },
+  {
+   "module": "EN-CSL",
+   "marks": 6,
+   "verb": "Evaluate",
+   "difficulty": 3,
+   "text": "Evaluate how Jane Austen's use of irony in Pride and Prejudice shapes the novel's critique of social values.",
+   "guidance": [
+    "Make a clear judgement about how effectively irony works",
+    "Refer to the narrator's voice and specific characters or episodes",
+    "Connect irony to Regency values about marriage, class and reputation",
+    "Show critical study: consider how the novel's construction sustains its meaning"
+   ],
+   "response_type": "analytical",
+   "demand": "evaluate",
+   "checklist": [
+    "Make a clear judgement about how effectively irony works",
+    "Refer to the narrator's voice and specific characters or episodes",
+    "Connect irony to Regency values about marriage, class and reputation",
+    "Show critical study: consider how the novel's construction sustains its meaning"
+   ]
+  },
+  {
+   "module": "EN-CSL",
+   "marks": 4,
+   "verb": "Analyse",
+   "difficulty": 2,
+   "text": "Analyse how Austen develops Elizabeth Bennet's character through ONE key episode.",
+   "guidance": [
+    "Choose one well-known episode and analyse specific narrative choices (dialogue, free indirect discourse, narrator comment)",
+    "Show how the episode reveals both strength and limitation in Elizabeth's judgement"
+   ],
+   "response_type": "analytical",
+   "demand": "analyse",
+   "checklist": [
+    "Choose one well-known episode and analyse specific narrative choices (dialogue, free indirect discourse, narrator comment)",
+    "Show how the episode reveals both strength and limitation in Elizabeth's judgement"
+   ]
+  },
+  {
+   "module": "EN-CRAFT",
+   "marks": 6,
+   "verb": "Compose",
+   "difficulty": 2,
+   "text": "Compose the opening of an imaginative text (about 250–300 words) in which a single object carries emotional weight. Then write a brief reflection (about 100 words) explaining ONE deliberate craft choice you made.",
+   "guidance": [
+    "Make the object specific and sensory; let it carry meaning without explaining it",
+    "Control point of view and tense deliberately",
+    "Use a purposeful structure (e.g. withheld information, a turn at the end)",
+    "In the reflection, name the choice, explain its intended effect, and link it to your purpose"
+   ],
+   "response_type": "imaginative",
+   "demand": "synthesise",
+   "checklist": [
+    "Make the object specific and sensory; let it carry meaning without explaining it",
+    "Control point of view and tense deliberately",
+    "Use a purposeful structure (e.g. withheld information, a turn at the end)",
+    "In the reflection, name the choice, explain its intended effect, and link it to your purpose"
+   ],
+   "suggested_words": [
+    330,
+    420
+   ]
+  },
+  {
+   "module": "EN-CRAFT",
+   "marks": 4,
+   "verb": "Explain",
+   "difficulty": 1,
+   "text": "Rewrite this sentence to show, rather than tell, the character's nervousness: 'Maya was very nervous before her interview.' Then explain your choices (about 80 words).",
+   "guidance": [
+    "Use physical detail, action or setting to imply the emotion",
+    "Avoid naming the emotion directly",
+    "Explain how each choice creates the effect"
+   ],
+   "response_type": "rewrite",
+   "demand": "explain",
+   "checklist": [
+    "Use physical detail, action or setting to imply the emotion",
+    "Avoid naming the emotion directly",
+    "Explain how each choice creates the effect"
+   ],
+   "suggested_words": [
+    60,
+    140
+   ]
+  }
  ]
 }
