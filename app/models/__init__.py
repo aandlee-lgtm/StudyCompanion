@@ -30,3 +30,4 @@ from app.models.study import (  # noqa: F401
 )
 from app.models.legal import LegalEvidence, LegalEvidenceTopic  # noqa: F401
 from app.models.settings import Setting  # noqa: F401
+from app.models.legal_logic import LegalEvidenceCheck  # noqa: F401  (v2-legal-logic)
