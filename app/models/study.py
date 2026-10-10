@@ -66,6 +66,12 @@ class Attempt(Base):
     marking_method: Mapped[str] = mapped_column(String(30), default="deterministic")  # deterministic|ai|offline_estimate|skipped
     official_guideline_used: Mapped[bool] = mapped_column(Boolean, default=False)
     submitted_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow)
+    # v2-adaptive: one attempt chain per question. Only counted attempts are evidence for mastery and
+    # schedules; retries and practice of a not-yet-due or already-revealed question are rehearsal.
+    counts_for_mastery: Mapped[bool] = mapped_column(Boolean, default=True, server_default="1")  # v2-adaptive
+    after_reveal: Mapped[bool] = mapped_column(Boolean, default=False, server_default="0")  # v2-adaptive
+    evidence_role: Mapped[str | None] = mapped_column(String(20), nullable=True)  # v2-adaptive: first|due_repeat|retry|rehearsal|early_repeat
+    model_viewed_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)  # v2-adaptive: model response / full solution opened
 
     question: Mapped[Question] = relationship()
     feedback: Mapped["AttemptFeedback | None"] = relationship(back_populates="attempt", uselist=False)
@@ -101,6 +107,8 @@ class QuestionExposure(Base):
     mastery: Mapped[float] = mapped_column(Float, default=0.0)
     interval_days: Mapped[int] = mapped_column(Integer, default=7)
     next_revision_date: Mapped[date | None] = mapped_column(Date, nullable=True)
+    ease: Mapped[float] = mapped_column(Float, default=2.0, server_default="2.0")  # v2-adaptive
+    lapses: Mapped[int] = mapped_column(Integer, default=0, server_default="0")  # v2-adaptive
 
 
 class Mastery(Base):
@@ -115,6 +123,13 @@ class Mastery(Base):
     attempts: Mapped[int] = mapped_column(Integer, default=0)
     last_seen: Mapped[date | None] = mapped_column(Date, nullable=True)
     next_revision_date: Mapped[date | None] = mapped_column(Date, nullable=True)
+    # v2-adaptive: rebuild state for struggling skills, memory model (lapses/ease), last success
+    state: Mapped[str] = mapped_column(String(20), default="normal", server_default="normal")  # v2-adaptive: normal|rebuild
+    state_since: Mapped[date | None] = mapped_column(Date, nullable=True)  # v2-adaptive
+    rebuild_correct: Mapped[int] = mapped_column(Integer, default=0, server_default="0")  # v2-adaptive
+    lapses: Mapped[int] = mapped_column(Integer, default=0, server_default="0")  # v2-adaptive
+    ease: Mapped[float] = mapped_column(Float, default=2.0, server_default="2.0")  # v2-adaptive
+    last_success: Mapped[date | None] = mapped_column(Date, nullable=True)  # v2-adaptive
 
 
 class RevisionQueue(Base):
@@ -128,6 +143,13 @@ class RevisionQueue(Base):
     priority: Mapped[float] = mapped_column(Float, default=1.0)
     status: Mapped[str] = mapped_column(String(20), default="open")  # open|done|dismissed
     created_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow)
+    # v2-adaptive: lifecycle and audit of revision items
+    kind: Mapped[str] = mapped_column(String(30), default="weak_revisit", server_default="weak_revisit")  # v2-adaptive
+    tag: Mapped[str | None] = mapped_column(String(60), nullable=True)  # v2-adaptive: error tag for pattern items
+    source_attempt_id: Mapped[int | None] = mapped_column(Integer, nullable=True)  # v2-adaptive: attempt that queued it
+    completed_at: Mapped[date | None] = mapped_column(Date, nullable=True)  # v2-adaptive
+    served_by_attempt_id: Mapped[int | None] = mapped_column(Integer, nullable=True)  # v2-adaptive
+    outcome: Mapped[float | None] = mapped_column(Float, nullable=True)  # v2-adaptive: fraction scored when served
 
     question: Mapped[Question | None] = relationship()
 
@@ -144,6 +166,13 @@ class ErrorJournal(Base):
     plan_item_id: Mapped[int | None] = mapped_column(ForeignKey("learning_plan_items.id"), nullable=True)
     resolved: Mapped[bool] = mapped_column(Boolean, default=False)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow)
+    # v2-adaptive: two axes (error type + topic tag), local study date, retry fixes, auto-resolution
+    topic_tag: Mapped[str | None] = mapped_column(String(60), nullable=True)  # v2-adaptive
+    study_date: Mapped[date | None] = mapped_column(Date, nullable=True)  # v2-adaptive
+    fixed_on_retry: Mapped[bool] = mapped_column(Boolean, default=False, server_default="0")  # v2-adaptive
+    resolved_on: Mapped[date | None] = mapped_column(Date, nullable=True)  # v2-adaptive
+    auto_resolved: Mapped[bool] = mapped_column(Boolean, default=False, server_default="0")  # v2-adaptive
+    source: Mapped[str | None] = mapped_column(String(20), nullable=True)  # v2-adaptive: deterministic|ai|self|mcq
 
     question: Mapped[Question] = relationship()
 
