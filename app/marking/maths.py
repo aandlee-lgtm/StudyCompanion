@@ -920,7 +920,7 @@ def _mark(response: str, answer: dict, marks: int, common_errors: list[dict], op
                 return done(MathsResult(mk == marks, mk, marks, None if mk == marks else "notation",
                                         f"Your value is right but not rounded as asked: give it to {_dp_words(dp)}, i.e. {target}.",
                                         display, notes if mk != marks else notes + [f"Round as asked: {target}."], topic_tag="rounding"))
-            if abs(sv.imag) < 1e-12 and cv is not None and abs(sv.real - cv.real) < float(unit) * 1.000001:
+            if abs(sv.imag) < 1e-12 and cv is not None and abs(sv.real - cv.real) < float(unit) * 1.5:
                 ce = _match_common_errors(student, common_errors, answer)
                 if ce is None:
                     mk = max(0.0, marks - 1) if marks >= 2 else 0.0
