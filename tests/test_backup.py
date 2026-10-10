@@ -64,3 +64,13 @@ def test_backup_includes_imported_files_and_blocks_zip_slip(db, data_dir):
     backup.restore_backup(evil, data_dir / "test.db")
     assert not (data_dir.parent / "escaped.txt").exists()
     assert (data_dir / "sources" / "paper.pdf").exists()
+
+
+def test_auto_backup_once_per_day_and_pruned(db, data_dir):
+    out = data_dir / "auto"
+    first = backup.auto_backup(data_dir / "test.db", out, today="20261013")
+    assert first is not None and first.exists()
+    assert backup.auto_backup(data_dir / "test.db", out, today="20261013") is None  # same day: skip
+    for d in range(14, 30):
+        backup.auto_backup(data_dir / "test.db", out, today=f"202610{d}")
+    assert len(list(out.glob("hsc-companion-auto-*.zip"))) == backup.AUTO_KEEP

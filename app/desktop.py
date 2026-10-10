@@ -64,6 +64,21 @@ def port_free(port: int) -> bool:
             return False
 
 
+def instance_file(data: Path) -> Path:
+    return data / "instance.json"
+
+
+def running_instance(data: Path) -> int | None:
+    """Port of an HSC Companion already serving this data folder, if any."""
+    import json
+
+    try:
+        port = int(json.loads(instance_file(data).read_text())["port"])
+    except Exception:
+        port = PREFERRED_PORT
+    return port if ours_running(port) else None
+
+
 def pick_port() -> int:
     for p in (PREFERRED_PORT, 8001, 8002, 8765):
         if port_free(p):
@@ -148,11 +163,15 @@ def main() -> None:
     if "--self-test" in sys.argv:
         sys.exit(self_test())
     data = prepare_environment()
-    if ours_running(PREFERRED_PORT):
-        open_browser(f"http://127.0.0.1:{PREFERRED_PORT}")
+    existing = running_instance(data)
+    if existing:  # already open: never run two servers on one database
+        open_browser(f"http://127.0.0.1:{existing}")
         return
     port = pick_port()
     url = f"http://127.0.0.1:{port}"
+    import json
+
+    instance_file(data).write_text(json.dumps({"port": port, "pid": os.getpid()}))
 
     import logging
 
@@ -162,6 +181,12 @@ def main() -> None:
     logging.basicConfig(filename=str(log_file), level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
     from app.main import create_app
 
+    try:
+        from app.services.backup import auto_backup
+
+        auto_backup()  # daily safety copy before anything changes
+    except Exception:
+        logging.getLogger("hsc").exception("automatic backup failed")
     server = uvicorn.Server(uvicorn.Config(create_app(), host="127.0.0.1", port=port, log_level="warning", log_config=None))
     thread = threading.Thread(target=server.run, daemon=True)
     thread.start()

@@ -114,3 +114,27 @@ def attempts_csv(db: Session) -> str:
         w.writerow([a.submitted_at.isoformat(timespec="seconds"), subjects[q.subject_id], q.id, q.source.title, q.question_number or "",
                     a.mark_awarded, a.mark_possible, a.attempt_number, a.skipped, a.confidence or "", a.time_seconds, a.marking_method])
     return buf.getvalue()
+
+
+AUTO_PREFIX = "hsc-companion-auto-"
+AUTO_KEEP = 14
+
+
+def auto_backup(db_path: Path | None = None, out_dir: Path | None = None, today: str | None = None) -> Path | None:
+    """Once per day, keep a dated safety copy (the 14 most recent are kept). Returns the new
+    backup path, or None if today's already exists or there is no database yet."""
+    db_path = db_path or config.db_path
+    out_dir = out_dir or config.backups_dir
+    if not db_path.exists():
+        return None
+    today = today or datetime.now().strftime("%Y%m%d")
+    out_dir.mkdir(parents=True, exist_ok=True)
+    if any(out_dir.glob(f"{AUTO_PREFIX}{today}*.zip")):
+        return None
+    made = create_backup(db_path, out_dir, include_files=False)
+    target = out_dir / f"{AUTO_PREFIX}{today}.zip"
+    made.rename(target)
+    autos = sorted(out_dir.glob(f"{AUTO_PREFIX}*.zip"))
+    for old in autos[:-AUTO_KEEP]:
+        old.unlink(missing_ok=True)
+    return target

@@ -7,6 +7,9 @@ HSC Companion 2027 — installing on a Mac
 3. A small window says the app is running, and Chrome opens at http://127.0.0.1:8000.
    Keep the small window open while you study; closing it stops the app.
 
+A safety copy of your data is made automatically each day you open the app (the last 14 are
+kept). You can also export a backup any time from Settings — keep one outside your Mac too.
+
 Your data (answers, progress, settings, backups) lives in
 ~/Library/Application Support/HSC Companion — it is kept when you update or delete the app.
 To use AI marking, edit the .env file in that folder (the app's Settings page shows the path)

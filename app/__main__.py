@@ -13,6 +13,12 @@ def main() -> None:
     from app.main import create_app
 
     app = create_app()
+    try:
+        from app.services.backup import auto_backup
+
+        auto_backup()  # daily safety copy (the 14 most recent are kept in data/backups)
+    except Exception:
+        logging.getLogger("hsc").exception("automatic backup failed")
     print(f"\n  HSC Companion 2027 is running: http://{config.host}:{config.port}\n  Press Ctrl+C to stop.\n")
     uvicorn.run(app, host=config.host, port=config.port, log_level="warning")
 
