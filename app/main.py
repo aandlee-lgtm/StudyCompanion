@@ -41,10 +41,21 @@ def create_app(database_url: str | None = None, seed: bool = True) -> FastAPI:
                 return RedirectResponse("/setup", status_code=303)
         return await call_next(request)
 
+    @app.exception_handler(Exception)
+    async def unexpected_error(request: Request, exc: Exception):
+        log.exception("Unhandled error on %s %s", request.method, request.url.path)
+        from app.routes.common import render_error
+
+        return render_error(request, "Something went wrong on this page. Your saved work is safe. "
+                            "Details were written to the log file in the data folder.", status_code=500)
+
     @app.exception_handler(ValueError)
     async def value_error(request: Request, exc: ValueError):
         from app.routes.common import render_error
 
         return render_error(request, str(exc))
 
+    from app.security import LocalOnlyMiddleware
+
+    app.add_middleware(LocalOnlyMiddleware)  # outermost: runs before the first-run redirect
     return app

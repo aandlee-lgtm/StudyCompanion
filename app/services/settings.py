@@ -69,6 +69,9 @@ DEFAULTS.update({  # adaptive
 DEFAULTS.update({  # ingestion
 })
 DEFAULTS.update({  # platform
+    "ai_effort": "high",  # Claude output_config.effort for marking
+    "setup_completed_at": None,
+    "seed_signature": None,
 })
 
 # Spaced repetition intervals in days (section 12): (min, max)

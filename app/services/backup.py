@@ -31,7 +31,11 @@ def _snapshot(db_path: Path, dest: Path) -> None:
     dst.close()
 
 
-def create_backup(db_path: Path | None = None, out_dir: Path | None = None, settings: dict | None = None) -> Path:
+FILE_FOLDERS = ("sources", "renders")  # imported PDFs and question/diagram renders
+
+
+def create_backup(db_path: Path | None = None, out_dir: Path | None = None, settings: dict | None = None,
+                  include_files: bool = True) -> Path:
     db_path = db_path or config.db_path
     out_dir = out_dir or config.backups_dir
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -45,6 +49,12 @@ def create_backup(db_path: Path | None = None, out_dir: Path | None = None, sett
             z.write(snap, "hsc_companion.db")
             z.writestr("manifest.json", json.dumps(manifest, indent=2))
             z.writestr("settings.json", json.dumps(settings or {}, indent=2, default=str))
+            if include_files:
+                data_dir = db_path.parent
+                for folder in FILE_FOLDERS:
+                    for f in sorted((data_dir / folder).glob("*")) if (data_dir / folder).is_dir() else []:
+                        if f.is_file():
+                            z.write(f, f"{folder}/{f.name}")
     return out
 
 
@@ -80,6 +90,13 @@ def restore_backup(path: Path, db_path: Path | None = None) -> Path:
     with zipfile.ZipFile(path) as z, tempfile.TemporaryDirectory() as tmp:
         z.extract("hsc_companion.db", tmp)
         _snapshot(Path(tmp) / "hsc_companion.db", db_path)
+        # restore imported PDFs/renders; only plain file names inside the known folders (no zip-slip)
+        for name in z.namelist():
+            parts = name.split("/")
+            if len(parts) == 2 and parts[0] in FILE_FOLDERS and parts[1] and parts[1] not in (".", "..") and "\\" not in parts[1]:
+                target = db_path.parent / parts[0] / parts[1]
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes(z.read(name))
     init_engine(f"sqlite:///{db_path}")
     from app.database_setup import upgrade
 

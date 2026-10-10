@@ -1,17 +1,15 @@
 """First-run wizard (owner: platform)."""
 from __future__ import annotations
 
-from datetime import datetime
-
-from fastapi import APIRouter, Depends, Form, Request
+from fastapi import APIRouter, Depends, Request
 from fastapi.responses import RedirectResponse
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.db import get_db
-from app.models import LearningPlanItem, PrescribedText
+from app.models import PrescribedText
 from app.routes.common import render
-from app.services import analytics, clock, plan
+from app.services import clock, plan
 from app.services import settings as st
 
 router = APIRouter()
@@ -25,26 +23,31 @@ def setup_form(request: Request, db: Session = Depends(get_db)):
 
 
 @router.post("/setup")
-def setup_save(
-    db: Session = Depends(get_db), student_name: str = Form(""), hsc_year: int = Form(2027), timezone: str = Form("Australia/Sydney"),
-    target_minutes: int = Form(90), year12_start_date: str = Form(""), hsc_start_date: str = Form(""), maths_current: int = Form(0),
-    english_current: int = Form(0),
-):
-    st.set_(db, "student_name", student_name.strip() or "Student")
-    st.set_(db, "hsc_year", hsc_year)
-    st.set_(db, "timezone", timezone.strip() or "Australia/Sydney")
-    st.set_(db, "target_minutes", target_minutes)
-    if year12_start_date:
-        st.set_(db, "year12_start_date", year12_start_date)
-    if hsc_start_date:
-        st.set_(db, "hsc_start_date", hsc_start_date)
-    if maths_current:
-        plan.start_from(db, maths_current)
-    if english_current:
-        for it in plan.items(db, "ENGLISH"):
-            if it.code in ("EN-UNSEEN", "EN-CRAFT"):
-                continue
-            plan.set_status(db, it.id, "LEARNING" if it.id == english_current else ("LOCKED" if it.status == "LOCKED" or it.status == "LEARNING" else it.status))
+async def setup_save(request: Request, db: Session = Depends(get_db)):
+    form = await request.form()
+
+    def num(key: str, default: int) -> int:
+        try:
+            return int(form.get(key) or default)
+        except ValueError:
+            return default
+
+    st.set_(db, "student_name", (form.get("student_name") or "").strip() or "Student")
+    st.set_(db, "hsc_year", num("hsc_year", 2027))
+    st.set_(db, "timezone", (form.get("timezone") or "").strip() or "Australia/Sydney")
+    clock.set_timezone(st.get(db, "timezone"))
+    st.set_(db, "target_minutes", max(20, min(180, num("target_minutes", 90))))
+    for key in ("year12_start_date", "hsc_start_date"):
+        if form.get(key):
+            st.set_(db, key, form[key])
+    if form.get("maths_current"):
+        plan.start_from(db, int(form["maths_current"]))
+    for it in plan.items(db, "ENGLISH"):
+        choice = form.get(f"english_{it.id}")
+        if choice in ("LEARNED", "LEARNING", "LOCKED") and it.code != "EN-UNSEEN":
+            plan.set_status(db, it.id, choice)
+    if not st.get(db, "setup_completed_at"):
+        st.set_(db, "setup_completed_at", clock.today().isoformat())
     st.set_(db, "setup_complete", True)
     db.commit()
     return RedirectResponse("/", status_code=303)

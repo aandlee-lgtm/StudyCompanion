@@ -30,7 +30,10 @@ class Config:
     host: str = field(default_factory=lambda: os.environ.get("HSC_HOST", "127.0.0.1"))
     port: int = field(default_factory=lambda: int(os.environ.get("HSC_PORT", "8000")))
     ai_provider: str = field(default_factory=lambda: os.environ.get("HSC_AI_PROVIDER", "offline").lower())
-    ai_model: str = field(default_factory=lambda: os.environ.get("HSC_AI_MODEL", "gpt-4o"))
+    ai_model: str | None = field(default_factory=lambda: os.environ.get("HSC_AI_MODEL") or None)
+    # Extra host names allowed in the Host header (only needed for deliberate LAN/tablet access).
+    allowed_hosts: tuple[str, ...] = field(default_factory=lambda: tuple(
+        h.strip().lower() for h in os.environ.get("HSC_ALLOWED_HOSTS", "").split(",") if h.strip()))
     openai_base_url: str = field(default_factory=lambda: os.environ.get("OPENAI_BASE_URL", "https://api.openai.com/v1"))
     database_url: str | None = field(default_factory=lambda: os.environ.get("HSC_DATABASE_URL"))
 
@@ -53,6 +56,19 @@ class Config:
     @property
     def renders_dir(self) -> Path:
         return self.data_dir / "renders"
+
+    def resolve_data_file(self, stored: str | None) -> Path | None:
+        """Find a stored PDF/render path even if the data folder moved (e.g. restored on another Mac)."""
+        if not stored:
+            return None
+        p = Path(stored)
+        if p.exists():
+            return p
+        for folder in (self.sources_dir, self.renders_dir):
+            candidate = folder / p.name
+            if candidate.exists():
+                return candidate
+        return None
 
     def api_key_present(self) -> bool:
         return bool(os.environ.get("OPENAI_API_KEY"))

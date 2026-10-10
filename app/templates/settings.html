@@ -48,13 +48,21 @@
   </div>
   <div class="card">
     <h2>AI provider</h2>
-    <p class="small">Current: <strong>{{ ai.provider }}</strong>{% if ai.model %} · model {{ ai.model }}{% endif %} · API key {{ 'present' if ai.api_key_present else 'not set' }}{% if ai.reason and ai.provider == 'offline' %} · {{ ai.reason }}{% endif %}</p>
-    <p class="small">To add an API key, edit <code>{{ data_dir }}/.env</code> (set <code>HSC_AI_PROVIDER=openai</code> and <code>OPENAI_API_KEY=…</code>), then restart the app.</p>
-    <p class="small muted">API keys are read only from environment variables (.env). They are never stored in the database. Only the question, its context and your answer are sent to the AI service.</p>
-    <div class="grid g2">
-      <div class="field"><label>Provider</label><select name="ai_provider_override"><option value="" {{ 'selected' if not s.ai_provider_override }}>From .env</option><option value="openai" {{ 'selected' if s.ai_provider_override == 'openai' }}>OpenAI-compatible</option><option value="offline" {{ 'selected' if s.ai_provider_override == 'offline' }}>Offline</option></select></div>
-      <div class="field"><label>Model (blank = from .env)</label><input type="text" name="ai_model_override" value="{{ s.ai_model_override or '' }}"></div>
+    <p class="small">Current: <strong>{{ ai.provider }}</strong>{% if ai.model %} · model {{ ai.model }}{% endif %}
+      · API key {{ 'found' if ai.api_key_present else 'not set' }}{% if ai.reason and ai.provider == 'offline' %} · {{ ai.reason }}{% endif %}</p>
+    <p class="small">To turn on AI marking, edit <code>{{ data_dir }}/.env</code> (or <code>.env</code> in the project folder when running from source):
+      <code>HSC_AI_PROVIDER=anthropic</code> with <code>ANTHROPIC_API_KEY=…</code> (Claude), or <code>HSC_AI_PROVIDER=openai</code> with <code>OPENAI_API_KEY=…</code> (any OpenAI-compatible service). Then restart the app.</p>
+    <p class="small muted">Keys are read only from the environment and are never stored in the database or in backups. Only the question, its context and your answer are sent to the AI service.</p>
+    <div class="grid g3">
+      <div class="field"><label>Provider</label><select name="ai_provider_override">
+        <option value="" {{ 'selected' if not s.ai_provider_override }}>From .env ({{ ai.configured }})</option>
+        <option value="anthropic" {{ 'selected' if s.ai_provider_override == 'anthropic' }}>Anthropic (Claude)</option>
+        <option value="openai" {{ 'selected' if s.ai_provider_override == 'openai' }}>OpenAI-compatible</option>
+        <option value="offline" {{ 'selected' if s.ai_provider_override == 'offline' }}>Offline</option></select></div>
+      <div class="field"><label>Model (blank = default)</label><input type="text" name="ai_model_override" value="{{ s.ai_model_override or '' }}" placeholder="claude-opus-5-5"></div>
+      <div class="field"><label>Claude effort</label><select name="ai_effort">{% for e in ['medium','high','xhigh'] %}<option {{ 'selected' if (s.ai_effort or 'high') == e }}>{{ e }}</option>{% endfor %}</select></div>
     </div>
+    <p class="tiny muted">The app listens only on this computer (127.0.0.1). Tablet/LAN access is deliberately off; it can be enabled only by setting HSC_HOST and HSC_ALLOWED_HOSTS in .env.</p>
   </div>
 </div>
 <p><button class="btn primary">Save settings</button></p>

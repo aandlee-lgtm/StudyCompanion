@@ -21,7 +21,10 @@ router = APIRouter()
 def settings_page(request: Request, saved: int = 0, restored: str = "", db: Session = Depends(get_db)):
     from app.services import plan
 
-    return render(request, "settings.html", s=st.all_settings(db), saved=saved, restored=restored, legal_items=plan.items(db, "LEGAL"),
+    from app.ai.factory import status as ai_status
+
+    s = st.all_settings(db)
+    return render(request, "settings.html", s=s, ai=ai_status(s), saved=saved, restored=restored, legal_items=plan.items(db, "LEGAL"),
                   backups=sorted(config.backups_dir.glob("*.zip"), reverse=True)[:5], data_dir=config.data_dir)
 
 
@@ -31,6 +34,9 @@ async def settings_save(request: Request, db: Session = Depends(get_db)):
     s = st.all_settings(db)
     st.set_(db, "student_name", form.get("student_name") or s["student_name"])
     st.set_(db, "timezone", form.get("timezone") or "Australia/Sydney")
+    from app.services import clock
+
+    clock.set_timezone(st.get(db, "timezone"))
     for key in ("target_minutes", "budget_min_minutes", "budget_max_minutes", "holiday_target_minutes", "light_target_minutes"):
         if form.get(key):
             st.set_(db, key, int(form[key]))
@@ -55,6 +61,8 @@ async def settings_save(request: Request, db: Session = Depends(get_db)):
     if form.get("ai_provider_override") is not None:
         st.set_(db, "ai_provider_override", form.get("ai_provider_override") or None)
         st.set_(db, "ai_model_override", form.get("ai_model_override") or None)
+        if form.get("ai_effort") in ("medium", "high", "xhigh"):
+            st.set_(db, "ai_effort", form.get("ai_effort"))
     raw = (form.get("holiday_ranges") or "").strip()
     ranges = []
     for line in raw.splitlines():

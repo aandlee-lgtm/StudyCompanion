@@ -1,10 +1,15 @@
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import datetime
 
 
 def utcnow() -> datetime:
-    return datetime.now(timezone.utc).replace(tzinfo=None)
+    """Timestamp for database rows. Despite the historical name this is the student's LOCAL
+    wall-clock time (see app.services.clock.local_now), so that dates shown and compared with
+    the study day (Australia/Sydney by default) agree near midnight."""
+    from app.services.clock import local_now
+
+    return local_now()
 
 
 # Learning-plan statuses

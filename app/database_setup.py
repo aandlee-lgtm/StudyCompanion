@@ -33,3 +33,8 @@ def prepare_database(url: str | None = None, seed: bool = True) -> None:
 
         with session_scope() as db:
             seed_all(db)
+    from app.services import clock
+    from app.services import settings as st
+
+    with session_scope() as db:
+        clock.set_timezone(st.get(db, "timezone"))

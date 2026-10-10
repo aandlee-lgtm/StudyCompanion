@@ -72,7 +72,15 @@ def _subject_codes() -> dict[int, str]:
 def render(request: Request, template_name: str, **ctx) -> HTMLResponse:
     ctx.setdefault("active", request.url.path)
     ctx.setdefault("codes", _subject_codes())
-    ctx.setdefault("ai", ai_status())
+    if "ai" not in ctx:
+        from app.db import SessionLocal
+        from app.services import settings as st
+
+        db = SessionLocal()
+        try:
+            ctx["ai"] = ai_status(st.all_settings(db))
+        finally:
+            db.close()
     return templates.TemplateResponse(request, template_name, ctx)
 
 

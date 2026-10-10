@@ -46,3 +46,21 @@ def test_csv_export(db):
     assessment.submit(db, q, "1")
     csv_text = backup.attempts_csv(db)
     assert "marks_awarded" in csv_text and q.source.title in csv_text
+
+
+def test_backup_includes_imported_files_and_blocks_zip_slip(db, data_dir):
+    (data_dir / "sources").mkdir(exist_ok=True)
+    (data_dir / "sources" / "paper.pdf").write_bytes(b"%PDF-1.4 test")
+    zip_path = backup.create_backup(data_dir / "test.db", data_dir / "bk", {})
+    with zipfile.ZipFile(zip_path) as z:
+        assert "sources/paper.pdf" in z.namelist()
+    # a hostile member name must not be written outside the data folder
+    evil = data_dir / "evil.zip"
+    with zipfile.ZipFile(zip_path) as src, zipfile.ZipFile(evil, "w") as z:
+        for n in src.namelist():
+            z.writestr(n, src.read(n))
+        z.writestr("sources/../../escaped.txt", "x")
+    db.close()
+    backup.restore_backup(evil, data_dir / "test.db")
+    assert not (data_dir.parent / "escaped.txt").exists()
+    assert (data_dir / "sources" / "paper.pdf").exists()

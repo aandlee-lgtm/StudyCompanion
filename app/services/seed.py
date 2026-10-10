@@ -185,13 +185,29 @@ def seed_templates_for_open_items(db: Session) -> int:
     return created
 
 
-def seed_all(db: Session, with_templates: bool = True) -> None:
+def seed_signature() -> str:
+    """Fingerprint of every seed file, so new content shipped with an app update is loaded into
+    an existing database (loaders are idempotent: existing rows are matched, not duplicated)."""
+    import hashlib
+
+    h = hashlib.sha256()
+    for f in seed_files():
+        h.update(f.name.encode())
+        h.update(f.read_bytes())
+    return h.hexdigest()
+
+
+def seed_all(db: Session, with_templates: bool = True, force: bool = False) -> None:
+    from app.services import settings as st
+
     seed_curriculum(db)
-    if db.execute(select(Question.id).limit(1)).first() is None:
+    signature = seed_signature()
+    if force or st.get(db, "seed_signature") != signature:
         seed_english(db)
         seed_legal(db)
         seed_maths_handwritten(db)
-    seed_legal_evidence(db)
+        seed_legal_evidence(db)
+        st.set_(db, "seed_signature", signature)
     if with_templates:
         seed_templates_for_open_items(db)
     db.flush()

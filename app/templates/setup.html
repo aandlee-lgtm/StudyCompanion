@@ -34,15 +34,25 @@
     {% for t in texts %}<li>{{ t.title }} — {{ t.author }}{% if not t.verified %} <span class="pill warn">confirm against NESA list</span>{% endif %}</li>{% endfor %}
   </ul>
   <p class="small muted">The prescribed Emily Dickinson poems are <strong>not</strong> pre-filled: enter the exact list from the NESA prescriptions in the Learning plan.</p>
-  <div class="field">
-    <label>Module you are studying now</label>
-    <select name="english_current">
-      {% for it in english_items if it.code != 'EN-UNSEEN' %}<option value="{{ it.id }}" {{ 'selected' if it.code == 'EN-THE' else '' }}>{{ it.title }}</option>{% endfor %}
-    </select>
-  </div>
+  <p class="small">For each module, say where you are. You can change this any time in the Learning plan.</p>
+  <table>
+    {% for it in english_items if it.code != 'EN-UNSEEN' %}
+    <tr><td>{{ it.title }}</td><td>
+      <select name="english_{{ it.id }}" aria-label="{{ it.title }}">
+        {% set cur = 'LEARNING' if it.status in ['LEARNING'] else ('LEARNED' if it.status in ['LEARNED','REVISION'] else 'LOCKED') %}
+        <option value="LEARNED" {{ 'selected' if cur == 'LEARNED' }}>Studied already</option>
+        <option value="LEARNING" {{ 'selected' if cur == 'LEARNING' }}>Studying now</option>
+        <option value="LOCKED" {{ 'selected' if cur == 'LOCKED' }}>Not started yet</option>
+      </select></td></tr>
+    {% endfor %}
+  </table>
+  <p class="tiny muted">Unseen-text practice runs all year regardless of module.</p>
 
   <h2>Legal Studies</h2>
   <p class="small">Starting areas: <strong>Crime</strong> and <strong>Human rights</strong>. Option topics stay unselected until you know them (Learning plan → Legal Studies).</p>
+
+  <h2>AI marking (optional)</h2>
+  <p class="small">Maths and multiple-choice answers are always marked exactly on this computer. For full English and Legal Studies feedback (marks against criteria, Band 6 comparisons, improved versions of your answers), add an API key later in the <code>.env</code> file — Settings shows where it is. Without one, you self-mark English and Legal answers against detailed criteria.</p>
 
   <p><button class="btn primary big" type="submit">Save and go to the dashboard</button></p>
 </form>
