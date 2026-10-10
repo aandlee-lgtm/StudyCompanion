@@ -20,9 +20,9 @@ def create_app(database_url: str | None = None, seed: bool = True) -> FastAPI:
     config.renders_dir.mkdir(parents=True, exist_ok=True)
     app.mount("/media", StaticFiles(directory=config.renders_dir), name="media")
 
-    from app.routes import curriculum, dashboard, errors, legal, progress, questions, review, settings_routes, today
+    from app.routes import api, attempts, curriculum, dashboard, errors, legal, practice, progress, questions, review, settings_routes, setup, today
 
-    for module in (dashboard, today, review, progress, errors, curriculum, questions, legal, settings_routes):
+    for module in (dashboard, setup, today, practice, attempts, api, review, progress, errors, curriculum, questions, legal, settings_routes):
         app.include_router(module.router)
 
     @app.middleware("http")

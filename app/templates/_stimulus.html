@@ -1,0 +1,9 @@
+{# Passage / stimulus display (owner: english-logic). Context: reading (list of Stimulus). #}
+{% for st in reading %}
+<div class="stimulus {{ 'poem' if st.form == 'Poetry' }}" style="margin-top:14px">
+  <h3>{{ st.title }}</h3>
+  {{ st.body | paras }}
+  {% if st.image_path %}<img src="/media/{{ st.image_path.split('/')[-1] }}" alt="Stimulus from the source document" style="max-width:100%">{% endif %}
+  <div class="attribution">{{ st.form }} · {{ st.attribution }}</div>
+</div>
+{% endfor %}

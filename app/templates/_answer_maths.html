@@ -1,0 +1,11 @@
+{# Maths answer input + working (owner: maths). #}
+      <div class="field">
+        <label for="ans">Final answer</label>
+        <input id="ans" type="text" name="answer" value="{{ draft_answer }}" data-math-preview autocomplete="off" placeholder="e.g. 3x^2 - 2,  sqrt(2)/2,  e^(2x),  2pi/3,  1/3 ln 2">
+        <div id="math-preview" class="preview-math"></div>
+        <span class="tiny muted">Type normally: ^ for powers, sqrt( ), pi, e^( ), ln( ). For several answers separate with commas. Simple LaTeX also works.</span>
+      </div>
+      <div class="field">
+        <label for="work">Working (optional, recommended)</label>
+        <textarea id="work" name="working" rows="6" data-autosave placeholder="Show your steps as you would in the exam.">{{ draft_working }}</textarea>
+      </div>

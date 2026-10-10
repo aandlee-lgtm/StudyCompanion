@@ -1,0 +1,8 @@
+{# Auditability line under every question (owner: ingestion). #}
+  <div class="audit">
+    <span>Source: {{ q.source.title }}{% if q.source_year and q.historical_or_generated in ['HISTORICAL','NESA_SAMPLE','TRIAL'] %} {{ q.source_year }}{% endif %}{% if q.question_number %} Q{{ q.question_number }}{% endif %}{% if q.source_page %} (p. {{ q.source_page }}){% endif %}</span>
+    <span>2027 mapping: {{ item.topic.name if item and item.topic else '—' }}{% if item and item.chapter %} ({{ item.code }}){% endif %}</span>
+    <span>Relevance: {{ q.relevance_status|capitalize }}</span>
+    {% if mapping %}<span title="{{ mapping.mapping_reason }}">Why relevant: {{ mapping.mapping_reason | truncate(90) }}</span>{% endif %}
+    <span><a href="/questions/{{ q.id }}">Details</a></span>
+  </div>

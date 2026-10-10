@@ -44,11 +44,6 @@ MARKING_SHAPE = {
     "revision_recommendation": ["..."],
 }
 
-LEGAL_EXTRA = {
-    "marking_rationale": "...", "missing_elements": ["..."], "corrections": ["factual/legal corrections, e.g. outdated legislation"],
-    "evidence_suggestions": ["ONLY items from the provided evidence list, cited by exact title"], "improved_argument": "...",
-    "improvement_task": "one specific task", "references_used": ["exact titles of every legal authority mentioned anywhere in your output"],
-}
 
 
 def _directive(verb: str | None) -> str:
@@ -57,11 +52,25 @@ def _directive(verb: str | None) -> str:
     return f"{verb} — NESA glossary: {DIRECTIVES.get(verb.lower(), 'see NESA glossary of key words')}"
 
 
+def _subject_module(subj: str):
+    """Subject-specific prompt pieces live in prompts_english.py / prompts_legal.py."""
+    if subj == "LEGAL":
+        from app.ai import prompts_legal
+
+        return prompts_legal
+    if subj == "ENGLISH":
+        from app.ai import prompts_english
+
+        return prompts_english
+    return None
+
+
 def marking(ctx: dict) -> str:
     subj = ctx["subject"]
     shape = dict(MARKING_SHAPE)
-    if subj == "LEGAL":
-        shape.update(LEGAL_EXTRA)
+    sub = _subject_module(subj)
+    if sub is not None:
+        shape.update(sub.shape_extra(ctx))
     parts = [
         f"TASK: Mark a {ctx['subject_name']} response for a Year 12 student (2027 HSC).",
         f"SYLLABUS: {ctx.get('syllabus', '')}",
@@ -81,13 +90,8 @@ def marking(ctx: dict) -> str:
     else:
         parts.append("No official marking guideline exists: estimate against NESA syllabus and performance-band criteria.")
     parts.append(f"PERFORMANCE BANDS: {BANDS.get(subj, '')}")
-    if subj == "LEGAL":
-        parts.append(
-            "VERIFIED LEGAL EVIDENCE AVAILABLE (you may cite ONLY these items, by exact title; items marked UNVERIFIED must be "
-            "described as 'to be verified'; do not cite any other case, Act, statistic or report):\n"
-            + json.dumps(ctx.get("evidence", []), ensure_ascii=False, indent=1)
-        )
-        parts.append("If the student's response relies on outdated or incorrect law, say so in 'corrections'.")
+    if sub is not None:
+        parts.extend(sub.marking_sections(ctx))
     if ctx.get("previous_attempt"):
         parts.append(f"PREVIOUS ATTEMPT (for comparison):\n<<<PREVIOUS\n{ctx['previous_attempt']}\nPREVIOUS>>>")
     parts.append(f"STUDENT RESPONSE:\n<<<RESPONSE\n{ctx['response']}\nRESPONSE>>>")

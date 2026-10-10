@@ -23,14 +23,7 @@
 
 {% if sq and sq.reason %}<p class="small muted">{{ sq.reason }}</p>{% endif %}
 
-{% for st in reading %}
-<div class="stimulus {{ 'poem' if st.form == 'Poetry' }}" style="margin-top:14px">
-  <h3>{{ st.title }}</h3>
-  {{ st.body | paras }}
-  {% if st.image_path %}<img src="/media/{{ st.image_path.split('/')[-1] }}" alt="Stimulus from the source document" style="max-width:100%">{% endif %}
-  <div class="attribution">{{ st.form }} · {{ st.attribution }}</div>
-</div>
-{% endfor %}
+{% include "_stimulus.html" %}
 
 <div class="card" style="margin-top:16px">
   <div class="question-text">{{ q.question_text | paras }}</div>
@@ -41,24 +34,11 @@
   <form id="answer-form" method="post" action="{{ base }}/submit" data-save-url="{{ base + '/draft' if sq else '' }}" data-spent="{{ sq.time_spent_seconds if sq else 0 }}">
     <input type="hidden" name="time_seconds" value="0">
     {% if kind == 'mcq' %}
-      {% for opt in q.options or [] %}
-      <label class="check" style="margin:8px 0"><input type="radio" name="answer" value="{{ opt[0] }}" {{ 'checked' if draft_answer == opt[0] }}> {{ opt }}</label>
-      {% endfor %}
+      {% include "_answer_mcq.html" %}
     {% elif kind == 'maths' %}
-      <div class="field">
-        <label for="ans">Final answer</label>
-        <input id="ans" type="text" name="answer" value="{{ draft_answer }}" data-math-preview autocomplete="off" placeholder="e.g. 3x^2 - 2,  sqrt(2)/2,  e^(2x),  2pi/3,  1/3 ln 2">
-        <div id="math-preview" class="preview-math"></div>
-        <span class="tiny muted">Type normally: ^ for powers, sqrt( ), pi, e^( ), ln( ). For several answers separate with commas. Simple LaTeX also works.</span>
-      </div>
-      <div class="field">
-        <label for="work">Working (optional, recommended)</label>
-        <textarea id="work" name="working" rows="6" data-autosave placeholder="Show your steps as you would in the exam.">{{ draft_working }}</textarea>
-      </div>
+      {% include "_answer_maths.html" %}
     {% else %}
-      <div class="toolbar"><span id="word-count">0 words</span><span>Suggested time ~{{ q.estimated_minutes|round|int }} min</span><span>Time on this question <span class="timer" id="q-timer">0:00</span></span><a href="#" id="fullscreen">Full-screen writing (Esc to exit)</a><span>Autosaves</span></div>
-      <textarea class="writing" name="answer" data-autosave placeholder="Write your response here.">{{ draft_answer }}</textarea>
-      <p class="tiny muted">There is no word target: write what the mark value and directive verb require.</p>
+      {% include "_answer_written.html" %}
     {% endif %}
     {% if ask_confidence %}
     <div class="row small" style="margin:12px 0">
@@ -76,13 +56,7 @@
   </form>
   {% endif %}
 
-  <div class="audit">
-    <span>Source: {{ q.source.title }}{% if q.source_year and q.historical_or_generated in ['HISTORICAL','NESA_SAMPLE','TRIAL'] %} {{ q.source_year }}{% endif %}{% if q.question_number %} Q{{ q.question_number }}{% endif %}{% if q.source_page %} (p. {{ q.source_page }}){% endif %}</span>
-    <span>2027 mapping: {{ item.topic.name if item and item.topic else '—' }}{% if item and item.chapter %} ({{ item.code }}){% endif %}</span>
-    <span>Relevance: {{ q.relevance_status|capitalize }}</span>
-    {% if mapping %}<span title="{{ mapping.mapping_reason }}">Why relevant: {{ mapping.mapping_reason | truncate(90) }}</span>{% endif %}
-    <span><a href="/questions/{{ q.id }}">Details</a></span>
-  </div>
+  {% include "_audit_line.html" %}
 </div>
 
 {% if latest and not show_form %}

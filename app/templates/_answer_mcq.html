@@ -1,0 +1,4 @@
+{# Multiple-choice answer input (owner: adaptive). #}
+      {% for opt in q.options or [] %}
+      <label class="check" style="margin:8px 0"><input type="radio" name="answer" value="{{ opt[0] }}" {{ 'checked' if draft_answer == opt[0] }}> {{ opt }}</label>
+      {% endfor %}

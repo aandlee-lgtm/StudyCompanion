@@ -55,6 +55,22 @@ DEFAULTS: dict[str, Any] = {
     "ai_model_override": None,
 }
 
+# ---- v2 package settings: each package adds its keys ONLY inside its own block (keeps merges clean) ----
+DEFAULTS.update({  # selection
+})
+DEFAULTS.update({  # maths
+})
+DEFAULTS.update({  # english
+})
+DEFAULTS.update({  # legal
+})
+DEFAULTS.update({  # adaptive
+})
+DEFAULTS.update({  # ingestion
+})
+DEFAULTS.update({  # platform
+})
+
 # Spaced repetition intervals in days (section 12): (min, max)
 REVIEW_INTERVALS = {
     "strong": (56, 70),
