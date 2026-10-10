@@ -106,22 +106,22 @@ def _bank_notes(ctx: StudentContext, sel_items: list[Scored], subj_facts: dict, 
             longest, shortest = max(o.minutes for o in opts), min(o.minutes for o in opts)
             if total < lo and longest < elo:
                 items = _join_names(ctx, {s.question.plan_item_id for s in sel_items if subject_code(s.question) == code})
-                what = {"MATHS": f"the questions available for today's topics ({items}) are short; multi-part 4–6 mark questions would help",
+                what = {"MATHS": f"today's topics ({items}) only have short questions; multi-part 4–6 mark questions would help",
                         "ENGLISH": "the passages and course tasks available carry few marks",
                         "LEGAL": "few longer short-answer or stimulus questions are available"}[code]
-                shortfalls.append(f"{SUBJECT_LABEL[code]} can reach only about {round(longest)} min ({what})")
+                shortfalls.append(f"{SUBJECT_LABEL[code]} can reach only about {round(longest)} min: {what}")
             if total > hi and shortest > ehi:
                 shortfalls.append(f"{SUBJECT_LABEL[code]} has no set shorter than about {round(shortest)} min today")
         side = "shorter" if total < lo else "longer"
         msg = f"Today's set is about {round(total)} minutes, {side} than the {lo:.0f}–{hi:.0f} minute window"
         notes.append(msg + (": " + "; ".join(shortfalls) + "." if shortfalls else "."))
-    for code, d in (tfacts.get("displaced") or {}).items():
-        if not d.get("out"):
-            continue
-        n = len(d["out"])
-        notes.append(f"Time fit: in {SUBJECT_LABEL[code]}, {n} question{'s' if n != 1 else ''} with a slightly higher priority "
-                     f"{'were' if n != 1 else 'was'} swapped for {'others' if n != 1 else 'another'} on today's topics to bring the day "
-                     f"{'up to' if d.get('minutes_gain', 0) > 0 else 'within'} the time window.")
+    swapped = {code: d for code, d in (tfacts.get("displaced") or {}).items() if d.get("out") and d.get("value_cost", 0) >= 0.05}
+    if swapped:
+        parts = [f"{SUBJECT_LABEL[c]} {len(d['out'])}" for c, d in swapped.items()]
+        longer = sum(d.get("minutes_gain", 0) for d in swapped.values()) > 0
+        notes.append(f"Time fit: to bring the day {'up to' if longer else 'within'} the time window, a few questions were swapped for "
+                     f"{'longer' if longer else 'shorter'} ones on today's topics ({', '.join(parts)}); weak-area and revision-due "
+                     "questions are never swapped out.")
     return notes, bank
 
 

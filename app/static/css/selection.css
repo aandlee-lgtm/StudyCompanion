@@ -1,1 +1,20 @@
-/* v2 styles owned by the selection package */
+/* v2 styles owned by the selection package (uses the app's colour tokens, so light and dark mode follow). */
+.sel-timer-card { align-items: center; gap: 14px; }
+.sel-pause-note { margin: 4px 0 0; }
+.sel-why p { margin: 6px 0; line-height: 1.5; }
+.sel-text-line { margin: -4px 0 8px; color: var(--muted); }
+.sel-text-line strong { color: var(--text); }
+.qlist .pill { margin-left: 4px; vertical-align: 1px; }
+.sel-choices { display: grid; gap: 12px; margin: 16px 0; }
+.sel-choice h3 { margin: 0 0 6px; }
+.sel-choice p { margin: 0 0 10px; }
+.sel-row { padding: 8px 12px; gap: 12px; flex-wrap: wrap; }
+.sel-missed .row { flex-wrap: wrap; gap: 6px; }
+.sel-table-wrap { overflow-x: auto; }
+.sel-table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+.sel-table th, .sel-table td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.sel-table th { color: var(--muted); font-weight: 600; font-size: .8rem; text-transform: uppercase; letter-spacing: .03em; }
+@media (max-width: 640px) {
+  .sel-timer-card { width: 100%; justify-content: space-between; }
+  .sel-table th:nth-child(3), .sel-table td:nth-child(3) { display: none; }
+}

@@ -132,7 +132,7 @@ def maths_line(ctx: StudentContext, items: list[Scored], facts: dict) -> str:
             bits.append(f"{_count(sum(older[i] for i in earlier), 'revises', 'revise')} earlier work ({_join([item_name(ctx, i) for i in earlier])})")
         if y11:
             bits.append(f"{_count(sum(older[i] for i in y11), 'revises', 'revise')} Year 11 assumed knowledge ({_join([ctx.plan[i].title for i in y11])})")
-    line = "Mathematics: " + _join(bits) + "."
+    line = "Mathematics: " + "; ".join(bits) + "."
     weak = []
     for i in dict.fromkeys(s.question.plan_item_id for s in items):
         m = ctx.mastery.get(i or -1)
@@ -230,6 +230,7 @@ def explain(ctx: StudentContext, sel) -> dict:
         "mode_note": mode_note,
         "time": f.get("time", {}),
         "subject_minutes": f.get("subject_minutes", {}),
+        "reading": {k: round(v, 1) for k, v in (f.get("reading") or {}).items()},
         "difficulty": {"band": f.get("MATHS", {}).get("band"), "quota": {str(k): v for k, v in (f.get("MATHS", {}).get("difficulty_quota") or {}).items()},
                        "target": round(ctx.target_difficulty("MATHS"), 2)},
         "target_difficulty": {c: round(ctx.target_difficulty(c), 2) for c in ("MATHS", "ENGLISH", "LEGAL")},
