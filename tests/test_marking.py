@@ -49,7 +49,8 @@ def test_sets_unordered_and_partial():
 
 
 def test_error_classification():
-    assert mark_answer("-5", {"type": "num", "value": "5"}, 2).category == "sign"
+    r = mark_answer("-5", {"type": "num", "value": "5"}, 2)
+    assert r.category == "careless error" and r.topic_tag == "sign error"  # v2: two axes (5C category + spec-23 tag)
     r = mark_answer("7", {"type": "num", "value": "5"}, 2, [{"answer": "7", "category": "formula selection", "diagnosis": "Used a + nd"}])
     assert r.category == "formula selection" and "a + nd" in r.diagnosis
     assert mark_answer("abc((", {"type": "num", "value": "5"}, 2).category == "notation"
