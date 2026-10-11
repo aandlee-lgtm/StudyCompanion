@@ -175,3 +175,8 @@ def test_feedback_page_renders_offline_legal_feedback(db, client):
     assert fb.payload["kind"] == "written" and fb.payload.get("currency_line")
     why = legal_fb.why_lost(q, fb.payload, att)
     assert why and "Imaginary Justice Act 2021" in why
+    pos = [x.id for x in s.questions].index(sq.id) + 1
+    page = client.get(f"/session/{s.id}/q/{pos}")
+    assert page.status_code == 200
+    assert "Authorities in your answer" in page.text and "not in your bank" in page.text
+    assert "Current information checked" in page.text and "An improved argument" in page.text
