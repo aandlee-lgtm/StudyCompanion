@@ -1,0 +1,1185 @@
+{
+ "_note": "v2 additions written from general knowledge on 2026-10-10 by the legal-content package; the official sites were unreachable from the build environment. NONE of these items has been verified (last_verified_date is empty). Before relying on an item, open the authoritative source, confirm the title, date and summary, add a deep-link URL and the retrieved date, then mark it verified. Statements marked '(verify)' are the most likely to have changed.",
+ "items": [
+  {
+   "title": "Woolmington v DPP [1935] AC 462",
+   "item_type": "case",
+   "date": "1935",
+   "jurisdiction": "United Kingdom: House of Lords (persuasive in Australia)",
+   "topics": [
+    "LS-CRIME"
+   ],
+   "sub_area": "LS-CRIME-NATURE",
+   "issue": "Burden of proof",
+   "summary": "The House of Lords held that it is the duty of the prosecution to prove the accused's guilt; the accused does not have to prove innocence. Viscount Sankey described this as the 'golden thread' running through the criminal law, subject to the defence of insanity and statutory exceptions.",
+   "legal_significance": "Classic statement of the prosecution's burden of proof and the presumption of innocence, applied in Australian criminal law.",
+   "syllabus_link": "Crime: the nature of crime (elements of crime); the criminal trial process (burden and standard of proof)",
+   "source": "UK House of Lords",
+   "source_url": "https://www.bailii.org/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "Woolmington v DPP",
+    "Woolmington v Director of Public Prosecutions",
+    "Woolmington"
+   ]
+  },
+  {
+   "title": "He Kaw Teh v The Queen (1985) 157 CLR 523",
+   "item_type": "case",
+   "date": "1985",
+   "jurisdiction": "Australia: High Court",
+   "topics": [
+    "LS-CRIME"
+   ],
+   "sub_area": "LS-CRIME-NATURE",
+   "issue": "Mens rea and strict liability",
+   "summary": "The High Court held that there is a presumption that mens rea (a guilty mind) is an element of a statutory offence unless Parliament has displaced it, and explained that for strict liability offences an honest and reasonable mistake of fact can be a defence, whereas absolute liability offences allow no such defence.",
+   "legal_significance": "Leading Australian authority on the presumption of mens rea and on the difference between strict and absolute liability.",
+   "syllabus_link": "Crime: the nature of crime (elements of crime; strict liability)",
+   "source": "High Court of Australia",
+   "source_url": "https://www.hcourt.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "He Kaw Teh v The Queen",
+    "He Kaw Teh v R",
+    "He Kaw Teh"
+   ]
+  },
+  {
+   "title": "Mental Health and Cognitive Impairment Forensic Provisions Act 2020 (NSW)",
+   "item_type": "legislation",
+   "date": "2020",
+   "jurisdiction": "NSW",
+   "topics": [
+    "LS-CRIME"
+   ],
+   "sub_area": "LS-CRIME-NATURE",
+   "issue": "Defences: mental health and cognitive impairment",
+   "summary": "Replaced the Mental Health (Forensic Provisions) Act 1990 (NSW). It provides a defence of mental health impairment or cognitive impairment; where the defence is established the verdict is 'act proven but not criminally responsible'. It also deals with fitness to be tried and with diversion of some defendants in the Local Court (verify current provisions).",
+   "legal_significance": "Modern NSW framework for complete defences based on mental health or cognitive impairment, and an example of law reform replacing the older 'not guilty by reason of mental illness' verdict.",
+   "syllabus_link": "Crime: the nature of crime (defences); the criminal trial process",
+   "source": "NSW Legislation",
+   "source_url": "https://legislation.nsw.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "Mental Health and Cognitive Impairment Forensic Provisions Act"
+   ]
+  },
+  {
+   "title": "Crimes Legislation Amendment (Sexual Consent Reforms) Act 2021 (NSW)",
+   "item_type": "law_reform",
+   "date": "2021",
+   "jurisdiction": "NSW",
+   "topics": [
+    "LS-CRIME"
+   ],
+   "sub_area": "LS-CRIME-NATURE",
+   "issue": "Law reform: sexual consent",
+   "summary": "Amended the Crimes Act 1900 (NSW) to introduce an 'affirmative consent' model for sexual offences: a person does not consent unless they say or do something to communicate consent, and an accused's belief in consent is not reasonable unless they said or did something to find out whether the other person consented. The reforms commenced in 2022 (verify).",
+   "legal_significance": "Example of the criminal law responding to changing community values and to a NSW Law Reform Commission review of consent law.",
+   "syllabus_link": "Crime: the nature of crime (law reform; changing values)",
+   "source": "NSW Legislation",
+   "source_url": "https://legislation.nsw.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "Sexual Consent Reforms Act",
+    "affirmative consent reforms"
+   ]
+  },
+  {
+   "title": "Crimes Legislation Amendment (Coercive Control) Act 2022 (NSW)",
+   "item_type": "law_reform",
+   "date": "2022",
+   "jurisdiction": "NSW",
+   "topics": [
+    "LS-CRIME"
+   ],
+   "sub_area": "LS-CRIME-NATURE",
+   "issue": "Law reform: domestic and family violence",
+   "summary": "Created a stand-alone offence in the Crimes Act 1900 (NSW) of abusive behaviour towards a current or former intimate partner (commonly called coercive control). The offence commenced in 2024 after an implementation period (verify date and current wording).",
+   "legal_significance": "Example of law reform recognising a pattern of abusive behaviour, not just single incidents of physical violence, as criminal.",
+   "syllabus_link": "Crime: the nature of crime (law reform); the criminal investigation process",
+   "source": "NSW Legislation",
+   "source_url": "https://legislation.nsw.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "Coercive Control Act",
+    "coercive control reforms"
+   ]
+  },
+  {
+   "title": "Law Enforcement (Powers and Responsibilities) Act 2002 (NSW)",
+   "item_type": "legislation",
+   "date": "2002",
+   "jurisdiction": "NSW",
+   "topics": [
+    "LS-CRIME"
+   ],
+   "sub_area": "LS-CRIME-INVESTIGATION",
+   "issue": "Police powers and safeguards",
+   "summary": "Consolidates most NSW police powers, including powers to stop, search and arrest (arrest without a warrant requires reasonable suspicion and that arrest is reasonably necessary for a listed reason), search warrants, and detention after arrest for an 'investigation period' that is limited and can be extended only by a detention warrant. It also imposes safeguards, such as police giving their name, place of duty and the reason for exercising a power, and rights for detained persons (verify current time limits).",
+   "legal_significance": "Primary source for the balance between police powers and the rights of suspects in NSW.",
+   "syllabus_link": "Crime: the criminal investigation process (police powers; rights of suspects)",
+   "source": "NSW Legislation",
+   "source_url": "https://legislation.nsw.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "LEPRA",
+    "Law Enforcement (Powers and Responsibilities) Act",
+    "LEPRA 2002"
+   ]
+  },
+  {
+   "title": "Crimes (Forensic Procedures) Act 2000 (NSW)",
+   "item_type": "legislation",
+   "date": "2000",
+   "jurisdiction": "NSW",
+   "topics": [
+    "LS-CRIME"
+   ],
+   "sub_area": "LS-CRIME-INVESTIGATION",
+   "issue": "Forensic evidence and DNA",
+   "summary": "Regulates the taking of forensic material (such as DNA samples, fingerprints and photographs of the body) from suspects, offenders and volunteers, the consent and court-order requirements that apply, and the use and destruction of DNA profiles.",
+   "legal_significance": "Shows how investigative technology is balanced against bodily integrity and privacy.",
+   "syllabus_link": "Crime: the criminal investigation process (gathering evidence; forensic procedures)",
+   "source": "NSW Legislation",
+   "source_url": "https://legislation.nsw.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "Crimes (Forensic Procedures) Act",
+    "Forensic Procedures Act"
+   ]
+  },
+  {
+   "title": "Surveillance Devices Act 2007 (NSW)",
+   "item_type": "legislation",
+   "date": "2007",
+   "jurisdiction": "NSW",
+   "topics": [
+    "LS-CRIME"
+   ],
+   "sub_area": "LS-CRIME-INVESTIGATION",
+   "issue": "Surveillance and privacy",
+   "summary": "Regulates the installation and use of listening, optical, tracking and data surveillance devices, and the warrants law enforcement officers need to use them.",
+   "legal_significance": "Example of judicial authorisation (warrants) as a safeguard on covert investigative powers.",
+   "syllabus_link": "Crime: the criminal investigation process (gathering evidence; warrants)",
+   "source": "NSW Legislation",
+   "source_url": "https://legislation.nsw.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "Surveillance Devices Act"
+   ]
+  },
+  {
+   "title": "Evidence Act 1995 (NSW)",
+   "item_type": "legislation",
+   "date": "1995",
+   "jurisdiction": "NSW",
+   "topics": [
+    "LS-CRIME"
+   ],
+   "sub_area": "LS-CRIME-TRIAL",
+   "issue": "Rules of evidence",
+   "summary": "The NSW uniform evidence law. Among other things it governs admissibility (including a discretion to exclude improperly or illegally obtained evidence unless the desirability of admitting it outweighs the undesirability of admitting it), and evidence of an accused's silence when questioned (generally no unfavourable inference, subject to a limited exception for some serious indictable offences after a special caution - verify).",
+   "legal_significance": "Central to fairness at trial and to the consequences of improper police conduct during investigation.",
+   "syllabus_link": "Crime: the criminal trial process (rules of evidence); the criminal investigation process (right to silence)",
+   "source": "NSW Legislation",
+   "source_url": "https://legislation.nsw.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "Evidence Act",
+    "Evidence Act 1995"
+   ]
+  },
+  {
+   "title": "Criminal Procedure Act 1986 (NSW)",
+   "item_type": "legislation",
+   "date": "1986",
+   "jurisdiction": "NSW",
+   "topics": [
+    "LS-CRIME"
+   ],
+   "sub_area": "LS-CRIME-TRIAL",
+   "issue": "Criminal procedure",
+   "summary": "Sets out procedure for summary and indictable offences in NSW, including how indictable matters move from the Local Court to a higher court (charge certification and case conferencing replaced the older committal hearing model in 2018 - verify), and when a trial may be heard by a judge alone.",
+   "legal_significance": "Primary source for court procedure, pre-trial processes and judge-alone trials.",
+   "syllabus_link": "Crime: the criminal trial process (court jurisdiction; pre-trial procedures)",
+   "source": "NSW Legislation",
+   "source_url": "https://legislation.nsw.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "Criminal Procedure Act"
+   ]
+  },
+  {
+   "title": "Jury Act 1977 (NSW)",
+   "item_type": "legislation",
+   "date": "1977",
+   "jurisdiction": "NSW",
+   "topics": [
+    "LS-CRIME"
+   ],
+   "sub_area": "LS-CRIME-TRIAL",
+   "issue": "Juries",
+   "summary": "Governs who may serve on a jury, how jurors are selected and excused, and majority verdicts, which may be accepted in limited circumstances after a minimum period of deliberation where a unanimous verdict cannot be reached (verify current conditions).",
+   "legal_significance": "Primary source for the role and composition of the jury in NSW criminal trials.",
+   "syllabus_link": "Crime: the criminal trial process (the jury)",
+   "source": "NSW Legislation",
+   "source_url": "https://legislation.nsw.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "Jury Act"
+   ]
+  },
+  {
+   "title": "Dietrich v The Queen (1992) 177 CLR 292",
+   "item_type": "case",
+   "date": "1992",
+   "jurisdiction": "Australia: High Court",
+   "topics": [
+    "LS-CRIME"
+   ],
+   "sub_area": "LS-CRIME-TRIAL",
+   "issue": "Legal representation and fair trial",
+   "summary": "The High Court held there is no absolute right to publicly funded legal representation, but a court may adjourn or stay the trial of an accused charged with a serious offence who, through no fault of their own, cannot obtain legal representation, because the trial would otherwise be unfair.",
+   "legal_significance": "Leading authority on legal representation as part of the right to a fair trial.",
+   "syllabus_link": "Crime: the criminal trial process (legal representation)",
+   "source": "High Court of Australia",
+   "source_url": "https://www.hcourt.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "Dietrich v The Queen",
+    "Dietrich v R",
+    "Dietrich"
+   ]
+  },
+  {
+   "title": "Crimes (Appeal and Review) Act 2001 (NSW)",
+   "item_type": "legislation",
+   "date": "2001",
+   "jurisdiction": "NSW",
+   "topics": [
+    "LS-CRIME"
+   ],
+   "sub_area": "LS-CRIME-TRIAL",
+   "issue": "Appeals and double jeopardy",
+   "summary": "Governs appeals and reviews in NSW criminal matters. Amendments made in 2006 created exceptions to the rule against double jeopardy, allowing the Court of Criminal Appeal to order the retrial of an acquitted person for certain very serious offences where there is fresh and compelling evidence, or where the acquittal was tainted, and a retrial is in the interests of justice (verify current provisions).",
+   "legal_significance": "Example of law reform qualifying the double jeopardy principle in response to public concern.",
+   "syllabus_link": "Crime: the criminal trial process (appeals; double jeopardy)",
+   "source": "NSW Legislation",
+   "source_url": "https://legislation.nsw.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "Crimes (Appeal and Review) Act"
+   ]
+  },
+  {
+   "title": "R v Carroll (2002) 213 CLR 635",
+   "item_type": "case",
+   "date": "2002",
+   "jurisdiction": "Australia: High Court (on appeal from Queensland)",
+   "topics": [
+    "LS-CRIME"
+   ],
+   "sub_area": "LS-CRIME-TRIAL",
+   "issue": "Double jeopardy",
+   "summary": "The accused had been acquitted on appeal of a murder charge. He was later prosecuted for perjury on the basis that his sworn denial at the murder trial was false. The High Court held that the perjury prosecution was an abuse of process because it sought to controvert the earlier acquittal.",
+   "legal_significance": "Prompted public debate and law reform on double jeopardy across Australian jurisdictions, including NSW.",
+   "syllabus_link": "Crime: the criminal trial process (double jeopardy; law reform)",
+   "source": "High Court of Australia",
+   "source_url": "https://www.hcourt.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "R v Carroll",
+    "Carroll case"
+   ]
+  },
+  {
+   "title": "Veen v The Queen (No 2) (1988) 164 CLR 465",
+   "item_type": "case",
+   "date": "1988",
+   "jurisdiction": "Australia: High Court",
+   "topics": [
+    "LS-CRIME"
+   ],
+   "sub_area": "LS-CRIME-SENTENCING",
+   "issue": "Proportionality",
+   "summary": "The High Court held that a sentence should not be increased beyond what is proportionate to the gravity of the offence merely to protect society from the offender, although the protection of society and the offender's antecedents remain relevant within a proportionate sentence.",
+   "legal_significance": "Leading statement of the principle of proportionality in Australian sentencing.",
+   "syllabus_link": "Crime: sentencing and punishment (purposes and principles of sentencing)",
+   "source": "High Court of Australia",
+   "source_url": "https://www.hcourt.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "Veen v The Queen (No 2)",
+    "Veen (No 2)",
+    "Veen v R (No 2)"
+   ]
+  },
+  {
+   "title": "Markarian v The Queen (2005) 228 CLR 357",
+   "item_type": "case",
+   "date": "2005",
+   "jurisdiction": "Australia: High Court",
+   "topics": [
+    "LS-CRIME"
+   ],
+   "sub_area": "LS-CRIME-SENTENCING",
+   "issue": "Sentencing method",
+   "summary": "The High Court endorsed the 'instinctive synthesis' approach: the judge identifies all relevant factors and weighs them together to reach a single sentence, rather than adding and subtracting fixed amounts in a mathematical, step-by-step way.",
+   "legal_significance": "Explains judicial discretion in sentencing and why sentences for similar offences can differ.",
+   "syllabus_link": "Crime: sentencing and punishment (judicial discretion)",
+   "source": "High Court of Australia",
+   "source_url": "https://www.hcourt.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "Markarian v The Queen",
+    "Markarian v R",
+    "Markarian"
+   ]
+  },
+  {
+   "title": "Muldrock v The Queen (2011) 244 CLR 120",
+   "item_type": "case",
+   "date": "2011",
+   "jurisdiction": "Australia: High Court (on appeal from NSW)",
+   "topics": [
+    "LS-CRIME"
+   ],
+   "sub_area": "LS-CRIME-SENTENCING",
+   "issue": "Standard non-parole periods",
+   "summary": "The High Court held that the NSW standard non-parole period scheme does not require a two-stage approach that treats the standard non-parole period as the starting point; the standard period is one guidepost among the factors the court weighs. The Court also discussed how an offender's cognitive impairment may moderate general deterrence.",
+   "legal_significance": "Key authority on the limits of legislative guidance on judicial sentencing discretion in NSW.",
+   "syllabus_link": "Crime: sentencing and punishment (sentencing process; judicial discretion)",
+   "source": "High Court of Australia",
+   "source_url": "https://www.hcourt.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "Muldrock v The Queen",
+    "Muldrock v R",
+    "Muldrock"
+   ]
+  },
+  {
+   "title": "Bugmy v The Queen (2013) 249 CLR 571",
+   "item_type": "case",
+   "date": "2013",
+   "jurisdiction": "Australia: High Court (on appeal from NSW)",
+   "topics": [
+    "LS-CRIME"
+   ],
+   "sub_area": "LS-CRIME-SENTENCING",
+   "issue": "Disadvantage and sentencing",
+   "summary": "The High Court held that evidence of profound deprivation in an offender's upbringing (such as exposure to alcohol abuse and violence) may be taken into account in sentencing and that its relevance does not diminish with time or repeated offending. It rejected the idea that courts must take judicial notice of systemic disadvantage of Aboriginal offenders as a class; the offender's own circumstances must be established.",
+   "legal_significance": "Leading authority on how disadvantage is considered in sentencing, relevant to the over-representation of Aboriginal and Torres Strait Islander people in custody.",
+   "syllabus_link": "Crime: sentencing and punishment (mitigating factors); young offenders; Aboriginal and Torres Strait Islander peoples and the criminal justice system",
+   "source": "High Court of Australia",
+   "source_url": "https://www.hcourt.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "Bugmy v The Queen",
+    "Bugmy v R",
+    "Bugmy"
+   ]
+  },
+  {
+   "title": "Crimes (Administration of Sentences) Act 1999 (NSW)",
+   "item_type": "legislation",
+   "date": "1999",
+   "jurisdiction": "NSW",
+   "topics": [
+    "LS-CRIME"
+   ],
+   "sub_area": "LS-CRIME-SENTENCING",
+   "issue": "Parole and administration of sentences",
+   "summary": "Governs how custodial and community-based sentences are administered in NSW, including parole decisions by the State Parole Authority.",
+   "legal_significance": "Primary source for post-sentencing processes such as parole.",
+   "syllabus_link": "Crime: sentencing and punishment (post-sentencing considerations)",
+   "source": "NSW Legislation",
+   "source_url": "https://legislation.nsw.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "Crimes (Administration of Sentences) Act"
+   ]
+  },
+  {
+   "title": "Royal Commission into Aboriginal Deaths in Custody: National Report (1991)",
+   "item_type": "inquiry",
+   "date": "1991",
+   "jurisdiction": "Commonwealth (national Royal Commission)",
+   "topics": [
+    "LS-CRIME",
+    "LS-HR"
+   ],
+   "sub_area": "LS-CRIME-SENTENCING",
+   "issue": "Deaths in custody; over-representation",
+   "summary": "A national Royal Commission that investigated deaths of Aboriginal and Torres Strait Islander people in custody and their underlying causes. Its final national report (1991) made 339 recommendations, including that imprisonment should be used only as a last resort.",
+   "legal_significance": "Benchmark for evaluating the criminal justice system's treatment of Aboriginal and Torres Strait Islander people; implementation of its recommendations is still debated (verify current reviews).",
+   "syllabus_link": "Crime: sentencing and punishment; young offenders; Human rights: contemporary issues",
+   "source": "National Archives of Australia / AustLII",
+   "source_url": "https://www.austlii.edu.au/",
+   "source_type": "official",
+   "status": "unknown",
+   "aliases": [
+    "Royal Commission into Aboriginal Deaths in Custody",
+    "RCIADIC"
+   ]
+  },
+  {
+   "title": "Pathways to Justice: Inquiry into the Incarceration Rate of Aboriginal and Torres Strait Islander Peoples (ALRC Report 133)",
+   "item_type": "report",
+   "date": "2017",
+   "jurisdiction": "Commonwealth (Australian Law Reform Commission)",
+   "topics": [
+    "LS-CRIME",
+    "LS-HR"
+   ],
+   "sub_area": "LS-CRIME-SENTENCING",
+   "issue": "Over-representation in custody",
+   "summary": "Australian Law Reform Commission inquiry report (dated December 2017 and tabled in 2018 - verify) that examined the factors leading to the over-representation of Aboriginal and Torres Strait Islander people in prisons and made recommendations on matters including bail, sentencing options and justice reinvestment.",
+   "legal_significance": "Authoritative law reform report for evaluating sentencing and diversion; check which recommendations have been implemented.",
+   "syllabus_link": "Crime: sentencing and punishment (alternatives to imprisonment); law reform",
+   "source": "Australian Law Reform Commission",
+   "source_url": "https://www.alrc.gov.au/",
+   "source_type": "official",
+   "status": "unknown",
+   "aliases": [
+    "Pathways to Justice",
+    "ALRC Report 133",
+    "ALRC Pathways to Justice report"
+   ]
+  },
+  {
+   "title": "Convention on the Rights of the Child (1989)",
+   "item_type": "treaty",
+   "date": "1989",
+   "jurisdiction": "International",
+   "topics": [
+    "LS-CRIME",
+    "LS-HR"
+   ],
+   "sub_area": "LS-CRIME-YOUNG",
+   "issue": "Rights of children; juvenile justice",
+   "summary": "UN treaty adopted in 1989 and ratified by Australia (1990). It requires the best interests of the child to be a primary consideration (art 3), that detention of a child be used only as a measure of last resort and for the shortest appropriate time (art 37), and that states set a minimum age of criminal responsibility and use measures other than judicial proceedings where appropriate (art 40). Its monitoring committee has recommended a minimum age of criminal responsibility of at least 14 (verify).",
+   "legal_significance": "International standard against which youth justice laws, including the age of criminal responsibility and youth detention, are evaluated.",
+   "syllabus_link": "Crime: young offenders (rights of children; international standards); Human rights",
+   "source": "United Nations Treaty Collection",
+   "source_url": "https://treaties.un.org/",
+   "source_type": "official",
+   "status": "in_force",
+   "aliases": [
+    "Convention on the Rights of the Child",
+    "CROC",
+    "UNCRC",
+    "CRC"
+   ]
+  },
+  {
+   "title": "Rome Statute of the International Criminal Court (1998)",
+   "item_type": "treaty",
+   "date": "1998",
+   "jurisdiction": "International",
+   "topics": [
+    "LS-CRIME",
+    "LS-HR"
+   ],
+   "sub_area": "LS-CRIME-INTERNATIONAL",
+   "issue": "International Criminal Court",
+   "summary": "Treaty adopted in 1998 that established the International Criminal Court (in force 2002). The Court can try individuals for genocide, crimes against humanity, war crimes and the crime of aggression. Under the principle of complementarity, a case is generally inadmissible where a state with jurisdiction is genuinely investigating or prosecuting it. Australia is a party; several major powers are not (verify current membership).",
+   "legal_significance": "Foundation of the permanent international criminal justice system and of individual criminal responsibility for the most serious international crimes.",
+   "syllabus_link": "Crime: international crime (international crimes; the International Criminal Court)",
+   "source": "United Nations Treaty Collection",
+   "source_url": "https://treaties.un.org/",
+   "source_type": "official",
+   "status": "in_force",
+   "aliases": [
+    "Rome Statute",
+    "Rome Statute of the ICC"
+   ]
+  },
+  {
+   "title": "International Criminal Court Act 2002 (Cth)",
+   "item_type": "legislation",
+   "date": "2002",
+   "jurisdiction": "Commonwealth",
+   "topics": [
+    "LS-CRIME"
+   ],
+   "sub_area": "LS-CRIME-INTERNATIONAL",
+   "issue": "Cooperation with the ICC",
+   "summary": "Enables Australia to comply with its obligations under the Rome Statute, including requests from the International Criminal Court for arrest, surrender and other assistance. Companion legislation passed at the same time inserted the ICC crimes into the Commonwealth Criminal Code.",
+   "legal_significance": "Shows how Australia implements an international criminal law treaty domestically.",
+   "syllabus_link": "Crime: international crime (domestic and international responses)",
+   "source": "Federal Register of Legislation",
+   "source_url": "https://www.legislation.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "International Criminal Court Act"
+   ]
+  },
+  {
+   "title": "Criminal Code Act 1995 (Cth)",
+   "item_type": "legislation",
+   "date": "1995",
+   "jurisdiction": "Commonwealth",
+   "topics": [
+    "LS-CRIME"
+   ],
+   "sub_area": "LS-CRIME-INTERNATIONAL",
+   "issue": "Commonwealth offences",
+   "summary": "Contains the Commonwealth Criminal Code, including offences of genocide, crimes against humanity and war crimes (Division 268), slavery and slavery-like offences, people trafficking, terrorism offences and serious drug offences.",
+   "legal_significance": "Allows Australian courts to prosecute international and transnational crimes domestically, consistent with complementarity.",
+   "syllabus_link": "Crime: international crime; the nature of crime (Commonwealth offences)",
+   "source": "Federal Register of Legislation",
+   "source_url": "https://www.legislation.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "Criminal Code (Cth)",
+    "Commonwealth Criminal Code",
+    "Criminal Code Act"
+   ]
+  },
+  {
+   "title": "R v Tang (2008) 237 CLR 1",
+   "item_type": "case",
+   "date": "2008",
+   "jurisdiction": "Australia: High Court (on appeal from Victoria)",
+   "topics": [
+    "LS-CRIME",
+    "LS-HR"
+   ],
+   "sub_area": "LS-CRIME-INTERNATIONAL",
+   "issue": "Slavery and people trafficking",
+   "summary": "A case under the slavery offences in the Commonwealth Criminal Code involving women brought to Australia to work in a brothel. The High Court allowed the prosecution's appeal, holding that slavery includes exercising over a person any of the powers attaching to the right of ownership, even without the legal ownership that historical chattel slavery involved.",
+   "legal_significance": "Example of a transnational crime prosecuted domestically under laws implementing international obligations.",
+   "syllabus_link": "Crime: international crime (transnational crime); Human rights",
+   "source": "High Court of Australia",
+   "source_url": "https://www.hcourt.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "R v Tang",
+    "Tang case"
+   ]
+  },
+  {
+   "title": "Prosecutor v Thomas Lubanga Dyilo (ICC, 2012)",
+   "item_type": "case",
+   "date": "2012",
+   "jurisdiction": "International: International Criminal Court",
+   "topics": [
+    "LS-CRIME",
+    "LS-HR"
+   ],
+   "sub_area": "LS-CRIME-INTERNATIONAL",
+   "issue": "Child soldiers; international criminal justice",
+   "summary": "The International Criminal Court's first trial judgment (2012) convicted Thomas Lubanga Dyilo of the war crimes of enlisting and conscripting children under the age of 15 and using them to participate actively in hostilities in the Democratic Republic of the Congo. He was sentenced to 14 years' imprisonment.",
+   "legal_significance": "Shows individual criminal responsibility before the ICC and the prosecution of child-soldier recruitment.",
+   "syllabus_link": "Crime: international crime (the International Criminal Court); Human rights: contemporary issue (child soldiers)",
+   "source": "International Criminal Court",
+   "source_url": "https://www.icc-cpi.int/",
+   "source_type": "official",
+   "status": "in_force",
+   "aliases": [
+    "Lubanga case",
+    "Prosecutor v Lubanga",
+    "Lubanga"
+   ]
+  },
+  {
+   "title": "Convention on the Prevention and Punishment of the Crime of Genocide (1948)",
+   "item_type": "treaty",
+   "date": "1948",
+   "jurisdiction": "International",
+   "topics": [
+    "LS-CRIME",
+    "LS-HR"
+   ],
+   "sub_area": "LS-CRIME-INTERNATIONAL",
+   "issue": "Genocide",
+   "summary": "UN treaty adopted in 1948 that defines genocide as specified acts committed with intent to destroy, in whole or in part, a national, ethnical, racial or religious group, and obliges states parties to prevent and punish it.",
+   "legal_significance": "The definition of genocide was later adopted in the Rome Statute; one of the first post-war human rights and international criminal law treaties.",
+   "syllabus_link": "Crime: international crime (crimes against international law); Human rights",
+   "source": "United Nations Treaty Collection",
+   "source_url": "https://treaties.un.org/",
+   "source_type": "official",
+   "status": "in_force",
+   "aliases": [
+    "Genocide Convention"
+   ]
+  },
+  {
+   "title": "Extradition Act 1988 (Cth)",
+   "item_type": "legislation",
+   "date": "1988",
+   "jurisdiction": "Commonwealth",
+   "topics": [
+    "LS-CRIME"
+   ],
+   "sub_area": "LS-CRIME-INTERNATIONAL",
+   "issue": "Extradition",
+   "summary": "Governs extradition from and to Australia, including the conditions that must be satisfied and the grounds on which extradition may be refused.",
+   "legal_significance": "Shows how transnational crime depends on cooperation between states.",
+   "syllabus_link": "Crime: international crime (transnational crime; extradition)",
+   "source": "Federal Register of Legislation",
+   "source_url": "https://www.legislation.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "Extradition Act"
+   ]
+  },
+  {
+   "title": "Charter of the United Nations (1945)",
+   "item_type": "treaty",
+   "date": "1945",
+   "jurisdiction": "International",
+   "topics": [
+    "LS-HR"
+   ],
+   "sub_area": "LS-HR-NATURE",
+   "issue": "Foundations of the UN human rights system",
+   "summary": "Founding treaty of the United Nations, signed in 1945. Its purposes include promoting and encouraging respect for human rights and fundamental freedoms for all without distinction as to race, sex, language or religion.",
+   "legal_significance": "Marks the point at which human rights became a matter of international concern; the basis for the UN bodies that develop and monitor human rights.",
+   "syllabus_link": "Human rights: the nature and development of human rights",
+   "source": "United Nations",
+   "source_url": "https://www.un.org/",
+   "source_type": "official",
+   "status": "in_force",
+   "aliases": [
+    "UN Charter",
+    "United Nations Charter"
+   ]
+  },
+  {
+   "title": "International Covenant on Economic, Social and Cultural Rights (1966)",
+   "item_type": "treaty",
+   "date": "1966",
+   "jurisdiction": "International",
+   "topics": [
+    "LS-HR"
+   ],
+   "sub_area": "LS-HR-NATURE",
+   "issue": "Economic, social and cultural rights",
+   "summary": "Binding UN treaty protecting rights such as work, social security, an adequate standard of living, health and education, to be realised progressively to the maximum of available resources. Australia is a party.",
+   "legal_significance": "Part of the International Bill of Rights with the Universal Declaration of Human Rights and the ICCPR; shares Article 1 on self-determination with the ICCPR.",
+   "syllabus_link": "Human rights: the nature and development of human rights (economic, social and cultural rights)",
+   "source": "UN Office of the High Commissioner for Human Rights",
+   "source_url": "https://www.ohchr.org/",
+   "source_type": "official",
+   "status": "in_force",
+   "aliases": [
+    "ICESCR",
+    "International Covenant on Economic, Social and Cultural Rights"
+   ]
+  },
+  {
+   "title": "Convention against Torture and Other Cruel, Inhuman or Degrading Treatment or Punishment (1984)",
+   "item_type": "treaty",
+   "date": "1984",
+   "jurisdiction": "International",
+   "topics": [
+    "LS-HR"
+   ],
+   "sub_area": "LS-HR-NATURE",
+   "issue": "Prohibition of torture",
+   "summary": "UN treaty prohibiting torture in all circumstances and requiring states parties to prevent and criminalise it. The prohibition of torture is also widely regarded as part of customary international law. Australia is a party.",
+   "legal_significance": "Illustrates treaty law and customary international law protecting the same right.",
+   "syllabus_link": "Human rights: the nature and development of human rights (treaty and customary law)",
+   "source": "UN Office of the High Commissioner for Human Rights",
+   "source_url": "https://www.ohchr.org/",
+   "source_type": "official",
+   "status": "in_force",
+   "aliases": [
+    "Convention against Torture",
+    "CAT",
+    "UNCAT"
+   ]
+  },
+  {
+   "title": "Magna Carta (1215)",
+   "item_type": "legislation",
+   "date": "1215",
+   "jurisdiction": "England (historical)",
+   "topics": [
+    "LS-HR"
+   ],
+   "sub_area": "LS-HR-NATURE",
+   "issue": "Historical development of rights",
+   "summary": "Charter agreed by King John in 1215 that limited the power of the Crown. Its best-known clause provided that no free man would be imprisoned or deprived of rights except by the lawful judgment of his peers or by the law of the land.",
+   "legal_significance": "An early milestone in the idea that rulers are subject to law; its protections originally applied to a narrow class of free men, not to everyone.",
+   "syllabus_link": "Human rights: the nature and development of human rights (historical development)",
+   "source": "UK National Archives / British Library",
+   "source_url": "https://www.nationalarchives.gov.uk/",
+   "source_type": "official",
+   "status": "unknown",
+   "aliases": [
+    "Magna Carta"
+   ]
+  },
+  {
+   "title": "Convention on the Elimination of All Forms of Discrimination against Women (1979)",
+   "item_type": "treaty",
+   "date": "1979",
+   "jurisdiction": "International",
+   "topics": [
+    "LS-HR"
+   ],
+   "sub_area": "LS-HR-NATURE",
+   "issue": "Women's rights",
+   "summary": "UN treaty adopted in 1979 requiring states parties to eliminate discrimination against women in public and private life. Australia is a party and implemented obligations through the Sex Discrimination Act 1984 (Cth).",
+   "legal_significance": "Example of the development of human rights for particular groups and of domestic implementation of a treaty.",
+   "syllabus_link": "Human rights: the nature and development of human rights; promoting and enforcing human rights",
+   "source": "UN Office of the High Commissioner for Human Rights",
+   "source_url": "https://www.ohchr.org/",
+   "source_type": "official",
+   "status": "in_force",
+   "aliases": [
+    "CEDAW",
+    "Convention on the Elimination of All Forms of Discrimination Against Women"
+   ]
+  },
+  {
+   "title": "United Nations Declaration on the Rights of Indigenous Peoples (2007)",
+   "item_type": "treaty",
+   "date": "2007",
+   "jurisdiction": "International",
+   "topics": [
+    "LS-HR"
+   ],
+   "sub_area": "LS-HR-NATURE",
+   "issue": "Self-determination; Indigenous peoples' rights",
+   "summary": "Declaration adopted by the UN General Assembly in 2007. It recognises Indigenous peoples' rights including self-determination. Australia voted against it in 2007 and endorsed it in 2009. As a declaration it is not a binding treaty.",
+   "legal_significance": "Example of the development of collective rights and of soft law that influences domestic policy.",
+   "syllabus_link": "Human rights: the nature and development of human rights (collective rights; self-determination)",
+   "source": "UN Office of the High Commissioner for Human Rights",
+   "source_url": "https://www.ohchr.org/",
+   "source_type": "official",
+   "status": "in_force",
+   "aliases": [
+    "UNDRIP",
+    "Declaration on the Rights of Indigenous Peoples"
+   ]
+  },
+  {
+   "title": "Australian Constitution",
+   "item_type": "legislation",
+   "date": "1900",
+   "jurisdiction": "Commonwealth",
+   "topics": [
+    "LS-HR"
+   ],
+   "sub_area": "LS-HR-ENFORCE",
+   "issue": "Constitutional protection of rights",
+   "summary": "Enacted as part of the Commonwealth of Australia Constitution Act 1900 (UK). It contains only a few express rights, such as acquisition of property on just terms (s 51(xxxi)), trial by jury for indictable Commonwealth offences (s 80) and freedom of religion from Commonwealth laws (s 116). The High Court has also recognised implications, such as the freedom of political communication. It can be changed only by referendum (s 128).",
+   "legal_significance": "Explains why Australia relies mainly on statute and common law, rather than a constitutional bill of rights, to protect human rights.",
+   "syllabus_link": "Human rights: promoting and enforcing human rights (domestic: the Constitution)",
+   "source": "Parliamentary Education Office / Federal Register of Legislation",
+   "source_url": "https://www.legislation.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "Commonwealth Constitution",
+    "the Constitution",
+    "Commonwealth of Australia Constitution Act 1900 (UK)",
+    "Constitution"
+   ]
+  },
+  {
+   "title": "Lange v Australian Broadcasting Corporation (1997) 189 CLR 520",
+   "item_type": "case",
+   "date": "1997",
+   "jurisdiction": "Australia: High Court",
+   "topics": [
+    "LS-HR"
+   ],
+   "sub_area": "LS-HR-ENFORCE",
+   "issue": "Implied freedom of political communication",
+   "summary": "The unanimous High Court confirmed that the Constitution's system of representative and responsible government implies a freedom of communication about government and political matters. The freedom limits legislative and executive power; it is not a personal right of free speech.",
+   "legal_significance": "Shows both the existence and the limits of implied constitutional rights in Australia.",
+   "syllabus_link": "Human rights: promoting and enforcing human rights (the Constitution; the courts)",
+   "source": "High Court of Australia",
+   "source_url": "https://www.hcourt.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "Lange v Australian Broadcasting Corporation",
+    "Lange v ABC",
+    "Lange"
+   ]
+  },
+  {
+   "title": "Roach v Electoral Commissioner (2007) 233 CLR 162",
+   "item_type": "case",
+   "date": "2007",
+   "jurisdiction": "Australia: High Court",
+   "topics": [
+    "LS-HR"
+   ],
+   "sub_area": "LS-HR-ENFORCE",
+   "issue": "Voting rights",
+   "summary": "The High Court held invalid a 2006 Commonwealth amendment that disqualified all prisoners serving a sentence of full-time imprisonment from voting, because the Constitution's requirement that parliamentarians be 'directly chosen by the people' limits the power to exclude people from the franchise without a substantial reason. The earlier disqualification of prisoners serving three years or more was upheld.",
+   "legal_significance": "Example of the courts protecting a right implied from the Constitution.",
+   "syllabus_link": "Human rights: promoting and enforcing human rights (the courts)",
+   "source": "High Court of Australia",
+   "source_url": "https://www.hcourt.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "Roach v Electoral Commissioner",
+    "Roach"
+   ]
+  },
+  {
+   "title": "Human Rights (Parliamentary Scrutiny) Act 2011 (Cth)",
+   "item_type": "legislation",
+   "date": "2011",
+   "jurisdiction": "Commonwealth",
+   "topics": [
+    "LS-HR"
+   ],
+   "sub_area": "LS-HR-ENFORCE",
+   "issue": "Parliamentary scrutiny of rights",
+   "summary": "Requires a statement of compatibility with human rights (as defined by seven core UN treaties) for new bills and certain legislative instruments, and established the Parliamentary Joint Committee on Human Rights to examine legislation for compatibility. Parliament may still pass incompatible laws.",
+   "legal_significance": "Main federal mechanism for considering human rights when laws are made; a non-judicial, 'dialogue' approach.",
+   "syllabus_link": "Human rights: promoting and enforcing human rights (domestic: parliaments)",
+   "source": "Federal Register of Legislation",
+   "source_url": "https://www.legislation.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "Human Rights (Parliamentary Scrutiny) Act"
+   ]
+  },
+  {
+   "title": "Human Rights Act 2004 (ACT)",
+   "item_type": "legislation",
+   "date": "2004",
+   "jurisdiction": "Australian Capital Territory",
+   "topics": [
+    "LS-HR"
+   ],
+   "sub_area": "LS-HR-ENFORCE",
+   "issue": "Statutory bills of rights",
+   "summary": "The first statutory human rights Act in an Australian jurisdiction. It requires laws to be interpreted consistently with human rights where possible and allows the Supreme Court to declare a law incompatible with human rights; a declaration does not affect the law's validity.",
+   "legal_significance": "Example of the 'dialogue' model of rights protection.",
+   "syllabus_link": "Human rights: promoting and enforcing human rights (statutory bills of rights)",
+   "source": "ACT Legislation Register",
+   "source_url": "https://www.legislation.act.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "ACT Human Rights Act"
+   ]
+  },
+  {
+   "title": "Human Rights Act 2019 (Qld)",
+   "item_type": "legislation",
+   "date": "2019",
+   "jurisdiction": "Queensland",
+   "topics": [
+    "LS-HR"
+   ],
+   "sub_area": "LS-HR-ENFORCE",
+   "issue": "Statutory bills of rights",
+   "summary": "Queensland's statutory human rights Act. It requires public entities to act compatibly with human rights, requires statements of compatibility for bills, allows the Supreme Court to declare a law incompatible (without invalidating it), and provides a complaints process through the Queensland Human Rights Commission (verify current provisions).",
+   "legal_significance": "The most recent Australian statutory bill of rights; useful comparison with Victoria and the ACT.",
+   "syllabus_link": "Human rights: promoting and enforcing human rights (statutory bills of rights)",
+   "source": "Queensland Legislation",
+   "source_url": "https://www.legislation.qld.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "Queensland Human Rights Act"
+   ]
+  },
+  {
+   "title": "Sex Discrimination Act 1984 (Cth)",
+   "item_type": "legislation",
+   "date": "1984",
+   "jurisdiction": "Commonwealth",
+   "topics": [
+    "LS-HR"
+   ],
+   "sub_area": "LS-HR-ENFORCE",
+   "issue": "Anti-discrimination",
+   "summary": "Makes discrimination on grounds such as sex, marital or relationship status and pregnancy unlawful in areas such as employment and education, prohibits sexual harassment, and implements obligations under CEDAW. Complaints are made to the Australian Human Rights Commission. It has been amended several times, including to add further protected attributes (verify current provisions).",
+   "legal_significance": "Example of a treaty implemented through domestic legislation with an individual complaints mechanism.",
+   "syllabus_link": "Human rights: promoting and enforcing human rights (domestic legislation)",
+   "source": "Federal Register of Legislation",
+   "source_url": "https://www.legislation.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "Sex Discrimination Act"
+   ]
+  },
+  {
+   "title": "Anti-Discrimination Act 1977 (NSW)",
+   "item_type": "legislation",
+   "date": "1977",
+   "jurisdiction": "NSW",
+   "topics": [
+    "LS-HR"
+   ],
+   "sub_area": "LS-HR-ENFORCE",
+   "issue": "Anti-discrimination (NSW)",
+   "summary": "The main NSW anti-discrimination statute, making discrimination on specified grounds unlawful in areas such as employment, education and the provision of goods and services, with a complaints process that can lead to the NSW Civil and Administrative Tribunal. Its reform has been the subject of a NSW Law Reform Commission review (verify current status).",
+   "legal_significance": "State-level example of statutory protection of equality rights.",
+   "syllabus_link": "Human rights: promoting and enforcing human rights (domestic legislation)",
+   "source": "NSW Legislation",
+   "source_url": "https://legislation.nsw.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "Anti-Discrimination Act"
+   ]
+  },
+  {
+   "title": "Optional Protocol to the International Covenant on Civil and Political Rights (1966)",
+   "item_type": "treaty",
+   "date": "1966",
+   "jurisdiction": "International",
+   "topics": [
+    "LS-HR"
+   ],
+   "sub_area": "LS-HR-ENFORCE",
+   "issue": "Individual complaints",
+   "summary": "Allows individuals in states that are parties to the Protocol to submit complaints ('communications') to the UN Human Rights Committee alleging violations of the ICCPR, after exhausting domestic remedies. The Committee's views are not binding judgments. Australia became a party in 1991.",
+   "legal_significance": "Key international avenue for individuals; its effectiveness depends on state cooperation.",
+   "syllabus_link": "Human rights: promoting and enforcing human rights (international: UN treaty bodies)",
+   "source": "UN Office of the High Commissioner for Human Rights",
+   "source_url": "https://www.ohchr.org/",
+   "source_type": "official",
+   "status": "in_force",
+   "aliases": [
+    "First Optional Protocol to the ICCPR",
+    "First Optional Protocol",
+    "Optional Protocol to the ICCPR"
+   ]
+  },
+  {
+   "title": "Toonen v Australia (UN Human Rights Committee, 1994)",
+   "item_type": "case",
+   "date": "1994",
+   "jurisdiction": "International: UN Human Rights Committee",
+   "topics": [
+    "LS-HR"
+   ],
+   "sub_area": "LS-HR-ENFORCE",
+   "issue": "Privacy; sexual orientation",
+   "summary": "Nicholas Toonen complained under the First Optional Protocol that Tasmanian laws criminalising consensual sex between adult men breached the ICCPR. In 1994 the Human Rights Committee found a violation of the right to privacy (art 17). The Commonwealth responded with the Human Rights (Sexual Conduct) Act 1994 (Cth), and Tasmania repealed the laws in 1997.",
+   "legal_significance": "Shows how a non-binding international finding can lead to domestic legal change.",
+   "syllabus_link": "Human rights: promoting and enforcing human rights (international and domestic interaction)",
+   "source": "UN Office of the High Commissioner for Human Rights",
+   "source_url": "https://www.ohchr.org/",
+   "source_type": "official",
+   "status": "in_force",
+   "aliases": [
+    "Toonen v Australia",
+    "Toonen"
+   ]
+  },
+  {
+   "title": "Human Rights (Sexual Conduct) Act 1994 (Cth)",
+   "item_type": "legislation",
+   "date": "1994",
+   "jurisdiction": "Commonwealth",
+   "topics": [
+    "LS-HR"
+   ],
+   "sub_area": "LS-HR-ENFORCE",
+   "issue": "Privacy",
+   "summary": "Commonwealth law providing that sexual conduct between consenting adults in private is not to be subject to arbitrary interference with privacy within the meaning of art 17 of the ICCPR; enacted in response to the UN Human Rights Committee's views in Toonen.",
+   "legal_significance": "Example of the Commonwealth using the external affairs power to implement treaty obligations against a state law.",
+   "syllabus_link": "Human rights: promoting and enforcing human rights (domestic legislation)",
+   "source": "Federal Register of Legislation",
+   "source_url": "https://www.legislation.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "Human Rights (Sexual Conduct) Act"
+   ]
+  },
+  {
+   "title": "Momcilovic v The Queen (2011) 245 CLR 1",
+   "item_type": "case",
+   "date": "2011",
+   "jurisdiction": "Australia: High Court (on appeal from Victoria)",
+   "topics": [
+    "LS-HR"
+   ],
+   "sub_area": "LS-HR-ENFORCE",
+   "issue": "Statutory charters and the presumption of innocence",
+   "summary": "The High Court considered the Charter of Human Rights and Responsibilities Act 2006 (Vic) in the context of a drug-possession provision that placed a burden of proof on the accused. It held that the Charter's interpretation provision operates within the ordinary limits of statutory interpretation and does not allow courts to rewrite legislation.",
+   "legal_significance": "Shows the limits of the statutory 'dialogue' model: courts cannot invalidate or rewrite laws that infringe rights.",
+   "syllabus_link": "Human rights: promoting and enforcing human rights (statutory bills of rights; the courts)",
+   "source": "High Court of Australia",
+   "source_url": "https://www.hcourt.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "Momcilovic v The Queen",
+    "Momcilovic v R",
+    "Momcilovic"
+   ]
+  },
+  {
+   "title": "United Nations Human Rights Council",
+   "item_type": "institution",
+   "date": "2006",
+   "jurisdiction": "International",
+   "topics": [
+    "LS-HR"
+   ],
+   "sub_area": "LS-HR-ENFORCE",
+   "issue": "UN human rights machinery",
+   "summary": "Inter-governmental UN body created in 2006 to replace the Commission on Human Rights. It conducts the Universal Periodic Review, in which the human rights record of every UN member state is reviewed by other states, and appoints independent experts (special procedures).",
+   "legal_significance": "Main UN political body for promoting human rights; relies on peer pressure rather than enforcement.",
+   "syllabus_link": "Human rights: promoting and enforcing human rights (international: the United Nations)",
+   "source": "UN Office of the High Commissioner for Human Rights",
+   "source_url": "https://www.ohchr.org/",
+   "source_type": "official",
+   "status": "in_force",
+   "aliases": [
+    "UN Human Rights Council",
+    "Human Rights Council",
+    "Universal Periodic Review",
+    "UPR"
+   ]
+  },
+  {
+   "title": "Optional Protocol to the Convention on the Rights of the Child on the involvement of children in armed conflict (2000)",
+   "item_type": "treaty",
+   "date": "2000",
+   "jurisdiction": "International",
+   "topics": [
+    "LS-HR",
+    "LS-CRIME"
+   ],
+   "sub_area": "LS-HR-ISSUE",
+   "issue": "Child soldiers",
+   "summary": "Requires states parties to take all feasible measures to ensure that members of their armed forces under 18 do not take a direct part in hostilities, to ensure that people under 18 are not compulsorily recruited, to raise the minimum age for voluntary recruitment above 15, and provides that armed groups distinct from a state's armed forces should not recruit or use people under 18 in hostilities. Australia is a party.",
+   "legal_significance": "Raises the protection in the Convention on the Rights of the Child (which used age 15) for the child-soldier issue.",
+   "syllabus_link": "Human rights: contemporary human rights issue (child soldiers)",
+   "source": "UN Office of the High Commissioner for Human Rights",
+   "source_url": "https://www.ohchr.org/",
+   "source_type": "official",
+   "status": "in_force",
+   "aliases": [
+    "Optional Protocol on the involvement of children in armed conflict",
+    "OPAC",
+    "Optional Protocol on children in armed conflict"
+   ]
+  },
+  {
+   "title": "Convention Relating to the Status of Refugees (1951)",
+   "item_type": "treaty",
+   "date": "1951",
+   "jurisdiction": "International",
+   "topics": [
+    "LS-HR"
+   ],
+   "sub_area": "LS-HR-ISSUE",
+   "issue": "Refugees and asylum seekers",
+   "summary": "UN treaty defining a refugee (a person outside their country with a well-founded fear of persecution for reasons of race, religion, nationality, membership of a particular social group or political opinion) and setting out states' obligations, including non-refoulement (not returning a refugee to a place where their life or freedom would be threatened). Its 1967 Protocol removed the original time and geographic limits. Australia is a party.",
+   "legal_significance": "Core international standard for evaluating asylum and immigration-detention laws.",
+   "syllabus_link": "Human rights: contemporary human rights issue (rights of refugees and asylum seekers)",
+   "source": "UNHCR",
+   "source_url": "https://www.unhcr.org/",
+   "source_type": "official",
+   "status": "in_force",
+   "aliases": [
+    "Refugee Convention",
+    "Refugees Convention",
+    "1951 Refugee Convention"
+   ]
+  },
+  {
+   "title": "Migration Act 1958 (Cth)",
+   "item_type": "legislation",
+   "date": "1958",
+   "jurisdiction": "Commonwealth",
+   "topics": [
+    "LS-HR"
+   ],
+   "sub_area": "LS-HR-ISSUE",
+   "issue": "Immigration and detention",
+   "summary": "The principal Commonwealth law on entry to and removal from Australia. It requires the detention of unlawful non-citizens and governs visas, including protection visas. It is frequently amended (verify current provisions).",
+   "legal_significance": "Central to evaluating Australia's compliance with refugee and human rights obligations.",
+   "syllabus_link": "Human rights: contemporary human rights issue (rights of refugees and asylum seekers)",
+   "source": "Federal Register of Legislation",
+   "source_url": "https://www.legislation.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "Migration Act"
+   ]
+  },
+  {
+   "title": "Al-Kateb v Godwin (2004) 219 CLR 562",
+   "item_type": "case",
+   "date": "2004",
+   "jurisdiction": "Australia: High Court",
+   "topics": [
+    "LS-HR"
+   ],
+   "sub_area": "LS-HR-ISSUE",
+   "issue": "Indefinite immigration detention",
+   "summary": "A majority of the High Court held that the Migration Act authorised the continued detention of a stateless man who could not be removed from Australia, and that this was constitutionally valid, even though detention might continue indefinitely. The decision was overruled by the High Court in 2023.",
+   "legal_significance": "Illustrates the limited protection of liberty where Parliament's intention is clear; now superseded.",
+   "syllabus_link": "Human rights: contemporary human rights issue; promoting and enforcing human rights (the courts)",
+   "source": "High Court of Australia",
+   "source_url": "https://www.hcourt.gov.au/",
+   "source_type": "primary",
+   "status": "superseded",
+   "aliases": [
+    "Al-Kateb v Godwin",
+    "Al-Kateb"
+   ]
+  },
+  {
+   "title": "NZYQ v Minister for Immigration, Citizenship and Multicultural Affairs (2023)",
+   "item_type": "case",
+   "date": "2023",
+   "jurisdiction": "Australia: High Court",
+   "topics": [
+    "LS-HR"
+   ],
+   "sub_area": "LS-HR-ISSUE",
+   "issue": "Indefinite immigration detention",
+   "summary": "The High Court held that the Migration Act's detention provisions could not validly authorise the continued detention of a non-citizen where there was no real prospect of removal in the reasonably foreseeable future, and overruled Al-Kateb v Godwin. The decision led to the release of affected detainees and to new Commonwealth legislation (verify subsequent laws and cases).",
+   "legal_significance": "A major recent example of the courts protecting liberty against executive detention; its aftermath is still developing.",
+   "syllabus_link": "Human rights: contemporary human rights issue; promoting and enforcing human rights (the courts)",
+   "source": "High Court of Australia",
+   "source_url": "https://www.hcourt.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "NZYQ v Minister for Immigration",
+    "NZYQ"
+   ]
+  }
+ ]
+}
