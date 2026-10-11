@@ -2188,6 +2188,363 @@
     "Prosecutor v Thomas Lubanga Dyilo (ICC, 2012)"
    ],
    "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-INVESTIGATION",
+   "type": "extended",
+   "marks": 15,
+   "difficulty": 3,
+   "verb": "Evaluate",
+   "text": "Evaluate the effectiveness of the criminal investigation process in balancing the rights of suspects with the protection of the community.",
+   "criteria": [
+    {
+     "mark": 15,
+     "range": "13–15",
+     "descriptor": "sophisticated, sustained judgement about the effectiveness of the criminal investigation process in balancing suspects' rights and community protection; extensive, accurate knowledge of police powers, rights of suspects, evidence-gathering and bail; integrates relevant legislation, cases, law reform and contemporary evidence; cohesive, logical response using precise legal terminology"
+    },
+    {
+     "mark": 12,
+     "range": "10–12",
+     "descriptor": "sound judgement about the effectiveness of the criminal investigation process; thorough knowledge and understanding of the relevant law; supports the argument with relevant legislation, cases and contemporary evidence; well-organised response using appropriate legal terminology"
+    },
+    {
+     "mark": 9,
+     "range": "7–9",
+     "descriptor": "some judgement about the effectiveness of the criminal investigation process; describes relevant law with some analysis; uses some examples of legislation, cases or other evidence; organised response with some legal terminology"
+    },
+    {
+     "mark": 6,
+     "range": "4–6",
+     "descriptor": "describes aspects of the criminal investigation process; limited or general use of legal examples; limited judgement"
+    },
+    {
+     "mark": 3,
+     "range": "1–3",
+     "descriptor": "makes general or limited statements about the criminal investigation process"
+    }
+   ],
+   "required_elements": [
+    "An explicit, sustained judgement about effectiveness, with criteria (rights, community protection, efficiency)",
+    "Police powers of arrest and search and their conditions and safeguards",
+    "Detention and interrogation: investigation period, access to a lawyer, the right to silence and its limited exception",
+    "Technology and evidence-gathering regulated by warrants and consent (forensic procedures, surveillance)",
+    "Exclusion of improperly obtained evidence as an after-the-event safeguard",
+    "Bail and remand: the unacceptable-risk test, show cause, and tension with the presumption of innocence",
+    "Law reform: at least one reform evaluated for its effect on the balance"
+   ],
+   "model": "The criminal investigation process in NSW is largely effective in balancing the rights of suspects with the protection of the community. Most police powers depend on reasonable suspicion, are subject to procedural safeguards and, for the most intrusive powers, require independent judicial authorisation. However, the balance is fragile. Many safeguards depend on police discretion and on remedies that apply only after a breach has occurred, and several reforms, particularly to bail and the right to silence, have shifted the balance towards community protection at some cost to the presumption of innocence. This response evaluates effectiveness by asking whether the process protects the community efficiently while respecting suspects' rights to liberty, privacy and a fair trial.\n\nThe foundation of the balance is the presumption of innocence. In Woolmington v DPP [1935] AC 462 the House of Lords described the prosecution's duty to prove guilt as the 'golden thread' of the criminal law, and that principle is applied in Australia. A suspect under investigation has not been convicted of anything, so police powers that restrict liberty or privacy must be justified by the needs of the investigation, not by an assumption of guilt.\n\nPolice powers of arrest and search largely reflect this principle. The Law Enforcement (Powers and Responsibilities) Act 2002 (NSW) consolidates most police powers and attaches conditions to them. A police officer may arrest without a warrant only if the officer suspects on reasonable grounds that the person has committed an offence and is satisfied that arrest is reasonably necessary for a listed reason, such as preventing the person from fleeing or protecting evidence. This necessity requirement encourages police to use less intrusive options, such as a court attendance notice, which is an effective protection of liberty. When exercising powers, police must generally give their name, place of duty and the reason for the exercise of the power, so that people can understand and challenge what is happening to them. These conditions are effective in principle. In practice, however, reasonable suspicion is a flexible standard that is applied first by individual officers on the street, so the protection depends heavily on police training, culture and oversight, including complaints to the Law Enforcement Conduct Commission. The law sets a sound balance, but its effectiveness varies with how discretion is exercised.\n\nDetention and interrogation show a similar pattern. After arrest, the Act allows a person to be detained for investigation only for a limited investigation period, which can be extended only by a detention warrant, and detained people have rights such as communicating with a lawyer or a relative. Extra protections apply to vulnerable people, including children. The right to silence is protected by the Evidence Act 1995 (NSW), which generally prevents an unfavourable inference being drawn from a suspect's silence during official questioning. Parliament has, however, created a limited exception for some serious indictable offences, where a special caution has been given and a lawyer is present. This reform was justified as a way of stopping suspects from 'ambushing' the prosecution with a defence raised for the first time at trial, but critics argue it erodes a fundamental protection. Because the exception is narrow and depends on legal advice being available, it has a limited practical effect, so the right to silence remains a largely effective safeguard.\n\nTechnology has strengthened the community-protection side of the balance while creating new risks to privacy. DNA evidence can identify offenders, link crimes and exclude innocent suspects. The Crimes (Forensic Procedures) Act 2000 (NSW) regulates when forensic samples may be taken from suspects, offenders and volunteers, requiring consent or an order in many cases, and when DNA profiles must be destroyed. Covert surveillance is even more intrusive, so the Surveillance Devices Act 2007 (NSW) generally requires a warrant for police to use listening, optical, tracking or data surveillance devices. Requiring an independent judicial officer to authorise these powers is one of the most effective features of the process, because it tests the justification for intrusion before it occurs. Its limitation is that warrant applications are made without the suspect being heard, so the quality of the scrutiny depends on the issuing officer.\n\nWhen safeguards are breached, the main remedy comes at trial. The Evidence Act 1995 (NSW) gives a court a discretion to exclude evidence obtained improperly or in contravention of the law unless the desirability of admitting it outweighs the undesirability of admitting evidence obtained in that way. This is a balanced approach: automatic exclusion could let guilty people go free because of minor errors, while automatic admission would reward unlawful conduct. Its weakness is that it protects only suspects who are prosecuted and who contest the evidence; a person who is unlawfully searched and released without charge has no comparable remedy at trial.\n\nBail and remand are where the balance has shifted most clearly towards community protection. The Bail Act 2013 (NSW) requires a bail authority to refuse bail only if there is an unacceptable risk, for example that the accused will fail to appear, commit a serious offence or endanger the safety of victims or the community, which is a rational, risk-based test. However, amendments added 'show cause' requirements for certain serious offences, under which the accused must show why their detention is not justified. Those amendments were made in response to public concern about particular bail decisions, and the Act has been amended a number of times since. Requiring an unconvicted person to justify their liberty sits uneasily with the presumption of innocence, and people held on remand may lose employment, housing and family contact even if they are later acquitted or receive a non-custodial sentence. Frequent, reactive amendment also makes the law less stable and harder to apply consistently. The bail system therefore protects the community, but at a real cost to the rights of some accused people.\n\nOverall, the criminal investigation process is effective to a considerable extent. The legal framework in the Law Enforcement (Powers and Responsibilities) Act 2002 (NSW), together with judicial authorisation of intrusive powers and the courts' discretion to exclude improperly obtained evidence, sets a sound balance between investigating crime and protecting suspects. That balance is weakened, however, by its dependence on police discretion and by reforms that have tended to favour community protection, particularly in bail. The process would be more effective if reforms were based on evidence about their effects rather than on reaction to individual cases, and if oversight of everyday police powers were as strong as the judicial control of the most intrusive ones.",
+   "evidence_titles": [
+    "Woolmington v DPP [1935] AC 462",
+    "Law Enforcement (Powers and Responsibilities) Act 2002 (NSW)",
+    "Evidence Act 1995 (NSW)",
+    "Crimes (Forensic Procedures) Act 2000 (NSW)",
+    "Surveillance Devices Act 2007 (NSW)",
+    "Bail Act 2013 (NSW)"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: Police powers, detention limits, the silence exception and especially bail law are amended frequently; check the current Law Enforcement (Powers and Responsibilities) Act 2002 (NSW), Evidence Act 1995 (NSW) and Bail Act 2013 (NSW), and add dated contemporary evidence (for example a recent bail amendment or review) from the evidence bank once verified. These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-SENTENCING",
+   "type": "extended",
+   "marks": 15,
+   "difficulty": 3,
+   "verb": "Assess",
+   "text": "Assess the effectiveness of sentencing and punishment in achieving justice for offenders, victims and society.",
+   "criteria": [
+    {
+     "mark": 15,
+     "range": "13–15",
+     "descriptor": "sophisticated, sustained judgement about the effectiveness of sentencing and punishment in achieving justice for offenders, victims and society; extensive, accurate knowledge of sentencing purposes, factors, discretion, penalties and post-sentencing; integrates relevant legislation, cases, law reform, reports and inquiries; cohesive, logical response using precise legal terminology"
+    },
+    {
+     "mark": 12,
+     "range": "10–12",
+     "descriptor": "sound judgement about the effectiveness of sentencing and punishment; thorough knowledge and understanding of the relevant law; supports the argument with relevant legislation, cases and contemporary evidence; well-organised response using appropriate legal terminology"
+    },
+    {
+     "mark": 9,
+     "range": "7–9",
+     "descriptor": "some judgement about the effectiveness of sentencing and punishment; describes relevant law with some analysis; uses some examples of legislation, cases or other evidence; organised response with some legal terminology"
+    },
+    {
+     "mark": 6,
+     "range": "4–6",
+     "descriptor": "describes aspects of sentencing and punishment; limited or general use of legal examples; limited judgement"
+    },
+    {
+     "mark": 3,
+     "range": "1–3",
+     "descriptor": "makes general or limited statements about sentencing and punishment"
+    }
+   ],
+   "required_elements": [
+    "An explicit, sustained judgement covering offenders, victims and society",
+    "Statutory purposes of sentencing and aggravating and mitigating factors",
+    "Judicial discretion and its limits: instinctive synthesis, proportionality, standard non-parole periods",
+    "The role of victims in sentencing",
+    "Types of penalties and alternatives (community-based orders, restorative approaches)",
+    "Post-sentencing considerations such as parole",
+    "Over-representation of Aboriginal and Torres Strait Islander people and relevant reports or inquiries",
+    "Law reform evaluated"
+   ],
+   "model": "Sentencing and punishment in NSW achieve justice for offenders, victims and society to a considerable extent, mainly because judicial discretion allows sentences to be individualised within a framework of statutory purposes and principles set by Parliament and the High Court. They are less effective, however, in reducing reoffending and in addressing the over-representation of Aboriginal and Torres Strait Islander people in custody. The system is therefore better at punishing fairly than at preventing future offending, and justice for society depends on more than the sentence itself.\n\nThe statutory framework sets out what sentencing is meant to achieve. The Crimes (Sentencing Procedure) Act 1999 (NSW) lists the purposes of sentencing: adequate punishment, deterrence of the offender and others, protection of the community, rehabilitation, accountability, denunciation of the conduct, and recognition of the harm done to the victim and the community. It also lists aggravating and mitigating factors that the court must take into account. Listing multiple purposes is a strength, because it recognises that justice has several dimensions. Yet the purposes often conflict: a long sentence may serve denunciation and deterrence while undermining rehabilitation. The framework therefore leaves the crucial balancing to the judge.\n\nJudicial discretion is the main reason sentencing achieves justice for offenders. In Markarian v The Queen (2005) 228 CLR 357 the High Court endorsed 'instinctive synthesis', under which the judge weighs all relevant factors together to reach a single sentence rather than adding and subtracting fixed amounts. This allows the court to respond to the circumstances of each case. In Bugmy v The Queen (2013) 249 CLR 571 the High Court held that evidence of profound deprivation in an offender's upbringing may be taken into account and does not lose its relevance over time, although the Court required the offender's own circumstances to be established rather than assumed from membership of a group. Discretion is also limited by principle: Veen v The Queen (No 2) (1988) 164 CLR 465 established that a sentence must not exceed what is proportionate to the gravity of the offence merely to protect society. These principles make sentencing fair to offenders, because like cases are treated alike in principle and no offender is punished more than the offence deserves.\n\nThe cost of discretion is perceived inconsistency, which affects justice for society. Similar offences can attract different sentences, and public criticism that sentences are too lenient has led Parliament to structure discretion. Standard non-parole periods are one example. In Muldrock v The Queen (2011) 244 CLR 120, however, the High Court held that a standard non-parole period is only one guidepost and not a mandatory starting point. This shows the ongoing tension between Parliament's wish for consistency and the courts' commitment to individualised justice. On balance the courts' approach better serves justice, because rigid sentencing rules can produce disproportionate punishment in unusual cases, and appeals by both the offender and the prosecution provide a mechanism for correcting inconsistent sentences.\n\nVictims have gained a stronger place in sentencing, although their role is deliberately limited. The sentencing framework allows victims to describe the harm they have suffered, and recognising that harm is one of the statutory purposes of sentencing. This acknowledges victims as participants rather than mere witnesses. However, the sentence is not determined by the victim's wishes, because that would make outcomes depend on the attitudes of individual victims rather than on the seriousness of the offence. The system is effective in giving victims a voice, but some victims remain dissatisfied with the outcome.\n\nThe range of penalties and alternatives also affects whether justice is achieved. NSW courts can impose community-based orders, such as intensive correction orders served in the community, as well as full-time imprisonment. Community-based sentences allow offenders to keep employment and family ties and can address causes of offending, such as drug dependence, which serves rehabilitation and, in the long term, community safety. Restorative approaches, such as circle sentencing for some Aboriginal offenders in the Local Court, involve Elders and the community in the sentencing process. These alternatives show that sentencing can pursue justice for society by reducing future harm, not only by punishing past harm.\n\nPost-sentencing processes extend this balance. The Crimes (Administration of Sentences) Act 1999 (NSW) governs the administration of sentences, including parole decisions by the State Parole Authority. Parole supports rehabilitation by giving offenders a supervised transition back into the community, while allowing the Authority to refuse or revoke parole where the risk to the community is too high. Parole decisions are often controversial after high-profile reoffending, which shows that public confidence depends on how risks are managed after the sentence is imposed.\n\nThe greatest limitation of sentencing is its failure to resolve the over-representation of Aboriginal and Torres Strait Islander people in custody. The Royal Commission into Aboriginal Deaths in Custody: National Report (1991) recommended that imprisonment be used only as a last resort. More than two decades later, the Australian Law Reform Commission's Pathways to Justice: Inquiry into the Incarceration Rate of Aboriginal and Torres Strait Islander Peoples (ALRC Report 133) examined why over-representation had continued and made recommendations on matters including sentencing options and justice reinvestment. That the issue had to be examined again shows that sentencing law alone cannot address underlying causes such as disadvantage, and that recommendations are only as effective as their implementation.\n\nOverall, sentencing and punishment are effective in achieving justice for offenders, because discretion guided by principle produces individualised and proportionate sentences, and reasonably effective for victims, who now have a recognised voice. They are less effective for society as a whole, because punishment does not reliably reduce reoffending and has not resolved the over-representation of Aboriginal and Torres Strait Islander people. Further law reform that expands community-based and restorative options, implemented consistently with the Pathways to Justice recommendations, would increase the system's effectiveness.",
+   "evidence_titles": [
+    "Crimes (Sentencing Procedure) Act 1999 (NSW)",
+    "Markarian v The Queen (2005) 228 CLR 357",
+    "Bugmy v The Queen (2013) 249 CLR 571",
+    "Veen v The Queen (No 2) (1988) 164 CLR 465",
+    "Muldrock v The Queen (2011) 244 CLR 120",
+    "Crimes (Administration of Sentences) Act 1999 (NSW)",
+    "Royal Commission into Aboriginal Deaths in Custody: National Report (1991)",
+    "Pathways to Justice: Inquiry into the Incarceration Rate of Aboriginal and Torres Strait Islander Peoples (ALRC Report 133)"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: Sentencing options, the victims' statement provisions and circle sentencing arrangements change over time; check them against the current Crimes (Sentencing Procedure) Act 1999 (NSW), and check which Pathways to Justice recommendations have been implemented. These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-YOUNG",
+   "type": "extended",
+   "marks": 15,
+   "difficulty": 3,
+   "verb": "To what extent",
+   "text": "To what extent does the criminal justice system achieve justice for young offenders?",
+   "criteria": [
+    {
+     "mark": 15,
+     "range": "13–15",
+     "descriptor": "sophisticated, sustained judgement about the extent to which the criminal justice system achieves justice for young offenders; extensive, accurate knowledge of the age of criminal responsibility, rights when questioned, the Children's Court, penalties, diversion and bail; integrates relevant legislation, cases, international standards and law reform; cohesive response using precise legal terminology"
+    },
+    {
+     "mark": 12,
+     "range": "10–12",
+     "descriptor": "sound judgement about the extent to which the criminal justice system achieves justice for young offenders; thorough knowledge and understanding of the relevant law; supports the argument with relevant legislation, cases and contemporary evidence; well-organised response using appropriate legal terminology"
+    },
+    {
+     "mark": 9,
+     "range": "7–9",
+     "descriptor": "some judgement about the extent to which the criminal justice system achieves justice for young offenders; describes relevant law with some analysis; uses some examples of legislation, cases or other evidence; organised response with some legal terminology"
+    },
+    {
+     "mark": 6,
+     "range": "4–6",
+     "descriptor": "describes aspects of the treatment of young offenders; limited or general use of legal examples; limited judgement"
+    },
+    {
+     "mark": 3,
+     "range": "1–3",
+     "descriptor": "makes general or limited statements about the treatment of young offenders"
+    }
+   ],
+   "required_elements": [
+    "An explicit judgement about the extent, sustained throughout",
+    "The age of criminal responsibility and doli incapax (RP v The Queen)",
+    "The rights of young people when questioned or arrested",
+    "The Children's Court, its principles and penalties, and the protection of identity",
+    "Diversion under the Young Offenders Act 1997 (NSW)",
+    "Bail and remand of young people, and detention as a last resort",
+    "International standards (CRC) and at least one law reform issue"
+   ],
+   "model": "The criminal justice system achieves justice for young offenders to a significant extent. NSW law recognises that young people are less mature and more capable of rehabilitation than adults, and it provides distinct protections, a specialist court and a structured system of diversion. However, the low minimum age of criminal responsibility, the use of remand and the gap between the law's principles and the experience of disadvantaged young people, particularly Aboriginal and Torres Strait Islander young people, limit the extent to which justice is achieved. Justice for young offenders is assessed here by whether the system holds young people accountable in a way that is fair, proportionate to their age and likely to reduce future offending.\n\nThe starting point is the age of criminal responsibility. Under the Children (Criminal Proceedings) Act 1987 (NSW), a child under 10 cannot be guilty of an offence. Children aged 10 to 13 are protected by the presumption of doli incapax, which the prosecution must rebut by proving beyond reasonable doubt that the child knew the act was seriously wrong. In RP v The Queen [2016] HCA 53 the High Court confirmed that this means seriously wrong in a moral sense, not merely naughty, and that the evidence must concern the particular child. Doli incapax is a meaningful safeguard. Its limitation is that it is tested late, so a young child may already have been arrested, remanded and brought to court. The Convention on the Rights of the Child (1989) requires states to set a minimum age, and its monitoring committee has recommended an age of at least 14. Measured against that benchmark, NSW's minimum age of 10 is low, and some Australian jurisdictions have moved to raise their minimum age. This is the area in which the system is least effective.\n\nThe law provides stronger protections for young people when they are questioned. Under the framework of the Law Enforcement (Powers and Responsibilities) Act 2002 (NSW), children are treated as vulnerable people, so a support person who is not a police officer should be present during questioning, and they can contact a lawyer. The Children (Criminal Proceedings) Act 1987 (NSW) reinforces these protections by limiting the use of admissions made by a child without a suitable adult present. These rules are effective in protecting the reliability and fairness of admissions, but their value depends on the quality of the support person, who may be a parent without legal knowledge.\n\nThe Children's Court and the principles that govern it are a major strength. The Children (Criminal Proceedings) Act 1987 (NSW) sets out principles that recognise that children bear responsibility for their actions but, because of their immaturity, need guidance and assistance, and that it is desirable for their education or employment to continue without interruption. Proceedings are generally closed to the public, and publishing the name of a child involved in criminal proceedings is generally prohibited, which protects young people from lasting stigma. Penalties range from dismissals and good behaviour bonds to control orders served in detention, and in many cases a conviction is not recorded against a younger child. These features make the system more proportionate and more focused on rehabilitation than the adult system, which is consistent with the requirement in the Convention on the Rights of the Child (1989) that detention be used only as a last resort and for the shortest appropriate time.\n\nDiversion is the system's most effective feature. The Young Offenders Act 1997 (NSW) creates a hierarchy of warnings, cautions and youth justice conferences, which allow eligible young people who admit an offence to be dealt with outside court. Conferences bring together the young person, their family and the victim to agree on an outcome plan, so they promote accountability and repair harm while avoiding a conviction. Diversion is quicker and less stigmatising than court. Its limits are that it depends on an admission and on the exercise of police discretion, so young people who distrust police or who are unaware of the scheme may miss out, and access may be uneven across communities.\n\nBail and remand are the system's main weakness. The Bail Act 2013 (NSW) applies to young people, and Parliament has amended it in ways that make bail harder to obtain in some circumstances, including for some young people charged with serious offences while already on bail. Remand interrupts schooling and family life and exposes young people to detention before any finding of guilt, which sits uneasily with the presumption of innocence and with the principle that detention should be a last resort. Young people without stable accommodation can be particularly affected, because suitable bail conditions may be harder to meet.\n\nThese weaknesses fall most heavily on Aboriginal and Torres Strait Islander young people. The Royal Commission into Aboriginal Deaths in Custody: National Report (1991) recommended that imprisonment be used only as a last resort, and that principle is most directly tested in decisions about diversion and bail. Where Aboriginal young people are less likely to receive diversion or bail, the system's protective principles are not being applied equally, which undermines justice regardless of how sound the law appears on paper.\n\nOverall, the criminal justice system achieves justice for young offenders to a significant but incomplete extent. Doli incapax, the protections during questioning, the Children's Court and, above all, diversion under the Young Offenders Act 1997 (NSW) reflect a sound understanding of young people's capacity and potential for rehabilitation. The low minimum age of responsibility, the use of remand and unequal access to diversion prevent the system from fully achieving justice. Raising the age of criminal responsibility, reducing the use of remand and ensuring fair access to diversion would bring the system closer to the standards in the Convention on the Rights of the Child (1989).",
+   "evidence_titles": [
+    "Children (Criminal Proceedings) Act 1987 (NSW)",
+    "RP v The Queen [2016] HCA 53",
+    "Convention on the Rights of the Child (1989)",
+    "Law Enforcement (Powers and Responsibilities) Act 2002 (NSW)",
+    "Young Offenders Act 1997 (NSW)",
+    "Bail Act 2013 (NSW)",
+    "Royal Commission into Aboriginal Deaths in Custody: National Report (1991)"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: Youth bail rules, the minimum age of criminal responsibility in other Australian jurisdictions, and the details of Children's Court penalties and conviction rules change over time; check them against the current Bail Act 2013 (NSW) and Children (Criminal Proceedings) Act 1987 (NSW). These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-INTERNATIONAL",
+   "type": "extended",
+   "marks": 15,
+   "difficulty": 3,
+   "verb": "Evaluate",
+   "text": "Evaluate the effectiveness of domestic and international measures in dealing with international crime.",
+   "criteria": [
+    {
+     "mark": 15,
+     "range": "13–15",
+     "descriptor": "sophisticated, sustained judgement about the effectiveness of domestic and international measures in dealing with both crimes against the international community and transnational crimes; extensive, accurate knowledge of the relevant institutions and laws; integrates relevant treaties, legislation, cases and law reform; cohesive response using precise legal terminology"
+    },
+    {
+     "mark": 12,
+     "range": "10–12",
+     "descriptor": "sound judgement about the effectiveness of domestic and international measures in dealing with international crime; thorough knowledge and understanding of the relevant law; supports the argument with relevant legislation, cases and contemporary evidence; well-organised response using appropriate legal terminology"
+    },
+    {
+     "mark": 9,
+     "range": "7–9",
+     "descriptor": "some judgement about the effectiveness of domestic and international measures in dealing with international crime; describes relevant law with some analysis; uses some examples of legislation, cases or other evidence; organised response with some legal terminology"
+    },
+    {
+     "mark": 6,
+     "range": "4–6",
+     "descriptor": "describes aspects of international crime; limited or general use of legal examples; limited judgement"
+    },
+    {
+     "mark": 3,
+     "range": "1–3",
+     "descriptor": "makes general or limited statements about international crime"
+    }
+   ],
+   "required_elements": [
+    "An explicit judgement distinguishing transnational crimes from crimes against the international community",
+    "Domestic measures: Commonwealth offences, extradition, police cooperation, with a case example",
+    "International measures: the Genocide Convention, ad hoc tribunals and the ICC",
+    "Complementarity and domestic implementation of the Rome Statute",
+    "Limits: state sovereignty, non-parties, reliance on arrests by states, Security Council politics",
+    "An ICC case example and an evaluation of its significance",
+    "Law reform in international criminal law"
+   ],
+   "model": "Domestic and international measures are moderately effective in dealing with international crime, but their effectiveness differs between the two categories of crime. Transnational crimes, such as drug trafficking, people trafficking and cybercrime, are dealt with reasonably effectively when states cooperate, because they are prosecuted under domestic laws that can be enforced. Crimes against the international community, such as genocide, crimes against humanity and war crimes, are dealt with less effectively, because the international institutions that address them depend on the consent and cooperation of sovereign states. Effectiveness is evaluated here by the extent to which these measures hold offenders accountable, deter offending and respect state sovereignty and fair process.\n\nDomestic law is the main response to transnational crime, and in Australia it is reasonably effective. The Criminal Code Act 1995 (Cth) contains offences for serious drug trafficking, slavery and slavery-like practices, people trafficking and terrorism, allowing Commonwealth prosecutors to deal with crimes that cross borders. R v Tang (2008) 237 CLR 1 shows these laws working. The case involved women brought to Australia to work in a brothel, and the High Court held that slavery includes exercising over a person any of the powers attaching to the right of ownership, even without legal ownership. The decision confirmed that Australia's slavery offences reach modern forms of exploitation, which shows domestic law implementing international obligations effectively. However, domestic prosecutions depend on detection and on cooperation with other states to gather evidence and locate offenders.\n\nCooperation between states is therefore essential, and it is only partly effective. The Extradition Act 1988 (Cth) allows Australia to surrender people to, and seek them from, other countries, subject to legal requirements and grounds for refusal. Police agencies share intelligence and coordinate operations against drug and trafficking syndicates. These arrangements work well between states with similar legal systems and good relations, but they are slow and can fail where a state lacks an arrangement with Australia, where laws differ, or where offenders operate from states unwilling or unable to act. Cybercrime highlights the problem, because offenders can act anonymously from anywhere in the world. The effectiveness of measures against transnational crime is thus limited less by the law than by state capacity and willingness to cooperate.\n\nFor crimes against the international community, the development of international law has been a major achievement. The Convention on the Prevention and Punishment of the Crime of Genocide (1948) defined genocide and obliged states parties to prevent and punish it. In the 1990s the Security Council established ad hoc international criminal tribunals for the former Yugoslavia and for Rwanda, which showed that individuals, including senior leaders, could be prosecuted internationally. The Rome Statute of the International Criminal Court (1998) then created a permanent court with jurisdiction over genocide, crimes against humanity, war crimes and the crime of aggression. Law reform has continued within this framework: after amendments agreed at a review conference in 2010, the Court's jurisdiction over the crime of aggression was activated in 2018. Together these developments established the principle that individuals are criminally responsible for the most serious international crimes, whatever their position.\n\nThe International Criminal Court's record shows both its significance and its limits. In Prosecutor v Thomas Lubanga Dyilo (ICC, 2012), its first trial judgment, the Court convicted a militia leader of enlisting and conscripting children under 15 and using them in hostilities, and sentenced him to 14 years' imprisonment. The case confirmed that the recruitment of child soldiers is a serious international crime and gave practical effect to individual responsibility. However, the proceedings took years, and critics argue that the Court has completed relatively few trials for an institution of its size. Its greatest limitation is enforcement: it has no police force and relies on states to arrest and surrender suspects. Its jurisdiction generally depends on the crime occurring in a state party or being committed by a national of a state party, unless the Security Council refers a situation, and several major powers are not parties. Security Council referrals are subject to the veto of the permanent members, so political considerations can determine which situations reach the Court.\n\nThe principle of complementarity partly addresses these limits by making national courts the first line of response. Under the Rome Statute, a case is inadmissible where a state with jurisdiction is genuinely investigating or prosecuting it. Australia has implemented this by enacting the International Criminal Court Act 2002 (Cth), which allows it to cooperate with the Court, and by including genocide, crimes against humanity and war crimes in the Criminal Code Act 1995 (Cth), so these crimes can be prosecuted in Australian courts. Complementarity respects sovereignty and encourages states to build their own capacity. Its weakness is that the states where these crimes occur are often those least able or willing to prosecute, especially where the alleged offenders hold power.\n\nOverall, domestic and international measures are moderately effective. Against transnational crime, domestic law such as the Criminal Code Act 1995 (Cth), supported by extradition and police cooperation, is reasonably effective where states cooperate. Against crimes against the international community, the Genocide Convention and the Rome Statute have created a strong normative framework and some significant convictions, but enforcement remains limited by state sovereignty, the absence of key states and the politics of the Security Council. The effectiveness of both sets of measures ultimately depends on the willingness of states to cooperate, which is the most important factor in whether international crime is dealt with justly.",
+   "evidence_titles": [
+    "Criminal Code Act 1995 (Cth)",
+    "R v Tang (2008) 237 CLR 1",
+    "Extradition Act 1988 (Cth)",
+    "Convention on the Prevention and Punishment of the Crime of Genocide (1948)",
+    "Rome Statute of the International Criminal Court (1998)",
+    "Prosecutor v Thomas Lubanga Dyilo (ICC, 2012)",
+    "International Criminal Court Act 2002 (Cth)"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: ICC membership, the Court's caseload and the status of particular arrest warrants change over time; confirm them before naming states or cases beyond those in the evidence bank. These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
+  },
+  {
+   "topic": "LS-HR",
+   "sub_area": "LS-HR-ENFORCE",
+   "type": "extended",
+   "marks": 15,
+   "difficulty": 3,
+   "verb": "Evaluate",
+   "text": "Evaluate the effectiveness of international and domestic legal measures in promoting and enforcing human rights.",
+   "criteria": [
+    {
+     "mark": 15,
+     "range": "13–15",
+     "descriptor": "sophisticated, sustained judgement about the effectiveness of international and domestic legal measures in promoting and enforcing human rights; extensive, accurate knowledge of UN mechanisms, the Australian Constitution, statute law, courts and statutory bills of rights; integrates relevant treaties, legislation, cases and law reform; cohesive response using precise legal terminology"
+    },
+    {
+     "mark": 12,
+     "range": "10–12",
+     "descriptor": "sound judgement about the effectiveness of international and domestic legal measures in promoting and enforcing human rights; thorough knowledge and understanding of the relevant law; supports the argument with relevant legislation, cases and contemporary evidence; well-organised response using appropriate legal terminology"
+    },
+    {
+     "mark": 9,
+     "range": "7–9",
+     "descriptor": "some judgement about the effectiveness of international and domestic legal measures in promoting and enforcing human rights; describes relevant law with some analysis; uses some examples of legislation, cases or other evidence; organised response with some legal terminology"
+    },
+    {
+     "mark": 6,
+     "range": "4–6",
+     "descriptor": "describes aspects of the promotion and enforcement of human rights; limited or general use of legal examples; limited judgement"
+    },
+    {
+     "mark": 3,
+     "range": "1–3",
+     "descriptor": "makes general or limited statements about the promotion and enforcement of human rights"
+    }
+   ],
+   "required_elements": [
+    "An explicit judgement distinguishing promotion from enforcement",
+    "International measures: the UN Charter, treaties, monitoring, the Human Rights Council and individual complaints",
+    "A complaint example and Australia's response (Toonen)",
+    "The Australian Constitution: express and implied rights and their limits",
+    "Statute law: anti-discrimination Acts, the Australian Human Rights Commission, parliamentary scrutiny",
+    "Statutory bills of rights in Victoria, the ACT and Queensland, and their limits",
+    "Law reform and an evaluation of the effect of state sovereignty"
+   ],
+   "model": "International and domestic legal measures are effective in promoting human rights, by setting clear standards and creating institutions that monitor and publicise compliance. They are less effective in enforcing human rights. International mechanisms depend on the consent and cooperation of sovereign states, and Australia's domestic system relies on a patchwork of constitutional, statutory and common law protections rather than a national bill of rights. Effectiveness is evaluated here by whether these measures prevent violations, provide remedies to individuals and lead to lasting legal change.\n\nInternational law has been highly effective in establishing human rights standards. The Charter of the United Nations (1945) made promoting respect for human rights one of the purposes of the United Nations, and the International Covenant on Civil and Political Rights (1966) turned many of the rights in the Universal Declaration of Human Rights (1948) into binding treaty obligations. These standards give governments, courts, NGOs and individuals a common benchmark against which state conduct can be judged.\n\nInternational monitoring promotes compliance, but enforcement is weak. Treaty committees review periodic reports from states, and the United Nations Human Rights Council conducts the Universal Periodic Review, under which the human rights record of every UN member state is examined by other states. These processes rely on peer pressure: they can expose violations and produce recommendations, but they cannot compel a state to act, and political alliances can shape the Council's decisions. Where a state is indifferent to criticism, monitoring has little effect.\n\nIndividual complaints mechanisms show what international measures can achieve when a state is willing to respond. Under the Optional Protocol to the International Covenant on Civil and Political Rights (1966), individuals in Australia can complain to the UN Human Rights Committee once domestic remedies are exhausted. In Toonen v Australia (UN Human Rights Committee, 1994) the Committee found that Tasmanian laws criminalising consensual sex between adult men breached the right to privacy. The Commonwealth responded by enacting the Human Rights (Sexual Conduct) Act 1994 (Cth), and Tasmania repealed the laws in 1997. Toonen is a clear example of a non-binding international finding leading to domestic law reform. However, the Committee's views are not binding, and their effect depends on a government's political willingness to act, so the mechanism is effective only where that will exists.\n\nDomestically, the Australian Constitution provides limited but enforceable protection. It contains only a few express rights, such as trial by jury for indictable Commonwealth offences and freedom of religion from Commonwealth laws, and it can be changed only by referendum. The High Court has found further protections implied by the Constitution's system of government. In Lange v Australian Broadcasting Corporation (1997) 189 CLR 520 the Court confirmed an implied freedom of political communication, and in Roach v Electoral Commissioner (2007) 233 CLR 162 it held invalid a law disqualifying all prisoners serving full-time sentences from voting. Because these protections bind Parliament, they are the strongest form of enforcement in Australian law. Their limitation is scope: the implied freedom is a limit on government power rather than a personal right, and most human rights have no constitutional protection.\n\nStatute law fills many of these gaps. The Racial Discrimination Act 1975 (Cth) implements Australia's obligations to eliminate racial discrimination, and the Australian Human Rights Commission Act 1986 (Cth) established the Australian Human Rights Commission, which investigates and conciliates complaints and promotes human rights. These mechanisms are accessible, free and effective in resolving many individual complaints. Yet ordinary statutes can be amended or overridden by later legislation, and the complaints model depends on individuals coming forward. At the law-making stage, the Human Rights (Parliamentary Scrutiny) Act 2011 (Cth) requires statements of compatibility for new bills and established the Parliamentary Joint Committee on Human Rights. This promotes rights-aware law-making, but Parliament can still pass laws that the Committee considers incompatible with human rights.\n\nStatutory bills of rights in three jurisdictions show an alternative model. The Human Rights Act 2004 (ACT), the Charter of Human Rights and Responsibilities Act 2006 (Vic) and the Human Rights Act 2019 (Qld) require laws to be interpreted compatibly with human rights where possible, require compatibility statements for bills, and allow the Supreme Court to declare that a law cannot be interpreted compatibly, without affecting its validity. These 'dialogue' models are effective in making rights part of everyday government decision-making while preserving parliamentary sovereignty. Their limits were shown in Momcilovic v The Queen (2011) 245 CLR 1, where the High Court held that the Victorian Charter's interpretation provision operates within the ordinary limits of statutory interpretation and does not allow courts to rewrite legislation. NSW and the Commonwealth have no equivalent law, so protection depends on where a person lives, and whether a national human rights Act should be enacted remains a live law reform debate.\n\nOverall, international and domestic legal measures are effective in promoting human rights and moderately effective in enforcing them. The UN system has set strong standards and, as Toonen shows, can prompt domestic reform, but it cannot compel unwilling states. In Australia, the Constitution, statute law and statutory bills of rights provide real but fragmented protection that Parliament can usually override. The most effective outcomes occur when international standards are implemented in domestic law and enforced by domestic institutions, which suggests that strengthening domestic implementation is the most important reform for improving the enforcement of human rights in Australia.",
+   "evidence_titles": [
+    "Charter of the United Nations (1945)",
+    "International Covenant on Civil and Political Rights (1966)",
+    "Universal Declaration of Human Rights (1948)",
+    "United Nations Human Rights Council",
+    "Optional Protocol to the International Covenant on Civil and Political Rights (1966)",
+    "Toonen v Australia (UN Human Rights Committee, 1994)",
+    "Human Rights (Sexual Conduct) Act 1994 (Cth)",
+    "Australian Constitution",
+    "Lange v Australian Broadcasting Corporation (1997) 189 CLR 520",
+    "Roach v Electoral Commissioner (2007) 233 CLR 162",
+    "Racial Discrimination Act 1975 (Cth)",
+    "Australian Human Rights Commission Act 1986 (Cth)",
+    "Human Rights (Parliamentary Scrutiny) Act 2011 (Cth)",
+    "Human Rights Act 2004 (ACT)",
+    "Charter of Human Rights and Responsibilities Act 2006 (Vic)",
+    "Human Rights Act 2019 (Qld)",
+    "Momcilovic v The Queen (2011) 245 CLR 1"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: Whether any Australian jurisdiction has adopted or proposed a new human rights Act, and the current processes under the Human Rights Act 2019 (Qld), should be confirmed before relying on the law reform point. These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
+  },
+  {
+   "topic": "LS-HR",
+   "sub_area": "LS-HR-NATURE",
+   "type": "extended",
+   "marks": 15,
+   "difficulty": 3,
+   "verb": "Assess",
+   "text": "Assess the extent to which the development of human rights has led to their effective recognition and protection.",
+   "criteria": [
+    {
+     "mark": 15,
+     "range": "13–15",
+     "descriptor": "sophisticated, sustained judgement about the extent to which the development of human rights has led to their effective recognition and protection; extensive, accurate knowledge of the historical development of rights, formal statements of rights, customary international law and the rights of particular groups; integrates relevant instruments, legislation and cases; cohesive response using precise legal terminology"
+    },
+    {
+     "mark": 12,
+     "range": "10–12",
+     "descriptor": "sound judgement about the extent to which the development of human rights has led to effective recognition and protection; thorough knowledge and understanding of the relevant law; supports the argument with relevant legislation, cases and contemporary evidence; well-organised response using appropriate legal terminology"
+    },
+    {
+     "mark": 9,
+     "range": "7–9",
+     "descriptor": "some judgement about the extent to which the development of human rights has led to effective recognition and protection; describes relevant law with some analysis; uses some examples of legislation, cases or other evidence; organised response with some legal terminology"
+    },
+    {
+     "mark": 6,
+     "range": "4–6",
+     "descriptor": "describes aspects of the development of human rights; limited or general use of legal examples; limited judgement"
+    },
+    {
+     "mark": 3,
+     "range": "1–3",
+     "descriptor": "makes general or limited statements about the development of human rights"
+    }
+   ],
+   "required_elements": [
+    "An explicit judgement distinguishing recognition from protection",
+    "Early developments (for example the Magna Carta, suffrage, abolition of slavery, workers' rights) and their limits",
+    "Post-war formal statements: the UN Charter, the Declaration and the two covenants",
+    "Customary international law as a source of protection",
+    "The development of rights for particular groups (women, children, Indigenous peoples) and collective rights",
+    "Domestic recognition in Australia (implementing legislation; Mabo)",
+    "Limits: non-binding instruments, progressive realisation, state sovereignty"
+   ],
+   "model": "The development of human rights has led to their effective recognition to a very large extent, but to their effective protection only to a moderate extent. Over several centuries, rights that were once privileges of a narrow class have come to be recognised as belonging to every person, set out in international instruments and accepted by almost every state. However, recognition has consistently run ahead of protection, because many instruments are not binding, some rights are to be achieved only progressively, and enforcement depends on sovereign states. This response assesses the extent to which each stage of development turned recognition into protection.\n\nEarly developments established the principle that power is limited by law, but they protected only some people. The Magna Carta (1215) limited the power of the Crown and promised that free men would not be imprisoned or deprived of their rights except by lawful judgment or the law of the land. It is rightly seen as a milestone in the rule of law, yet its protections originally applied to a narrow class. Later developments, such as the abolition of slavery, the gradual extension of the right to vote and the recognition of workers' rights, each extended rights to groups previously excluded. In Australia, for example, women gained the right to vote in federal elections in 1902, but many Aboriginal people were excluded from the federal franchise until 1962. These developments show that recognition has expanded gradually and unevenly, often only after sustained political struggle.\n\nThe most significant development came after the Second World War. The Charter of the United Nations (1945) made promoting respect for human rights one of the purposes of the new organisation, so that a state's treatment of its own people became a matter of international concern. The Universal Declaration of Human Rights (1948) then set out, for the first time, a comprehensive list of civil, political, economic, social and cultural rights belonging to everyone. As a General Assembly declaration it was not binding, which limited its direct protective effect. That gap was partly closed by the International Covenant on Civil and Political Rights (1966) and the International Covenant on Economic, Social and Cultural Rights (1966), which made these rights binding on states that become parties. Recognition became near universal, but protection still depended on each state's ratification and implementation.\n\nThe two covenants also reveal different levels of protection for different rights. Civil and political rights are generally expected to be respected immediately, while economic, social and cultural rights, such as health and education, are to be realised progressively to the maximum of a state's available resources. This reflects practical reality, because these rights often require significant public spending, but it means that rights such as an adequate standard of living are recognised long before they are protected in practice, especially in poorer states.\n\nCustomary international law has strengthened protection for the most fundamental rights. The prohibition of torture appears in the Convention against Torture and Other Cruel, Inhuman or Degrading Treatment or Punishment (1984), but it is also widely regarded as part of customary international law, so it binds states that have not ratified the treaty. This development is significant because it removes the protection of some rights from the choice of individual states. Yet even customary prohibitions are violated where states face no consequences, which shows that legal status alone does not guarantee protection.\n\nThe development of rights for particular groups shows both progress and its limits. The Convention on the Elimination of All Forms of Discrimination against Women (1979) required states to eliminate discrimination against women in public and private life, and Australia implemented its obligations through the Sex Discrimination Act 1984 (Cth), which gives individuals an enforceable complaints process. The Convention on the Rights of the Child (1989) recognised children as holders of rights, including the principle that detention should be a last resort. Collective rights have also developed. The right of peoples to self-determination appears in Article 1 of both covenants, and the United Nations Declaration on the Rights of Indigenous Peoples (2007) recognised the rights of Indigenous peoples, although Australia voted against it in 2007 before endorsing it in 2009, and it is not a binding treaty. Domestic courts have also contributed: in Mabo v Queensland (No 2) (1992) 175 CLR 1 the High Court rejected terra nullius and recognised native title, a landmark recognition of Aboriginal and Torres Strait Islander peoples' rights in Australian law. These developments show recognition being converted into protection where states pass implementing laws or courts give rights legal effect.\n\nOverall, the development of human rights has led to their effective recognition to a very large extent: rights are now understood as universal, are set out in binding treaties and, in some cases, form part of customary law. It has led to their effective protection only to a moderate extent, because many instruments are not binding, economic and social rights are realised progressively, and enforcement depends on state sovereignty. The most effective protection has come where international recognition has been implemented in domestic law, as with the Sex Discrimination Act 1984 (Cth), or recognised by domestic courts, as in Mabo. The continuing development of human rights therefore depends less on new statements of rights than on states giving existing rights legal effect.",
+   "evidence_titles": [
+    "Magna Carta (1215)",
+    "Charter of the United Nations (1945)",
+    "Universal Declaration of Human Rights (1948)",
+    "International Covenant on Civil and Political Rights (1966)",
+    "International Covenant on Economic, Social and Cultural Rights (1966)",
+    "Convention against Torture and Other Cruel, Inhuman or Degrading Treatment or Punishment (1984)",
+    "Convention on the Elimination of All Forms of Discrimination against Women (1979)",
+    "Sex Discrimination Act 1984 (Cth)",
+    "Convention on the Rights of the Child (1989)",
+    "United Nations Declaration on the Rights of Indigenous Peoples (2007)",
+    "Mabo v Queensland (No 2) (1992) 175 CLR 1"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: The dates given for the federal franchise (1902 for women; 1962 for Aboriginal people) are stated from general knowledge and are not yet linked to an evidence-bank item. These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
   }
  ]
 }
