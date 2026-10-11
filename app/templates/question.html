@@ -82,6 +82,7 @@
       {% if fb.schedule %}<p class="tiny muted">Next exact repeat no earlier than {{ fb.schedule.next_revision }} ({{ fb.schedule.bucket|replace('_',' ') }} answer){% if a.confidence %}; confidence recorded: {{ a.confidence|replace('_',' ') }}{% endif %}.</p>{% endif %}
     </div>
   </div>
+  {% include "_feedback_followup.html" %}
   {% if attempts|length > 1 %}
   <details class="box"><summary>Your attempts</summary>
     <div class="{{ 'side' if attempts|length == 2 else '' }}">

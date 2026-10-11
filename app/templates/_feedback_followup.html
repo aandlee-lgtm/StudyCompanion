@@ -1,0 +1,55 @@
+{# "Ask about this feedback" (owner: followup). Included under the feedback on the question page;
+   needs `a` (the attempt whose feedback is shown) and, optionally, `base` (this page's URL). #}
+{% if a is defined and a and followup_view is defined %}{% set fu = followup_view(a) %}{% set fu_ai = fu.ai %}
+{% set fu_solution = 'worked solution' if (a.feedback.payload.kind if a.feedback else '') in ['maths','mcq','self_mark','skipped'] else 'model response' %}
+<link rel="stylesheet" href="/static/css/followup.css">
+<script defer src="/static/js/followup.js"></script>
+<section class="card fu no-print" id="followup-{{ a.id }}" data-fu-panel aria-labelledby="fu-h-{{ a.id }}">
+  <div class="spread">
+    <h2 id="fu-h-{{ a.id }}" class="fu-title">Ask about this feedback</h2>
+    <span class="tiny muted" data-fu-count>{{ fu.used }} of {{ fu.max }} questions used</span>
+  </div>
+  {% if fu.ai %}
+  <p class="small muted fu-intro">Not sure about something in the feedback? Ask here. The answer is based on this question, your response,
+    the marking and the {{ fu_solution }}
+    and criteria. It explains — it never changes your mark.</p>
+  {% else %}
+  <div class="notice warn small fu-offline">Free questions need Claude — set up an AI provider in <a href="/settings">Settings</a>.
+    Until then, type your question and it is saved to <strong>Questions for my teacher</strong> on the
+    <a href="/errors#teacher-questions">Error journal</a> page, so you can ask it in class. The full
+    {{ fu_solution }} and criteria are below.</div>
+  {% endif %}
+
+  {% if fu.earlier %}
+  <details class="fu-earlier"><summary class="small">Your questions about earlier attempts ({{ fu.earlier|length }})</summary>
+    <ol class="fu-thread">{% for r in fu.earlier %}{% include "_followup_turn.html" %}{% endfor %}</ol>
+  </details>
+  {% endif %}
+
+  <ol class="fu-thread" data-fu-thread aria-live="polite">{% for r in fu.rows %}{% include "_followup_turn.html" %}{% endfor %}</ol>
+
+  <form class="fu-form" method="post" action="/attempt/{{ a.id }}/followup" data-fu-form {{ 'hidden' if fu.remaining <= 0 }}>
+    <input type="hidden" name="back" value="{{ base | default('') }}">
+    <div class="fu-chips" role="group" aria-label="Quick questions">
+      {% for key, label in fu.chips %}<button class="btn small fu-chip" type="submit" name="chip" value="{{ key }}" formnovalidate>{{ label }}</button>{% endfor %}
+    </div>
+    <label class="fu-label" for="fu-q-{{ a.id }}">Your question</label>
+    <textarea id="fu-q-{{ a.id }}" name="question" rows="2" maxlength="{{ FOLLOWUP_MAX_CHARS }}" required
+      placeholder="e.g. Why is the answer negative?  What does 'evaluate' need here?"></textarea>
+    <div class="spread fu-send">
+      <span class="tiny muted">{% if fu.ai %}AI explanation, not an official NESA judgement · Ctrl+Enter to send{% else %}Saved on this computer for your teacher{% endif %}</span>
+      <button class="btn primary" type="submit">{{ 'Ask' if fu.ai else 'Save for my teacher' }}</button>
+    </div>
+    <p class="fu-status small" data-fu-status role="status" hidden></p>
+  </form>
+  <div class="notice small" data-fu-limit {{ 'hidden' if fu.remaining > 0 }}>You have asked {{ fu.max }} questions about this feedback, which is the
+    limit for one attempt. Save anything still unclear for your teacher (the button under each answer), or try the question again for a fresh thread.</div>
+
+  {% if fu.reference %}{% set ref = fu.reference %}
+  <details class="fu-reference" data-fu-reference {{ 'open' if fu.rows }}>
+    <summary>{{ 'Worked solution' if ref.worked_solution or ref.correct_answer or ref.mcq_answer else 'Model response' }} and criteria, in full</summary>
+    {% include "_followup_reference.html" %}
+  </details>
+  {% endif %}
+</section>
+{% endif %}

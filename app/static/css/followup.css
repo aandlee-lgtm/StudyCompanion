@@ -1,0 +1,49 @@
+/* "Ask about this feedback" and "Questions for my teacher" (owner: followup). Uses the app's colour
+   tokens, so light and dark mode follow app.css. */
+.fu { margin-top: 16px; }
+.fu-title { margin: 0; }
+.fu-intro { margin: 6px 0 12px; }
+.fu-thread { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.fu-thread:empty { display: none; }
+.fu-turn { display: flex; flex-direction: column; gap: 8px; }
+.fu-who { display: block; font-size: .74rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+.fu-q { align-self: flex-end; max-width: min(640px, 92%); background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: 12px 12px 4px 12px; padding: 8px 12px; }
+.fu-q p, .fu-a p { margin: 0 0 8px; }
+.fu-q p:last-child, .fu-a p:last-child { margin-bottom: 0; }
+.fu-a { border-left: 3px solid var(--accent); padding: 4px 0 4px 14px; }
+.fu-a.fu-failed { border-left-color: var(--warn); }
+.fu-a.fu-failed .notice { margin: 0 0 8px; }
+.fu-a.fu-saved { border-left-color: var(--warn); }
+.fu-a.fu-thinking { border-left-color: var(--line); font-style: italic; }
+.fu-steps { margin: 8px 0; padding-left: 1.4em; }
+.fu-steps li { margin: 4px 0; }
+.fu-example { background: var(--accent-soft); border-radius: 8px; padding: 10px 12px; margin: 10px 0 4px; }
+.fu-example .label { margin-bottom: 4px; }
+.fu-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin-top: 8px; }
+.fu-meta form, .fu-inline { display: inline; margin: 0; }
+.fu-turn .notice { margin: 8px 0 0; }
+.fu-form { margin-top: 16px; border-top: 1px solid var(--line); padding-top: 14px; }
+.fu-form[hidden], .fu [hidden] { display: none !important; }
+.fu-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.fu-chip { border-radius: 99px; background: var(--surface-2); }
+.fu-chip:hover { background: var(--accent-soft); }
+.fu-label { display: block; margin-bottom: 6px; }
+.fu-form textarea { min-height: 3.2em; resize: vertical; }
+.fu-send { margin-top: 8px; }
+.fu-status { margin: 8px 0 0; color: var(--muted); }
+.fu-status.warn { color: var(--warn); }
+.fu-earlier { margin-top: 10px; }
+.fu-reference { margin-top: 16px; border-top: 1px solid var(--line); padding-top: 10px; }
+.fu-reference > summary { cursor: pointer; font-weight: 600; }
+.fu-ref-body h3:first-child { margin-top: 10px; }
+.fu-criteria { font-size: .93rem; }
+.fu-teacher .fu-tq-text { font-weight: 550; }
+.fu-teacher form { margin: 0; }
+@media (max-width: 640px) {
+  .fu-q { max-width: 100%; }
+  .fu-a { padding-left: 10px; }
+  .fu-send { flex-direction: column-reverse; align-items: stretch; }
+  .fu-send .btn { justify-content: center; }
+}
+@media print { .fu { display: none; } }

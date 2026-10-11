@@ -1,0 +1,23 @@
+{# Full reference material shown when no AI provider can answer a follow-up question (owner: followup).
+   Needs `ref` from app.services.followup.reference. #}
+<div class="fu-ref-body">
+{% if ref.correct_answer %}<h3>Correct answer</h3><p>\({{ ref.correct_answer }}\)</p>{% endif %}
+{% if ref.mcq_answer %}<h3>Correct option</h3><p>{{ ref.mcq_answer }}</p>{% endif %}
+{% if ref.divergence %}<h3>Where your reasoning diverged</h3><p>{{ ref.divergence }}</p>{% endif %}
+{% if ref.worked_solution %}<h3>Complete worked solution</h3>
+<ol class="steps">{% for s in ref.worked_solution %}<li>{{ s }}</li>{% endfor %}</ol>{% endif %}
+{% if ref.explanation %}<h3>Explanation</h3><p>{{ ref.explanation }}</p>{% endif %}
+{% if ref.concept %}<h3>The concept</h3><p>{{ ref.concept }}</p>{% endif %}
+{% if ref.why_lost %}<h3>Why you lost the mark</h3>{{ ref.why_lost | paras }}{% endif %}
+{% if ref.model_answer %}<h3>Model response</h3><div class="model">{{ ref.model_answer | paras }}</div>
+<p class="tiny muted">{{ ref.model_answer_source or 'Written for this question' }}. Not a reproduction of any published answer.</p>{% endif %}
+{% if ref.criteria_judgements %}<h3>How your response met the criteria</h3>
+<table>{% for c in ref.criteria_judgements %}<tr><td>{{ c.name }}</td><td><span class="pill">{{ c.judgement }}</span></td><td class="small">{{ c.comment }}</td></tr>{% endfor %}</table>{% endif %}
+{% if ref.criteria %}<h3>{{ 'Official NESA marking guideline' if ref.criteria_official else 'Marking criteria (app-authored, not official NESA)' }}</h3>
+<div class="fu-criteria">{{ ref.criteria | paras }}</div>{% endif %}
+{% if ref.guidance %}<h3>What a strong response does</h3><ul>{% for g in ref.guidance %}<li>{{ g }}</li>{% endfor %}</ul>{% endif %}
+{% if ref.next_level %}<h3>What a marker expects at the next level</h3><p>{{ ref.next_level }}</p>{% endif %}
+{% if ref.improvements %}<h3>Concrete actions</h3><ul>{% for x in ref.improvements %}<li>{{ x }}</li>{% endfor %}</ul>{% endif %}
+{% if not (ref.correct_answer or ref.mcq_answer or ref.worked_solution or ref.model_answer or ref.criteria or ref.guidance) %}
+<p class="small muted">No worked solution, model response or marking criteria is attached to this question, so this is a good one to ask your teacher about.</p>{% endif %}
+</div>

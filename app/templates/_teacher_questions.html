@@ -1,0 +1,29 @@
+{# "Questions for my teacher" on the error journal page (owner: followup). Uses `subject` (the page's
+   subject filter) when it is defined. #}
+{% if followup_teacher_questions is defined %}{% set tq = followup_teacher_questions() %}
+{% set tq_subject = subject if subject is defined else '' %}
+{% set tq_rows = tq | selectattr('subject', 'equalto', tq_subject) | list if tq_subject else tq %}
+<link rel="stylesheet" href="/static/css/followup.css">
+<h2 id="teacher-questions">Questions for my teacher</h2>
+<p class="small muted">Questions you asked about feedback and want to take to class — saved automatically when no AI provider is
+  set up, or when you choose "Save for my teacher". Tick one off once it has been answered.</p>
+<div class="card fu-teacher">
+  {% if tq_rows %}
+  <table>
+    <tr><th>Date</th><th>Subject</th><th>Your question</th><th></th></tr>
+    {% for t in tq_rows %}
+    <tr>
+      <td class="small">{{ t.created_at | fdate('%d %b') }}</td>
+      <td class="small subj-{{ t.subject }}">{{ SUBJECT_SHORT.get(t.subject, t.subject) }}</td>
+      <td><div class="fu-tq-text">{{ t.text }}</div>
+        <div class="tiny muted">About: {{ t.question_excerpt }} ({{ t.mark | round(1) }}/{{ t.max | int }}) · <a href="{{ t.page_url }}">open the feedback</a>{% if t.answered_by_ai %} · Claude also answered it{% endif %}</div></td>
+      <td><form method="post" action="/followup/{{ t.id }}/resolve"><input type="hidden" name="back" value="/errors">
+        <button class="btn small" type="submit">Answered</button></form></td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="small muted">No questions saved{{ ' for this subject' if tq_subject }}. Use "Ask about this feedback" under any feedback.</p>
+  {% endif %}
+</div>
+{% endif %}
