@@ -43,7 +43,7 @@ KIND_LABELS = {
     "weak_revisit": "Weak answer", "unconfirmed_check": "Unconfirmed (guess/unsure)", "misconception": "Misconception",
     "slip_check": "Slip check", "rebuild": "Step-by-step rebuild", "pattern": "Repeated error", "recycle": "Two-month recycle",
 }
-KIND_URGENCY = {"misconception": 6, "rebuild": 5, "weak_revisit": 4, "pattern": 3, "unconfirmed_check": 2, "slip_check": 1, "recycle": 0}
+KIND_URGENCY = {"misconception": 6, "rebuild": 5, "pattern": 4.5, "weak_revisit": 4, "unconfirmed_check": 2, "slip_check": 1, "recycle": 0}
 REBUILD_ENTER_MASTERY = 0.35
 REBUILD_MIN_ATTEMPTS = 4
 REBUILD_EXIT_CORRECT = 2
