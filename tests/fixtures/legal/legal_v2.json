@@ -1,0 +1,163 @@
+{
+ "_note": "Test fixture in the exact v2 shape written by the legal-content package (a small subset).",
+ "questions": [
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-NATURE",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 2,
+   "verb": null,
+   "text": "FIXTURE: Which statement best describes a strict liability offence?",
+   "options": [
+    "A. The prosecution must prove intention.",
+    "B. Mens rea need not be proved, but honest and reasonable mistake of fact is a defence.",
+    "C. No defence is ever available.",
+    "D. Recklessness must be proved."
+   ],
+   "answer": "B",
+   "option_rationales": {
+    "A": "Tempting because most offences need mens rea, but not strict liability.",
+    "B": "Correct: He Kaw Teh v The Queen.",
+    "C": "That describes absolute liability.",
+    "D": "Recklessness is a form of mens rea."
+   },
+   "explanation": "Strict liability removes the need to prove mens rea but keeps honest and reasonable mistake.",
+   "evidence_titles": [
+    "Crimes Act 1900 (NSW)"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-INVESTIGATION",
+   "type": "short_answer",
+   "marks": 4,
+   "difficulty": 2,
+   "verb": "Explain",
+   "text": "FIXTURE: Explain how bail laws balance the rights of the accused with community safety.",
+   "criteria": [
+    {
+     "mark": 4,
+     "descriptor": "Explains the balance with reference to the bail test"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Explains with some reference to the law"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Describes bail"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Some relevant information"
+    }
+   ],
+   "required_elements": [
+    "Presumption of innocence and liberty of the accused",
+    "The unacceptable risk test under the Bail Act 2013 (NSW)",
+    "Community safety concerns",
+    "A judgement about the balance"
+   ],
+   "model": "Bail laws decide whether an accused person is released before trial. The Bail Act 2013 (NSW) requires a bail authority to assess whether there is an unacceptable risk, which protects the presumption of innocence while allowing remand when the community would be at risk. On balance the law is largely effective.",
+   "evidence_titles": [
+    "Bail Act 2013 (NSW)"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: the Bail Act 2013 (NSW) has been amended several times; check the current tests."
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-TRIAL",
+   "type": "stimulus",
+   "marks": 5,
+   "difficulty": 2,
+   "verb": "Explain",
+   "text": "FIXTURE: With reference to the hypothetical scenario, explain the burden of proof in Sam's trial.",
+   "stimulus": {
+    "title": "FIXTURE hypothetical scenario: Sam's trial",
+    "kind": "hypothetical scenario",
+    "body": "This scenario is invented for practice.\n\nSam is charged with theft and pleads not guilty.",
+    "evidence_titles": [
+     "Crimes Act 1900 (NSW)"
+    ]
+   },
+   "criteria": [
+    {
+     "mark": 5,
+     "range": "5",
+     "descriptor": "Applies burden and standard of proof to the scenario"
+    },
+    {
+     "mark": 3,
+     "range": "3–4",
+     "descriptor": "Explains the burden of proof"
+    },
+    {
+     "mark": 2,
+     "range": "1–2",
+     "descriptor": "Some relevant information"
+    }
+   ],
+   "required_elements": [
+    "The prosecution bears the burden of proof",
+    "Beyond reasonable doubt",
+    "Applied to Sam"
+   ],
+   "model": "The prosecution must prove each element beyond reasonable doubt; Sam does not have to prove innocence.",
+   "evidence_titles": [
+    "Crimes Act 1900 (NSW)"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-HR",
+   "sub_area": "LS-HR-ISSUE",
+   "type": "extended",
+   "marks": 15,
+   "difficulty": 3,
+   "verb": "Evaluate",
+   "text": "FIXTURE: Evaluate the effectiveness of legal and non-legal responses to ONE contemporary human rights issue.",
+   "criteria": [
+    {
+     "mark": 15,
+     "range": "13–15",
+     "descriptor": "Sustained judgement"
+    },
+    {
+     "mark": 12,
+     "range": "10–12",
+     "descriptor": "Sound judgement"
+    },
+    {
+     "mark": 9,
+     "range": "7–9",
+     "descriptor": "Some judgement"
+    },
+    {
+     "mark": 6,
+     "range": "4–6",
+     "descriptor": "Describes"
+    },
+    {
+     "mark": 3,
+     "range": "1–3",
+     "descriptor": "General statements"
+    }
+   ],
+   "required_elements": [
+    "Names the issue",
+    "Legal responses",
+    "Non-legal responses",
+    "Judgement"
+   ],
+   "model": "The International Covenant on Civil and Political Rights (1966) ...",
+   "model_note": "Adapt this model to the issue you study.",
+   "evidence_titles": [
+    "International Covenant on Civil and Political Rights (1966)"
+   ],
+   "legal_fact_currency": "check"
+  }
+ ]
+}
