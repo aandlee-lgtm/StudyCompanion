@@ -46,7 +46,9 @@ class Pool:
         self.ctx, self.code = ctx, code
         subj = db.execute(select(Subject).where(Subject.code == code)).scalar_one()
         qs = db.execute(
-            select(Question).options(selectinload(Question.stimulus)).where(Question.subject_id == subj.id)
+            select(Question).options(selectinload(Question.stimulus).selectinload(Stimulus.paired_with),
+                                     selectinload(Question.stimulus).selectinload(Stimulus.paired_by))
+            .where(Question.subject_id == subj.id)
         ).scalars().all()
         servable = [q for q in qs if is_servable(ctx, q)]
         per_item: dict[int | None, int] = {}

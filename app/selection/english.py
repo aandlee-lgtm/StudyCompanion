@@ -58,6 +58,24 @@ def _recent_forms(ctx: StudentContext, pool: Pool) -> list[str]:
     return forms
 
 
+MAX_UNITS = 40  # passages considered in full on one day (a large imported bank stays fast)
+
+
+def _best_units(ctx: StudentContext, units: dict[tuple, list[Scored]], n: int, cooldown: int) -> list[tuple[tuple, list[Scored]]]:
+    """The passages worth building sets from: unread ones first, then by the value of their best
+    questions. Bounded so that hundreds of reading sets cost no more than forty."""
+    ranked = []
+    for key, members in units.items():
+        if key[0] != "q" and any(m in ctx.exclude_stimuli for m in key):
+            continue
+        last = max((ctx.stimulus_last_read[m] for m in key if m in ctx.stimulus_last_read), default=None)
+        fresh = last is None or (ctx.today - last).days >= cooldown
+        top = sorted((s.score - 0.5 * s.tier for s in members), reverse=True)[: max(1, n)]
+        ranked.append((not fresh, -sum(top), key, members))
+    ranked.sort(key=lambda r: (r[0], r[1], r[2]))
+    return [(key, members) for _f, _v, key, members in ranked[:MAX_UNITS]]
+
+
 def pick_english(ctx: StudentContext, pool: Pool, n: int | None = None) -> tuple[list[Option], dict]:
     n = ctx.profile.counts["ENGLISH"] if n is None else n
     cooldown = int(ctx.settings.get("unseen_passage_cooldown_days", 70) or 70)
@@ -75,9 +93,7 @@ def pick_english(ctx: StudentContext, pool: Pool, n: int | None = None) -> tuple
     recent_forms = _recent_forms(ctx, pool)
 
     passage_opts: list[Option] = []
-    for key, members in units.items():
-        if key[0] != "q" and any(m in ctx.exclude_stimuli for m in key):
-            continue
+    for key, members in _best_units(ctx, units, n, cooldown):
         last = max((ctx.stimulus_last_read[m] for m in key if m in ctx.stimulus_last_read), default=None)
         fresh_passage = last is None or (ctx.today - last).days >= cooldown
         verified = [pool.verify(s) for s in members]

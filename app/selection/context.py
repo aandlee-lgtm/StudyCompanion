@@ -291,12 +291,15 @@ def build_context(db: Session, today: date, mode: str | None = None, student_id:
         .order_by(DailySession.session_date.desc(), SessionQuestion.position)
     ).all()
     stim_pairs = {sid: pw for sid, pw in db.execute(select(Stimulus.id, Stimulus.paired_with_id)).all()}
-    stimulus_unit: dict[int, tuple[int, ...]] = {}
+    paired_by: dict[int, set[int]] = {}
     for sid, pw in stim_pairs.items():
-        members = {sid}
+        if pw:
+            paired_by.setdefault(pw, set()).add(sid)
+    stimulus_unit: dict[int, tuple[int, ...]] = {}
+    for sid, pw in stim_pairs.items():  # linear in the number of texts (a large imported bank stays fast)
+        members = {sid} | paired_by.get(sid, set())
         if pw:
             members.add(pw)
-        members |= {o for o, opw in stim_pairs.items() if opw == sid}
         stimulus_unit[sid] = tuple(sorted(members))
 
     served: dict[int, list[date]] = {}

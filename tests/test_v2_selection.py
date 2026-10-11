@@ -394,6 +394,60 @@ def test_generation_is_fast_with_a_large_bank(db):
     assert len(sel.items) == 11
 
 
+def test_large_reading_and_legal_banks_stay_fast_and_well_formed(db):
+    """selection-20 for the content packages: hundreds of reading sets (pairs included) and Legal
+    stimulus questions sharing a scenario keep the day fast, one passage, distinct marks."""
+    import random
+
+    from app.models import Stimulus, Subject
+    from app.services import question_bank as qb
+    from tests.sim.harness import _words
+
+    _v2_bank(db)
+    rng = random.Random(11)
+    eng = db.execute(select(Subject).where(Subject.code == "ENGLISH")).scalar_one()
+    leg = db.execute(select(Subject).where(Subject.code == "LEGAL")).scalar_one()
+    unseen = plan_item(db, "EN-UNSEEN")
+    src = qb.get_or_create_source(db, "Large content bank", organisation="test", source_type="generated", tier=4)
+    for k in range(150):
+        stim = Stimulus(subject_id=eng.id, title=f"Large {k}", form="Memoir", body=_words(rng, 280), author="t", attribution="t",
+                        provenance="generated_original", source_id=src.id)
+        db.add(stim)
+        db.flush()
+        if k % 5 == 0:
+            pair = Stimulus(subject_id=eng.id, title=f"Large {k} (pair)", form="Poetry", body=_words(rng, 90), author="t",
+                            attribution="t", provenance="generated_original", source_id=src.id)
+            db.add(pair)
+            db.flush()
+            stim.paired_with_id = pair.id
+        for m in rng.sample([2, 3, 4, 5, 6], 3):
+            qb.create_question(db, subject_code="ENGLISH", source_id=src.id, stimulus_id=stim.id, question_text=f"Analyse {k}/{m} " + _words(rng, 14),
+                               marks=m, question_type="short_answer", directive_verb="Analyse", difficulty=2, topic_id=unseen.topic_id,
+                               plan_item_id=unseen.id, category="unseen", historical_or_generated="GENERATED", model_answer=_words(rng, 40),
+                               mapping_reason="test")
+    crime = plan_item(db, "LS-CRIME")
+    for k in range(60):
+        stim = Stimulus(subject_id=leg.id, title=f"Scenario {k}", form="Hypothetical scenario", body=_words(rng, 140), author="t",
+                        attribution="Hypothetical", provenance="generated_original", source_id=src.id)
+        db.add(stim)
+        db.flush()
+        for m in (3, 5):
+            qb.create_question(db, subject_code="LEGAL", source_id=src.id, stimulus_id=stim.id, question_text=f"Explain {k}/{m} " + _words(rng, 14),
+                               marks=m, question_type="stimulus", directive_verb="Explain", difficulty=2, topic_id=crime.topic_id,
+                               plan_item_id=crime.id, category="core", historical_or_generated="GENERATED", model_answer="t", mapping_reason="test")
+    db.commit()
+    build_daily_selection(db, build_context(db, TUESDAY))  # warm caches
+    t = time.perf_counter()
+    sel = build_daily_selection(db, build_context(db, TUESDAY))
+    assert time.perf_counter() - t < 2.0
+    unseen_items = [s for s in sel.items if subject_code(s.question) == "ENGLISH" and s.question.category == "unseen"]
+    assert len({s.question.stimulus_id for s in unseen_items}) <= 1
+    assert len({s.question.marks for s in unseen_items}) == len(unseen_items)
+    legal = [s for s in sel.items if subject_code(s.question) == "LEGAL"]
+    assert len({s.question.stimulus_id for s in legal if s.question.stimulus_id}) <= 1  # one scenario a day
+    assert len(sel.items) == 11
+
+
 # ------------------------------------------------------------------ phases ---
 def test_phases_make_the_year_more_exam_like(db):
     """selection-22: phases come from progress; later phases time sessions and prefer exam-style work."""
