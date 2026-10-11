@@ -31,7 +31,7 @@ from app.models.common import LOCKED
 from app.selection import explain as _explain
 from app.selection.context import StudentContext, build_context, form_key, legal_format
 from app.selection.engine import SUBJECT_LABEL, load_subject_codes, stimulus_minutes
-from app.selection.english import pick_english
+from app.selection.english import pick_english, unit_of as unit_key
 from app.selection.pool import Pool, near_duplicate, reading_minutes
 from app.selection.scoring import FRESH, Scored, learning_bucket
 
@@ -246,16 +246,17 @@ def _single(ctx: StudentContext, pool: Pool, unit: Unit, reason: str, swapped_be
     orig = unit.questions[0]
     code = unit.code
     others = [x.question for x in unit.sess.questions if x.subject_code == code and x.id != unit.sqs[0].id]
-    counts = {"fresh": 0, "topic": 0, "rules": 0}
+    counts = {"pool": 0, "fresh": 0, "topic": 0, "rules": 0}
     stage: list[Scored] = []
     other_forms = {form_key(q) for q in others} if code == "MATHS" else set()
     orig_form = form_key(orig) if code == "MATHS" else None
     for s in pool.cands:
-        if s.tier != FRESH:
-            continue
         q = s.question
         if code == "ENGLISH" and q.category == "unseen":
             continue  # a course task is replaced by a course task (a passage swaps as a whole set)
+        counts["pool"] += 1
+        if s.tier != FRESH:
+            continue
         counts["fresh"] += 1
         if (reason == "not_learnt" and q.plan_item_id == orig.plan_item_id) or q.plan_item_id in avoid_items:
             continue
@@ -308,7 +309,9 @@ def _passage(ctx: StudentContext, pool: Pool, unit: Unit, reason: str, avoid_for
             continue  # "not learnt" for a passage: not the same kind of text again
         topic_units.add(key)
         stage.append(o)
-    counts = {"fresh": len(fresh_units), "topic": len(topic_units), "rules": len(topic_units)}
+    pool_units = {unit_key(ctx, s) for s in pool.cands if s.question.category == "unseen" and s.question.stimulus_id}
+    pool_units = {k for k in pool_units if not set(k) & ctx.exclude_stimuli}
+    counts = {"pool": len(pool_units), "fresh": len(fresh_units), "topic": len(topic_units), "rules": len(topic_units)}
     for k, (dmin, dmarks) in enumerate(_windows(unit.minutes, unit.marks, True)):
         fits = [o for o in stage if abs(o.minutes - unit.minutes) <= dmin
                 and abs(sum(int(s.question.marks or 0) for s in o.items) - unit.marks) <= dmarks]
@@ -325,27 +328,32 @@ def _why_none(unit: Unit, reason: str, counts: dict, nearest: float | None) -> s
     subj = SUBJECT_LABEL[unit.code]
     orig = unit.questions[0]
     if unit.passage:
+        if counts.get("pool") == 0:
+            return "there is no other passage in the question bank (add reading sets to have a choice)"
         if counts["fresh"] == 0:
             return "every passage in the bank has been read in the last few weeks, and a read passage is never offered again as unseen"
         if counts["topic"] == 0:
             return f"every unread passage left is {(unit.form or 'this kind of text').lower()}, which you said you have not studied yet"
         return (f"no unread passage takes a similar time: this set was about {round(unit.minutes)} minutes including reading"
                 + (f"; the closest left is about {round(nearest)} minutes" if nearest else ""))
+    if counts.get("pool") == 0:
+        return (f"there are no other {subj} questions for the topics you have started (import or approve more questions "
+                "to have a choice)")
     if counts["fresh"] == 0:
         return (f"every other {subj} question on the topics you have started has been answered recently, and an exact repeat "
                 "is not allowed before its revision date")
     if counts["topic"] == 0:
-        return f"the only unseen {subj} questions left are on {_explain_item(unit)}, which you have not learnt yet"
+        return f"the only new {subj} questions left are on {_explain_item(unit)}, which you have not learnt yet"
     if counts["rules"] == 0:
         return {
-            "MATHS": "the unseen Mathematics questions left are the same kind of question as ones already in today's set "
+            "MATHS": "the new Mathematics questions left are the same kind of question as ones already in today's set "
                      "(one question of each kind per session)",
-            "LEGAL": "the unseen Legal Studies questions left would break today's mix (at most one multiple-choice question, "
+            "LEGAL": "the new Legal Studies questions left would break today's mix (at most one multiple-choice question, "
                      "one stimulus to read and one extended response)",
-            "ENGLISH": "there is no other unseen course-linked task",
+            "ENGLISH": "there is no other new course-linked task",
         }[unit.code]
     marks = int(orig.marks or 0)
-    return (f"no unseen {subj} question takes a similar time: this one was {marks} mark{'s' if marks != 1 else ''} and about "
+    return (f"no new {subj} question takes a similar time: this one was {marks} mark{'s' if marks != 1 else ''} and about "
             f"{round(unit.minutes)} minutes" + (f"; the closest left takes about {round(nearest)} minutes" if nearest else ""))
 
 
