@@ -11,6 +11,7 @@
     <form method="post" action="/session/{{ u.id }}/close"><button class="btn small">Close it</button></form></span>
 </div>
 {% endfor %}
+{% include "_selection_bank_health.html" %}
 <div class="card sel-table-wrap">
 <table class="sel-table">
   <thead><tr><th>Date</th><th>Session</th><th>Mode</th><th>Done</th><th>Active time</th><th>Status</th><th></th></tr></thead>

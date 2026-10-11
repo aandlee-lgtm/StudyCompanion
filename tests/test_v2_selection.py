@@ -396,10 +396,42 @@ def test_bank_health_uses_the_engines_rules(db):
     assert h["ENGLISH"]["passages_left"] >= 25 and h["ENGLISH"]["status"] == "ok"
     assert h["LEGAL"]["fresh_by_format"]["stimulus"] >= 10 and h["LEGAL"]["fresh_by_format"]["extended"] >= 6
     assert h["MATHS"]["learning_items"] and all(i["fresh"] > 0 for i in h["MATHS"]["learning_items"])
+    assert all(h[c]["status"] in ("ok", "low", "empty") and h[c]["text"] for c in ("MATHS", "ENGLISH", "LEGAL"))
     sess = sessions.get_or_create_today(db)
     answer_correctly(db, sess)
     after = bank_health(db, TUESDAY + timedelta(days=1))
+    # one passage was read today: exactly one fewer unread passage, whatever else changed
     assert after["ENGLISH"]["passages_left"] == h["ENGLISH"]["passages_left"] - 1
+    legal_served = sum(1 for sq in sess.questions if sq.subject_code == "LEGAL")
+    assert after["LEGAL"]["fresh"] + after["LEGAL"]["fresh_by_format"]["extended"] <= (
+        h["LEGAL"]["fresh"] + h["LEGAL"]["fresh_by_format"]["extended"] - legal_served + 1)
+
+
+def test_bank_health_flags_a_learning_item_without_questions_or_template(db, client):
+    from app.models import Question
+    from app.selection.health import bank_health
+    from app.services import maths_templates
+
+    item = plan_item(db, "1A")
+    for q in db.execute(select(Question).where(Question.plan_item_id == item.id)).scalars():
+        q.approved = False
+    db.commit()
+    saved = maths_templates.TEMPLATES.pop("1A", None)
+    try:
+        h = bank_health(db, TUESDAY)
+        row = next(i for i in h["MATHS"]["learning_items"] if i["code"] == "1A")
+        assert row["fresh"] == 0 and row["empty"] and row["low"] and not row["template"]
+        assert h["MATHS"]["status"] == "empty" and "1A" in h["MATHS"]["action"]
+        r = client.get("/api/selection/bank-health")
+        assert r.status_code == 200 and r.json()["MATHS"]["status"] == "empty"
+        page = client.get("/sessions")
+        assert page.status_code == 200 and "Question bank" in page.text and "1A" in page.text
+    finally:
+        if saved is not None:
+            maths_templates.TEMPLATES["1A"] = saved
+    h = bank_health(db, TUESDAY)  # with its template back, the item keeps itself supplied
+    row = next(i for i in h["MATHS"]["learning_items"] if i["code"] == "1A")
+    assert row["template"] and not row["low"]
 
 
 def test_learning_item_without_questions_is_named(db):
@@ -416,7 +448,8 @@ def test_learning_item_without_questions_is_named(db):
         ctx = build_context(db, TUESDAY)
         sel = build_daily_selection(db, ctx)
         text = " ".join(sel.notes) + " ".join(explain(ctx, sel)["lines"])
-        assert "1A" in text and ("no practice questions" in text or "could be filled" in text)
+        assert "1A" in text and "no practice questions" in text
+        assert any("current-learning Mathematics slots" in n for n in sel.notes)
     finally:
         if saved is not None:
             maths_templates.TEMPLATES["1A"] = saved

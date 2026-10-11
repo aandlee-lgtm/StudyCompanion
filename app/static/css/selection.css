@@ -14,6 +14,12 @@
 .sel-table { width: 100%; border-collapse: collapse; font-size: .92rem; }
 .sel-table th, .sel-table td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
 .sel-table th { color: var(--muted); font-weight: 600; font-size: .8rem; text-transform: uppercase; letter-spacing: .03em; }
+.sel-health { margin-bottom: 16px; }
+.sel-health h2 { margin: 0 0 4px; }
+.sel-health-lead { margin: 0 0 8px; }
+.sel-health-row { padding: 10px 0; border-top: 1px solid var(--line); }
+.sel-health-row p { margin: 4px 0 0; line-height: 1.45; }
+.sel-health-item .pill { margin-right: 4px; }
 @media (max-width: 640px) {
   .sel-timer-card { width: 100%; justify-content: space-between; }
   .sel-table th:nth-child(3), .sel-table td:nth-child(3) { display: none; }

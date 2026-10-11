@@ -69,7 +69,24 @@ def today_extra(db: Session = Depends(get_db), mode: str = Form("normal")):
 def session_history(request: Request, db: Session = Depends(get_db)):
     t = _today(db)
     return render(request, "selection_history.html", rows=sessions.history(db), today=t,
-                  unfinished=sessions.unfinished(db, t), notice=sessions.missed_notice(db, t))
+                  unfinished=sessions.unfinished(db, t), notice=sessions.missed_notice(db, t), health=_bank_health(db, t))
+
+
+def _bank_health(db: Session, t) -> dict | None:
+    from app.selection.health import bank_health
+
+    try:
+        return bank_health(db, t)
+    except Exception:  # a health card must never break the page (e.g. before setup)
+        return None
+
+
+@router.get("/api/selection/bank-health")
+def bank_health_api(db: Session = Depends(get_db)):
+    """Question bank health per subject, by the selection engine's own rules (selection-17)."""
+    from app.selection.health import bank_health
+
+    return JSONResponse(bank_health(db, _today(db)))
 
 
 @router.get("/session/{sid}")
