@@ -1,0 +1,4 @@
+{# v2-legal-logic: 'Current information checked' for a Legal question (legal-03). Include where a Legal
+   explanation is shown (MCQ feedback, skipped view, question page); needs `q` (the Question). #}
+{% if q is defined and q and legal_currency_line is defined %}{% set _cur = legal_currency_line(q.id) %}
+{% if _cur %}<p class="small legal-currency">{{ _cur }} <a class="tiny" href="/legal-evidence">Evidence bank</a></p>{% endif %}{% endif %}

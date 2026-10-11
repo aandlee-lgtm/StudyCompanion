@@ -92,3 +92,22 @@ def test_add_form_with_structure_and_check(db, client):
     ev = _item(db, "Human Rights Act 2019 (Qld)")
     assert ev.aliases == ["Queensland Human Rights Act"] and ev.status == "in_force" and ev.sub_area == "LS-HR-ENFORCE"
     assert ev.last_verified_date == clock.today() and len(le.history(db, ev)) == 1
+
+
+def test_recheck_due_notice_and_currency_line_helpers(db, client):
+    from datetime import timedelta
+
+    from app.models import Question, Subject
+    from app.routes.legal import legal_currency_line, legal_evidence_due
+
+    ev = _item(db)
+    le.mark_verified(db, ev, clock.today() - timedelta(days=200))  # legislation re-check interval is 90 days
+    db.commit()
+    assert legal_evidence_due() == 1
+    assert "1 item due for re-check" in client.get("/").text
+    leg = db.execute(select(Subject).where(Subject.code == "LEGAL")).scalar_one()
+    q = next(q for q in db.execute(select(Question).where(Question.subject_id == leg.id)).scalars()
+             if q.model_answer and "Bail Act 2013" in q.model_answer)
+    line = legal_currency_line(q.id)
+    assert line.startswith("Current information checked") and "re-check due: Bail Act 2013 (NSW)" in line
+    assert legal_currency_line(None) == ""

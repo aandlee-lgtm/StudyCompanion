@@ -33,7 +33,53 @@ def legal_topics_pending() -> bool:
         return False
 
 
-templates.env.globals["legal_topics_pending"] = legal_topics_pending
+def legal_evidence_due() -> int:
+    """Template global for the dashboard (legal-19): evidence items whose re-check is due."""
+    from app.db import SessionLocal
+
+    try:
+        db = SessionLocal()
+        try:
+            today, sett = clock.today(), st.all_settings(db)
+            return sum(1 for e in db.execute(select(LegalEvidence).where(LegalEvidence.last_verified_date.is_not(None))).scalars()
+                       if le.state_of(e, today, sett) == "recheck_due")
+        finally:
+            db.close()
+    except Exception:  # noqa: BLE001
+        return 0
+
+
+def legal_currency_line(question_id: int | None) -> str:
+    """Template global for MCQ explanations / the question page (legal-03): 'Current information
+    checked' from the items the question's explanation, model answer and evidence titles cite."""
+    from app.db import SessionLocal
+    from app.models import Question
+    from app.services import citations as cit
+    from app.services.assessment import legal as legal_fb
+
+    if not question_id:
+        return ""
+    try:
+        db = SessionLocal()
+        try:
+            q = db.get(Question, question_id)
+            if q is None or lp.legal_subject(db).id != q.subject_id:
+                return ""
+            bank, today, sett = cit.Bank.from_db(db), clock.today(), st.all_settings(db)
+            sol = q.solution or {}
+            text = "\n".join([sol.get("explanation") or "", q.model_answer or "", *(sol.get("option_rationales") or {}).values()])
+            res = cit.unique(cit.resolve(text, bank, today, sett))
+            cards = [{"title": t} for t in sol.get("evidence_titles") or []]
+            cur = legal_fb.currency_for(res, cards, bank, today)
+            return legal_fb.currency_line(cur) if cur.get("cited") else ""
+        finally:
+            db.close()
+    except Exception:  # noqa: BLE001
+        return ""
+
+
+templates.env.globals.update(legal_topics_pending=legal_topics_pending, legal_evidence_due=legal_evidence_due,
+                             legal_currency_line=legal_currency_line)
 TYPES = ["legislation", "case", "law_reform", "report", "inquiry", "treaty", "institution", "media", "issue"]
 
 

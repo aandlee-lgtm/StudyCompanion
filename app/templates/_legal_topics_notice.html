@@ -5,3 +5,9 @@
   <a class="btn small primary" href="/curriculum?subject=LEGAL#legal-topics">Choose Legal topics</a>
 </div>
 {% endif %}
+{% if legal_evidence_due is defined %}{% set _due = legal_evidence_due() %}{% if _due %}
+<div class="notice small spread legal-due-notice" role="status">
+  <span><strong>Legal evidence:</strong> {{ _due }} item{{ '' if _due == 1 else 's' }} due for re-check against the source.</span>
+  <a class="btn small" href="/legal-evidence?state=recheck_due">Check them</a>
+</div>
+{% endif %}{% endif %}
