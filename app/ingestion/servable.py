@@ -20,10 +20,12 @@ def required_ids(q) -> list[int]:
 
 def requirements_unlocked(plan: Mapping[int, object], q) -> bool:
     """True when the question has a subtopic and none of its required subtopics is LOCKED,
-    inactive (an option not studied) or missing from the plan. UNMAPPED questions are never
-    servable."""
+    inactive (an option not studied) or missing from the plan. UNMAPPED questions, and unseen-text
+    questions without a linked text, are never servable."""
     ids = required_ids(q)
     if not ids or (q.import_meta or {}).get("mapping_state") == "UNMAPPED":
+        return False
+    if q.category == "unseen" and q.stimulus_id is None:  # english-11: never an unseen question without its text
         return False
     for i in ids:
         it = plan.get(i)
@@ -40,6 +42,8 @@ def blocked_reason(plan: Mapping[int, object], q) -> str | None:
         return "Rejected content"
     if not required_ids(q) or (q.import_meta or {}).get("mapping_state") == "UNMAPPED":
         return "No subtopic"
+    if q.category == "unseen" and q.stimulus_id is None:
+        return "No linked text"
     locked = [plan[i] for i in required_ids(q) if i in plan and (plan[i].status == LOCKED or not plan[i].active)]
     if locked:
         return "Waits for " + ", ".join(f"{it.code}" for it in locked)

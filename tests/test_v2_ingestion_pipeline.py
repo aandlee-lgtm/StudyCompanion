@@ -294,3 +294,15 @@ def test_plan_items_have_expected_day_one_status(db):
     # guards the assumptions above: 1A LEARNING, 1H LOCKED, options inactive
     assert plan_item(db, "1A").status == LEARNING and plan_item(db, "1H").status == LOCKED
     assert not db.execute(select(LearningPlanItem).where(LearningPlanItem.code == "LS-OPT-CONSUMERS")).scalar_one().active
+
+
+def test_unseen_question_without_text_is_not_servable_even_if_approved(db, pdfs):
+    r = pipeline.import_paper(db, pdfs["english"], title="NESA 2025 HSC English Advanced Paper 1", guideline_pdf=pdfs["english_mg"],
+                              stimulus_pdf=pdfs["english_stimulus"])
+    q = _qs(db, r.source_id)["2"]
+    review.save_edits(db, q, {"plan_item_ids": [plan_item(db, "EN-UNSEEN").id], "relevance": "DIRECT"})
+    review.approve(db, q)
+    ctx = build_context(db, TUESDAY)
+    assert is_servable(ctx, q)
+    q.stimulus_id = None  # e.g. the text was deleted after approval
+    assert not requirements_unlocked(ctx.plan, q) and blocked_reason(ctx.plan, q) == "No linked text"
