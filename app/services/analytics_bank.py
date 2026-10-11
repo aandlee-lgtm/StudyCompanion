@@ -120,8 +120,11 @@ def bank_health(db: Session, settings: dict, subject_codes: dict[int, str], toda
             d["headline"] = (f"About {_days(d['days'])} before reading sets repeat" if d["days"] else
                              "No unused reading sets left: English questions are now repeats")
             d["lines"].append(f"{len(fresh_sets)} of {len(sets)} unseen reading sets not yet used (one set per day).")
-            d["lines"].append(f"{len(course_fresh)} course-linked tasks not yet attempted (about "
-                              f"{_days(round(len(course_fresh) / course_per_day))} at the current mix).")
+            if course_fresh:
+                d["lines"].append(f"{len(course_fresh)} course-linked tasks not yet attempted (about "
+                                  f"{_days(max(1, round(len(course_fresh) / course_per_day)))} at the current mix).")
+            else:
+                d["lines"].append("Every course-linked task has been attempted: those questions now repeat.")
         else:
             d["days"] = len(fresh) // per_day if per_day else 0
             d["headline"] = (f"About {_days(d['days'])} of fresh questions" if d["days"] else

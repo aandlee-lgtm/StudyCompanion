@@ -371,12 +371,15 @@ def _lost_lesson(db: Session, ds: Dataset, a: Attempt, item_name: str) -> str | 
     journal = db.execute(select(ErrorJournal.category, ErrorJournal.description).where(ErrorJournal.attempt_id == a.id)).first()
     text = None
     if p.get("kind") == "maths":
-        text = p.get("divergence") or (f"Key idea: {p['concept']}" if p.get("concept") else None)
+        # the key idea is the transferable learning; the divergence note is used when there is none
+        text = f"Key idea: {p['concept']}" if p.get("concept") else p.get("divergence")
     elif p.get("kind") == "mcq":
         text = p.get("explanation") or p.get("concept")
     else:
         r = p.get("result") or {}
-        text = r.get("next_level") or (r.get("improvements") or [None])[0]
+        candidates = [*(r.get("missing_elements") or [])[:1], *(r.get("improvements") or [])[:1], r.get("next_level")]
+        # skip pointers to other parts of the feedback screen ("listed under …"): they mean nothing here
+        text = next((c for c in candidates if isinstance(c, str) and c.strip() and "listed under" not in c), None)
     if not text and journal:
         text = journal.description
     if not text:
