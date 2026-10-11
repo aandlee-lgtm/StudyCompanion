@@ -498,7 +498,7 @@ def dfun(f, n=1):
 def froot(f, a, b):
     """A root of f in [a, b] by bisection (independent of any algebra)."""
     fa = f(a)
-    for _ in range(200):
+    for _ in range(70):
         m = (a + b) / 2
         fm = f(m)
         if (fm > 0) == (fa > 0):
@@ -663,6 +663,89 @@ def v_5F(g):
     a, c = p["a"], p["c"]
     f = lambda t: mp.log(t, a)  # noqa: E731
     return {"a": f, "b": mp.diff(f, c), "c": lambda t: f(a) + mp.diff(f, a) * (t - a)}
+
+
+# ------------------------------------------------------------------- chapter 6 ---
+def roots_on(f, lo, hi, n=800):
+    """All sign-change roots of f on [lo, hi], by a grid then bisection."""
+    grid = [lo + (hi - lo) * mp.mpf(i) / n for i in range(n + 1)]
+    return [froot(f, a, b) for a, b in zip(grid, grid[1:]) if f(a) * f(b) < 0]
+
+
+@verifies("6A")
+def v_6A(g):
+    p = g.params
+    if p["form"] == "ap":
+        a, b = stored_num(p["a"]), stored_num(p["b"])
+        f = lambda t: a * mp.sin(b * t)  # noqa: E731
+        peaks = [t for t in roots_on(dfun(f), 0.0123, 40, 400) if mp.diff(f, t, 2) < 0]
+        return {"a": f(peaks[0]), "b": peaks[1] - peaks[0]}
+    if p["form"] == "fit":
+        hi, lo, T = p["hi"], p["lo"], p["T"]
+        return {"a": (hi - lo) / mp.mpf(2), "b": 2 * mp.pi / T, "c": (hi + lo) / mp.mpf(2)}
+    dv, a, s_, T, m, c = p["d"], p["a"], p["s"], p["T"], p["m"], stored_num(p["c"])
+    D = lambda t: dv + s_ * a * mp.cos(2 * mp.pi * t / T)  # noqa: E731
+    level = dv + a * c
+    cuts = [mp.mpf(0)] + roots_on(lambda t: D(t) - level, mp.mpf(T) / 1e6, T * (1 - 1e-6), 97) + [mp.mpf(T)]
+    dur = sum(b - a_ for a_, b in zip(cuts, cuts[1:]) if D((a_ + b) / 2) >= level)
+    peaks = [t for t in roots_on(dfun(D), T * 0.01, T * 1.01, 97) if mp.diff(D, t, 2) < 0]
+    return {"a": D(m), "b": D(peaks[0]), "c": peaks[0], "d": dur}
+
+
+def _close_grid(v, w):
+    return abs(v - w) < 2e-3
+
+
+@verifies("6B")
+def v_6B(g):
+    p = g.params
+    if p["form"] == "diff":
+        return dfun(fn(p["f"]))
+    f = fn(p["f"])
+    x0 = stored_num(p["x0"])
+    return {"a": dfun(f), "b": dfun(f, 2), "c": mp.diff(f, x0), "d": mp.diff(f, x0, 2)}
+
+
+@verifies("6C")
+def v_6C(g):
+    p = g.params
+    f = fn(p["f"])
+    if p["form"] == "grad":
+        return mp.diff(f, stored_num(p["x0"]))
+    if p["form"] == "tangent":
+        x0 = stored_num(p["x0"])
+        return lambda t: f(x0) + mp.diff(f, x0) * (t - x0)
+    fp = dfun(f)
+    sts = roots_on(fp, 0, 2 * mp.pi, 601)
+    mx = [s_ for s_ in sts if mp.diff(f, s_, 2) < 0][0]
+    return {"a": fp, "b": sts, "c": "A" if mp.diff(f, sts[0], 2) < 0 else "B", "d": f(mx)}
+
+
+@verifies("6D")
+def v_6D(g):
+    p = g.params
+    if p["form"] == "prim":
+        return fn(p["f"])
+    if p["form"] == "def":
+        return quad(fn(p["f"]), stored_num(p["lo"]), stored_num(p["hi"]))
+    a = p["a"]
+    return {"a": dfun(lambda t: t * mp.sin(a * t)), "b": lambda t: t * mp.cos(a * t), "c": quad(lambda t: t * mp.cos(a * t), 0, mp.pi / (2 * a))}
+
+
+@verifies("6E")
+def v_6E(g):
+    p = g.params
+    if p["form"] in ("area", "total"):
+        f = fn(p["f"])
+        hi = stored_num(p["hi"])
+        return quad(lambda t: abs(f(t)), *[hi * i / 8 for i in range(9)])
+    if p["form"] == "between":
+        A = p["A"]
+        return quad(lambda t: abs(A * mp.sin(t) - A * mp.cos(t)), mp.pi / 4, 3 * mp.pi / 4, 5 * mp.pi / 4)
+    kv, v = p["k"], stored_num(p["v"])
+    h = lambda t: kv * mp.sin(t) - kv * v  # noqa: E731
+    xs = roots_on(h, 0, mp.pi, 601)
+    return {"a": xs, "b": quad(h, xs[0], xs[1])}
 
 
 # --------------------------------------------------------------------- tests ---

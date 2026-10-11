@@ -33,7 +33,8 @@ MAX_DECIMALS = 12        # digits after the decimal point in one literal
 MAX_EXPONENT = 1000      # |constant exponent|
 MAX_MAGNITUDE = 1e60     # |any constant sub-expression|
 
-FUNCTIONS = ("sqrt", "sin", "cos", "tan", "exp", "log", "abs", "ln")
+FUNCTIONS = ("sqrt", "sin", "cos", "tan", "exp", "log", "abs", "ln", "sec", "cosec", "csc", "cot")
+RECIPROCAL_TRIG = {"sec": "cos", "cosec": "sin", "csc": "sin", "cot": "tan"}  # rewritten as 1/cos etc.
 CONSTANTS = ("pi", "e")
 DEFAULT_VARS = ("x", "n", "t", "k")
 
@@ -52,6 +53,7 @@ _SIMPLE_REPLACE = [
 ]
 _LATEX_WORDS = [
     ("\\pi", "pi"), ("\\ln", "ln"), ("\\log", "log"), ("\\sin", "sin"), ("\\cos", "cos"), ("\\tan", "tan"), ("\\exp", "exp"),
+    ("\\sec", "sec"), ("\\csc", "csc"), ("\\cot", "cot"),
     ("\\cdot", "*"), ("\\times", "*"), ("\\div", "/"), ("\\infty", "oo"), ("\\leq", "<="), ("\\le", "<="), ("\\geq", ">="),
     ("\\ge", ">="), ("\\lt", "<"), ("\\gt", ">"), ("\\cup", " U "), ("\\in", " in "), ("\\%", "%"), ("\\$", "$"),
     ("\\lvert", "|"), ("\\rvert", "|"), ("\\vert", "|"), ("\\mid", "|"),
@@ -357,11 +359,13 @@ class _Parser:
             elif (t := self.peek()) is not None and t.kind == "num" and not t.space_before and self.is_op("(", 1):
                 b = self.take()  # log2(8), log10(100)
                 base = self.node("num", b.value, b.decimal)
-        if self.is_op("^") and name in ("sin", "cos", "tan", "ln", "log"):
+        if self.is_op("^") and name in ("sin", "cos", "tan", "ln", "log", "sec", "cosec", "csc", "cot"):
             self.take()  # sin^2 x  ==  (sin x)^2
             power = self.exponent()
         arg = self.func_arg(single=name == "sqrt")
-        if name == "ln":
+        if name in RECIPROCAL_TRIG:  # sec x = 1/cos x, cosec x = 1/sin x, cot x = 1/tan x
+            res = self.node("div", self.node("num", Fraction(1), False), self.node("fn", RECIPROCAL_TRIG[name], arg))
+        elif name == "ln":
             res = self.node("fn", "log", arg)
         elif name == "log" and base is not None:
             res = self.node("logb", base, arg)
