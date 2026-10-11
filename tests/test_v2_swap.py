@@ -477,3 +477,65 @@ def test_swap_control_partial_for_the_question_page(db):
     assessment.submit(db, maths.question, "1", sq=maths, time_seconds=30)
     db.commit()
     assert "data-swap-form" not in tpl.render(s=sess, sq=maths, swap=sessions.swap_controls(db, sess)[maths.id])
+
+
+# ------------------------------------------------- rules that need a narrow bank ---
+def _unseen_by_stimulus(db, sess) -> dict:
+    eng = db.execute(select(Subject).where(Subject.code == "ENGLISH")).scalar_one()
+    out: dict = {}
+    for q in db.execute(select(Question).where(Question.subject_id == eng.id, Question.category == "unseen",
+                                               Question.stimulus_id.is_not(None))).scalars():
+        out.setdefault(q.stimulus_id, []).append(q)
+    return out
+
+
+def test_a_read_passage_is_never_the_replacement(db):
+    sess = _today(db)
+    rows = _passage_rows(sess)
+    current = {s.id for s in rows[0].question.stimulus.reading_set()}
+    by_stim = _unseen_by_stimulus(db, sess)
+    other = next(sid for sid, qs in by_stim.items() if sid not in current and len(qs) >= len(rows)
+                 and not qs[0].stimulus.paired_with_id and not qs[0].stimulus.paired_by)
+    _only_candidates(db, sess, "ENGLISH", {q.id for q in by_stim[other]})
+    unit = sw.unit_for(sess, rows[0])
+    assert {s.question.stimulus_id for s in sw.find_replacement(db, unit, "different", TUESDAY).items} == {other}
+    # the student read that passage 20 days ago (inside the unseen-passage cooldown)
+    past = DailySession(session_date=TUESDAY - timedelta(days=20), status="completed", session_number=0)
+    db.add(past)
+    db.flush()
+    db.add(SessionQuestion(session_id=past.id, question_id=by_stim[other][0].id, subject_code="ENGLISH", position=1, status="submitted"))
+    db.flush()
+    rep = sw.find_replacement(db, unit, "different", TUESDAY)
+    assert rep.items == [] and "has been read" in rep.why_none
+
+
+def test_not_learnt_passage_never_comes_back_in_the_same_form(db):
+    sess = _today(db)
+    rows = _passage_rows(sess)
+    form = rows[0].question.stimulus.form
+    current = {s.id for s in rows[0].question.stimulus.reading_set()}
+    keep = {q.id for sid, qs in _unseen_by_stimulus(db, sess).items() if sid not in current and qs[0].stimulus.form == form
+            for q in qs}
+    assert keep
+    _only_candidates(db, sess, "ENGLISH", keep)
+    unit = sw.unit_for(sess, rows[0])
+    rep = sw.find_replacement(db, unit, "not_learnt", TUESDAY)
+    assert rep.items == [] and f"every unread passage left is {form.lower()}" in rep.why_none
+    assert sw.find_replacement(db, unit, "different", TUESDAY).items  # the same form is fine for "a different one"
+
+
+def test_legal_mix_rules_for_a_replacement():
+    from types import SimpleNamespace as NS
+
+    def q(t, stim=None):
+        return NS(question_type=t, stimulus_id=stim)
+
+    sa, mcq, ext = q("short_answer"), q("mcq"), q("extended")
+    assert sw._legal_ok(q("short_answer"), sa, [mcq, sa])
+    assert not sw._legal_ok(q("extended"), sa, [mcq, sa])  # an extended response only replaces an extended response
+    assert sw._legal_ok(q("extended"), ext, [mcq, sa])
+    assert not sw._legal_ok(q("stimulus", 7), sa, [q("stimulus", 5), sa])  # one scenario to read per day
+    assert sw._legal_ok(q("stimulus", 5), sa, [q("stimulus", 5), sa])
+    assert not sw._legal_ok(q("mcq"), sa, [mcq, sa])  # at most one multiple-choice question ...
+    assert sw._legal_ok(q("mcq"), sa, [mcq, ext])  # ... two on an extended-response day
+    assert sw._legal_ok(q("mcq"), mcq, [mcq, sa])  # an MCQ for an MCQ keeps the count
