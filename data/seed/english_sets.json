@@ -3078,6 +3078,788 @@
     }
    ],
    "length_words": 229
+  },
+  {
+   "key": "merrin-bay-pair",
+   "title": "At Merrin Bay, 1891",
+   "form": "Poetry",
+   "complexity": 3,
+   "author": "Original text (HSC Companion)",
+   "headnote": "Text 1 is an original poem written in the style of the 1890s. Text 2 is an original contemporary poem. Both describe the same fictional Sydney beach, Merrin Bay. An ocean pool is a swimming pool built into the rocks at the edge of the sea.",
+   "theme_tags": [
+    "the sea",
+    "colonial Australia",
+    "community",
+    "nature and control",
+    "time"
+   ],
+   "body": "Behold the breakers, how they rise and fall\nIn ordered ranks along the crescent sand,\nAs if some mighty Hand had drilled them all\nTo come and kneel, and kiss the patient land.\n\nHere, safe behind the railings, ladies stroll\nWith parasols against the morning glare,\nAnd gentlemen in flannels, on the whole,\nApprove the ocean, and the ocean air.\n\nBut I have seen, when evening empties out\nThe promenade, and lamps are lit in town,\nThe sea come in without a word of doubt\nAnd wash the careful footprints of us down.\n\nSo let us build our railings as we must,\nAnd post our rules, and set the bathing hour;\nThe sea, that keeps no reckoning of our dust,\nWas here before, and will outlast our power.",
+   "pair": {
+    "title": "Merrin Bay, Six A.M.",
+    "form": "Poetry",
+    "author": "Original text (HSC Companion)",
+    "headnote": "",
+    "body": "The ocean pool is already full of old men\ndoing slow laps in their caps, like thoughts\nreturning to the same idea.\nA woman in a hijab and leggings\njogs the length of the promenade\nwith her earbuds in, mouthing a song.\nTwo backpackers asleep on the grass\nunder a single towel. A council truck\nraking last night off the sand:\ncans, a thong, somebody's birthday balloon\nstill trying to leave.\n\nNobody here owns the water.\nWe just turn up, the way it does,\ntwice a day, without being asked,\nand stand in it to our knees, gasping,\nand say, every morning, as if we'd just invented it,\nit's freezing, it's beautiful, it's freezing.\n\nBehind us the old pavilion\nhas been a gym, a nightclub, a restaurant,\nand is now, the sign says, Coming Soon.\nThe waves don't read it.\nThey keep arriving\nin their long, untidy lines,\nnot kneeling to anyone."
+   },
+   "questions": [
+    {
+     "marks": 3,
+     "verb": "Explain",
+     "demand": "explain",
+     "text": "In Text 1, explain how the final two stanzas change the poem's view of the beach.",
+     "skill_tags": [
+      "structure",
+      "turn",
+      "tone"
+     ],
+     "criteria": [
+      {
+       "mark": 3,
+       "descriptor": "Provides a precise, well-reasoned explanation of how the final stanzas of Text 1 change its view of the beach, integrating well-chosen textual evidence and making the cause-and-effect relationship explicit"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides a sound explanation of how the final stanzas of Text 1 change its view of the beach with appropriate textual reference"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of how the final stanzas of Text 1 change its view of the beach, relying on paraphrase or retelling"
+      }
+     ],
+     "checklist": [
+      "Explains the ordered, genteel view of the first two stanzas (\"In ordered ranks\"; \"safe behind the railings\")",
+      "Notes the gentle irony of \"Approve the ocean, and the ocean air\"",
+      "Explains the turn at \"But\" and the sea's indifference (\"without a word of doubt\")",
+      "Explains the final stanza's recognition of human transience (\"will outlast our power\")"
+     ],
+     "next_steps": {
+      "0": "Describe the view of the beach in the first half, with one quotation, before discussing the change.",
+      "1": "Explain the turn: quote the line where the poem changes direction and explain what the sea does to human order.",
+      "2": "Explain the final stanza's conclusion and its tone: is it fearful, resigned or wry? Support your view."
+     },
+     "model": "In Text 1 the first two stanzas present the beach as an ordered, genteel space, but the final stanzas turn to the sea's indifference to human control. The opening simile imagines the waves \"In ordered ranks\", as if drilled \"To come and kneel, and kiss the patient land\", and the colonists stroll \"safe behind the railings\". The gently ironic line \"Approve the ocean, and the ocean air\" already hints at human presumption. The conjunction \"But\" marks the turn: at evening the sea comes in \"without a word of doubt\" and washes \"the careful footprints of us down\". The final stanza concedes that people will keep building \"railings\" and setting \"the bathing hour\", yet the sea \"will outlast our power\". The beach shifts from a scene of polite control to a reminder of human transience.",
+     "difficulty": 2
+    },
+    {
+     "marks": 4,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "In Text 2, analyse how the poet represents the beach as a shared, democratic space.",
+     "skill_tags": [
+      "representation",
+      "catalogue",
+      "voice",
+      "community"
+     ],
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Provides a perceptive, sustained analysis of how Text 2 represents the beach as a shared, democratic space, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a thoughtful analysis of how Text 2 represents the beach as a shared, democratic space, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how Text 2 represents the beach as a shared, democratic space, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how Text 2 represents the beach as a shared, democratic space or identifies a relevant technique with little explanation of its effect"
+      }
+     ],
+     "checklist": [
+      "Makes a claim: the beach belongs to whoever turns up and is defined by ritual, not ownership",
+      "Analyses the catalogue of diverse people and its equalising syntax",
+      "Analyses \"Nobody here owns the water.\" and the comparison with the tide (\"the way it does\")",
+      "Analyses the communal refrain \"it's freezing, it's beautiful, it's freezing\"",
+      "Analyses the undercutting of the \"Coming Soon\" sign"
+     ],
+     "next_steps": {
+      "0": "State a clear claim about what kind of space the beach is in Text 2, then support it with the opening catalogue of people.",
+      "1": "Analyse the central statement about ownership and explain how the comparison with the tide supports it.",
+      "2": "Analyse the shared morning ritual and the effect of the repeated words.",
+      "3": "Use the pavilion and its sign to complete your argument about who, or what, the beach resists."
+     },
+     "model": "Text 2 represents the beach as a democratic space that belongs to whoever turns up, defined by shared ritual rather than ownership or rules. The opening catalogue gathers diverse people without hierarchy: \"old men / doing slow laps\", \"A woman in a hijab and leggings\", \"Two backpackers asleep on the grass\". The flat, list-like syntax gives each figure equal weight, and the simile of the swimmers \"like thoughts / returning to the same idea\" makes repetition comforting. The central statement, \"Nobody here owns the water.\", is a blunt declarative that rejects possession, and the comparison \"We just turn up, the way it does\" aligns people with the tide's unbidden arrivals. Shared experience is captured in the communal refrain \"it's freezing, it's beautiful, it's freezing\", whose repetition and colloquial voice make the morning swim a collective ritual. Even commercial claims are undercut: the pavilion's \"Coming Soon\" sign is ignored, since \"The waves don't read it.\" The beach is presented as common ground that resists both ownership and marketing.",
+     "difficulty": 2
+    },
+    {
+     "marks": 6,
+     "verb": "Compare",
+     "demand": "compare",
+     "text": "Compare how Text 1 and Text 2 represent the relationship between people and the sea.",
+     "skill_tags": [
+      "comparison",
+      "form",
+      "context",
+      "intertextuality"
+     ],
+     "criteria": [
+      {
+       "mark": 6,
+       "descriptor": "Provides a perceptive, integrated comparison of how the two poems represent the relationship between people and the sea, analysing similarities and differences with well-chosen evidence from both texts"
+      },
+      {
+       "mark": 5,
+       "descriptor": "Provides a thoughtful comparison of how the two poems represent the relationship between people and the sea, with relevant, analysed evidence from both texts"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Provides a sound comparison of how the two poems represent the relationship between people and the sea, with relevant evidence from both texts and some explanation"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Discusses both texts in relation to how the two poems represent the relationship between people and the sea, mostly separately, with some evidence"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Describes one or both texts with limited reference to how the two poems represent the relationship between people and the sea"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Makes a limited or general comment about one or both texts"
+      }
+     ],
+     "checklist": [
+      "Makes an integrated thesis (for example: from controlling nature to coexisting with it)",
+      "Compares the kneeling waves of Text 1 with the waves \"not kneeling to anyone\" in Text 2",
+      "Compares the social worlds on the shore (railings and decorum versus shared, unowned space)",
+      "Compares how each poem acknowledges the sea's power (dust and mortality; the ignored sign)",
+      "Compares form and voice (regular rhymed quatrains and elevated diction; free verse and colloquial voice)",
+      "Reaches a conclusion that only the comparison makes possible"
+     ],
+     "next_steps": {
+      "0": "Write a thesis that names one similarity and one difference in how the poems see people and the sea.",
+      "1": "Compare the images of the waves in both poems; notice how Text 2's last lines answer Text 1's first stanza.",
+      "2": "Compare the people on the shore in each poem and what their behaviour suggests about control and ownership.",
+      "3": "Compare how each poem ends: what power does each give the sea, and in what tone?",
+      "4": "Compare form: explain how rhyme, metre and diction in Text 1 and free verse in Text 2 shape each relationship.",
+      "5": "Refine for Band 6: integrate both texts in every paragraph and conclude with an insight about change across the two eras."
+     },
+     "model": "Both poems recognise that the sea is indifferent to human attempts to order it, but they respond differently: Text 1 moves from colonial confidence to a solemn recognition of mortality, while Text 2 begins from humility and finds in that indifference a source of shared, ordinary joy. Read together, they trace a shift from controlling nature to coexisting with it.\n\nText 1 opens by imposing order on the sea. Its regular quatrains and alternating rhyme mirror the \"ordered ranks\" of the breakers, which kneel \"and kiss the patient land\" as if drilled by \"some mighty Hand\". The capitalised \"Hand\" suggests a providential order in which nature serves humanity. Text 2 rejects this image: its waves keep arriving \"in their long, untidy lines, / not kneeling to anyone.\" The echo makes Text 2 a reply, replacing hierarchy with freedom.\n\nThe poems also contrast the social worlds on the shore. In Text 1 the beach is a site of decorum, where ladies stroll \"safe behind the railings\" and gentlemen \"Approve the ocean\", a gently ironic line that exposes the presumption of judging the sea. In Text 2 the railings have gone: the old men, the jogger and the sleeping backpackers share the space equally, and \"Nobody here owns the water.\"\n\nBoth poems, however, end by acknowledging the sea's power. Text 1 concedes that people will \"post our rules, and set the bathing hour\", but that the sea \"keeps no reckoning of our dust\" and \"will outlast our power\"; the word \"dust\" introduces mortality. Text 2's version is lighter but similar: the pavilion's reinventions mean nothing, because \"The waves don't read it.\"\n\nForm reinforces the difference. Text 1's elevated diction, from its opening \"Behold\", seeks to master its subject, while Text 2's free verse and colloquial voice, culminating in the gasped \"it's freezing, it's beautiful, it's freezing\", enact a looser, participatory relationship. Together the poems suggest that the sea humbles every era, but that humility can be felt as dread or as delight.",
+     "difficulty": 3
+    }
+   ],
+   "length_words": 280
+  },
+  {
+   "key": "keepers-daughter",
+   "title": "The Keeper's Daughter",
+   "form": "Prose fiction",
+   "complexity": 3,
+   "author": "Original text (HSC Companion)",
+   "headnote": "This is an extract from an original short story written in the style of the late nineteenth century. Cape Morrow is a fictional headland on the New South Wales coast. A ketch is a small sailing vessel; the gallery is the walkway around the top of a lighthouse.",
+   "theme_tags": [
+    "isolation",
+    "family",
+    "grief",
+    "the uncanny",
+    "colonial Australia"
+   ],
+   "body": "My father kept the light at Cape Morrow for eleven years, and in all that time I do not believe he slept a night through. The lamp was his child more than I was; he rose to it at every hour, trimmed its wick, wound the clockwork that turned the great lens, and wrote in the log in a hand so small and regular that it seemed less like writing than like the stitching of a hem.\n\nWe were three miles from the nearest neighbour and forty from the nearest town, and our only visitors were the supply ketch, which came when the sea allowed, and the wind, which came whether it was allowed or not. I was twelve when my mother died, and from that time it was I who cooked, and mended, and read aloud to my father in the evenings from the only three books we owned, while the light went round above us and laid its long white arm across the water, again and again, like a man feeling in the dark for something he has dropped.\n\nIt was in the winter of 1883 that he began to speak of the other light.\n\nHe said it first at supper, quite plainly, as one might mention a change in the weather. There was a light to the south, he said, beyond the reef, where there was no light and never had been. He had seen it from the gallery at two in the morning: a small, steady yellow, low on the water, not moving with the swell as a ship's lamp would.\n\nI said, as a daughter should, that it was surely a fishing boat, or a reflection, or the moon on wet rock. He agreed that it must be. He wrote nothing of it in the log.\n\nBut after that he went up to the gallery more often, and stayed longer, and when I brought him his tea at midnight I would find him not tending the lamp at all, but standing at the south rail with the telescope, quite still, as if the cold had stopped him. Once I looked where he was looking. I saw nothing but the dark, and the reef breaking white, and our own beam passing over the water and away.\n\n'There,' he said. 'Do you see it? It answers ours.'\n\nI said that I did not. He lowered the glass and looked at me for a long moment, with an expression I have never forgotten, which was not anger, nor fear, but a kind of pity, as though it were I who could not see what was before me.\n\nIn the spring the inspector came with the ketch and found the log in perfect order. My father was transferred to a light in a more settled district, near a town with a church and a school, and I was sent to the school, and in time I married, and the years did what years do.\n\nI have never told anyone that before we left Cape Morrow, on our last night, I climbed to the gallery alone. I do not know what I hoped for. The sea was black and the reef was white, and our light went round, and round, and for a moment, low on the water to the south, I thought I saw a small yellow light, steady as a candle in a window, waiting for someone to come home.\n\nI did not mention it to my father. He would only have pitied me.",
+   "pair": null,
+   "questions": [
+    {
+     "marks": 2,
+     "verb": "Identify",
+     "demand": "identify",
+     "text": "Identify the narrative perspective of the extract and explain ONE effect it creates.",
+     "skill_tags": [
+      "narrative perspective",
+      "retrospective narration"
+     ],
+     "criteria": [
+      {
+       "mark": 2,
+       "descriptor": "Precisely identifies the narrative perspective and one of its effects and explains its significance with apt, accurately quoted evidence"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Identifies a relevant feature of the narrative perspective and one of its effects with little or no explanation"
+      }
+     ],
+     "checklist": [
+      "Identifies retrospective first-person narration by the adult daughter",
+      "Refers to a signal of the time gap (\"the years did what years do\")",
+      "Explains one effect (reflective, haunted tone; confession; unresolved mystery)"
+     ],
+     "next_steps": {
+      "0": "Name the perspective precisely: who narrates, and from what point in time?",
+      "1": "Explain ONE effect of that perspective, supported by a brief quotation."
+     },
+     "model": "The extract uses retrospective first-person narration: the daughter recalls events at Cape Morrow from many years later, after \"the years did what years do\". This creates a reflective, slightly haunted tone, because the adult narrator can confess what she withheld at the time, such as climbing to the gallery alone on the last night. The confession builds intimacy with the reader while leaving the mystery of the light unresolved.",
+     "difficulty": 2
+    },
+    {
+     "marks": 4,
+     "verb": "Explain",
+     "demand": "explain",
+     "text": "Explain how the setting of Cape Morrow contributes to the atmosphere of the extract.",
+     "skill_tags": [
+      "setting",
+      "atmosphere",
+      "gothic"
+     ],
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Provides a precise, well-reasoned explanation of how the setting contributes to the atmosphere, integrating well-chosen textual evidence and making the cause-and-effect relationship explicit"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a clear explanation of how the setting contributes to the atmosphere, supported by relevant, accurately quoted evidence"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how the setting contributes to the atmosphere, with general or partly relevant reference to the text"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of how the setting contributes to the atmosphere, relying on paraphrase or retelling"
+      }
+     ],
+     "checklist": [
+      "Explains the isolation conveyed by precise distances and rare visitors",
+      "Explains the personification of the wind as an intruder",
+      "Explains the confinement of routine (the lamp \"at every hour\"; \"the only three books we owned\")",
+      "Explains the stark night-time contrasts and the simile of the beam searching in the dark",
+      "Links setting to the plausibility and unease of the father's vision"
+     ],
+     "next_steps": {
+      "0": "Name the atmosphere precisely (for example lonely, uneasy, haunted), then support it with a detail about isolation.",
+      "1": "Explain how one technique in the description of setting (personification, contrast or simile) creates that atmosphere.",
+      "2": "Add evidence about routine or confinement and explain its contribution to the mood.",
+      "3": "Explain how the setting makes the appearance of the other light feel both natural and unsettling."
+     },
+     "model": "The isolated setting of Cape Morrow creates an atmosphere of loneliness and unease in which the father's strange vision seems both plausible and disturbing. The family is \"three miles from the nearest neighbour and forty from the nearest town\", precise distances that emphasise isolation, and their only visitors are the ketch and \"the wind, which came whether it was allowed or not\", a personification that makes nature an intruder. The routines of the lighthouse reinforce a sense of confinement: the father tends the lamp \"at every hour\", and the daughter reads \"from the only three books we owned\". The night-time sea is described in stark contrasts, \"the dark, and the reef breaking white\", which create a gothic palette of black and white. Above all, the beam is compared to \"a man feeling in the dark for something he has dropped\", a simile that charges the setting with searching and loss. The remote, repetitive, nocturnal world makes the appearance of the other light feel like a natural product of solitude, and an unsettling one.",
+     "difficulty": 2
+    },
+    {
+     "marks": 6,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "Analyse how the writer uses the motif of light to explore isolation and longing. In your answer, consider how the ending reshapes the reader's view of the father.",
+     "skill_tags": [
+      "motif",
+      "symbol",
+      "ending",
+      "characterisation"
+     ],
+     "criteria": [
+      {
+       "mark": 6,
+       "descriptor": "Provides a perceptive, sustained analysis of how the motif of light explores isolation and longing, and how the ending reshapes the view of the father, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 5,
+       "descriptor": "Provides a thoughtful analysis of how the motif of light explores isolation and longing, and how the ending reshapes the view of the father, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Provides a sound analysis of how the motif of light explores isolation and longing, and how the ending reshapes the view of the father, using relevant evidence with some explanation of effect"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides some explanation of how the motif of light explores isolation and longing, and how the ending reshapes the view of the father, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Describes how the motif of light explores isolation and longing, and how the ending reshapes the view of the father or identifies a relevant technique with little explanation of its effect"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Makes a limited or general comment about the text"
+      }
+     ],
+     "checklist": [
+      "Makes a thesis about the motif's development (from duty to desire)",
+      "Analyses the lamp as duty and displacement (\"his child more than I was\")",
+      "Analyses the beam simile as an image of searching and loss",
+      "Analyses the contrast between the white beam and the \"small, steady yellow\" light, and \"It answers ours\"",
+      "Analyses the ending's simile (\"steady as a candle in a window\") and the reversal of pity",
+      "Explains how the ending changes the reader's judgement of the father"
+     ],
+     "next_steps": {
+      "0": "Write a thesis that explains what light represents and how that meaning changes across the extract.",
+      "1": "Analyse the lighthouse lamp as a symbol of the father's duty and isolation, with a precise quotation.",
+      "2": "Analyse the other light: its colour, its steadiness and the father's claim that it answers.",
+      "3": "Analyse the ending: what does the narrator see, and how does the simile change the light's meaning?",
+      "4": "Explain how the ending reshapes your view of the father (from possibly deluded to perceptive), using the final line.",
+      "5": "Refine for Band 6: build one sustained argument, integrate short quotations, and analyse the language closely rather than retelling."
+     },
+     "model": "The writer uses light as a motif that moves from duty to desire: the lighthouse beam represents the father's disciplined service and isolation, while the mysterious \"other light\" embodies a longing his solitary life cannot satisfy. The ending, in which the daughter glimpses it herself, reshapes the father from a man possibly losing his reason into one who saw something true about loneliness.\n\nAt first, light represents duty and confinement. The lamp is \"his child more than I was\", a comparison that shows his devotion to work displacing his family, and his log, written like \"the stitching of a hem\", conveys order and self-control. Yet the beam itself, laying \"its long white arm across the water, again and again, like a man feeling in the dark for something he has dropped\", already suggests searching and loss, as if it expresses the grief for his wife that he never speaks.\n\nThe other light introduces longing. It appears \"where there was no light and never had been\", as \"a small, steady yellow\", warmer than the lighthouse's white. Its steadiness contrasts with the restless turning of the beam, implying a stillness the father lacks. His claim that \"It answers ours\" suggests he reads it as a reply to his solitary signalling, a companion in the dark. The daughter's rational explanations, offered \"as a daughter should\", and the fact that \"He wrote nothing of it in the log\" mark the vision as private, outside the order of duty.\n\nThe ending reshapes this. Years later the narrator confesses that on the last night she too saw a light \"steady as a candle in a window, waiting for someone to come home.\" The simile domesticates the light into an image of home and return, perhaps of the mother and the family life the lighthouse displaced. The father's look of \"pity\" now seems justified rather than mad, and the final line, \"He would only have pitied me\", reverses their positions. The motif suggests that isolation produces not delusion but a clearer sight of what is longed for.",
+     "difficulty": 3
+    }
+   ],
+   "length_words": 586
+  },
+  {
+   "key": "seen-group-chat",
+   "title": "Seen",
+   "form": "Hybrid",
+   "complexity": 1,
+   "author": "Original text (HSC Companion)",
+   "headnote": "This is an original short story that includes transcribed group-chat messages. The characters are fictional Year 11 students. Bracketed words such as [screenshot] describe images in the chat.",
+   "theme_tags": [
+    "friendship",
+    "technology",
+    "exclusion",
+    "courage",
+    "adolescence"
+   ],
+   "body": "The group chat is called Year 11 Survivors, and it has six members, and for most of the year it has been the loudest room I am ever in.\n\nTonight it is quiet. I check it in the bathroom, under the desk, at the dinner table under the edge of the plate, which Mum has said she will confiscate my phone for, and which she has not done yet.\n\nHere is what it looked like at 4.12 pm:\n\nYEAR 11 SURVIVORS\nPriya: guys\nPriya: did anyone else see what Jade posted\nMia: ??\nPriya: [screenshot]\nMia: oh\nEllie: oh no\nPriya: like I'm not saying anything\nPriya: I'm just saying\nMia: she literally said she was sick\nEllie: lol\nSeen by Jade, Tom\n\nJade is the sixth member. The screenshot was of Jade, at the beach, on the day of Priya's birthday lunch, which Jade had said she couldn't come to because of a migraine. In the photo she is laughing at something outside the frame. She looks, I think, happier than I have seen her all year, which is a strange thing to notice about a photo you're supposed to be angry about.\n\nSeen by Jade.\n\nNobody has typed anything since. The little words sit there at the bottom of the screen like a cough in an exam room. I have started a message four times.\n\nMe: hey jade are you\n(deleted)\nMe: guys maybe we should\n(deleted)\n\nAt school Jade sits with us the next day as if nothing has happened, and nothing has, out loud. Priya offers her a chip. Mia talks about the chemistry test. Ellie laughs at a joke a little too hard and a little too late. Jade eats the chip. Under the table, I can feel all our phones in our pockets like small warm stones.\n\nThat night Jade leaves the chat. The app tells us, in the same neutral grey it uses for everything: Jade left the group.\n\nMia: well\nPriya: honestly her choice\nEllie: [heart reaction]\nTom: has anyone done the chem worksheet\n\nI put my phone face down on the desk. Then I turn it over again. Then I open a new message, just to Jade, and for a long time I look at the empty box, and the cursor blinking in it like something breathing.\n\nI type: hey. the beach looked nice.\n\nI look at it for a long time. Then I add: I'm glad you went.\n\nI press send before I can stop myself, and the message goes, and sits there, Delivered, and then, after a minute that takes about an hour,\n\nSeen.\n\nAnd then the three dots. Appearing, disappearing, appearing again, like someone deciding whether to come out of the water.",
+   "pair": null,
+   "questions": [
+    {
+     "marks": 3,
+     "verb": "Explain",
+     "demand": "explain",
+     "text": "Explain how the narrator's observation of the photograph complicates the group's response to Jade.",
+     "skill_tags": [
+      "perspective",
+      "characterisation",
+      "narrative voice"
+     ],
+     "criteria": [
+      {
+       "mark": 3,
+       "descriptor": "Provides a precise, well-reasoned explanation of how the narrator's observation of the photograph complicates the group's response, integrating well-chosen textual evidence and making the cause-and-effect relationship explicit"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides a sound explanation of how the narrator's observation of the photograph complicates the group's response with appropriate textual reference"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of how the narrator's observation of the photograph complicates the group's response, relying on paraphrase or retelling"
+      }
+     ],
+     "checklist": [
+      "Explains the group's reading of the photo as evidence that Jade lied",
+      "Explains the narrator's different reading (\"happier than I have seen her all year\")",
+      "Explains the hedge \"I think\" and the phrase \"supposed to be\" as signs of independent judgement",
+      "Links the observation to the narrator's later message (\"I'm glad you went.\")"
+     ],
+     "next_steps": {
+      "0": "State how the group reads the photograph, then quote what the narrator notices instead.",
+      "1": "Explain what the narrator's language (for example \"I think\" or \"supposed to be\") reveals about her position in the group.",
+      "2": "Explain how this observation prepares for her decision at the end of the story."
+     },
+     "model": "The narrator's observation reframes the photograph from evidence of betrayal to a glimpse of a friend's private need. While Priya circulates the screenshot as proof that Jade lied, the narrator notices that Jade \"looks, I think, happier than I have seen her all year\". The hedge \"I think\" shows her tentative independence from the group, and she reflects that this is \"a strange thing to notice about a photo you're supposed to be angry about.\" The phrase \"supposed to be\" exposes the group's expected emotion as a social script. Her observation suggests that Jade's absence may reflect unhappiness within the group itself, and it prepares for the narrator's later, kinder message: \"I'm glad you went.\"",
+     "difficulty": 1
+    },
+    {
+     "marks": 4,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "Analyse how the transcribed group-chat messages are used to represent conflict among the friends.",
+     "skill_tags": [
+      "hybrid form",
+      "dialogue",
+      "subtext",
+      "structure"
+     ],
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Provides a perceptive, sustained analysis of how the transcribed messages represent conflict, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a thoughtful analysis of how the transcribed messages represent conflict, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how the transcribed messages represent conflict, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how the transcribed messages represent conflict or identifies a relevant technique with little explanation of its effect"
+      }
+     ],
+     "checklist": [
+      "Makes a claim: conflict is conducted indirectly, through implication, reaction and silence",
+      "Analyses Priya's paradoxical disclaimer (\"like I'm not saying anything\" / \"I'm just saying\")",
+      "Analyses the minimal responses and the platform notification \"Seen by Jade, Tom\"",
+      "Analyses the narrator's deleted drafts as conflict internalised",
+      "Analyses the group's responses after \"Jade left the group\""
+     ],
+     "next_steps": {
+      "0": "Make a claim about HOW conflict happens in the chat (openly, or indirectly?) and support it with Priya's messages.",
+      "1": "Analyse the effect of the platform's own words, such as the \"Seen by\" notification, on the reader.",
+      "2": "Analyse the narrator's deleted messages and what they show about her position.",
+      "3": "Use the final exchange after Jade leaves to complete your argument about how the group closes ranks."
+     },
+     "model": "The transcribed messages show conflict conducted indirectly, through implication, reaction and silence rather than open confrontation. Priya's fragmented messages, beginning with \"guys\", build suspense before the screenshot does the accusing for her. Her paradoxical disclaimer, \"like I'm not saying anything\" followed by \"I'm just saying\", reveals passive aggression: blame is delivered while responsibility is denied. The others' minimal responses, \"oh no\" and Ellie's \"lol\", show how group members signal alignment without committing to a view. The notification \"Seen by Jade, Tom\" turns the platform itself into a dramatic device: the reader realises that Jade has witnessed the conversation, and the simile comparing those words to \"a cough in an exam room\" captures the excruciating silence that follows. The narrator's abandoned drafts, each marked \"(deleted)\", represent the conflict internalised. Finally, after \"Jade left the group\", the replies \"well\" and \"honestly her choice\" close ranks, while Tom's question about \"the chem worksheet\" shows how quickly the group normalises exclusion.",
+     "difficulty": 2
+    },
+    {
+     "marks": 5,
+     "verb": "Synthesise",
+     "demand": "synthesise",
+     "text": "Drawing on the whole text, what does it suggest about how friendship is experienced in the age of group chats?",
+     "skill_tags": [
+      "synthesis",
+      "technology",
+      "friendship",
+      "ending"
+     ],
+     "criteria": [
+      {
+       "mark": 5,
+       "descriptor": "Constructs a perceptive, coherent synthesis of what the text suggests about friendship in the age of group chats, combining insights from across the text(s) into a new understanding supported by well-chosen evidence"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Constructs a thoughtful synthesis of what the text suggests about friendship in the age of group chats, drawing together relevant, analysed evidence"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Draws together ideas about what the text suggests about friendship in the age of group chats with relevant evidence and some explanation"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Discusses relevant ideas about what the text suggests about friendship in the age of group chats without fully combining them"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of the text(s) with limited reference to what the text suggests about friendship in the age of group chats"
+      }
+     ],
+     "checklist": [
+      "Constructs an overall insight (group chats intensify both closeness and cruelty; individual courage remains possible)",
+      "Uses the metaphor of the chat as \"the loudest room I am ever in\"",
+      "Analyses how private life becomes public evidence and how the conflict continues offline (\"nothing has, out loud\")",
+      "Analyses the platform's neutrality (\"the same neutral grey\")",
+      "Uses the ending (the private message and the three dots) to complete the synthesis"
+     ],
+     "next_steps": {
+      "0": "Write one sentence that answers the question for the whole text, not just one scene.",
+      "1": "Support your answer with evidence from the beginning of the story about what the chat means to the narrator.",
+      "2": "Show how the conflict moves between online and offline life, using the school scene.",
+      "3": "Analyse the role of the platform itself (its notifications and its neutral grey) in shaping the friendship.",
+      "4": "Use the ending to combine your ideas into one insight, explaining the image of the three dots."
+     },
+     "model": "The text suggests that group chats intensify both the closeness and the cruelty of friendship, because they turn private feelings into public performances; yet it also suggests that genuine connection remains possible through small, individual acts of courage.\n\nThe chat is first presented as intensely social: \"the loudest room I am ever in\". The metaphor of a room makes the online space feel physical, and the narrator checks it compulsively, even \"under the edge of the plate\". Friendship here is constant and performed.\n\nThis performance enables a quiet cruelty. The screenshot turns Jade's private day into public evidence, and the notification \"Seen by Jade\" means the group's judgement is witnessed by its target. At school the conflict persists offline but unspoken: \"nothing has, out loud.\" The image of phones in pockets \"like small warm stones\" suggests the chat is carried into face-to-face life as a weight, even a weapon.\n\nThe platform's neutrality deepens the harshness. Its message \"Jade left the group\" appears \"in the same neutral grey it uses for everything\", implying that technology flattens the end of a friendship into routine information, and the group returns to chemistry homework.\n\nAgainst this, the narrator moves from the group to the individual. Her private message, \"hey. the beach looked nice.\", followed by \"I'm glad you went\", replaces judgement with acceptance. The final image of the three dots \"like someone deciding whether to come out of the water\" links back to the beach and leaves the outcome open. The text therefore suggests that while group chats can turn friendship into surveillance, the same tools can carry a sincere, one-to-one gesture of care.",
+     "difficulty": 2
+    }
+   ],
+   "length_words": 454
+  },
+  {
+   "key": "optimised-column",
+   "title": "I Have Optimised My Life, and I Would Like It Back",
+   "form": "Media",
+   "complexity": 1,
+   "author": "Original text (HSC Companion)",
+   "headnote": "This is an original satirical opinion column. The columnist, her neighbour and the products mentioned are fictional.",
+   "theme_tags": [
+    "wellbeing",
+    "technology",
+    "consumerism",
+    "community",
+    "satire"
+   ],
+   "body": "At 5.15 every morning, my ring vibrates. It is a smart ring, which means it is smarter than I am, a fact it reminds me of daily. It has measured my sleep and found it wanting. 'Your readiness score is 61,' it tells me, in the tone a vet uses about an elderly dog. 'Consider a gentle day.'\n\nI do not have a gentle day. Nobody who wears a smart ring has ever had a gentle day. Instead I drink 500 millilitres of water with a pinch of Himalayan salt, because a man with very white teeth on the internet told me to, and I stand in front of a lamp that is supposed to imitate the sunrise, which is happening, for free, outside my window.\n\nThen I journal. My journal has prompts. Today's prompt was: What are three things you are grateful for? I wrote: the journal, the lamp, the salt. I believe this is what experts call engagement.\n\nBy 7 am I have meditated (eleven minutes, guided by an app with a voice like warm honey that occasionally asks me to upgrade to Premium), taken my supplements (nine, in a pill organiser with more compartments than my kitchen), and logged my mood on a scale of one to five. I always choose four. I am afraid of what happens if I choose three.\n\nI want to be fair. Some of this works. I sleep a little better. I drink more water. I am, by most measurable standards, a more optimised person than I was three years ago. It is just that I am no longer sure who I optimised me for.\n\nBecause the strange thing about wellness, as it is currently sold, is that it is never finished. There is no moment at which the ring says: You are well now. Go outside. Talk to someone. Eat a sandwich without photographing it. There is only the next metric, the next supplement, the next eleven-minute programme to fix the anxiety caused by the previous eleven-minute programme.\n\nMy grandmother, who lived to ninety-four, did not know what her heart-rate variability was. She knew what time the bowls club opened and which of her neighbours needed soup. She walked to the shops because the shops were where people were. If she had owned a smart ring, I suspect she would have used it to stir her tea.\n\nI am not going to throw the ring away. I paid too much for it, which is itself a symptom. But this morning, when it told me my readiness score was 58, I did something radical. I said, out loud, to a piece of jewellery: 'That's nice, love.' And then I went next door and asked Mrs Okonkwo if she wanted to come for a walk.\n\nShe did. We talked about her tomatoes. I have no idea what it did for my metrics.\n\nIt was, by any measure, the best part of my day.",
+   "pair": null,
+   "questions": [
+    {
+     "marks": 3,
+     "verb": "Explain",
+     "demand": "explain",
+     "text": "Explain how the columnist uses self-deprecating humour to build a relationship with her readers.",
+     "skill_tags": [
+      "humour",
+      "voice",
+      "audience"
+     ],
+     "criteria": [
+      {
+       "mark": 3,
+       "descriptor": "Provides a precise, well-reasoned explanation of how self-deprecating humour builds a relationship with readers, integrating well-chosen textual evidence and making the cause-and-effect relationship explicit"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides a sound explanation of how self-deprecating humour builds a relationship with readers with appropriate textual reference"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of how self-deprecating humour builds a relationship with readers, relying on paraphrase or retelling"
+      }
+     ],
+     "checklist": [
+      "Explains that the columnist includes herself in the satire, so readers laugh with her",
+      "Uses an example of self-mockery (the ring \"smarter than I am\"; the man \"with very white teeth\")",
+      "Explains the comic exaggeration of \"I always choose four. I am afraid of what happens if I choose three.\"",
+      "Explains why this rapport makes the later critique easier to accept"
+     ],
+     "next_steps": {
+      "0": "Explain what self-deprecating humour is and quote one example where the columnist mocks herself.",
+      "1": "Explain the effect on readers who share her habits: why do they feel included rather than lectured?",
+      "2": "Explain how this relationship prepares readers to accept her more serious point later in the column."
+     },
+     "model": "The columnist builds rapport through self-deprecating humour, presenting herself as a willing victim of the trends she mocks, so readers laugh with her rather than feel lectured. She concedes that the ring \"is smarter than I am, a fact it reminds me of daily\", and admits to following advice \"because a man with very white teeth on the internet told me to\", which mocks both the influencer and her own gullibility. Her confession about logging her mood, \"I always choose four. I am afraid of what happens if I choose three.\", exaggerates anxiety for comic effect while admitting a recognisable fear of being judged. Because she includes herself in the satire, readers who share these habits feel invited into the joke, which makes the column's later critique easier to accept.",
+     "difficulty": 1
+    },
+    {
+     "marks": 5,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "Analyse how the column satirises the wellness industry.",
+     "skill_tags": [
+      "satire",
+      "irony",
+      "bathos",
+      "exaggeration"
+     ],
+     "criteria": [
+      {
+       "mark": 5,
+       "descriptor": "Provides a perceptive, sustained analysis of how the column satirises the wellness industry, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Provides a thoughtful analysis of how the column satirises the wellness industry, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a sound analysis of how the column satirises the wellness industry, using relevant evidence with some explanation of effect"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how the column satirises the wellness industry, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how the column satirises the wellness industry or identifies a relevant technique with little explanation of its effect"
+      }
+     ],
+     "checklist": [
+      "Makes a claim about the target of the satire (an industry that manufactures the anxieties it claims to cure)",
+      "Analyses irony (the lamp imitating a sunrise \"for free, outside my window\")",
+      "Analyses bathos and mock jargon (\"the journal, the lamp, the salt\"; \"what experts call engagement\")",
+      "Analyses exaggeration and the circular \"eleven-minute programme\"",
+      "Analyses the personified ring and what it will never say (\"You are well now. Go outside.\")"
+     ],
+     "next_steps": {
+      "0": "State precisely what the column criticises about the wellness industry, not just that it is funny.",
+      "1": "Analyse one example of irony and explain what it exposes about the products.",
+      "2": "Analyse the gratitude-journal joke as bathos: what is being deflated?",
+      "3": "Analyse how exaggeration and repetition present wellness as an endless cycle of consumption.",
+      "4": "Draw your analysis into one argument about the industry's business model, using the ring's imagined words."
+     },
+     "model": "The column satirises the wellness industry as a commercial system that manufactures the anxieties it claims to cure, using irony, bathos and exaggeration to expose its absurdities.\n\nIrony exposes the industry's replacement of the natural with the purchased. The columnist stands before a lamp \"supposed to imitate the sunrise, which is happening, for free, outside my window\". The interrupting phrase \"for free\" punctures the product's value, highlighting the absurdity of buying what nature provides.\n\nBathos deflates the language of self-improvement. The journal's gratitude prompt receives the answer \"the journal, the lamp, the salt\", and her deadpan claim that \"this is what experts call engagement\" mocks industry jargon. The meditation app with \"a voice like warm honey\" that asks her \"to upgrade to Premium\" shows how calm is monetised.\n\nExaggeration reveals the endlessness of consumption: a pill organiser \"with more compartments than my kitchen\", and \"the next eleven-minute programme to fix the anxiety caused by the previous eleven-minute programme\". The repetition makes the cycle sound circular and self-perpetuating, which is the satire's central charge.\n\nThe personified ring sharpens this. It speaks \"in the tone a vet uses about an elderly dog\", a simile that makes the technology condescending, and it never says \"You are well now. Go outside.\" These imagined imperatives reveal what the product will never offer, because a customer who feels well stops paying. The satire thus exposes wellness as an industry whose business model depends on its customers never feeling well enough.",
+     "difficulty": 2
+    },
+    {
+     "marks": 6,
+     "verb": "Evaluate",
+     "demand": "evaluate",
+     "text": "Evaluate how effectively the column balances satire with a sincere message about what wellbeing means.",
+     "skill_tags": [
+      "judgement",
+      "tone",
+      "purpose",
+      "structure"
+     ],
+     "criteria": [
+      {
+       "mark": 6,
+       "descriptor": "Makes a perceptive, well-justified judgement about how effectively the column balances satire with a sincere message, weighing evidence from across the text and analysing how language and form support the judgement"
+      },
+      {
+       "mark": 5,
+       "descriptor": "Makes a clear, reasoned judgement about how effectively the column balances satire with a sincere message, supported by relevant, well-analysed evidence"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Makes a sound judgement about how effectively the column balances satire with a sincere message with relevant evidence and some analysis"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Offers a judgement about how effectively the column balances satire with a sincere message that is asserted more than argued, with some textual support"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Describes how effectively the column balances satire with a sincere message with an implied or unsupported judgement"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Makes a limited or general comment about the text"
+      }
+     ],
+     "checklist": [
+      "Makes a clear judgement about the balance, with reasons",
+      "Analyses the satirical first half and why satire alone would be insufficient",
+      "Analyses the tonal turn (\"I want to be fair. Some of this works.\") and its effect on credibility",
+      "Analyses the grandmother anecdote and how humour prevents sentimentality",
+      "Analyses the ending as dramatised meaning (\"We talked about her tomatoes.\")",
+      "Considers a limitation (for example an individual solution to a structural problem)"
+     ],
+     "next_steps": {
+      "0": "State your judgement in the first sentence, using the words satire, sincere and effectively.",
+      "1": "Support it with one example of the satire and explain what it achieves.",
+      "2": "Analyse the moment where the tone turns, and explain how it changes the reader's trust in the writer.",
+      "3": "Analyse how the grandmother and the walk with Mrs Okonkwo express the sincere message without preaching.",
+      "4": "Consider a limitation of the column's approach and weigh it against its strengths.",
+      "5": "Refine for Band 6: keep the judgement visible in every paragraph and analyse how structure (satire first, sincerity second) shapes the reader's response."
+     },
+     "model": "The column balances satire and sincerity highly effectively, because its humour does not simply mock wellness culture but clears space for a more serious redefinition of wellbeing as connection and attention. The balance works largely because the writer satirises herself as much as the industry, which makes her sincere conclusion credible rather than preachy.\n\nSatire dominates the first half. Exaggeration and irony, such as the ring speaking \"in the tone a vet uses about an elderly dog\" and the gratitude list \"the journal, the lamp, the salt\", expose the absurdity of measured, purchased wellness. If the column stopped here it would be merely entertaining.\n\nThe turn comes with a deliberate shift in tone: \"I want to be fair. Some of this works.\" The short, plain sentences and concession signal sincerity and make the writer seem reasonable rather than cynical. Her admission, \"I am no longer sure who I optimised me for\", converts the joke into a genuine question about whose interests self-optimisation serves.\n\nThe column then offers an alternative model through the grandmother, who knew \"which of her neighbours needed soup\" and walked to the shops \"because the shops were where people were\". The anecdote risks nostalgia, but humour prevents sentimentality: she would have used a smart ring \"to stir her tea\".\n\nThe ending dramatises the message rather than stating it. Telling the ring \"That's nice, love\" and inviting Mrs Okonkwo for a walk enact wellbeing as connection. The understated \"We talked about her tomatoes. I have no idea what it did for my metrics.\" places the unmeasurable above the measurable, and the final line, \"It was, by any measure, the best part of my day\", turns the language of metrics against itself.\n\nOne might argue that a walk with a neighbour is an individual answer to a structural problem. Yet within the genre of a personal column, the blend of self-mockery and sincerity makes the point persuasively and memorably.",
+     "difficulty": 2
+    }
+   ],
+   "length_words": 490
+  },
+  {
+   "key": "driving-lessons",
+   "title": "Driving Lessons",
+   "form": "Memoir",
+   "complexity": 2,
+   "author": "Original text (HSC Companion)",
+   "headnote": "This is an original memoir extract. The narrator and her mother are fictional. Penrith is in western Sydney; the M4 motorway leads towards the Blue Mountains.",
+   "theme_tags": [
+    "mothers and daughters",
+    "divorce",
+    "independence",
+    "grief",
+    "growing up"
+   ],
+   "body": "My mother taught me to drive the year my father left, in a white Corolla with a cracked dashboard and a cassette player that held one tape. The tape was a compilation my father had made years before, labelled DRIVING in his square capitals, and neither of us took it out.\n\nThe first lesson was in the car park of the shopping centre at Penrith on a Sunday evening, after the shops had closed. My mother sat in the passenger seat with her handbag on her lap, clutching it the way you would hold a cat at the vet. She said, 'Mirror. Signal. Look over your shoulder. Your actual shoulder, Rach, not just your eyes.' She said it before I had even started the engine.\n\nI stalled eleven times. I know because she counted, out loud, in a voice that went higher with each number, until at eleven she put her hand over her face and made a sound I didn't recognise. I thought she was crying. She was laughing. She laughed until she had to wipe her eyes with the sleeve of her work cardigan, and then she said, 'Again,' and I did it again, and the car didn't stall, and we rolled very slowly past the trolley bay at about four kilometres an hour, both of us silent, as if we'd crossed a border.\n\nThat was in March. All through that year we drove on Sunday evenings: the car park, then the back streets, then the M4 at dusk with the trucks shouldering past. My mother was not a natural teacher. She stamped on an imaginary brake in the passenger footwell. She gripped the door handle on roundabouts. She said 'Gently' so often that it became a kind of weather. But she never missed a Sunday, even when she had worked a double shift at the hospital, even the week the house went on the market.\n\nWe did not talk about my father. We talked about blind spots and following distances and whether the man in the Commodore had seen us. I understood, even then, that the car was the one place in our lives where the rules were clear, and that she was teaching me them with a kind of fierceness, as if they might stand in for the other rules, the ones that had stopped working.\n\nMy last lesson was the day before my test. I drove us up to the mountains without being asked, the long climb past Glenbrook, and at a lookout near Wentworth Falls I pulled over and turned the engine off. The valley below was full of blue haze, the way it always is in the photographs, and for once it was not a disappointment.\n\nMy mother looked at it for a long time. Then she reached over and pressed eject on the cassette player, and the tape came out with a small mechanical sigh, and she put it in her handbag.\n\n'You can choose the music now,' she said.\n\nI passed my test the next day. On the drive home I drove and she sat beside me, and for the first time all year, her hands were in her lap.",
+   "pair": null,
+   "questions": [
+    {
+     "marks": 2,
+     "verb": "Identify",
+     "demand": "identify",
+     "text": "Identify ONE detail that shows the mother's anxiety during the first lesson, and explain what it suggests.",
+     "skill_tags": [
+      "characterisation",
+      "simile"
+     ],
+     "criteria": [
+      {
+       "mark": 2,
+       "descriptor": "Precisely identifies a detail showing the mother's anxiety and what it suggests and explains its significance with apt, accurately quoted evidence"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Identifies a relevant feature of a detail showing the mother's anxiety and what it suggests with little or no explanation"
+      }
+     ],
+     "checklist": [
+      "Identifies a relevant detail (the handbag simile, the instructions before the engine starts, the rising count)",
+      "Quotes it accurately",
+      "Explains what it suggests about the mother beyond the driving (control, upheaval, protectiveness)"
+     ],
+     "next_steps": {
+      "0": "Quote one precise detail from the first lesson that shows anxiety.",
+      "1": "Explain what the detail suggests about the mother, ideally linking it to the upheaval of that year."
+     },
+     "model": "One detail is that the mother held her handbag \"the way you would hold a cat at the vet\". The simile suggests she is tense and protective, gripping something for comfort in a stressful situation. It also hints that her anxiety is not only about the driving but about the upheaval of the year, as she holds tightly to what she can control.",
+     "difficulty": 1
+    },
+    {
+     "marks": 4,
+     "verb": "Explain",
+     "demand": "explain",
+     "text": "Explain the significance of the rules of driving for the narrator and her mother.",
+     "skill_tags": [
+      "symbol",
+      "ideas",
+      "family"
+     ],
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Provides a precise, well-reasoned explanation of the significance of the rules of driving, integrating well-chosen textual evidence and making the cause-and-effect relationship explicit"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a clear explanation of the significance of the rules of driving, supported by relevant, accurately quoted evidence"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of the significance of the rules of driving, with general or partly relevant reference to the text"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of the significance of the rules of driving, relying on paraphrase or retelling"
+      }
+     ],
+     "checklist": [
+      "Explains the rules as a substitute order during family collapse (\"the one place in our lives where the rules were clear\")",
+      "Explains \"the other rules, the ones that had stopped working\" as the broken expectations of family",
+      "Explains the juxtaposition of not talking about the father with talking about \"blind spots\"",
+      "Explains the mother's precise instruction as protection and love"
+     ],
+     "next_steps": {
+      "0": "State the significance in one sentence: what do the rules stand for in this memoir?",
+      "1": "Explain the narrator's comment about \"the other rules\", and what those rules might be.",
+      "2": "Explain why mother and daughter talk about driving instead of the father, using the sentence about blind spots.",
+      "3": "Explain how the mother's insistence on precise instruction expresses care, linking to a specific moment."
+     },
+     "model": "The rules of driving matter because they offer the narrator and her mother a substitute order during the collapse of their family. The narrator explains that \"the car was the one place in our lives where the rules were clear\", and that her mother taught them \"with a kind of fierceness, as if they might stand in for the other rules, the ones that had stopped working\". The phrase \"the other rules\" implies the unspoken expectations of marriage and family that the father's departure has broken. Their conversations reinforce this displacement: \"We did not talk about my father. We talked about blind spots and following distances\". The juxtaposition suggests that technical talk lets them share time and care without confronting grief directly, and \"blind spots\" quietly hints at what they avoid seeing. The mother's insistence on precision from the first lesson, \"Your actual shoulder, Rach, not just your eyes\", shows her determination to prepare her daughter for a world that has proved unreliable. The rules become a language of love and protection.",
+     "difficulty": 2
+    },
+    {
+     "marks": 6,
+     "verb": "Compare",
+     "demand": "compare",
+     "text": "Compare how the narrator represents her mother in the first lesson and in the final lesson.",
+     "skill_tags": [
+      "comparison within a text",
+      "characterisation",
+      "structure",
+      "symbol"
+     ],
+     "criteria": [
+      {
+       "mark": 6,
+       "descriptor": "Provides a perceptive, integrated comparison of how the mother is represented in the first and final lessons, analysing similarities and differences with well-chosen evidence from both texts"
+      },
+      {
+       "mark": 5,
+       "descriptor": "Provides a thoughtful comparison of how the mother is represented in the first and final lessons, with relevant, analysed evidence from both texts"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Provides a sound comparison of how the mother is represented in the first and final lessons, with relevant evidence from both texts and some explanation"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Discusses both texts in relation to how the mother is represented in the first and final lessons, mostly separately, with some evidence"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Describes one or both texts with limited reference to how the mother is represented in the first and final lessons"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Makes a limited or general comment about one or both texts"
+      }
+     ],
+     "checklist": [
+      "Makes a thesis about the change (from anxious control to calm release) and what it means for both women",
+      "Analyses the first lesson: the handbag simile, the clipped imperatives, the laughter mistaken for crying",
+      "Uses the middle of the memoir to show persistence beneath anxiety (\"she never missed a Sunday\")",
+      "Analyses the final lesson: stillness, the eject gesture and \"a small mechanical sigh\", \"You can choose the music now\"",
+      "Analyses the final image of her hands \"in her lap\" as the completion of the comparison"
+     ],
+     "next_steps": {
+      "0": "Write a thesis that names how the mother is represented at the start and at the end, and what the change suggests.",
+      "1": "Analyse one detail from the first lesson in depth, explaining its technique and effect.",
+      "2": "Analyse one detail from the final lesson and compare it directly with your first-lesson evidence.",
+      "3": "Use the cassette tape to explain what the change means in relation to the father.",
+      "4": "Use the final sentence to complete the comparison, linking the hands back to the handbag.",
+      "5": "Refine for Band 6: integrate the two lessons in each paragraph rather than describing them separately, and conclude with what the change suggests about both women."
+     },
+     "model": "The narrator represents her mother in the first lesson as anxious, controlling and fragile, holding herself together through instruction, but in the final lesson as calm, trusting and ready to let go. The comparison traces a shift from protection to release, and suggests that the mother's recovery is bound up with her daughter's independence.\n\nIn the first lesson the mother's anxiety is conveyed through physical detail. She grips her handbag \"the way you would hold a cat at the vet\", and issues instructions, \"Mirror. Signal. Look over your shoulder.\", before the engine has even started; the clipped imperatives suggest a need for control. Her counting of the stalls \"in a voice that went higher with each number\" builds to a release the narrator misreads: \"I thought she was crying. She was laughing.\" The ambiguity suggests emotions close to the surface.\n\nThrough the year this anxiety persists in comic gestures: she \"stamped on an imaginary brake\" and said \"Gently\" so often \"that it became a kind of weather\". Yet her reliability, never missing a Sunday \"even the week the house went on the market\", reveals determination beneath the nerves.\n\nIn the final lesson she is quiet and still. The narrator drives \"without being asked\", and her mother \"looked at it for a long time\", a contemplative pause that contrasts with the earlier stream of commands. Her decisive gesture, ejecting the father's tape so that it comes out \"with a small mechanical sigh\", symbolises the end of an era; the personified sigh suggests both relief and sadness. Her words, \"You can choose the music now\", hand authority to her daughter and perhaps release her from the past.\n\nThe final image completes the comparison: \"for the first time all year, her hands were in her lap.\" The clutching hands of the first lesson are now at rest. Teaching her daughter to drive has also been the mother's way of steering through grief, and both women arrive together at a new beginning.",
+     "difficulty": 3
+    }
+   ],
+   "length_words": 529
   }
  ]
 }
