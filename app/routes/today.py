@@ -84,9 +84,9 @@ def _bank_health(db: Session, t) -> dict | None:
 @router.get("/api/selection/bank-health")
 def bank_health_api(db: Session = Depends(get_db)):
     """Question bank health per subject, by the selection engine's own rules (selection-17)."""
-    from app.selection.health import bank_health
-
-    return JSONResponse(bank_health(db, _today(db)))
+    health = _bank_health(db, _today(db))
+    return JSONResponse(health if health is not None else {"error": "Bank health is not available yet."},
+                        status_code=200 if health is not None else 503)
 
 
 @router.get("/session/{sid}")
