@@ -1,57 +1,127 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="spread">
-  <div><h1>Progress</h1><p class="lead">Interpretation first, numbers second.</p></div>
+  <div><h1>Progress</h1><p class="lead">Interpretation first, numbers second · {{ r.window_label }}{% if r.since %} (since {{ r.since | fdate('%d %b') }}){% endif %}</p></div>
   <div class="row">
     {% for w, l in [('7','7 days'),('30','30 days'),('60','60 days'),('90','90 days'),('all','All time')] %}
     <a class="btn small {{ 'primary' if r.window == w }}" href="/progress?window={{ w }}">{{ l }}</a>{% endfor %}
     <a class="btn small" href="/progress/week">Weekly review</a><a class="btn small" href="/progress/month">Monthly review</a>
   </div>
 </div>
-<div class="card"><h2>What the data says</h2>{% for line in r.interpretation %}<p>{{ line }}</p>{% endfor %}</div>
 
-<div class="grid g3" style="margin-top:16px">
+<div class="card">
+  <h2>What the data says</h2>
+  <p class="small muted">{{ r.total_attempts }} counted answer{{ 's' if r.total_attempts != 1 }} on {{ r.days_active }} day{{ 's' if r.days_active != 1 }}. Only first attempts count: retries, practice after the answer was shown and answers waiting for a self-mark are left out.</p>
+  {% if r.insights %}
+  {% macro insight_list(items) %}<ul class="an-insights">
+    {% for i in items %}<li class="{{ i.tone }}">{% if i.subject %}<span class="subj-{{ i.subject }} small">{{ SUBJECT_NAMES[i.subject] }}</span><br>{% endif %}{{ i.text }}<span class="an-basis">Based on {{ i.basis }}.</span></li>{% endfor %}
+  </ul>{% endmacro %}
+  {{ insight_list(r.insights[:6]) }}
+  {% if r.insights | length > 6 %}<details class="an-details"><summary>{{ r.insights | length - 6 }} more finding{{ 's' if r.insights | length > 7 }}</summary>{{ insight_list(r.insights[6:]) }}</details>{% endif %}
+  {% else %}<p>{{ r.not_enough or 'No clear pattern in this period: no group of questions differs from another by enough, on enough answers, to say something reliable.' }}</p>{% endif %}
+  {% if r.estimated %}<p class="tiny muted">{{ r.estimated }} of these marks are offline estimates (no AI provider), which are a rough guide only.</p>{% endif %}
+</div>
+
+<div class="grid g2" style="margin-top:16px">
+  <div class="card">
+    <h3>Strongest areas</h3>
+    {% for t in r.strongest %}<div class="spread small an-line"><span><span class="subj-{{ t.subject }}">{{ SUBJECT_SHORT[t.subject] }}</span> · {{ t.name }}</span><span class="pill good">{{ t.pct }}% <span class="an-n">({{ t.n }})</span></span></div>
+    {% else %}<p class="small muted">No topic yet has 3 or more answers averaging 70% or more.</p>{% endfor %}
+  </div>
+  <div class="card">
+    <h3>Weakest areas</h3>
+    {% for t in r.weakest %}<div class="spread small an-line"><span><span class="subj-{{ t.subject }}">{{ SUBJECT_SHORT[t.subject] }}</span> · {{ t.name }}</span><span class="pill bad">{{ t.pct }}% <span class="an-n">({{ t.n }})</span></span></div>
+    {% else %}<p class="small muted">No topic with 3 or more answers averages below 60%.</p>{% endfor %}
+  </div>
+</div>
+
+<h2>By subject</h2>
+<div class="grid g3">
   {% for code, sd in r.subjects.items() %}
   <div class="card">
     <h3 class="subj-{{ code }}">{{ sd.name }}</h3>
-    <div class="grid g3 small">
-      <div><div class="label">Answers</div>{{ sd.attempts }}</div>
-      <div><div class="label">Average</div>{{ sd.average if sd.average is not none else '—' }}{{ '%' if sd.average is not none }}</div>
-      <div><div class="label">Accuracy</div>{{ sd.accuracy if sd.accuracy is not none else '—' }}{{ '%' if sd.accuracy is not none }}</div>
+    {% if not sd.answers %}<p class="small muted">No counted answers in this period.</p>{% else %}
+    <div class="an-metrics small">
+      <div><div class="label">Answers</div>{{ sd.answers }}{% if sd.skipped %} <span class="muted">({{ sd.skipped }} skipped)</span>{% endif %}</div>
+      <div><div class="label">Average mark</div>{{ sd.average }}%</div>
       <div><div class="label">Marks</div>{{ sd.marks }}</div>
-      <div><div class="label">Min / question</div>{{ sd.avg_minutes or '—' }}</div>
-      <div><div class="label">vs estimate</div>{{ (sd.time_ratio ~ '×') if sd.time_ratio else '—' }}</div>
-      {% if sd.avg_words %}<div><div class="label">Avg words</div>{{ sd.avg_words }}</div>{% endif %}
-      <div><div class="label">Skipped</div>{{ sd.skipped }}</div>
+      {% if sd.accuracy is not none %}<div><div class="label">Accuracy</div>{{ sd.accuracy }}% <span class="muted">of {{ sd.accuracy_n }} auto-marked</span></div>{% endif %}
+      <div><div class="label">Min / question</div>{{ sd.avg_minutes if sd.avg_minutes is not none else '—' }}</div>
+      <div><div class="label">vs exam time</div>{{ (sd.time_ratio ~ '×') if sd.time_ratio is not none else '—' }}{% if sd.within_time is not none %} <span class="muted">({{ sd.within_time }}% within)</span>{% endif %}</div>
+      {% if sd.avg_words %}<div><div class="label">Words / response</div>{{ sd.avg_words }}{% if sd.model_words %} <span class="muted">(models {{ sd.model_words }})</span>{% endif %}</div>{% endif %}
+      {% if sd.revision_n %}<div><div class="label">Questions met again</div>{{ sd.revision }}% <span class="muted">({{ sd.revision_n }}; first time {{ sd.revision_first if sd.revision_first is not none else '—' }}%)</span></div>{% endif %}
     </div>
-    {% if sd.difficulty %}<h3>By difficulty</h3>
-    {% for d, v in sd.difficulty.items() %}<div class="spread small"><span>{{ ['','Foundation','HSC-standard','Challenging'][d] }}</span><span>{{ v[0] }}% ({{ v[1] }})</span></div>{% endfor %}{% endif %}
-    {% if sd.topics %}<h3>By topic (weakest first)</h3>
-    {% for t, pct, n in sd.topics[:8] %}<div class="spread small"><span>{{ t }}</span><span>{{ pct }}% ({{ n }})</span></div>{% endfor %}{% endif %}
-    {% if sd.outcomes %}<h3>By syllabus area</h3>
-    {% for t, pct, n in sd.outcomes %}<div class="spread small"><span>{{ t }}</span><span>{{ pct }}%</span></div>{% endfor %}{% endif %}
+    {% if sd.estimated %}<p class="tiny muted">{{ sd.estimated }} mark{{ 's' if sd.estimated != 1 }} are offline estimates.</p>{% endif %}
+    <h4>By difficulty</h4>
+    {% for row in sd.difficulty %}<div class="spread small"><span>{{ row.label }}</span><span>{{ row.pct }}% <span class="muted">({{ row.n }})</span></span></div>{% endfor %}
+    <h4>By topic (weakest first)</h4>
+    {% for row in sd.topics[:8] %}<div class="spread small"><span>{{ row.label }}</span><span>{{ row.pct }}% <span class="muted">({{ row.n }})</span></span></div>{% endfor %}
+    {% if sd.topics | length > 8 %}<p class="tiny muted">and {{ sd.topics | length - 8 }} more</p>{% endif %}
+    <h4>By syllabus area</h4>
+    {% for row in sd.areas %}<div class="spread small"><span>{{ row.label }}</span><span>{{ row.pct }}% <span class="muted">({{ row.n }})</span></span></div>{% endfor %}
+    {% for f in sd.formats %}<h4>{{ f.title }}</h4>
+    {% for row in f.rows %}<div class="spread small"><span>{{ row.label }}</span><span>{{ row.pct }}% <span class="muted">({{ row.n }})</span></span></div>{% endfor %}{% endfor %}
+    {% if sd.errors %}<h4>Most frequent errors</h4>
+    {% for c, n in sd.errors %}<div class="spread small"><span>{{ c }}</span><span>{{ n }}×</span></div>{% endfor %}{% endif %}
+    {% endif %}
   </div>
   {% endfor %}
 </div>
 
 <div class="grid g2" style="margin-top:16px">
-  <div class="card"><h3>Revision performance</h3><p>{% if r.revision_performance is not none %}{{ r.revision_performance }}% on questions you had seen before ({{ r.revision_n }} answers).{% else %}<span class="muted">No repeated questions yet.</span>{% endif %}</p>
-    <h3>Repeated errors</h3>{% for (subj, cat), n in r.repeated_errors %}<div class="spread small"><span><span class="subj-{{ subj }}">{{ SUBJECT_SHORT[subj] }}</span> · {{ cat }}</span><span>{{ n }}×</span></div>{% else %}<p class="small muted">None recorded.</p>{% endfor %}
+  <div class="card">
+    <h3>Revision performance</h3>
+    <p>{% if r.revision_n %}{{ r.revision_performance }}% on questions you had answered on an earlier day ({{ r.revision_n }} answer{{ 's' if r.revision_n != 1 }}).{% else %}<span class="muted">No question has come back yet in this period.</span>{% endif %}</p>
+    <h3>Repeated errors</h3>
+    {% for subj, cat, n, where in r.repeated_errors %}<div class="spread small an-line"><span><span class="subj-{{ subj }}">{{ SUBJECT_SHORT[subj] }}</span> · {{ cat }}{% if where %}<br><span class="tiny muted">mostly in {{ where | join('; ') }}</span>{% endif %}</span><span>{{ n }}×</span></div>
+    {% else %}<p class="small muted">No error type recorded more than once in this period.</p>{% endfor %}
   </div>
-  <div class="card" id="readiness"><h3>HSC READINESS: {{ readiness.score }}/100</h3>
-    <p class="small muted">{{ readiness.explanation }}</p>
-    <table>{% for c in readiness.components %}<tr><td class="small">{{ c.label }}</td><td class="small">{{ c.value if c.value is not none else 'not enough data' }}{{ '%' if c.value is not none }}</td><td class="small muted">weight {{ c.weight }}%</td></tr>{% endfor %}</table>
+  <div class="card" id="readiness">
+    <h3>HSC readiness</h3>
+    <div class="an-readiness">
+      {% if readiness.enough %}<div class="stat">{{ readiness.display }}<span class="an-unit">/100</span></div><div><span class="pill">{{ readiness.band }}</span></div>
+      {% else %}<div class="stat an-unit-stat">Not enough data yet</div>{% endif %}
+    </div>
+    {% for line in readiness.summary %}<p class="small">{{ line }}</p>{% endfor %}
+    {% if readiness.enough %}<p class="small"><strong>Coverage</strong> {{ readiness.coverage }}% × <strong>quality</strong> {{ readiness.quality }}%</p>{% endif %}
+    <div class="an-scroll"><table class="an-table small">
+      <tr><th>Quality factor</th><th class="num">Result</th><th class="num">Answers</th><th class="num">Weight</th></tr>
+      {% for c in readiness.components %}<tr><td>{{ c.label }}{% if c.detail %}<br><span class="tiny muted">{{ c.detail }}</span>{% endif %}</td>
+        <td class="num">{{ (c.value ~ '%') if c.value is not none else 'not yet' }}</td><td class="num">{{ c.n }}{% if c.value is none %} <span class="tiny muted">of {{ c.min_n }}</span>{% endif %}</td><td class="num">{{ c.weight }}%</td></tr>{% endfor %}
+    </table></div>
+    <div class="an-scroll"><table class="an-table small" style="margin-top:10px">
+      <tr><th>Subject</th><th class="num">Course coverage</th><th class="num">Topics assessed</th><th class="num">Last 60 days</th></tr>
+      {% for code, s in readiness.subjects.items() %}<tr><td class="subj-{{ code }}">{{ SUBJECT_SHORT[code] }}</td><td class="num">{{ s.coverage }}%</td><td class="num">{{ s.assessed }} of {{ s.total }}</td><td class="num">{{ (s.recent ~ '%') if s.recent is not none else '—' }}</td></tr>{% endfor %}
+    </table></div>
+    <details class="an-details" style="margin-top:10px"><summary>How this is calculated</summary><p class="small muted">{{ readiness.explanation }}</p></details>
   </div>
 </div>
 
+<h2>Syllabus coverage</h2>
+<div class="grid g3">
+  {% for code, s in r.syllabus.items() %}
+  <div class="card">
+    <h3 class="subj-{{ code }}">{{ SUBJECT_SHORT[code] }}</h3>
+    <p class="small">{{ s.assessed }} of {{ s.unlocked }} unlocked topic{{ 's' if s.unlocked != 1 }} assessed{% if s.locked %}; {{ s.locked }} still to be taught{% endif %}. Whole course: {{ s.assessed }} of {{ s.total }} topics ({{ s.pct_course }}%).</p>
+    {% if s.not_assessed %}<p class="small"><span class="label">Not yet assessed</span><br>{{ s.not_assessed | join(' · ') }}</p>
+    {% else %}<p class="small muted">Every unlocked topic has at least one counted answer.</p>{% endif %}
+  </div>
+  {% endfor %}
+</div>
+
 <h2>Historical question coverage (2027 syllabus)</h2>
-<p class="small muted">2027 is the first HSC for the new Mathematics Advanced and English Advanced syllabuses, so genuine past-paper coverage is incomplete. Where coverage is weak the app uses official sample material first, then directly transferable historical questions, then clearly labelled generated questions.</p>
-<div class="card"><table>
-  <tr><th>Subject</th><th>Syllabus area</th><th>Historical / NESA sample</th><th>Generated / adapted / trial</th><th>Coverage</th></tr>
-  {% for c in r.coverage %}<tr><td class="subj-{{ c.subject }}">{{ SUBJECT_SHORT[c.subject] }}</td><td>{{ c.topic }}{% if c.kind == 'year11' %} <span class="tiny muted">(Year 11)</span>{% endif %}</td><td>{{ c.historical }}</td><td>{{ c.generated }}</td><td><span class="pill {{ c.level }}">{{ c.level }}</span></td></tr>{% endfor %}
+<p class="small muted">2027 is the first HSC for the new Mathematics Advanced and English Advanced syllabuses, so genuine past-paper coverage is incomplete. The score counts unique source questions (parts of one question count once): official 2027 sample material 1, directly transferable historical questions 0.8, partially relevant ones 0.4, adapted copies 0.3. GOOD from 12, MODERATE from 4. Generated questions are counted separately and never as past HSC questions. Where coverage is weak the app uses official sample material first, then directly transferable historical questions, then clearly labelled generated questions.</p>
+<div class="card an-scroll"><table class="an-table small">
+  <tr><th>Subject</th><th>Syllabus area</th><th class="num">Source questions</th><th class="num">Weighted</th><th class="num">Generated</th><th>Coverage</th></tr>
+  {% for c in r.coverage %}<tr>
+    <td class="subj-{{ c.subject }}">{{ SUBJECT_SHORT[c.subject] }}</td>
+    <td>{{ c.topic }}{% if c.year11 %} <span class="tiny muted">(Year 11)</span>{% endif %}
+      {% if c.actions %}<details class="an-details"><summary>What to do</summary><ol class="an-sub">{% for a in c.actions %}<li><a href="{{ a.href }}">{{ a.text }}</a></li>{% endfor %}</ol></details>{% endif %}
+      {% if c.subtopics and c.questions %}<details class="an-details"><summary>By subtopic</summary><ul class="an-sub">{% for s in c.subtopics %}<li>{{ s.name }}: {{ s.score }}</li>{% endfor %}</ul></details>{% endif %}</td>
+    <td class="num">{{ c.questions }}{% if c.pending %} <span class="tiny muted">(+{{ c.pending }} awaiting review)</span>{% endif %}</td>
+    <td class="num">{{ c.score }}</td><td class="num">{{ c.generated }}</td>
+    <td><span class="pill {{ c.level }}">{{ c.level }}</span></td></tr>{% endfor %}
 </table></div>
 
-<h2>Not yet assessed</h2>
-<p class="small">{{ r.not_assessed | join(' · ') or 'Everything unlocked has been assessed at least once.' }}</p>
-<p><a class="btn small" href="/export/attempts.csv">Export all answers (CSV)</a></p>
+<p style="margin-top:16px"><a class="btn small" href="/export/attempts.csv">Export all answers (CSV)</a></p>
 {% endblock %}

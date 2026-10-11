@@ -132,8 +132,11 @@ def bank_health(db: Session, settings: dict, subject_codes: dict[int, str], toda
             types = defaultdict(int)
             for r in fresh:
                 types[r.question_type] += 1
-            label = {"mcq": "multiple choice", "short_answer": "short answer", "stimulus": "stimulus-based", "extended": "extended response"}
-            d["lines"].append("Unseen: " + (", ".join(f"{n} {label.get(t, t)}" for t, n in sorted(types.items())) or "none") + ".")
+            label = {"mcq": ("multiple-choice question", "multiple-choice questions"), "short_answer": ("short answer", "short answers"),
+                     "stimulus": ("stimulus-based question", "stimulus-based questions"),
+                     "extended": ("extended response", "extended responses")}
+            parts = [f"{n} {label.get(t, (t, t))[0 if n == 1 else 1]}" for t, n in sorted(types.items())]
+            d["lines"].append("Not yet seen: " + (", ".join(parts) or "none") + ".")
             if not types.get("extended"):
                 d["lines"].append("No unseen extended responses: the weekly extended response will repeat.")
         d["level"] = _level(d["days"])
@@ -222,12 +225,19 @@ def historical_coverage(db: Session, include_inactive_options: bool = False) -> 
                for i in sorted((x for x in items.values() if x.topic_id == t.id and x.active), key=lambda x: x.position)]
         actions = []
         if level in ("LIMITED", "NONE"):
-            actions = [
-                {"text": "Import the official NESA 2027 sample material", "href": "/admin/import"},
-                {"text": f"Review transferable historical questions ({pending.get(t.id, 0)} waiting)", "href": "/admin/review"},
-                {"text": f"Practise clearly labelled generated questions ({gen.get(t.id, 0)} available)",
-                 "href": f"/questions?subject={subj}&topic={t.id}&origin=GENERATED"},
-            ]
+            # spec 45 order: official 2027 sample material, then transferable historical questions, then generated
+            actions = [{"text": "Import the official NESA 2027 sample material for this area", "href": "/admin/import"}]
+            if pending.get(t.id):
+                actions.append({"text": f"Review the {pending[t.id]} imported historical question{'s' if pending[t.id] != 1 else ''} "
+                                        "waiting for approval", "href": "/admin/review"})
+            else:
+                actions.append({"text": "Import past HSC papers and keep the directly transferable questions", "href": "/admin/import"})
+            if gen.get(t.id):
+                actions.append({"text": f"Practise the {gen[t.id]} clearly labelled generated question{'s' if gen[t.id] != 1 else ''}",
+                                "href": f"/questions?subject={subj}&topic={t.id}&origin=GENERATED"})
+            else:
+                actions.append({"text": "No generated questions yet: an AI provider can create labelled, syllabus-aligned ones",
+                                "href": "/settings"})
         out.append({"subject": subj, "topic_id": t.id, "topic": t.name, "kind": t.kind, "year11": t.kind == "year11",
                     "score": s, "questions": len(unique.get(t.id, ())), "generated": gen.get(t.id, 0), "pending": pending.get(t.id, 0),
                     "level": level, "subtopics": sub, "actions": actions})

@@ -30,6 +30,7 @@ from app.models import (
     RevisionQueue,
     SessionQuestion,
 )
+from app.models.common import DAILY_COUNTS
 from app.services.analytics_bank import bank_health, historical_coverage
 from app.services.analytics_data import DIFFICULTY_NAMES, SUBJECT_NAMES, SUBJECT_SHORT, Dataset, Fact, mean, pct
 from app.services.analytics_insights import insights, not_enough_message
@@ -806,4 +807,5 @@ def dashboard(db: Session) -> dict:
         "missed": missed, "unfinished": unfinished, "readiness": readiness(db, ds), "bank": bank_health(db, ds.settings, ds.subject_codes, today),
         "insight": top_insight[0].line if top_insight else None, "answers_total": len(ds.facts),
         "next_study_day": _next_study_day(today + timedelta(days=1), weekdays),
+        "daily_counts": dict(DAILY_COUNTS),
     }
