@@ -1,0 +1,36 @@
+{#- Real-time swap of an unanswered question (owner: swap).
+    Needs: s (the session), sq (the session row), swap (sessions.swap_controls(db, s)[sq.id]).
+    Optional: back ('session' | 'question', default 'question'), swap_notice (the SessionSwap just made).
+    Works without JavaScript (a plain form post); session.js turns it into a request that does
+    not leave the page until the replacement is known. -#}
+{%- set swap_back = back if back in ('session', 'question') else 'question' -%}
+{%- if swap_notice and swap_back == 'question' %}
+<div class="notice {{ 'warn' if swap_notice.outcome == 'removed' else 'good' }} sel-swap-note" id="swap-note" role="status">{{ swap_notice.message }}</div>
+{%- endif %}
+{%- if s and sq and swap and swap.can and (not swap.is_set or swap.lead or swap_back == 'question') %}
+<details class="sel-swap no-print" data-swap>
+  <summary class="btn small" title="Replace this {{ 'reading set' if swap.is_set else 'question' }} now">{{ 'Swap this passage' if swap.is_set else 'Swap' }}</summary>
+  <form class="sel-swap-form" method="post" action="/session/{{ s.id }}/q/{{ sq.position }}/swap" data-swap-form>
+    <input type="hidden" name="back" value="{{ swap_back }}">
+    <p class="small muted">
+      {%- if swap.is_set %} The whole reading set ({{ swap.label }}) is replaced by an unread passage of a similar length (about {{ swap.minutes }} min including reading).
+      {%- else %} Replaced straight away by another question of a similar size (about {{ swap.marks }} mark{{ 's' if swap.marks != 1 }}, {{ swap.minutes }} min) from topics you have started.
+      {%- endif %} Nothing is recorded for the question you swap out.{% if swap.draft %} Your draft answer will be discarded.{% endif %}</p>
+    <div class="sel-swap-choices">
+      <div class="sel-swap-choice">
+        <button class="btn small" type="submit" name="reason" value="not_learnt">{{ "Swap — I haven't studied this kind of text yet" if swap.is_set else "Swap — I haven't learnt this yet" }}</button>
+        {%- if swap.lock %}
+        <label class="check small"><input type="checkbox" name="lock" value="1" {{ 'checked' if swap.lock.default }}> Also mark {{ swap.lock.name }} as not taught yet</label>
+        {%- endif %}
+      </div>
+      <div class="sel-swap-choice">
+        <button class="btn small" type="submit" name="reason" value="different">Swap — give me a different one</button>
+      </div>
+    </div>
+    {%- if swap.lock %}
+    <p class="tiny muted">"Not taught yet" applies only with "I haven't learnt this yet": sessions then leave {{ swap.lock.name }} out until you change it on the Learning plan.</p>
+    {%- endif %}
+    <p class="small sel-swap-result" data-swap-result role="status" hidden></p>
+  </form>
+</details>
+{%- endif %}

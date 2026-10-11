@@ -90,7 +90,7 @@ def bank_health_api(db: Session = Depends(get_db)):
 
 
 @router.get("/session/{sid}")
-def session_view(sid: int, request: Request, db: Session = Depends(get_db)):
+def session_view(sid: int, request: Request, swapped: int = 0, db: Session = Depends(get_db)):
     sess = _session_or_404(db, sid)
     if not sess.questions and sess.status in ("missed", "skipped"):
         return RedirectResponse("/", status_code=303)
@@ -105,7 +105,9 @@ def session_view(sid: int, request: Request, db: Session = Depends(get_db)):
     answered = any(q.status in ("submitted", "skipped") for q in sess.questions)
     return render(request, "session.html", s=sess, p=sessions.progress(sess), elapsed=sessions.elapsed(sess), firsts=firsts,
                   can_rebuild=not answered and sess.status not in ("completed", "closed"), show_why=st.get(db, "show_why_these_questions"),
-                  is_past=sess.session_date < t, idle_minutes=st.get(db, "timer_idle_minutes") or 10)
+                  is_past=sess.session_date < t, idle_minutes=st.get(db, "timer_idle_minutes") or 10,
+                  swap_controls=sessions.swap_controls(db, sess), swaps=sessions.swaps_for(db, sess),
+                  swap_notice=_swap_notice(db, sess, swapped))
 
 
 @router.post("/session/{sid}/timer")
@@ -152,7 +154,7 @@ def session_mode(sid: int, mode: str = Form(...), db: Session = Depends(get_db))
 
 
 @router.get("/session/{sid}/q/{pos}")
-def question_page(sid: int, pos: int, request: Request, retry: int = 0, db: Session = Depends(get_db)):
+def question_page(sid: int, pos: int, request: Request, retry: int = 0, swapped: int = 0, db: Session = Depends(get_db)):
     sess = _session_or_404(db, sid)
     sq = get_sq(db, sid, pos)
     if sess.status not in ("completed", "closed") and sess.session_date >= _today(db):
@@ -165,7 +167,9 @@ def question_page(sid: int, pos: int, request: Request, retry: int = 0, db: Sess
             sq.draft_text = prev.response_text  # a rewrite task starts from the earlier answer (spec 25)
     db.commit()
     ctx = question_context(db, sq.question, sq, bool(retry))
-    return render(request, "question.html", s=sess, total=len(sess.questions), pos=pos, base=f"/session/{sid}/q/{pos}", **ctx)
+    swap = sessions.swap_controls(db, sess).get(sq.id)  # the _swap_control.html partial (v2-swap)
+    return render(request, "question.html", s=sess, total=len(sess.questions), pos=pos, base=f"/session/{sid}/q/{pos}",
+                  swap=swap, swap_notice=_swap_notice(db, sess, swapped), **ctx)
 
 
 @router.post("/session/{sid}/q/{pos}/draft")
@@ -226,3 +230,64 @@ def missed(sid: str, action: str, db: Session = Depends(get_db)):
         sessions.skip_missed(db, sess)
     db.commit()
     return RedirectResponse("/", status_code=303)
+
+
+# ------------------------------------------------------------------ swap (v2-swap) ---
+def _swap_notice(db: Session, sess: DailySession, swap_id: int):
+    """The swap just made (shown once after the redirect of the no-JS form)."""
+    if not swap_id:
+        return None
+    from app.models import SessionSwap
+
+    rec = db.get(SessionSwap, swap_id)
+    return rec if rec is not None and rec.session_id == sess.id else None
+
+
+def _swap_payload(sess: DailySession, rec, back: str, pos: int) -> dict:
+    details = rec.details or {}
+    to_pos = details.get("to_positions") or []
+    if back == "question" and rec.outcome == "replaced" and to_pos:
+        redirect = f"/session/{sess.id}/q/{to_pos[0]}?swapped={rec.id}"
+    else:
+        redirect = f"/session/{sess.id}?swapped={rec.id}#swap-note"
+    rows = {x.position: x for x in sess.questions}
+    questions = []
+    for p in to_pos:
+        x = rows.get(p)
+        if x is None:
+            continue
+        q = x.question
+        questions.append({"position": p, "question_id": q.id, "subject": x.subject_code, "marks": q.marks,
+                          "minutes": round(float(q.estimated_minutes or 0), 1), "reason": x.reason,
+                          "href": f"/session/{sess.id}/q/{p}"})
+    p = sessions.progress(sess)
+    return {"ok": True, "swap_id": rec.id, "outcome": rec.outcome, "reason": rec.reason, "message": rec.message,
+            "from_positions": details.get("from_positions") or [], "positions": to_pos, "questions": questions,
+            "locked_plan_item_id": rec.locked_plan_item_id, "expected_minutes": sess.expected_minutes,
+            "remaining_minutes": p["remaining_minutes"], "total": p["n_total"], "redirect": redirect}
+
+
+@router.post("/session/{sid}/q/{pos}/swap")
+def swap_question(sid: int, pos: int, request: Request, reason: str = Form(""), lock: str = Form(""), back: str = Form("session"),
+                  db: Session = Depends(get_db)):
+    """Swap an unanswered question ("I haven't learnt this yet" / "give me a different one").
+    JSON for the page script; a redirect with the result for the plain form (no JavaScript)."""
+    wants_json = _wants_json(request)
+    try:
+        if reason not in ("not_learnt", "different"):
+            raise ValueError("Choose why you want to swap this question: not learnt yet, or a different one.")
+        sess = _session_or_404(db, sid)
+        sq = get_sq(db, sid, pos)
+        rec = sessions.swap_question(db, sess, sq, reason, lock=lock.lower() in ("1", "on", "true", "yes"))
+    except ValueError as exc:
+        db.rollback()
+        if wants_json:
+            status = 409 if isinstance(exc, sessions.SwapRefused) else 400
+            return JSONResponse({"ok": False, "error": str(exc)}, status_code=status)
+        raise
+    db.commit()
+    db.refresh(sess)
+    payload = _swap_payload(sess, rec, back if back in ("session", "question") else "session", pos)
+    if wants_json:
+        return JSONResponse(payload)
+    return RedirectResponse(payload["redirect"], status_code=303)
