@@ -331,7 +331,17 @@ def test_real_v2_content_loads_cleanly(db):
         assert db.get(LearningPlanItem, row.plan_item_id).code == q["sub_area"]
         if q["type"] == "stimulus":
             assert row.stimulus_id
+        sol = row.solution or {}
+        for k in ("option_rationales", "required_elements", "criteria", "evidence_titles"):
+            if q.get(k):
+                assert sol.get(k), (k, q["text"][:60])
     assert st.get(db, "legal_seeded:legal_v2.json")
+    if (SEED_DIR / "legal_evidence_v2.json").exists():
+        from app.services import citations as cit
+
+        bank = cit.Bank.from_db(db)
+        items = json.loads((SEED_DIR / "legal_evidence_v2.json").read_text(encoding="utf-8"))["items"]
+        assert all(bank.get(it["title"]) is not None for it in items)
 
 
 # ------------------------------------------------------------------ Learning plan page (routes) ---

@@ -150,3 +150,24 @@ def test_redact_removes_only_authorities_not_in_bank():
     out, removed = redact(text, resolve(text, BANK, TODAY))
     assert removed == ["R v Fabricated (2024)"]
     assert "Bail Act 2013 (NSW)" in out and "[authority removed: not in your evidence bank]" in out
+
+
+# ------------------------------------------------------------------ recovery of slightly-off spans ---
+
+@pytest.mark.parametrize("text, title", [
+    ("As the High Court in RP v The Queen [2016] HCA 53 held, doli incapax must be rebutted.", "RP v The Queen [2016] HCA 53"),
+    ("The Convention on the Rights of the Child (1989), Article 40, requires a separate system.", "Convention on the Rights of the Child (1989)"),
+    ("Victoria's Charter of Human Rights and Responsibilities Act 2006 (Vic)'s dialogue model is weak.",
+     "Charter of Human Rights and Responsibilities Act 2006 (Vic)"),
+])
+def test_recovered_citations_resolve_to_the_bank(text, title):
+    rs = [r for r in unique(resolve(text, BANK, TODAY)) if r.citation.kind != "statistic"]
+    assert rs and all(r.status != N for r in rs), [(r.citation.name, r.status) for r in rs]
+    assert any(r.item and r.item.title == title for r in rs)
+
+
+def test_recovery_never_turns_a_protocol_into_its_convention_or_admits_a_wrong_year():
+    rs = unique(resolve("The Optional Protocol to the Convention on the Rights of the Child applies.", BANK, TODAY))
+    assert not any(r.item and r.item.title.startswith("Convention on the Rights of the Child") for r in rs)
+    rs = unique(resolve("The Bail Act 1999 (NSW) applies.", BANK, TODAY))
+    assert all(r.status == N for r in rs)

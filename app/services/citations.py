@@ -68,6 +68,7 @@ STOP_WORDS = {
     "Here", "There", "It", "Its", "On", "At", "To", "Of", "Into", "Through", "During", "Within", "Both", "Each", "Every",
     "Similarly", "Notably", "Importantly", "Recently", "Previously", "Today", "Currently", "First", "Second", "Third", "Finally",
     "Firstly", "Secondly", "Thirdly", "Lastly", "Ultimately", "A", "An", "Case", "Cases", "Recent", "Landmark", "Example",
+    "Together", "Alongside", "Including", "Such", "Then", "Later", "Earlier", "Meanwhile",
 }
 CONNECTORS = {"of", "and", "the", "for", "on", "in", "to", "with", "against", "relating", "&", "into"}
 _ROYAL = {"the queen": "r", "the king": "r", "regina": "r", "rex": "r", "r": "r", "queen": "r", "king": "r"}
@@ -691,9 +692,48 @@ def resolve_citation(c: Citation, bank: Bank, today: date, settings: dict | None
     return Resolution(c, "not_in_bank", None, note, near=near, possibly_outdated=outdated)
 
 
+def _recover(r: Resolution, text: str | None, bank: Bank, today: date, settings: dict | None = None) -> Resolution:
+    """Second chance for a 'not in bank' citation whose parsed span is slightly off (a lead-in such
+    as 'the High Court in', a possessive, a trailing '(UN Human Rights Committee, 1994) the
+    Committee', or a long treaty title cut at a comma): it resolves when a bank title or alias
+    appears inside the parsed name, or when a bank title is written in full from the same start.
+    A citation that contradicts a bank item (year, number, jurisdiction) is never recovered."""
+    c = r.citation
+    if r.status != "not_in_bank" or r.near is not None:
+        return r
+    name = re.sub(r"['’]s\b", "", c.name)
+    padded = f" {_norm(name)} "
+    hit = None
+    for it in bank.items:
+        for k in (k for k in it.keys if len(k.split()) >= 2 or len(k) >= 6):
+            i = padded.find(f" {k} ")
+            # "Optional Protocol to the Convention on ..." is a different instrument from the Convention
+            if i >= 0 and not re.search(r"\b(?:protocol|amendment|amending|regulations?|rules)\b", padded[:i]):
+                hit = it
+                break
+        if hit is not None:
+            break
+    if hit is None and text:
+        ahead = " " + _norm(text[c.start:c.start + 400]) + " "
+        for it in bank.items:
+            if any(len(k.split()) >= 3 and ahead.startswith(f" {k} ") for k in it.keys):
+                hit = it
+                break
+    if hit is None:
+        return r
+    if c.year and hit.year and c.year != hit.year and hit.item_type == "legislation":
+        return r
+    st = item_status(hit, today, settings)
+    note = ""
+    if st == "outdated":
+        note = f"{hit.title} is recorded in your evidence bank as {hit.status}" + (f"; it was replaced by {hit.superseded_by}." if hit.superseded_by else ".")
+    return Resolution(c, st, hit, note)
+
+
 def resolve(text_or_citations: str | list[Citation], bank: Bank, today: date, settings: dict | None = None) -> list[Resolution]:
+    text = text_or_citations if isinstance(text_or_citations, str) else None
     cites = parse_citations(text_or_citations, bank.alias_acronyms()) if isinstance(text_or_citations, str) else text_or_citations
-    authorities = [resolve_citation(c, bank, today, settings) for c in cites if c.kind != "statistic"]
+    authorities = [_recover(resolve_citation(c, bank, today, settings), text, bank, today, settings) for c in cites if c.kind != "statistic"]
     out = list(authorities)
     for c in cites:
         if c.kind != "statistic":
