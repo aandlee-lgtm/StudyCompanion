@@ -1746,6 +1746,448 @@
    ],
    "model_note": "This model uses child soldiers as its contemporary issue because the evidence bank already has items for it (not yet verified); it is not a prediction of the issue you will study. If your class studies a different issue, keep the structure (name the issue, outline each relevant instrument and what it requires, then give an enforcement mechanism or example) and replace the examples with evidence-bank items for your issue.",
    "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-NATURE",
+   "type": "stimulus",
+   "marks": 5,
+   "difficulty": 2,
+   "verb": "Explain",
+   "text": "With reference to the hypothetical scenario, explain whether the elements of a criminal offence could be established against Jake.",
+   "stimulus": {
+    "title": "Hypothetical scenario: the shove outside the cafe",
+    "kind": "hypothetical scenario",
+    "body": "This scenario is invented for practice. It does not describe real people or events.\n\nLate one night, Jake (aged 24) argues with Chris outside a cafe. Witnesses say Chris swung a punch at Jake, who stepped back and then shoved Chris hard in the chest with both hands. Chris fell backwards, hit his head on the kerb and was taken to hospital with a fractured skull. He has since recovered.\n\nJake tells police: 'I just wanted him to back off. He'd already thrown a punch and I thought he was going to hit me again. I never meant for him to get hurt like that.'\n\nJake has been charged with a serious assault offence under the Crimes Act 1900 (NSW).",
+    "evidence_titles": [
+     "Crimes Act 1900 (NSW)"
+    ]
+   },
+   "criteria": [
+    {
+     "mark": 5,
+     "descriptor": "Applies the elements of crime (actus reus, mens rea, causation) and the burden and standard of proof accurately to the scenario, and explains the relevance of self-defence"
+    },
+    {
+     "mark": 4,
+     "descriptor": "Explains the elements of crime with clear reference to the scenario"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Describes the elements of crime with some reference to the scenario"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Outlines actus reus and/or mens rea"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Provides some relevant information"
+    }
+   ],
+   "required_elements": [
+    "Burden and standard of proof on the prosecution",
+    "Actus reus: the voluntary shove and the resulting injury",
+    "Causation: the shove as a substantial and operating cause of the fracture",
+    "Mens rea: intention or recklessness, using Jake's statement",
+    "Self-defence: belief that the conduct was necessary and a reasonable response; the prosecution must disprove it"
+   ],
+   "model": "To convict Jake, the prosecution must prove each element of the offence beyond reasonable doubt; Jake does not have to prove his innocence, as Woolmington v DPP [1935] AC 462 established.\n\nThe actus reus is the physical element. Jake's voluntary act of shoving Chris in the chest is an application of force, and the prosecution would rely on the witnesses who saw it. It must also prove causation: that the shove was a substantial and operating cause of Chris's fractured skull. Although the injury happened when Chris hit the kerb, the fall was a direct result of the shove, so causation would probably be established.\n\nThe mens rea is the mental element. Jake's statement that he 'just wanted him to back off' suggests he intended to push Chris, but not to cause serious injury. Whether the mental element is proved depends on what the particular offence under the Crimes Act 1900 (NSW) requires, such as intention or recklessness as to a certain kind of harm, so his claim that he 'never meant' the injury is relevant but not necessarily decisive.\n\nThe key issue is self-defence. Chris had already thrown a punch, and Jake says he feared another blow. In NSW a person is not criminally responsible if they believed their conduct was necessary to defend themselves and it was a reasonable response in the circumstances as they perceived them. Once there is evidence of self-defence, the prosecution must prove beyond reasonable doubt that Jake was not acting in self-defence. Stepping back and pushing, rather than striking, may be seen as a reasonable response to a punch, which would make a conviction difficult.\n\nOverall, the actus reus and causation are likely to be proved, but self-defence creates a real doubt about whether Jake is criminally responsible.",
+   "evidence_titles": [
+    "Woolmington v DPP [1935] AC 462",
+    "Crimes Act 1900 (NSW)"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-INVESTIGATION",
+   "type": "stimulus",
+   "marks": 6,
+   "difficulty": 2,
+   "verb": "Assess",
+   "text": "With reference to the hypothetical scenario, assess whether the police exercised their powers lawfully and fairly, and the possible consequences for the evidence against Lily.",
+   "stimulus": {
+    "title": "Hypothetical scenario: the search at the train station",
+    "kind": "hypothetical scenario",
+    "body": "This scenario is invented for practice. It does not describe real people or events.\n\nOfficer Grant sees Lily (aged 19) standing near a train station exit. The officer has no information about Lily and later says she 'just had a feeling'. Without giving her name, place of duty or a reason, she tells Lily to empty her bag. Lily refuses. Officer Grant takes the bag and finds a small quantity of a prohibited drug.\n\nLily is arrested and taken to the police station. She asks to call a lawyer but is told she can do that 'after we've had a chat'. She is then interviewed for several hours without a break, and admits that the drug is hers. The interview is recorded.",
+    "evidence_titles": []
+   },
+   "criteria": [
+    {
+     "mark": 6,
+     "range": "5–6",
+     "descriptor": "Makes an informed judgement about the lawfulness and fairness of the police conduct; applies the relevant police powers and safeguards accurately to the scenario; explains the possible consequences for the evidence"
+    },
+    {
+     "mark": 4,
+     "range": "3–4",
+     "descriptor": "Identifies some breaches of police powers or rights with reference to the scenario and some legal support"
+    },
+    {
+     "mark": 2,
+     "range": "1–2",
+     "descriptor": "Provides general information about police powers"
+    }
+   ],
+   "required_elements": [
+    "A search without a warrant needs reasonable suspicion; a 'feeling' is not enough",
+    "The safeguards were not followed (name, place of duty and reason not given)",
+    "Rights after arrest: delayed access to a lawyer; length of detention and questioning",
+    "The discretion to exclude improperly or illegally obtained evidence (the drug and the admission)",
+    "A judgement about lawfulness and the likely outcome; a possible complaint"
+   ],
+   "model": "The police conduct in this scenario was unlawful in several respects, and this creates a real risk that the key evidence against Lily will be excluded.\n\nFirst, the search was probably unlawful. Under the Law Enforcement (Powers and Responsibilities) Act 2002 (NSW), police may search a person without a warrant only if they suspect on reasonable grounds that the person has something such as a prohibited drug. Reasonable suspicion must rest on facts or circumstances, not a hunch. Officer Grant had no information about Lily and acted on 'just a feeling', so the requirement was not met. She also failed to give her name, place of duty and the reason for the search, safeguards that the Act generally requires so that people know who is exercising power over them and why.\n\nSecond, Lily's treatment after arrest raises further concerns. A detained person has the right to communicate with a lawyer, and police should not put that off simply to obtain an interview. The Act also limits how long a person may be detained for investigation before being charged or released, unless a detention warrant extends the period. Several hours of questioning without a break, after Lily's request for a lawyer was refused, suggests the safeguards were not respected and that the admission may not have been freely made.\n\nThese breaches matter at trial. Under the Evidence Act 1995 (NSW), a court may exclude evidence obtained improperly or in contravention of the law unless the desirability of admitting it outweighs the undesirability of admitting evidence obtained in that way. The court would weigh the seriousness of the breaches, and whether they were deliberate, against the importance of the evidence and the gravity of the offence. Because the offence involves a small quantity of a drug and the breaches were serious, there is a strong argument for excluding both the drug and the admission. Recording the interview helps prove what was said, but it does not cure the earlier unlawfulness.\n\nOverall, the police did not exercise their powers lawfully or fairly. Lily could also complain about the officer's conduct to the NSW Police Force or the Law Enforcement Conduct Commission.",
+   "evidence_titles": [
+    "Law Enforcement (Powers and Responsibilities) Act 2002 (NSW)",
+    "Evidence Act 1995 (NSW)"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: Search powers, detention limits and the rights of detained persons are set out in the Law Enforcement (Powers and Responsibilities) Act 2002 (NSW), which is amended from time to time. These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-TRIAL",
+   "type": "stimulus",
+   "marks": 6,
+   "difficulty": 3,
+   "verb": "Analyse",
+   "text": "Using the hypothetical data in the table, analyse how access to legal representation may affect the fairness of criminal trials.",
+   "stimulus": {
+    "title": "Hypothetical data: legal representation in a fictional District Court",
+    "kind": "statistics table (hypothetical)",
+    "body": "The figures below are invented for practice. They do not describe any real court and must not be quoted as real statistics.\n\n| Accused's representation (fictional court, one year) | Trials | Acquitted on all charges | Average trial length (days) | Appeals lodged |\n|---|---|---|---|---|\n| Private lawyer | 120 | 42 | 6 | 18 |\n| Legal aid lawyer | 300 | 84 | 5 | 30 |\n| Self-represented | 30 | 3 | 9 | 9 |\n\nNote (also invented): in this fictional court, self-represented accused were mostly charged with less serious indictable offences.",
+    "evidence_titles": []
+   },
+   "criteria": [
+    {
+     "mark": 6,
+     "range": "5–6",
+     "descriptor": "Analyses the hypothetical data accurately to draw sound conclusions about legal representation and fairness; links the data to relevant legal principles and cases; recognises the limits of the data"
+    },
+    {
+     "mark": 4,
+     "range": "3–4",
+     "descriptor": "Describes patterns in the data and links them to legal representation, with some legal support"
+    },
+    {
+     "mark": 2,
+     "range": "1–2",
+     "descriptor": "Refers to the data or to legal representation in general terms"
+    }
+   ],
+   "required_elements": [
+    "Accurate use of the table (acquittals, trial length, appeals) without adding figures",
+    "Why representation matters in the adversary system",
+    "A link to Dietrich v The Queen (1992) 177 CLR 292 and the role of legal aid",
+    "The data shows an association, not proof of cause; other factors such as the seriousness of charges",
+    "A judgement about the effect on fairness"
+   ],
+   "model": "The hypothetical data suggests that access to legal representation has a significant effect on the outcome and efficiency of trials, although the figures alone cannot prove that representation is the cause.\n\nThe clearest pattern is in acquittals. About one in three trials with a private lawyer, and just over one in four with a legal aid lawyer, ended in acquittal on all charges, compared with only one in ten for self-represented accused. This is striking because, according to the note, self-represented accused in this fictional court mostly faced less serious charges, which might be expected to favour them. It suggests that unrepresented accused struggle in the adversary system, in which each side must present its own case, test the other side's evidence through cross-examination and make legal submissions. Without legal knowledge, an accused may not recognise inadmissible evidence or available defences.\n\nThe data also suggests effects on efficiency. Trials of self-represented accused took the longest on average and produced the most appeals relative to the number of trials. Unrepresented accused may need more explanation from the judge, and errors at trial can lead to appeals, adding cost and delay for everyone, including victims and witnesses.\n\nThe comparison between private and legal aid lawyers is less clear. The acquittal figures differ, but the gap is much smaller than the gap with self-represented accused, and it could reflect differences in the types of cases rather than in the quality of representation. Legal aid lawyers appeared in most of the trials, which highlights how much the system depends on public funding.\n\nThese patterns support the principle in Dietrich v The Queen (1992) 177 CLR 292 that a trial for a serious offence may be unfair if the accused cannot obtain representation through no fault of their own. However, Dietrich does not create a right to publicly funded counsel, so access to representation depends heavily on legal aid funding. Overall, the data indicates that representation is closely linked to fairness, but a real-world conclusion would need actual, verified statistics that account for the seriousness of the charges and the strength of the evidence.",
+   "evidence_titles": [
+    "Dietrich v The Queen (1992) 177 CLR 292"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-SENTENCING",
+   "type": "stimulus",
+   "marks": 6,
+   "difficulty": 2,
+   "verb": "Explain",
+   "text": "With reference to the hypothetical scenario, explain the factors a court would consider in sentencing Ben.",
+   "stimulus": {
+    "title": "Hypothetical scenario: the case of Ben",
+    "kind": "hypothetical scenario",
+    "body": "This scenario is invented for practice. It does not describe real people or events.\n\nBen (aged 22) has pleaded guilty, at the first available opportunity, to a break and enter offence. He broke into a home at night and stole electronic goods. The occupants, an elderly couple, woke to find him in their hallway. As he ran out, Ben pushed the husband aside; the husband fell but was not seriously hurt. A statement from the couple describes ongoing fear and difficulty sleeping.\n\nBen has two prior convictions for theft. He grew up in a household affected by violence and alcohol abuse and left school at 15. Since his arrest he has completed a residential drug rehabilitation program and has been offered a job. He has written a letter of apology to the couple.",
+    "evidence_titles": []
+   },
+   "criteria": [
+    {
+     "mark": 6,
+     "range": "5–6",
+     "descriptor": "Explains clearly and accurately how aggravating and mitigating factors, the purposes of sentencing and relevant sentencing principles apply to the scenario"
+    },
+    {
+     "mark": 4,
+     "range": "3–4",
+     "descriptor": "Explains some relevant factors with reference to the scenario"
+    },
+    {
+     "mark": 2,
+     "range": "1–2",
+     "descriptor": "Identifies some factors or makes general statements about sentencing"
+    }
+   ],
+   "required_elements": [
+    "Aggravating features from the scenario (vulnerable victims in their home, force used, harm to the victims, prior record)",
+    "Mitigating features (early guilty plea, remorse, rehabilitation, deprived background and Bugmy)",
+    "Purposes of sentencing that pull in different directions",
+    "Method and limits: instinctive synthesis and proportionality",
+    "The role of the victims' account of harm"
+   ],
+   "model": "The court would weigh the circumstances of the offence and of Ben himself against the purposes of sentencing in the Crimes (Sentencing Procedure) Act 1999 (NSW), which include punishment, deterrence, protection of the community, rehabilitation, accountability, denunciation and recognising the harm done to the victims.\n\nSeveral features make the offence more serious. Breaking into a home at night while the occupants were present is a grave invasion of their security, and the victims were elderly, which the Act recognises as a form of vulnerability that aggravates an offence. Ben also used some force when he pushed the husband aside. The couple's statement describing ongoing fear helps the court understand the harm done. Ben's prior convictions for theft are relevant too: they cannot justify a heavier sentence than the offence deserves, but they reduce the leniency he might otherwise receive and point to a need for specific deterrence.\n\nOther features favour leniency. Ben pleaded guilty at the first available opportunity, which spares the victims from giving evidence and usually entitles him to a reduced sentence. His letter of apology may show remorse. His completion of a residential rehabilitation program and his job offer suggest good prospects of rehabilitation. His upbringing in a household affected by violence and alcohol abuse is relevant under Bugmy v The Queen (2013) 249 CLR 571, where the High Court held that evidence of profound childhood deprivation may be taken into account and does not lose its relevance with time.\n\nThe purposes of sentencing pull in different directions. Denunciation and general deterrence call for a firm response to a home invasion, while rehabilitation supports a sentence that does not undo Ben's progress. The judge would not add and subtract fixed amounts for each factor but would weigh them together through instinctive synthesis, as endorsed in Markarian v The Queen (2005) 228 CLR 357, and the final sentence must remain proportionate to the gravity of the offence, as required by Veen v The Queen (No 2) (1988) 164 CLR 465.",
+   "evidence_titles": [
+    "Crimes (Sentencing Procedure) Act 1999 (NSW)",
+    "Bugmy v The Queen (2013) 249 CLR 571",
+    "Markarian v The Queen (2005) 228 CLR 357",
+    "Veen v The Queen (No 2) (1988) 164 CLR 465"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-YOUNG",
+   "type": "stimulus",
+   "marks": 8,
+   "difficulty": 3,
+   "verb": "Evaluate",
+   "text": "With reference to the hypothetical data in the table, evaluate the effectiveness of diversionary options compared with court proceedings for young offenders.",
+   "stimulus": {
+    "title": "Hypothetical data: outcomes for young people in a fictional state",
+    "kind": "statistics table (hypothetical)",
+    "body": "The figures below are invented for practice. They describe a fictional state, not NSW or any real place, and must not be quoted as real statistics.\n\n| Pathway (young people aged 10 to 17, fictional state, one year) | Young people | Proceeded against again within 12 months | Average days from offence to finalisation |\n|---|---|---|---|\n| Police warning or caution | 4 000 | 800 | 20 |\n| Youth justice conference | 1 000 | 250 | 90 |\n| Court proceedings | 3 000 | 1 500 | 200 |\n\nNote (also invented): in this fictional state, Aboriginal young people made up a larger share of the court pathway than of the warning and caution pathway.",
+    "evidence_titles": []
+   },
+   "criteria": [
+    {
+     "mark": 8,
+     "range": "7–8",
+     "descriptor": "Makes an informed judgement about the effectiveness of diversion compared with court proceedings; uses the hypothetical data accurately and critically, recognising its limits; integrates relevant legislation and international standards"
+    },
+    {
+     "mark": 6,
+     "range": "5–6",
+     "descriptor": "Makes a sound judgement using the data and relevant law"
+    },
+    {
+     "mark": 4,
+     "range": "3–4",
+     "descriptor": "Describes diversion and refers to the data, with limited judgement"
+    },
+    {
+     "mark": 2,
+     "range": "1–2",
+     "descriptor": "Provides general information about young offenders or diversion"
+    }
+   ],
+   "required_elements": [
+    "Accurate use of the table (further proceedings within 12 months; time to finalisation)",
+    "The diversion scheme in the Young Offenders Act 1997 (NSW): warnings, cautions, conferences; an admission is required",
+    "Limits of the data: lower-risk young people are more likely to be diverted, so the data cannot prove cause",
+    "The equity concern raised by the note (unequal access to diversion)",
+    "The international standard in the Convention on the Rights of the Child (1989) and an explicit judgement"
+   ],
+   "model": "The hypothetical data suggests that diversion is more effective than court proceedings in reducing further offending and dealing with young people quickly, but the data has important limits, and its note raises a serious question about whether diversion is applied fairly.\n\nIn NSW, the Young Offenders Act 1997 (NSW) creates a hierarchy of diversionary options: warnings, cautions and youth justice conferences, which deal with eligible young people outside the court system, usually after they admit the offence. Conferences bring together the young person, their family, the victim and others to agree on an outcome plan, reflecting restorative justice.\n\nThe table is consistent with the aims of this scheme. About one in five young people given a warning or caution, and one in four who attended a conference, were proceeded against again within 12 months, compared with half of those dealt with by a court. Diversion was also much faster: warnings and cautions were finalised in an average of 20 days and conferences in 90, compared with 200 days for court matters. Speed matters for young people, because a long period awaiting court can disrupt schooling and family life, and a prompt response is more likely to be understood as a consequence of the behaviour.\n\nHowever, the data cannot show that diversion caused the lower rate of further offending. Young people who are diverted are often first-time or less serious offenders, while those sent to court may already have a history of offending, so the groups are not comparable. A sound evaluation would compare similar young people who took different pathways.\n\nThe note raises a fairness concern. If Aboriginal young people are less likely to receive warnings and cautions, they are more exposed to the court system, its delays and its risk of detention. This would undermine equality before the law, whatever the overall benefits of diversion.\n\nInternational standards support diversion. The Convention on the Rights of the Child (1989) encourages states to deal with children without resorting to judicial proceedings wherever appropriate and requires detention to be a last resort. Diversion is consistent with these standards because it limits young people's contact with the formal justice system.\n\nOverall, the data suggests diversion is an effective and efficient response for many young offenders, but its effectiveness can only be judged properly with comparable groups, and it achieves justice only if access to it is fair for all young people.",
+   "evidence_titles": [
+    "Young Offenders Act 1997 (NSW)",
+    "Convention on the Rights of the Child (1989)"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: Eligibility rules for warnings, cautions and conferences are set out in the Young Offenders Act 1997 (NSW), which may have been amended. These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-INTERNATIONAL",
+   "type": "stimulus",
+   "marks": 6,
+   "difficulty": 3,
+   "verb": "Explain",
+   "text": "With reference to the hypothetical scenario, explain how the International Criminal Court could deal with the alleged crimes, and the limits it would face.",
+   "stimulus": {
+    "title": "Hypothetical scenario: the conflict in Veldoria",
+    "kind": "hypothetical scenario",
+    "body": "This scenario is invented for practice. Veldoria and Marenta are fictional states.\n\nDuring a civil war in Veldoria, a rebel commander, Colonel Arak, is accused of ordering attacks on villages in which civilians were deliberately killed, and of recruiting children aged 12 and 13 into his forces. Veldoria has ratified the Rome Statute of the International Criminal Court (1998). Its courts have stopped functioning in the areas affected by the war, and no national investigation has begun.\n\nColonel Arak has fled to neighbouring Marenta, which is not a party to the Rome Statute and has said it will not hand him over to any international court.",
+    "evidence_titles": [
+     "Rome Statute of the International Criminal Court (1998)"
+    ]
+   },
+   "criteria": [
+    {
+     "mark": 6,
+     "range": "5–6",
+     "descriptor": "Explains accurately how the ICC's jurisdiction, ways of starting a case and admissibility rules apply to the scenario, and the practical and legal limits it faces, with reference to relevant law"
+    },
+    {
+     "mark": 4,
+     "range": "3–4",
+     "descriptor": "Explains some ways the ICC could act, with some reference to the scenario and its limits"
+    },
+    {
+     "mark": 2,
+     "range": "1–2",
+     "descriptor": "Provides general information about the ICC"
+    }
+   ],
+   "required_elements": [
+    "Crimes within jurisdiction: war crimes (attacks on civilians; using children under 15), possibly crimes against humanity",
+    "Jurisdiction based on the crimes occurring on a state party's territory; how a case can start",
+    "Admissibility: complementarity is satisfied because Veldoria is unable to act and has not acted",
+    "Limits: reliance on state cooperation for arrest; Marenta is not a party; the accused must be present at trial",
+    "A relevant example, such as the Lubanga case"
+   ],
+   "model": "The International Criminal Court could have jurisdiction over Colonel Arak, but its ability to bring him to trial would depend on cooperation that is unlikely to be given.\n\nThe alleged conduct falls within the Court's subject-matter jurisdiction under the Rome Statute of the International Criminal Court (1998). Deliberately attacking civilians is a war crime, and if the attacks were part of a widespread or systematic attack on a civilian population they could also be crimes against humanity. Recruiting children under 15 into armed forces or groups is also a war crime. In Prosecutor v Thomas Lubanga Dyilo (ICC, 2012) the Court convicted a militia leader of enlisting and conscripting children under 15, so this charge has a clear precedent.\n\nThe Court would have jurisdiction because the crimes were committed on the territory of Veldoria, a state party; it does not matter that Arak has since left. A case could begin through a referral by Veldoria, by the Prosecutor acting on their own initiative with the approval of the Court's judges, or by a Security Council referral.\n\nThe case would also be admissible. Under the principle of complementarity, the Court acts only where states are unwilling or unable genuinely to investigate or prosecute. Veldoria's courts are not functioning in the affected areas and no national investigation has begun, so the Court would not be displacing a genuine national process.\n\nThe main limit is enforcement. The Court has no police force and relies on states to arrest and surrender suspects. Marenta is not a party to the Rome Statute and has refused to cooperate, so it has no treaty obligation to hand Arak over unless the Security Council imposes one. Because an accused must be present for trial, an arrest warrant could remain unenforced for years. The Court's response would therefore depend on diplomatic pressure, on Arak travelling to a state willing to arrest him, or on other states prosecuting him under their own laws.",
+   "evidence_titles": [
+    "Rome Statute of the International Criminal Court (1998)",
+    "Prosecutor v Thomas Lubanga Dyilo (ICC, 2012)"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-HR",
+   "sub_area": "LS-HR-NATURE",
+   "type": "stimulus",
+   "marks": 5,
+   "difficulty": 2,
+   "verb": "Explain",
+   "text": "With reference to the hypothetical draft charter in the stimulus, explain how it reflects different types of human rights.",
+   "stimulus": {
+    "title": "Hypothetical scenario: a draft charter of rights for the fictional Republic of Talmar",
+    "kind": "hypothetical scenario",
+    "body": "This draft is invented for practice. Talmar is a fictional state.\n\nArticle 1. Every person has the right to vote in free elections and to stand for public office.\n\nArticle 2. Every person has the right to free primary and secondary education.\n\nArticle 3. The Indigenous peoples of Talmar have the right to determine their own political status and to pursue their economic, social and cultural development.\n\nArticle 4. Every person has the right to a healthy environment.\n\nArticle 5. The rights in Articles 2 and 4 are to be achieved progressively, as the resources of the Republic allow.",
+    "evidence_titles": []
+   },
+   "criteria": [
+    {
+     "mark": 5,
+     "descriptor": "Explains accurately how the draft charter reflects civil and political rights, economic, social and cultural rights, and collective rights, linking each to international instruments and explaining progressive realisation"
+    },
+    {
+     "mark": 4,
+     "descriptor": "Explains several types of rights in the draft, with relevant links"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Describes some types of rights in the draft"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Identifies one or two types of rights"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Provides some relevant information"
+    }
+   ],
+   "required_elements": [
+    "Article 1 as a civil and political right",
+    "Article 2 as an economic, social and cultural right, and progressive realisation in Article 5",
+    "Article 3 as the collective right of self-determination",
+    "Article 4 as an emerging environmental right",
+    "Why the types differ (individual or collective; immediate or progressive)"
+   ],
+   "model": "The draft charter reflects the main types of human rights recognised in international law, and the differences in how it treats them mirror the international instruments.\n\nArticle 1 protects civil and political rights: the right to vote and to stand for office. These individual rights protect a person's participation in government and are set out in the International Covenant on Civil and Political Rights (1966). They are generally expected to be respected immediately.\n\nArticle 2 protects an economic, social and cultural right, the right to education, which appears in the International Covenant on Economic, Social and Cultural Rights (1966). Article 5 makes this right subject to progressive realisation 'as the resources of the Republic allow', which mirrors that Covenant's approach: states must take steps, to the maximum of their available resources, towards fully realising these rights, recognising that they often require significant public spending.\n\nArticle 3 is a collective right. Self-determination belongs to peoples rather than individuals and appears in Article 1 of both covenants. Its application to Indigenous peoples is recognised in the United Nations Declaration on the Rights of Indigenous Peoples (2007), which is influential but not a binding treaty.\n\nArticle 4 reflects an emerging right to a healthy environment. It is collective in nature, because environmental harm affects whole communities and future generations, and it is not set out in the core UN human rights treaties, which shows how the recognition of rights continues to develop. Including it in Article 5 also treats it as a right to be achieved over time.\n\nThe draft therefore shows that rights differ in who holds them and in how quickly states are expected to achieve them.",
+   "evidence_titles": [
+    "International Covenant on Civil and Political Rights (1966)",
+    "International Covenant on Economic, Social and Cultural Rights (1966)",
+    "United Nations Declaration on the Rights of Indigenous Peoples (2007)"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-HR",
+   "sub_area": "LS-HR-ENFORCE",
+   "type": "stimulus",
+   "marks": 6,
+   "difficulty": 2,
+   "verb": "Assess",
+   "text": "With reference to the hypothetical scenario, assess the effectiveness of the domestic legal mechanisms available to Ana.",
+   "stimulus": {
+    "title": "Hypothetical scenario: Ana's job application",
+    "kind": "hypothetical scenario",
+    "body": "This scenario is invented for practice. It does not describe real people or events.\n\nAna, who lives in Sydney, applies for an office job with a large private company. At the interview she mentions that she is pregnant. The interviewer tells her the company 'needs someone who will be around for the long haul', and she is not offered the job, although the company had told her she was the best-qualified candidate.\n\nAna cannot afford a lawyer. She wants the decision reconsidered and an apology, but she is worried that a public dispute will harm her chances of finding other work.",
+    "evidence_titles": []
+   },
+   "criteria": [
+    {
+     "mark": 6,
+     "range": "5–6",
+     "descriptor": "Makes an informed judgement about the effectiveness of the domestic mechanisms available to Ana; applies relevant legislation and institutions accurately to the scenario; considers accessibility, cost, remedies and limits"
+    },
+    {
+     "mark": 4,
+     "range": "3–4",
+     "descriptor": "Describes relevant mechanisms with some reference to the scenario and some judgement"
+    },
+    {
+     "mark": 2,
+     "range": "1–2",
+     "descriptor": "Provides general information about discrimination law or human rights"
+    }
+   ],
+   "required_elements": [
+    "Pregnancy discrimination in employment is unlawful under federal and NSW law",
+    "A complaint to the Australian Human Rights Commission: free, informal, confidential conciliation",
+    "If conciliation fails: court proceedings, with cost and publicity concerns",
+    "The alternative NSW avenue under the Anti-Discrimination Act 1977 (NSW)",
+    "A judgement about effectiveness for Ana (accessibility against the limits of an individual complaints model)"
+   ],
+   "model": "The domestic mechanisms available to Ana are reasonably effective for her particular needs, because they are accessible and confidential, but they are limited by their reliance on individual complaints and voluntary settlement.\n\nThe company's conduct appears to be unlawful. The Sex Discrimination Act 1984 (Cth) makes discrimination on the ground of pregnancy unlawful in employment, including in deciding who is offered a job. The Act implements Australia's obligations under the Convention on the Elimination of All Forms of Discrimination against Women (1979), so Ana's situation shows an international standard being enforced through domestic law.\n\nAna's first step would be a complaint to the Australian Human Rights Commission, established by the Australian Human Rights Commission Act 1986 (Cth). This mechanism suits her well. It is free and does not require a lawyer, which matters because she cannot afford one. The Commission investigates and tries to resolve complaints through conciliation, a confidential process that avoids the publicity she fears, and outcomes can include an apology, compensation or a change to the employer's practices.\n\nThe mechanism also has limits. Conciliation depends on the company's willingness to settle, and the Commission cannot make a binding decision. If conciliation fails, Ana would have to take the matter to court, where proceedings are public, slower and more expensive, and where she might risk paying costs. The system also places the burden on the individual: it responds to Ana's complaint but does little on its own to change the attitudes behind the decision.\n\nAna could instead use the state system under the Anti-Discrimination Act 1977 (NSW), which also covers pregnancy discrimination and offers a free complaints process, with the NSW Civil and Administrative Tribunal available if the complaint is not resolved.\n\nOverall, these mechanisms are effective in giving Ana an accessible, low-cost and private avenue, but less effective if the company refuses to cooperate, because the final remedy then depends on costly and public litigation.",
+   "evidence_titles": [
+    "Sex Discrimination Act 1984 (Cth)",
+    "Convention on the Elimination of All Forms of Discrimination against Women (1979)",
+    "Australian Human Rights Commission Act 1986 (Cth)",
+    "Anti-Discrimination Act 1977 (NSW)"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: Complaint processes, time limits and remedies under the Sex Discrimination Act 1984 (Cth), the Australian Human Rights Commission Act 1986 (Cth) and the Anti-Discrimination Act 1977 (NSW) change from time to time, and the NSW Act has been under review. These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
+  },
+  {
+   "topic": "LS-HR",
+   "sub_area": "LS-HR-ISSUE",
+   "type": "stimulus",
+   "marks": 8,
+   "difficulty": 3,
+   "verb": "Evaluate",
+   "text": "With reference to the hypothetical scenario, evaluate the effectiveness of legal and non-legal responses to the use of child soldiers.",
+   "stimulus": {
+    "title": "Hypothetical scenario: child soldiers in the fictional state of Korvan",
+    "kind": "hypothetical scenario",
+    "body": "This scenario is invented for practice. Korvan is a fictional state.\n\nAn armed opposition group in Korvan's northern provinces has recruited several hundred children, some as young as 11, to serve as fighters, messengers and guards. Korvan is a party to the Convention on the Rights of the Child (1989), the Optional Protocol to the Convention on the Rights of the Child on the involvement of children in armed conflict (2000) and the Rome Statute of the International Criminal Court (1998).\n\nAn international NGO has published interviews with former child soldiers, and the story has been covered widely by international media. A UN agency is running a program to help released children return to school and their families. Korvan's government says it cannot reach the northern provinces to arrest the group's leaders.",
+    "evidence_titles": [
+     "Convention on the Rights of the Child (1989)",
+     "Optional Protocol to the Convention on the Rights of the Child on the involvement of children in armed conflict (2000)",
+     "Rome Statute of the International Criminal Court (1998)"
+    ]
+   },
+   "criteria": [
+    {
+     "mark": 8,
+     "range": "7–8",
+     "descriptor": "Makes an informed judgement about the effectiveness of legal and non-legal responses to child soldiers; applies relevant international law accurately to the scenario; weighs strengths and limitations of each response"
+    },
+    {
+     "mark": 6,
+     "range": "5–6",
+     "descriptor": "Makes a sound judgement with relevant legal and non-legal examples"
+    },
+    {
+     "mark": 4,
+     "range": "3–4",
+     "descriptor": "Describes legal and/or non-legal responses with some reference to the scenario"
+    },
+    {
+     "mark": 2,
+     "range": "1–2",
+     "descriptor": "Provides general information about child soldiers or human rights"
+    }
+   ],
+   "required_elements": [
+    "Treaty standards: the CRC (age 15) and the Optional Protocol (under 18 for armed groups)",
+    "International criminal law: the war crime of using children under 15; complementarity; the Lubanga case",
+    "Enforcement limits: the state cannot reach the area; the ICC relies on arrests by states",
+    "Non-legal responses: NGO documentation, media pressure, reintegration programs",
+    "An explicit overall judgement"
+   ],
+   "model": "Legal responses to child soldiers in Korvan set clear standards and allow leaders to be held individually responsible, but they are only partly effective because enforcement depends on control that Korvan does not have. Non-legal responses fill important gaps, particularly in recovery, but cannot stop recruitment on their own.\n\nThe treaty framework is strong on paper. As a party to the Convention on the Rights of the Child (1989), Korvan must take feasible measures to ensure that children under 15 do not take a direct part in hostilities. The Optional Protocol to the Convention on the Rights of the Child on the involvement of children in armed conflict (2000) goes further, providing that armed groups distinct from a state's armed forces should not recruit or use people under 18 in hostilities, and requiring states to take measures to prevent this. The opposition group is clearly in breach of these standards. However, these treaties bind states, and Korvan cannot enforce them in provinces it does not control.\n\nInternational criminal law targets individuals. Under the Rome Statute of the International Criminal Court (1998), enlisting or conscripting children under 15, or using them to participate actively in hostilities, is a war crime. Because the crimes occurred in Korvan, a state party, and Korvan is unable to arrest or prosecute the leaders, the case would be admissible under the principle of complementarity. Prosecutor v Thomas Lubanga Dyilo (ICC, 2012) shows that such prosecutions can succeed. Yet the Court relies on states to arrest suspects, so while the leaders remain beyond Korvan's reach, an arrest warrant may achieve little except to restrict their travel. In addition, the war crime covers only children under 15, so the recruitment of 15 to 17-year-olds depends on the weaker treaty standard.\n\nNon-legal responses are effective in different ways. The NGO's interviews document abuses, raise awareness and may later provide evidence for prosecutors. Media coverage can build international pressure on the group and on states that support it. The UN agency's program addresses a need the law cannot meet: helping children recover, return to school and reunite with their families. These responses, however, depend on funding and access, and they cannot compel the group to stop.\n\nOverall, the responses are partly effective. The law establishes that recruiting children is unlawful and that leaders can be prosecuted, while non-legal measures support victims and keep the issue visible. Their combined effectiveness will ultimately depend on Korvan regaining control of the north or on the leaders being arrested.",
+   "evidence_titles": [
+    "Convention on the Rights of the Child (1989)",
+    "Optional Protocol to the Convention on the Rights of the Child on the involvement of children in armed conflict (2000)",
+    "Rome Statute of the International Criminal Court (1998)",
+    "Prosecutor v Thomas Lubanga Dyilo (ICC, 2012)"
+   ],
+   "legal_fact_currency": "current"
   }
  ]
 }
