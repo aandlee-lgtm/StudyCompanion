@@ -10,7 +10,8 @@ NO_OFFICIAL = "AI-estimated mark based on NESA syllabus/performance criteria."
 ENGLISH_ERRORS = {"insufficient textual evidence", "technique identification without analysis", "weak thesis", "descriptive response",
                   "poor comparison", "limited evaluation", "imprecise expression"}
 LEGAL_ERRORS = {"missing authority", "outdated legislation", "weak judgement", "description instead of evaluation",
-                "insufficient contemporary evidence", "poor use of cases", "failure to address directive verb"}
+                "insufficient contemporary evidence", "poor use of cases", "failure to address directive verb",
+                "imprecise legal terminology", "no law reform", "stimulus not used", "unverified/invented authority"}
 MARKS_EXPECTATION = {
     1: "one accurate point",
     2: "one clear, accurate point supported by a piece of evidence and briefly explained",

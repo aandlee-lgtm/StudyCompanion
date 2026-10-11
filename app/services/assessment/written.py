@@ -13,10 +13,9 @@ from app.ai.offline import OFFLINE_LABEL, OfflineProvider
 from app.ai.schemas import MarkingResult
 from app.marking import rubric
 from app.models import Attempt, Question, Stimulus, Subject
+from app.services import error_journal
 from app.services.assessment import english, legal
 from app.services.assessment.common import (
-    ENGLISH_ERRORS,
-    LEGAL_ERRORS,
     MARKS_EXPECTATION,
     NO_OFFICIAL,
     VERBS,
@@ -68,22 +67,9 @@ def _offline_comparison(model: str | None, response: str, code: str) -> str:
 
 
 def _map_error_categories(code: str, result: MarkingResult, offline_gaps: list[str] | None) -> list[str]:
-    cats: list[str] = []
-    allowed = ENGLISH_ERRORS if code == "ENGLISH" else LEGAL_ERRORS
-    for e in result.errors:
-        c = e.category.strip().lower()
-        match = next((a for a in allowed if a in c or c in a), None)
-        cats.append(match or c)
-    gap_map = {
-        "Textual evidence": "insufficient textual evidence", "Analysis of effect": "descriptive response", "Judgement":
-        "limited evaluation" if code == "ENGLISH" else "description instead of evaluation", "Comparison": "poor comparison",
-        "Legal authority": "missing authority", "Contemporary evidence": "insufficient contemporary evidence",
-        "Legal terminology": "imprecise expression" if code == "ENGLISH" else "failure to address directive verb",
-    }
-    for g in offline_gaps or []:
-        if g in gap_map:
-            cats.append(gap_map[g])
-    return sorted(set(cats))
+    """Category names only (kept for callers that expect strings); see ``error_journal.written_items``."""
+    method = "offline_estimate" if offline_gaps is not None else "ai"
+    return [i["category"] for i in error_journal.written_items(code, result.model_dump(), method)]
 
 
 def mark_written(db: Session, q: Question, response: str, settings: dict, previous: str | None) -> tuple[float, dict, list[str], str]:
@@ -117,11 +103,13 @@ def mark_written(db: Session, q: Question, response: str, settings: dict, previo
         "comparison": comparison, "improved_answer": result.improved_answer or None,
         "guidance": (q.solution or {}).get("guidance"), "criteria_text": q.marking_guideline, "criteria_official": q.guideline_official,
     }
+    # each category with its OWN description (legal-20); subject packages may replace payload["journal_items"]
+    payload["journal_items"] = error_journal.written_items(code, payload["result"], method)
     if code == "LEGAL":
         legal.post_process(db, q, ctx, result, payload, method)
     elif code == "ENGLISH":
         english.post_process(db, q, ctx, result, payload, method)
-    return result.mark_awarded, payload, _map_error_categories(code, result, offline_gaps), method
+    return result.mark_awarded, payload, [i["category"] for i in payload.get("journal_items") or []], method
 
 
 # ---------------------------------------------------------------- Submission ---
