@@ -219,6 +219,14 @@ MIN_N = {"recent": 10, "hsc_difficulty": 8, "unseen": 3, "retention": 5, "timed"
 BANDS = ((75, "Well prepared"), (50, "Consolidating"), (25, "Developing"), (0, "Early stage"))
 
 
+def _answers_for_full_cover(code: str, item: LearningPlanItem) -> int:
+    """Counted answers after which a plan item counts as fully covered: three for a Maths
+    subtopic or a Legal sub-area, ten for a whole English module or Legal topic (much larger)."""
+    if code == "MATHS" or (item.code or "").count("-") >= 2:
+        return 3
+    return 10
+
+
 def course_coverage(ds: Dataset) -> dict:
     """Share of the whole 2027 course assessed, each subject weighted equally. A topic counts in
     full after three counted answers and is weighted by how well those answers went."""
@@ -233,7 +241,7 @@ def course_coverage(ds: Dataset) -> dict:
                 values.append(0.0)
                 continue
             quality = _avg(fs[-5:]) or 0.0
-            values.append(min(1.0, len(fs) / 3) * (0.5 + 0.5 * quality))
+            values.append(min(1.0, len(fs) / _answers_for_full_cover(code, i)) * (0.5 + 0.5 * quality))
         if code == "LEGAL":
             active_opts = sum(1 for i in items if (ds.areas.get(i.topic_id).is_option if i.topic_id and ds.areas.get(i.topic_id) else False))
             values += [0.0] * max(0, LEGAL_OPTIONS_REQUIRED - active_opts)  # options not chosen yet still have to be covered
@@ -327,8 +335,8 @@ def readiness(db: Session, ds: Dataset | None = None) -> dict:
         "coverage": pct(cov["overall"]), "quality": pct(quality), "components": components, "subjects": subjects,
         "data_points": len(ds.facts), "summary": summary,
         "explanation": "HSC READINESS = course coverage × answer quality. Coverage is the share of the whole 2027 course you have been "
-                       "assessed on, each subject counting equally (a topic counts in full after three answers and is weighted by how "
-                       "well they went; Legal options you have not chosen yet count as uncovered). Quality is the weighted average of the "
+                       "assessed on, each subject counting equally (a Maths subtopic counts in full after three answers, a whole English module "
+                       "or Legal topic after ten, weighted by how well they went; Legal options you have not chosen yet count as uncovered). Quality is the weighted average of the "
                        "factors below; a factor is left out until it has enough answers. Only answers that count are used: first "
                        "attempts — not retries, practice after the answer was shown, or answers still waiting for a self-mark. The "
                        "result is rounded to the nearest 5 because every input is an estimate. It stays low until the course has been "
@@ -521,7 +529,7 @@ def _revision_coming(db: Session, ds: Dataset, start: date, end: date) -> tuple[
         .group_by(RevisionQueue.plan_item_id).order_by(func.min(RevisionQueue.due_date))).all()
     lines = []
     for item_id, due in rows[:6]:
-        when = "now (overdue)" if due < start else f"{_next_study_day(due, weekdays):%a %d %b}"
+        when = ("overdue since " + f"{due:%a %d %b}") if due < ds.today else "now" if due < start else f"{_next_study_day(due, weekdays):%a %d %b}"
         lines.append(f"{ds.item_name(item_id)} — {when}")
     exact = db.execute(select(func.count(QuestionExposure.id)).where(QuestionExposure.next_revision_date >= start,
                                                                        QuestionExposure.next_revision_date <= end)).scalar_one()
