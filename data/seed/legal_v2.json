@@ -2242,6 +2242,368 @@
   {
    "topic": "LS-CRIME",
    "sub_area": "LS-CRIME-NATURE",
+   "type": "short_answer",
+   "marks": 4,
+   "difficulty": 2,
+   "verb": "Explain",
+   "text": "Explain how defences can remove or reduce criminal liability. Refer to at least ONE complete defence and ONE partial defence.",
+   "criteria": [
+    {
+     "mark": 4,
+     "descriptor": "Explains clearly how complete and partial defences operate, with accurate examples and reference to legislation"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Explains how defences operate, with some accurate examples"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Describes one or two defences"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Provides some relevant information"
+    }
+   ],
+   "required_elements": [
+    "Distinguishes complete defences (no criminal responsibility) from partial defences (murder reduced to manslaughter)",
+    "An accurate example of a complete defence, such as self-defence",
+    "An accurate example of a partial defence, such as extreme provocation or substantial impairment",
+    "Once self-defence is raised, the prosecution must disprove it beyond reasonable doubt",
+    "Why defences exist: differences in moral culpability"
+   ],
+   "model": "Defences allow an accused person to avoid or reduce criminal liability even where the prosecution proves the act. A complete defence means the person is not criminally responsible. Self-defence is the main example: under the Crimes Act 1900 (NSW), a person is not criminally responsible if they believed their conduct was necessary to defend themselves or another person and it was a reasonable response in the circumstances as they perceived them. Once there is evidence of self-defence, the prosecution must disprove it beyond reasonable doubt. Another complete defence is mental health or cognitive impairment under the Mental Health and Cognitive Impairment Forensic Provisions Act 2020 (NSW), which leads to the special verdict 'act proven but not criminally responsible' and allows the court to make orders to protect the community.\n\nA partial defence applies only to murder and, if successful, reduces it to manslaughter. In NSW the partial defences include extreme provocation and substantial impairment by abnormality of mind. They recognise that a person who kills in these circumstances is less morally culpable than a person who kills intentionally without such circumstances, while still holding them responsible for a very serious crime. Defences therefore allow the criminal law to reflect differences in moral blame rather than treating everyone who causes harm in the same way.",
+   "evidence_titles": [
+    "Crimes Act 1900 (NSW)",
+    "Mental Health and Cognitive Impairment Forensic Provisions Act 2020 (NSW)"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: The names and elements of the partial defences to murder (including extreme provocation) are set out in the Crimes Act 1900 (NSW) and have been reformed in the past. These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-INVESTIGATION",
+   "type": "short_answer",
+   "marks": 5,
+   "difficulty": 2,
+   "verb": "Explain",
+   "text": "Explain the role of discretion in the criminal investigation process.",
+   "criteria": [
+    {
+     "mark": 5,
+     "descriptor": "Explains clearly how discretion operates at several stages of the investigation process, with its benefits and risks, and with accurate reference to legislation"
+    },
+    {
+     "mark": 4,
+     "descriptor": "Explains the role of discretion at more than one stage, with some legal support"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Describes some examples of discretion in investigation"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Outlines one example of discretion"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Provides some relevant information"
+    }
+   ],
+   "required_elements": [
+    "Definition of discretion",
+    "Discretion of victims and the public in reporting crime",
+    "Police discretion: whether to investigate, use powers, arrest or proceed another way",
+    "Diversion and bail decisions as exercises of discretion",
+    "Benefits (flexibility, proportionality) and risks (inconsistency, bias), with safeguards"
+   ],
+   "model": "Discretion is the power to choose between options, and it operates at almost every stage of the criminal investigation process. It allows the system to respond flexibly to individual circumstances, but it also creates risks of inconsistency and misuse.\n\nDiscretion begins with victims and witnesses, who decide whether to report a crime. Many offences come to the attention of police only through reports, so the community's willingness to report shapes which crimes are investigated.\n\nPolice then exercise discretion in deciding whether to investigate, whom to approach and whether to use coercive powers. Under the Law Enforcement (Powers and Responsibilities) Act 2002 (NSW), powers such as search and arrest depend on an officer's assessment of reasonable suspicion, and arrest without a warrant also requires the officer to be satisfied that arrest is reasonably necessary. Officers can instead proceed by court attendance notice or, for young people, use warnings and cautions under the Young Offenders Act 1997 (NSW). These choices allow minor matters to be dealt with proportionately and keep people out of custody.\n\nDiscretion continues after charge. Police officers and courts make bail decisions under the Bail Act 2013 (NSW), weighing the risks posed by the accused, and prosecutors decide whether there is enough evidence to proceed.\n\nDiscretion is valuable because no law can anticipate every situation. However, because it is exercised by individuals, it can be applied inconsistently or be influenced by bias, which is why safeguards such as the requirement for reasonable grounds, internal review and external oversight, for example by the Law Enforcement Conduct Commission, are important.",
+   "evidence_titles": [
+    "Law Enforcement (Powers and Responsibilities) Act 2002 (NSW)",
+    "Young Offenders Act 1997 (NSW)",
+    "Bail Act 2013 (NSW)"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: The conditions on arrest and the bail framework are set out in the Law Enforcement (Powers and Responsibilities) Act 2002 (NSW) and the Bail Act 2013 (NSW), both of which are amended from time to time. These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-TRIAL",
+   "type": "short_answer",
+   "marks": 3,
+   "difficulty": 1,
+   "verb": "Outline",
+   "text": "Outline the roles of the judge, the prosecution and the defence in a criminal trial.",
+   "criteria": [
+    {
+     "mark": 3,
+     "descriptor": "Outlines accurately the roles of the judge, the prosecution and the defence in the adversary system"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Outlines the roles of two of the participants, or all three in general terms"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Provides some relevant information"
+    }
+   ],
+   "required_elements": [
+    "The judge as impartial umpire: rules on law and evidence, directs the jury, sentences",
+    "The prosecution presents the case and must prove guilt beyond reasonable doubt; duty of fairness",
+    "The defence tests the prosecution case, may call evidence and raise defences; the accused need prove nothing"
+   ],
+   "model": "In the adversary system, the judge acts as an impartial umpire. The judge ensures that the trial is conducted fairly, rules on questions of law such as the admissibility of evidence, directs the jury on the law and, if the accused is convicted, imposes the sentence. The prosecution, usually the Office of the Director of Public Prosecutions in serious matters, presents the case against the accused and must prove each element of the offence beyond reasonable doubt; prosecutors also have a duty to act fairly rather than simply to win. The defence represents the accused, tests the prosecution's evidence through cross-examination, may call evidence and raise defences, and makes submissions in the accused's interests. The accused does not have to prove anything.",
+   "evidence_titles": [],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-SENTENCING",
+   "type": "short_answer",
+   "marks": 6,
+   "difficulty": 2,
+   "verb": "Assess",
+   "text": "Assess the effectiveness of alternative methods of sentencing, such as restorative justice, in achieving justice.",
+   "criteria": [
+    {
+     "mark": 6,
+     "range": "5–6",
+     "descriptor": "Makes an informed judgement about the effectiveness of alternative methods of sentencing; explains how specific alternatives operate and weighs their benefits and limits; supports the argument with relevant legislation and reports"
+    },
+    {
+     "mark": 4,
+     "range": "3–4",
+     "descriptor": "Describes alternative methods of sentencing with some judgement and relevant examples"
+    },
+    {
+     "mark": 2,
+     "range": "1–2",
+     "descriptor": "Provides general information about sentencing alternatives"
+    }
+   ],
+   "required_elements": [
+    "An explicit judgement about effectiveness",
+    "Restorative justice: circle sentencing and/or youth justice conferences",
+    "Community-based sentences and their role in rehabilitation",
+    "Relevant law reform or inquiry (for example the Pathways to Justice report)",
+    "Limits: seriousness of offences, availability and funding, public perception"
+   ],
+   "model": "Alternative methods of sentencing are effective in achieving justice for many offenders and victims, particularly by addressing the causes of offending and involving the community, but their effectiveness depends on eligibility, resources and the seriousness of the offence.\n\nRestorative justice brings offenders, victims and the community together to acknowledge harm and agree on how to repair it. Circle sentencing, available in the Local Court for some Aboriginal offenders, involves Aboriginal Elders and community members working with the magistrate to decide on a sentence. It can make the process more culturally meaningful, increase the offender's sense of accountability to their community and give victims a voice. For young people, youth justice conferences under the Young Offenders Act 1997 (NSW) apply similar principles as an alternative to court.\n\nCommunity-based sentences, such as intensive correction orders, allow an offender to serve a sentence in the community under supervision and conditions. Under the Crimes (Sentencing Procedure) Act 1999 (NSW), the court must still impose a sentence that reflects the purposes of sentencing, but these options support rehabilitation by allowing the offender to keep employment and family ties and to address problems such as drug dependence.\n\nThese alternatives respond to concerns examined in the Pathways to Justice: Inquiry into the Incarceration Rate of Aboriginal and Torres Strait Islander Peoples (ALRC Report 133), which considered the over-representation of Aboriginal and Torres Strait Islander people in prison and made recommendations on matters including sentencing options.\n\nHowever, alternatives have limits. They are generally unsuitable for the most serious offences, where denunciation and community protection require imprisonment. They depend on programs being available and funded, so access may be uneven. Some victims and members of the public also see them as too lenient.\n\nOverall, alternative methods are effective for suitable offences because they promote rehabilitation and repair harm, but they complement imprisonment rather than replace it.",
+   "evidence_titles": [
+    "Young Offenders Act 1997 (NSW)",
+    "Crimes (Sentencing Procedure) Act 1999 (NSW)",
+    "Pathways to Justice: Inquiry into the Incarceration Rate of Aboriginal and Torres Strait Islander Peoples (ALRC Report 133)"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: The availability of circle sentencing and the types of community-based orders depend on the current Crimes (Sentencing Procedure) Act 1999 (NSW) and related programs; check which Pathways to Justice recommendations have been implemented. These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-YOUNG",
+   "type": "short_answer",
+   "marks": 3,
+   "difficulty": 1,
+   "verb": "Outline",
+   "text": "Outline the role of the Children's Court in NSW.",
+   "criteria": [
+    {
+     "mark": 3,
+     "descriptor": "Outlines accurately the jurisdiction, principles and procedures of the Children's Court"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Outlines some features of the Children's Court"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Provides some relevant information"
+    }
+   ],
+   "required_elements": [
+    "A specialist court that hears most criminal matters involving young people",
+    "Principles recognising immaturity, guidance and the continuation of education or employment",
+    "Closed proceedings and protection of identity; penalties ranging up to detention as a last resort"
+   ],
+   "model": "The Children's Court is a specialist court that hears most criminal proceedings against young people who were under 18 when the offence was committed. It operates under the Children (Criminal Proceedings) Act 1987 (NSW), which reflects principles such as children's need for guidance and assistance because of their immaturity, and the desirability of allowing a child's education or employment to continue without interruption. Proceedings are generally closed to the public, and publishing a child's identity is generally prohibited, to protect their privacy and prospects of rehabilitation. The Court can impose a range of penalties, from dismissal with a caution and good behaviour bonds through to control orders served in detention, which should be used only as a last resort. The most serious offences can be dealt with in a higher court.",
+   "evidence_titles": [
+    "Children (Criminal Proceedings) Act 1987 (NSW)"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: The Children's Court's jurisdiction, the penalties available and the exceptions for serious offences are set out in the Children (Criminal Proceedings) Act 1987 (NSW). These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-INTERNATIONAL",
+   "type": "short_answer",
+   "marks": 5,
+   "difficulty": 2,
+   "verb": "Explain",
+   "text": "Explain the role of the International Criminal Court in dealing with international crime.",
+   "criteria": [
+    {
+     "mark": 5,
+     "descriptor": "Explains clearly the ICC's jurisdiction, how cases reach it, complementarity and its limits, with an accurate example"
+    },
+    {
+     "mark": 4,
+     "descriptor": "Explains the role of the ICC with relevant detail"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Describes some features of the ICC"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Outlines the purpose of the ICC"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Provides some relevant information"
+    }
+   ],
+   "required_elements": [
+    "The crimes within jurisdiction and individual criminal responsibility",
+    "Jurisdiction based on states parties and Security Council referrals; how cases begin",
+    "Complementarity: a court of last resort",
+    "An example such as the Lubanga case",
+    "Limits: reliance on states for arrests; non-party states"
+   ],
+   "model": "The International Criminal Court is a permanent international court established by the Rome Statute of the International Criminal Court (1998). Its role is to try individuals, including political and military leaders, for the most serious crimes of concern to the international community: genocide, crimes against humanity, war crimes and the crime of aggression. It therefore reinforces the principle that individuals, not only states, are responsible for these crimes.\n\nThe Court's jurisdiction generally depends on the crime being committed on the territory of a state party or by a national of a state party, although the Security Council can refer a situation in any state. A case can begin through a referral by a state party or the Security Council, or by the Prosecutor acting on their own initiative with the approval of the Court's judges.\n\nThe Court is a court of last resort. Under the principle of complementarity, a case is inadmissible where a state with jurisdiction is genuinely investigating or prosecuting it, so national courts keep the primary role. The Court's first trial judgment, Prosecutor v Thomas Lubanga Dyilo (ICC, 2012), convicted a militia leader of enlisting, conscripting and using child soldiers, showing that it can hold individuals to account.\n\nThe Court's role is limited by its dependence on states. It has no police force, so it relies on states to arrest and surrender suspects, and states that are not parties to the Rome Statute generally have no obligation to cooperate.",
+   "evidence_titles": [
+    "Rome Statute of the International Criminal Court (1998)",
+    "Prosecutor v Thomas Lubanga Dyilo (ICC, 2012)"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-HR",
+   "sub_area": "LS-HR-NATURE",
+   "type": "short_answer",
+   "marks": 4,
+   "difficulty": 1,
+   "verb": "Explain",
+   "text": "Explain the significance of the Universal Declaration of Human Rights in the development of human rights.",
+   "criteria": [
+    {
+     "mark": 4,
+     "descriptor": "Explains clearly why the Declaration was significant, including its content, its legal status and its influence on later binding law"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Explains the significance of the Declaration with some detail"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Describes the Declaration"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Provides some relevant information"
+    }
+   ],
+   "required_elements": [
+    "The first comprehensive international statement of rights, adopted by the General Assembly in 1948",
+    "Covers civil and political as well as economic, social and cultural rights",
+    "Not binding in itself",
+    "Influence: the two covenants (International Bill of Rights), later treaties, customary law, domestic law"
+   ],
+   "model": "The Universal Declaration of Human Rights (1948) was the first comprehensive international statement of the rights that belong to every person. Adopted by the UN General Assembly after the Second World War, it gave effect to the commitment in the Charter of the United Nations (1945) to promote respect for human rights, and it recognised both civil and political rights, such as freedom of expression and a fair trial, and economic, social and cultural rights, such as education and an adequate standard of living.\n\nAs a General Assembly declaration, it was not binding in itself. Its significance lies in its influence. Its rights were developed into binding treaties, the International Covenant on Civil and Political Rights (1966) and the International Covenant on Economic, Social and Cultural Rights (1966), which together with the Declaration form the International Bill of Rights. It has also shaped later treaties, national constitutions and laws, and some of its provisions are now regarded as part of customary international law. The Declaration therefore marks the point at which human rights became universal standards rather than matters left entirely to each state.",
+   "evidence_titles": [
+    "Universal Declaration of Human Rights (1948)",
+    "Charter of the United Nations (1945)",
+    "International Covenant on Civil and Political Rights (1966)",
+    "International Covenant on Economic, Social and Cultural Rights (1966)"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-HR",
+   "sub_area": "LS-HR-ENFORCE",
+   "type": "short_answer",
+   "marks": 6,
+   "difficulty": 3,
+   "verb": "Assess",
+   "text": "Assess the effectiveness of statutory bills of rights in protecting human rights in Australian jurisdictions.",
+   "criteria": [
+    {
+     "mark": 6,
+     "range": "5–6",
+     "descriptor": "Makes an informed judgement about the effectiveness of statutory bills of rights; explains how they operate and their limits; supports the argument with relevant legislation and cases"
+    },
+    {
+     "mark": 4,
+     "range": "3–4",
+     "descriptor": "Describes statutory bills of rights with some judgement and relevant examples"
+    },
+    {
+     "mark": 2,
+     "range": "1–2",
+     "descriptor": "Provides general information about the protection of rights in Australia"
+    }
+   ],
+   "required_elements": [
+    "Which jurisdictions have statutory bills of rights (ACT, Victoria, Queensland)",
+    "How they operate: compatibility statements, rights-consistent interpretation, obligations on public authorities, declarations",
+    "Parliamentary sovereignty: declarations do not invalidate laws",
+    "Limits shown by Momcilovic; limited remedies; no national equivalent",
+    "An explicit judgement"
+   ],
+   "model": "Statutory bills of rights are moderately effective in protecting human rights in the jurisdictions that have them. They make rights part of law-making and government decision-making, but they deliberately leave Parliament with the final say.\n\nThree jurisdictions have such laws: the Human Rights Act 2004 (ACT), the Charter of Human Rights and Responsibilities Act 2006 (Vic) and the Human Rights Act 2019 (Qld). Each requires statements of compatibility for new bills, requires laws to be interpreted compatibly with human rights where possible, and imposes obligations on public authorities to act compatibly with human rights. The Supreme Court can declare that a law cannot be interpreted compatibly with human rights, which requires a government response but does not affect the law's validity.\n\nThese features are effective in promoting a culture of rights. Compatibility statements force governments to explain why a law limits rights, and obligations on public authorities shape everyday decisions in areas such as housing, health and policing, which may prevent breaches before they occur.\n\nHowever, their legal force is limited. In Momcilovic v The Queen (2011) 245 CLR 1 the High Court held that the Victorian Charter's interpretation provision operates within the ordinary limits of statutory interpretation and does not allow courts to rewrite legislation. Parliament can pass laws that are incompatible with rights, and remedies for individuals are limited. At the federal level, the Human Rights (Parliamentary Scrutiny) Act 2011 (Cth) provides only a scrutiny process, and NSW has no statutory bill of rights, so protection depends on where a person lives.\n\nOverall, statutory bills of rights are effective as a dialogue model that improves the quality of law-making and administration, but they are less effective where Parliament is determined to limit rights or where an individual needs a strong remedy.",
+   "evidence_titles": [
+    "Human Rights Act 2004 (ACT)",
+    "Charter of Human Rights and Responsibilities Act 2006 (Vic)",
+    "Human Rights Act 2019 (Qld)",
+    "Momcilovic v The Queen (2011) 245 CLR 1",
+    "Human Rights (Parliamentary Scrutiny) Act 2011 (Cth)"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: The remedies and obligations under each statutory bill of rights differ and are amended from time to time; check the current Human Rights Act 2004 (ACT), Charter of Human Rights and Responsibilities Act 2006 (Vic) and Human Rights Act 2019 (Qld), and whether any other jurisdiction has adopted one. These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
+  },
+  {
+   "topic": "LS-HR",
+   "sub_area": "LS-HR-ISSUE",
+   "type": "short_answer",
+   "marks": 4,
+   "difficulty": 1,
+   "verb": "Describe",
+   "text": "Describe the role of non-legal measures in responding to ONE contemporary human rights issue you have studied.",
+   "criteria": [
+    {
+     "mark": 4,
+     "descriptor": "Describes clearly and accurately the role of several non-legal measures in responding to a specific contemporary issue, including their limits"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Describes the role of some non-legal measures with reference to a specific issue"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Outlines one or two non-legal measures"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Provides some relevant information"
+    }
+   ],
+   "required_elements": [
+    "Names a specific contemporary issue",
+    "NGOs: documentation, advocacy and pressure on states",
+    "Media: awareness and public pressure",
+    "Intergovernmental and community programs (for example rehabilitation and reintegration)",
+    "Limits: non-legal measures cannot compel compliance"
+   ],
+   "model": "Non-legal measures play an important role in responding to the use of child soldiers, complementing legal instruments such as the Convention on the Rights of the Child (1989) and the Optional Protocol to the Convention on the Rights of the Child on the involvement of children in armed conflict (2000).\n\nNon-government organisations document the recruitment and use of children by interviewing former child soldiers and reporting on armed groups. This evidence raises awareness, informs the work of UN bodies and can support later prosecutions. NGO advocacy has also added to pressure on states to adopt and ratify stronger standards.\n\nThe media amplifies this work. Reporting on child soldiers brings the issue to international attention and can create public and diplomatic pressure on governments and on states that support armed groups.\n\nUN agencies and community organisations run programs to help released children recover, return to school and reunite with their families. These programs address the long-term harm to children, which legal measures that punish offenders cannot repair on their own.\n\nThe limitation of non-legal measures is that they cannot compel armed groups or states to comply. Their effectiveness depends on funding, access to conflict areas and the willingness of governments to respond to pressure, so they work best alongside legal measures.",
+   "evidence_titles": [
+    "Convention on the Rights of the Child (1989)",
+    "Optional Protocol to the Convention on the Rights of the Child on the involvement of children in armed conflict (2000)"
+   ],
+   "model_note": "This model uses child soldiers as its contemporary issue because the evidence bank already has items for it (not yet verified); it is not a prediction of the issue you will study. If your class studies a different issue, keep the structure (name the issue, then describe what NGOs, the media and intergovernmental or community programs each do, and finish with their limits) and replace the examples with evidence-bank items for your issue.",
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-NATURE",
    "type": "stimulus",
    "marks": 5,
    "difficulty": 2,
