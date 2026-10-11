@@ -66,11 +66,34 @@ class CriterionEvidence(BaseModel):
     judgement: str = ""
 
 
+class ComparisonItem(BaseModel):
+    """One point of the comparison of THE STUDENT'S response with what the question needed (owner
+    request 2026-10-11). ``student_quote`` must be copied verbatim from the response; items whose
+    quote is not found there are dropped after parsing (``english_compare.validate_ai_items``)."""
+    point: str = ""
+    student_quote: str = ""
+    status: str = "weak"  # missing | weak | met
+    issue: str = ""
+    why_it_matters: str = ""
+    try_this: str = ""
+
+    @field_validator("point", "student_quote", "status", "issue", "why_it_matters", "try_this", mode="before")
+    @classmethod
+    def _text(cls, v):
+        return "" if v is None else str(v)
+
+
 class EnglishMarking(MarkingResult):
     errors: list[EnglishError] = []
     comparison_points: ComparisonPoints | None = None
     improvement_since_last: ImprovementSinceLast | None = None
     criterion_evidence: list[CriterionEvidence] = []
+    comparison_items: list[ComparisonItem] = []
+
+    @field_validator("comparison_items", mode="before")
+    @classmethod
+    def _items(cls, v):
+        return [x for x in (v or []) if isinstance(x, (dict, ComparisonItem))] if isinstance(v, list) else []
 
     @field_validator("errors", mode="before")
     @classmethod
@@ -101,11 +124,17 @@ class EnglishPatch(BaseModel):
     improvements: list[str] = []
     comparison_points: ComparisonPoints | None = None
     improved_answer: str = ""
+    comparison_items: list[ComparisonItem] = []
 
     @field_validator("dimensions", mode="before")
     @classmethod
     def _dims(cls, v):
         return EnglishMarking._dims(v)
+
+    @field_validator("comparison_items", mode="before")
+    @classmethod
+    def _items(cls, v):
+        return EnglishMarking._items(v)
 
 
 class SentenceUpgrade(BaseModel):
@@ -138,3 +167,8 @@ def missing_fields(r: MarkingResult, has_model: bool, retry: bool) -> list[str]:
     if not r.improved_answer.strip() and r.mark_awarded < r.mark_possible:
         missing.append("improved_answer")
     return missing
+
+
+def needs_comparison(valid_items: list[dict], mark: float, possible: float) -> bool:
+    """A below-full-marks answer needs at least one validated gap in the point-by-point comparison."""
+    return mark < possible and not any(i["status"] != "met" for i in valid_items)

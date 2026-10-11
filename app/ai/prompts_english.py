@@ -32,6 +32,24 @@ CRAFT_FOCUS = {
 }
 
 
+COMPARISON_ITEM = {
+    "point": "what the question needed (a checklist item or criterion, in plain words)",
+    "student_quote": "ONE sentence (or clause of at least three words) copied EXACTLY from the student response; \"\" only if nothing in it attempts this point",
+    "status": "missing | weak | met",
+    "issue": "what is missing or weak in that sentence",
+    "why_it_matters": "why this costs marks on THIS question at this mark value",
+    "try_this": "a rewritten version of the student's sentence, in their voice, one level higher (or a short example sentence they can adapt); "
+                "any quotation from the stimulus must be copied verbatim",
+}
+COMPARISON_RULE = (
+    "POINT-BY-POINT COMPARISON (the most important part of the feedback; it is shown first): fill comparison_items with 3–6 items "
+    "comparing THE STUDENT'S OWN RESPONSE with what this question needed (the checklist, the ladder and the reference). Order them by how "
+    "many marks they cost. For each item quote the student's own sentence in student_quote EXACTLY as they wrote it — it is checked "
+    "word for word against the response and an item whose quote is not found there is discarded. Say what is missing or weak, why it "
+    "matters for the mark, and give try_this: their sentence rewritten one level higher (or a short example they can adapt). Include at "
+    "most one item with status \"met\" to show what already works. Constructive, specific, never generic.")
+
+
 def _english(ctx: dict) -> dict:
     return ctx.get("english") or {}
 
@@ -47,6 +65,7 @@ def shape_extra(ctx: dict) -> dict:
         "criterion_evidence": [{"criterion": "...", "student_phrase": "exact words from the student response", "judgement": "met/partly/not met"}],
         "comparison_points": {"what_model_does": "...", "descriptive_moments": "...", "evidence_integration": "...", "development": "...",
                               "expression": "...", "sophistication": "..."},
+        "comparison_items": [COMPARISON_ITEM],
     }
     if e.get("reference_model") or e.get("plan"):
         extra["model_answer"] = "\"\" (empty: a reference response is supplied; do NOT write a new model)"
@@ -97,6 +116,7 @@ def marking_sections(ctx: dict) -> list[str]:
                    "text, and do not 'correct' a quotation you cannot verify; refer to moments and scenes instead.")
     if e.get("anchors"):
         out.append("ANCHOR RESPONSES WITH THEIR MARKS (for calibration):\n" + "\n".join(f"[{a['mark']}/{marks}] {a['text']}" for a in e["anchors"][:3]))
+    out.append(COMPARISON_RULE)
     out.append(
         "ENGLISH MARKING RULES: award WHOLE marks only (no half marks, whatever the general instruction says). For each criterion judgement "
         "cite the phrase from the student response that justifies it. An answer that does not address this text earns 0–1. Quotations the "
@@ -121,7 +141,8 @@ def patch_prompt(ctx: dict, result: dict, missing: list[str]) -> str:
                                                "precision", "sophistication")},
              "comparison_points": {"what_model_does": "...", "descriptive_moments": "...", "evidence_integration": "...", "development": "...",
                                    "expression": "...", "sophistication": "..."},
-             "improved_answer": "the student's answer lifted toward Band 6, keeping their ideas; quotations verbatim from the stimulus"}
+             "improved_answer": "the student's answer lifted toward Band 6, keeping their ideas; quotations verbatim from the stimulus",
+             "comparison_items": [COMPARISON_ITEM, "... 3 to 6 items; student_quote copied EXACTLY from the student response"]}
     want = {k: v for k, v in shape.items() if k in missing}
     return "\n\n".join([
         f"TASK: You marked this {ctx.get('subject_name', 'English Advanced')} response {result.get('mark_awarded')}/{ctx.get('marks')}, but your "

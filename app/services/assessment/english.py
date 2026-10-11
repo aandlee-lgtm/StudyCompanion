@@ -18,7 +18,7 @@ import re
 from sqlalchemy.orm import Session
 
 from app.ai.schemas import MarkingResult
-from app.ai.schemas_english import DIMENSIONS, EnglishPatch, canonical_category, missing_fields
+from app.ai.schemas_english import DIMENSIONS, EnglishPatch, canonical_category, missing_fields, needs_comparison
 from app.marking import quotes
 from app.models import Question
 from app.services import english_compare as ec
@@ -92,6 +92,8 @@ def _patch_missing(db: Session, q: Question, ctx: dict, result: MarkingResult, m
         result.dimensions = {**{k: v for k, v in patch.dimensions.items() if str(v).strip()}, **{k: v for k, v in (result.dimensions or {}).items() if str(v).strip()}}
     if patch.comparison_points and not getattr(result, "comparison_points", None) and hasattr(result, "comparison_points"):
         result.comparison_points = patch.comparison_points
+    if "comparison_items" in missing and patch.comparison_items and hasattr(result, "comparison_items"):
+        result.comparison_items = list(patch.comparison_items)
     return missing_fields(result, bool(q.model_answer), bool(ctx.get("previous_attempt")))
 
 
@@ -196,14 +198,31 @@ def post_process(db: Session, q: Question, ctx: dict, result: MarkingResult, pay
         if canon is None and e.category != "other":
             e.description = f"({e.category}) {e.description}"
         e.category = canon or "other"
+    texts = eg.reading_texts(q)
     missing = missing_fields(result, bool(q.model_answer), bool(ctx.get("previous_attempt")))
+    comp, dropped = ec.validate_ai_items(getattr(result, "comparison_items", []), response, texts)
+    if needs_comparison(comp, result.mark_awarded, q.marks):
+        missing.append("comparison_items")
     if missing:
         missing = _patch_missing(db, q, ctx, result, missing)
+        comp, dropped2 = ec.validate_ai_items(getattr(result, "comparison_items", []), response, texts)
+        dropped = max(dropped, dropped2)
+        if needs_comparison(comp, result.mark_awarded, q.marks):
+            missing.append("comparison_items")
     eng["not_assessed"] = missing
+    # owner request 2026-10-11: lead with the point-by-point comparison of THEIR response; only items whose
+    # quoted student text is verbatim in the response are kept
+    if getattr(result, "comparison_items", None):  # the stored AI reply keeps only the items that passed the check
+        result.comparison_items = [c for c in result.comparison_items
+                                   if ec.is_verbatim(c.student_quote, response) or (not c.student_quote.strip() and c.status.strip().lower() == "missing")]
+    payload["comparison_items"] = comp
+    payload["comparison_source"] = "ai"
+    payload["comparison_dropped"] = dropped
+    if comp:
+        payload["comparison"] = ec.summary_text(comp, result.mark_awarded, q.marks) if not payload.get("comparison") else payload["comparison"]
 
     # model provenance (english-05): a vetted model is never replaced by a new AI one
     ai_model = (result.model_answer or "").strip()
-    texts = eg.reading_texts(q)
     if model["kind"] == "model":
         result.model_answer = ""
     elif ai_model:
