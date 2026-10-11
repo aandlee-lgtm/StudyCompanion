@@ -1,13 +1,16 @@
 from __future__ import annotations
 
 from fastapi import APIRouter, Depends, Form, Request
+from urllib.parse import quote
+
 from fastapi.responses import JSONResponse, RedirectResponse
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.db import get_db
-from app.models import LearningPlanItem, Mastery, PrescribedText, SyllabusOutcome, SyllabusTopic
+from app.models import LearningPlanItem, Mastery, PrescribedText, Question, SyllabusOutcome, SyllabusTopic
 from app.routes.common import render
+from app.services import legal_plan as lp
 from app.services import plan
 from app.services import settings as st
 
@@ -19,37 +22,164 @@ def curriculum(request: Request, subject: str = "MATHS", db: Session = Depends(g
     subject = subject if subject in ("MATHS", "ENGLISH", "LEGAL") else "MATHS"
     subj = plan.subject(db, subject)
     topics = db.execute(select(SyllabusTopic).where(SyllabusTopic.subject_id == subj.id).order_by(SyllabusTopic.position)).scalars().all()
+    legal = None
+    if subject == "LEGAL":  # v2-legal-logic: sub-areas, option slots (legal-09/11)
+        counts = dict(db.execute(select(Question.plan_item_id, func.count(Question.id)).where(Question.subject_id == subj.id, Question.approved.is_(True))
+                                 .group_by(Question.plan_item_id)).all())
+        groups = lp.grouped(db)
+        options = lp.option_items(db)
+        legal = {"groups": groups, "counts": counts, "options": options, "active": [o for o in options if o.active],
+                 "health": {o.id: lp.option_health(db, o) for o in options if o.active}, "max_options": int(st.get(db, "legal_max_options") or 2),
+                 "confirmed": bool(st.get(db, "legal_syllabus_confirmed")), "msg": request.query_params.get("msg"),
+                 "retired": [i for i in lp.legal_items(db) if "retired by you" in (i.notes or "").lower()]}
     return render(
         request, "curriculum.html", subject=subject, items=plan.items(db, subject), topics=topics,
         topic_names={t.id: t.name for t in topics}, texts=db.execute(select(PrescribedText).where(PrescribedText.subject_id == subj.id)).scalars().all(),
         outcomes=db.execute(select(SyllabusOutcome).where(SyllabusOutcome.subject_id == subj.id).order_by(SyllabusOutcome.topic_id)).scalars().all(),
-        mastery={m.plan_item_id: m for m in db.execute(select(Mastery)).scalars()}, enrichment=st.get(db, "enrichment_enabled"),
+        mastery={m.plan_item_id: m for m in db.execute(select(Mastery)).scalars()}, enrichment=st.get(db, "enrichment_enabled"), legal=legal,
     )
 
 
-def _back(item: LearningPlanItem) -> RedirectResponse:
-    return RedirectResponse(f"/curriculum?subject={item.subject.code}", status_code=303)
+def _back(item: LearningPlanItem, msg: str | None = None) -> RedirectResponse:
+    url = f"/curriculum?subject={item.subject.code}"
+    if msg:
+        url += "&msg=" + quote(msg)
+    if item.subject.code == "LEGAL":
+        url += f"#item{item.id}"
+    return RedirectResponse(url, status_code=303)
+
+
+def _legal_back(msg: str | None = None, anchor: str = "") -> RedirectResponse:
+    return RedirectResponse("/curriculum?subject=LEGAL" + ("&msg=" + quote(msg) if msg else "") + (f"#{anchor}" if anchor else ""), status_code=303)
+
+
+def _item(db: Session, iid: int) -> LearningPlanItem:
+    item = db.get(LearningPlanItem, iid)
+    if item is None:
+        raise ValueError("That learning-plan item no longer exists.")
+    return item
 
 
 @router.post("/curriculum/item/{iid}/status")
 def set_status(iid: int, status: str = Form(...), db: Session = Depends(get_db)):
-    item = plan.set_status(db, iid, status)
+    item = _item(db, iid)
+    if item.subject.code == "LEGAL" and lp.is_core_parent(item) and lp.sub_areas_of(db, item):
+        if status not in ("LOCKED", "LEARNING", "LEARNED", "REVISION"):
+            raise ValueError(f"unknown status {status}")
+        lp.set_all_sub_areas(db, item, status)  # a core topic's status is its sub-areas' status
+    else:
+        item = plan.set_status(db, iid, status)
+        parent = lp.parent_of(db, item) if item.subject.code == "LEGAL" else None
+        if parent is not None:
+            lp.sync_parent(db, parent)
     db.commit()
     return _back(item)
 
 
 @router.post("/curriculum/item/{iid}/start-here")
 def start_here(iid: int, db: Session = Depends(get_db)):
-    plan.start_from(db, iid)
+    item = _item(db, iid)
+    if item.subject.code == "LEGAL" and lp.is_sub_area(item):
+        lp.start_here(db, item)  # within this core topic only
+    else:
+        plan.start_from(db, iid)
     db.commit()
-    return _back(db.get(LearningPlanItem, iid))
+    return _back(item)
 
 
 @router.post("/curriculum/item/{iid}/option")
 def option(iid: int, active: int = Form(...), db: Session = Depends(get_db)):
-    plan.set_option_active(db, iid, bool(active))
+    item = _item(db, iid)
+    try:
+        lp.set_option(db, item, bool(active), int(st.get(db, "legal_max_options") or 2))
+    except ValueError as exc:
+        return _back(item, str(exc))
+    msg = None
+    if active:
+        warn = lp.option_health(db, item)["warnings"]
+        msg = f"{item.title} is now active." + (" Content check: " + "; ".join(warn) + "." if warn else "")
     db.commit()
-    return _back(db.get(LearningPlanItem, iid))
+    return _back(item, msg)
+
+
+# ---------------------------------------------------------------- Legal Studies (v2-legal-logic) ---
+
+
+@router.post("/curriculum/LEGAL/options")
+def legal_option_slots(option1: int = Form(0), option2: int = Form(0), db: Session = Depends(get_db)):
+    """The two option slots (legal-11): exactly the chosen options become active."""
+    max_opts = int(st.get(db, "legal_max_options") or 2)
+    try:
+        newly = lp.set_option_slots(db, [option1, option2][:max_opts], max_opts)
+    except ValueError as exc:
+        return _legal_back(str(exc), "options")
+    notes = []
+    for o in newly:
+        warn = lp.option_health(db, o)["warnings"]
+        notes.append(f"{o.title} is now active" + (" — content check: " + "; ".join(warn) if warn else "") + ".")
+    db.commit()
+    return _legal_back(" ".join(notes) or "Option choices saved.", "options")
+
+
+@router.post("/curriculum/LEGAL/option/new")
+def legal_new_option(name: str = Form(...), keywords: str = Form(""), notes: str = Form(""), db: Session = Depends(get_db)):
+    if not name.strip():
+        raise ValueError("Give the option topic a name.")
+    item = lp.create_option(db, name, keywords, notes)
+    db.commit()
+    return _legal_back(f"Added the option topic '{name.strip()}'. Choose it in an option slot to study it.", f"item{item.id}")
+
+
+@router.post("/curriculum/LEGAL/sub-area")
+def legal_new_sub_area(parent_id: int = Form(...), title: str = Form(...), code: str = Form(""), db: Session = Depends(get_db)):
+    parent = _item(db, parent_id)
+    if not lp.is_core_parent(parent) or not title.strip():
+        raise ValueError("Choose Crime or Human rights and give the sub-area a title.")
+    try:
+        item = lp.add_sub_area(db, parent, title, code)
+    except ValueError as exc:
+        return _legal_back(str(exc))
+    db.commit()
+    return _legal_back(f"Added the sub-area '{item.title}' (LOCKED until you start it).", f"item{item.id}")
+
+
+@router.post("/curriculum/item/{iid}/rename")
+def rename(iid: int, title: str = Form(...), db: Session = Depends(get_db)):
+    item = _item(db, iid)
+    if not title.strip():
+        raise ValueError("The title cannot be empty.")
+    item.title = title.strip()[:300]
+    if item.topic is not None and lp.is_option(item):
+        item.topic.name = item.title.replace("Option — ", "", 1)
+    db.commit()
+    return _back(item)
+
+
+@router.post("/curriculum/item/{iid}/retire")
+def retire(iid: int, db: Session = Depends(get_db)):
+    item = _item(db, iid)
+    if item.subject.code != "LEGAL" or lp.is_core_parent(item):
+        raise ValueError("Only Legal Studies sub-areas and option topics can be retired here.")
+    lp.retire(db, item)
+    db.commit()
+    return _back(item, f"Retired '{item.title}'. Its questions are no longer served; nothing was deleted.")
+
+
+@router.post("/curriculum/item/{iid}/restore")
+def restore(iid: int, db: Session = Depends(get_db)):
+    item = _item(db, iid)
+    item.notes = (item.notes or "").replace(" Retired by you.", "").replace("Retired by you.", "").strip() or None
+    if not lp.is_option(item):
+        item.active = True
+    db.commit()
+    return _back(item, f"Restored '{item.title}' (LOCKED).")
+
+
+@router.post("/curriculum/LEGAL/syllabus-confirmed")
+def legal_syllabus_confirmed(confirmed: int = Form(0), db: Session = Depends(get_db)):
+    st.set_(db, "legal_syllabus_confirmed", bool(confirmed))
+    db.commit()
+    return _legal_back("Saved." if confirmed else "Marked as not yet confirmed.")
 
 
 @router.post("/curriculum/item/{iid}/position")

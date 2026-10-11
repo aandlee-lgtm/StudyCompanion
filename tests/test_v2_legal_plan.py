@@ -253,3 +253,60 @@ def test_real_v2_content_loads_cleanly(db):
         if q["type"] == "stimulus":
             assert row.stimulus_id
     assert st.get(db, "legal_seeded:legal_v2.json")
+
+
+# ------------------------------------------------------------------ Learning plan page (routes) ---
+
+
+def test_legal_plan_page_and_controls(db, client):
+    page = client.get("/curriculum?subject=LEGAL")
+    assert page.status_code == 200
+    assert "The criminal investigation process" in page.text and "Option 1" in page.text and "Option 2" in page.text
+    assert "confirm them against the NESA Legal Studies syllabus" in page.text
+
+    crime, trial = plan_item(db, "LS-CRIME"), plan_item(db, "LS-CRIME-TRIAL")
+    r = client.post(f"/curriculum/item/{trial.id}/start-here", follow_redirects=False)
+    assert r.status_code == 303 and f"#item{trial.id}" in r.headers["location"]
+    db.expire_all()
+    assert plan_item(db, "LS-CRIME-INVESTIGATION").status == "LEARNED" and plan_item(db, "LS-CRIME-SENTENCING").status == "LOCKED"
+    assert plan_item(db, "LS-HR-ENFORCE").status == "LOCKED"
+
+    client.post(f"/curriculum/item/{crime.id}/status", data={"status": "REVISION"})
+    db.expire_all()
+    assert all(plan_item(db, c).status == "REVISION" for c in CRIME_SUBS)
+    client.post(f"/curriculum/item/{plan_item(db, 'LS-CRIME-YOUNG').id}/status", data={"status": "LOCKED"})
+    db.expire_all()
+    assert plan_item(db, "LS-CRIME").status == "LEARNING"  # mixed sub-areas -> the header shows LEARNING
+
+    fam, wp, gep = (plan_item(db, c) for c in ("LS-OPT-FAMILY", "LS-OPT-WORKPLACE", "LS-OPT-GEP"))
+    r = client.post("/curriculum/LEGAL/options", data={"option1": fam.id, "option2": wp.id}, follow_redirects=False)
+    assert "is%20now%20active" in r.headers["location"] and "content%20check" in r.headers["location"]
+    db.expire_all()
+    assert plan_item(db, "LS-OPT-FAMILY").active and plan_item(db, "LS-OPT-WORKPLACE").active
+    r = client.post(f"/curriculum/item/{gep.id}/option", data={"active": 1}, follow_redirects=False)
+    assert "at%20most%202" in r.headers["location"]
+    db.expire_all()
+    assert not plan_item(db, "LS-OPT-GEP").active
+    page = client.get("/curriculum?subject=LEGAL&msg=hello")
+    assert "Not much to practise yet" in page.text and ">hello<" in page.text
+
+    r = client.post("/curriculum/LEGAL/sub-area", data={"parent_id": crime.id, "title": "Crime — Technology and policing"}, follow_redirects=False)
+    db.expire_all()
+    new = db.execute(select(LearningPlanItem).where(LearningPlanItem.title == "Crime — Technology and policing")).scalar_one()
+    assert new.code.startswith("LS-CRIME-") and new.status == "LOCKED"
+    client.post(f"/curriculum/item/{new.id}/rename", data={"title": "Crime — Technology and investigation"})
+    client.post(f"/curriculum/item/{new.id}/retire")
+    db.expire_all()
+    assert not db.get(LearningPlanItem, new.id).active
+    assert "Retired (1)" in client.get("/curriculum?subject=LEGAL").text
+    client.post(f"/curriculum/item/{new.id}/restore")
+    db.expire_all()
+    assert db.get(LearningPlanItem, new.id).active and "retired" not in (db.get(LearningPlanItem, new.id).notes or "").lower()
+
+    client.post("/curriculum/LEGAL/option/new", data={"name": "Technology and the law", "keywords": "privacy"})
+    assert "Technology and the law" in client.get("/curriculum?subject=LEGAL").text
+    client.post("/curriculum/LEGAL/syllabus-confirmed", data={"confirmed": 1})
+    db.expire_all()
+    assert st.get(db, "legal_syllabus_confirmed") is True
+    # other subjects keep the generic list
+    assert "Import a textbook sequence" in client.get("/curriculum?subject=MATHS").text

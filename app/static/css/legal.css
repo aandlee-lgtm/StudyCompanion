@@ -1,1 +1,35 @@
 /* v2 styles owned by the legal package */
+
+/* ---- Learning plan: core topics, sub-areas, option slots (legal-09/11) ---- */
+.legal-syllabus p { margin: 0 0 8px; }
+.legal-core, .legal-options { margin-bottom: 16px; }
+.legal-core-head { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: space-between; }
+.legal-core-head h3 { margin: 0; color: var(--legal); }
+.legal-subs { list-style: none; margin: 10px 0 6px; padding: 0; counter-reset: sub; }
+.legal-sub, .legal-option { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; justify-content: space-between;
+  padding: 10px 0 10px 12px; border-top: 1px solid var(--line); border-left: 3px solid transparent; }
+.legal-sub.status-learning { border-left-color: var(--accent); }
+.legal-sub.status-learned { border-left-color: var(--good); }
+.legal-sub.status-revision { border-left-color: var(--warn); }
+.legal-sub.status-locked .legal-sub-title { color: var(--muted); }
+.legal-sub-main { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1 1 260px; }
+.legal-sub-title { font-weight: 600; }
+.legal-sub-actions { gap: 8px; }
+.legal-edit { position: relative; }
+.legal-edit summary { list-style: none; cursor: pointer; }
+.legal-edit summary::-webkit-details-marker { display: none; }
+.legal-edit-body { display: flex; flex-direction: column; gap: 8px; padding: 10px; margin-top: 6px; background: var(--surface-2);
+  border: 1px solid var(--line); border-radius: var(--radius); }
+.legal-add { margin-top: 10px; }
+.legal-add summary { cursor: pointer; color: var(--accent); }
+.legal-add form { margin-top: 8px; }
+.legal-slots { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
+.legal-slots .field { margin-bottom: 0; min-width: 220px; }
+.legal-warn { color: var(--warn); }
+.legal-option-list { list-style: none; padding: 0; margin: 8px 0; display: flex; flex-direction: column; gap: 6px; }
+.legal-retired summary { cursor: pointer; }
+@media (max-width: 640px) {
+  .legal-sub, .legal-option { padding-left: 8px; }
+  .legal-slots .field { min-width: 0; flex: 1 1 100%; }
+  .legal-edit-body input[type=text] { width: 100%; }
+}
