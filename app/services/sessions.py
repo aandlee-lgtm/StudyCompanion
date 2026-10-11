@@ -496,3 +496,169 @@ def exposure_for(db: Session, qid: int) -> QuestionExposure | None:
 
 def now_local() -> datetime:
     return datetime.now()
+
+
+# ------------------------------------------------------- real-time swap (v2-swap) ---
+class SwapRefused(ValueError):
+    """The question cannot be swapped (already answered, session finished, ...)."""
+
+
+def swap_question(db: Session, sess: DailySession, sq: SessionQuestion, reason: str, lock: bool = False,
+                  actor: str = "student"):
+    """Swap an unanswered question (or a whole English reading set) for the engine's best
+    replacement of a similar length, or remove it from the session when nothing suitable exists.
+
+    The swapped-out question records no attempt, no skip and no exposure (it simply leaves the
+    session); the swap itself is logged in ``session_swaps``. With reason "not_learnt" and
+    ``lock``, the question's plan item becomes LOCKED (Not taught yet) first, so this and future
+    sessions avoid it until the student unlocks it. Returns the ``SessionSwap`` record."""
+    from app.models import LearningPlanItem, SessionSwap
+    from app.models.common import LOCKED
+    from app.selection import swap as sw
+    from app.selection.engine import stimulus_minutes
+    from app.services import plan as plan_service
+
+    if reason not in sw.REASONS:
+        raise SwapRefused("Choose why you want to swap this question.")
+    if sq.session_id != sess.id:
+        raise SwapRefused("That question is not part of this session.")
+    today = clock.today(st.get(db, "timezone"))
+    unit = sw.unit_for(sess, sq)
+    why = sw.blocked_reason(db, unit)
+    if why:
+        raise SwapRefused(why)
+    code = unit.code
+    orig_qs = unit.questions
+    orig_item = db.get(LearningPlanItem, orig_qs[0].plan_item_id) if orig_qs[0].plan_item_id else None
+    old_positions = unit.positions
+    label = unit.label()
+    minutes_before = float(sess.expected_minutes or 0)
+    from_text = [(q.question_text or "")[:140] for q in orig_qs]
+    from_title = orig_qs[0].stimulus.title if unit.passage and orig_qs[0].stimulus else None
+    from_form = unit.form  # read before the rows change
+
+    locked = None
+    offer = sw.lock_offer(unit)
+    if reason == "not_learnt" and lock and offer:
+        locked = plan_service.set_status(db, offer["item_id"], LOCKED)  # explicit choice: never silent
+    if code == "MATHS":
+        _top_up_templates(db)
+    rep = sw.find_replacement(db, unit, reason, today)
+
+    rec = SessionSwap(session_id=sess.id, actor=actor, reason=reason, subject_code=code, position=old_positions[0],
+                      from_question_ids=[q.id for q in orig_qs], to_question_ids=[s.question.id for s in rep.items],
+                      plan_item_id=orig_item.id if orig_item else None, locked_plan_item_id=locked.id if locked else None,
+                      outcome="replaced" if rep.items else "removed", message="")
+    db.add(rec)
+    db.flush()
+
+    if rep.items:
+        rows = list(unit.sqs)
+        for row, s in zip(rows, rep.items):
+            old_qid = row.question_id
+            row.question_id = s.question.id
+            row.question = s.question
+            row.status = "pending"
+            row.draft_text = None
+            row.draft_saved_at = None
+            row.time_spent_seconds = 0
+            row.reason = f"Swapped in ({sw.REASON_TEXT[reason]}). {s.reason}"
+            row.score_breakdown = {**s.breakdown, "total": s.score, "bucket": s.bucket, "tier": s.tier, "kind": s.kind,
+                                   "flags": list(s.facts.get("flags") or []), "timed": rep.ctx.profile.timed if rep.ctx else False,
+                                   "swap": {"id": rec.id, "reason": reason, "replaced": old_qid}}
+        for row in rows[len(rep.items):]:  # fewer questions than before (never more)
+            db.delete(row)
+    else:
+        for row in unit.sqs:
+            db.delete(row)
+    db.flush()
+    db.refresh(sess)
+    for k, row in enumerate(sorted(sess.questions, key=lambda x: x.position), start=1):
+        if row.position != k:
+            row.position = k
+    db.flush()
+    db.refresh(sess)
+
+    qs = [x.question for x in sess.questions]
+    sess.expected_minutes = round(sum(float(q.estimated_minutes or 0) for q in qs) + stimulus_minutes(qs), 1)
+    if rep.ctx is not None:
+        sess.explanation = sw.refreshed_explanation(rep.ctx, sess, code)
+
+    # what the student is told (and what "Why these questions?" lists)
+    new_rows = [x for x in sess.questions if (x.score_breakdown or {}).get("swap", {}).get("id") == rec.id]
+    why_txt = {"not_learnt": "you have not learnt it yet", "different": "you asked for a different one"}[reason]
+    if unit.passage and reason == "not_learnt":
+        why_txt = "you have not studied this kind of text" + (f" ({from_form.lower()})" if from_form else "") + " yet"
+    if unit.passage:
+        what = f"the passage '{from_title}' ({label})" if from_title else f"the passage ({label})"
+    else:
+        what = f"{label} ({sw.item_name(orig_item)})"
+    if new_rows:
+        new_qs = [x.question for x in new_rows]
+        mins = round(sum(float(q.estimated_minutes or 0) for q in new_qs) + (stimulus_minutes(new_qs) if unit.passage else 0))
+        if unit.passage:
+            stim = new_qs[0].stimulus
+            marks = " and ".join(str(q.marks) for q in new_qs)
+            into = (f"'{stim.title}'" + (f" ({stim.form.lower()})" if stim and stim.form else "") if stim else "another passage")
+            msg = f"Swapped {what} because {why_txt}: now {into} with {marks}-mark questions, about {mins} minutes including reading."
+        else:
+            q = new_qs[0]
+            item = db.get(LearningPlanItem, q.plan_item_id) if q.plan_item_id else None
+            msg = (f"Swapped {what} because {why_txt}: Q{new_rows[0].position} is now a {q.marks}-mark question on "
+                   f"{sw.item_name(item)}, about {mins} minutes.")
+        if rep.relaxed:
+            msg += " Nothing closer in length was available."
+    else:
+        msg = (f"Removed {what} from today's session because {why_txt}, and no suitable replacement exists: {rep.why_none}. "
+               f"Today's set is now about {round(sess.expected_minutes)} minutes.")
+    msg += " Nothing was recorded for the question you swapped out."
+    if locked is not None:
+        msg += (f" {sw.item_name(locked)} is now marked Not taught yet, so sessions leave it out until you change it on "
+                "the Learning plan.")
+    if reason == "not_learnt" and orig_item is not None and not unit.passage:
+        same = [x.position for x in sess.questions if x.question.plan_item_id == orig_item.id and x.status not in ANSWERED]
+        if same:
+            qn = " and ".join(f"Q{p}" for p in same)
+            msg += f" {qn} {'is' if len(same) == 1 else 'are'} also on {sw.item_name(orig_item)}: swap {'it' if len(same) == 1 else 'them'} too if you have not learnt it."
+    rec.message = msg
+    rec.to_question_ids = [x.question_id for x in new_rows]
+    rec.details = {
+        "local_time": clock.local_now().strftime("%H:%M"), "from_positions": old_positions,
+        "to_positions": [x.position for x in new_rows], "from_text": from_text, "from_title": from_title, "from_form": from_form,
+        "relaxed": rep.relaxed, "why_none": rep.why_none, "minutes_before": minutes_before,
+        "minutes_after": sess.expected_minutes, "facts": rep.facts,
+    }
+    if not sess.questions:
+        renumber(db)
+    else:
+        maybe_complete(db, sess)
+    db.flush()
+    return rec
+
+
+def swaps_for(db: Session, sess: DailySession) -> list:
+    from app.models import SessionSwap
+
+    return list(db.execute(select(SessionSwap).where(SessionSwap.session_id == sess.id).order_by(SessionSwap.created_at, SessionSwap.id)).scalars())
+
+
+def swap_controls(db: Session, sess: DailySession) -> dict[int, dict]:
+    """For each session row: can it be swapped, and what the control should offer."""
+    from app.selection import swap as sw
+
+    if sess.status in sw.FINISHED or not sess.questions:
+        return {}
+    ids = [x.id for x in sess.questions]
+    attempted = sw._attempted(db, ids)
+    photos = sw._pending_photos(db, ids)
+    out: dict[int, dict] = {}
+    for sq in sess.questions:
+        unit = sw.unit_for(sess, sq)
+        why = sw.blocked_reason(db, unit, attempted=attempted, photos=photos)
+        out[sq.id] = {
+            "can": why is None, "why_not": why, "is_set": unit.passage, "positions": unit.positions, "label": unit.label(),
+            "lead": unit.sqs[0].id == sq.id, "minutes": round(unit.minutes), "marks": unit.marks,
+            "form": (unit.form or "").lower() or None, "lock": sw.lock_offer(unit) if why is None else None,
+            "draft": any(x.status == "draft" for x in unit.sqs),
+        }
+    return out
