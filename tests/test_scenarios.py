@@ -76,7 +76,7 @@ def test_D_outdated_legislation_flagged_with_verified_evidence(db):
     assert p["facts_checked"] == TUESDAY.isoformat()  # 'Current information checked: [date]'
     assert "Smith v Jones" in p["unverified_references"]  # invented authority is flagged, not trusted
     assert "Bail Act 2013 (NSW)" not in p["unverified_references"]
-    assert "VERIFIED LEGAL EVIDENCE" in fake.prompts[0] and "Bail Act 2013" in fake.prompts[0]
+    assert "LEGAL EVIDENCE BANK (verification status per item" in fake.prompts[0] and "Bail Act 2013" in fake.prompts[0]  # v2 header (legal-13)
 
 
 def test_E_consistent_success_raises_difficulty(db):
