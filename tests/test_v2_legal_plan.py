@@ -192,17 +192,96 @@ def test_classifier():
     assert lp.classify("It actually happened.", "LS-CRIME") == ("LS-CRIME-NATURE", 0)
 
 
-def test_start_here_only_changes_one_core_topic(db):
-    trial = plan_item(db, "LS-CRIME-TRIAL")
-    lp.start_here(db, trial)
-    status = {i.code: i.status for i in lp.legal_items(db)}
-    assert [status[c] for c in CRIME_SUBS] == ["LEARNED", "LEARNED", "LEARNING", "LOCKED", "LOCKED", "LOCKED"]
-    assert status["LS-HR-NATURE"] == "LEARNING" and status["LS-HR-ENFORCE"] == "LOCKED"
-    assert status["LS-CRIME"] == "LEARNING"
+def test_each_sub_area_is_set_independently_in_any_order(db):
+    """Owner request: the teaching order is unknown, so statuses are independent and nothing
+    auto-advances; several sub-areas can be Learning now at once."""
+    before = {i.code: i.status for i in lp.legal_items(db)}
+    lp.set_item_status(db, plan_item(db, "LS-CRIME-SENTENCING"), "LEARNING")
+    lp.set_item_status(db, plan_item(db, "LS-HR-ISSUE"), "LEARNING")
+    lp.set_item_status(db, plan_item(db, "LS-CRIME-NATURE"), "LEARNED")
+    lp.set_item_status(db, plan_item(db, "LS-CRIME-YOUNG"), "REVISION")
+    after = {i.code: i.status for i in lp.legal_items(db)}
+    changed = {c for c in after if after[c] != before[c]}
+    assert changed == {"LS-CRIME-SENTENCING", "LS-HR-ISSUE", "LS-CRIME-NATURE", "LS-CRIME-YOUNG"}
+    assert after["LS-CRIME-INVESTIGATION"] == "LOCKED" and after["LS-CRIME-TRIAL"] == "LOCKED"  # nothing in between is touched
+    assert sum(1 for c in CRIME_SUBS + HR_SUBS if after[c] == "LEARNING") == 3  # HR nature + sentencing + HR issue
+    # finishing a sub-area never unlocks a "next" one
+    lp.set_item_status(db, plan_item(db, "LS-CRIME-SENTENCING"), "LEARNED")
+    assert plan_item(db, "LS-CRIME-YOUNG").status == "REVISION" and plan_item(db, "LS-CRIME-INTERNATIONAL").status == "LOCKED"
+    assert not hasattr(lp, "start_here")
+    with pytest.raises(ValueError):
+        lp.set_item_status(db, plan_item(db, "LS-CRIME-TRIAL"), "DONE")
     lp.set_all_sub_areas(db, plan_item(db, "LS-CRIME"), "REVISION")
     assert plan_item(db, "LS-CRIME").status == "REVISION"
     lp.set_all_sub_areas(db, plan_item(db, "LS-CRIME"), "LOCKED")
     assert plan_item(db, "LS-CRIME").status == "LOCKED"
+    assert lp.STATUS_LABELS == {"LOCKED": "Not taught yet", "LEARNING": "Learning now", "LEARNED": "Learnt", "REVISION": "Revision"}
+
+
+def test_option_status_set_directly_respects_the_slots(db):
+    opts = {i.code: i for i in lp.option_items(db)}
+    lp.set_item_status(db, opts["LS-OPT-FAMILY"], "LEARNING")  # choosing by status takes a slot
+    lp.set_item_status(db, opts["LS-OPT-WORKPLACE"], "LEARNED")
+    assert opts["LS-OPT-FAMILY"].active and opts["LS-OPT-WORKPLACE"].active and opts["LS-OPT-WORKPLACE"].status == "LEARNED"
+    with pytest.raises(ValueError):
+        lp.set_item_status(db, opts["LS-OPT-GEP"], "LEARNING")
+    lp.set_item_status(db, opts["LS-OPT-FAMILY"], "LOCKED")  # chosen, not taught yet: keeps its slot
+    assert opts["LS-OPT-FAMILY"].active and opts["LS-OPT-FAMILY"].status == "LOCKED"
+
+
+def test_first_use_picker(db):
+    assert lp.topics_pending(db)
+    pk = lp.picker(db)
+    titles = [g["title"] for g in pk["groups"]]
+    assert titles[-1] == "Option topics" and len(pk["groups"]) == 3
+    ticked = {it["id"] for g in pk["groups"] for it in g["items"] if it["status"] != "LOCKED"}
+    assert ticked == {plan_item(db, "LS-CRIME-NATURE").id, plan_item(db, "LS-HR-NATURE").id}  # the suggested defaults
+    plan_item(db, "LS-HR-ENFORCE").status = "REVISION"
+    chosen = [plan_item(db, c).id for c in ("LS-CRIME-TRIAL", "LS-CRIME-YOUNG", "LS-HR-ENFORCE", "LS-OPT-FAMILY")]
+    res = lp.apply_started(db, chosen)
+    status = {i.code: i.status for i in lp.legal_items(db)}
+    assert status["LS-CRIME-TRIAL"] == "LEARNING" and status["LS-CRIME-YOUNG"] == "LEARNING"
+    assert status["LS-HR-ENFORCE"] == "REVISION"  # already further along: kept
+    assert status["LS-CRIME-NATURE"] == "LOCKED" and status["LS-HR-NATURE"] == "LOCKED"  # unticked
+    assert plan_item(db, "LS-OPT-FAMILY").active and status["LS-OPT-FAMILY"] == "LEARNING"
+    assert status["LS-CRIME"] == "LEARNING" and status["LS-HR"] == "REVISION"
+    assert "The nature of crime" in " ".join(res["stopped"]) or res["stopped"]
+    assert not lp.topics_pending(db)
+    opts = [o.id for o in lp.option_items(db)][:3]
+    with pytest.raises(ValueError):
+        lp.apply_started(db, opts)
+    # ticking two new options frees the slot of an unticked chosen option
+    lp.apply_started(db, [plan_item(db, "LS-OPT-GEP").id, plan_item(db, "LS-OPT-WORKPLACE").id])
+    assert {o.code for o in lp.active_options(db)} == {"LS-OPT-GEP", "LS-OPT-WORKPLACE"}
+    assert all(plan_item(db, c).status == "LOCKED" for c in CRIME_SUBS + HR_SUBS)
+
+
+def test_selection_serves_legal_only_from_unlocked_sub_areas(db):
+    """Daily selection uses plan-item status: questions on Not-taught-yet sub-areas are never served."""
+    from app.selection import engine
+    from app.services import clock, sessions
+    from tests.conftest import answer_correctly, TUESDAY
+    from datetime import timedelta
+
+    lp.apply_started(db, [plan_item(db, "LS-CRIME-TRIAL").id, plan_item(db, "LS-HR-ENFORCE").id, plan_item(db, "LS-CRIME-YOUNG").id])
+    db.commit()
+    allowed = {plan_item(db, c).id for c in ("LS-CRIME-TRIAL", "LS-HR-ENFORCE", "LS-CRIME-YOUNG")}
+    served = set()
+    for d in range(3):
+        clock.set_today(TUESDAY + timedelta(days=d))
+        s = sessions.get_or_create_today(db)
+        legal = [sq.question for sq in s.questions if sq.question.subject_id == lp.legal_subject(db).id]
+        assert legal, "Legal questions are still served from the started sub-areas"
+        served |= {q.plan_item_id for q in legal}
+        answer_correctly(db, s)
+    assert served and served <= allowed
+    # the hard eligibility rule itself
+    locked_q = _on(db, "LS-CRIME-NATURE")[0]
+    open_q = _on(db, "LS-CRIME-TRIAL")[0]
+    from app.selection.context import build_context
+
+    ctx = build_context(db, clock.today())
+    assert not engine.is_servable(ctx, locked_q) and engine.is_servable(ctx, open_q)
 
 
 def test_option_slots_limit_two(db):
@@ -265,18 +344,31 @@ def test_legal_plan_page_and_controls(db, client):
     assert "confirm them against the NESA Legal Studies syllabus" in page.text
 
     crime, trial = plan_item(db, "LS-CRIME"), plan_item(db, "LS-CRIME-TRIAL")
-    r = client.post(f"/curriculum/item/{trial.id}/start-here", follow_redirects=False)
+    assert "Which Legal topics have you started?" in page.text and "Learning now" in page.text and "Not taught yet" in page.text
+    assert "Start here" not in page.text
+    r = client.post(f"/curriculum/item/{trial.id}/start-here", follow_redirects=False)  # no sequence for Legal
+    assert r.status_code == 303 and "any%20order" in r.headers["location"]
+    r = client.post("/curriculum/LEGAL/advance", follow_redirects=False)
+    assert "any%20order" in r.headers["location"]
+    db.expire_all()
+    assert plan_item(db, "LS-CRIME-INVESTIGATION").status == "LOCKED" and plan_item(db, "LS-CRIME-NATURE").status == "LEARNING"
+    r = client.post(f"/curriculum/item/{trial.id}/status", data={"status": "LEARNING"}, follow_redirects=False)
     assert r.status_code == 303 and f"#item{trial.id}" in r.headers["location"]
     db.expire_all()
-    assert plan_item(db, "LS-CRIME-INVESTIGATION").status == "LEARNED" and plan_item(db, "LS-CRIME-SENTENCING").status == "LOCKED"
-    assert plan_item(db, "LS-HR-ENFORCE").status == "LOCKED"
+    assert plan_item(db, "LS-CRIME-TRIAL").status == "LEARNING" and plan_item(db, "LS-CRIME-NATURE").status == "LEARNING"
+    assert plan_item(db, "LS-CRIME-INVESTIGATION").status == "LOCKED" and plan_item(db, "LS-HR-ENFORCE").status == "LOCKED"
+    assert st.get(db, "legal_topics_chosen") is True  # a status change answers the first-use picker
+    assert "Update which Legal topics you have started" in client.get("/curriculum?subject=LEGAL").text
 
     client.post(f"/curriculum/item/{crime.id}/status", data={"status": "REVISION"})
     db.expire_all()
     assert all(plan_item(db, c).status == "REVISION" for c in CRIME_SUBS)
     client.post(f"/curriculum/item/{plan_item(db, 'LS-CRIME-YOUNG').id}/status", data={"status": "LOCKED"})
     db.expire_all()
-    assert plan_item(db, "LS-CRIME").status == "LEARNING"  # mixed sub-areas -> the header shows LEARNING
+    assert plan_item(db, "LS-CRIME").status == "REVISION"  # header: the most active sub-area status
+    client.post(f"/curriculum/item/{plan_item(db, 'LS-CRIME-TRIAL').id}/status", data={"status": "LEARNING"})
+    db.expire_all()
+    assert plan_item(db, "LS-CRIME").status == "LEARNING"
 
     fam, wp, gep = (plan_item(db, c) for c in ("LS-OPT-FAMILY", "LS-OPT-WORKPLACE", "LS-OPT-GEP"))
     r = client.post("/curriculum/LEGAL/options", data={"option1": fam.id, "option2": wp.id}, follow_redirects=False)
@@ -310,3 +402,23 @@ def test_legal_plan_page_and_controls(db, client):
     assert st.get(db, "legal_syllabus_confirmed") is True
     # other subjects keep the generic list
     assert "Import a textbook sequence" in client.get("/curriculum?subject=MATHS").text
+
+
+def test_picker_routes_and_dashboard_notice(db, client):
+    assert "Which Legal topics have you started?" in client.get("/").text
+    page = client.get("/legal-evidence")
+    assert "Which Legal topics have you started?" in page.text and 'name="next" value="/legal-evidence"' in page.text
+    ids = [plan_item(db, c).id for c in ("LS-CRIME-SENTENCING", "LS-HR-NATURE")]
+    r = client.post("/curriculum/LEGAL/started", data={"started": ids, "next": "/legal-evidence"}, follow_redirects=False)
+    assert r.status_code == 303 and r.headers["location"].startswith("/legal-evidence?msg=Saved")
+    db.expire_all()
+    assert plan_item(db, "LS-CRIME-SENTENCING").status == "LEARNING" and plan_item(db, "LS-CRIME-NATURE").status == "LOCKED"
+    assert "Which Legal topics have you started?" not in client.get("/").text
+    assert "Which Legal topics have you started?" not in client.get("/legal-evidence").text
+    # an unknown return address falls back to the plan page; too many options is refused with a message
+    opts = [o.id for o in lp.option_items(db)][:3]
+    r = client.post("/curriculum/LEGAL/started", data={"started": opts, "next": "https://example.com"}, follow_redirects=False)
+    assert r.headers["location"].startswith("/curriculum?subject=LEGAL&msg=You%20can%20study%20at%20most")
+    r = client.post("/curriculum/LEGAL/started", data={}, follow_redirects=False)
+    assert "no%20Legal%20topics%20started" in r.headers["location"]
+

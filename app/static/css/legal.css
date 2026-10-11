@@ -33,3 +33,17 @@
   .legal-slots .field { min-width: 0; flex: 1 1 100%; }
   .legal-edit-body input[type=text] { width: 100%; }
 }
+
+/* ---- "Which Legal topics have you started?" picker (owner request) ---- */
+.legal-picker { margin-bottom: 16px; border-left: 3px solid var(--legal); }
+.legal-picker h2 { margin-top: 0; font-size: 1.15rem; }
+.legal-picker-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px 20px; margin: 10px 0 14px; }
+.legal-picker-group { border: 1px solid var(--line); border-radius: var(--radius); padding: 8px 12px 10px; margin: 0; min-width: 0; }
+.legal-picker-group legend { font-weight: 600; padding: 0 4px; }
+.legal-picker-item { display: flex; gap: 8px; align-items: flex-start; padding: 4px 0; cursor: pointer; }
+.legal-picker-item input { margin-top: 3px; flex: none; }
+.legal-picker-again { margin-bottom: 12px; }
+.legal-picker-again summary { cursor: pointer; color: var(--accent); }
+.legal-picker-again .legal-picker { border: 0; box-shadow: none; padding: 8px 0 0; margin: 0; }
+.legal-any-order { margin: 0 0 12px; }
+.legal-topics-notice .btn { flex: none; }

@@ -1,0 +1,7 @@
+{# v2-legal-logic: dashboard notice until the Legal topic picker has been answered (owner request). #}
+{% if legal_topics_pending is defined and legal_topics_pending() %}
+<div class="notice warn spread legal-topics-notice" role="status">
+  <span><strong>Which Legal topics have you started?</strong> Your class may teach Legal Studies topics in any order. Tick the ones you have started so your daily sessions only use those.</span>
+  <a class="btn small primary" href="/curriculum?subject=LEGAL#legal-topics">Choose Legal topics</a>
+</div>
+{% endif %}

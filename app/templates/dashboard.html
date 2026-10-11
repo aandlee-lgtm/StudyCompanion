@@ -7,6 +7,8 @@
   </div>
 </div>
 
+{% include "_legal_topics_notice.html" %}{# v2-legal-logic #}
+
 {% for m in d.missed[:3] %}
 <div class="notice warn spread">
   <span>You missed the session for <strong>{{ m.session_date | fdate('%A %d %B') }}</strong>. Nothing has piled up.</span>

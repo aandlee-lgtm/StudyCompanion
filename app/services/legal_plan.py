@@ -129,12 +129,12 @@ def classify(text: str, core: str) -> tuple[str, int]:
 
 
 def derived_parent_status(children: list[LearningPlanItem]) -> str:
+    """The header shows the most active status among its sub-areas (they are independent)."""
     sts = [c.status for c in children if c.active]
-    if not sts or all(s == LOCKED for s in sts):
-        return LOCKED
-    if all(s in (LEARNED, REVISION) for s in sts):
-        return REVISION if REVISION in sts else LEARNED
-    return LEARNING
+    for s in (LEARNING, REVISION, LEARNED):
+        if s in sts:
+            return s
+    return LOCKED
 
 
 def sync_parent(db: Session, parent: LearningPlanItem) -> None:
@@ -162,25 +162,101 @@ def set_all_sub_areas(db: Session, parent: LearningPlanItem, status: str) -> Non
     sync_parent(db, parent)
 
 
-def start_here(db: Session, item: LearningPlanItem) -> None:
-    """Within one core topic only: earlier sub-areas LEARNED (REVISION kept), this one LEARNING,
-    later ones LOCKED. The other core topic is untouched."""
+# Every Legal sub-area and option topic has its own status, set by the student in any order: the
+# teaching order of Legal Studies topics is not known, so no sequence is enforced and nothing
+# auto-advances to a "next" sub-area (owner request, Oct 2026).
+STATUS_ORDER = (LOCKED, LEARNING, LEARNED, REVISION)
+STATUS_LABELS = {LOCKED: "Not taught yet", LEARNING: "Learning now", LEARNED: "Learnt", REVISION: "Revision"}
+NO_SEQUENCE_MSG = ("Legal Studies topics can be taught in any order, so there is no 'next' topic. "
+                   "Set each sub-area or option to Not taught yet, Learning now, Learnt or Revision.")
+
+
+def set_item_status(db: Session, item: LearningPlanItem, status: str, max_options: int = 2) -> LearningPlanItem:
+    """Set ONE Legal sub-area or option topic's status. Nothing else changes (no sequence), except
+    that an option has to occupy one of the option slots to be studied: giving an unchosen option a
+    status other than Not taught yet chooses it, within the limit."""
+    if status not in STATUS_ORDER:
+        raise ValueError(f"unknown status {status}")
+    if is_option(item) and status != LOCKED and not item.active:
+        if len(active_options(db)) >= max_options:
+            raise ValueError(f"You can study at most {max_options} Legal Studies options. Deactivate one first.")
+        item.active = True
+    if item.status != status:
+        item.status, item.status_changed_at = status, utcnow()
+    db.flush()
     parent = parent_of(db, item)
-    if parent is None:
-        return
-    kids = sub_areas_of(db, parent)
-    for k in kids:
-        if not k.active:
+    if parent is not None:
+        sync_parent(db, parent)
+    return item
+
+
+def topics_pending(db: Session) -> bool:
+    """True until the student has answered 'Which Legal topics have you started?'."""
+    from app.services import settings as st
+
+    return not st.get(db, "legal_topics_chosen")
+
+
+def picker(db: Session) -> dict:
+    """The first-use topic picker: every active sub-area grouped by core topic, then the options."""
+    from app.services import settings as st
+
+    g = grouped(db)
+    groups = []
+    for c in g["cores"]:
+        kids = [k for k in c["children"] if k.active]
+        groups.append({"title": c["parent"].title, "options": False,
+                       "items": [{"id": k.id, "title": k.title.replace(c["parent"].title + " — ", ""), "status": k.status} for k in kids]})
+    opts = option_items(db)
+    if opts:
+        groups.append({"title": "Option topics", "options": True,
+                       "items": [{"id": o.id, "title": o.title.replace("Option — ", ""), "status": o.status if o.active else LOCKED} for o in opts]})
+    return {"groups": groups, "max_options": int(st.get(db, "legal_max_options") or 2), "pending": topics_pending(db)}
+
+
+def apply_started(db: Session, started_ids: list[int], max_options: int = 2) -> dict:
+    """Answer the picker. A ticked topic that is Not taught yet becomes Learning now (a topic already
+    Learnt or in Revision keeps that status); an unticked one becomes Not taught yet. Ticked options
+    are chosen (at most ``max_options``); unticked options that were chosen stay chosen but Not taught
+    yet. Records that the student has made a choice."""
+    from app.services import settings as st
+
+    ids = set(int(i) for i in started_ids if i)
+    opts = option_items(db)
+    chosen_opts = [o for o in opts if o.id in ids]
+    if len(chosen_opts) > max_options:
+        raise ValueError(f"You can study at most {max_options} Legal Studies options. Tick {max_options} or fewer.")
+    started, stopped = [], []
+    room = max_options - len(chosen_opts)
+    for o in active_options(db):  # unticked chosen options keep their slot only while there is room
+        if o.id in ids:
             continue
-        if (k.position, k.id) < (item.position, item.id):
-            new = k.status if k.status == REVISION else LEARNED
-        elif k.id == item.id:
-            new = LEARNING
+        if room > 0:
+            room -= 1
         else:
-            new = LOCKED
-        if k.status != new:
-            k.status, k.status_changed_at = new, utcnow()
-    sync_parent(db, parent)
+            o.active, o.status, o.status_changed_at = False, LOCKED, utcnow()
+    for it in legal_items(db):
+        if not it.active and not is_option(it):
+            continue
+        if not (is_sub_area(it) or is_option(it)) or "retired by you" in (it.notes or "").lower():
+            continue
+        if it.id in ids:
+            if is_option(it) and not it.active:
+                it.active = True
+            if it.status == LOCKED:
+                it.status, it.status_changed_at = LEARNING, utcnow()
+                started.append(it.title)
+        elif it.active and it.status != LOCKED:
+            it.status, it.status_changed_at = LOCKED, utcnow()
+            stopped.append(it.title)
+    db.flush()
+    for code in CORE_TOPICS:
+        parent = db.execute(select(LearningPlanItem).where(LearningPlanItem.code == code)).scalar_one_or_none()
+        if parent is not None:
+            sync_parent(db, parent)
+    st.set_(db, "legal_topics_chosen", True)
+    db.flush()
+    return {"started": started, "stopped": stopped}
 
 
 # ------------------------------------------------------------------------- options ---

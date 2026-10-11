@@ -2,6 +2,19 @@
 {% set L = legal %}
 {% if L.msg %}<div class="notice" role="status">{{ L.msg }}</div>{% endif %}
 
+{% if L.picker.pending %}
+{% set picker = L.picker %}{% set picker_next = '/curriculum?subject=LEGAL' %}
+{% include "_legal_topic_picker.html" %}
+{% else %}
+<details class="card legal-picker-again">
+  <summary class="small">Update which Legal topics you have started (tick boxes)</summary>
+  {% set picker = L.picker %}{% set picker_next = '/curriculum?subject=LEGAL' %}
+  {% include "_legal_topic_picker.html" %}
+</details>
+{% endif %}
+
+<p class="small muted legal-any-order">Legal Studies topics can be taught in any order. Set each sub-area and option on its own — <strong>Not taught yet</strong> (never in your sessions), <strong>Learning now</strong> (most weight; several at once is fine), <strong>Learnt</strong> (spaced revision) or <strong>Revision</strong> (extra weight). Nothing moves on to a "next" topic by itself.</p>
+
 <div class="notice {{ 'good' if L.confirmed else 'warn' }} small legal-syllabus">
   <p>Each core topic is split into <strong>sub-areas</strong>, each with its own status, so content you have not been taught yet stays out of your daily sessions. The sub-area names are working labels written without access to the NESA website:
   {% if L.confirmed %}you have confirmed them against the NESA Legal Studies syllabus for the 2027 HSC.{% else %}<strong>confirm them against the NESA Legal Studies syllabus for the 2027 HSC</strong>, and rename, add or retire sub-areas to match.{% endif %}</p>
@@ -15,11 +28,11 @@
 {% set p = g.parent %}
 <section class="card legal-core" id="item{{ p.id }}" aria-labelledby="core{{ p.id }}">
   <div class="legal-core-head">
-    <h3 id="core{{ p.id }}">{{ p.title }} <span class="pill {{ p.status }}" title="Follows its sub-areas">{{ p.status }}</span></h3>
+    <h3 id="core{{ p.id }}">{{ p.title }} <span class="pill {{ p.status }}" title="Follows its sub-areas">{{ L.labels.get(p.status, p.status) }}</span></h3>
     <form method="post" action="/curriculum/item/{{ p.id }}/status" class="row">
       <label class="tiny muted" for="all{{ p.id }}">Set every sub-area to</label>
       <select id="all{{ p.id }}" name="status">
-        {% for stt in ['LOCKED','LEARNING','LEARNED','REVISION'] %}<option value="{{ stt }}" {{ 'selected' if p.status == stt }}>{{ stt }}</option>{% endfor %}
+        {% for stt in L.statuses %}<option value="{{ stt }}" {{ 'selected' if p.status == stt }}>{{ L.labels[stt] }}</option>{% endfor %}
       </select>
       <button class="btn small">Apply</button>
     </form>
@@ -35,11 +48,10 @@
       <div class="row legal-sub-actions">
         <form method="post" action="/curriculum/item/{{ it.id }}/status">
           <select name="status" onchange="this.form.submit()" aria-label="Status of {{ short }}">
-            {% for stt in ['LOCKED','LEARNING','LEARNED','REVISION'] %}<option value="{{ stt }}" {{ 'selected' if it.status == stt }}>{{ stt }}</option>{% endfor %}
+            {% for stt in L.statuses %}<option value="{{ stt }}" {{ 'selected' if it.status == stt }}>{{ L.labels[stt] }}</option>{% endfor %}
           </select>
           <noscript><button class="btn small">Save</button></noscript>
         </form>
-        <form method="post" action="/curriculum/item/{{ it.id }}/start-here"><button class="btn small" title="Earlier {{ p.title }} sub-areas LEARNED, this one LEARNING, later ones LOCKED">Start here</button></form>
         <details class="legal-edit">
           <summary class="btn small">Edit</summary>
           <div class="legal-edit-body">
@@ -89,14 +101,14 @@
   {% set h = L.health[o.id] %}
   <div class="legal-option" id="item{{ o.id }}">
     <div class="legal-sub-main">
-      <span class="legal-sub-title">{{ o.title.replace('Option — ', '') }} <span class="pill {{ o.status }}">{{ o.status }}</span></span>
+      <span class="legal-sub-title">{{ o.title.replace('Option — ', '') }} <span class="pill {{ o.status }}">{{ L.labels.get(o.status, o.status) }}</span></span>
       <span class="tiny muted">{{ h.questions }} question{{ '' if h.questions == 1 else 's' }} · {{ h.verified_evidence }} verified evidence item{{ '' if h.verified_evidence == 1 else 's' }}</span>
       {% if h.warnings %}<span class="tiny legal-warn">Not much to practise yet: {{ h.warnings|join('; ') }}. <a href="/questions">Questions</a> · <a href="/legal-evidence">Evidence bank</a></span>{% endif %}
     </div>
     <div class="row legal-sub-actions">
       <form method="post" action="/curriculum/item/{{ o.id }}/status">
         <select name="status" onchange="this.form.submit()" aria-label="Status of {{ o.title }}">
-          {% for stt in ['LOCKED','LEARNING','LEARNED','REVISION'] %}<option value="{{ stt }}" {{ 'selected' if o.status == stt }}>{{ stt }}</option>{% endfor %}
+          {% for stt in L.statuses %}<option value="{{ stt }}" {{ 'selected' if o.status == stt }}>{{ L.labels[stt] }}</option>{% endfor %}
         </select>
       </form>
     </div>
@@ -131,7 +143,7 @@
     <span class="legal-sub-title">{{ it.title }}</span>
     <form method="post" action="/curriculum/item/{{ it.id }}/status">
       <select name="status" onchange="this.form.submit()" aria-label="Status of {{ it.title }}">
-        {% for stt in ['LOCKED','LEARNING','LEARNED','REVISION'] %}<option value="{{ stt }}" {{ 'selected' if it.status == stt }}>{{ stt }}</option>{% endfor %}
+        {% for stt in L.statuses %}<option value="{{ stt }}" {{ 'selected' if it.status == stt }}>{{ L.labels[stt] }}</option>{% endfor %}
       </select>
     </form>
   </div>

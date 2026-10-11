@@ -31,7 +31,8 @@ def curriculum(request: Request, subject: str = "MATHS", db: Session = Depends(g
         legal = {"groups": groups, "counts": counts, "options": options, "active": [o for o in options if o.active],
                  "health": {o.id: lp.option_health(db, o) for o in options if o.active}, "max_options": int(st.get(db, "legal_max_options") or 2),
                  "confirmed": bool(st.get(db, "legal_syllabus_confirmed")), "msg": request.query_params.get("msg"),
-                 "retired": [i for i in lp.legal_items(db) if "retired by you" in (i.notes or "").lower()]}
+                 "retired": [i for i in lp.legal_items(db) if "retired by you" in (i.notes or "").lower()],
+                 "labels": lp.STATUS_LABELS, "statuses": lp.STATUS_ORDER, "picker": lp.picker(db)}
     return render(
         request, "curriculum.html", subject=subject, items=plan.items(db, subject), topics=topics,
         topic_names={t.id: t.name for t in topics}, texts=db.execute(select(PrescribedText).where(PrescribedText.subject_id == subj.id)).scalars().all(),
@@ -63,15 +64,20 @@ def _item(db: Session, iid: int) -> LearningPlanItem:
 @router.post("/curriculum/item/{iid}/status")
 def set_status(iid: int, status: str = Form(...), db: Session = Depends(get_db)):
     item = _item(db, iid)
-    if item.subject.code == "LEGAL" and lp.is_core_parent(item) and lp.sub_areas_of(db, item):
-        if status not in ("LOCKED", "LEARNING", "LEARNED", "REVISION"):
-            raise ValueError(f"unknown status {status}")
-        lp.set_all_sub_areas(db, item, status)  # a core topic's status is its sub-areas' status
+    if item.subject.code == "LEGAL":
+        # v2-legal-logic: each sub-area / option is set on its own, in any order (no sequence)
+        if lp.is_core_parent(item) and lp.sub_areas_of(db, item):
+            if status not in lp.STATUS_ORDER:
+                raise ValueError(f"unknown status {status}")
+            lp.set_all_sub_areas(db, item, status)  # a core topic's status is its sub-areas' status
+        else:
+            try:
+                lp.set_item_status(db, item, status, int(st.get(db, "legal_max_options") or 2))
+            except ValueError as exc:
+                return _back(item, str(exc))
+        st.set_(db, "legal_topics_chosen", True)  # changing a topic's status answers the first-use picker
     else:
         item = plan.set_status(db, iid, status)
-        parent = lp.parent_of(db, item) if item.subject.code == "LEGAL" else None
-        if parent is not None:
-            lp.sync_parent(db, parent)
     db.commit()
     return _back(item)
 
@@ -79,10 +85,9 @@ def set_status(iid: int, status: str = Form(...), db: Session = Depends(get_db))
 @router.post("/curriculum/item/{iid}/start-here")
 def start_here(iid: int, db: Session = Depends(get_db)):
     item = _item(db, iid)
-    if item.subject.code == "LEGAL" and lp.is_sub_area(item):
-        lp.start_here(db, item)  # within this core topic only
-    else:
-        plan.start_from(db, iid)
+    if item.subject.code == "LEGAL":
+        return _back(item, lp.NO_SEQUENCE_MSG)  # Legal topics have no fixed teaching order
+    plan.start_from(db, iid)
     db.commit()
     return _back(item)
 
@@ -175,6 +180,27 @@ def restore(iid: int, db: Session = Depends(get_db)):
     return _back(item, f"Restored '{item.title}' (LOCKED).")
 
 
+SAFE_NEXT = ("/", "/legal-evidence", "/curriculum?subject=LEGAL")
+
+
+@router.post("/curriculum/LEGAL/started")
+def legal_started(started: list[int] = Form([]), next: str = Form("/curriculum?subject=LEGAL"), db: Session = Depends(get_db)):
+    """The first-use picker 'Which Legal topics have you started?' (owner request): ticked topics
+    become Learning now, the rest Not taught yet; any later change is made per topic."""
+    target = next if next in SAFE_NEXT else "/curriculum?subject=LEGAL"
+    try:
+        res = lp.apply_started(db, started, int(st.get(db, "legal_max_options") or 2))
+    except ValueError as exc:
+        return RedirectResponse(target + ("&" if "?" in target else "?") + "msg=" + quote(str(exc)) + "#legal-topics", status_code=303)
+    db.commit()
+    n = len(started)
+    msg = (f"Saved: {n} Legal topic{'s' if n != 1 else ''} started. Only these are used in your daily sessions; change any topic on the Learning plan at any time."
+           if n else "Saved: no Legal topics started yet, so no Legal questions will be served until you start one on the Learning plan.")
+    if res["stopped"]:
+        msg += " Now Not taught yet: " + ", ".join(res["stopped"]) + "."
+    return RedirectResponse(target + ("&" if "?" in target else "?") + "msg=" + quote(msg), status_code=303)
+
+
 @router.post("/curriculum/LEGAL/syllabus-confirmed")
 def legal_syllabus_confirmed(confirmed: int = Form(0), db: Session = Depends(get_db)):
     st.set_(db, "legal_syllabus_confirmed", bool(confirmed))
@@ -201,6 +227,8 @@ def reorder(subject: str, ids: str = Form(...), db: Session = Depends(get_db)):
 
 @router.post("/curriculum/{subject}/advance")
 def advance(subject: str, db: Session = Depends(get_db)):
+    if subject == "LEGAL":  # v2-legal-logic: nothing auto-advances to a "next" Legal topic
+        return _legal_back(lp.NO_SEQUENCE_MSG)
     plan.advance(db, subject)
     db.commit()
     return RedirectResponse(f"/curriculum?subject={subject}", status_code=303)

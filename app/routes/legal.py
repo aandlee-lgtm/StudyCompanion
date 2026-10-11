@@ -7,11 +7,30 @@ from sqlalchemy.orm import Session
 
 from app.db import get_db
 from app.models import LegalEvidence, LegalEvidenceTopic, Subject, SyllabusTopic
-from app.routes.common import render
+from app.routes.common import render, templates
 from app.services import legal_evidence as le
+from app.services import legal_plan as lp
 from app.services import settings as st
 
 router = APIRouter()
+
+
+def legal_topics_pending() -> bool:
+    """Template global for the dashboard notice (v2-legal-logic, owner request): True until the
+    student has answered 'Which Legal topics have you started?'. Never breaks a page."""
+    from app.db import SessionLocal
+
+    try:
+        db = SessionLocal()
+        try:
+            return lp.topics_pending(db)
+        finally:
+            db.close()
+    except Exception:  # noqa: BLE001 - a notice must never stop the dashboard rendering
+        return False
+
+
+templates.env.globals["legal_topics_pending"] = legal_topics_pending
 TYPES = ["legislation", "case", "law_reform", "report", "inquiry", "treaty", "media", "issue"]
 
 
@@ -28,7 +47,9 @@ def bank(request: Request, topic: str = "", item_type: str = "", q: str = "", db
     legal = db.execute(select(Subject).where(Subject.code == "LEGAL")).scalar_one()
     topics = db.execute(select(SyllabusTopic).where(SyllabusTopic.subject_id == legal.id).order_by(SyllabusTopic.position)).scalars().all()
     tnames = {t.id: t.name for t in topics}
-    return render(request, "legal.html", items=items, topics=topics, tnames=tnames, types=TYPES, f=request.query_params)
+    picker = lp.picker(db)
+    return render(request, "legal.html", items=items, topics=topics, tnames=tnames, types=TYPES, f=request.query_params,
+                  picker=picker if picker["pending"] else None, picker_next="/legal-evidence", msg=request.query_params.get("msg"))
 
 
 @router.post("/legal-evidence/add")

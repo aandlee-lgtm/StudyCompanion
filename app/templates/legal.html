@@ -2,6 +2,8 @@
 {% block content %}
 <h1>Legal Studies evidence bank</h1>
 <p class="lead">Dated, sourced legal material for answers and feedback. The app cites only items from this bank and shows when each was last checked. Never rely on an item until you have verified it against its source.</p>
+{% if msg %}<div class="notice" role="status">{{ msg }}</div>{% endif %}
+{% if picker %}{% include "_legal_topic_picker.html" %}{% endif %}
 <form class="card row small" method="get">
   <select name="topic"><option value="">All topics</option>{% for t in topics %}<option value="{{ t.id }}" {{ 'selected' if f.topic == t.id|string }}>{{ t.name }}</option>{% endfor %}</select>
   <select name="item_type"><option value="">All types</option>{% for t in types %}<option value="{{ t }}" {{ 'selected' if f.item_type == t }}>{{ t|replace('_',' ') }}</option>{% endfor %}</select>

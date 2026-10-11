@@ -69,6 +69,7 @@ DEFAULTS.update({  # legal
     "legal_recheck_days_other": 365,
     "legal_contemporary_years": 5,  # evidence newer than this counts as contemporary (legal-04)
     "legal_syllabus_confirmed": False,  # the student has confirmed the sub-areas against the NESA syllabus (legal-09)
+    "legal_topics_chosen": False,  # the student has answered "Which Legal topics have you started?" (owner request)
 })
 DEFAULTS.update({  # adaptive
 })
