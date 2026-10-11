@@ -277,3 +277,27 @@ def pl(e, var=x) -> str:
         else:
             out += " + " + tl
     return out or "0"
+
+
+def rnd(v, dp: int) -> str:
+    """``v`` rounded (half up) to ``dp`` places, as a student would type it — for common errors on
+    'correct to n decimal places' questions."""
+    from app.marking.maths import rounded_value, stored_ast
+
+    return str(rounded_value(stored_ast(ex(v)), dp))
+
+
+def co(c, term: str = "") -> str:
+    """A coefficient written in front of ``term`` without a redundant 1: co(1, 'x') -> 'x', co(-1, 'x') -> '-x'."""
+    c = sp.sympify(c)
+    if term and c == 1:
+        return term
+    if term and c == -1:
+        return "-" + term
+    return L(c) + term
+
+
+def pn(v) -> str:
+    """LaTeX for a value, bracketed when negative (for substitution lines such as 2 × (−3))."""
+    v = sp.sympify(v)
+    return f"\\left({L(v)}\\right)" if v.is_negative else L(v)

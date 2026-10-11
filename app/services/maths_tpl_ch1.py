@@ -6,7 +6,7 @@ import math
 import sympy as sp
 
 from app.services.maths_tpl_base import (
-    A_expr, A_iv, A_num, A_parts, A_set, Generated, L, P, Rng, cp, err, ex, k, lt, multipart, n, nonzero, ordinal, pick, series, sgn, x,
+    A_expr, A_iv, A_num, A_parts, A_set, Generated, L, P, Rng, co, cp, err, ex, k, lt, multipart, n, nonzero, ordinal, pick, series, sgn, x,
 )
 
 SEQ = "sequence formula"
@@ -305,7 +305,7 @@ def t_1D(r: Rng, d: int) -> Generated:
         return Generated(
             f"The numbers \\(x\\), \\(x + {a}\\) and \\(x + {b}\\) are consecutive terms of a geometric sequence. Find \\(x\\).",
             A_num(xx), 2, 2,
-            [f"GP condition: \\((x + {a})^2 = x(x + {b})\\).", f"\\(x^2 + {2 * a}x + {a * a} = x^2 + {b}x\\), so \\({b - 2 * a}x = {a * a}\\) and \\(x = {xx}\\).",
+            [f"GP condition: \\((x + {a})^2 = x(x + {b})\\).", f"\\(x^2 + {2 * a}x + {a * a} = x^2 + {b}x\\), so \\({co(b - 2 * a, "x")} = {a * a}\\) and \\(x = {xx}\\).",
              f"Check: \\({xx}, {xx + a}, {xx + b}\\) has ratio \\({L(rr)}\\)."],
             "For a GP the middle term squared equals the product of its neighbours.",
             "Expand carefully: the \\(x^2\\) terms cancel, leaving a linear equation.",
@@ -325,7 +325,7 @@ def t_1D(r: Rng, d: int) -> Generated:
         f"The numbers \\(x\\), \\(x + {a}\\) and \\(x + {b}\\) are the first three terms of a geometric sequence.",
         [("a", "Find the value of \\(x\\).", 2), ("b", "Find the common ratio.", 1),
          ("c", f"Which term is the first to exceed \\({bound}\\)? Give its term number.", 2)])
-    steps = [f"(a) \\((x + {a})^2 = x(x + {b})\\) gives \\({b - 2 * a}x = {a * a}\\), so \\(x = {xx}\\).",
+    steps = [f"(a) \\((x + {a})^2 = x(x + {b})\\) gives \\({co(b - 2 * a, "x")} = {a * a}\\), so \\(x = {xx}\\).",
              f"(b) \\(r = \\dfrac{{{xx + a}}}{{{xx}}} = {L(rr)}\\).",
              f"(c) \\({xx}\\left({L(rr)}\\right)^{{n-1}} > {bound}\\), so \\(n - 1 > \\dfrac{{\\ln({L(sp.Rational(bound, xx))})}}{{\\ln({L(rr)})}} \\approx {math.log(bound / xx) / math.log(float(rr)):.3f}\\).",
              f"So \\(n = {nn}\\)."]

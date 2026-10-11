@@ -117,6 +117,8 @@ def assert_spec(spec: dict, exp, where: str = ""):
         for t in pts:
             try:
                 a, b = stored(t), exp(t)
+                if isinstance(a, mp.mpc) or isinstance(b, mp.mpc):
+                    continue  # outside the real domain at this sample point
             except (ZeroDivisionError, ValueError):
                 continue
             assert close(a, b, 1e-6), f"{where}: expr {spec['value']} at {t}: {a} vs {b}"
@@ -124,8 +126,16 @@ def assert_spec(spec: dict, exp, where: str = ""):
         assert checked >= 3, where
         return
     if kind == "antiderivative":
+        checked = 0
         for t in pts:
-            assert close(mp.diff(stored, t), exp(t), 1e-6), f"{where}: d/dx of {spec['value']} at {t} vs integrand {exp(t)}"
+            try:
+                want = exp(t)
+                if isinstance(want, mp.mpc) or isinstance(stored(t), mp.mpc):
+                    continue
+            except (ZeroDivisionError, ValueError):
+                continue
+            checked += 1
+            assert close(mp.diff(stored, t), want, 1e-6), f"{where}: d/dx of {spec['value']} at {t} vs integrand {exp(t)}"
         return
     raise AssertionError(f"unknown kind {kind}")
 
@@ -379,6 +389,105 @@ def v_2I(g):
     grad = lambda t: 3 * t * t + 2 * B * t + k  # noqa: E731
     others = [r for r in real_roots([mp.mpf(3), 2 * B, k]) if not close(r, m1)]
     return {"a": k, "b": lambda t: y0 + mp.quad(grad, [m1, t]), "c": others[0]}
+
+
+# ------------------------------------------------------------------- chapter 3 ---
+def quad(f, *pts):
+    return mp.quad(f, list(pts))
+
+
+@verifies("3A")
+def v_3A(g):
+    p = g.params
+    if p["form"] == "geom":
+        f = fn(p["f"])
+        cuts = sorted({p["lo"], p["hi"]} | {v for v in range(p["lo"], p["hi"] + 1)})
+        return quad(f, *cuts)
+    r_, k_, m_ = p["rad"], p["k"], p["m"]
+    semi = lambda t: mp.sqrt(max(r_ * r_ - t * t, 0))  # noqa: E731
+    return {"a": quad(semi, -r_, r_), "b": quad(lambda t: semi(t) + m_ * t + k_, -r_, r_), "c": quad(lambda t: semi(t) - k_, 0, r_)}
+
+
+@verifies("3B")
+def v_3B(g):
+    p = g.params
+    if p["form"] == "def":
+        return quad(fn(p["f"]), p["lo"], p["hi"])
+    a, b, V = p["a"], p["b"], p["V"]
+    F = lambda kv: quad(lambda t: 2 * t + b, a, kv)  # noqa: E731
+    roots = real_roots([mp.mpf(1), mp.mpf(b), mp.mpf(-(a * a + a * b) - V)])
+    return {"a": F, "b": [r_ for r_ in roots if r_ > a][0], "c": lambda kv: 2 * kv + b}
+
+
+@verifies("3C")
+def v_3C(g):
+    p = g.params
+    form = p["form"]
+    if form == "add":
+        return p["P"] + p["Q"]
+    if form == "rev":
+        return -p["P"]
+    if form == "lin":
+        return p["m"] * p["P"] + p["k"] * (p["b"] - p["a"])
+    if form == "sym":
+        return quad(fn(p["f"]), p["lo"], p["hi"])
+    ab = p["P"] - p["Q"]
+    return {"a": ab, "b": -2 * ab, "c": p["P"] + p["m"] * (p["c"] - p["a"]), "d": quad(lambda t: t**3 + p["s"], -p["h"], p["h"])}
+
+
+@verifies("3E")
+def v_3E(g):
+    p = g.params
+    if p["form"] == "prim":
+        return fn(p["f"])
+    a, b, x0, y0, x1 = p["a"], p["b"], mp.mpf(sp.Rational(p["x0"])), p["y0"], mp.mpf(sp.Rational(p["x1"]))
+    lo = mp.mpf(-b) / a
+    root = lambda t: mp.sqrt(a * t + b)  # noqa: E731
+    curve = lambda t: y0 + quad(root, x0, t) if t >= lo else mp.mpc(0, 1)  # noqa: E731
+    return {"a": root, "b": curve, "c": curve(x1)}
+
+
+@verifies("3F")
+def v_3F(g):
+    p = g.params
+    if p["form"] == "area":
+        return quad(fn(p["f"]), p["lo"], p["hi"])
+    if p["form"] == "split":
+        a, b = p["a"], p["b"]
+        return quad(lambda t: abs(t * (t - a)), 0, a, b)
+    curve, line = fn(p["curve"]), fn(p["line"])
+    cs = poly_coeffs(f"({p['curve']}) - ({p['line']})")
+    pts = real_roots(cs)
+    return {"a": pts, "b": quad(lambda t: abs(curve(t) - line(t)), pts[0], pts[1])}
+
+
+@verifies("3G")
+def v_3G(g):
+    p = g.params
+    if p["form"] == "table":
+        h, ys = mp.mpf(sp.Rational(p["h"])), p["ys"]
+        return h / 2 * (ys[0] + 2 * ys[1] + ys[2])
+    if p["form"] == "fn":
+        f, h, a = fn(p["f"]), mp.mpf(sp.Rational(p["h"])), p["lo"]
+        ys = [f(a + i * h) for i in range(p["n"] + 1)]
+        return h / 2 * (ys[0] + 2 * sum(ys[1:-1]) + ys[-1])
+    c, s_, b = p["c"], p["s"], p["b"]
+    f = lambda t: c + s_ * t * t  # noqa: E731
+    h = mp.mpf(b) / 4
+    ys = [f(i * h) for i in range(5)]
+    T = h / 2 * (ys[0] + 2 * sum(ys[1:-1]) + ys[-1])
+    exact = quad(f, 0, b)
+    return {"a": T, "b": exact, "c": "A" if T > exact else "B"}
+
+
+@verifies("3H")
+def v_3H(g):
+    p = g.params
+    if p["form"] == "prim":
+        return fn(p["f"])
+    b, m, c = p["b"], p["m"], p["c"]
+    return {"a": lambda t: mp.diff(lambda u: (u * u + b) ** m, t), "b": lambda t: t * (t * t + b) ** (m - 1),
+            "c": quad(lambda t: t * (t * t + b) ** (m - 1), 0, c)}
 
 
 # --------------------------------------------------------------------- tests ---

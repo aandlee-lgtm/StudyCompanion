@@ -7,7 +7,7 @@ from __future__ import annotations
 import sympy as sp
 
 from app.services.maths_tpl_base import (
-    A_expr, A_iv, A_mcq, A_num, A_parts, A_prim, A_set, A_units, Generated, L, P, Rng, S, cp, err, mcq_options, multipart,
+    A_expr, A_iv, A_mcq, A_num, A_parts, A_prim, A_set, A_units, Generated, L, P, Rng, S, co, cp, err, mcq_options, multipart,
     nonzero, pick, pl, region, x,
 )
 
@@ -277,8 +277,8 @@ def t_2C(r: Rng, d: int) -> Generated:
     f1, f2 = sp.diff(f, x), sp.diff(f, x, 2)
     text = multipart(f"Let \\(f(x) = {L(f)}\\), for \\(x \\ne 0\\).",
                      [("a", "Find \\(f'(x)\\).", 1), ("b", "Find \\(f''(x)\\).", 1), ("c", "Find the value of \\(x\\) for which \\(f''(x) = 0\\).", 2)])
-    steps = [f"Write \\(f(x) = {L(b * x**2)} {'+' if a > 0 else '-'} {abs(a)}x^{{-1}}\\).",
-             f"(a) \\(f'(x) = {L(2 * b * x)} {'-' if a > 0 else '+'} {abs(a)}x^{{-2}} = {L(f1)}\\).",
+    steps = [f"Write \\(f(x) = {L(b * x**2)} {'+' if a > 0 else '-'} {co(abs(a), 'x')}^{{-1}}\\).",
+             f"(a) \\(f'(x) = {L(2 * b * x)} {'-' if a > 0 else '+'} {co(abs(a), 'x')}^{{-2}} = {L(f1)}\\).",
              f"(b) \\(f''(x) = {L(2 * b)} {'+' if a > 0 else '-'} {2 * abs(a)}x^{{-3}} = {L(f2)}\\).",
              f"(c) \\({L(f2)} = 0\\) gives \\(x^3 = {L(sp.Rational(-a, b))}\\), so \\(x = {x0}\\)."]
     return Generated(
@@ -402,7 +402,7 @@ def t_2E(r: Rng, d: int) -> Generated:
         return Generated(
             text, A_parts(P("a", 1, A_num(c)), P("b", 1, A_num(a))), 2, 1,
             [f"(a) The denominator is zero at \\(x = {c}\\) (and the numerator is not), so \\(x = {c}\\) is a vertical asymptote.",
-             f"(b) Divide top and bottom by \\(x\\): \\(y = \\dfrac{{{a} {'+' if b >= 0 else '-'} {abs(b)}/x}}{{1 {'-' if c > 0 else '+'} {abs(c)}/x}} \\to {a}\\) as \\(x \\to \\pm\\infty\\), so \\(y = {a}\\)."],
+             f"(b) Divide top and bottom by \\(x\\): \\(y = \\dfrac{{{a}{(' + ' if b > 0 else ' - ') + str(abs(b)) + '/x' if b else ''}}}{{1 {'-' if c > 0 else '+'} {abs(c)}/x}} \\to {a}\\) as \\(x \\to \\pm\\infty\\), so \\(y = {a}\\)."],
             "Vertical asymptotes come from zeros of the denominator; horizontal asymptotes from the behaviour as \\(x \\to \\pm\\infty\\).",
             "State asymptotes as equations of lines: \\(x = \\ldots\\) and \\(y = \\ldots\\).",
             quicker="For \\(\\frac{ax + b}{x - c}\\), the horizontal asymptote is the ratio of the leading coefficients, \\(y = a\\).",
@@ -756,7 +756,7 @@ def t_2I(r: Rng, d: int) -> Generated:
             return Generated(
                 f"Find \\(\\displaystyle\\int \\left({L(f)}\\right)dx\\).",
                 A_prim(F), 2, 2,
-                [f"Write in index form: \\({a}x^{{\\frac{{1}}{{2}}}} {'+' if b > 0 else '-'} {abs(b)}x^{{-2}}\\).",
+                [f"Write in index form: \\({a}x^{{\\frac{{1}}{{2}}}} {'+' if b > 0 else '-'} {co(abs(b), 'x')}^{{-2}}\\).",
                  f"\\(\\displaystyle\\int = {a}\\cdot\\frac{{x^{{3/2}}}}{{3/2}} {'+' if b > 0 else '-'} {abs(b)}\\cdot\\frac{{x^{{-1}}}}{{-1}} + C = {L(F)} + C\\)."],
                 "Roots and reciprocals become powers of \\(x\\), and the power rule for primitives applies to any index except \\(-1\\).",
                 "Write the index form line first; most errors come from the signs of negative indices.",

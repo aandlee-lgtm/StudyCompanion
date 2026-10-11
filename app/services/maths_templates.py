@@ -141,11 +141,12 @@ def check(g: Generated, d: int) -> list[str]:
         probs.append("no skill description")
     if not g.common_errors and a.get("type") not in ("interval", "mcq"):
         probs.append("no common errors")
-    for pat, what in _GLITCHES:
-        if pat.search(g.text.replace("\\,", "")):
-            probs.append(f"text glitch: {what}")
-    if g.text.count("\\(") != g.text.count("\\)"):
-        probs.append("unbalanced \\( \\)")
+    for where, body in [("text", g.text)] + [(f"step {i + 1}", s_) for i, s_ in enumerate(g.steps)] + [("quicker", g.quicker or "")]:
+        for pat, what in _GLITCHES:
+            if pat.search(body.replace("\\,", "")):
+                probs.append(f"{where} glitch: {what}")
+        if body.count("\\(") != body.count("\\)"):
+            probs.append(f"{where}: unbalanced \\( \\)")
     for cpt in g.checkpoints:
         try:
             from app.marking.maths import stored_ast
