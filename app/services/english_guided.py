@@ -287,8 +287,9 @@ def checks(q, response: str, m: dict) -> dict:
         evidence_texts = set(summ["texts"]) | {i for i, n in enumerate(unquoted) if n}
         if summ["verified"] == 0 and not any(unquoted) and words >= 5:
             cap = 1 if marks <= 2 else max(1, marks // 2)
-            warn("no_evidence", "No quotation or wording from the passage was found in your answer. Textual evidence is essential: "
-                                f"without it the answer cannot go above {cap}/{marks}.", cap)
+            lead = ("None of your quotations was found in the text exactly as written, so the answer has no verified evidence."
+                    if summ["unverified"] else "No quotation or wording from the passage was found in your answer.")
+            warn("no_evidence", f"{lead} Textual evidence is essential: without it the answer cannot go above {cap}/{marks}.", cap)
         elif summ["verified"] == 0 and any(unquoted):
             warn("unmarked_evidence", "You use the passage's wording but without quotation marks. Mark quotations clearly so the marker sees your evidence.")
         if summ["unverified"]:

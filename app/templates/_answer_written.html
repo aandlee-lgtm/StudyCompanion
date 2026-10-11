@@ -1,4 +1,11 @@
 {# Writing interface for English/Legal (owner: english-logic). #}
+{% set prev = latest.feedback.payload if (latest and latest.feedback) else none %}
+{% if prev and prev.comparison_items %}{% set todo = prev.comparison_items|rejectattr('status', 'equalto', 'met')|list %}
+      <details class="box en-retry" open><summary><strong>Work from your feedback</strong> — attempt {{ latest.attempt_number }} ({{ latest.mark_awarded|round(1) }}/{{ latest.mark_possible|int }}) is loaded below; edit it rather than starting again</summary>
+        <ol>{% for c in todo[:5] %}<li><strong>{{ c.point }}</strong>{% if c.student_text %}<span class="en-hint">You wrote: “{{ c.student_text }}”</span>{% endif %}{% if c.try %}<span class="en-hint">Try: {{ c.try }}</span>{% endif %}</li>{% endfor %}</ol>
+      </details>
+{% elif latest %}<p class="small muted">Your previous answer (attempt {{ latest.attempt_number }}) is loaded below — edit it rather than starting again.</p>
+{% endif %}
       <div class="toolbar"><span id="word-count">0 words</span><span>Suggested time ~{{ q.estimated_minutes|round|int }} min</span><span>Time on this question <span class="timer" id="q-timer">0:00</span></span><a href="#" id="fullscreen">Full-screen writing (Esc to exit)</a><span>Autosaves</span></div>
       <textarea class="writing" name="answer" data-autosave placeholder="Write your response here.">{{ draft_answer }}</textarea>
       <p class="tiny muted">There is no word target: write what the mark value and directive verb require.</p>

@@ -21,6 +21,7 @@ from app.ai.schemas import MarkingResult
 from app.ai.schemas_english import DIMENSIONS, EnglishPatch, canonical_category, missing_fields
 from app.marking import quotes
 from app.models import Question
+from app.services import english_compare as ec
 from app.services import english_guided as eg
 from app.services.assessment.common import MARKS_EXPECTATION, VERBS
 
@@ -182,9 +183,10 @@ def post_process(db: Session, q: Question, ctx: dict, result: MarkingResult, pay
         result.next_level = ""
         result.model_answer = ""
         result.marking_rationale = ""
-        payload.update({"pending_mark": True, "guided": True, "mark": 0, "label": PENDING_LABEL, "comparison": "",
+        payload.update({"pending_mark": True, "guided": True, "mark": 0, "label": PENDING_LABEL, "comparison": "", "comparison_items": [],
                         "result": result.model_dump(), "journal_items": [], "estimated_items": []})
         eng["cap"] = ck["cap"]
+        eng["hints"] = ec.pending_hints(response, m["checklist"])  # the student's closest sentence next to each item
         return
 
     # ---- AI marking
@@ -284,8 +286,12 @@ def guided_summary(q: Question, payload: dict, ticked: list[int]) -> dict:
         criteria=_ladder_rows(ladder, final), outcomes=eng.get("outcome") or "", well=done,
         prevented=missing + cap_reasons, dims=_offline_dims({**m, **{k: eng[k] for k in ("suggested_words", "paired", "has_text", "craft") if k in eng}}, ck, done, missing),
         next_level=next_level, actions=actions)
+    comparison = ec.offline_items(
+        response=payload.get("response") or "", checklist=checklist, ticked=ticks, marks=q.marks, final=final, raw=raw, ladder=ladder,
+        next_steps=next_steps, checks=ck, model_text=payload.get("model_answer"), model_kind=eng.get("model_kind"),
+        passages=eg.reading_texts(q), paired=bool(eng.get("paired", m["paired"])), response_type=rt, category_of=eg.item_category)
     return {"ticked": ticks, "raw": raw, "final": final, "cap": ck.get("cap"), "cap_reasons": cap_reasons, "done": done, "missing": missing,
-            "level": lv, "next_step": step, "items": items, "elements": rows}
+            "level": lv, "next_step": step, "items": items, "elements": rows, "comparison": comparison}
 
 
 def _accepts(fn, name: str) -> bool:
@@ -329,9 +335,12 @@ def apply_guided_self_mark(db: Session, attempt, ticked: list[int]) -> dict:
     payload = dict(fb.payload or {})
     payload.pop("response", None)
     eng = dict(payload.get("english") or {})
-    eng["self"] = {k: v for k, v in g.items() if k != "elements"}
+    eng["self"] = {k: v for k, v in g.items() if k not in ("elements", "comparison")}
     eng["elements"] = g["elements"]
     payload["english"] = eng
+    payload["comparison_items"] = g["comparison"]  # owner request: lead with the point-by-point comparison
+    payload["comparison_source"] = "self_mark"
+    payload["comparison"] = ec.summary_text(g["comparison"], g["final"], q.marks)
     payload.update({"guided": True, "pending_mark": False, "self_marked": True, "mark": float(g["final"]), "label": GUIDED_LABEL,
                     "self_criteria": criteria})
     r = dict(payload.get("result") or {})
@@ -340,6 +349,7 @@ def apply_guided_self_mark(db: Session, attempt, ticked: list[int]) -> dict:
               "errors": [{"category": i["category"], "description": i["description"]} for i in g["items"]]})
     payload["result"] = r
     fb.payload = payload
+    fb.why_lost = None  # an explanation cached before marking ("mark your answer first") is out of date now
     db.flush()
     return g
 

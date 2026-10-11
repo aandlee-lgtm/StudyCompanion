@@ -45,3 +45,32 @@
     }
   });
 })();
+
+/* Guided self-marking: the mark updates as the student ticks (same rule as the server:
+   whole marks from the share of items ticked, then the deterministic cap). */
+(function () {
+  "use strict";
+  function derive(marks, n, ticked, cap) {
+    if (n <= 0) return { raw: 0, final: 0 };
+    var raw = Math.max(0, Math.min(marks, Math.floor(marks * ticked / n + 0.5)));
+    var fin = (cap === "" || cap === null || isNaN(cap)) ? raw : Math.min(raw, cap);
+    return { raw: raw, final: fin };
+  }
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll("form[data-guided]").forEach(function (form) {
+      var marks = parseInt(form.dataset.marks || "0", 10);
+      var n = parseInt(form.dataset.items || "0", 10);
+      var cap = form.dataset.cap === "" ? "" : parseInt(form.dataset.cap, 10);
+      var out = form.querySelector("[data-live-mark]");
+      var note = form.querySelector("[data-live-note]");
+      function update() {
+        var t = form.querySelectorAll("input[name=tick]:checked").length;
+        var d = derive(marks, n, t, cap);
+        if (out) out.textContent = d.final;
+        if (note) note.textContent = t + " of " + n + " ticked" + (d.final < d.raw ? " · capped from " + d.raw + " by the checks" : "");
+      }
+      form.addEventListener("change", update);
+      update();
+    });
+  });
+})();
