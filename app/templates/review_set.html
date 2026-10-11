@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<p class="small"><a href="/review">&larr; Revision</a></p>
+<h1>Revision set</h1>
+<p class="lead">{{ rows|length }} questions on skills that are due, about {{ s.expected_minutes|round|int }} minutes, started {{ s.created_on | fdate('%a %d %b') }}.
+  Each one is a different question from the one that put the skill here, so it counts as real evidence.</p>
+{% if s.status == 'completed' %}<div class="notice">Set complete. The outcomes are listed under <a href="/review">Completed revision</a>.</div>
+{% elif nxt %}<p><a class="btn primary" href="/practice/{{ nxt.question.id }}">{{ 'Start' if nxt is sameas rows[0] else 'Next question' }}</a></p>{% endif %}
+<div class="card">
+  {% for r in rows %}
+  <div class="review-row kind-{{ r.kind }}">
+    <div>
+      <strong>{{ loop.index }}. {{ r.skill }}</strong> <span class="small muted">· about {{ r.minutes|round|int }} min</span><br>
+      <span class="small">{{ r.reason }}</span>
+    </div>
+    <div class="small">
+      {% if r.attempt %}{% if r.attempt.skipped %}skipped{% else %}{{ (r.attempt.fraction*100)|round|int }}%{% endif %} · <a href="/practice/{{ r.question_id }}#feedback">feedback</a>
+      {% elif r.question %}<a class="btn small" href="/practice/{{ r.question.id }}">Answer</a>
+      {% else %}<span class="muted">question no longer available</span>{% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

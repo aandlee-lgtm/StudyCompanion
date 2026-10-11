@@ -1,37 +1,58 @@
+"""Revision page (owner: adaptive; adaptive-18): sections by urgency, evidence per item, 'Practise now'
+through the selection engine's rules, 15-minute revision sets and completed-revision outcomes."""
 from __future__ import annotations
 
-from datetime import timedelta
-
 from fastapi import APIRouter, Depends, Request
-from sqlalchemy import select
+from fastapi.responses import RedirectResponse
 from sqlalchemy.orm import Session
 
 from app.db import get_db
-from app.models import LearningPlanItem, Question, QuestionExposure, RevisionQueue
-from app.routes.common import render
-from app.services import clock
+from app.models import RevisionQueue, RevisionSet
+from app.routes.common import render, render_error
+from app.services import clock, revision
 from app.services import settings as st
 
 router = APIRouter()
 
 
+def _today(db: Session):
+    return clock.today(st.get(db, "timezone"))
+
+
 @router.get("/review")
-def review(request: Request, db: Session = Depends(get_db)):
-    today = clock.today(st.get(db, "timezone"))
-    seen = {e.question_id for e in db.execute(select(QuestionExposure)).scalars()}
-    due, upcoming = [], []
-    for r in db.execute(select(RevisionQueue).where(RevisionQueue.status == "open").order_by(RevisionQueue.due_date)).scalars():
-        item = db.get(LearningPlanItem, r.plan_item_id) if r.plan_item_id else None
-        if r.due_date <= today:
-            sample = None
-            if item:
-                sample = db.execute(select(Question).where(Question.plan_item_id == item.id, Question.approved.is_(True),
-                                                           Question.is_extension.is_(False), Question.id.not_in(seen or {-1}))).scalars().first()
-            elif r.question_id:
-                sample = db.get(Question, r.question_id)
-            due.append((r, item, sample))
-        elif r.due_date <= today + timedelta(days=21):
-            upcoming.append((r, item))
-    repeats = db.execute(select(QuestionExposure, Question).join(Question, QuestionExposure.question_id == Question.id)
-                         .where(QuestionExposure.next_revision_date <= today).order_by(QuestionExposure.next_revision_date).limit(20)).all()
-    return render(request, "review.html", due=due, upcoming=upcoming, repeats=repeats)
+def review(request: Request, none: int = 0, db: Session = Depends(get_db)):
+    data = revision.review_page(db, _today(db))
+    missing = db.get(RevisionQueue, none) if none else None
+    return render(request, "review.html", missing=missing, no_set=none == -1, **data)
+
+
+@router.get("/review/{rid}/practise")
+def practise_item(rid: int, db: Session = Depends(get_db)):
+    """Serve the best question for this revision item now (also for items not yet due)."""
+    r = db.get(RevisionQueue, rid)
+    if r is None:
+        return RedirectResponse("/review", status_code=303)
+    q = revision.pick_for_item(db, r, _today(db))
+    if q is None:
+        return RedirectResponse(f"/review?none={rid}#missing", status_code=303)
+    return RedirectResponse(f"/practice/{q.id}", status_code=303)
+
+
+@router.post("/review/set")
+def start_set(db: Session = Depends(get_db)):
+    s = revision.start_set(db, _today(db))
+    if s is None:
+        return RedirectResponse("/review?none=-1#missing", status_code=303)
+    db.commit()
+    return RedirectResponse(f"/review/set/{s.id}", status_code=303)
+
+
+@router.get("/review/set/{sid}")
+def show_set(sid: int, request: Request, db: Session = Depends(get_db)):
+    s = db.get(RevisionSet, sid)
+    if s is None:
+        return render_error(request, "That revision set does not exist.", 404)
+    rows = revision.refresh_set_status(db, s)
+    db.commit()
+    nxt = next((r for r in rows if r["attempt"] is None and r["question"] is not None), None)
+    return render(request, "review_set.html", s=s, rows=rows, nxt=nxt)
