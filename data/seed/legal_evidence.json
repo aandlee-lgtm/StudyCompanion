@@ -1,41 +1,276 @@
 {
- "_note": "Seeded from general knowledge on 2026-10-10 because the official sites were unreachable from the build environment. NONE of these items has been verified yet (last_verified_date is empty). Open each source, confirm the details, then click 'Mark verified today' in the Legal evidence bank.",
+ "_note": "Seeded from general knowledge on 2026-10-10 because the official sites were unreachable from the build environment. NONE of these items has been verified yet (last_verified_date is empty). Open each source, confirm the details, then click 'Mark verified today' in the Legal evidence bank. v2: each item also records other names it may be cited by (aliases), its status (in force / repealed) and its syllabus sub-area; these are unverified too.",
  "items": [
-  {"title": "Crimes Act 1900 (NSW)", "item_type": "legislation", "date": "1900", "jurisdiction": "NSW", "topics": ["LS-CRIME"], "issue": "Criminal offences",
+  {
+   "title": "Crimes Act 1900 (NSW)",
+   "item_type": "legislation",
+   "date": "1900",
+   "jurisdiction": "NSW",
+   "topics": [
+    "LS-CRIME"
+   ],
+   "issue": "Criminal offences",
    "summary": "The principal NSW statute defining most serious criminal offences, including offences against the person and property offences.",
-   "legal_significance": "Primary source for the definition of many NSW offences and their maximum penalties.", "source": "NSW Legislation", "source_url": "https://legislation.nsw.gov.au/", "source_type": "primary"},
-  {"title": "Bail Act 2013 (NSW)", "item_type": "legislation", "date": "2013", "jurisdiction": "NSW", "topics": ["LS-CRIME"], "issue": "Bail and remand",
+   "legal_significance": "Primary source for the definition of many NSW offences and their maximum penalties.",
+   "source": "NSW Legislation",
+   "source_url": "https://legislation.nsw.gov.au/",
+   "source_type": "primary",
+   "sub_area": "LS-CRIME-NATURE",
+   "aliases": [
+    "Crimes Act",
+    "Crimes Act (NSW)"
+   ],
+   "status": "in_force"
+  },
+  {
+   "title": "Bail Act 2013 (NSW)",
+   "item_type": "legislation",
+   "date": "2013",
+   "jurisdiction": "NSW",
+   "topics": [
+    "LS-CRIME"
+   ],
+   "issue": "Bail and remand",
    "summary": "Governs bail decisions in NSW using an unacceptable-risk test, with 'show cause' requirements for certain serious offences (added by amendment).",
-   "legal_significance": "Central to the balance between the presumption of innocence and community safety; frequently amended, so always check the current version.", "source": "NSW Legislation", "source_url": "https://legislation.nsw.gov.au/", "source_type": "primary"},
-  {"title": "Young Offenders Act 1997 (NSW)", "item_type": "legislation", "date": "1997", "jurisdiction": "NSW", "topics": ["LS-CRIME"], "issue": "Young offenders and diversion",
+   "legal_significance": "Central to the balance between the presumption of innocence and community safety; frequently amended, so always check the current version.",
+   "source": "NSW Legislation",
+   "source_url": "https://legislation.nsw.gov.au/",
+   "source_type": "primary",
+   "sub_area": "LS-CRIME-INVESTIGATION",
+   "aliases": [
+    "Bail Act",
+    "Bail Act (NSW)"
+   ],
+   "status": "in_force"
+  },
+  {
+   "title": "Bail Act 1978 (NSW)",
+   "item_type": "legislation",
+   "date": "1978",
+   "jurisdiction": "NSW",
+   "topics": [
+    "LS-CRIME"
+   ],
+   "sub_area": "LS-CRIME-INVESTIGATION",
+   "issue": "Bail (historical)",
+   "summary": "The earlier NSW bail statute. It was repealed and replaced by the Bail Act 2013 (NSW). Recorded here so that answers relying on it are flagged as outdated.",
+   "legal_significance": "Historical only: do not rely on it for the current law of bail. Past HSC questions and older textbooks may refer to it.",
+   "syllabus_link": "Crime: the criminal investigation process (bail and remand)",
+   "source": "NSW Legislation",
+   "source_url": "https://legislation.nsw.gov.au/",
+   "source_type": "primary",
+   "status": "repealed",
+   "superseded_by": "Bail Act 2013 (NSW)",
+   "aliases": []
+  },
+  {
+   "title": "Young Offenders Act 1997 (NSW)",
+   "item_type": "legislation",
+   "date": "1997",
+   "jurisdiction": "NSW",
+   "topics": [
+    "LS-CRIME"
+   ],
+   "issue": "Young offenders and diversion",
    "summary": "Establishes a scheme of warnings, cautions and youth justice conferences as alternatives to court proceedings for young people.",
-   "legal_significance": "Key example of diversion and restorative justice in the criminal justice system.", "source": "NSW Legislation", "source_url": "https://legislation.nsw.gov.au/", "source_type": "primary"},
-  {"title": "Crimes (Sentencing Procedure) Act 1999 (NSW)", "item_type": "legislation", "date": "1999", "jurisdiction": "NSW", "topics": ["LS-CRIME"], "issue": "Sentencing",
+   "legal_significance": "Key example of diversion and restorative justice in the criminal justice system.",
+   "source": "NSW Legislation",
+   "source_url": "https://legislation.nsw.gov.au/",
+   "source_type": "primary",
+   "sub_area": "LS-CRIME-YOUNG",
+   "aliases": [
+    "Young Offenders Act",
+    "YOA"
+   ],
+   "status": "in_force"
+  },
+  {
+   "title": "Crimes (Sentencing Procedure) Act 1999 (NSW)",
+   "item_type": "legislation",
+   "date": "1999",
+   "jurisdiction": "NSW",
+   "topics": [
+    "LS-CRIME"
+   ],
+   "issue": "Sentencing",
    "summary": "Sets out the purposes of sentencing and sentencing procedures in NSW, including aggravating and mitigating factors.",
-   "legal_significance": "Primary source for sentencing purposes and factors.", "source": "NSW Legislation", "source_url": "https://legislation.nsw.gov.au/", "source_type": "primary"},
-  {"title": "Children (Criminal Proceedings) Act 1987 (NSW)", "item_type": "legislation", "date": "1987", "jurisdiction": "NSW", "topics": ["LS-CRIME"], "issue": "Age of criminal responsibility",
+   "legal_significance": "Primary source for sentencing purposes and factors.",
+   "source": "NSW Legislation",
+   "source_url": "https://legislation.nsw.gov.au/",
+   "source_type": "primary",
+   "sub_area": "LS-CRIME-SENTENCING",
+   "aliases": [
+    "Crimes (Sentencing Procedure) Act",
+    "CSPA",
+    "Sentencing Procedure Act"
+   ],
+   "status": "in_force"
+  },
+  {
+   "title": "Children (Criminal Proceedings) Act 1987 (NSW)",
+   "item_type": "legislation",
+   "date": "1987",
+   "jurisdiction": "NSW",
+   "topics": [
+    "LS-CRIME"
+   ],
+   "issue": "Age of criminal responsibility",
    "summary": "Contains the conclusive presumption that a child under 10 cannot commit an offence, and procedures for criminal proceedings involving children.",
-   "legal_significance": "Relevant to debates about raising the age of criminal responsibility; check for amendments.", "source": "NSW Legislation", "source_url": "https://legislation.nsw.gov.au/", "source_type": "primary"},
-  {"title": "RP v The Queen [2016] HCA 53", "item_type": "case", "date": "2016", "jurisdiction": "Commonwealth (High Court)", "topics": ["LS-CRIME"], "issue": "Doli incapax",
+   "legal_significance": "Relevant to debates about raising the age of criminal responsibility; check for amendments.",
+   "source": "NSW Legislation",
+   "source_url": "https://legislation.nsw.gov.au/",
+   "source_type": "primary",
+   "sub_area": "LS-CRIME-YOUNG",
+   "aliases": [
+    "Children (Criminal Proceedings) Act"
+   ],
+   "status": "in_force"
+  },
+  {
+   "title": "RP v The Queen [2016] HCA 53",
+   "item_type": "case",
+   "date": "2016",
+   "jurisdiction": "Commonwealth (High Court)",
+   "topics": [
+    "LS-CRIME"
+   ],
+   "issue": "Doli incapax",
    "summary": "High Court decision on rebutting the presumption of doli incapax: the prosecution must prove the child knew the conduct was seriously wrong, not merely naughty.",
-   "legal_significance": "Leading authority on doli incapax.", "source": "High Court of Australia", "source_url": "https://www.hcourt.gov.au/", "source_type": "primary"},
-  {"title": "Universal Declaration of Human Rights (1948)", "item_type": "treaty", "date": "1948", "jurisdiction": "International", "topics": ["LS-HR"], "issue": "Foundations of human rights",
+   "legal_significance": "Leading authority on doli incapax.",
+   "source": "High Court of Australia",
+   "source_url": "https://www.hcourt.gov.au/",
+   "source_type": "primary",
+   "sub_area": "LS-CRIME-YOUNG",
+   "aliases": [
+    "RP v The Queen",
+    "RP v R"
+   ],
+   "status": "in_force"
+  },
+  {
+   "title": "Universal Declaration of Human Rights (1948)",
+   "item_type": "treaty",
+   "date": "1948",
+   "jurisdiction": "International",
+   "topics": [
+    "LS-HR"
+   ],
+   "issue": "Foundations of human rights",
    "summary": "Adopted by the UN General Assembly in 1948; a foundational, non-binding statement of civil, political, economic, social and cultural rights.",
-   "legal_significance": "Basis of the International Bill of Rights; much of its content is reflected in later binding treaties and customary law.", "source": "United Nations", "source_url": "https://www.un.org/en/about-us/universal-declaration-of-human-rights", "source_type": "official"},
-  {"title": "International Covenant on Civil and Political Rights (1966)", "item_type": "treaty", "date": "1966", "jurisdiction": "International", "topics": ["LS-HR"], "issue": "Civil and political rights",
+   "legal_significance": "Basis of the International Bill of Rights; much of its content is reflected in later binding treaties and customary law.",
+   "source": "United Nations",
+   "source_url": "https://www.un.org/en/about-us/universal-declaration-of-human-rights",
+   "source_type": "official",
+   "sub_area": "LS-HR-NATURE",
+   "aliases": [
+    "Universal Declaration of Human Rights",
+    "UDHR"
+   ],
+   "status": "in_force"
+  },
+  {
+   "title": "International Covenant on Civil and Political Rights (1966)",
+   "item_type": "treaty",
+   "date": "1966",
+   "jurisdiction": "International",
+   "topics": [
+    "LS-HR"
+   ],
+   "issue": "Civil and political rights",
    "summary": "Binding treaty protecting civil and political rights, monitored by the UN Human Rights Committee. Australia is a party.",
-   "legal_significance": "Part of the International Bill of Rights; Article 1 recognises self-determination.", "source": "UN OHCHR", "source_url": "https://www.ohchr.org/", "source_type": "official"},
-  {"title": "Australian Human Rights Commission Act 1986 (Cth)", "item_type": "legislation", "date": "1986", "jurisdiction": "Commonwealth", "topics": ["LS-HR"], "issue": "Human rights institutions",
+   "legal_significance": "Part of the International Bill of Rights; Article 1 recognises self-determination.",
+   "source": "UN OHCHR",
+   "source_url": "https://www.ohchr.org/",
+   "source_type": "official",
+   "sub_area": "LS-HR-NATURE",
+   "aliases": [
+    "International Covenant on Civil and Political Rights",
+    "ICCPR"
+   ],
+   "status": "in_force"
+  },
+  {
+   "title": "Australian Human Rights Commission Act 1986 (Cth)",
+   "item_type": "legislation",
+   "date": "1986",
+   "jurisdiction": "Commonwealth",
+   "topics": [
+    "LS-HR"
+   ],
+   "issue": "Human rights institutions",
    "summary": "Establishes the Australian Human Rights Commission, which investigates and conciliates complaints and promotes human rights.",
-   "legal_significance": "Key domestic institution for promoting human rights.", "source": "Federal Register of Legislation", "source_url": "https://www.legislation.gov.au/", "source_type": "primary"},
-  {"title": "Racial Discrimination Act 1975 (Cth)", "item_type": "legislation", "date": "1975", "jurisdiction": "Commonwealth", "topics": ["LS-HR"], "issue": "Anti-discrimination",
+   "legal_significance": "Key domestic institution for promoting human rights.",
+   "source": "Federal Register of Legislation",
+   "source_url": "https://www.legislation.gov.au/",
+   "source_type": "primary",
+   "sub_area": "LS-HR-ENFORCE",
+   "aliases": [
+    "Australian Human Rights Commission Act"
+   ],
+   "status": "in_force"
+  },
+  {
+   "title": "Racial Discrimination Act 1975 (Cth)",
+   "item_type": "legislation",
+   "date": "1975",
+   "jurisdiction": "Commonwealth",
+   "topics": [
+    "LS-HR"
+   ],
+   "issue": "Anti-discrimination",
    "summary": "Makes racial discrimination unlawful and implements Australia's obligations under the International Convention on the Elimination of All Forms of Racial Discrimination.",
-   "legal_significance": "Example of a treaty implemented through domestic legislation.", "source": "Federal Register of Legislation", "source_url": "https://www.legislation.gov.au/", "source_type": "primary"},
-  {"title": "Mabo v Queensland (No 2) (1992) 175 CLR 1", "item_type": "case", "date": "1992", "jurisdiction": "Commonwealth (High Court)", "topics": ["LS-HR"], "issue": "Native title",
+   "legal_significance": "Example of a treaty implemented through domestic legislation.",
+   "source": "Federal Register of Legislation",
+   "source_url": "https://www.legislation.gov.au/",
+   "source_type": "primary",
+   "sub_area": "LS-HR-ENFORCE",
+   "aliases": [
+    "Racial Discrimination Act",
+    "RDA"
+   ],
+   "status": "in_force"
+  },
+  {
+   "title": "Mabo v Queensland (No 2) (1992) 175 CLR 1",
+   "item_type": "case",
+   "date": "1992",
+   "jurisdiction": "Commonwealth (High Court)",
+   "topics": [
+    "LS-HR"
+   ],
+   "issue": "Native title",
    "summary": "The High Court recognised native title and rejected the doctrine of terra nullius as applied to Australia.",
-   "legal_significance": "Landmark recognition of Aboriginal and Torres Strait Islander peoples' rights to land under Australian law.", "source": "High Court of Australia", "source_url": "https://www.hcourt.gov.au/", "source_type": "primary"},
-  {"title": "Charter of Human Rights and Responsibilities Act 2006 (Vic)", "item_type": "legislation", "date": "2006", "jurisdiction": "Victoria", "topics": ["LS-HR"], "issue": "Statutory bills of rights",
+   "legal_significance": "Landmark recognition of Aboriginal and Torres Strait Islander peoples' rights to land under Australian law.",
+   "source": "High Court of Australia",
+   "source_url": "https://www.hcourt.gov.au/",
+   "source_type": "primary",
+   "sub_area": "LS-HR-ENFORCE",
+   "aliases": [
+    "Mabo v Queensland (No 2)",
+    "Mabo (No 2)"
+   ],
+   "status": "in_force"
+  },
+  {
+   "title": "Charter of Human Rights and Responsibilities Act 2006 (Vic)",
+   "item_type": "legislation",
+   "date": "2006",
+   "jurisdiction": "Victoria",
+   "topics": [
+    "LS-HR"
+   ],
+   "issue": "Statutory bills of rights",
    "summary": "Statutory human rights charter requiring compatibility statements for new bills and rights-compatible interpretation of laws where possible.",
-   "legal_significance": "Model of a statutory (dialogue) bill of rights; compare with Human Rights Act 2004 (ACT) and Human Rights Act 2019 (Qld).", "source": "Victorian Legislation", "source_url": "https://www.legislation.vic.gov.au/", "source_type": "primary"}
+   "legal_significance": "Model of a statutory (dialogue) bill of rights; compare with Human Rights Act 2004 (ACT) and Human Rights Act 2019 (Qld).",
+   "source": "Victorian Legislation",
+   "source_url": "https://www.legislation.vic.gov.au/",
+   "source_type": "primary",
+   "sub_area": "LS-HR-ENFORCE",
+   "aliases": [
+    "Charter of Human Rights and Responsibilities Act",
+    "Victorian Charter of Human Rights"
+   ],
+   "status": "in_force"
+  }
  ]
 }
