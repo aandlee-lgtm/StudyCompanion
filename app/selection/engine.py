@@ -161,6 +161,14 @@ def build_daily_selection(db: Session, ctx: StudentContext) -> DailySelection:
         if have < want:
             notes.append(f"Only {have} of {want} {SUBJECT_LABEL[code]} questions are available right now: import or approve more "
                          "questions for the topics you are learning.")
+    mf = subj_facts.get("MATHS") or {}
+    q_learn, got_learn = (mf.get("quota") or {}).get("learning", 0), sum(
+        1 for s in items if subject_code(s.question) == "MATHS" and s.bucket == "learning")
+    if got_learn < q_learn:  # selection-17: say which current topic is short of questions, and what to do
+        learning = [i for i, v in (mf.get("info") or {}).items() if v.get("bucket") == "learning"] + list(mf.get("learning_without_questions") or [])
+        names = _join_names(ctx, dict.fromkeys(learning)) if learning else "the topics you are learning"
+        notes.append(f"Only {got_learn} of {q_learn} current-learning Mathematics slots could be filled with different questions on "
+                     f"{names}: import or approve questions for it, or enable AI variants. The other slots went to recent work.")
     ext = subj_facts.get("LEGAL", {}).get("extended") or {}
     if ext.get("due") and not any(legal_format(s.question) == "extended" for s in items if subject_code(s.question) == "LEGAL"):
         notes.append("An extended response was due today, but " + (ext.get("why") or "none fitted today's time window") + ".")

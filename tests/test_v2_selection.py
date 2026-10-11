@@ -385,3 +385,39 @@ def test_exam_style_bonus_prefers_multipart_questions(db):
     ctx.phase = PHASES["trials"]
     later, _ = question_score(ctx, multi, "MATHS", "fresh")
     assert later > base
+
+
+# -------------------------------------------------------------- bank health ---
+def test_bank_health_uses_the_engines_rules(db):
+    from app.selection.health import bank_health
+
+    _v2_bank(db)
+    h = bank_health(db, TUESDAY)
+    assert h["ENGLISH"]["passages_left"] >= 25 and h["ENGLISH"]["status"] == "ok"
+    assert h["LEGAL"]["fresh_by_format"]["stimulus"] >= 10 and h["LEGAL"]["fresh_by_format"]["extended"] >= 6
+    assert h["MATHS"]["learning_items"] and all(i["fresh"] > 0 for i in h["MATHS"]["learning_items"])
+    sess = sessions.get_or_create_today(db)
+    answer_correctly(db, sess)
+    after = bank_health(db, TUESDAY + timedelta(days=1))
+    assert after["ENGLISH"]["passages_left"] == h["ENGLISH"]["passages_left"] - 1
+
+
+def test_learning_item_without_questions_is_named(db):
+    from app.models import Question
+
+    item = plan_item(db, "1A")
+    for q in db.execute(select(Question).where(Question.plan_item_id == item.id)).scalars():
+        q.approved = False
+    from app.services import maths_templates
+
+    saved = maths_templates.TEMPLATES.pop("1A", None)
+    try:
+        db.flush()
+        ctx = build_context(db, TUESDAY)
+        sel = build_daily_selection(db, ctx)
+        text = " ".join(sel.notes) + " ".join(explain(ctx, sel)["lines"])
+        assert "1A" in text and ("no practice questions" in text or "could be filled" in text)
+    finally:
+        if saved is not None:
+            maths_templates.TEMPLATES["1A"] = saved
+        db.rollback()
