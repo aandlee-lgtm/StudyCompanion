@@ -150,6 +150,9 @@ def test_legal_sections_options_either_or_and_mcq_key(db, pdfs):
     consumers = plan_item(db, "LS-OPT-CONSUMERS")
     assert a.plan_item_id == consumers.id and a.category == "option"  # option questions never map to core Crime
     assert qs["24(a)"].plan_item_id == plan_item(db, "LS-OPT-FAMILY").id
+    crime, hr = plan_item(db, "LS-CRIME").id, plan_item(db, "LS-HR").id  # core topics use their sub-areas' keywords
+    assert qs["2"].plan_item_id == crime and qs["21(b)"].plan_item_id == crime and qs["21(c)"].plan_item_id == crime
+    assert qs["5"].plan_item_id == hr and qs["22"].plan_item_id == hr
     assert all(q.legal_fact_currency == "check" for q in qs.values())  # offline Legal imports default to check
     assert "legal_check" in _codes(qs["1"])  # section 8C: currency must be confirmed before approval
     for q in qs.values():

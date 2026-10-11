@@ -115,10 +115,10 @@ LEGAL_ITEM_KEYWORDS = {  # sub-areas (when the plan has them, codes as in docs/V
     "LS-CRIME-INVESTIGATION": "police:1.5|investigat*:1.5|arrest:2|search warrant*:2|bail:2.5|remand:2|police discretion:2.5",
     "LS-CRIME-TRIAL": "trial:1.5|jury:2|burden of proof:2.5|standard of proof:2.5|plea*:1.5|legal aid:2|adversarial:2|courts:1",
     "LS-CRIME-SENTENCING": "sentenc*:2.5|punishment:2|victim impact:2.5|aggravating:2|mitigating:2|parole:2|post-sentencing:2.5",
-    "LS-CRIME-YOUNG": "young offender*:3|doli incapax:3|children's court:3|youth justice:3|aged 1?:1",
+    "LS-CRIME-YOUNG": "young offender*:3|doli incapax:3|children's court:3|youth justice:3|aged 1?:1|age of criminal responsibility:3",
     "LS-CRIME-INTERNATIONAL": "international crime:3|international criminal court:3|transnational:2.5|extradition:2.5",
-    "LS-HR-NATURE": "udhr:2|universal declaration:2|developing recognition:2|self-determination:2|nature of human rights:2.5",
-    "LS-HR-ENFORCE": "enforce*:1.5|ICCPR:1.5|human rights committee:2|un charter:2|treaty:1|ngo*:1.5|bill of rights:2",
+    "LS-HR-NATURE": "human rights:1.5|udhr:2|universal declaration:2|developing recognition:2|self-determination:2|nature of human rights:2.5",
+    "LS-HR-ENFORCE": "enforc*:1.5|ICCPR:1.5|human rights committee:2|un charter:2|treaty:1|ngo*:1.5|bill of rights:2",
     "LS-HR-ISSUE": "contemporary issue:2|asylum:2|refugee*:2|discrimination:1",
 }
 ENGLISH_MODULE_WORDS = {
@@ -214,6 +214,7 @@ def plan_candidates(db: Session, subject_id: int) -> list[Cand]:
         if pt.topic_id:
             texts_by_topic.setdefault(pt.topic_id, []).extend([f"{pt.title.lower()}:3", f"{pt.author.split()[-1].lower()}:2.5"])
     out: list[Cand] = []
+    codes = {i.code for i in items}
     for it in items:
         topic = it.topic
         rules: list[Rule] = []
@@ -221,6 +222,10 @@ def plan_candidates(db: Session, subject_id: int) -> list[Cand]:
             rules = parse_rules(MATHS_ITEM_KEYWORDS[it.code])
         elif subject.code == "LEGAL" and it.code in LEGAL_ITEM_KEYWORDS:
             rules = parse_rules(LEGAL_ITEM_KEYWORDS[it.code])
+        elif subject.code == "LEGAL" and not any(c.startswith(it.code + "-") for c in codes):
+            # a core topic without sub-area items in the plan takes every sub-area's keywords
+            subs = [v for k, v in LEGAL_ITEM_KEYWORDS.items() if k.startswith(it.code + "-")]
+            rules = parse_rules("|".join(subs)) if subs else []
         elif subject.code == "ENGLISH" and (topic and topic.code in ENGLISH_MODULE_WORDS):
             rules = parse_rules(ENGLISH_MODULE_WORDS[topic.code])
         if not rules:  # custom plan items: distinctive title words and bigrams
