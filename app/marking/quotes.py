@@ -68,11 +68,17 @@ _DOUBLE = re.compile(r'"([^"\n]{1,400}?)"')
 _SINGLE = re.compile(r"(?<![A-Za-z0-9])'((?:[^'\n]|(?<=[A-Za-z])'(?=[A-Za-z])){1,400}?)'(?![A-Za-z0-9])")
 
 
-def extract_quotes(text: str) -> list[str]:
-    """Quoted fragments in ``text`` (double, curly or single quotation marks), in order."""
+def display_text(text: str) -> str:
+    """NFKC with straight quotation marks (case and spacing kept): the text quotations are extracted from."""
     s = unicodedata.normalize("NFKC", text or "")
     for a, b in _QUOTE_CHARS.items():
         s = s.replace(a, b)
+    return s
+
+
+def extract_quotes(text: str) -> list[str]:
+    """Quoted fragments in ``text`` (double, curly or single quotation marks), in order."""
+    s = display_text(text)
     found: list[tuple[int, str]] = []
     taken: list[tuple[int, int]] = []
     for m in _DOUBLE.finditer(s):
