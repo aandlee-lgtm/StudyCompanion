@@ -1525,6 +1525,796 @@
     }
    ],
    "length_words": 523
+  },
+  {
+   "key": "diggings-letter",
+   "title": "A Letter from the Diggings, 1853",
+   "form": "Letter",
+   "complexity": 3,
+   "author": "Original text (HSC Companion)",
+   "headnote": "This is an original text written in the style of a mid-nineteenth-century letter. The writer, Mary Treloar, is fictional. She writes from the Victorian goldfields to her sister Jane in Redruth, Cornwall.",
+   "theme_tags": [
+    "migration",
+    "gold rush",
+    "freedom",
+    "family",
+    "colonial Australia"
+   ],
+   "body": "Forest Creek, the 14th of March, 1853\n\nMy dear Jane,\n\nI take up my pen at last, having owed you this letter since Christmas, and having begun it, I confess, four times, and four times put it in the stove. You will forgive me when I tell you that it is no easy thing to describe a place to one who has never left Redruth, and harder still to describe it truthfully to one who will read the letter aloud at chapel.\n\nYou asked in your last whether the streets here are paved with gold. They are not paved at all. When it rains, which it has done these nine days without mercy, the whole of the Creek becomes one sucking mire, and I have seen a dray sink to its axles before the very door of our tent, and the bullocks stand in it groaning like Methodists at a funeral. When it is dry the dust gets into the bread, into the bedding, into the very pages of the Bible, so that I cannot open Ruth without a little cloud rising out of her.\n\nThomas is well, or says he is. He goes down the shaft at first light and comes up at dusk the colour of the earth, so that I know him only by his voice and his way of standing. We have had some colour, a few grains in December and a little more in January, enough to keep us in flour and tea and hope, though hope is dearer here than either. There are men about us who have made their fortunes in a week, and men who have dug for a year and found nothing but water, and the lucky and the unlucky drink together of a Saturday at the same sly-grog tent, so that you cannot tell by looking which is which until the fighting starts.\n\nI will not pretend to you that I am happy, Jane, but neither will I pretend that I am sorry we came. There is a freedom in it that I cannot well explain. No one here asks whose daughter I am. The woman in the next tent is from Kilkenny, and the man across the gully is a Chinese gentleman who grows cabbages better than any in Cornwall and sells them to me at a fair price and bows when I pay him, which is more than the grocer at home ever did.\n\nDo not read that part aloud.\n\nThe nights are the worst of it. The sky is too large and the stars are in the wrong places, and I lie awake and think of the lane behind Mother's, and the smell of the rain coming in from the sea, which here comes from nowhere, there being no sea, only the bush, which goes on and on and does not care whether we are in it.\n\nTell Mother we are prospering. It is very nearly true. Tell her that I wear my good shawl to chapel, which is a tent like the rest, and that the minister is a Wesleyan of sound views. Tell her nothing of the mire.\n\nI enclose a grain of gold that Thomas found on my birthday. It is very small. Hold it to the window and you will see it is the same colour as the light.\n\nYour loving sister,\nMary",
+   "pair": null,
+   "questions": [
+    {
+     "marks": 2,
+     "verb": "Explain",
+     "demand": "explain",
+     "text": "Explain what the instruction \"Do not read that part aloud.\" reveals about Mary's situation.",
+     "skill_tags": [
+      "audience",
+      "context",
+      "voice"
+     ],
+     "criteria": [
+      {
+       "mark": 2,
+       "descriptor": "Provides a precise, well-reasoned explanation of what the instruction reveals about Mary's situation, integrating well-chosen textual evidence and making the cause-and-effect relationship explicit"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of what the instruction reveals about Mary's situation, relying on paraphrase or retelling"
+      }
+     ],
+     "checklist": [
+      "Recognises that Mary writes for two audiences: Jane and the chapel listeners in Redruth",
+      "Links the instruction to the preceding praise of the gardener who \"bows when I pay him\"",
+      "Notes the implied criticism of home (\"the grocer at home\")",
+      "Comments on the effect of the abrupt one-line paragraph"
+     ],
+     "next_steps": {
+      "0": "Start by stating what the instruction shows (for example, that Mary's new opinions must be hidden from home), then point to the sentence just before it.",
+      "1": "Explain why that part would offend: connect the instruction to the comparison with \"the grocer at home\" and to the community who will hear the letter read."
+     },
+     "model": "The instruction reveals that Mary writes for two audiences at once: her sister, and the chapel congregation who will hear the letter. Having praised the Chinese gardener who \"bows when I pay him\", which is \"more than the grocer at home ever did\", she recognises that this admiration, and its implied criticism of Redruth, would offend her listeners. The abrupt one-line paragraph shows that her new freedom of opinion must still be concealed from the community she left behind.",
+     "difficulty": 2
+    },
+    {
+     "marks": 4,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "Analyse how Mary's descriptions of the goldfields challenge the expectations of her readers at home.",
+     "skill_tags": [
+      "perspective",
+      "imagery",
+      "humour",
+      "context"
+     ],
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Provides a perceptive, sustained analysis of how Mary's descriptions challenge her readers' expectations, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a thoughtful analysis of how Mary's descriptions challenge her readers' expectations, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how Mary's descriptions challenge her readers' expectations, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how Mary's descriptions challenge her readers' expectations or identifies a relevant technique with little explanation of its effect"
+      }
+     ],
+     "checklist": [
+      "Identifies the expectation being challenged (the myth of streets \"paved with gold\")",
+      "Analyses the blunt deflation \"They are not paved at all.\" and the sensory realism of the mire",
+      "Analyses at least one simile or personification that translates the place into Cornish terms (the bullocks \"groaning like Methodists at a funeral\", the dust rising out of Ruth)",
+      "Analyses the balanced sentence about fortunes made \"in a week\" and lost after \"a year\" to show success as arbitrary",
+      "Links the techniques to a single claim about how readers are repositioned"
+     ],
+     "next_steps": {
+      "0": "Make a claim: what does Mary's community at home expect, and what picture does she give instead? Support it with the line about the streets.",
+      "1": "Name and explain one technique, such as the simile of the bullocks or the personification of the Bible, and say what it suggests about life on the diggings.",
+      "2": "Add a second, different kind of evidence, such as the sentence contrasting men who made fortunes \"in a week\" with those who dug \"for a year\", and explain what it suggests about luck.",
+      "3": "Draw the evidence into one argument about how Mary replaces a myth with comic, unsentimental realism, and why that matters for readers who have never left Redruth."
+     },
+     "model": "Mary's descriptions systematically dismantle the myth of easy wealth that her readers at home hold, replacing it with a vivid, often comic realism. She begins by taking the cliché in Jane's question literally and rejecting it: the streets are not paved with gold, \"They are not paved at all.\" The blunt short sentence deflates the fantasy before she supplies its replacement, the \"one sucking mire\" in which a dray sinks \"to its axles\". Physical, sensory detail displaces romance. Her similes translate the strange place into terms her Cornish readers know, and in doing so make it absurd: the bullocks \"stand in it groaning like Methodists at a funeral\", and the dust is so pervasive that \"I cannot open Ruth without a little cloud rising out of her.\" The personification of the biblical book is witty, but it also suggests that even faith is coated by the new country. Finally, she complicates the idea of fortune itself. The balanced syntax of \"men about us who have made their fortunes in a week, and men who have dug for a year and found nothing but water\" presents success as arbitrary, and the remark that you \"cannot tell by looking which is which until the fighting starts\" undercuts any image of an orderly, prosperous colony. Her readers are positioned to see the goldfields as a lottery played in mud.",
+     "difficulty": 2
+    },
+    {
+     "marks": 6,
+     "verb": "Assess",
+     "demand": "evaluate",
+     "text": "To what extent is Mary's letter a celebration of freedom rather than a record of hardship?",
+     "skill_tags": [
+      "judgement",
+      "perspective",
+      "tone",
+      "ending"
+     ],
+     "criteria": [
+      {
+       "mark": 6,
+       "descriptor": "Makes a perceptive, well-justified judgement about the extent to which the letter celebrates freedom rather than records hardship, weighing evidence from across the text and analysing how language and form support the judgement"
+      },
+      {
+       "mark": 5,
+       "descriptor": "Makes a clear, reasoned judgement about the extent to which the letter celebrates freedom rather than records hardship, supported by relevant, well-analysed evidence"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Makes a sound judgement about the extent to which the letter celebrates freedom rather than records hardship with relevant evidence and some analysis"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Offers a judgement about the extent to which the letter celebrates freedom rather than records hardship that is asserted more than argued, with some textual support"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Describes the extent to which the letter celebrates freedom rather than records hardship with an implied or unsupported judgement"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Makes a limited or general comment about the text"
+      }
+     ],
+     "checklist": [
+      "States a qualified judgement (for example: a guarded, private celebration that never denies the hardship)",
+      "Analyses the record of hardship (the mire, Thomas \"the colour of the earth\", hope \"dearer here than either\")",
+      "Analyses the claim to freedom (\"No one here asks whose daughter I am.\") and the balanced \"I will not pretend\" sentence",
+      "Uses the instructions to Jane (\"Tell Mother we are prospering. It is very nearly true.\") to show the limits of what can be said",
+      "Interprets the closing image of the grain of gold and the light"
+     ],
+     "next_steps": {
+      "0": "Answer the question with a degree: decide whether the letter is mainly celebration, mainly hardship, or a mixture, and say so in your opening sentence.",
+      "1": "Support one side of your judgement with a specific detail, such as the mire or Thomas coming up \"the colour of the earth\", and explain its effect.",
+      "2": "Analyse the other side: what kind of freedom does Mary describe? Use \"No one here asks whose daughter I am.\" and explain what she is free from.",
+      "3": "Show the limits of the celebration: analyse the night-time homesickness or the instructions about what to tell Mother, and what they reveal about concealment.",
+      "4": "Weigh the two sides into a qualified judgement and use the closing image of the grain of gold to support it.",
+      "5": "Refine for Band 6: make each paragraph advance the judgement, integrate short quotations, and comment on how the letter form (a private sister, a public reading) shapes what can be celebrated."
+     },
+     "model": "Mary's letter records hardship candidly, but it frames that hardship so that a guarded celebration of freedom emerges as its emotional centre. The celebration is real, yet it is private, qualified by homesickness and by the need to conceal it from home, so the letter is best read as a negotiation between the two rather than a simple triumph.\n\nThe hardship is vividly, even comically, recorded. The rain falls \"these nine days without mercy\", the Creek becomes \"one sucking mire\", and Thomas emerges from the shaft \"the colour of the earth, so that I know him only by his voice and his way of standing.\" That image suggests the diggings erase identity as well as comfort. Her aphorism that hope is \"dearer here than either\" flour or tea turns the language of prices into a measure of emotional cost.\n\nAgainst this, Mary makes a careful claim for freedom. The balanced sentence \"I will not pretend to you that I am happy, Jane, but neither will I pretend that I am sorry we came\" refuses both false cheer and complaint, and the admission that \"There is a freedom in it that I cannot well explain\" locates that freedom in release from the class and family hierarchies of Redruth: \"No one here asks whose daughter I am.\" Her respect for the gardener who \"bows when I pay him\" extends this to a freedom of judgement, which is immediately fenced off by the one-line paragraph \"Do not read that part aloud.\"\n\nThat instruction reveals the limit of the celebration. Mary also manages her mother's knowledge, \"Tell Mother we are prospering. It is very nearly true\", and longs for home at night, when \"the stars are in the wrong places\" and the bush \"does not care whether we are in it\". Freedom here is inseparable from exposure.\n\nThe closing image gathers these tensions. The grain of gold is \"very small\", an honest admission of modest success, yet Jane is told she will see \"it is the same colour as the light.\" Its value is relational rather than monetary: it joins the two sisters under one light. The letter therefore celebrates freedom to a considerable extent, but quietly, as something only a sister can be trusted to see.",
+     "difficulty": 3
+    }
+   ],
+   "length_words": 560
+  },
+  {
+   "key": "water-line-pair",
+   "title": "The Water Line",
+   "form": "Memoir",
+   "complexity": 2,
+   "author": "Original text (HSC Companion)",
+   "headnote": "Text 1 is an original memoir extract about a flood in a northern New South Wales river town. Text 2 is an original poem. The town and its pub are fictional.",
+   "theme_tags": [
+    "natural disaster",
+    "memory",
+    "community",
+    "family",
+    "rural towns"
+   ],
+   "body": "After the water went down, my mother walked through the house with a pencil, marking the line it had left on every wall.\n\nShe did this before she cried, before she rang the insurance, before she so much as lifted the sodden rug in the hall. Room by room she found the brown tidemark the river had drawn at the height of her shoulders, and she traced it, carefully, as if the house were a child she was measuring against a doorframe. In the kitchen it ran straight through the calendar, so that every day in March was cut in half.\n\n'Why are you doing that?' I asked. I was sixteen and I had come home from my aunt's in borrowed gumboots, and I wanted her to stop being calm.\n\n'So we remember,' she said.\n\n'We're not going to forget.'\n\n'You'd be surprised,' she said, and went on into the laundry.\n\nEverything below the line was ruined. Everything above it was fine, and that was the strangest part: the clock still ticking above the stove, my school certificates dry in their frames, the top shelf of the pantry with its tins of peaches standing in a neat row as if nothing had happened, while beneath them the flour had become a grey paste that smelled like a creek bed. The house had been divided into before and after, horizontally.\n\nFor weeks the street was a line of furniture. Couches, mattresses, a piano with its lid sprung open like a mouth. Volunteers came from towns I had only seen on maps and carried our lives out to the kerb and were kind about it. A woman in a hi-vis vest held up a photograph album, swollen to twice its size, and looked at me with a question, and I said yes, throw it out, and then ran after the truck.\n\nWe painted the walls in May. My mother chose a colour called Linen White. Before the first coat went on, she took the pencil and wrote the date beside the line in the hallway, small, behind where the coat hooks would go, where no one would look.\n\nIt is still there. She has painted over it twice. You can see it if you know where it is, a faint grey ridge under the white, like a scar that has learned to keep quiet.",
+   "pair": {
+    "title": "High-Water Mark",
+    "form": "Poetry",
+    "author": "Original text (HSC Companion)",
+    "headnote": "",
+    "body": "On the pub wall in town there is a ladder\nof floods, painted in neat black capitals:\n1954 at the height of a man's chin,\n1974 a hand above it,\nand the new one, still unpainted, a stain\nthe publican has circled with a texta\nand will not let anyone clean.\n\nWe stand under them with our beers\nand read them like a family tree,\nthe old men pointing, I was here for that one,\nand that one, and that,\nas if each year were a relative\nwho came to stay and wouldn't leave.\n\nNobody mentions the gap between them,\nthe forty years of ordinary weather,\nof dry Christmases, of the river\nlying low and brown and harmless as a dog\nasleep in the sun across the doorway,\nthe dog you step over every morning\nuntil you forget that it has teeth."
+   },
+   "questions": [
+    {
+     "marks": 3,
+     "verb": "Explain",
+     "demand": "explain",
+     "text": "In Text 1, explain the significance of the mother's pencil.",
+     "skill_tags": [
+      "symbol",
+      "characterisation",
+      "memory"
+     ],
+     "criteria": [
+      {
+       "mark": 3,
+       "descriptor": "Provides a precise, well-reasoned explanation of the significance of the mother's pencil in Text 1, integrating well-chosen textual evidence and making the cause-and-effect relationship explicit"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides a sound explanation of the significance of the mother's pencil in Text 1 with appropriate textual reference"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of the significance of the mother's pencil in Text 1, relying on paraphrase or retelling"
+      }
+     ],
+     "checklist": [
+      "Explains the pencil as a deliberate act of remembering (\"So we remember\")",
+      "Uses the repeated \"before\" to show the act's priority over grief and practical tasks",
+      "Analyses the simile of measuring a child \"against a doorframe\"",
+      "Links the pencil to the date written in the hallway after repainting"
+     ],
+     "next_steps": {
+      "0": "State what the pencil represents in one clear sentence, then support it with the mother's words \"So we remember\".",
+      "1": "Explain HOW the writer makes the pencil significant: comment on the repeated \"before\" or the doorframe simile, not just on what the mother does.",
+      "2": "Show the significance across the whole extract by connecting the first pencil marks to the date she writes in the hallway, and explain her reply \"You'd be surprised\"."
+     },
+     "model": "The mother's pencil is significant because it turns memory into a deliberate act rather than something left to chance. She marks the line \"before she cried, before she rang the insurance\", and the repeated \"before\" shows that recording the flood is her first priority, ahead of grief and practical tasks. The simile that she traced it \"as if the house were a child she was measuring against a doorframe\" casts the flood as part of the family's history, as natural to record as a child's growth. Her reply \"You'd be surprised\" suggests she knows how quickly people forget, which is why, after repainting, she still writes the date beside the line. The pencil therefore represents a quiet resolve to remember honestly, even as life is painted over.",
+     "difficulty": 1
+    },
+    {
+     "marks": 4,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "In Text 2, analyse how the poet represents the community's relationship with the river.",
+     "skill_tags": [
+      "representation",
+      "simile",
+      "structure",
+      "community"
+     ],
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Provides a perceptive, sustained analysis of how Text 2 represents the community's relationship with the river, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a thoughtful analysis of how Text 2 represents the community's relationship with the river, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how Text 2 represents the community's relationship with the river, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how Text 2 represents the community's relationship with the river or identifies a relevant technique with little explanation of its effect"
+      }
+     ],
+     "checklist": [
+      "Makes a claim about the relationship (intimate, proud, storytelling, but complacent)",
+      "Analyses the public record of the floods (\"a ladder / of floods\") and the publican's refusal to clean the stain",
+      "Analyses the family-tree and relative similes as domesticating disaster",
+      "Analyses the turn at \"Nobody mentions the gap between them\"",
+      "Analyses the dog simile and the warning in \"until you forget that it has teeth\""
+     ],
+     "next_steps": {
+      "0": "Begin with a claim that describes the relationship in precise words (for example, affectionate but complacent), then support it with the flood marks on the pub wall.",
+      "1": "Analyse one simile in the second stanza (the \"family tree\" or the relative who \"wouldn't leave\") and explain what it suggests about how the town treats floods.",
+      "2": "Explain how the final stanza changes the poem's direction, using \"Nobody mentions the gap between them\".",
+      "3": "Analyse the dog simile closely and use its final line to complete your argument about the danger in the community's familiarity."
+     },
+     "model": "Text 2 represents the community's relationship with the river as intimate and even affectionate, but dangerously complacent. The flood heights are recorded as \"a ladder / of floods\" on the pub wall, a public archive measured against the body, \"at the height of a man's chin\", which makes disaster part of the town's shared identity. The publican's refusal to let anyone clean the newest stain suggests pride in having endured. The locals read the marks \"like a family tree\", and the simile that each flood is \"a relative / who came to stay and wouldn't leave\" domesticates catastrophe into a familiar, if tiresome, guest. The old men's boast, \"I was here for that one\", turns survival into storytelling. The final stanza exposes the cost of this familiarity. The turn, \"Nobody mentions the gap between them\", directs attention to the decades of \"ordinary weather\", and the extended simile of the river as \"harmless as a dog / asleep in the sun across the doorway\" captures how easily threat becomes routine. The closing clause, \"until you forget that it has teeth\", warns that the community's affectionate memory may also be a form of forgetting.",
+     "difficulty": 2
+    },
+    {
+     "marks": 6,
+     "verb": "Synthesise",
+     "demand": "synthesise",
+     "text": "Drawing on both texts, what do these texts suggest about how people remember disaster?",
+     "skill_tags": [
+      "synthesis",
+      "memory",
+      "comparison",
+      "theme"
+     ],
+     "criteria": [
+      {
+       "mark": 6,
+       "descriptor": "Constructs a perceptive, coherent synthesis of what both texts together suggest about remembering disaster, combining insights from across the text(s) into a new understanding supported by well-chosen evidence"
+      },
+      {
+       "mark": 5,
+       "descriptor": "Constructs a thoughtful synthesis of what both texts together suggest about remembering disaster, drawing together relevant, analysed evidence"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Draws together ideas about what both texts together suggest about remembering disaster with relevant evidence and some explanation"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Discusses relevant ideas about what both texts together suggest about remembering disaster without fully combining them"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Describes aspects of the text(s) with limited reference to what both texts together suggest about remembering disaster"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Makes a limited or general comment relevant to the question"
+      }
+     ],
+     "checklist": [
+      "Constructs an overall insight that neither text states alone (for example: remembering is a deliberate act against forgetting)",
+      "Uses the inscriptions in both texts: the pencil line and the painted \"ladder\" of floods",
+      "Distinguishes private, restrained memory in Text 1 (\"like a scar that has learned to keep quiet\") from communal storytelling in Text 2",
+      "Uses each text to illuminate the other (the mother's \"You'd be surprised\" and the poem's forgotten \"teeth\")",
+      "Concludes with a synthesised judgement about what memory of disaster requires"
+     ],
+     "next_steps": {
+      "0": "Write a thesis that answers the question for BOTH texts at once, not one sentence per text.",
+      "1": "Support your thesis with the central similarity: both texts record the water's height. Quote from each.",
+      "2": "Develop a difference between the texts (private and quiet versus public and communal) and explain what each kind of memory achieves.",
+      "3": "Use one text to explain something in the other, for example how the poem's dog simile explains why the mother insists \"So we remember\".",
+      "4": "Draw your points together into a new understanding about remembering disaster, rather than summarising each text separately.",
+      "5": "Refine for Band 6: keep both texts in every paragraph, integrate brief quotations, and end with a precise, synthesised judgement."
+     },
+     "model": "Together, the texts suggest that remembering a disaster is not a natural consequence of surviving it but a deliberate, repeated act against the pull of forgetting, and that the marks people make serve both to honour what was endured and to warn of what may return.\n\nBoth texts centre on an inscription of the water's height. In Text 1 the mother traces the tidemark \"Room by room\", and her terse exchange with her daughter makes the purpose explicit: \"So we remember.\" When the daughter insists \"We're not going to forget\", the reply \"You'd be surprised\" anticipates exactly the danger Text 2 dramatises. There, the flood heights are painted on the pub wall in \"neat black capitals\", a public record that the publican protects by refusing to let anyone clean the latest stain.\n\nYet the texts differ in the register of memory. Text 1's memory is private and restrained. The mother writes the date \"small\", where \"no one would look\", and the closing simile of the line beneath the paint, \"like a scar that has learned to keep quiet\", presents memory as a wound that has healed but not disappeared. Text 2's memory is communal and almost convivial: the drinkers read the marks \"like a family tree\" and the old men point and boast. Disaster becomes folklore.\n\nRead together, each text exposes something the other leaves implicit. The poem's final stanza explains why the mother's pencil matters: in the \"forty years of ordinary weather\" the river comes to seem \"harmless as a dog\", and people \"forget that it has teeth\". Conversely, the memoir supplies what the pub-wall anecdotes omit: the ruined flour, the swollen photograph album, the intimate grief that does not fit on a public wall.\n\nThe texts therefore suggest that the memory of disaster must be maintained in two forms: a quiet, private mark that preserves its cost, and a public story that keeps its warning alive. Each alone is incomplete; together they resist the comfortable forgetting that both texts fear.",
+     "difficulty": 3
+    }
+   ],
+   "length_words": 534
+  },
+  {
+   "key": "cicada-shells",
+   "title": "Cicada Shells",
+   "form": "Poetry",
+   "complexity": 2,
+   "author": "Original text (HSC Companion)",
+   "headnote": "This is an original free-verse poem. Cicadas leave their empty outer skins (shells) on tree bark when they emerge as adults in summer.",
+   "theme_tags": [
+    "growing up",
+    "siblings",
+    "time",
+    "change",
+    "childhood"
+   ],
+   "body": "All January the shells hung on the paperbark\nby our back fence, a dozen at a time,\nhooked to the soft bark by their small brown claws\nas if they had stopped there to rest\nand would be going on in a minute.\n\nMy brother collected them in a jam jar.\nHe said they were dead. I said they were empty,\nwhich isn't the same, and we fought about it\nthe way you fight at ten, with your whole body,\ntill our mother came out and said\nthey were neither, they were left.\n\nEach one split cleanly down the back,\na door that only opens once.\nYou could see where the thing had pulled itself out,\nwet and folded, into the heat,\nand sat a whole morning drying its wings\nbefore it could stand to be what it was.\n\nThe noise they made was the noise of the summer itself,\nso loud it was a kind of silence,\nso constant we forgot to hear it\nuntil the evening in February it stopped.\n\nMy brother is taller than our father now.\nHe doesn't remember the jar.\nSome mornings I look at him across the kitchen\nand see the line down the back of the boy he was,\nthe place where the man climbed out,\nand the shell of him still hanging somewhere,\nholding on to the bark with both hands.",
+   "pair": null,
+   "questions": [
+    {
+     "marks": 2,
+     "verb": "Identify",
+     "demand": "identify",
+     "text": "Identify the distinction the speaker draws in the second stanza and explain why it matters.",
+     "skill_tags": [
+      "diction",
+      "ideas",
+      "argument"
+     ],
+     "criteria": [
+      {
+       "mark": 2,
+       "descriptor": "Precisely identifies the distinction between «dead» and «empty» in the second stanza and explains its significance with apt, accurately quoted evidence"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Identifies a relevant feature of the distinction between «dead» and «empty» in the second stanza with little or no explanation"
+      }
+     ],
+     "checklist": [
+      "Identifies the distinction between the shells being \"dead\" and \"empty\"",
+      "Explains that emptiness implies departure and continued life, not an ending",
+      "Refers to the mother's verdict \"they were neither, they were left\""
+     ],
+     "next_steps": {
+      "0": "Quote the two words the children argue about and state the difference between them in your own words.",
+      "1": "Explain why the difference matters for the poem, using the mother's reply \"they were neither, they were left\"."
+     },
+     "model": "The speaker distinguishes between the shells being \"dead\" and being \"empty, / which isn't the same\". The distinction matters because emptiness implies that something has left and lives on elsewhere, whereas death implies an ending. The mother's verdict, \"they were neither, they were left\", sharpens this into the poem's central idea: growing up leaves traces of an earlier self behind, rather than destroying it.",
+     "difficulty": 1
+    },
+    {
+     "marks": 4,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "Analyse how the poem represents time passing unnoticed.",
+     "skill_tags": [
+      "time",
+      "paradox",
+      "structure",
+      "imagery"
+     ],
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Provides a perceptive, sustained analysis of how the poem represents time passing unnoticed, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a thoughtful analysis of how the poem represents time passing unnoticed, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how the poem represents time passing unnoticed, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how the poem represents time passing unnoticed or identifies a relevant technique with little explanation of its effect"
+      }
+     ],
+     "checklist": [
+      "Makes a claim: time passes imperceptibly and is noticed only in retrospect",
+      "Analyses the irony of the shells that seem to have \"stopped there to rest\"",
+      "Analyses the paradox \"so loud it was a kind of silence\" and the repeated \"so\" structure",
+      "Analyses the effect of the sudden stop (\"until the evening in February it stopped\")",
+      "Analyses the structural leap to \"My brother is taller than our father now.\""
+     ],
+     "next_steps": {
+      "0": "Open with a claim about how time is represented, then support it with one image from the poem.",
+      "1": "Analyse the paradox in the fourth stanza: explain how something \"so loud\" can become \"a kind of silence\", and what that suggests about childhood.",
+      "2": "Add a structural point: the jump in time at the start of the final stanza. Explain how the gap between stanzas works like the cicadas' sudden silence.",
+      "3": "Link the images and the structure into one argument about time being noticed only when something has already ended."
+     },
+     "model": "The poem represents time as passing almost imperceptibly, noticed only in retrospect, through images of arrested motion and a sound so constant it becomes invisible. In the opening stanza the shells seem \"as if they had stopped there to rest / and would be going on in a minute\", an image of time paused that is ironic because the moment of change has already passed. The fourth stanza develops this through paradox: the cicadas' noise was \"so loud it was a kind of silence, / so constant we forgot to hear it\". The repeated \"so\" structure mimics the drone, and the paradox suggests that what fills every moment of a childhood summer is precisely what goes unheard. The final line of the stanza, \"until the evening in February it stopped\", makes the reader register the sound only at its absence, as the speaker does. The poem then enacts the same jolt structurally. The final stanza leaps years without transition: \"My brother is taller than our father now.\" This abrupt shift makes growing up seem to happen offstage, between stanzas, just as the cicadas' song ended before anyone noticed it was ending.",
+     "difficulty": 2
+    },
+    {
+     "marks": 6,
+     "verb": "Evaluate",
+     "demand": "evaluate",
+     "text": "Evaluate how effectively the poem uses the cicada as an extended metaphor for growing up.",
+     "skill_tags": [
+      "extended metaphor",
+      "structure",
+      "judgement",
+      "ending"
+     ],
+     "criteria": [
+      {
+       "mark": 6,
+       "descriptor": "Makes a perceptive, well-justified judgement about the effectiveness of the cicada as an extended metaphor for growing up, weighing evidence from across the text and analysing how language and form support the judgement"
+      },
+      {
+       "mark": 5,
+       "descriptor": "Makes a clear, reasoned judgement about the effectiveness of the cicada as an extended metaphor for growing up, supported by relevant, well-analysed evidence"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Makes a sound judgement about the effectiveness of the cicada as an extended metaphor for growing up with relevant evidence and some analysis"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Offers a judgement about the effectiveness of the cicada as an extended metaphor for growing up that is asserted more than argued, with some textual support"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Describes the effectiveness of the cicada as an extended metaphor for growing up with an implied or unsupported judgement"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Makes a limited or general comment about the text"
+      }
+     ],
+     "checklist": [
+      "Makes a clear judgement about effectiveness, justified by how the metaphor develops across the poem",
+      "Traces the metaphor stanza by stanza (resting shells, the argument, the emergence, the brother)",
+      "Analyses \"a door that only opens once\" and \"before it could stand to be what it was\"",
+      "Analyses the fusion of brother and cicada in \"the line down the back of the boy he was\"",
+      "Interprets the reversal in the final line (\"holding on to the bark with both hands\")",
+      "Considers a possible weakness (for example, explicitness in the final stanza) and answers it"
+     ],
+     "next_steps": {
+      "0": "State your judgement in the first sentence: how effective is the metaphor, and why?",
+      "1": "Support your judgement with one stanza, explaining exactly what the cicada image suggests about growing up there.",
+      "2": "Show that the metaphor develops: trace at least three stanzas and explain what each adds.",
+      "3": "Analyse the final stanza in detail, especially how the brother and the cicada are fused and who is \"holding on\".",
+      "4": "Strengthen the judgement by considering a possible weakness, such as the final stanza being too explicit, and explain why the poem avoids it (or does not).",
+      "5": "Refine for Band 6: keep the judgement visible in every paragraph, analyse the poem's restraint and structure, and conclude with a precise evaluation."
+     },
+     "model": "The poem uses the cicada as a highly effective extended metaphor because it develops the comparison gradually, from a child's argument about empty shells to an adult's recognition that a brother has left a former self behind, so that the metaphor's meaning is earned rather than announced.\n\nThe opening stanza establishes the shells' uncanny lifelikeness. Hooked to the paperbark \"by their small brown claws\", they look \"as if they had stopped there to rest / and would be going on in a minute.\" The irony is gentle: the reader knows they will not go on, which plants the idea of a self that seems present but has already been vacated.\n\nThe second stanza turns description into argument. The children's quarrel over whether the shells are \"dead\" or \"empty\" dramatises two ways of understanding change, as loss or as departure, and the mother's verdict, \"they were neither, they were left\", introduces the metaphor's key term. A thing that is left implies someone who has gone on living elsewhere.\n\nThe third stanza gives the transformation its emotional weight. The split \"down the back\" becomes \"a door that only opens once\", a metaphor for the irreversibility of growing up, and the creature's vulnerability, \"wet and folded\", sitting \"a whole morning drying its wings / before it could stand to be what it was\", suggests that maturity must be grown into, even endured. The phrase \"stand to be\" carries both physical and emotional meaning.\n\nThe final stanza applies the metaphor directly, which risks heavy-handedness, but its restraint prevents this. The plain statement \"He doesn't remember the jar\" lets the reader feel what the speaker has kept and the brother has lost. The image of \"the line down the back of the boy he was\" fuses brother and cicada, and the closing picture of the shell \"holding on to the bark with both hands\" reverses expectation: it is the abandoned childhood self, not the adult, that clings. Because each stanza adds a new dimension to the same image, the extended metaphor is precise, moving and coherent.",
+     "difficulty": 3
+    }
+   ],
+   "length_words": 229
+  },
+  {
+   "key": "frogwatch-blog",
+   "title": "The Night the Pobblebonks Came Back",
+   "form": "Hybrid",
+   "complexity": 2,
+   "author": "Original text (HSC Companion)",
+   "headnote": "This is an original hybrid text: a volunteer's blog post that embeds a transcript of an audio recording and readers' comments. The blogger, the commenters and the website are fictional. The eastern banjo frog is commonly called the pobblebonk because of its call.",
+   "theme_tags": [
+    "environment",
+    "attention",
+    "hope",
+    "community",
+    "citizen science"
+   ],
+   "body": "FROGWATCH ILLAWARRA: a volunteer's notebook\nPost 214: The Night the Pobblebonks Came Back\nPosted by Margaret (Marg) Hollis | 3 comments\n\nI have been sitting beside the same dam on the edge of the escarpment every second Tuesday for eleven years. I bring a folding chair, a thermos, a torch with a red filter so I don't dazzle anyone, and my phone, which records for exactly ten minutes while I sit very still and try not to cough. Then I come home and listen to the recording with headphones and write down who was there.\n\nPeople ask what I'm counting. I'm not counting frogs, exactly. I'm counting voices. A frog you can hear is a frog that is alive, and a frog that is calling is a frog that thinks there's a future worth calling into.\n\nFor the last three years the dam has been mostly striped marsh frogs, which sound like someone dropping a tennis ball on a wooden floor, and the odd common eastern froglet going crick-crick-crick in the reeds. Nothing wrong with them. But the eastern banjo frog, the pobblebonk, the one that goes bonk like a plucked string, had gone. After the dry years I'd stopped expecting it. I'd started writing 'nil' in that column without really listening.\n\nHere is last Tuesday's recording, as best I can transcribe it.\n\n[AUDIO TRANSCRIPT: Dam 3, 8:42 pm, light rain, 14°C]\n00:00 wind; my chair creaks (sorry)\n00:12 striped marsh frog: tok... tok... tok\n00:47 froglets, several, overlapping: crick-crick-crick-crick\n02:30 car on the road above; everything stops\n03:05 froglets resume, then marsh frogs\n05:58 [faint, far side of dam] bonk\n06:01 bonk\n06:03 me, under my breath: oh. oh, hello.\n06:10 bonk... bonk... [a second animal answers] bonk\n09:50 rain gets heavier; recording ends\n\nI listened to 05:58 about forty times. I'm not ashamed to say I cried a bit at the kitchen table, which my husband pretended not to notice, and then he came and listened too.\n\nTwo pobblebonks. That is the data. It doesn't mean the catchment has recovered or that anyone should stop worrying about the developers' plans for the ridge. It means that two frogs, on one wet night, decided the dam was worth singing to. I've logged it with the council's database, and I've written it here, because a number in a spreadsheet doesn't tell you what it sounds like when something you'd given up on answers.\n\nBring a chair next time. Bring a thermos. Sit still.\n\nCOMMENTS (3)\n\nDev_K: Marg, this made my week. Heard one at Dam 7 on Saturday and didn't log it because I thought I'd imagined it. Logging it now.\n\nlyrebird_lou: The bit where you say 'oh, hello' is the whole reason I volunteer.\n\nCouncil Environment Team: Thanks Margaret, record received and verified. Great work.",
+   "pair": null,
+   "questions": [
+    {
+     "marks": 3,
+     "verb": "Explain",
+     "demand": "explain",
+     "text": "Explain what Marg means when she says she is \"counting voices\" rather than frogs.",
+     "skill_tags": [
+      "ideas",
+      "personification",
+      "purpose"
+     ],
+     "criteria": [
+      {
+       "mark": 3,
+       "descriptor": "Provides a precise, well-reasoned explanation of what Marg means by counting voices, integrating well-chosen textual evidence and making the cause-and-effect relationship explicit"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides a sound explanation of what Marg means by counting voices with appropriate textual reference"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of what Marg means by counting voices, relying on paraphrase or retelling"
+      }
+     ],
+     "checklist": [
+      "Explains that a call is evidence of life and of hope, not just a tally",
+      "Uses \"A frog you can hear is a frog that is alive\"",
+      "Analyses the personification in \"thinks there's a future worth calling into\"",
+      "Links the idea to the climax, when \"something you'd given up on answers\""
+     ],
+     "next_steps": {
+      "0": "Explain the distinction in your own words first: what is the difference between counting frogs and counting voices?",
+      "1": "Support your explanation with the sentence about a frog that \"thinks there's a future worth calling into\" and explain the personification.",
+      "2": "Show how the idea shapes the whole post, for example by linking it to Marg's \"oh, hello\" or to the frog that \"answers\"."
+     },
+     "model": "Marg distinguishes between a population tally and evidence of active life and hope. She explains that \"A frog you can hear is a frog that is alive\", so her recordings register presence rather than numbers, and the next clause extends the idea: a calling frog \"thinks there's a future worth calling into.\" By personifying the frogs as hopeful, she turns their calls into a measure of the place's health and a kind of optimism. This distinction prepares for the climax. When the pobblebonk calls, it is not a statistic but a voice, and her whispered \"oh, hello\" turns the count into a conversation with \"something you'd given up on\".",
+     "difficulty": 1
+    },
+    {
+     "marks": 5,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "Analyse how the hybrid form of the post (blog, transcript and comments) shapes the reader's response to the pobblebonks' return.",
+     "skill_tags": [
+      "hybrid form",
+      "structure",
+      "transcript",
+      "audience"
+     ],
+     "criteria": [
+      {
+       "mark": 5,
+       "descriptor": "Provides a perceptive, sustained analysis of how the hybrid form shapes the reader's response, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Provides a thoughtful analysis of how the hybrid form shapes the reader's response, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a sound analysis of how the hybrid form shapes the reader's response, using relevant evidence with some explanation of effect"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how the hybrid form shapes the reader's response, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how the hybrid form shapes the reader's response or identifies a relevant technique with little explanation of its effect"
+      }
+     ],
+     "checklist": [
+      "Makes a claim about how the three parts work together (explanation, experience, community)",
+      "Analyses the blog's establishment of method and credibility (\"every second Tuesday for eleven years\")",
+      "Analyses the transcript's timestamps, conditions and onomatopoeia, and the suspense they create",
+      "Analyses the moment the transcript's neutrality breaks (\"oh. oh, hello.\")",
+      "Analyses what the comments add (changed behaviour, shared feeling, official verification)"
+     ],
+     "next_steps": {
+      "0": "Make a claim about what the combination of forms achieves, rather than describing each part.",
+      "1": "Analyse the transcript: explain how its timestamps and sounds make the reader experience the night in real time.",
+      "2": "Analyse how the blog section prepares for the transcript, for example through Marg's admission that she had stopped \"really listening\".",
+      "3": "Analyse the comments: what do Dev_K, lyrebird_lou and the council each add to the meaning?",
+      "4": "Link all three parts into one argument about how the form turns data into a shared emotional event."
+     },
+     "model": "The post's hybrid form moves the reader from explanation to experience to community, so that the pobblebonks' return is felt as an event rather than reported as a fact.\n\nThe blog section establishes Marg's credibility and patience. The precise routine, \"every second Tuesday for eleven years\", with its red-filtered torch and ten-minute recording, presents her as a disciplined observer, while her admission that she had been writing nil \"in that column without really listening\" prepares a turn: the reader is primed for a failure of attention to be corrected.\n\nThe embedded transcript then changes the mode from narration to evidence. Its bracketed conditions, \"8:42 pm, light rain, 14°C\", mimic a scientific record, and its onomatopoeia (\"tok... tok... tok\", \"crick-crick-crick-crick\") lets the reader hear the dam's ordinary chorus. Because the transcript unfolds in time, the reader waits with Marg: the car at 02:30, when \"everything stops\", builds tension, and the faint \"bonk\" at 05:58 arrives as a genuine surprise. Her whispered \"oh. oh, hello.\" breaks the transcript's neutrality, so the reader witnesses the instant that data becomes emotion.\n\nFinally, the comments widen the meaning. Dev_K's decision to log a call he \"thought I'd imagined\" shows the post changing behaviour, lyrebird_lou identifies Marg's greeting as \"the whole reason I volunteer\", and the council's flat \"record received and verified\" reminds the reader of the official system that, as Marg says, cannot capture \"what it sounds like\". The hybrid form thus positions the reader to value the frogs' return as both verified data and shared joy.",
+     "difficulty": 3
+    },
+    {
+     "marks": 6,
+     "verb": "Evaluate",
+     "demand": "evaluate",
+     "text": "Marg writes that \"a number in a spreadsheet doesn't tell you what it sounds like\". Evaluate how effectively the post balances scientific restraint and personal feeling.",
+     "skill_tags": [
+      "judgement",
+      "tone",
+      "purpose",
+      "voice"
+     ],
+     "criteria": [
+      {
+       "mark": 6,
+       "descriptor": "Makes a perceptive, well-justified judgement about how effectively the post balances scientific restraint and personal feeling, weighing evidence from across the text and analysing how language and form support the judgement"
+      },
+      {
+       "mark": 5,
+       "descriptor": "Makes a clear, reasoned judgement about how effectively the post balances scientific restraint and personal feeling, supported by relevant, well-analysed evidence"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Makes a sound judgement about how effectively the post balances scientific restraint and personal feeling with relevant evidence and some analysis"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Offers a judgement about how effectively the post balances scientific restraint and personal feeling that is asserted more than argued, with some textual support"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Describes how effectively the post balances scientific restraint and personal feeling with an implied or unsupported judgement"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Makes a limited or general comment about the text"
+      }
+     ],
+     "checklist": [
+      "Makes a clear judgement, ideally that the balance is itself the post's argument",
+      "Analyses markers of restraint (method, \"That is the data.\", the qualification about the catchment)",
+      "Analyses markers of feeling and how understatement and humour keep them credible",
+      "Analyses the personification \"decided the dam was worth singing to\" as a bridge between the two",
+      "Uses the ending and the comments to complete the evaluation"
+     ],
+     "next_steps": {
+      "0": "State your judgement clearly in your first sentence, using the words of the question (restraint, feeling, effectively).",
+      "1": "Support the restraint side with one example, such as \"Two pobblebonks. That is the data.\", and explain its effect on credibility.",
+      "2": "Support the feeling side with one example and analyse how humour or understatement keeps it from seeming sentimental.",
+      "3": "Explain how the two modes connect rather than compete, using the sentence about a number in a spreadsheet.",
+      "4": "Use the ending (the imperatives) or the comments to show what the balance achieves for readers.",
+      "5": "Refine for Band 6: make the judgement drive every paragraph, and explain the purpose the balance serves (persuading readers to value and join the work)."
+     },
+     "model": "The post balances scientific restraint and personal feeling with considerable skill, and the balance is more than a matter of tone: it is the post's argument that careful observation and emotional response are both forms of knowing, and that each makes the other credible.\n\nMarg's restraint is established through method. Her routine, \"every second Tuesday for eleven years\", and the transcript's timestamps present her as a disciplined citizen scientist. Even at the climax she insists on precision: \"Two pobblebonks. That is the data.\" The terse fragments resist exaggeration, and she immediately qualifies the finding: \"It doesn't mean the catchment has recovered or that anyone should stop worrying about the developers' plans for the ridge.\" This caution protects her credibility while quietly sustaining her advocacy for the ridge.\n\nFeeling, however, runs through the restraint rather than against it. Within the transcript itself, her whisper \"oh. oh, hello.\" breaks the neutral record, and the admission that she listened \"about forty times\" uses a number to measure emotion. Self-deprecating understatement keeps sentiment in check: she \"cried a bit at the kitchen table, which my husband pretended not to notice\". The humour makes the emotion believable rather than performed.\n\nOne sentence joins the two modes. Having stated the data, she reinterprets it: \"two frogs, on one wet night, decided the dam was worth singing to.\" The personification is unscientific, yet it follows from her earlier claim that a calling frog \"thinks there's a future worth calling into\". She then justifies the post itself: the record is logged with the council, but she writes \"because a number in a spreadsheet doesn't tell you what it sounds like\". The contrast does not reject data; it argues that data needs a voice.\n\nThe ending confirms the balance. The imperatives \"Bring a chair next time. Bring a thermos. Sit still.\" turn method into invitation, and the council's \"record received and verified\" sits beside lyrebird_lou's delight. The post is therefore highly effective: its restraint earns the reader's trust, and its feeling gives that trust a purpose.",
+     "difficulty": 3
+    }
+   ],
+   "length_words": 466
+  },
+  {
+   "key": "kestrel-ad",
+   "title": "Built for the Long Way Round",
+   "form": "Media",
+   "complexity": 2,
+   "author": "Original text (HSC Companion)",
+   "headnote": "This is an original magazine advertisement for a fictional car brand. A description of the image is given in square brackets. The owner quoted is fictional.",
+   "theme_tags": [
+    "advertising",
+    "freedom",
+    "technology",
+    "consumerism",
+    "landscape"
+   ],
+   "body": "[Full-page magazine advertisement. Image: a red four-wheel drive parked alone on a salt lake at dawn. No people are visible.]\n\nHEADLINE\nSomewhere out there, your phone has no signal.\nGood.\n\nBODY COPY\nYou remember the last time you were unreachable. Maybe you were nine, and the creek was the whole world. Maybe you were nineteen, and the road was. Then life got busy. Then it got loud.\n\nThe all-new Kestrel Ridgeline was built for the moment you take it back.\n\nPermanent four-wheel drive that reads the ground before you do. A 900-kilometre range, so the next servo is a suggestion, not a plan. Leather seats that remember how you like to sit, and a cabin so quiet you can finally hear yourself think. (We checked. You have some good ideas.)\n\nAnd when you need the world again, it's right there: 12.3-inch touchscreen, wireless smartphone mirroring, and a satellite emergency beacon, standard. Because freedom is better when someone knows where you are.\n\nOut there, nobody asks what you do for a living. The salt doesn't care about your inbox. The horizon has never once scheduled a meeting.\n\nGo further. Come back different.\n\nOWNER STORY\n'Three weeks to the Gulf and back. I checked my email once, in Normanton, and then I turned the phone off again.' Kestrel owner, Toowoomba\n\nKESTREL RIDGELINE\nBuilt for the long way round.\n\nFINE PRINT\nKestrel Ridgeline GXL shown with optional Adventure Pack. Drive-away pricing from $78,990. Range based on laboratory testing; actual range will vary with driving conditions, load and terrain. Off-road driving should only be undertaken by experienced drivers on legally accessible tracks. Do not drive on salt lakes; vehicle shown on a closed set. Satellite beacon requires an active subscription after 12 months.",
+   "pair": null,
+   "questions": [
+    {
+     "marks": 2,
+     "verb": "Identify",
+     "demand": "identify",
+     "text": "Identify the advertisement's target audience and ONE feature of the copy that appeals to it.",
+     "skill_tags": [
+      "audience",
+      "purpose",
+      "second person"
+     ],
+     "criteria": [
+      {
+       "mark": 2,
+       "descriptor": "Precisely identifies the target audience and a feature that appeals to it and explains its significance with apt, accurately quoted evidence"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Identifies a relevant feature of the target audience and a feature that appeals to it with little or no explanation"
+      }
+     ],
+     "checklist": [
+      "Identifies a precise audience (affluent, busy, working adults who feel trapped and nostalgic)",
+      "Identifies one relevant feature (second-person nostalgia, jibes at office life, price)",
+      "Explains briefly how the feature appeals to that audience"
+     ],
+     "next_steps": {
+      "0": "Name the audience precisely (age, situation, income) rather than a vague group such as car lovers.",
+      "1": "Choose ONE feature of the copy, quote it, and explain in a sentence why it would appeal to that audience."
+     },
+     "model": "The advertisement targets affluent, busy working adults who feel overworked and nostalgic for freedom. Its second-person address, \"You remember the last time you were unreachable\", invites them to recall childhood and youth (\"Maybe you were nine... Maybe you were nineteen\"), and the joke that \"The horizon has never once scheduled a meeting\" flatters their sense of being trapped by office life. The car is positioned as an escape they can afford.",
+     "difficulty": 1
+    },
+    {
+     "marks": 5,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "Analyse how the advertisement constructs a particular idea of freedom.",
+     "skill_tags": [
+      "representation",
+      "persuasion",
+      "structure",
+      "media"
+     ],
+     "criteria": [
+      {
+       "mark": 5,
+       "descriptor": "Provides a perceptive, sustained analysis of how the advertisement constructs an idea of freedom, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Provides a thoughtful analysis of how the advertisement constructs an idea of freedom, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a sound analysis of how the advertisement constructs an idea of freedom, using relevant evidence with some explanation of effect"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how the advertisement constructs an idea of freedom, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how the advertisement constructs an idea of freedom or identifies a relevant technique with little explanation of its effect"
+      }
+     ],
+     "checklist": [
+      "Makes a claim about the kind of freedom constructed (escape from adult working life, recoverable through purchase)",
+      "Analyses the headline's reversal (\"Good.\") and the solitary image",
+      "Analyses the nostalgic parallelism and the compressed decline (\"Then life got busy. Then it got loud.\")",
+      "Analyses how product features are reframed as spontaneity (\"a suggestion, not a plan\")",
+      "Analyses the tagline and imperatives as promising a safe round trip"
+     ],
+     "next_steps": {
+      "0": "State precisely what kind of freedom the advertisement sells, then support the claim with the headline.",
+      "1": "Analyse the body copy's nostalgia: explain how the sentences about being nine and nineteen position the reader.",
+      "2": "Show how technical features are translated into feelings (for example, the range and the quiet cabin).",
+      "3": "Analyse the ending (the imperatives and the tagline) and what kind of journey they promise.",
+      "4": "Pull the evidence into one argument about the freedom constructed, and comment on what that construction leaves out."
+     },
+     "model": "The advertisement constructs freedom as escape from the noise and obligations of adult working life, a freedom that can be recovered through purchase.\n\nThe headline does this immediately: \"Somewhere out there, your phone has no signal.\" The expected anxiety is reversed by the one-word sentence \"Good.\", which positions disconnection as a luxury. The image reinforces this, a car \"parked alone on a salt lake at dawn\" in which \"No people are visible\", so freedom is figured as solitude and emptiness.\n\nThe body copy then frames freedom as something the reader has lost. The second-person address and parallel sentences \"Maybe you were nine, and the creek was the whole world. Maybe you were nineteen, and the road was.\" invoke nostalgia, while the terse \"Then life got busy. Then it got loud.\" compresses adulthood into a decline. The car is offered as restitution, \"built for the moment you take it back\", where the verb implies that freedom is a possession to be reclaimed.\n\nEven technical features are translated into this idea. The fuel range means \"the next servo is a suggestion, not a plan\", converting a specification into spontaneity, and the quiet cabin lets you \"finally hear yourself think\", with a playful aside, \"(We checked. You have some good ideas.)\", that flatters the reader. Personification sharpens the contrast with office life: \"The salt doesn't care about your inbox.\"\n\nFinally, the imperatives \"Go further. Come back different.\" and the tagline \"Built for the long way round.\" present freedom as transformation, but on a round trip. The freedom constructed is temporary, safe and purchasable: an escape that always returns home.",
+     "difficulty": 3
+    },
+    {
+     "marks": 6,
+     "verb": "Evaluate",
+     "demand": "evaluate",
+     "text": "Evaluate the extent to which the advertisement contradicts its own promise of escape.",
+     "skill_tags": [
+      "critical reading",
+      "irony",
+      "fine print",
+      "judgement"
+     ],
+     "criteria": [
+      {
+       "mark": 6,
+       "descriptor": "Makes a perceptive, well-justified judgement about the extent to which the advertisement contradicts its promise of escape, weighing evidence from across the text and analysing how language and form support the judgement"
+      },
+      {
+       "mark": 5,
+       "descriptor": "Makes a clear, reasoned judgement about the extent to which the advertisement contradicts its promise of escape, supported by relevant, well-analysed evidence"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Makes a sound judgement about the extent to which the advertisement contradicts its promise of escape with relevant evidence and some analysis"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Offers a judgement about the extent to which the advertisement contradicts its promise of escape that is asserted more than argued, with some textual support"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Describes the extent to which the advertisement contradicts its promise of escape with an implied or unsupported judgement"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Makes a limited or general comment about the text"
+      }
+     ],
+     "checklist": [
+      "Makes a qualified judgement (for example: contradicts the promise in fact while sustaining it in feeling)",
+      "Analyses the reinstated connectivity (\"when you need the world again, it's right there\") and the paradox about freedom",
+      "Analyses the fine print, especially \"Do not drive on salt lakes; vehicle shown on a closed set.\"",
+      "Considers why the contradictions may not weaken the advertisement (fine print, audience, round-trip promise)",
+      "Reaches a critical conclusion about what is really being sold"
+     ],
+     "next_steps": {
+      "0": "Give a clear judgement with a degree (largely, partly, hardly) in your first sentence.",
+      "1": "Support your judgement with one contradiction between the headline and the body copy.",
+      "2": "Analyse the fine print: explain which promises it qualifies or cancels, and quote it precisely.",
+      "3": "Consider the other side: explain why the advertisement might still persuade despite its contradictions.",
+      "4": "Weigh these into a qualified judgement about what the advertisement is really selling.",
+      "5": "Refine for Band 6: integrate short quotations, keep your judgement visible in every paragraph, and use precise terms such as paradox and qualification."
+     },
+     "model": "At a literal level the advertisement repeatedly contradicts its promise of escape, but these contradictions are not failures of the copy; they reveal what it is really selling, which is the feeling of escape without its risks. The extent of contradiction is therefore great, yet strategically managed.\n\nThe promise is extravagant. The headline celebrates having \"no signal\", and the copy claims that \"Out there, nobody asks what you do for a living.\" Yet the same copy reassures the reader that connection is never far away: \"when you need the world again, it's right there\". The list that follows, \"12.3-inch touchscreen, wireless smartphone mirroring, and a satellite emergency beacon\", reinstalls the very devices the headline rejected. The claim that \"freedom is better when someone knows where you are\" is a paradox that admits the audience does not want true isolation; it wants solitude with a safety net.\n\nThe fine print deepens the contradiction. The range that made servos \"a suggestion\" is \"based on laboratory testing\", and the claim that the car \"reads the ground before you do\" sits awkwardly beside the warning that off-road driving suits only \"experienced drivers on legally accessible tracks\". Most strikingly, the central image is undone: \"Do not drive on salt lakes; vehicle shown on a closed set.\" The wilderness was staged. Even safety becomes an ongoing payment, since the beacon \"requires an active subscription after 12 months\".\n\nHowever, these contradictions do not necessarily weaken the advertisement. Fine print is designed to be skimmed, and the warm second-person voice and nostalgic appeals do their emotional work before the reader reaches the qualifications. Moreover, the audience the copy flatters, professionals who can afford \"$78,990\", may knowingly accept a curated, temporary escape: \"Go further. Come back different\" promises return as well as departure.\n\nThe advertisement thus contradicts its promise almost completely in fact, while sustaining it in feeling. A critical reader recognises that the product is not freedom but a reassuring image of it.",
+     "difficulty": 3
+    }
+   ],
+   "length_words": 289
   }
  ]
 }
