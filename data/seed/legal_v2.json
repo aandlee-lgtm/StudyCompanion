@@ -1005,6 +1005,498 @@
   {
    "topic": "LS-CRIME",
    "sub_area": "LS-CRIME-NATURE",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 1,
+   "verb": null,
+   "text": "Ravi is charged with an offence that NSW law allows to be dealt with either summarily in the Local Court or on indictment in a higher court. If it is dealt with summarily, which statement is generally true?",
+   "options": [
+    "A. It is heard by a magistrate without a jury, and the maximum penalty the court can impose is lower than in a higher court.",
+    "B. It is heard by a judge and jury in the District Court.",
+    "C. The prosecution only has to prove guilt on the balance of probabilities.",
+    "D. Ravi cannot be convicted and can only receive a caution."
+   ],
+   "answer": "A",
+   "option_rationales": {
+    "A": "Summary proceedings are heard by a magistrate alone in the Local Court, and the Local Court's sentencing powers are limited. Under the Criminal Procedure Act 1986 (NSW), some indictable offences can be dealt with summarily, which is quicker and cheaper.",
+    "B": "Tempting because the offence is indictable, but being dealt with summarily means it stays in the Local Court before a magistrate, with no jury.",
+    "C": "The criminal standard of proof, beyond reasonable doubt, applies in every criminal court, including the Local Court.",
+    "D": "A summary hearing can result in a conviction and a penalty. Cautions are a diversionary option, mainly for young people."
+   },
+   "explanation": "Summary proceedings: magistrate, no jury, lower maximum penalties, same standard of proof.",
+   "evidence_titles": [
+    "Criminal Procedure Act 1986 (NSW)"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-NATURE",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 2,
+   "verb": null,
+   "text": "Ali stabs Ben, who is taken to hospital. Ben receives proper, non-negligent medical treatment but dies from the wound two days later. Which statement about causation is most accurate?",
+   "options": [
+    "A. Medical treatment always breaks the chain of causation, so Ali cannot be responsible for the death.",
+    "B. Causation is irrelevant for homicide offences, because only the accused's intention matters.",
+    "C. Ali can be responsible only if Ben died immediately after the stabbing.",
+    "D. Ali's act can still be a substantial and operating cause of Ben's death, even though death followed medical treatment."
+   ],
+   "answer": "D",
+   "option_rationales": {
+    "A": "Tempting because another event intervened, but ordinary medical treatment is a foreseeable response to an injury and does not usually break the chain of causation.",
+    "B": "For result crimes such as murder and manslaughter, the prosecution must prove that the accused's act caused the death, as well as the required mental element.",
+    "C": "There is no requirement that death follow immediately. A delay does not prevent the act from being a substantial and operating cause.",
+    "D": "Causation asks whether the accused's act was a substantial and operating cause of the result. Proper medical treatment of a wound does not usually break the chain of causation, so the stabbing remains a cause of death."
+   },
+   "explanation": "Causation: the accused's act must be a substantial and operating cause of the result; proper medical treatment does not usually break the chain.",
+   "evidence_titles": [],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-INVESTIGATION",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 1,
+   "verb": null,
+   "text": "Police believe stolen goods are stored in a house, but the owner refuses to let them in. Apart from specific statutory exceptions, what do police generally need in order to enter and search the house?",
+   "options": [
+    "A. Nothing more, because police may enter any premises where they suspect a crime has occurred.",
+    "B. A search warrant issued by an authorised officer, after police show reasonable grounds for the search.",
+    "C. The written consent of a neighbour.",
+    "D. Approval from the Director of Public Prosecutions."
+   ],
+   "answer": "B",
+   "option_rationales": {
+    "A": "Tempting because police have wide powers, but entry to private premises without consent is tightly limited; a warrant is generally required.",
+    "B": "The Law Enforcement (Powers and Responsibilities) Act 2002 (NSW) sets out how police apply for search warrants. Requiring an independent officer to be satisfied that there are reasonable grounds protects people's privacy in their homes.",
+    "C": "A neighbour has no authority to consent to a search of someone else's home.",
+    "D": "The Director of Public Prosecutions conducts prosecutions and does not authorise searches."
+   },
+   "explanation": "Search warrants are a judicial-style safeguard: police must persuade an independent authorised officer that there are reasonable grounds.",
+   "evidence_titles": [
+    "Law Enforcement (Powers and Responsibilities) Act 2002 (NSW)"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: The search warrant procedure and any exceptions are set out in the Law Enforcement (Powers and Responsibilities) Act 2002 (NSW). These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-INVESTIGATION",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 1,
+   "verb": null,
+   "text": "Lee, charged with assault, has failed to attend court on two earlier occasions in other matters. At his bail hearing, which consideration is most directly relevant under the Bail Act 2013 (NSW)?",
+   "options": [
+    "A. Whether he has pleaded not guilty.",
+    "B. Whether his case is likely to attract media attention.",
+    "C. The risk that he will fail to appear at future court proceedings.",
+    "D. Whether he can afford a private lawyer."
+   ],
+   "answer": "C",
+   "option_rationales": {
+    "A": "Tempting because the plea is part of the case, but pleading not guilty is the accused's right and does not in itself indicate any bail risk.",
+    "B": "Media interest is not a bail concern. Bail decisions focus on risk, not publicity.",
+    "C": "Failure to appear is one of the bail concerns the bail authority must assess under the Bail Act 2013 (NSW). His history of missing court dates is directly relevant to whether that risk is unacceptable.",
+    "D": "An accused person's ability to pay for a lawyer is not a bail concern and should not affect their liberty."
+   },
+   "explanation": "Bail decisions focus on risks such as failure to appear, committing a serious offence, endangering others and interfering with witnesses or evidence.",
+   "evidence_titles": [
+    "Bail Act 2013 (NSW)"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: The bail concerns and the matters a bail authority must consider are in the Bail Act 2013 (NSW), which is amended frequently. These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-TRIAL",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 1,
+   "verb": null,
+   "text": "Police charge Nadia with a serious indictable offence that will be tried in the District Court. Who would usually prosecute the case at trial?",
+   "options": [
+    "A. The police officer in charge of the investigation.",
+    "B. The victim, through a privately funded lawyer.",
+    "C. Legal Aid NSW.",
+    "D. The Office of the Director of Public Prosecutions."
+   ],
+   "answer": "D",
+   "option_rationales": {
+    "A": "Tempting because police prosecutors appear in many Local Court matters, but serious indictable offences in higher courts are usually prosecuted by the Office of the Director of Public Prosecutions.",
+    "B": "In the criminal justice system, prosecutions are brought by the state on behalf of the community. The victim is a witness, not a party.",
+    "C": "Legal Aid NSW mainly provides legal services to people who cannot afford a lawyer, including accused people. It does not prosecute.",
+    "D": "The Director of Public Prosecutions is an independent statutory office that prosecutes serious indictable offences in NSW higher courts. Its independence from police and government supports the fairness of the trial process."
+   },
+   "explanation": "Serious indictable matters are prosecuted by the Office of the Director of Public Prosecutions; police prosecutors appear in many summary matters.",
+   "evidence_titles": [],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-TRIAL",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 1,
+   "verb": null,
+   "text": "Sara is convicted after a District Court trial. She believes the trial judge wrongly allowed the jury to hear certain evidence. Which court would usually hear her appeal against conviction?",
+   "options": [
+    "A. The NSW Court of Criminal Appeal.",
+    "B. The Local Court.",
+    "C. The High Court of Australia, which must hear every appeal.",
+    "D. The Children's Court."
+   ],
+   "answer": "A",
+   "option_rationales": {
+    "A": "Appeals against conviction and sentence from trials in the District Court and Supreme Court are usually heard by the Court of Criminal Appeal. An error in admitting evidence is a common ground of appeal.",
+    "B": "The Local Court is the lowest court in the hierarchy. It does not hear appeals from higher courts.",
+    "C": "Tempting because the High Court is the final court of appeal, but an appellant needs special leave, which is granted only in a small number of cases of general importance.",
+    "D": "The Children's Court deals with matters involving children. It does not hear appeals from adult trials."
+   },
+   "explanation": "Appeals from NSW criminal trials in higher courts usually go to the Court of Criminal Appeal; the High Court requires special leave.",
+   "evidence_titles": [],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-SENTENCING",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 1,
+   "verb": null,
+   "text": "Why do NSW courts usually reduce the sentence of an offender who pleads guilty at an early stage?",
+   "options": [
+    "A. Because a guilty plea proves that the offender is not dangerous.",
+    "B. Because an early plea has a utilitarian value: it saves the cost and time of a trial and spares victims and witnesses from giving evidence.",
+    "C. Because the prosecution must agree to any reduced sentence.",
+    "D. Because pleading guilty means no conviction is recorded."
+   ],
+   "answer": "B",
+   "option_rationales": {
+    "A": "A guilty plea says nothing in itself about how dangerous an offender is. The discount is based on the plea's value to the justice system.",
+    "B": "The Crimes (Sentencing Procedure) Act 1999 (NSW) provides for a reduced sentence for a guilty plea, with the greatest benefit for the earliest pleas. The reduction recognises the plea's practical value to the justice system and to victims.",
+    "C": "Tempting because the prosecution and defence may negotiate charges, but the sentence, including any discount, is decided by the court.",
+    "D": "A guilty plea normally leads to a conviction. The plea affects the length or type of sentence, not whether a conviction is recorded."
+   },
+   "explanation": "Guilty plea discounts reflect the plea's utilitarian value; the court, not the prosecution, sets the sentence.",
+   "evidence_titles": [
+    "Crimes (Sentencing Procedure) Act 1999 (NSW)"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: The size of the discount for a guilty plea and when it applies are set out in the Crimes (Sentencing Procedure) Act 1999 (NSW). These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-SENTENCING",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 1,
+   "verb": null,
+   "text": "Jo is sentenced to imprisonment with a non-parole period. What is the significance of the non-parole period?",
+   "options": [
+    "A. It is the longest time Jo can be held in custody.",
+    "B. It is the part of the sentence that must be served in the community.",
+    "C. It is the minimum time Jo must spend in custody before becoming eligible for release on parole.",
+    "D. It applies only to offenders under the age of 18."
+   ],
+   "answer": "C",
+   "option_rationales": {
+    "A": "Tempting because it is the main period served in custody, but Jo may stay in custody beyond it if parole is refused, up to the end of the whole sentence.",
+    "B": "This describes the parole period (the balance of the term), not the non-parole period.",
+    "C": "A sentence of imprisonment is usually made up of a non-parole period and a balance of term. Release on parole is governed by the Crimes (Administration of Sentences) Act 1999 (NSW), with the State Parole Authority deciding many cases.",
+    "D": "Non-parole periods apply generally to sentences of imprisonment for adults."
+   },
+   "explanation": "Non-parole period: minimum time in custody; parole: supervised release for the balance of the term.",
+   "evidence_titles": [
+    "Crimes (Administration of Sentences) Act 1999 (NSW)"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: Which sentences lead to automatic release on parole and which go to the State Parole Authority depends on the current Crimes (Sentencing Procedure) Act 1999 (NSW) and Crimes (Administration of Sentences) Act 1999 (NSW). These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-YOUNG",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 1,
+   "verb": null,
+   "text": "Which feature best distinguishes a youth justice conference under the Young Offenders Act 1997 (NSW) from a court hearing?",
+   "options": [
+    "A. It brings together the young person, their family, the victim and others to agree on an outcome plan that repairs harm.",
+    "B. A magistrate presides and records a conviction at the end.",
+    "C. It is available only for the most serious violent offences.",
+    "D. It requires the young person to plead not guilty."
+   ],
+   "answer": "A",
+   "option_rationales": {
+    "A": "Youth justice conferences are a restorative justice process. They hold the young person accountable and give the victim a voice, without a conviction being recorded.",
+    "B": "Tempting because conferences deal with offending, but they are an alternative to court: no magistrate presides and no conviction is recorded.",
+    "C": "The scheme is designed mainly for less serious offending, and the Act excludes some serious offences from it altogether.",
+    "D": "A conference requires the young person to admit the offence; it does not decide contested guilt."
+   },
+   "explanation": "Conferences are restorative: an admission is required, the victim can take part, and the outcome plan repairs harm without a conviction.",
+   "evidence_titles": [
+    "Young Offenders Act 1997 (NSW)"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: Which offences are excluded from the Young Offenders Act 1997 (NSW) scheme should be checked against the current Act. These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-YOUNG",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 2,
+   "verb": null,
+   "text": "A 15-year-old is charged with a criminal offence in NSW. Which statement about where the matter is heard is most accurate?",
+   "options": [
+    "A. Every offence committed by a child must be heard in the Children's Court.",
+    "B. Children charged with indictable offences are always tried in adult courts.",
+    "C. The Children's Court can only give warnings and cautions.",
+    "D. Most offences are dealt with in the Children's Court, but the most serious offences may be dealt with in a higher court."
+   ],
+   "answer": "D",
+   "option_rationales": {
+    "A": "Tempting because the Children's Court is the specialist court, but the most serious offences can be dealt with in higher courts.",
+    "B": "Most offences by children, including many indictable offences, are dealt with in the Children's Court.",
+    "C": "Warnings and cautions are given by police under the diversionary scheme. The Children's Court can impose a range of penalties, including detention.",
+    "D": "The Children's Court is a specialist court for young people, and the Children (Criminal Proceedings) Act 1987 (NSW) sets out its procedures. The most serious offences, such as homicide, can be dealt with by a higher court."
+   },
+   "explanation": "The Children's Court deals with most criminal matters involving young people; the most serious offences can be dealt with in higher courts.",
+   "evidence_titles": [
+    "Children (Criminal Proceedings) Act 1987 (NSW)"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: Which offences must or may be dealt with outside the Children's Court is set out in the Children (Criminal Proceedings) Act 1987 (NSW). These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-INTERNATIONAL",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 3,
+   "verb": null,
+   "text": "Australian police arrest a foreign national who is alleged to have committed war crimes overseas against people who are not Australian. On what basis could Australia prosecute him?",
+   "options": [
+    "A. Complementarity, which requires the International Criminal Court to hear the case instead.",
+    "B. Extradition, which requires Australia to release him to his home country.",
+    "C. Universal jurisdiction, reflected in the Criminal Code Act 1995 (Cth), under which some international crimes can be prosecuted wherever they were committed.",
+    "D. State immunity, which prevents any prosecution of a foreign national."
+   ],
+   "answer": "C",
+   "option_rationales": {
+    "A": "Tempting because complementarity concerns who prosecutes, but it gives national courts the first opportunity; it does not require the ICC to take the case.",
+    "B": "Extradition is a process for surrendering a person to another state on request. It does not require Australia to release him, and it does not prevent an Australian prosecution.",
+    "C": "Genocide, crimes against humanity and war crimes are offences under the Criminal Code Act 1995 (Cth), and they apply regardless of where the conduct occurred or the nationality of the people involved, consistent with complementarity under the Rome Statute of the International Criminal Court (1998).",
+    "D": "State immunity protects states and, in some cases, certain senior officials. It does not prevent the prosecution of foreign nationals generally."
+   },
+   "explanation": "Universal jurisdiction allows states to prosecute the most serious international crimes wherever they occur; Australia has legislated for this in the Commonwealth Criminal Code.",
+   "evidence_titles": [
+    "Criminal Code Act 1995 (Cth)",
+    "Rome Statute of the International Criminal Court (1998)"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: Procedural requirements for these prosecutions in Australia, such as consent to prosecute, are set out in the Criminal Code Act 1995 (Cth). These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-INTERNATIONAL",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 2,
+   "verb": null,
+   "text": "Which element distinguishes a crime against humanity from an ordinary murder under domestic law?",
+   "options": [
+    "A. It must be committed during an international armed conflict.",
+    "B. It is committed as part of a widespread or systematic attack directed against a civilian population, with knowledge of the attack.",
+    "C. It requires an intent to destroy a national, ethnical, racial or religious group.",
+    "D. It must involve the nationals of at least two states."
+   ],
+   "answer": "B",
+   "option_rationales": {
+    "A": "Crimes against humanity do not require any armed conflict; they can be committed in peacetime.",
+    "B": "Under the Rome Statute of the International Criminal Court (1998), acts such as murder become crimes against humanity when committed as part of a widespread or systematic attack against civilians, with knowledge of the attack.",
+    "C": "Tempting because both are crimes against the international community, but this specific intent defines genocide, not crimes against humanity.",
+    "D": "A government's attack on its own civilian population can be a crime against humanity. No foreign element is needed."
+   },
+   "explanation": "Crimes against humanity: listed acts committed as part of a widespread or systematic attack on a civilian population; genocide: specific intent to destroy a protected group.",
+   "evidence_titles": [
+    "Rome Statute of the International Criminal Court (1998)"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-HR",
+   "sub_area": "LS-HR-NATURE",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 2,
+   "verb": null,
+   "text": "A government says the right to education is only a policy goal, not a human right, because it costs money to provide. Which response best reflects international human rights law?",
+   "options": [
+    "A. Education is a human right recognised in the ICESCR, and states must take steps to realise it progressively, to the maximum of their available resources.",
+    "B. Only civil and political rights are true human rights; economic rights are policy goals.",
+    "C. Economic rights must be fully realised immediately by every state, regardless of its resources.",
+    "D. Education is a right only if the state's own constitution says so."
+   ],
+   "answer": "A",
+   "option_rationales": {
+    "A": "The International Covenant on Economic, Social and Cultural Rights (1966) recognises the right to education. Its progressive realisation standard acknowledges resource limits but still imposes a legal obligation to take steps.",
+    "B": "Tempting because economic rights are harder to enforce in courts, but international law recognises economic, social and cultural rights as human rights.",
+    "C": "Economic, social and cultural rights are generally to be realised progressively; immediate full realisation regardless of resources is not required.",
+    "D": "Human rights recognised in treaties bind the states that are parties, whether or not their constitutions mention them."
+   },
+   "explanation": "Economic, social and cultural rights are human rights; the ICESCR requires progressive realisation to the maximum of available resources.",
+   "evidence_titles": [
+    "International Covenant on Economic, Social and Cultural Rights (1966)"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-HR",
+   "sub_area": "LS-HR-NATURE",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 2,
+   "verb": null,
+   "text": "Why did the United Nations develop treaties for particular groups, such as the Convention on the Elimination of All Forms of Discrimination against Women (1979), after the general human rights covenants of 1966?",
+   "options": [
+    "A. Because the 1966 covenants did not apply to women.",
+    "B. To replace the 1966 covenants, which no longer bind states.",
+    "C. Because the Universal Declaration of Human Rights (1948) had been declared invalid.",
+    "D. To address forms of discrimination and disadvantage experienced by particular groups that general guarantees alone had not effectively prevented."
+   ],
+   "answer": "D",
+   "option_rationales": {
+    "A": "The International Covenant on Civil and Political Rights (1966) and its companion covenant apply to everyone and prohibit discrimination on the ground of sex.",
+    "B": "The covenants remain in force. Group-specific treaties add to them rather than replacing them.",
+    "C": "Tempting because the Declaration is non-binding, but it has never been declared invalid and remains the foundation of the international system.",
+    "D": "The general covenants already prohibit discrimination, but group-specific treaties such as CEDAW set out detailed obligations to tackle the particular barriers faced by those groups, with their own monitoring committees."
+   },
+   "explanation": "Group-specific treaties (women, children, people with disability and others) supplement the general covenants by addressing particular forms of disadvantage.",
+   "evidence_titles": [
+    "Convention on the Elimination of All Forms of Discrimination against Women (1979)",
+    "International Covenant on Civil and Political Rights (1966)",
+    "Universal Declaration of Human Rights (1948)"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-HR",
+   "sub_area": "LS-HR-ENFORCE",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 2,
+   "verb": null,
+   "text": "The Commonwealth Parliament passes a law removing the right to vote from every person serving a sentence of imprisonment, however short. Based on Roach v Electoral Commissioner (2007) 233 CLR 162, what is the most likely result of a High Court challenge?",
+   "options": [
+    "A. The law is valid, because voting is not mentioned anywhere in the Constitution.",
+    "B. The law is invalid, because the ICCPR is directly enforceable in Australian courts.",
+    "C. The law is likely to be invalid, because the requirement that parliamentarians be 'directly chosen by the people' limits exclusions from the franchise without a substantial reason.",
+    "D. The High Court has no power to review laws about elections."
+   ],
+   "answer": "C",
+   "option_rationales": {
+    "A": "Tempting because the Constitution has no express bill of rights, but the High Court has drawn limits from the requirement that parliamentarians be directly chosen by the people.",
+    "B": "Treaties are not directly enforceable in Australian courts unless implemented by legislation. Roach was decided under the Constitution, not the International Covenant on Civil and Political Rights (1966).",
+    "C": "In Roach v Electoral Commissioner (2007) 233 CLR 162 the High Court held that a blanket disqualification of all prisoners serving full-time sentences was invalid under the Australian Constitution, while an earlier, narrower disqualification was upheld.",
+    "D": "The High Court can decide whether any Commonwealth law, including an electoral law, is consistent with the Constitution."
+   },
+   "explanation": "Roach: the constitutional requirement of direct choice by the people limits blanket disenfranchisement.",
+   "evidence_titles": [
+    "Roach v Electoral Commissioner (2007) 233 CLR 162",
+    "Australian Constitution",
+    "International Covenant on Civil and Political Rights (1966)"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-HR",
+   "sub_area": "LS-HR-ENFORCE",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 1,
+   "verb": null,
+   "text": "Which statement best describes the role of the Australian Human Rights Commission when it receives a discrimination complaint?",
+   "options": [
+    "A. It is a court that issues binding judgments against employers.",
+    "B. It investigates and tries to resolve the complaint by conciliation, but it cannot make legally binding determinations.",
+    "C. It prosecutes people who discriminate for criminal offences.",
+    "D. It can strike down Commonwealth laws that breach human rights."
+   ],
+   "answer": "B",
+   "option_rationales": {
+    "A": "The Commission is not a court. Only a court can make binding orders in a discrimination case.",
+    "B": "Under the Australian Human Rights Commission Act 1986 (Cth), the Commission investigates and conciliates complaints. If a complaint is not resolved, the complainant may take the matter to a federal court, which can make binding orders.",
+    "C": "Unlawful discrimination is generally a civil matter, and the Commission does not prosecute criminal offences.",
+    "D": "Tempting because the Commission promotes human rights, but it has no power to invalidate legislation."
+   },
+   "explanation": "The Australian Human Rights Commission conciliates complaints; binding remedies come from the courts.",
+   "evidence_titles": [
+    "Australian Human Rights Commission Act 1986 (Cth)"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-HR",
+   "sub_area": "LS-HR-ISSUE",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 1,
+   "verb": null,
+   "text": "Which person is most likely to meet the definition of a refugee in the Refugee Convention?",
+   "options": [
+    "A. A journalist outside her country who has a well-founded fear of persecution there because of her political opinion.",
+    "B. A man who leaves his country to find better-paid work.",
+    "C. A woman who has been forced to leave her home by a flood but remains in her own country.",
+    "D. A man who fears being prosecuted for an ordinary crime he committed."
+   ],
+   "answer": "A",
+   "option_rationales": {
+    "A": "The Convention Relating to the Status of Refugees (1951) defines a refugee as a person outside their country who has a well-founded fear of persecution for reasons of race, religion, nationality, membership of a particular social group or political opinion.",
+    "B": "Seeking better economic opportunities does not, on its own, amount to a fear of persecution on a Convention ground.",
+    "C": "Tempting because she is displaced and in need, but she is still inside her own country and is not fleeing persecution, so she is not a refugee under the Convention.",
+    "D": "Fear of fair prosecution for an ordinary crime is not persecution on a Convention ground."
+   },
+   "explanation": "Refugee: outside their country, well-founded fear of persecution, for a Convention reason.",
+   "evidence_titles": [
+    "Convention Relating to the Status of Refugees (1951)"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-HR",
+   "sub_area": "LS-HR-ISSUE",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 2,
+   "verb": null,
+   "text": "A government introduces a law that allows people suspected of planning terrorist attacks to be detained for a short period without charge. Which human rights tension does this most directly illustrate?",
+   "options": [
+    "A. The tension between self-determination and state sovereignty.",
+    "B. The tension between economic rights and environmental rights.",
+    "C. The tension between the community's collective security and the individual's right to liberty.",
+    "D. No tension at all, because the right to liberty can never be limited in any circumstances."
+   ],
+   "answer": "C",
+   "option_rationales": {
+    "A": "Self-determination concerns the rights of peoples to determine their political status. It is not the main issue raised by detention without charge.",
+    "B": "The law concerns detention and security, not the allocation of resources or environmental protection.",
+    "C": "The International Covenant on Civil and Political Rights (1966) protects the right to liberty and prohibits arbitrary detention. Governments argue that such laws protect the community, so the issue is whether the limit on liberty is necessary and proportionate.",
+    "D": "Tempting if all rights are seen as absolute, but the right to liberty can be limited; what the Covenant prohibits is arbitrary detention."
+   },
+   "explanation": "Many rights, including liberty, can be limited if the limit is lawful, necessary and proportionate; the debate is about where the balance lies.",
+   "evidence_titles": [
+    "International Covenant on Civil and Political Rights (1966)"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-NATURE",
    "type": "short_answer",
    "marks": 3,
    "difficulty": 1,
