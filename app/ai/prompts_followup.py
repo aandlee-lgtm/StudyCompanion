@@ -217,6 +217,10 @@ def followup(ctx: dict, history: list[dict], question: str, chip: str | None = N
     parts.append(f"STUDENT'S NEW QUESTION:\n<<<QUESTION\n{_fence(question, 1500)}\nQUESTION>>>")
     if chip in CHIP_INSTRUCTIONS:
         parts.append("WHAT THE STUDENT WANTS: " + CHIP_INSTRUCTIONS[chip])
+    if ctx.get("solution_hidden"):
+        parts.append("HINT FIRST: the student chose to try this question again with a hint before seeing the full solution. "
+                     "Do not state the final answer or write out the whole worked solution; guide them with hints and the "
+                     "next step only. If they ask for the full solution, tell them to choose 'Show full solution' on the page.")
     how = ("HOW TO ANSWER: Answer the new question directly first, then explain step by step. Usually 60-250 words in "
            "\"answer\"; use \"steps\" for a numbered explanation when a process is involved (otherwise []); \"example\" is an "
            "optional small extra example (otherwise \"\").")

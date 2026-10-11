@@ -69,7 +69,8 @@ def reason_for(ctx: StudentContext, s: Scored, code: str) -> str:
                 if last else f"Coverage: {name} has not been practised yet.")
     if "revision_due" in flags:
         due = ctx.revision_item_due.get(q.plan_item_id)
-        return f"Scheduled revision of {name} (due {_d(due)}): a different question on a skill you found difficult."
+        return (f"Scheduled revision of {name} (due {_d(due)}): a different question on a skill you found difficult"
+                + (f" ({acc})." if acc else "."))
     if code == "ENGLISH":
         demand = english_demand(q)
         if q.category == "unseen":

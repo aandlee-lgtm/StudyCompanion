@@ -1,7 +1,10 @@
+{# Multiple-choice feedback (owner: adaptive). Distractor rationales are explained under "Why did I lose the mark?". #}
 <div class="side">
   <div><div class="label">Your answer</div><p>{{ fb.student_answer }}</p></div>
   <div><div class="label">Correct answer</div><p>{{ fb.correct_answer }}</p></div>
 </div>
+{% set rats = (q.solution or {}).option_rationales or {} %}
+{% if fb.correct and rats and rats.get(fb.chosen) %}<p class="small"><strong>Why {{ fb.chosen }} is right:</strong> {{ rats.get(fb.chosen) }}</p>{% endif %}
 {% if fb.explanation %}<h3>Explanation</h3><p>{{ fb.explanation }}</p>{% endif %}
 {% if fb.concept %}<p>{{ fb.concept }}</p>{% endif %}
 <p class="small muted">{{ fb.outcome }}</p>

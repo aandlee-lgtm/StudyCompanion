@@ -1,7 +1,20 @@
+{# Self-marking against the guideline (owner: adaptive). The schedule is updated once, when the mark is recorded (adaptive-16). #}
 <div class="notice warn">{{ fb.label }}</div>
-{% if fb.guideline %}<h3>Marking guideline{{ ' (official NESA)' if fb.guideline_official }}</h3>{{ fb.guideline | paras }}{% else %}<p>No marking guideline is attached to this question.</p>{% endif %}
-<form method="post" action="/attempt/{{ a.id }}/self-mark" class="row">
+{% if fb.pending_mark %}<p class="small"><strong>Your mark is pending.</strong> Nothing has been added to your schedule or error journal yet — record your mark below.</p>{% endif %}
+{% set lines = (fb.guideline or '').split('\n') | select | list %}
+<form method="post" action="/attempt/{{ a.id }}/self-mark" class="self-mark">
   <input type="hidden" name="back" value="{{ base }}">
-  <label>Mark you earned</label><input type="number" name="mark" min="0" max="{{ q.marks }}" step="0.5" value="{{ a.mark_awarded }}">
-  <button class="btn small">Save self-mark</button>
+  {% if lines %}
+  <h3>Marking guideline{{ ' (official NESA)' if fb.guideline_official }}</h3>
+  <p class="small muted">Tick each line your working shows, then record the mark.</p>
+  <ul class="plain ticks">
+    {% set ticked = (fb.self_criteria or []) | map(attribute='criterion') | list %}
+    {% for line in lines %}<li><label class="check"><input type="checkbox" name="criterion" value="{{ line }}" {{ 'checked' if line in ticked }}> {{ line }}</label></li>{% endfor %}
+  </ul>
+  {% else %}<p>No marking guideline is attached to this question. Compare your working with a reliable solution before recording a mark.</p>{% endif %}
+  <div class="row">
+    <label>Mark you earned <input type="number" name="mark" min="0" max="{{ q.marks }}" step="0.5" value="{{ a.mark_awarded }}" required></label>
+    <button class="btn small primary">{{ 'Change my mark' if fb.self_marked else 'Record my mark' }}</button>
+  </div>
 </form>
+{% if fb.working %}<details><summary>Your working</summary>{{ fb.working | paras }}</details>{% endif %}

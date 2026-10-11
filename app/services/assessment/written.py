@@ -3,6 +3,7 @@ offline fallback), feedback payload, error categories and the generic why-lost t
 from __future__ import annotations
 
 import logging
+import re
 
 from sqlalchemy import select
 from sqlalchemy.orm import Session
@@ -13,10 +14,9 @@ from app.ai.offline import OFFLINE_LABEL, OfflineProvider
 from app.ai.schemas import MarkingResult
 from app.marking import rubric
 from app.models import Attempt, Question, Stimulus, Subject
+from app.services import error_journal
 from app.services.assessment import english, legal
 from app.services.assessment.common import (
-    ENGLISH_ERRORS,
-    LEGAL_ERRORS,
     MARKS_EXPECTATION,
     NO_OFFICIAL,
     VERBS,
@@ -68,22 +68,9 @@ def _offline_comparison(model: str | None, response: str, code: str) -> str:
 
 
 def _map_error_categories(code: str, result: MarkingResult, offline_gaps: list[str] | None) -> list[str]:
-    cats: list[str] = []
-    allowed = ENGLISH_ERRORS if code == "ENGLISH" else LEGAL_ERRORS
-    for e in result.errors:
-        c = e.category.strip().lower()
-        match = next((a for a in allowed if a in c or c in a), None)
-        cats.append(match or c)
-    gap_map = {
-        "Textual evidence": "insufficient textual evidence", "Analysis of effect": "descriptive response", "Judgement":
-        "limited evaluation" if code == "ENGLISH" else "description instead of evaluation", "Comparison": "poor comparison",
-        "Legal authority": "missing authority", "Contemporary evidence": "insufficient contemporary evidence",
-        "Legal terminology": "imprecise expression" if code == "ENGLISH" else "failure to address directive verb",
-    }
-    for g in offline_gaps or []:
-        if g in gap_map:
-            cats.append(gap_map[g])
-    return sorted(set(cats))
+    """Category names only (kept for callers that expect strings); see ``error_journal.written_items``."""
+    method = "offline_estimate" if offline_gaps is not None else "ai"
+    return [i["category"] for i in error_journal.written_items(code, result.model_dump(), method)]
 
 
 def mark_written(db: Session, q: Question, response: str, settings: dict, previous: str | None) -> tuple[float, dict, list[str], str]:
@@ -117,29 +104,148 @@ def mark_written(db: Session, q: Question, response: str, settings: dict, previo
         "comparison": comparison, "improved_answer": result.improved_answer or None,
         "guidance": (q.solution or {}).get("guidance"), "criteria_text": q.marking_guideline, "criteria_official": q.guideline_official,
     }
+    # each category with its OWN description (legal-20); subject packages may replace payload["journal_items"]
+    payload["journal_items"] = error_journal.written_items(code, payload["result"], method)
     if code == "LEGAL":
         legal.post_process(db, q, ctx, result, payload, method)
     elif code == "ENGLISH":
         english.post_process(db, q, ctx, result, payload, method)
-    return result.mark_awarded, payload, _map_error_categories(code, result, offline_gaps), method
+    return result.mark_awarded, payload, [i["category"] for i in payload.get("journal_items") or []], method
 
 
 # ---------------------------------------------------------------- Submission ---
 
 
+# -------------------------------------------------------- 'why did I lose the mark?' ---
+_LADDER_LINE = re.compile(r"^\s*(?:[-•*]\s*)?(\d+(?:\.\d+)?)\s*(?:marks?|–|-|:|\))\s*[:–-]?\s*(.+)$", re.I)
+
+# The one move that earns the next mark, per journal category (used with the student's own sentence).
+NEXT_MOVE = {
+    "insufficient textual evidence": "embed a short, precise quotation from the text in this sentence and build your point on it",
+    "technique identification without analysis": "after naming the technique, say what it reveals or how it shapes the reader's understanding of the idea in the question",
+    "descriptive response": "replace retelling with analysis: say HOW the writer creates the effect and WHY it matters to the question",
+    "weak thesis": "open with one arguable sentence that answers the question directly, and return to it in each paragraph",
+    "poor comparison": "put both texts in the same sentence with a comparative connective (whereas, similarly, unlike) and say what the difference shows",
+    "limited evaluation": "finish the paragraph with a judgement of how effectively (or to what extent) this answers the question",
+    "imprecise expression": "replace the general word with the precise term and cut filler so each sentence makes one claim",
+    "missing authority": "support the point with a named Act or case from your evidence bank and say what it establishes",
+    "weak judgement": "state your judgement (how effective, to what extent) and keep it consistent to the conclusion",
+    "description instead of evaluation": "after describing the law, measure it against a criterion (justice, access, protection of rights, resource efficiency) and judge it",
+    "insufficient contemporary evidence": "add a recent, dated example (a reform, case, inquiry or report) from your evidence bank",
+    "poor use of cases": "after naming the case, explain its legal significance for the point you are making",
+    "failure to address directive verb": "do what the directive verb asks — for 'evaluate' or 'assess', that means a judgement, not a description",
+    "imprecise legal terminology": "use the precise legal term (e.g. 'standard of proof', 'mens rea', 'judicial discretion') rather than an everyday word",
+    "no law reform": "explain one law reform: what changed, why it changed, and whether it worked",
+    "stimulus not used": "refer explicitly to a detail of the stimulus and apply the law to it",
+    "unverified/invented authority": "only cite authorities in your verified evidence bank; remove or verify the others",
+}
+
+
+def criteria_ladder(q: Question) -> list[dict]:
+    """The question's mark ladder, highest first: ``solution.criteria`` ([{mark, descriptor}]) or parsed guideline lines."""
+    sol = q.solution or {}
+    rows = []
+    for c in sol.get("criteria") or []:
+        if isinstance(c, dict) and c.get("descriptor") is not None:
+            try:
+                rows.append({"mark": float(c.get("mark")), "descriptor": str(c["descriptor"]).strip()})
+            except (TypeError, ValueError):
+                continue
+    if not rows and q.marking_guideline:
+        for line in q.marking_guideline.splitlines():
+            m = _LADDER_LINE.match(line)
+            if m and float(m.group(1)) <= max(q.marks, 1):
+                rows.append({"mark": float(m.group(1)), "descriptor": m.group(2).strip()})
+    for r in rows:
+        r["mark"] = int(r["mark"]) if float(r["mark"]).is_integer() else r["mark"]
+    return sorted(rows, key=lambda r: -float(r["mark"]))
+
+
+def _sentences(text: str) -> list[str]:
+    return [x.strip() for x in re.split(r"(?<=[.!?])\s+|\n+", text or "") if len(x.strip().split()) >= 3]
+
+
+def _evidence_sentence(code: str, category: str, response: str) -> str | None:
+    """The student's own sentence that best shows a category (quoted back in the explanation)."""
+    sents = _sentences(response)
+    if not sents:
+        return None
+    def feats(s):  # noqa: E306
+        return rubric.features(s, code)
+    if category in ("technique identification without analysis",):
+        pick = [s for s in sents if feats(s)["techniques"] and not feats(s)["analysis"]]
+    elif category in ("insufficient textual evidence",):
+        pick = [s for s in sents if not feats(s)["quotes"]]
+    elif category in ("missing authority", "poor use of cases"):
+        pick = [s for s in sents if not feats(s)["acts"] and not feats(s)["cases"]] if code == "LEGAL" else []
+    elif category in ("weak judgement", "description instead of evaluation", "limited evaluation", "failure to address directive verb"):
+        pick = [s for s in sents if not feats(s)["judgement"]]
+    else:
+        pick = []
+    pick = pick or sents
+    s = pick[0]
+    return s if len(s) <= 220 else s[:217].rsplit(" ", 1)[0] + "…"
+
+
+def _stimulus_suggestion(q: Question, response: str) -> str | None:
+    """A short line from the stimulus the student did not use (grounds the 'next move')."""
+    if not q.stimulus or not q.stimulus.body:
+        return None
+    low = (response or "").lower()
+    for s in _sentences(q.stimulus.body):
+        words = s.split()
+        if 5 <= len(words) <= 22 and s.lower()[:40] not in low:
+            return s
+    return None
+
+
 def why_lost_written(q: Question, p: dict, attempt: Attempt) -> str:
+    """Generic mark-gap explainer for written answers: the band reached, the next band's demand, the student's
+    own sentence and the one move per missing element (adaptive-13). Subject packages may supply richer text."""
+    code = p.get("subject") or ("LEGAL" if (p.get("evidence") is not None) else "ENGLISH")
     verb = (q.directive_verb or "").lower()
-    expect = MARKS_EXPECTATION.get(min(q.marks, 6), MARKS_EXPECTATION[6]) if q.marks < 10 else "a sustained, well-structured response with a clear thesis/judgement throughout, integrating relevant evidence in every paragraph"
-    r = p.get("result", {})
-    gaps = r.get("improvements") or r.get("weaknesses") or []
+    mark = float(attempt.mark_awarded or 0)
+    parts: list[str] = []
     s = f"This was a {q.marks}-mark '{q.directive_verb or 'response'}' question"
     if verb in VERBS:
         s += f" — '{q.directive_verb}' asks you to {VERBS[verb]}"
-    s += f". At this mark value a marker expects {expect}. "
-    s += f"Your response earned about {attempt.mark_awarded:g}/{q.marks}. "
-    if gaps:
-        s += "What held it back: " + " ".join(gaps[:3])
+    expect = MARKS_EXPECTATION.get(min(q.marks, 6), MARKS_EXPECTATION[6]) if q.marks < 10 else \
+        "a sustained, well-structured response with a clear thesis/judgement throughout, integrating relevant evidence in every paragraph"
+    parts.append(s + f". At this mark value a marker expects {expect}.")
+    ladder = criteria_ladder(q)
+    if ladder:
+        reached = next((r for r in ladder if float(r["mark"]) <= mark + 1e-9), None)
+        nxt = next((r for r in reversed(ladder) if float(r["mark"]) > mark + 1e-9), None)
+        if reached:
+            parts.append(f"Your answer sits in the {reached['mark']}-mark band: \u201c{reached['descriptor']}\u201d")
+        if nxt:
+            parts.append(f"The next band ({nxt['mark']} marks) asks for: \u201c{nxt['descriptor']}\u201d")
+    items = p.get("journal_items") or []
+    seen = 0
+    for it in items[:3]:
+        cat = it.get("category", "")
+        move = NEXT_MOVE.get(cat)
+        if not move:
+            continue
+        own = _evidence_sentence(code, cat, attempt.response_text or "")
+        line = f"You wrote \u201c{own}\u201d — to earn the next mark, {move}." if own and seen == 0 else f"Also: {move} ({cat})."
+        parts.append(line)
+        seen += 1
+    if seen == 0:
+        r = p.get("result", {})
+        gap = (r.get("next_level") or "").strip()
+        if gap:
+            parts.append(f"The step up: {gap}")
+    if code == "ENGLISH":
+        sug = _stimulus_suggestion(q, attempt.response_text or "")
+        if sug and any(i.get("category") in ("insufficient textual evidence", "descriptive response", "technique identification without analysis") for i in items):
+            parts.append(f"For example, a line from the text you did not use: \u201c{sug}\u201d — what does its language or form suggest about the idea in the question?")
+    checklist = (q.solution or {}).get("checklist") or []
+    if checklist:
+        low = (attempt.response_text or "").lower()
+        missing = [c for c in checklist if not any(w in low for w in re.findall(r"[a-z]{6,}", c.lower())[:3])]
+        if missing:
+            parts.append("Not yet in your answer: " + "; ".join(missing[:2]) + ".")
     if p.get("method") == "offline_estimate":
-        s += " (Explanation based on the offline estimate; configure an AI provider for a fuller explanation.)"
-    return s
-
+        parts.append("(Based on the offline estimate, which is approximate; configure an AI provider for a fuller explanation.)")
+    return "\n\n".join(parts)

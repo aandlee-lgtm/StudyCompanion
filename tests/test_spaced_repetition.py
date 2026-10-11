@@ -33,9 +33,14 @@ def test_lucky_guess_is_not_mastery():
 
 
 def test_careless_error_with_high_confidence_treated_differently():
-    slip = mastery.quality(0.0, "very_confident", "sign", False)
-    misunderstanding = mastery.quality(0.0, "very_confident", "conceptual", False)
-    assert slip[0] == "adequate" and misunderstanding[0] == "very_weak"
+    # v2 (adaptive-05): a slip is treated as a slip only when it is corroborated (strong prior mastery
+    # on the skill plus a slip pattern / correct method); otherwise a very confident wrong answer is a
+    # misconception, never stronger evidence than an unsure one.
+    strong_prior = {"prior_mastery": 0.85, "prior_attempts": 5}
+    slip = mastery.quality(0.0, "very_confident", "sign", False, slip_evidence=True, **strong_prior)
+    misunderstanding = mastery.quality(0.0, "very_confident", "conceptual", False, **strong_prior)
+    assert slip[0] == "adequate" and slip[1] <= 0.6 and misunderstanding[0] == "very_weak"
+    assert mastery.assess(0.0, "very_confident", "sign", False).kind == "misconception"  # not corroborated
 
 
 def test_exposure_and_schedule_recorded(db):
@@ -45,9 +50,18 @@ def test_exposure_and_schedule_recorded(db):
     e = db.execute(select(QuestionExposure).where(QuestionExposure.question_id == q.id)).scalar_one()
     assert e.attempts == 1 and e.score_history == [1.0]
     assert 56 <= (e.next_revision_date - TUESDAY).days <= 70
-    # strong answers schedule a deliberate two-month recycle of the concept
-    r = db.execute(select(RevisionQueue).where(RevisionQueue.plan_item_id == q.plan_item_id)).scalars().first()
-    assert r and 55 <= (r.due_date - TUESDAY).days <= 65
+    # v2 (adaptive-08): the current LEARNING item is not 'recycled' (it is in daily practice anyway)
+    assert db.execute(select(RevisionQueue).where(RevisionQueue.plan_item_id == q.plan_item_id)).scalars().first() is None
+    # strong answers on a LEARNED skill schedule a deliberate two-month recycle of the concept
+    from app.models.common import LEARNED
+
+    item = plan_item(db, "1A")
+    item.status = LEARNED
+    clock.set_today(TUESDAY + timedelta(days=70))
+    assessment.submit(db, q, q.answer["value"] if q.answer["type"] != "set" else ",".join(q.answer["values"]), confidence="very_confident")
+    db.commit()
+    r = db.execute(select(RevisionQueue).where(RevisionQueue.plan_item_id == q.plan_item_id, RevisionQueue.kind == "recycle")).scalars().first()
+    assert r and 55 <= (r.due_date - (TUESDAY + timedelta(days=70))).days <= 65
 
 
 def test_weak_answer_schedules_earlier_revision_with_different_question(db):

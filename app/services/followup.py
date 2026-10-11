@@ -49,6 +49,7 @@ _HANDLED = {
     "disclaimer", "schedule", "previous", "working", "student_answer", "student_parsed", "correct_answer", "worked_solution",
     "divergence", "divergence_step", "concept", "quicker", "technique", "outcome", "revision", "error_category", "notes",
     "correct", "explanation", "guideline", "guideline_official", "self_marked",
+    "evidence_role", "solution_shown", "model_viewed",  # v2-adaptive bookkeeping, not feedback
 }
 _RESULT_KEYS = ("performance_level", "marking_rationale", "next_level", "improvement_task", "improved_argument", "strengths",
                 "weaknesses", "missing_elements", "corrections", "evidence_suggestions", "improvements", "revision_recommendation",
@@ -138,6 +139,10 @@ def grounding(db: Session, attempt: Attempt) -> dict:
                                                 Attempt.attempt_number == attempt.attempt_number - 1)).first()
         previous = prev.response_text if prev else None
     method = attempt.marking_method or p.get("method") or ""
+    # Maths hint-first (adaptive-15): until the student chooses "Show full solution" (or retries),
+    # the correct answer and the worked solution stay hidden on the page, and here too.
+    solution_hidden = (p.get("kind") == "maths" and not p.get("correct") and p.get("solution_shown") is False
+                       and attempt.model_viewed_at is None)
     return {
         "subject": code, "subject_name": subj.name if subj else code, "topic": item.title if item else "", "outcome": outcome,
         "question": q.question_text, "marks": q.marks, "directive_verb": q.directive_verb,
@@ -155,6 +160,7 @@ def grounding(db: Session, attempt: Attempt) -> dict:
         "criteria": criteria, "criteria_official": official,
         "guidance": p.get("guidance") or sol.get("guidance") or [],
         "evidence": _legal_evidence(db, q, p) if code == "LEGAL" else [],
+        "solution_hidden": solution_hidden,
     }
 
 
@@ -180,11 +186,12 @@ def reference(db: Session, attempt: Attempt, ctx: dict | None = None) -> dict:
     ctx = ctx or grounding(db, attempt)
     fb = ctx["feedback"]
     is_mcq = ctx["options"] is not None
+    hidden = bool(ctx.get("solution_hidden"))
     return {
-        "subject": ctx["subject"], "kind": ctx["kind"], "options": ctx["options"],
-        "correct_answer": ctx["correct_answer"] if ctx["subject"] == "MATHS" and not is_mcq else None,  # LaTeX
+        "subject": ctx["subject"], "kind": ctx["kind"], "options": ctx["options"], "solution_hidden": hidden,
+        "correct_answer": ctx["correct_answer"] if ctx["subject"] == "MATHS" and not is_mcq and not hidden else None,  # LaTeX
         "mcq_answer": (fb.get("correct_answer") or ctx["correct_answer"]) if is_mcq else None,  # option text
-        "worked_solution": ctx["worked_solution"], "explanation": fb.get("explanation"), "concept": fb.get("concept"),
+        "worked_solution": [] if hidden else ctx["worked_solution"], "explanation": fb.get("explanation"), "concept": fb.get("concept"),
         "divergence": fb.get("divergence"), "model_answer": ctx["model_answer"], "model_answer_source": ctx["model_answer_source"],
         "criteria": ctx["criteria"], "criteria_official": ctx["criteria_official"], "criteria_judgements": fb.get("criteria") or [],
         "guidance": ctx["guidance"], "next_level": fb.get("next_level"), "improvements": fb.get("improvements") or [],

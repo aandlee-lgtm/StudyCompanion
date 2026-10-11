@@ -1,23 +1,62 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Error journal</h1>
-<p class="lead">Recorded automatically after each assessed answer. Patterns matter more than single slips.</p>
+<p class="lead">Recorded after each counted answer, on two axes: the type of error and the topic where it happens. Patterns matter more than single slips: a tag seen three times in 30 days gets its own revision question.</p>
 <form class="row" method="get">
   <select name="subject"><option value="">All subjects</option>{% for c in ['MATHS','ENGLISH','LEGAL'] %}<option value="{{ c }}" {{ 'selected' if subject == c }}>{{ SUBJECT_NAMES[c] }}</option>{% endfor %}</select>
+  {% if key %}<input type="hidden" name="key" value="{{ key }}">{% endif %}
   <label class="check"><input type="checkbox" name="show_resolved" value="1" {{ 'checked' if show_resolved }}> Show resolved</label>
   <button class="btn small">Filter</button>
 </form>
-<div class="grid g3" style="margin-top:14px">
-  {% for (subj, cat), n in counts %}<div class="card spread"><span><span class="subj-{{ subj }}">{{ SUBJECT_SHORT[subj] }}</span> · {{ cat }}</span><span class="stat" style="font-size:1.3rem">{{ n }}</span></div>{% endfor %}
+
+{% if none %}<div class="notice" id="missing">No fresh question is available for <strong>{{ key }}</strong> right now (every question on that skill was seen in the last 7 days or is not available). It is already in your revision queue and comes back in a daily session.</div>{% endif %}
+
+<h2>Patterns</h2>
+{% if patterns %}
+<div class="grid g2">
+  {% for p in patterns %}
+  <div class="card pattern-card">
+    <div class="spread"><span><span class="subj-{{ p.subject }}">{{ SUBJECT_SHORT[p.subject] }}</span> · <strong>{{ p.key }}</strong>{% if p.repeated %} <span class="pill">repeated</span>{% endif %}</span>
+      <span class="trend-{{ p.trend }}" title="Last 14 days compared with the 14 days before">{{ {'up': '▲ more often', 'down': '▼ less often', 'flat': '— steady'}[p.trend] }}</span></div>
+    <p class="interp">{{ p.interpretation }}</p>
+    {% if p.topics %}<p class="small muted">Where: {% for t in p.topics %}{{ t.name }} ({{ t.count }}){{ ', ' if not loop.last }}{% endfor %}</p>{% endif %}
+    <p class="small muted">Latest: {{ p.description }}</p>
+    <p><a class="btn small" href="/errors/practise?subject={{ p.subject }}&key={{ p.key | urlencode }}">Practise this</a>
+       <a class="btn small link" href="/errors?subject={{ subject }}&key={{ p.key | urlencode }}&show_resolved=1">Show examples</a></p>
+  </div>
+  {% endfor %}
 </div>
-<h2>Entries</h2>
+{% else %}<p class="muted">No errors in the last 30 days{{ ' for this subject' if subject }}.</p>{% endif %}
+
+<h2>Open errors by type and topic</h2>
+<div class="card"><table>
+  <tr><th>Subject</th><th>Error type</th><th>Topic tag</th><th>Open</th></tr>
+  {% for subj, cat, tag, n in counts %}<tr><td class="subj-{{ subj }} small">{{ SUBJECT_SHORT[subj] }}</td><td><span class="pill">{{ cat }}</span></td>
+    <td class="small">{% if tag %}<a href="/errors?subject={{ subject }}&key={{ tag | urlencode }}">{{ tag }}</a>{% else %}<span class="muted">—</span>{% endif %}</td><td>{{ n }}</td></tr>
+  {% else %}<tr><td colspan="4" class="muted small">No open errors.</td></tr>{% endfor %}
+  {% if counts %}<tr><td colspan="3" class="small muted">{{ open_total }} open entries in total</td><td></td></tr>{% endif %}
+</table></div>
+
+<h2>Entries{% if key %}: {{ key }} <a class="small" href="/errors?subject={{ subject }}">(show all)</a>{% endif %}</h2>
+<p class="small muted">{{ total }} entr{{ 'y' if total == 1 else 'ies' }}{{ ' (including resolved)' if show_resolved }}{% if pages > 1 %} · page {{ page }} of {{ pages }}{% endif %}</p>
 <div class="card"><table>
   <tr><th>Date</th><th>Subject</th><th>Error</th><th>What happened</th><th></th></tr>
   {% for e in entries %}
-  <tr><td class="small">{{ e.created_at | fdate('%d %b') }}</td><td class="subj-{{ e.subject_code }} small">{{ SUBJECT_SHORT[e.subject_code] }}</td><td><span class="pill">{{ e.category }}</span></td>
-    <td class="small">{{ e.description }}<br><a href="/questions/{{ e.question_id }}">question</a></td>
-    <td>{% if not e.resolved %}<form method="post" action="/errors/{{ e.id }}/resolve"><button class="btn small">Resolved</button></form>{% else %}<span class="pill good">resolved</span>{% endif %}</td></tr>
-  {% else %}<tr><td colspan="5" class="muted">No errors recorded{{ ' for this filter' if subject }}.</td></tr>{% endfor %}
+  <tr><td class="small">{{ (e.study_date or e.created_at) | fdate('%a %d %b') }}</td><td class="subj-{{ e.subject_code }} small">{{ SUBJECT_SHORT[e.subject_code] }}</td>
+    <td><span class="pill">{{ e.category }}</span>{% if e.topic_tag %}<br><span class="small">{{ e.topic_tag }}</span>{% endif %}</td>
+    <td class="small">{{ e.description }}{% if e.fixed_on_retry %} <span class="pill good">fixed on retry</span>{% endif %}
+      <br><a href="/questions/{{ e.question_id }}">question</a>{% if e.source %} <span class="muted">· {{ {'deterministic': 'marked automatically', 'ai': 'AI marking', 'self': 'your self-mark', 'mcq': 'option chosen', 'offline': 'offline estimate'}.get(e.source, e.source) }}</span>{% endif %}</td>
+    <td>{% if not e.resolved %}<form method="post" action="/errors/{{ e.id }}/resolve"><button class="btn small">Resolved</button></form>
+      {% elif e.auto_resolved %}<span class="pill good">resolved automatically on {{ e.resolved_on | fdate('%d %b') }}</span>
+      {% else %}<span class="pill good">resolved{% if e.resolved_on %} {{ e.resolved_on | fdate('%d %b') }}{% endif %}</span>{% endif %}</td></tr>
+  {% else %}<tr><td colspan="5" class="muted">No errors recorded{{ ' for this filter' if subject or key }}.</td></tr>{% endfor %}
 </table></div>
+{% if pages > 1 %}
+{% set qs = 'subject=' ~ subject ~ '&show_resolved=' ~ show_resolved ~ '&key=' ~ (key | urlencode) %}
+<p class="spread">
+  {% if page > 1 %}<a class="btn small" href="/errors?{{ qs }}&page={{ page - 1 }}">Previous page</a>{% else %}<span></span>{% endif %}
+  {% if page < pages %}<a class="btn small" href="/errors?{{ qs }}&page={{ page + 1 }}">Next page</a>{% endif %}
+</p>
+{% endif %}
 {% include "_teacher_questions.html" %}
 {% endblock %}

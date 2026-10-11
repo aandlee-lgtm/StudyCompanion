@@ -1,6 +1,8 @@
 {# Full reference material shown when no AI provider can answer a follow-up question (owner: followup).
    Needs `ref` from app.services.followup.reference. #}
 <div class="fu-ref-body">
+{% if ref.solution_hidden %}<p class="small muted">The correct answer and the full worked solution stay hidden while you try again with the hint.
+Choose “Show full solution” above when you want to see them.</p>{% endif %}
 {% if ref.correct_answer %}<h3>Correct answer</h3><p>\({{ ref.correct_answer }}\)</p>{% endif %}
 {% if ref.mcq_answer %}<h3>Correct option</h3><p>{{ ref.mcq_answer }}</p>{% endif %}
 {% if ref.divergence %}<h3>Where your reasoning diverged</h3><p>{{ ref.divergence }}</p>{% endif %}
@@ -18,6 +20,6 @@
 {% if ref.guidance %}<h3>What a strong response does</h3><ul>{% for g in ref.guidance %}<li>{{ g }}</li>{% endfor %}</ul>{% endif %}
 {% if ref.next_level %}<h3>What a marker expects at the next level</h3><p>{{ ref.next_level }}</p>{% endif %}
 {% if ref.improvements %}<h3>Concrete actions</h3><ul>{% for x in ref.improvements %}<li>{{ x }}</li>{% endfor %}</ul>{% endif %}
-{% if not (ref.correct_answer or ref.mcq_answer or ref.worked_solution or ref.model_answer or ref.criteria or ref.guidance) %}
+{% if not (ref.correct_answer or ref.mcq_answer or ref.worked_solution or ref.model_answer or ref.criteria or ref.guidance or ref.solution_hidden) %}
 <p class="small muted">No worked solution, model response or marking criteria is attached to this question, so this is a good one to ask your teacher about.</p>{% endif %}
 </div>

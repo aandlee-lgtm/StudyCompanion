@@ -47,7 +47,7 @@
 
   {% if fu.reference %}{% set ref = fu.reference %}
   <details class="fu-reference" data-fu-reference {{ 'open' if fu.rows }}>
-    <summary>{{ 'Worked solution' if ref.worked_solution or ref.correct_answer or ref.mcq_answer else 'Model response' }} and criteria, in full</summary>
+    <summary>{% if ref.solution_hidden %}Hint and criteria (full solution hidden until you choose to see it){% else %}{{ 'Worked solution' if ref.worked_solution or ref.correct_answer or ref.mcq_answer else 'Model response' }} and criteria, in full{% endif %}</summary>
     {% include "_followup_reference.html" %}
   </details>
   {% endif %}

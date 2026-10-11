@@ -94,6 +94,11 @@ def test_maths_grounding_context_in_prompt(client, db):
                    "MARKING GUIDELINE: none is attached"):
         assert needle in prompt, needle
     assert "Write mathematics in LaTeX" in prompt
+    # adaptive-15 hint first: the solution grounds the answer, but the model is told not to give it away yet
+    assert "HINT FIRST" in prompt
+    client.post(f"/attempt/{a.id}/model-viewed", data={"back": f"/practice/{q.id}"})
+    _ask(client, a, "And now?")
+    assert "HINT FIRST" not in p.prompts[-1]
     assert "never re-mark" in prompts_followup.SYSTEM.lower() or "never re-mark" in prompts_followup.SYSTEM
     assert "Never invent NESA marking guidelines" in prompts_followup.SYSTEM
 
@@ -229,6 +234,11 @@ def test_offline_saves_question_for_teacher_and_shows_reference(client, db):
     assert "Free questions need Claude" in page and "Why did step 2 subtract?" in page
     ref = page[page.index("data-fu-reference"):]
     assert ref.startswith("data-fu-reference open")  # expanded once a question has been asked
+    # Maths hint first (adaptive-15): the worked solution stays hidden until "Show full solution"
+    assert "Complete worked solution" not in ref and "stay hidden while you try again with the hint" in ref
+    client.post(f"/attempt/{a.id}/model-viewed", data={"back": f"/practice/{q.id}"})
+    page = client.get(f"/practice/{q.id}").text
+    ref = page[page.index("data-fu-reference"):]
     assert "Complete worked solution" in ref and (q.solution or {})["steps"][0][:30] in ref
     errors = client.get("/errors").text
     assert "Questions for my teacher" in errors and "Why did step 2 subtract?" in errors and f'href="/practice/{q.id}"' in errors
