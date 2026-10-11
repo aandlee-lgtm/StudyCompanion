@@ -1695,6 +1695,603 @@
     220
    ],
    "difficulty": 2
+  },
+  {
+   "module": "EN-CRAFT",
+   "marks": 6,
+   "verb": "Compose",
+   "demand": "synthesise",
+   "response_type": "imaginative",
+   "text": "Compose the opening of an imaginative text (300 to 400 words) set during a single hour in a place of transit, such as a station, an airport or a bus stop. Withhold one key piece of information about your main character until the final paragraph.",
+   "skill_tags": [
+    "withholding",
+    "setting",
+    "structure",
+    "point of view"
+   ],
+   "criteria": [
+    {
+     "mark": 6,
+     "descriptor": "Composes a highly effective imaginative piece that withholds a key piece of information to create a purposeful turn, within a single hour in a place of transit, with sophisticated control of form, voice, structure and language for purpose"
+    },
+    {
+     "mark": 5,
+     "descriptor": "Composes an effective imaginative piece that withholds a key piece of information to create a purposeful turn, within a single hour in a place of transit, with well-controlled voice, structure and language"
+    },
+    {
+     "mark": 4,
+     "descriptor": "Composes a sound imaginative piece that withholds a key piece of information to create a purposeful turn, within a single hour in a place of transit, with some deliberate control of language and form"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Composes a piece that partly withholds a key piece of information to create a purposeful turn, within a single hour in a place of transit; control of tense, point of view or structure is uneven"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Composes a piece with limited control or limited relevance to the task"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Attempts a piece with minimal relevance or control"
+    }
+   ],
+   "checklist": [
+    "Confines the action to one hour and one place of transit, using the setting purposefully",
+    "Withholds one key piece of information and plants subtle clues before revealing it",
+    "Controls point of view and tense consistently",
+    "Shows character through action, objects and sensory detail rather than explanation",
+    "Builds to a final paragraph whose reveal changes the meaning of what came before"
+   ],
+   "next_steps": {
+    "0": "Decide the withheld fact before you write a word (for example: the character is not leaving, but waiting for someone who will not arrive).",
+    "1": "Choose your point of view and tense, and plant two small clues that will make sense only after the reveal.",
+    "2": "Replace explanation with action: every time you name a feeling, swap it for a gesture, object or observed detail.",
+    "3": "Use the place of transit: let departures, announcements or timetables mirror the character's situation.",
+    "4": "Craft the final paragraph so the reveal reframes the earlier details; reread to check every clue is fair but not obvious.",
+    "5": "Refine for Band 6: vary sentence length deliberately, cut every unnecessary adjective, and end on an image rather than an explanation."
+   },
+   "plan": "Concept: An older man sits at a regional train station for the 4.10 to Sydney. The reader assumes he is travelling. The withheld fact: he comes every Thursday to meet a train his late wife used to arrive on; he never boards.\n\nStructure: 1. The platform at ten past three: timetable board, pigeons, a vending machine that has eaten coins for years. 2. He watches other passengers' departures and arrivals with practised attention. 3. Clues: he has no luggage; the station attendant greets him by name and does not ask where he is going; he holds two tickets, one of them years old. 4. The train arrives and leaves. Final paragraph: he folds the old ticket back into his wallet and walks to the car park, nodding to the attendant: see you Thursday.\n\nExemplar opening (annotated): At ten past three the board still says ON TIME, which it has said every Thursday for six years, and which has been true about half the time. [Craft move: a precise, wry detail establishes a habitual pattern without explaining it.] Walter sits on the second bench from the end, where the shade arrives first. [Craft move: the specific choice of bench implies routine, a clue to the reveal.]\n\nCraft choices to make deliberately: third-person limited, present tense for immediacy; long sentences for waiting, short ones for the train's arrival; recurring motif of the board's announcements, whose final message (DEPARTED) carries the emotional weight.\n\nAvoid: telling the reader he is grieving; explaining the reveal; a twist that has no clues.",
+   "suggested_words": [
+    300,
+    400
+   ],
+   "difficulty": 3
+  },
+  {
+   "module": "EN-CRAFT",
+   "marks": 4,
+   "verb": "Rewrite",
+   "demand": "analyse",
+   "response_type": "rewrite",
+   "text": "Rewrite this sentence so that it SHOWS rather than tells the character's loneliness: \"Tom was lonely and sad because his wife had died and his children never visited him any more.\" Write 60 to 100 words, then explain your choices in about 80 words.",
+   "skill_tags": [
+    "show not tell",
+    "detail",
+    "rewrite"
+   ],
+   "criteria": [
+    {
+     "mark": 4,
+     "descriptor": "Produces a highly effective rewrite that shows the character's loneliness through concrete detail rather than stating it, with every change purposeful, and explains the choices precisely"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Produces an effective rewrite that shows the character's loneliness through concrete detail rather than stating it and explains most choices clearly"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Produces a rewrite that partly shows the character's loneliness through concrete detail rather than stating it; explanation is general"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Produces a rewrite with limited change or limited explanation"
+    }
+   ],
+   "checklist": [
+    "Does not name the emotions (lonely, sad) or explain their cause directly",
+    "Uses concrete, specific detail (objects, routines, setting) to imply loss and absence",
+    "Implies both the wife's death and the children's absence through evidence the reader can interpret",
+    "Explains at least two specific choices and the effect each is intended to create"
+   ],
+   "next_steps": {
+    "0": "Delete the emotion words. List three objects or habits that would only exist in this man's life because of the losses.",
+    "1": "Write the rewrite using those details; make at least one detail imply the wife and one imply the children.",
+    "2": "Check every sentence: is anything still explained rather than shown? Cut or replace it.",
+    "3": "Explain your choices precisely: name each detail and the inference you want the reader to make."
+   },
+   "plan": "Craft moves: Remove the abstract emotion words and the explanatory because-clause. Replace them with a routine (what Tom does), an object (what he keeps) and an absence (what does not happen).\n\nExemplar rewrite: Tom still sets out two cups before he remembers. On Sundays he mows the lawn at nine, in case the children's cars turn into the drive, and leaves the side gate unlatched until dark. The phone sits on the hall table beside a list of numbers in his wife's handwriting. He has never needed to call them; they used to call him. [About 60 words.]\n\nExemplar explanation: The two cups imply the wife's death through habit rather than statement, so the reader discovers the loss. The Sunday routine and the unlatched gate show hope and disappointment without naming them. The list in his wife's handwriting links both losses: she kept the family connected, and since her death no one calls. The final short sentence shifts responsibility subtly to the children. [About 75 words.]\n\nWhy this earns the marks: each detail is concrete and specific; the reader infers both causes; the explanation names the effect of each choice.",
+   "suggested_words": [
+    140,
+    200
+   ],
+   "difficulty": 2
+  },
+  {
+   "module": "EN-CRAFT",
+   "marks": 5,
+   "verb": "Rewrite",
+   "demand": "analyse",
+   "response_type": "rewrite",
+   "text": "Rewrite the following paragraph in first person and present tense to increase its immediacy, then explain your choices in about 100 words. \"Ellie walked into the exam room. She saw the rows of desks and the clock at the front. She felt nervous because it was her last exam and she had not studied enough for the essay question. She sat down at her desk and waited for the supervisor to tell them they could begin. She wished she had started revising earlier.\"",
+   "skill_tags": [
+    "tense",
+    "point of view",
+    "immediacy",
+    "rewrite"
+   ],
+   "criteria": [
+    {
+     "mark": 5,
+     "descriptor": "Produces a highly effective rewrite that shifts to first person and present tense to create immediacy, while controlling detail and rhythm, with every change purposeful, and explains the choices precisely"
+    },
+    {
+     "mark": 4,
+     "descriptor": "Produces an effective rewrite that shifts to first person and present tense to create immediacy, while controlling detail and rhythm and explains most choices clearly"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Produces a sound rewrite that shifts to first person and present tense to create immediacy, while controlling detail and rhythm with some explanation of choices"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Produces a rewrite that partly shifts to first person and present tense to create immediacy, while controlling detail and rhythm; explanation is general"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Produces a rewrite with limited change or limited explanation"
+    }
+   ],
+   "checklist": [
+    "Shifts consistently to first person and present tense",
+    "Replaces stated feelings (nervous, wished) with sensory detail, thought and action",
+    "Varies sentence structure and rhythm to build tension",
+    "Keeps the essential situation (last exam, underprepared) clear without explanation",
+    "Explains at least three specific choices and their effect on immediacy"
+   ],
+   "next_steps": {
+    "0": "Convert every verb to first person and present tense, and check there are no slips back into the past.",
+    "1": "Replace the sentence about feeling nervous with physical sensation and a specific thought.",
+    "2": "Vary sentence length: use a long sentence to build pressure and a short one for the moment before the start.",
+    "3": "Make the regret about revision appear through a specific memory or image rather than a statement.",
+    "4": "Explain at least three choices, naming each technique and its effect on the reader's sense of immediacy."
+   },
+   "plan": "Craft moves: Consistent first person, present tense. Replace the summary verbs (walked, saw, felt, wished) with precise perception and interior thought. Use time pressure (the clock) as a recurring motif. Imply the lack of study through a specific memory.\n\nExemplar rewrite: The room smells of floor polish and other people's deodorant. Two hundred desks, each with a white booklet face down, like a field of small closed doors. The clock at the front says 8.57, then, while I am looking, 8.58. I find my number. My chair scrapes, loudly, and somebody turns around. I think of the essay plan I meant to write on Tuesday, the one I can still see as a blank page with a coffee ring on it. The supervisor clears her throat. My pen is already wet with my hand.\n\nExemplar explanation: Present tense removes the safety of hindsight, so the reader experiences the minutes with Ellie. Sensory details (polish, the scraping chair) replace the word nervous, and the simile of the booklets as closed doors suggests anxiety about what is hidden. The clock ticking from 8.57 to 8.58 compresses time pressure into one image. The remembered blank page implies she has not studied without stating it. The final short sentence ends on the body, sustaining tension at the threshold of the exam.",
+   "suggested_words": [
+    220,
+    300
+   ],
+   "difficulty": 3
+  },
+  {
+   "module": "EN-CRAFT",
+   "marks": 6,
+   "verb": "Compose",
+   "demand": "synthesise",
+   "response_type": "discursive",
+   "text": "Compose a discursive piece (400 to 500 words) titled On Waiting. Explore the idea from several angles, using anecdote and reflection, without forcing a single conclusion.",
+   "skill_tags": [
+    "discursive writing",
+    "voice",
+    "structure"
+   ],
+   "criteria": [
+    {
+     "mark": 6,
+     "descriptor": "Composes a highly effective discursive piece that explores the idea of waiting from several angles without forcing a single conclusion, with a sophisticated, exploratory voice and purposeful structure"
+    },
+    {
+     "mark": 5,
+     "descriptor": "Composes an effective discursive piece that explores the idea of waiting from several angles without forcing a single conclusion, with a controlled voice and well-developed ideas"
+    },
+    {
+     "mark": 4,
+     "descriptor": "Composes a sound discursive piece that explores the idea of waiting from several angles without forcing a single conclusion, with some development of ideas and control of voice"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Composes a piece that partly explores the idea of waiting from several angles without forcing a single conclusion; ideas are listed more than explored"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Composes a piece with limited development or limited relevance to the task"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Attempts a piece with minimal relevance or control"
+    }
+   ],
+   "checklist": [
+    "Explores waiting from at least three distinct angles (for example personal, social, philosophical, technological)",
+    "Uses anecdote and concrete detail to ground reflection",
+    "Maintains a reflective, exploratory voice that tests ideas rather than arguing a thesis",
+    "Structures the piece purposefully, with transitions that show thinking developing",
+    "Ends with an open but resonant conclusion (an image, a question or a qualified insight)"
+   ],
+   "next_steps": {
+    "0": "Brainstorm at least four different kinds of waiting and choose three that contrast.",
+    "1": "Open with a specific anecdote or scene rather than a general statement or a dictionary definition.",
+    "2": "Develop each angle with a concrete example, then reflect on what it reveals.",
+    "3": "Write transitions that show your thinking turning (however, and yet, perhaps, I am less sure) rather than listing points.",
+    "4": "Craft an ending that leaves the idea open but more complex than at the start; avoid summarising.",
+    "5": "Refine for Band 6: give the voice a distinctive personality (wry, curious, self-questioning) and vary sentence rhythm to mirror the ideas."
+   },
+   "plan": "Angles to explore: 1. The anecdote: waiting for an HSC result, or in a hospital corridor, where time stretches and attention sharpens. 2. The social angle: who is made to wait (queues, waiting lists, people on hold) and what waiting reveals about power. 3. The technological angle: how phones have abolished small waits, and what we may have lost (daydreaming, noticing). 4. The reflective turn: waiting as a form of hope, since we only wait for what we believe might come.\n\nStructure: Open in scene (the speaker in a queue at a passport office, number 47 on a paper ticket). Move outward to the social and technological angles, each anchored in a concrete detail. Turn inward with a qualification: perhaps waiting is unbearable not because it is empty but because it is full of possibility. End with an image rather than a thesis: the ticket number called, the speaker almost reluctant to stand.\n\nExemplar opening (annotated): The ticket says 47. The screen says 31. Between the two numbers lies an hour of my life I will never be asked to account for. [Craft move: concrete detail and a wry tone set up the exploratory voice.]\n\nVoice: first person, curious and slightly ironic, willing to change its mind. Use rhetorical questions sparingly and only when genuinely open.\n\nAvoid: a five-paragraph argument, a dictionary definition, or a conclusion that resolves everything.",
+   "suggested_words": [
+    400,
+    500
+   ],
+   "difficulty": 3
+  },
+  {
+   "module": "EN-CRAFT",
+   "marks": 6,
+   "verb": "Compose",
+   "demand": "synthesise",
+   "response_type": "persuasive",
+   "text": "Compose a persuasive speech (350 to 450 words) to be delivered at your school assembly, arguing that the school should introduce one screen-free day each week. Your audience includes students from Years 7 to 12 and staff.",
+   "skill_tags": [
+    "persuasive writing",
+    "speech",
+    "audience"
+   ],
+   "criteria": [
+    {
+     "mark": 6,
+     "descriptor": "Composes a highly effective persuasive piece that argues for a weekly screen-free day to a mixed audience of students and staff, with sophisticated control of argument, audience and rhetorical strategy"
+    },
+    {
+     "mark": 5,
+     "descriptor": "Composes an effective persuasive piece that argues for a weekly screen-free day to a mixed audience of students and staff, with a clear argument and well-chosen strategies for the audience"
+    },
+    {
+     "mark": 4,
+     "descriptor": "Composes a sound persuasive piece that argues for a weekly screen-free day to a mixed audience of students and staff, with some deliberate persuasive strategies"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Composes a piece that partly argues for a weekly screen-free day to a mixed audience of students and staff; argument or audience awareness is uneven"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Composes a piece with limited argument or limited relevance to the task"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Attempts a piece with minimal relevance or control"
+    }
+   ],
+   "checklist": [
+    "Takes a clear position and sustains it with logical, well-sequenced reasoning",
+    "Adapts the argument to a mixed audience (younger and older students, staff) and anticipates objections",
+    "Uses a range of rhetorical strategies purposefully (anecdote, inclusive language, rhetorical questions, tricolon, concession and rebuttal)",
+    "Uses a register suited to a spoken address, with signposting and a memorable opening and close",
+    "Avoids invented statistics or unverifiable claims; uses reasoning and experience instead"
+   ],
+   "next_steps": {
+    "0": "Write your contention in one sentence and list three reasons that would matter to different parts of your audience.",
+    "1": "Open with a hook suited to a hall full of people (a brief scene, a question, a surprising observation) rather than a greeting and a definition.",
+    "2": "Include a concession and rebuttal: state the strongest objection fairly and answer it.",
+    "3": "Use at least three rhetorical strategies deliberately, and check each one serves the argument.",
+    "4": "Write a close that gives the audience something to do or imagine, echoing your opening.",
+    "5": "Refine for Band 6: adjust register for speech (signposting, rhythm, direct address), cut any claim you cannot support, and make the voice credible rather than preachy."
+   },
+   "plan": "Contention: One screen-free day a week would give the school back something it has lost: undivided attention to each other and to learning.\n\nStructure: 1. Hook: a scene in the library at lunch, thirty students together and each one alone with a glowing rectangle. 2. Reason one (for younger students): play and friendship at recess and lunch. 3. Reason two (for senior students): sustained focus, handwriting practice for exams written by hand, and rest from notifications. 4. Reason three (for staff): conversation and attention in class. 5. Concession and rebuttal: some subjects and students genuinely need devices (accessibility, specific assessments); propose exemptions rather than abandoning the idea. 6. Close: invite the audience to imagine one Wednesday; echo the opening scene, transformed.\n\nExemplar opening (annotated): Yesterday at lunch I counted thirty-two people in the library. I counted thirty-two screens. Nobody was talking, and nobody was reading a book. [Craft move: a concrete, verifiable observation instead of an invented statistic; the parallel sentences build rhythm for listening.]\n\nStrategies: inclusive pronouns (we, our school), a tricolon in the close, one rhetorical question, a brief personal anecdote. Keep claims to what the speaker can observe or reason; do not invent research findings.\n\nAvoid: scolding the audience, unsupported statistics, or ignoring the strongest objection.",
+   "suggested_words": [
+    350,
+    450
+   ],
+   "difficulty": 3
+  },
+  {
+   "module": "EN-CRAFT",
+   "marks": 4,
+   "verb": "Reflect",
+   "demand": "evaluate",
+   "response_type": "reflective",
+   "text": "Reflect on ONE deliberate craft choice you made in a piece of imaginative or discursive writing you have composed this term. Explain the choice, its intended effect, and how successfully it achieved that effect (200 to 250 words).",
+   "skill_tags": [
+    "reflection",
+    "metacognition",
+    "craft choices"
+   ],
+   "criteria": [
+    {
+     "mark": 4,
+     "descriptor": "Reflects perceptively on one deliberate craft choice in your own writing, explaining specific craft decisions and their intended effect with precise reference to the writing"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Reflects clearly on one deliberate craft choice in your own writing, explaining craft decisions with relevant reference to the writing"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Describes the writing in relation to one deliberate craft choice in your own writing with general reflection"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Makes limited reflective comment on one deliberate craft choice in your own writing"
+    }
+   ],
+   "checklist": [
+    "Identifies ONE specific craft choice precisely (for example a shift in tense, a recurring motif, a withheld detail, a one-sentence paragraph)",
+    "Explains the intended effect and how it serves the purpose of the piece",
+    "Refers precisely to your own writing (brief quotation or close description of the passage)",
+    "Evaluates honestly how well the choice worked, and what you would revise"
+   ],
+   "next_steps": {
+    "0": "Name the craft choice precisely, using correct terminology, and say where in your piece it occurs.",
+    "1": "Explain the intended effect on the reader and connect it to the purpose of your piece.",
+    "2": "Quote or describe the exact passage, and explain how the language achieves (or does not achieve) the effect.",
+    "3": "Evaluate honestly: what worked, what did not, and one specific revision you would make."
+   },
+   "plan": "Structure: 1. Name the choice and locate it (for example: I ended my story with a one-sentence paragraph describing an unwashed cup). 2. Explain the purpose: to replace an explicit statement of grief with an image the reader must interpret. 3. Show it in action: quote your own sentence and analyse its rhythm and imagery. 4. Evaluate: did readers respond as intended (teacher or peer feedback)? Was the image prepared earlier in the piece? 5. Revision: one concrete change, such as introducing the cup earlier so the ending lands.\n\nExemplar reflection extract (annotated): I chose to end with a single sentence, The cup was still on the windowsill, because I wanted the reader to feel the absence without my naming it. [Craft move: names the choice and its intended effect.] However, my peer reader did not notice the cup earlier in the story, so the ending seemed random to her. [Craft move: honest evaluation using evidence.] In revision I would mention the cup in the second paragraph, when the mother is still alive. [Craft move: a specific, purposeful revision.]\n\nTips: use the first person; quote your own writing briefly; keep the focus on ONE choice; evaluate rather than only describe.",
+   "suggested_words": [
+    200,
+    250
+   ],
+   "difficulty": 2
+  },
+  {
+   "module": "EN-CRAFT",
+   "marks": 5,
+   "verb": "Compose",
+   "demand": "synthesise",
+   "response_type": "imaginative",
+   "text": "Use the following image as a stimulus: [A pair of muddy work boots stands beside a back door. One boot has fallen over. Rain is falling in the yard beyond.] Compose a short imaginative piece (300 to 400 words) written in second person (you).",
+   "skill_tags": [
+    "stimulus",
+    "second person",
+    "imaginative writing"
+   ],
+   "criteria": [
+    {
+     "mark": 5,
+     "descriptor": "Composes a highly effective imaginative piece that uses the image of the boots as a meaningful stimulus and sustains second-person narration purposefully, with sophisticated control of form, voice, structure and language for purpose"
+    },
+    {
+     "mark": 4,
+     "descriptor": "Composes an effective imaginative piece that uses the image of the boots as a meaningful stimulus and sustains second-person narration purposefully, with well-controlled voice, structure and language"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Composes a sound imaginative piece that uses the image of the boots as a meaningful stimulus and sustains second-person narration purposefully, with some deliberate control of language and form"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Composes a piece that partly uses the image of the boots as a meaningful stimulus and sustains second-person narration purposefully; control of tense, point of view or structure is uneven"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Composes a piece with limited control or limited relevance to the task"
+    }
+   ],
+   "checklist": [
+    "Uses the stimulus purposefully, so the boots carry meaning rather than appearing as decoration",
+    "Sustains second-person narration and uses it for a clear effect (intimacy, accusation, self-address, instruction)",
+    "Shows a situation and relationships through concrete detail",
+    "Controls structure, with a clear shape and a resonant ending",
+    "Uses precise, economical language with varied sentence rhythm"
+   ],
+   "next_steps": {
+    "0": "Decide what the boots mean in your story (whose are they, why are they there, why has one fallen?) before you write.",
+    "1": "Choose WHY you are using second person: self-address, accusation, instruction or intimacy. Keep it consistent.",
+    "2": "Build the situation with three precise sensory details, at least one of them involving the rain.",
+    "3": "Shape the piece so that the fallen boot gains significance by the end.",
+    "4": "Refine for Band 6: cut explanations, vary sentence length, and end on an image or action that deepens the meaning."
+   },
+   "plan": "Concept: The you is a teenager who has come home late after an argument with a parent who works on a farm; the boots are the parent's, still muddy because the parent went out to search for the teenager in the rain. The fallen boot suggests haste and worry.\n\nPurpose of second person: self-address, as if the narrator is replaying the moment and forcing themselves to look at what they did. It creates intimacy and a quiet accusation.\n\nStructure: 1. Arrival: you see the boots before you see anyone; the mud is fresh. 2. Realisation through detail: the torch on the bench is still warm; the ute keys are out. 3. You stand the fallen boot upright, a small act of repair. 4. Ending: the hallway light comes on behind you. Stop before any dialogue.\n\nExemplar opening (annotated): You see the boots first, because you are trying not to be seen. [Craft move: second person as self-accusation from the first line.] The mud on them is not dry. It is the colour of the bottom paddock, and it is still sliding, slowly, onto the mat. [Craft move: a precise detail implies recent action without explanation.]\n\nAvoid: explaining the argument, a tearful reconciliation, or switching between you and I.",
+   "suggested_words": [
+    300,
+    400
+   ],
+   "difficulty": 3
+  },
+  {
+   "module": "EN-CRAFT",
+   "marks": 3,
+   "verb": "Rewrite",
+   "demand": "explain",
+   "response_type": "rewrite",
+   "text": "Rewrite this overwritten sentence so that it is precise and controlled: \"The incredibly beautiful golden sun slowly and gently sank down beneath the far distant horizon as the soft whispering gentle breeze blew softly through the tall green swaying trees.\" Then explain TWO of your cuts or changes (about 60 words).",
+   "skill_tags": [
+    "concision",
+    "word choice",
+    "rewrite"
+   ],
+   "criteria": [
+    {
+     "mark": 3,
+     "descriptor": "Produces a highly effective rewrite that makes the sentence precise and controlled by removing redundancy and choosing exact words, with every change purposeful, and explains the choices precisely"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Produces a sound rewrite that makes the sentence precise and controlled by removing redundancy and choosing exact words with some explanation of choices"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Produces a rewrite with limited change or limited explanation"
+    }
+   ],
+   "checklist": [
+    "Removes redundancy (sank down beneath; soft, gentle and softly; far distant)",
+    "Chooses fewer, more precise words, ideally one fresh image instead of many generic adjectives",
+    "Explains two specific changes and the effect of each"
+   ],
+   "next_steps": {
+    "0": "Underline every word that repeats an idea already present (for example soft, gentle and softly) and delete the repeats.",
+    "1": "Replace generic adjectives (beautiful, golden, green) with one precise, fresh detail or a strong verb.",
+    "2": "Explain two changes precisely: name what you cut or changed and the effect on clarity or imagery."
+   },
+   "plan": "Craft moves: Cut redundancy (sank already includes down; beneath the horizon already implies distance; soft, gentle and softly all repeat one idea). Replace the stack of generic adjectives with one precise image and a strong verb. Keep a single clause for the breeze.\n\nExemplar rewrite: The sun slid behind the ridge, and a breeze moved through the gums. [Or, with a fresher image: The sun went down behind the ridge like a coin into a slot, and the gums began to talk among themselves.]\n\nExemplar explanation: I cut slowly and gently because slid already suggests smooth movement. I replaced tall green swaying trees with gums, which is more specific and Australian, and the personification of the gums talking replaces three weak adjectives with one active image. [About 55 words.]\n\nPrinciple to remember: precision comes from choosing the exact noun and verb, not from piling on adjectives and adverbs.",
+   "suggested_words": [
+    80,
+    140
+   ],
+   "difficulty": 2
+  },
+  {
+   "module": "EN-CRAFT",
+   "marks": 6,
+   "verb": "Compose",
+   "demand": "synthesise",
+   "response_type": "imaginative",
+   "text": "Compose a short piece of fiction (300 to 400 words) that uses a shift in time (a flashback or a flash-forward) as its turning point. Then write a reflection (about 100 words) explaining how the shift shapes the meaning of your piece.",
+   "skill_tags": [
+    "time shift",
+    "structure",
+    "reflection"
+   ],
+   "criteria": [
+    {
+     "mark": 6,
+     "descriptor": "Composes a highly effective imaginative piece that uses a shift in time as a purposeful turning point and reflects precisely on its effect, with sophisticated control of form, voice, structure and language for purpose"
+    },
+    {
+     "mark": 5,
+     "descriptor": "Composes an effective imaginative piece that uses a shift in time as a purposeful turning point and reflects precisely on its effect, with well-controlled voice, structure and language"
+    },
+    {
+     "mark": 4,
+     "descriptor": "Composes a sound imaginative piece that uses a shift in time as a purposeful turning point and reflects precisely on its effect, with some deliberate control of language and form"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Composes a piece that partly uses a shift in time as a purposeful turning point and reflects precisely on its effect; control of tense, point of view or structure is uneven"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Composes a piece with limited control or limited relevance to the task"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Attempts a piece with minimal relevance or control"
+    }
+   ],
+   "checklist": [
+    "Uses a clear, controlled shift in time that functions as the turning point",
+    "Manages tense and transitions so the reader is never confused about when events occur",
+    "Ensures the shift changes the meaning of the present action (irony, revelation, consequence)",
+    "Shows character through detail and action rather than explanation",
+    "Reflection names the choice, explains its intended effect and links it to the purpose of the piece"
+   ],
+   "next_steps": {
+    "0": "Plan the present-time scene and the moment in the past or future that will change how it is read.",
+    "1": "Decide how you will signal the shift (tense change, a section break, a repeated object) and test it for clarity.",
+    "2": "Make sure the shift does more than add information: it should change the meaning of the present scene.",
+    "3": "Write the piece with concrete detail; let a recurring object or image link the two times.",
+    "4": "Write the reflection: name the shift, explain its intended effect, and link it to your purpose.",
+    "5": "Refine for Band 6: control tense precisely, make every detail earn its place, and make the reflection specific to your piece rather than general."
+   },
+   "plan": "Concept: Present time: a girl helps her grandfather pack up his workshop before he moves into care; he is curt and unhelpful, and she is impatient. Flashback turning point: the same workshop, years earlier, when he taught her to plane a piece of wood and kept the first curl of shaving in a jar. Return to the present: she finds the jar on the top shelf, the shaving still inside.\n\nStructure: 1. Present tense: dust, boxes, his silence. 2. A section break and a shift to past tense for the flashback, linked by the sound of a plane on wood. 3. Return to the present: the jar is found; she does not mention it; she wraps it in newspaper and puts it in the box marked KEEP.\n\nExemplar transition (annotated): He picks up the plane, weighs it, and puts it in the box marked SELL. [Section break.] The first time, the shaving came off in one piece, pale and curled like a ribbon from a present. [Craft move: a tense shift and a shared object mark the flashback clearly.]\n\nReflection plan: Name the choice (a past-tense flashback triggered by the plane). Explain the effect: it reveals the tenderness behind the grandfather's present silence, so his curtness reads as grief rather than coldness. Link to purpose: the piece is about how love is stored in objects and actions when words fail.\n\nAvoid: more than one shift, unclear tense, or a reflection that only retells the story.",
+   "suggested_words": [
+    400,
+    500
+   ],
+   "difficulty": 3
+  },
+  {
+   "module": "EN-CRAFT",
+   "marks": 5,
+   "verb": "Compose",
+   "demand": "synthesise",
+   "response_type": "persuasive",
+   "text": "Compose an opinion column (300 to 400 words) for a regional newspaper arguing that your town's public library should open on Sundays.",
+   "skill_tags": [
+    "persuasive writing",
+    "opinion column",
+    "audience"
+   ],
+   "criteria": [
+    {
+     "mark": 5,
+     "descriptor": "Composes a highly effective persuasive piece that argues for Sunday library opening in a form and voice suited to a regional newspaper's readers, with sophisticated control of argument, audience and rhetorical strategy"
+    },
+    {
+     "mark": 4,
+     "descriptor": "Composes an effective persuasive piece that argues for Sunday library opening in a form and voice suited to a regional newspaper's readers, with a clear argument and well-chosen strategies for the audience"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Composes a sound persuasive piece that argues for Sunday library opening in a form and voice suited to a regional newspaper's readers, with some deliberate persuasive strategies"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Composes a piece that partly argues for Sunday library opening in a form and voice suited to a regional newspaper's readers; argument or audience awareness is uneven"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Composes a piece with limited argument or limited relevance to the task"
+    }
+   ],
+   "checklist": [
+    "Takes a clear position suited to a local readership and sustains it",
+    "Uses the conventions of an opinion column (headline, a personal and local voice, a hook, a strong close)",
+    "Appeals to different groups in the community with specific, plausible local detail",
+    "Anticipates the main objection (cost or staffing) and answers it reasonably",
+    "Avoids invented statistics; relies on reasoning, local observation and values"
+   ],
+   "next_steps": {
+    "0": "Write a headline and a one-sentence contention that a busy local reader would understand immediately.",
+    "1": "Open with a local scene or anecdote rather than a general statement about libraries.",
+    "2": "Develop two or three reasons that appeal to different groups (families, workers, older residents, students).",
+    "3": "Address the objection of cost or staffing fairly and propose a practical answer (for example a trial period or volunteer support).",
+    "4": "Refine for Band 6: give the column a recognisable voice, keep paragraphs short for newspaper readers, and end with a memorable call to action."
+   },
+   "plan": "Headline: Open the Book on Sundays\n\nContention: Our library is open when most working families cannot use it; opening on Sunday afternoons would make it a place for the whole town.\n\nStructure: 1. Hook: last Sunday the writer saw a family reading the library's opening hours through the glass door, then walking back to the car. 2. Reason one: working parents and shift workers can only visit on weekends. 3. Reason two: students preparing for exams need a quiet place with study space and internet access. 4. Reason three: older residents and people living alone gain a reason to be among others on the quietest day of the week. 5. Objection: cost and staffing. Answer: propose a six-month trial of three Sunday hours, with the council reviewing usage. 6. Close: an image of the lights on behind the glass door on a Sunday afternoon; a call to write to the council.\n\nExemplar opening (annotated): Last Sunday, at about two o'clock, I watched a father and two small children press their faces to the glass doors of our library, read the opening hours, and walk back to the car. [Craft move: a concrete local scene makes the problem visible without statistics.]\n\nVoice: first person, neighbourly and reasonable; short paragraphs; one rhetorical question at most.\n\nAvoid: invented figures, attacking the council, or ignoring the cost objection.",
+   "suggested_words": [
+    300,
+    400
+   ],
+   "difficulty": 3
+  },
+  {
+   "module": "EN-CRAFT",
+   "marks": 4,
+   "verb": "Rewrite",
+   "demand": "analyse",
+   "response_type": "rewrite",
+   "text": "Rewrite this exchange so that the conflict is conveyed through subtext rather than stated directly, then explain your choices in about 80 words. \"'I am angry with you because you forgot my birthday,' said Mia. 'I am sorry. I have been very busy and stressed at work,' said Sam. 'That is not a good excuse,' said Mia.\"",
+   "skill_tags": [
+    "subtext",
+    "dialogue",
+    "rewrite"
+   ],
+   "criteria": [
+    {
+     "mark": 4,
+     "descriptor": "Produces a highly effective rewrite that conveys the conflict through subtext rather than direct statement, with every change purposeful, and explains the choices precisely"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Produces an effective rewrite that conveys the conflict through subtext rather than direct statement and explains most choices clearly"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Produces a rewrite that partly conveys the conflict through subtext rather than direct statement; explanation is general"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Produces a rewrite with limited change or limited explanation"
+    }
+   ],
+   "checklist": [
+    "Removes direct statements of emotion and explanation from the dialogue",
+    "Uses indirect dialogue, action, objects or silence to convey the conflict",
+    "Keeps the situation (the forgotten birthday, the excuse, the rejection) clear to the reader",
+    "Explains at least two choices and how each creates subtext"
+   ],
+   "next_steps": {
+    "0": "Cross out every line where a character names their feeling or explains themselves.",
+    "1": "Rewrite the exchange so that the characters talk about something else (an object, a task, a time) while the conflict sits underneath.",
+    "2": "Add one action or silence that carries the emotion, and check the forgotten birthday is still clear.",
+    "3": "Explain your choices: name each technique (indirect dialogue, action beat, object, silence) and the subtext it creates."
+   },
+   "plan": "Craft moves: Characters rarely say exactly what they feel. Let them talk around the conflict, using an object (a card, a cake, a calendar), action beats and a silence. Keep the birthday visible through a detail rather than a statement.\n\nExemplar rewrite: Sam came in at nine with his laptop bag still on his shoulder. There was a single slice of cake on a plate on the bench, under cling wrap. Is this for me? he said. Mia kept drying the same glass. Mum dropped it round. She said to say hi. Sam looked at the calendar on the fridge, then at the cake. Work's been, he said, and stopped. It's fine, Mia said, and put the glass away, and took out another one to dry.\n\nExemplar explanation: The slice of cake and the calendar reveal the forgotten birthday without anyone naming it. Mia's mention of her mother suggests others remembered. Sam's broken-off excuse shows guilt, and Mia's flat It's fine, contradicted by her repetitive drying, creates subtext: her words accept the apology while her actions reject it.\n\nNote: in your own rewrite, punctuate the dialogue conventionally with quotation marks; the exemplar here omits them only for display.",
+   "suggested_words": [
+    150,
+    220
+   ],
+   "difficulty": 2
   }
  ]
 }
