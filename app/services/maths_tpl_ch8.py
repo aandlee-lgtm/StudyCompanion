@@ -539,15 +539,16 @@ def t_8E(r: Rng, d: int) -> Generated:
             params={"form": "M", "P": P0, "R": R, "N": N},
         )
     M_exact = val(vM)
-    Mr = sp.Rational(str(cents(vM)))
+    Mr_s = str(cents(vM))  # the repayment actually paid, e.g. '1462.78'
+    Mr = sp.Rational(Mr_s)
     K_years = r.randint(1, yrs - 1)
     K = 12 * K_years
     interest = N * Mr - P0
     tol_c = float(abs(N * (Mr - M_exact))) + 0.01
-    bal = f"{P0}*(1 + {rp})^{K} - {Mr}*((1 + {rp})^{K} - 1)/{rp}"
+    bal = f"{P0}*(1 + {rp})^{K} - {Mr_s}*((1 + {rp})^{K} - 1)/{rp}"
     bal_exactM = val(f"{P0}*(1 + {rp})^{K}") - M_exact * (val(f"(1 + {rp})^{K}") - 1) / R_(rp)
     tol_d = float(abs(val(bal) - bal_exactM)) + 0.01
-    vA1 = f"{P0}*(1 + {rp}) - {Mr}"
+    vA1 = f"{P0}*(1 + {rp}) - {Mr_s}"
     text = multipart(
         f"A loan of {dollars(P0, 0)} is to be repaid in equal monthly instalments of \\(M\\) dollars over {yrs} years. "
         f"Interest is charged at {pct(R)} p.a., compounded monthly, and the repayment is made at the end of each month.",
@@ -556,21 +557,21 @@ def t_8E(r: Rng, d: int) -> Generated:
          ("c", "Find the total interest paid over the life of the loan, to the nearest cent.", 1),
          ("d", f"Find the amount still owing after {K_years} year{'s' if K_years > 1 else ''}, to the nearest cent.", 2)])
     steps = [f"(a) \\(r = {rp}\\), \\(n = {N}\\): \\(M = \\dfrac{{Pr(1 + r)^n}}{{(1 + r)^n - 1}} \\approx {m2(vM)}\\).",
-             f"(b) \\(A_1 = {plain(P0)}\\times {dec(1 + R_(rp))} - {Mr} = {m2(vA1)}\\).",
-             f"(c) Total repaid \\(= {N}\\times {Mr} = {money(N * Mr)}\\); interest \\(= {money(N * Mr)} - {money(P0)} = {money(interest)}\\).",
-             f"(d) \\(A_{{{K}}} = P(1 + r)^{{{K}}} - M\\dfrac{{(1 + r)^{{{K}}} - 1}}{{r}}\\) with \\(M = {Mr}\\).",
+             f"(b) \\(A_1 = {plain(P0)}\\times {dec(1 + R_(rp))} - {Mr_s} = {m2(vA1)}\\).",
+             f"(c) Total repaid \\(= {N}\\times {Mr_s} = {money(N * Mr)}\\); interest \\(= {money(N * Mr)} - {money(P0)} = {money(interest)}\\).",
+             f"(d) \\(A_{{{K}}} = P(1 + r)^{{{K}}} - M\\dfrac{{(1 + r)^{{{K}}} - 1}}{{r}}\\) with \\(M = {Mr_s}\\).",
              f"\\(A_{{{K}}} \\approx {m2(bal)}\\)."]
     return Generated(
         text,
         A_parts(P("a", 2, A_round(vM, 2, "$")), P("b", 1, A_round(vA1, 2, "$")),
-                P("c", 1, {"type": "num", "value": str(interest), "tol": round(tol_c, 4), "units": "$"}),
-                P("d", 2, {"type": "num", "value": bal, "tol": round(tol_d, 4), "units": "$"})),
+                P("c", 1, {"type": "num", "value": dec(interest), "tol": round(tol_c, 4), "units": "$"}),
+                P("d", 2, {"type": "num", "value": str(cents(bal)), "tol": round(tol_d + 0.005, 4), "units": "$"})),
         6, 3, steps,
         "A reducing-balance loan: each month interest is added and the repayment subtracted; the balance is a compounded principal minus a GP of repayments.",
         "Use the rounded repayment in later parts (it is what is actually paid) and say so.",
         quicker="The amount owing after half the term is more than half the loan, because early repayments are mostly interest.",
         common_errors=[err(rnd(sp.Rational(P0, N), 2), "conceptual", FIN, "That ignores interest.", step=1, part="a"),
-                       err(rnd(f"{P0} - {Mr}", 2), "conceptual", FIN, "Interest is added before the repayment.", step=2, part="b"),
+                       err(rnd(f"{P0} - {Mr_s}", 2), "conceptual", FIN, "Interest is added before the repayment.", step=2, part="b"),
                        err(N * Mr, "interpretation", FIN, "That is the total repaid; subtract the amount borrowed to get the interest.", step=3, part="c"),
                        err(P0 - K * Mr, "conceptual", FIN, "Interest is charged on the balance every month; use the balance formula.", step=4, part="d")],
         skill="Analyse a reducing-balance loan.",

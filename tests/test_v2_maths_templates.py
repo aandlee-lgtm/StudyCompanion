@@ -977,6 +977,162 @@ def v_7E(g):
     return {"a": Bv, "b": kv, "c": froot(lambda s_: A + Bv * mp.exp(-kv * s_) - target, 0, 10000)}
 
 
+# ------------------------------------------------------------------- chapter 8 ---
+# Finance answers are re-derived by simulating the account period by period in exact rational
+# arithmetic, and unknown payments / rates by bisection — never by the closed-form GP formulas.
+Fr = Fraction
+
+
+def rate(R, m=1):
+    return Fr(str(R)) / (100 * m)
+
+
+def first_where(cond, limit=5000):
+    for n_ in range(1, limit):
+        if cond(n_):
+            return n_
+    raise AssertionError("no n found")
+
+
+def account(start, r_, pay, periods, due=False):
+    """Balance after ``periods``: each period interest at r_ then ``pay`` added (negative = withdrawal);
+    with due=True the deposit is made before the interest."""
+    b = Fr(start)
+    for _ in range(periods):
+        b = (b + pay) * (1 + r_) if due else b * (1 + r_) + pay
+    return b
+
+
+def mq(v):
+    """A Fraction (or int) as an mpmath number."""
+    v = Fr(v)
+    return mp.mpf(v.numerator) / v.denominator
+
+
+def bisect_mp(f, lo, hi, it=200):
+    lo, hi = mq(lo), mq(hi)
+    flo = f(lo)
+    for _ in range(it):
+        mid = (lo + hi) / 2
+        fm = f(mid)
+        if (fm > 0) == (flo > 0):
+            lo, flo = mid, fm
+        else:
+            hi = mid
+    return (lo + hi) / 2
+
+
+def cents_of(v, dp=2):
+    from decimal import ROUND_HALF_UP, Decimal
+
+    return Fr(str(Decimal(str(mp.nstr(mp.mpf(v), 40))).quantize(Decimal(1).scaleb(-dp), rounding=ROUND_HALF_UP)))
+
+
+def paid_out(n_, P0, r_, W):
+    """Number of full withdrawals W a fund P0 can make (interest first, then the withdrawal)."""
+    cnt, b = 0, Fr(P0)
+    while b * (1 + r_) >= W:
+        b = b * (1 + r_) - W
+        cnt += 1
+        assert cnt < n_
+    return cnt
+
+
+@verifies("8A")
+def v_8A(g):
+    p = g.params
+    if p["form"] == "seats":
+        return sum(p["a"] + i * p["d"] for i in range(p["n"]))
+    if p["form"] == "salary":
+        return account(p["S0"], rate(p["p"]), 0, p["yr"] - 1)
+    jobA = lambda y: p["a"] + (y - 1) * p["inc"]  # noqa: E731
+    jobB = lambda y: account(p["b"], rate(p["p"]), 0, y - 1)  # noqa: E731
+    totB = sum(jobB(y) for y in range(1, p["N"] + 1))
+    if p["form"] == "compare":
+        return {"a": sum(jobA(y) for y in range(1, p["N"] + 1)), "b": totB}
+    return {"a": jobA(p["n1"]), "b": totB, "c": first_where(lambda y: jobB(y) > jobA(y))}
+
+
+@verifies("8B")
+def v_8B(g):
+    p = g.params
+    if p["form"] == "multiply":
+        return first_where(lambda n_: account(1, rate(p["p"]), 0, n_) >= p["mult"])
+    if p["form"] == "dep":
+        val = lambda n_: account(p["V0"], -rate(p["p"]), 0, n_)  # noqa: E731
+        return {"a": val(p["n1"]), "b": first_where(lambda n_: val(n_) < p["B"])}
+    h, f, bound = Fr(p["h"]), Fr(p["f"]), Fr(p["bound"])
+    rebound = lambda k_: h * f**k_  # noqa: E731
+    travelled = mq(h) + 2 * mp.fsum(mq(rebound(k_)) for k_ in range(1, 400))
+    return {"a": rebound(p["k"]), "b": first_where(lambda k_: rebound(k_) < bound), "c": travelled}
+
+
+@verifies("8C")
+def v_8C(g):
+    p = g.params
+    if p["form"] == "simple":
+        return sum(p["P"] * rate(p["R"]) for _ in range(p["n"]))
+    if p["form"] == "compound":
+        return account(p["P"], rate(p["R"], p["m"]), 0, p["m"] * p["n"])
+    if p["form"] == "rate":
+        A = mp.mpf(p["A"])
+        return 100 * bisect_mp(lambda r_: p["P"] * (1 + r_) ** p["n"] - A, 0, 1)
+    return {"a": account(p["P"], rate(p["R"]), 0, p["n"]), "b": account(p["P"], rate(p["R"], 12), 0, 12 * p["n"]),
+            "c": first_where(lambda n_: account(p["P"], rate(p["R"]), 0, n_) > p["mult"] * p["P"])}
+
+
+@verifies("8D")
+def v_8D(g):
+    p = g.params
+    if p["form"] == "fv":
+        return account(0, rate(p["R"], p["m"]), p["M"], p["N"], due=p["due"])
+    r_ = rate(p["R"], 12)
+    if p["form"] == "target":
+        unit = account(0, r_, 1, p["N"])  # the balance is linear in the deposit
+        return bisect_mp(lambda M: M * mq(unit) - p["T"], 0, p["T"])
+    return {"a": account(0, r_, p["M"], 3), "b": account(0, r_, p["M"], p["N"]),
+            "c": first_where(lambda n_: account(0, r_, p["M"], n_) > p["T"])}
+
+
+def _level_payment(P0, r_, N):
+    """The payment that takes a balance P0 to zero in N periods, by bisection on the simulated balance."""
+    end = lambda W: mq(account(P0, r_, 0, N)) - W * mq(account(0, r_, 1, N))  # noqa: E731
+    return bisect_mp(end, 0, P0)
+
+
+@verifies("8E")
+def v_8E(g):
+    p = g.params
+    r_ = rate(p["R"], 12)
+    if p["form"] == "A1":
+        return account(p["P"], r_, -p["M"], 1)
+    M = _level_payment(p["P"], r_, p["N"])
+    if p["form"] == "M":
+        return M
+    Mr = cents_of(M)
+    owing = account(p["P"], r_, -Mr, p["K"])
+    assert abs(mq(owing) - (mq(account(p["P"], r_, 0, p["K"])) - M * mq(account(0, r_, 1, p["K"])))) <= mq(g.answer["parts"][3]["answer"]["tol"])
+    return {"a": M, "b": account(p["P"], r_, -Mr, 1), "c": p["N"] * Mr - p["P"], "d": cents_of(mq(owing))}
+
+
+@verifies("8F")
+def v_8F(g):
+    p = g.params
+    if p["form"] == "B2":
+        return account(p["P"], rate(p["R"], 12), -p["W"], 2)
+    if p["form"] == "pv":
+        r_ = rate(p["R"])
+        # the fund X that is exactly exhausted by n end-of-year payments W
+        return bisect_mp(lambda X: X * mq(account(1, r_, 0, p["n"])) - p["W"] * mq(account(0, r_, 1, p["n"])), 0, p["W"] * p["n"])
+    if p["form"] == "W":
+        return _level_payment(p["P"], rate(p["R"], 12), p["N"])
+    if p["form"] == "count":
+        return paid_out(5000, p["P"], rate(p["R"], 12), p["W"])
+    r_ = rate(p["R"])
+    F = account(0, r_, p["C"], p["N1"])
+    return {"a": F, "b": _level_payment(F, r_, p["N2"]), "c": paid_out(500, F, r_, p["W2"])}
+
+
 # --------------------------------------------------------------------- tests ---
 def test_every_plan_subtopic_has_its_own_v2_template():
     missing = [c for c in plan_codes() if c not in ENRICHMENT and c not in mt.V2_CODES]
