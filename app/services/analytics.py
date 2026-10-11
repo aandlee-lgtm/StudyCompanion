@@ -645,9 +645,16 @@ def monthly_review(db: Session, ds: Dataset | None = None) -> dict:
         if len(a) >= 5 and len(b) >= 5:
             d = _avg(b) - _avg(a)
             word = "up" if d >= 0.05 else "down" if d <= -0.05 else "steady"
-            improvement.append(f"{SUBJECT_NAMES[code]}: {pct(_avg(a))}% → {pct(_avg(b))}% ({word}" +
-                               (f"; questions were harder this month" if mean(f.difficulty for f in b) - mean(f.difficulty for f in a) >= 0.25 else "")
-                               + ").")
+            reasons = []
+            if word == "down":
+                if mean(f.difficulty for f in b) - mean(f.difficulty for f in a) >= 0.25:
+                    reasons.append("the questions were harder this month")
+                fresh = sum(1 for f in b if f.plan_item_id and first_day.get(f.plan_item_id, ds.today) >= ds.since(30))
+                if fresh / len(b) >= 0.4:
+                    reasons.append(f"{pct(fresh / len(b))}% of this month's answers were on topics started this month, so a dip is expected")
+            elif word == "up" and mean(f.difficulty for f in b) - mean(f.difficulty for f in a) >= 0.25:
+                reasons.append("even though the questions were harder")
+            improvement.append(f"{SUBJECT_NAMES[code]}: {pct(_avg(a))}% → {pct(_avg(b))}% ({word}" + "".join(f"; {r}" for r in reasons) + ").")
     if not improvement:
         improvement.append("Improvement is measured against the previous 30 days once both months have at least five answers in a subject.")
     # weak areas with the main reason

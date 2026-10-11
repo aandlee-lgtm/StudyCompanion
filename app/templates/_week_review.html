@@ -1,0 +1,20 @@
+{# THIS WEEK (spec 48): shared by /progress/week and the Friday session summary (owner: analytics). #}
+<dl class="an-review">
+  <dt>Sessions completed</dt>
+  <dd>{{ w.sessions_completed }} of {{ w.sessions_total }} study day{{ 's' if w.sessions_total != 1 }}{% if w.sessions_partial %} · {{ w.sessions_partial }} partly done{% endif %}{% if w.sessions_missed %} · {{ w.sessions_missed }} missed{% endif %}</dd>
+  <dt>Questions attempted</dt>
+  <dd>{{ w.questions }}{% if w.skipped %} ({{ w.skipped }} skipped){% endif %}{% if w.average is not none %} · average {{ w.average }}%{% endif %}
+    {% if w.subject_averages %}<br><span class="small muted">{% for code, v in w.subject_averages.items() %}{{ SUBJECT_SHORT[code] }} {{ v }}%{% if not loop.last %} · {% endif %}{% endfor %}</span>{% endif %}</dd>
+  <dt>Study time</dt>
+  <dd>{{ w.study_minutes | minutes }}</dd>
+  <dt>Strongest improvement</dt>
+  <dd>{{ w.strongest_improvement }}</dd>
+  <dt>Persistent weakness</dt>
+  <dd>{{ w.persistent_weakness }}</dd>
+  <dt>Next week's priority</dt>
+  <dd>{{ w.next_priority }}</dd>
+  <dt>Revision coming due</dt>
+  <dd>{% if w.revision_due %}{{ w.revision_due }} skill{{ 's' if w.revision_due != 1 }} due in the coming week{% else %}No skill revision due next week{% endif %}{% if w.exact_repeats %}; {{ w.exact_repeats }} question{{ 's' if w.exact_repeats != 1 }} return for exact revision{% endif %}.
+    {% if w.revision_lines %}<ul class="an-sub small">{% for line in w.revision_lines %}<li>{{ line }}</li>{% endfor %}</ul>{% endif %}</dd>
+</dl>
+{% if w.insights %}<h3>Patterns this week</h3>{% for line in w.insights %}<p class="small">{{ line }}</p>{% endfor %}{% endif %}

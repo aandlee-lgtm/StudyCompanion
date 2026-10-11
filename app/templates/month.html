@@ -1,18 +1,51 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Monthly review</h1><p class="lead">The last 30 days, interpreted.</p>
-<div class="card"><h2>Interpretation</h2>{% for line in m.report.interpretation %}<p>{{ line }}</p>{% endfor %}</div>
+<div class="spread">
+  <div><h1>Monthly review</h1><p class="lead">The last 30 days ({{ m.n }} counted answer{{ 's' if m.n != 1 }}), compared with the 30 days before ({{ m.n_prev }}).</p></div>
+  <div class="row"><a class="btn small" href="/progress?window=30">Numbers for these 30 days</a><a class="btn small" href="/progress/week">Weekly review</a></div>
+</div>
+
+<div class="card">
+  <h2>Interpretation</h2>
+  {% if m.report.insights %}<ul class="an-insights">{% for i in m.report.insights[:5] %}<li class="{{ i.tone }}">{{ i.line }}<span class="an-basis">Based on {{ i.basis }}.</span></li>{% endfor %}</ul>
+  {% else %}<p>{{ m.report.not_enough or 'No clear pattern this month: no group of questions differs from another by enough, on enough answers, to say something reliable.' }}</p>{% endif %}
+</div>
+
 <div class="grid g2" style="margin-top:16px">
-  <div class="card"><h3>Suggested priorities</h3><ol>{% for p in m.priorities %}<li>{{ p }}</li>{% endfor %}</ol>
-    <h3>HSC readiness</h3><p>{{ m.readiness.score }}/100 <a class="small" href="/progress#readiness">(how it is calculated)</a></p>
-    <h3>Response quality (written)</h3><p class="small">English average: {{ m.written_quality.ENGLISH if m.written_quality.ENGLISH is not none else '—' }}{{ '%' if m.written_quality.ENGLISH is not none }} · Legal average: {{ m.written_quality.LEGAL if m.written_quality.LEGAL is not none else '—' }}{{ '%' if m.written_quality.LEGAL is not none }}</p>
-    <h3>Time management</h3>{% for code, v in m.time_management.items() %}<p class="small">{{ SUBJECT_SHORT[code] }}: {{ (v ~ '× the exam-style estimate') if v else 'no timing data' }}</p>{% endfor %}
-    <h3>Revision retention</h3><p class="small">{{ (m.report.revision_performance ~ '% on repeated questions') if m.report.revision_performance is not none else 'No repeated questions yet.' }}</p>
+  <div class="card">
+    <h3>Suggested priorities</h3>
+    <ol>{% for p in m.priorities %}<li>{{ p }}</li>{% endfor %}</ol>
   </div>
-  <div class="card"><h3>Topic mastery (weakest first)</h3>
-    {% for name, pct, n in m.mastery %}<div class="spread small"><span>{{ name }}</span><span><span class="pill {{ 'good' if pct >= 75 else ('warn' if pct >= 55 else 'bad') }}">{{ pct }}%</span> <span class="muted">({{ n }})</span></span></div>{% else %}<p class="small muted">No mastery data yet.</p>{% endfor %}
+  <div class="card">
+    <h3>Syllabus coverage</h3>
+    <p class="small">About {{ m.coverage.overall }}% of the 2027 course has been assessed ({% for code, v in m.coverage.subjects.items() %}{{ SUBJECT_SHORT[code] }} {{ v }}%{% if not loop.last %} · {% endif %}{% endfor %}).</p>
+    {% if m.coverage.new_topics %}<p class="small"><span class="label">First assessed this month</span><br>{{ m.coverage.new_topics | join(' · ') }}</p>{% endif %}
+    <p class="small"><span class="label">Unlocked but not yet assessed</span><br>{{ m.coverage.not_assessed | join(' · ') or 'none' }}</p>
+    <h3>HSC readiness</h3>
+    {% if m.readiness.enough %}<p>{{ m.readiness.display }}/100 · {{ m.readiness.band }} <a class="small" href="/progress#readiness">(how it is calculated)</a></p>
+    {% else %}<p class="small muted">{{ m.readiness.summary[0] }}</p>{% endif %}
   </div>
 </div>
-<h2>Syllabus coverage</h2>
-<p class="small">Not yet assessed: {{ m.report.not_assessed | join(' · ') or 'none' }}</p>
+
+<div class="grid g2" style="margin-top:16px">
+  <div class="card">
+    <h3>Improvement</h3>
+    {% for line in m.improvement %}<p class="small">{{ line }}</p>{% endfor %}
+    <h3>Weak areas</h3>
+    {% for line in m.weak %}<p class="small">{{ line }}</p>{% else %}<p class="small muted">No topic with 3 or more answers this month is below 60%.</p>{% endfor %}
+    <h3>Response quality</h3>
+    {% for line in m.response_quality %}<p class="small">{{ line }}</p>{% else %}<p class="small muted">Fewer than 3 written English or Legal responses this month.</p>{% endfor %}
+    <h3>Time management</h3>
+    {% for line in m.time_management %}<p class="small">{{ line }}</p>{% else %}<p class="small muted">Not enough timed answers this month.</p>{% endfor %}
+    <h3>Revision retention</h3>
+    <p class="small">{{ m.retention or 'Fewer than 3 questions came back for revision this month.' }}</p>
+  </div>
+  <div class="card">
+    <h3>Topic mastery (weakest first)</h3>
+    <p class="tiny muted">Average mark this month; change against the month before where both months have 2 or more answers.</p>
+    {% for t in m.mastery %}<div class="spread small an-line"><span><span class="subj-{{ t.subject }}">{{ SUBJECT_SHORT[t.subject] }}</span> · {{ t.name }}</span>
+      <span>{% if t.change is not none %}<span class="an-trend {{ 'up' if t.change >= 5 else ('down' if t.change <= -5 else 'steady') }} tiny">{{ '+' if t.change > 0 }}{{ t.change }}</span> {% endif %}<span class="pill {{ 'good' if t.pct >= 75 else ('warn' if t.pct >= 55 else 'bad') }}">{{ t.pct }}%</span> <span class="muted">({{ t.n }})</span></span></div>
+    {% else %}<p class="small muted">No topic has 2 or more answers this month.</p>{% endfor %}
+  </div>
+</div>
 {% endblock %}

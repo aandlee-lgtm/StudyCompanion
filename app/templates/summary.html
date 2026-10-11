@@ -4,31 +4,27 @@
 <div class="label">{{ s.session_date | fdate('%A %d %B') }} · Session {{ s.session_number }}</div>
 <h1>{{ 'Session complete' if s.status == 'completed' else 'Session so far' }}</h1>
 <div class="card">
-  <table>
-    <tr><td>Time</td><td><strong>{{ summary.minutes }} minutes</strong></td></tr>
-    {% for code, m in summary.marks.items() %}<tr><td class="subj-{{ code }}">{{ SUBJECT_SHORT[code] }}</td><td><strong>{{ m }}</strong></td></tr>{% endfor %}
+  <table class="an-table">
+    <tr><td>Time</td><td class="num"><strong>{{ summary.minutes | minutes }}</strong>{% if summary.minutes_capped %} <span class="tiny muted">(timer capped: it kept running while you were away)</span>{% endif %}</td></tr>
+    {% if summary.subjects %}
+    {% for code, sd in summary.subjects.items() %}<tr><td class="subj-{{ code }}">{{ SUBJECT_NAMES[code] }}</td><td class="num">
+      {% if sd.answered %}<strong>{{ '%g' % sd.awarded }}/{{ '%g' % sd.possible }}</strong>{% if sd.answered < sd.total %} <span class="tiny muted">({{ sd.answered }} of {{ sd.total }} answered)</span>{% endif %}
+      {% else %}<span class="muted">not started ({{ sd.total }} question{{ 's' if sd.total != 1 }})</span>{% endif %}</td></tr>{% endfor %}
+    {% else %}
+    {% for code, m in summary.marks.items() %}<tr><td class="subj-{{ code }}">{{ SUBJECT_NAMES[code] }}</td><td class="num"><strong>{{ m }}</strong></td></tr>{% endfor %}
+    {% endif %}
+    {% if summary.skipped %}<tr><td>Skipped</td><td class="num">{{ summary.skipped }}</td></tr>{% endif %}
   </table>
 </div>
 <div class="grid g2" style="margin-top:16px">
   <div class="card"><div class="label">Today's strength</div><p>{{ summary.strength }}</p></div>
   <div class="card"><div class="label">Main learning</div><p>{{ summary.main_learning }}</p></div>
   <div class="card"><div class="label">Top priority</div><p>{{ summary.top_priority }}</p></div>
-  <div class="card"><div class="label">Revision scheduled</div>{% for r in summary.revision_scheduled %}<p class="small">{{ r }}</p>{% else %}<p class="small muted">Nothing due in the next week.</p>{% endfor %}</div>
+  <div class="card"><div class="label">Revision scheduled</div>{% for r in summary.revision_scheduled %}<p class="small">{{ r }}</p>{% else %}<p class="small muted">Nothing new was scheduled from today's answers.</p>{% endfor %}</div>
 </div>
 {% if week %}
 <h2>This week</h2>
-<div class="card">
-  <table>
-    <tr><td>Sessions completed</td><td>{{ week.sessions_completed }} of {{ week.sessions_total }}</td></tr>
-    <tr><td>Questions attempted</td><td>{{ week.questions }}</td></tr>
-    <tr><td>Study time</td><td>{{ week.study_minutes | minutes }}</td></tr>
-    <tr><td>Average</td><td>{{ week.average if week.average is not none else '—' }}{{ '%' if week.average is not none }}</td></tr>
-    <tr><td>Strongest improvement</td><td>{{ week.strongest_improvement }}</td></tr>
-    <tr><td>Persistent weakness</td><td>{{ week.persistent_weakness }}</td></tr>
-    <tr><td>Next week's priority</td><td>{{ week.next_priority }}</td></tr>
-    <tr><td>Revision coming due</td><td>{{ week.revision_due }} item{{ 's' if week.revision_due != 1 }}</td></tr>
-  </table>
-</div>
+<div class="card">{% set w = week %}{% include "_week_review.html" %}</div>
 {% endif %}
 <p class="row" style="margin-top:18px"><a class="btn" href="/session/{{ s.id }}">Review today's questions</a><a class="btn" href="/progress">Deeper analysis</a><a class="btn primary" href="/">Dashboard</a></p>
 {% endblock %}
