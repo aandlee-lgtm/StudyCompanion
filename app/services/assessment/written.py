@@ -105,12 +105,15 @@ def mark_written(db: Session, q: Question, response: str, settings: dict, previo
         "comparison": comparison, "improved_answer": result.improved_answer or None,
         "guidance": (q.solution or {}).get("guidance"), "criteria_text": q.marking_guideline, "criteria_official": q.guideline_official,
     }
-    # each category with its OWN description (legal-20); subject packages may replace payload["journal_items"]
-    payload["journal_items"] = error_journal.written_items(code, payload["result"], method)
     if code == "LEGAL":
         legal.post_process(db, q, ctx, result, payload, method)
     elif code == "ENGLISH":
         english.post_process(db, q, ctx, result, payload, method)
+    if "journal_items" not in payload:
+        # each category with its OWN description (legal-20), read from the result AFTER the subject's
+        # post-processing (Legal's offline estimate adds e.g. 'unverified/invented authority');
+        # subject packages may set payload["journal_items"] themselves (English does)
+        payload["journal_items"] = error_journal.written_items(code, payload["result"], method)
     return result.mark_awarded, payload, [i["category"] for i in payload.get("journal_items") or []], method
 
 

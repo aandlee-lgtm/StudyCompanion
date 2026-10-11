@@ -1,0 +1,24 @@
+{# v2-legal-logic: first-use "Which Legal topics have you started?" picker (owner request).
+   Needs: picker (legal_plan.picker), picker_next (where to return after saving). #}
+{% set P = picker %}
+<section class="card legal-picker" id="legal-topics" aria-labelledby="legal-topics-h">
+  <h2 id="legal-topics-h">Which Legal topics have you started?</h2>
+  <p class="small">Legal Studies topics can be taught in any order. Tick every topic your class has started or finished. Ticked topics become <strong>Learning now</strong>; the others stay <strong>Not taught yet</strong> and their questions are not used in your daily sessions. Topics already marked Learnt or Revision keep that status. You can change any topic later on the Learning plan.</p>
+  <form method="post" action="/curriculum/LEGAL/started">
+    <input type="hidden" name="next" value="{{ picker_next or '/curriculum?subject=LEGAL' }}">
+    <div class="legal-picker-groups">
+      {% for g in P.groups %}
+      <fieldset class="legal-picker-group">
+        <legend>{{ g.title }}{% if g.options %} <span class="tiny muted">(at most {{ P.max_options }})</span>{% endif %}</legend>
+        {% for it in g['items'] %}
+        <label class="legal-picker-item">
+          <input type="checkbox" name="started" value="{{ it.id }}" {{ 'checked' if it.status != 'LOCKED' }}>
+          <span>{{ it.title }}{% if it.status in ('LEARNED', 'REVISION') %} <span class="tiny muted">({{ 'Learnt' if it.status == 'LEARNED' else 'Revision' }})</span>{% endif %}</span>
+        </label>
+        {% endfor %}
+      </fieldset>
+      {% endfor %}
+    </div>
+    <div class="row"><button class="btn primary">Save my Legal topics</button></div>
+  </form>
+</section>

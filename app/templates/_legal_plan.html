@@ -1,0 +1,161 @@
+{# v2-legal-logic: Legal Studies learning plan — core topics with syllabus sub-areas, option slots (legal-09/11) #}
+{% set L = legal %}
+{% if L.msg %}<div class="notice" role="status">{{ L.msg }}</div>{% endif %}
+
+{% if L.picker.pending %}
+{% set picker = L.picker %}{% set picker_next = '/curriculum?subject=LEGAL' %}
+{% include "_legal_topic_picker.html" %}
+{% else %}
+<details class="card legal-picker-again">
+  <summary class="small">Update which Legal topics you have started (tick boxes)</summary>
+  {% set picker = L.picker %}{% set picker_next = '/curriculum?subject=LEGAL' %}
+  {% include "_legal_topic_picker.html" %}
+</details>
+{% endif %}
+
+<p class="small muted legal-any-order">Legal Studies topics can be taught in any order. Set each sub-area and option on its own — <strong>Not taught yet</strong> (never in your sessions), <strong>Learning now</strong> (most weight; several at once is fine), <strong>Learnt</strong> (spaced revision) or <strong>Revision</strong> (extra weight). Nothing moves on to a "next" topic by itself.</p>
+
+<div class="notice {{ 'good' if L.confirmed else 'warn' }} small legal-syllabus">
+  <p>Each core topic is split into <strong>sub-areas</strong>, each with its own status, so content you have not been taught yet stays out of your daily sessions. The sub-area names are working labels written without access to the NESA website:
+  {% if L.confirmed %}you have confirmed them against the NESA Legal Studies syllabus for the 2027 HSC.{% else %}<strong>confirm them against the NESA Legal Studies syllabus for the 2027 HSC</strong>, and rename, add or retire sub-areas to match.{% endif %}</p>
+  <form method="post" action="/curriculum/LEGAL/syllabus-confirmed" class="row">
+    <input type="hidden" name="confirmed" value="{{ 0 if L.confirmed else 1 }}">
+    <button class="btn small">{{ 'Mark as not yet confirmed' if L.confirmed else 'I have confirmed the sub-areas against the syllabus' }}</button>
+  </form>
+</div>
+
+{% for g in L.groups.cores %}
+{% set p = g.parent %}
+<section class="card legal-core" id="item{{ p.id }}" aria-labelledby="core{{ p.id }}">
+  <div class="legal-core-head">
+    <h3 id="core{{ p.id }}">{{ p.title }} <span class="pill {{ p.status }}" title="Follows its sub-areas">{{ L.labels.get(p.status, p.status) }}</span></h3>
+    <form method="post" action="/curriculum/item/{{ p.id }}/status" class="row">
+      <label class="tiny muted" for="all{{ p.id }}">Set every sub-area to</label>
+      <select id="all{{ p.id }}" name="status">
+        {% for stt in L.statuses %}<option value="{{ stt }}" {{ 'selected' if p.status == stt }}>{{ L.labels[stt] }}</option>{% endfor %}
+      </select>
+      <button class="btn small">Apply</button>
+    </form>
+  </div>
+  <ol class="legal-subs">
+    {% for it in g.children if it.active %}
+    {% set short = it.title.replace(p.title ~ ' — ', '') %}
+    <li class="legal-sub status-{{ it.status|lower }}" id="item{{ it.id }}">
+      <div class="legal-sub-main">
+        <span class="legal-sub-title">{{ short }}</span>
+        <span class="tiny muted">{{ it.code }} · {{ L.counts.get(it.id, 0) }} question{{ '' if L.counts.get(it.id, 0) == 1 else 's' }}{% if mastery.get(it.id) %} · mastery {{ (mastery[it.id].mastery*100)|round|int }}%{% endif %}{% if it.source == 'custom' %} · added by you{% endif %}</span>
+      </div>
+      <div class="row legal-sub-actions">
+        <form method="post" action="/curriculum/item/{{ it.id }}/status">
+          <select name="status" onchange="this.form.submit()" aria-label="Status of {{ short }}">
+            {% for stt in L.statuses %}<option value="{{ stt }}" {{ 'selected' if it.status == stt }}>{{ L.labels[stt] }}</option>{% endfor %}
+          </select>
+          <noscript><button class="btn small">Save</button></noscript>
+        </form>
+        <details class="legal-edit">
+          <summary class="btn small">Edit</summary>
+          <div class="legal-edit-body">
+            <form method="post" action="/curriculum/item/{{ it.id }}/rename" class="row">
+              <input type="text" name="title" value="{{ it.title }}" aria-label="New title" required>
+              <button class="btn small">Rename</button>
+            </form>
+            <form method="post" action="/curriculum/item/{{ it.id }}/retire" class="row">
+              <button class="btn small danger" title="Hide it from your plan and sessions; nothing is deleted">Retire this sub-area</button>
+            </form>
+          </div>
+        </details>
+      </div>
+    </li>
+    {% endfor %}
+  </ol>
+  <details class="legal-add">
+    <summary class="tiny">Add a sub-area to {{ p.title }}</summary>
+    <form method="post" action="/curriculum/LEGAL/sub-area" class="row">
+      <input type="hidden" name="parent_id" value="{{ p.id }}">
+      <input type="text" name="title" placeholder="{{ p.title }} — sub-area title" required style="flex:1">
+      <input type="text" name="code" placeholder="Code (optional)" style="width:150px">
+      <button class="btn small">Add</button>
+    </form>
+  </details>
+</section>
+{% endfor %}
+
+<section class="card legal-options" id="options" aria-labelledby="opt-h">
+  <h3 id="opt-h">Option topics</h3>
+  <p class="small muted">Choose the {{ L.max_options }} options you study. Questions from other options are never served. You can change your choice at any time; progress is kept.</p>
+  <form method="post" action="/curriculum/LEGAL/options" class="legal-slots">
+    {% for n in range(L.max_options) %}
+    {% set current = L.active[n] if L.active|length > n else None %}
+    <div class="field">
+      <label for="slot{{ n + 1 }}">Option {{ n + 1 }}</label>
+      <select id="slot{{ n + 1 }}" name="option{{ n + 1 }}">
+        <option value="0">not selected</option>
+        {% for o in L.options %}<option value="{{ o.id }}" {{ 'selected' if current and current.id == o.id }}>{{ o.title.replace('Option — ', '') }}</option>{% endfor %}
+      </select>
+    </div>
+    {% endfor %}
+    <div class="field legal-slot-save"><button class="btn small primary">Save options</button></div>
+  </form>
+
+  {% for o in L.active %}
+  {% set h = L.health[o.id] %}
+  <div class="legal-option" id="item{{ o.id }}">
+    <div class="legal-sub-main">
+      <span class="legal-sub-title">{{ o.title.replace('Option — ', '') }} <span class="pill {{ o.status }}">{{ L.labels.get(o.status, o.status) }}</span></span>
+      <span class="tiny muted">{{ h.questions }} question{{ '' if h.questions == 1 else 's' }} · {{ h.verified_evidence }} verified evidence item{{ '' if h.verified_evidence == 1 else 's' }}</span>
+      {% if h.warnings %}<span class="tiny legal-warn">Not much to practise yet: {{ h.warnings|join('; ') }}. <a href="/questions">Questions</a> · <a href="/legal-evidence">Evidence bank</a></span>{% endif %}
+    </div>
+    <div class="row legal-sub-actions">
+      <form method="post" action="/curriculum/item/{{ o.id }}/status">
+        <select name="status" onchange="this.form.submit()" aria-label="Status of {{ o.title }}">
+          {% for stt in L.statuses %}<option value="{{ stt }}" {{ 'selected' if o.status == stt }}>{{ L.labels[stt] }}</option>{% endfor %}
+        </select>
+      </form>
+    </div>
+  </div>
+  {% endfor %}
+
+  <details class="legal-add">
+    <summary class="tiny">Manage option topics (add, rename, retire)</summary>
+    <ul class="legal-option-list">
+      {% for o in L.options %}
+      <li class="row">
+        <form method="post" action="/curriculum/item/{{ o.id }}/rename" class="row">
+          <input type="text" name="title" value="{{ o.title }}" aria-label="Title of {{ o.title }}" required>
+          <button class="btn small">Rename</button>
+        </form>
+        <form method="post" action="/curriculum/item/{{ o.id }}/retire"><button class="btn small danger">Retire</button></form>
+      </li>
+      {% endfor %}
+    </ul>
+    <form method="post" action="/curriculum/LEGAL/option/new">
+      <div class="row"><input type="text" name="name" placeholder="Option topic name" required style="flex:1"><input type="text" name="keywords" placeholder="Keywords for matching questions (comma separated)" style="flex:2"></div>
+      <div class="row" style="margin-top:8px"><input type="text" name="notes" placeholder="Notes (optional)" style="flex:1"><button class="btn small">Add option topic</button></div>
+    </form>
+  </details>
+</section>
+
+{% if L.groups.other %}
+<section class="card">
+  <h3>Other Legal plan items</h3>
+  {% for it in L.groups.other %}
+  <div class="legal-option" id="item{{ it.id }}">
+    <span class="legal-sub-title">{{ it.title }}</span>
+    <form method="post" action="/curriculum/item/{{ it.id }}/status">
+      <select name="status" onchange="this.form.submit()" aria-label="Status of {{ it.title }}">
+        {% for stt in L.statuses %}<option value="{{ stt }}" {{ 'selected' if it.status == stt }}>{{ L.labels[stt] }}</option>{% endfor %}
+      </select>
+    </form>
+  </div>
+  {% endfor %}
+</section>
+{% endif %}
+
+{% if L.retired %}
+<details class="card legal-retired">
+  <summary class="small">Retired ({{ L.retired|length }})</summary>
+  {% for it in L.retired %}
+  <div class="row"><span class="small">{{ it.title }}</span><form method="post" action="/curriculum/item/{{ it.id }}/restore"><button class="btn small">Restore</button></form></div>
+  {% endfor %}
+</details>
+{% endif %}

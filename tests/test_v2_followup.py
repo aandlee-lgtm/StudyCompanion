@@ -159,7 +159,7 @@ def test_legal_grounding_has_evidence_bank_and_feedback(client, db):
     a = _submit(db, q, "The law is effective because police can arrest people.")
     assert _ask(client, a, "What does 'evaluate' need here?").json()["ok"]
     prompt = p.prompts[-1]
-    for needle in ("Legal Studies", "VERIFIED LEGAL EVIDENCE BANK", "Example Reform Act 2021 (NSW)", "police can arrest people",
+    for needle in ("Legal Studies", "LEGAL EVIDENCE BANK (verification status per item", "Example Reform Act 2021 (NSW)", "police can arrest people",
                    "Some description, little evaluation.", f"2 / {q.marks}", "MODEL RESPONSE"):
         assert needle in prompt, needle
 

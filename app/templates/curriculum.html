@@ -13,6 +13,9 @@
 </div>
 {% endif %}
 
+{% if subject == 'LEGAL' and legal %}
+{% include "_legal_plan.html" %}
+{% else %}
 <div class="card" data-reorder-url="/curriculum/{{ subject }}/reorder">
   {% set ns = namespace(ch=None) %}
   {% for it in items %}
@@ -44,8 +47,10 @@
     </div>
   {% endfor %}
 </div>
+{% endif %}
 
 <div class="grid g2" style="margin-top:16px">
+  {% if subject != 'LEGAL' %}
   <div class="card">
     <h3>Add a {{ 'subtopic' if subject == 'MATHS' else 'topic' }}</h3>
     <form method="post" action="/curriculum/{{ subject }}/add">
@@ -57,6 +62,7 @@
       </div>
     </form>
   </div>
+  {% endif %}
   {% if subject == 'MATHS' %}
   <div class="card">
     <h3>Import a textbook sequence</h3>

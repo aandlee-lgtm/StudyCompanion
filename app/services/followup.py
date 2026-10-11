@@ -174,12 +174,26 @@ def _same_context(attempt: Attempt):
 
 
 def _legal_evidence(db: Session, q: Question, payload: dict) -> list[dict]:
-    """The verified evidence-bank items the feedback was grounded in (current bank if absent)."""
-    if payload.get("evidence") is not None:
-        return list(payload["evidence"])
-    from app.services.assessment.legal import evidence_for
+    """The evidence-bank items the feedback was grounded in (the current bank if absent), most
+    relevant first: items this question's model answer cites, then verified items. The prompt sends
+    only the first 25, and the merged v2 bank has many more items per topic."""
+    ev = payload.get("evidence")
+    if isinstance(ev, list):
+        items = [e for e in ev if isinstance(e, dict)]
+    else:
+        from app.services.assessment.legal import evidence_for
 
-    return evidence_for(db, q)
+        items = evidence_for(db, q)
+    sol = q.solution if isinstance(q.solution, dict) else {}
+    cited = {str(t).lower() for t in (sol.get("evidence_titles") or []) + (sol.get("stimulus_evidence_titles") or [])}
+    model = (q.model_answer or "").lower()
+
+    def rank(e: dict) -> tuple[int, int]:
+        title = str(e.get("title") or "").lower()
+        return (0 if title and (title in cited or title in model) else 1,
+                1 if str(e.get("verified") or "UNVERIFIED").upper() == "UNVERIFIED" else 0)
+
+    return sorted(items, key=rank)
 
 
 def reference(db: Session, attempt: Attempt, ctx: dict | None = None) -> dict:

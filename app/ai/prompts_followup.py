@@ -221,7 +221,8 @@ def followup(ctx: dict, history: list[dict], question: str, chip: str | None = N
     if ctx.get("subject") == "LEGAL":
         ev = ctx.get("evidence") or []
         if ev:
-            parts.append("VERIFIED LEGAL EVIDENCE BANK (if you mention legislation, cases, reports or statistics, use ONLY these):\n"
+            parts.append("LEGAL EVIDENCE BANK (verification status per item; if you mention legislation, cases, reports or statistics, "
+                         "use ONLY these, by exact title, and describe an UNVERIFIED item as 'to be verified'):\n"
                          + "\n".join(_clip(f"- {e.get('title')} ({e.get('type')}, {e.get('date') or 'date not recorded'}; checked "
                                            f"{e.get('verified')}): {e.get('summary') or ''}", 700) for e in ev[:25]))
         else:

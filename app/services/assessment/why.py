@@ -230,7 +230,8 @@ def why_prompt(ctx: dict) -> str:
     if ctx.get("model_answer"):
         lines.append(f"MODEL RESPONSE (for your reference; do not paste it):\n{ctx['model_answer'][:4000]}")
     if ctx.get("evidence") is not None and ctx.get("subject") == "LEGAL":
-        lines.append("VERIFIED LEGAL EVIDENCE — cite ONLY these items, by exact title; never name any other Act, case, report or statistic:\n"
+        lines.append("LEGAL EVIDENCE BANK (verification status per item) — cite ONLY these items, by exact title, and describe an "
+                     "UNVERIFIED item as 'to be verified'; never name any other Act, case, report or statistic:\n"
                      + json.dumps([{"title": e["title"], "type": e.get("type"), "verified": e.get("verified")} for e in ctx["evidence"]], ensure_ascii=False))
     lines += [
         f"MARK AWARDED: {ctx['mark']} / {ctx['marks']}",

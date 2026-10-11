@@ -24,14 +24,37 @@ def data_dir(tmp_path, monkeypatch):
     factory.set_test_provider(None)
 
 
+@pytest.fixture(scope="session")
+def seeded_template(tmp_path_factory):
+    """A database migrated and seeded once per test run (seeding the full v2 content takes seconds).
+    Each ``db`` fixture starts from a copy of it; ``prepare_database`` then finds it up to date."""
+    from app.database_setup import prepare_database
+    from app.db import get_engine
+
+    d = tmp_path_factory.mktemp("seeded_template")
+    old = config.data_dir
+    config.data_dir = d
+    try:
+        clock.set_today(TUESDAY)
+        prepare_database(f"sqlite:///{d / 'test.db'}")
+        get_engine().dispose()  # closes the last connection, so the WAL is checkpointed into test.db
+    finally:
+        config.data_dir = old
+        clock.set_today(None)
+    return d / "test.db"
+
+
 @pytest.fixture()
-def db(data_dir):
+def db(data_dir, seeded_template):
     """A fresh seeded database with setup completed and Year 12 starting Monday 12 Oct 2026."""
+    import shutil
+
     from app.database_setup import prepare_database
     from app.db import SessionLocal
     from app.services import settings as st
 
     clock.set_today(TUESDAY)
+    shutil.copy(seeded_template, data_dir / "test.db")
     prepare_database(f"sqlite:///{data_dir / 'test.db'}")
     s = SessionLocal()
     st.set_(s, "setup_complete", True)

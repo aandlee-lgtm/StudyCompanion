@@ -1,0 +1,71 @@
+{
+ "_note": "Test fixture in the exact v2 evidence shape (a small subset). Unverified.",
+ "items": [
+  {
+   "title": "Law Enforcement (Powers and Responsibilities) Act 2002 (NSW)",
+   "item_type": "legislation",
+   "date": "2002",
+   "jurisdiction": "NSW",
+   "topics": [
+    "LS-CRIME"
+   ],
+   "sub_area": "LS-CRIME-INVESTIGATION",
+   "issue": "Police powers",
+   "summary": "The main NSW statute on police powers.",
+   "legal_significance": "Sets out powers and safeguards.",
+   "syllabus_link": "Crime: the criminal investigation process",
+   "source": "NSW Legislation",
+   "source_url": "https://legislation.nsw.gov.au/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "LEPRA",
+    "Law Enforcement (Powers and Responsibilities) Act"
+   ]
+  },
+  {
+   "title": "Woolmington v DPP [1935] AC 462",
+   "item_type": "case",
+   "date": "1935",
+   "jurisdiction": "United Kingdom: House of Lords",
+   "topics": [
+    "LS-CRIME"
+   ],
+   "sub_area": "LS-CRIME-TRIAL",
+   "issue": "Burden of proof",
+   "summary": "The prosecution must prove guilt.",
+   "legal_significance": "The 'golden thread'.",
+   "syllabus_link": "Crime: the criminal trial process",
+   "source": "UK House of Lords",
+   "source_url": "https://www.bailii.org/",
+   "source_type": "primary",
+   "status": "in_force",
+   "aliases": [
+    "Woolmington v DPP",
+    "Woolmington"
+   ]
+  },
+  {
+   "title": "Al-Kateb v Godwin (2004) 219 CLR 562",
+   "item_type": "case",
+   "date": "2004",
+   "jurisdiction": "Cth: High Court",
+   "topics": [
+    "LS-HR"
+   ],
+   "sub_area": "LS-HR-ISSUE",
+   "issue": "Immigration detention",
+   "summary": "Indefinite detention case.",
+   "legal_significance": "Later overruled.",
+   "syllabus_link": "Human rights",
+   "source": "High Court of Australia",
+   "source_url": "https://www.hcourt.gov.au/",
+   "source_type": "primary",
+   "status": "superseded",
+   "aliases": [
+    "Al-Kateb v Godwin",
+    "Al-Kateb"
+   ]
+  }
+ ]
+}

@@ -81,8 +81,11 @@ def test_weak_answer_schedules_earlier_revision_with_different_question(db):
 
 
 def test_no_exact_repeat_on_consecutive_days(db):
+    from app.services import legal_plan  # v2: Legal is served only from started sub-areas; start them all
     from tests.conftest import answer_correctly
 
+    legal_plan.apply_started(db, [i.id for i in legal_plan.legal_items(db) if legal_plan.is_sub_area(i)])
+    db.commit()
     seen = set()
     for d in (0, 1, 2):
         clock.set_today(TUESDAY + timedelta(days=d))

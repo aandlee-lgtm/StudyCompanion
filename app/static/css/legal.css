@@ -1,1 +1,72 @@
 /* v2 styles owned by the legal package */
+
+/* ---- Learning plan: core topics, sub-areas, option slots (legal-09/11) ---- */
+.legal-syllabus p { margin: 0 0 8px; }
+.legal-core, .legal-options { margin-bottom: 16px; }
+.legal-core-head { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: space-between; }
+.legal-core-head h3 { margin: 0; color: var(--legal); }
+.legal-subs { list-style: none; margin: 10px 0 6px; padding: 0; counter-reset: sub; }
+.legal-sub, .legal-option { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; justify-content: space-between;
+  padding: 10px 0 10px 12px; border-top: 1px solid var(--line); border-left: 3px solid transparent; }
+.legal-sub.status-learning { border-left-color: var(--accent); }
+.legal-sub.status-learned { border-left-color: var(--good); }
+.legal-sub.status-revision { border-left-color: var(--warn); }
+.legal-sub.status-locked .legal-sub-title { color: var(--muted); }
+.legal-sub-main { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1 1 260px; }
+.legal-sub-title { font-weight: 600; }
+.legal-sub-actions { gap: 8px; }
+.legal-edit { position: relative; }
+.legal-edit summary { list-style: none; cursor: pointer; }
+.legal-edit summary::-webkit-details-marker { display: none; }
+.legal-edit-body { display: flex; flex-direction: column; gap: 8px; padding: 10px; margin-top: 6px; background: var(--surface-2);
+  border: 1px solid var(--line); border-radius: var(--radius); }
+.legal-add { margin-top: 10px; }
+.legal-add summary { cursor: pointer; color: var(--accent); }
+.legal-add form { margin-top: 8px; }
+.legal-slots { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
+.legal-slots .field { margin-bottom: 0; min-width: 220px; }
+.legal-warn { color: var(--warn); }
+.legal-option-list { list-style: none; padding: 0; margin: 8px 0; display: flex; flex-direction: column; gap: 6px; }
+.legal-retired summary { cursor: pointer; }
+@media (max-width: 640px) {
+  .legal-sub, .legal-option { padding-left: 8px; }
+  .legal-slots .field { min-width: 0; flex: 1 1 100%; }
+  .legal-edit-body input[type=text] { width: 100%; }
+}
+
+/* ---- "Which Legal topics have you started?" picker (owner request) ---- */
+.legal-picker { margin-bottom: 16px; border-left: 3px solid var(--legal); }
+.legal-picker h2 { margin-top: 0; font-size: 1.15rem; }
+.legal-picker-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px 20px; margin: 10px 0 14px; }
+.legal-picker-group { border: 1px solid var(--line); border-radius: var(--radius); padding: 8px 12px 10px; margin: 0; min-width: 0; }
+.legal-picker-group legend { font-weight: 600; padding: 0 4px; }
+.legal-picker-item { display: flex; gap: 8px; align-items: flex-start; padding: 4px 0; cursor: pointer; }
+.legal-picker-item input { margin-top: 3px; flex: none; }
+.legal-picker-again { margin-bottom: 12px; }
+.legal-picker-again summary { cursor: pointer; color: var(--accent); }
+.legal-picker-again .legal-picker { border: 0; box-shadow: none; padding: 8px 0 0; margin: 0; }
+.legal-any-order { margin: 0 0 12px; }
+.legal-topics-notice .btn { flex: none; }
+
+/* ---- Legal feedback: citation chips, evidence cards, scaffold, comparison (legal-03/04/15) ---- */
+.legal-chips, .legal-elements { list-style: none; padding: 0; margin: 6px 0 12px; display: flex; flex-direction: column; gap: 4px; }
+.legal-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; margin: 8px 0 14px; }
+.legal-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 12px; background: var(--surface-2); min-width: 0; }
+.legal-card p { margin: 4px 0 0; }
+.legal-card .spread { gap: 8px; align-items: flex-start; }
+.legal-scaffold li { margin-bottom: 4px; }
+.legal-compare td:first-child { width: 26%; font-weight: 600; }
+.legal-task { border-left: 3px solid var(--legal); padding: 6px 10px; background: var(--surface-2); border-radius: var(--radius); }
+
+/* ---- Evidence bank: grouping, counts, verification (legal-18/19) ---- */
+.legal-bank-counts { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; align-items: center; }
+.legal-bank-counts a.pill { text-decoration: none; }
+.legal-bank-states { display: inline-flex; flex-wrap: wrap; gap: 6px; margin-left: auto; }
+.legal-bank-filter select, .legal-bank-filter input[type=text] { max-width: 100%; }
+.legal-bank-group { margin-top: 18px; }
+.legal-bank-group h2 { font-size: 1.15rem; color: var(--legal); margin-bottom: 4px; }
+.legal-bank-issue { font-size: .95rem; margin: 12px 0 6px; color: var(--muted); }
+.legal-ev { margin-top: 10px; }
+.legal-ev h4 a { color: inherit; }
+.legal-verify .check { display: flex; gap: 8px; align-items: flex-start; margin: 4px 0; }
+@media (max-width: 640px) { .legal-bank-states { margin-left: 0; } }

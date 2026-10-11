@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from datetime import date
 
-from sqlalchemy import Date, ForeignKey, Integer, String, Text
+from sqlalchemy import JSON, Date, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db import Base
@@ -27,6 +27,14 @@ class LegalEvidence(Base):
     retrieved_date: Mapped[date | None] = mapped_column(Date, nullable=True)
     last_verified_date: Mapped[date | None] = mapped_column(Date, nullable=True)
     verification_note: Mapped[str | None] = mapped_column(Text, nullable=True)
+    # v2-legal-logic: structure for citation resolution, currency and grouping (legal-01/04/09/18)
+    aliases: Mapped[list | None] = mapped_column(JSON, nullable=True)  # other names a citation may use, e.g. ["LEPRA", "Bail Act"]
+    status: Mapped[str] = mapped_column(String(20), default="unknown", server_default="unknown")  # in_force|repealed|amended|superseded|unknown
+    superseded_by: Mapped[str | None] = mapped_column(String(400), nullable=True)  # title of the item that replaced it
+    sub_area: Mapped[str | None] = mapped_column(String(40), nullable=True)  # Legal plan item code, e.g. LS-CRIME-YOUNG
+    issue_tags: Mapped[list | None] = mapped_column(JSON, nullable=True)  # controlled vocabulary per sub-area
+    version_as_at: Mapped[str | None] = mapped_column(String(40), nullable=True)  # legislation version checked ("as at" date)
+    related: Mapped[list | None] = mapped_column(JSON, nullable=True)  # [{"title": "...", "relation": "interprets|amends|..."}]
 
     topics: Mapped[list["LegalEvidenceTopic"]] = relationship(back_populates="evidence", cascade="all, delete-orphan")
 

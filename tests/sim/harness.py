@@ -196,6 +196,7 @@ def _prepare_with_v1_seed_only(data_dir: Path, url: str) -> None:
     import shutil
 
     from app.database_setup import prepare_database
+    from app.services import legal_content
     from app.services import seed as seed_mod
 
     v1 = data_dir / "v1_seed"
@@ -203,12 +204,15 @@ def _prepare_with_v1_seed_only(data_dir: Path, url: str) -> None:
     for f in seed_mod.SEED_DIR.glob("*.json"):
         if f.name not in V2_SEED_FILES:
             shutil.copy(f, v1 / f.name)
-    orig = seed_mod.SEED_DIR
-    seed_mod.SEED_DIR = v1
+    mods = (seed_mod, legal_content)  # each loader module reads its own SEED_DIR
+    orig = [m.SEED_DIR for m in mods]
+    for m in mods:
+        m.SEED_DIR = v1
     try:
         prepare_database(url)
     finally:
-        seed_mod.SEED_DIR = orig
+        for m, o in zip(mods, orig):
+            m.SEED_DIR = o
 
 
 def run_sim(data_dir: Path, profile: str = "mixed", weeks: int = 4, *, start: date = date(2026, 10, 12), v2_bank: bool = True,

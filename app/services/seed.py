@@ -233,23 +233,10 @@ def seed_english(db: Session, seed_dir: Path | None = None) -> dict:
 
 
 def seed_legal(db: Session) -> None:
-    data = _load("questions_legal.json")
-    legal = db.execute(select(Subject).where(Subject.code == "LEGAL")).scalar_one()
-    src = qb.get_or_create_source(db, "HSC Companion — practice questions (Legal Studies)", organisation="HSC Companion (generated)",
-                                  subject_id=legal.id, source_type="generated", tier=4,
-                                  notes="App-authored questions on stable legal principles. Not past HSC questions.")
-    for q in data["questions"]:
-        item = _plan(db, q["topic"])
-        is_mcq = q["type"] == "mcq"
-        qb.create_question(
-            db, subject_code="LEGAL", source_id=src.id, question_text=q["text"], marks=q["marks"], question_type=q["type"],
-            directive_verb=q.get("verb"), difficulty=q["difficulty"], topic_id=item.topic_id, plan_item_id=item.id,
-            category="option" if q["topic"].startswith("LS-OPT") else "core", historical_or_generated=ORIGIN_GENERATED,
-            options=q.get("options"), answer={"type": "mcq", "value": q["answer"]} if is_mcq else None,
-            solution={"explanation": q["explanation"]} if is_mcq else None, model_answer=q.get("model"),
-            marking_guideline="\n".join(q.get("criteria", [])) or None, legal_fact_currency="check",
-            mapping_reason=f"Practice question for '{item.title}'. Tests a stable principle; legal facts must be checked against the evidence bank.",
-        )
+    """v1 and v2 Legal questions, each attached to its syllabus sub-area (see app.services.legal_content)."""
+    from app.services import legal_content
+
+    legal_content.seed_questions(db)
 
 
 def seed_maths_handwritten(db: Session) -> None:
@@ -271,17 +258,20 @@ def seed_maths_handwritten(db: Session) -> None:
 
 
 def seed_legal_evidence(db: Session) -> None:
-    data = _load("legal_evidence.json")
-    for it in data["items"]:
-        if db.execute(select(LegalEvidence).where(LegalEvidence.title == it["title"])).scalar_one_or_none():
-            continue
-        ev = LegalEvidence(**{k: v for k, v in it.items() if k != "topics"}, reliability="high",
-                           verification_note=data["_note"])
-        db.add(ev)
-        db.flush()
-        for code in it["topics"]:
-            topic = db.execute(select(SyllabusTopic).where(SyllabusTopic.code == code)).scalar_one()
-            db.add(LegalEvidenceTopic(evidence_id=ev.id, topic_id=topic.id))
+    """v1 and v2 evidence items (all unverified), then the idempotent v2 Legal upgrade: sub-area plan
+    items in place, questions moved off the core topic headers, new content loaded."""
+    from app.services import legal_content
+
+    legal_content.seed_evidence(db)
+    legal_content.upgrade(db)
+
+
+def upgrade_legal(db: Session) -> None:
+    """The v2 Legal upgrade is idempotent and cheap, and runs on every start (not only when a seed
+    file changed): it places sub-area plan items and moves questions imported onto a core topic header."""
+    from app.services import legal_content
+
+    legal_content.upgrade(db)
 
 
 def seed_templates_for_open_items(db: Session) -> int:
@@ -315,6 +305,8 @@ def seed_all(db: Session, with_templates: bool = True, force: bool = False) -> N
         seed_maths_handwritten(db)
         seed_legal_evidence(db)
         st.set_(db, "seed_signature", signature)
+    else:
+        upgrade_legal(db)
     if with_templates:
         seed_templates_for_open_items(db)
     db.flush()
