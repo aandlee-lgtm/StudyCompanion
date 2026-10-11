@@ -1135,6 +1135,566 @@
     280
    ],
    "difficulty": 2
+  },
+  {
+   "module": "EN-CSL",
+   "marks": 4,
+   "verb": "Explain",
+   "demand": "explain",
+   "response_type": "analytical",
+   "text": "Explain how the opening chapter of Pride and Prejudice establishes the novel's ironic narrative voice.",
+   "skill_tags": [
+    "irony",
+    "narrative voice",
+    "opening"
+   ],
+   "criteria": [
+    {
+     "mark": 4,
+     "descriptor": "Develops a perceptive, sustained thesis on how the opening chapter establishes the ironic narrative voice, supported by judicious, detailed reference to the text and precise analysis of how form and language shape meaning"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Develops a clear thesis on how the opening chapter establishes the ironic narrative voice, supported by relevant, detailed textual reference and thoughtful analysis"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Presents a response to how the opening chapter establishes the ironic narrative voice that is partly descriptive, with general textual reference"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Retells or describes the text with limited relevance to how the opening chapter establishes the ironic narrative voice"
+    }
+   ],
+   "checklist": [
+    "Explains the irony of the famous opening generalisation (a claimed universal truth that reveals the economic interests of families with daughters)",
+    "Explains how the dialogue between Mr and Mrs Bennet develops the irony",
+    "Explains the narrator's closing summary of the two characters and its tone",
+    "Links the ironic voice to the novel's concerns with marriage, money and judgement",
+    "Evidence comes from your own copy: brief, accurate quotations with chapter references (chapter numbering differs between one-volume and three-volume editions)"
+   ],
+   "next_steps": {
+    "0": "State in one sentence what kind of narrative voice the opening establishes, then explain the irony of the first sentence.",
+    "1": "Explain how the Bennets' conversation extends the irony: who is the joke on, and why?",
+    "2": "Explain the narrator's summary of the two characters at the end of the chapter and how its balanced sentences shape our judgement.",
+    "3": "Link the ironic voice to the novel's larger concerns (marriage as economic necessity, the gap between appearance and truth)."
+   },
+   "plan": "Thesis: The opening chapter establishes a narrator who speaks with apparent authority while inviting the reader to see through that authority; the irony exposes the economic anxieties beneath social convention and trains the reader to judge characters by the gap between what they say and what they reveal.\n\nParagraph move 1 (the opening sentence): Explain that the opening claims to state a universal truth about wealthy single men wanting wives, but the rest of the chapter shows the reverse: families with daughters wanting wealthy men. The reader learns immediately that pronouncements in this novel must be tested.\n\nParagraph move 2 (dialogue): Explain how the conversation about Bingley's arrival at Netherfield reveals Mrs Bennet's single-minded matchmaking and Mr Bennet's teasing detachment. Show that the comedy depends on what each fails to perceive about the other, and that Mr Bennet's wit is both entertaining and evasive.\n\nParagraph move 3 (narrator's summary): Explain the closing paragraph's balanced, epigrammatic characterisation of the pair, which judges both of them. Link this to the novel's concern with judgement: the narrator models the discriminating perception that Elizabeth must learn.\n\nEvidence to gather: brief quotations from the first sentence, one exchange of dialogue and the chapter's final paragraph.",
+   "suggested_words": [
+    200,
+    280
+   ],
+   "difficulty": 2
+  },
+  {
+   "module": "EN-CSL",
+   "marks": 5,
+   "verb": "Analyse",
+   "demand": "analyse",
+   "response_type": "analytical",
+   "text": "Analyse how Austen uses Darcy's letter and Elizabeth's response to it as the turning point of Pride and Prejudice.",
+   "skill_tags": [
+    "turning point",
+    "epistolary form",
+    "self-knowledge"
+   ],
+   "criteria": [
+    {
+     "mark": 5,
+     "descriptor": "Develops a perceptive, sustained thesis on how Darcy's letter and Elizabeth's response form the novel's turning point, supported by judicious, detailed reference to the text and precise analysis of how form and language shape meaning"
+    },
+    {
+     "mark": 4,
+     "descriptor": "Develops a clear thesis on how Darcy's letter and Elizabeth's response form the novel's turning point, supported by relevant, detailed textual reference and thoughtful analysis"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Presents a sound response to how Darcy's letter and Elizabeth's response form the novel's turning point, with relevant textual reference and some analysis of form and language"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Presents a response to how Darcy's letter and Elizabeth's response form the novel's turning point that is partly descriptive, with general textual reference"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Retells or describes the text with limited relevance to how Darcy's letter and Elizabeth's response form the novel's turning point"
+    }
+   ],
+   "checklist": [
+    "Makes a clear claim about why the letter is the turning point (it transfers judgement from Darcy to Elizabeth herself)",
+    "Analyses the epistolary form: Darcy's voice unmediated by the narrator, after the failed proposal at Hunsford",
+    "Analyses the content that changes Elizabeth's view (Wickham's history; Darcy's reasons regarding Jane and Bingley)",
+    "Analyses Elizabeth's process of rereading and her moment of self-recognition (chapter 36)",
+    "Links the turning point to the novel's concerns with prejudice, pride and self-knowledge",
+    "Evidence comes from your own copy: brief, accurate quotations with chapter references (chapter numbering differs between one-volume and three-volume editions)"
+   ],
+   "next_steps": {
+    "0": "State why the letter is the turning point, in terms of character and theme, not just plot.",
+    "1": "Analyse the letter's form: what changes when Darcy speaks in writing rather than in dialogue?",
+    "2": "Analyse the content of the letter that most changes Elizabeth's view, and why.",
+    "3": "Analyse Elizabeth's response in chapter 36: her rereading, resistance and self-recognition, and how the narration presents it.",
+    "4": "Link the turning point to the title's concerns and explain how the rest of the novel depends on it."
+   },
+   "plan": "Thesis: Darcy's letter is the novel's turning point because it moves the drama of judgement from the drawing room into Elizabeth's own mind: by giving Darcy an unmediated voice and then showing Elizabeth reread and revise her views, Austen makes self-knowledge, rather than romance, the true climax.\n\nParagraph 1 (context of the letter): Explain that it follows the failed proposal at Hunsford (chapter 34), where both characters expressed their pride and prejudice openly. The letter (chapter 35) is Darcy's reply, written the next morning.\n\nParagraph 2 (form): Analyse the epistolary form. For the first time the reader hears Darcy at length without the narrator's irony or Elizabeth's interpretation. Explain how its measured, formal style contrasts with the heated proposal scene, and how it addresses her two accusations in order.\n\nParagraph 3 (content): Analyse the two revelations: Darcy's account of his reasons for separating Bingley from Jane, and the history of Wickham. Explain why the Wickham account in particular overturns Elizabeth's judgement, since it exposes how readily she believed a charming story.\n\nParagraph 4 (response): Analyse chapter 36. Show how free indirect discourse lets the reader follow Elizabeth's resistance, her rereading, her weighing of evidence and finally her humiliating recognition that she has been blind and partial. Explain that her self-reproach mirrors Darcy's later reform.\n\nConclusion: The turning point is internal: the novel's title is resolved not by a proposal but by a reading.\n\nEvidence to gather: brief quotations from chapter 35 and chapter 36 in your edition.",
+   "suggested_words": [
+    260,
+    360
+   ],
+   "difficulty": 3
+  },
+  {
+   "module": "EN-CSL",
+   "marks": 6,
+   "verb": "Evaluate",
+   "demand": "evaluate",
+   "response_type": "analytical",
+   "text": "To what extent does Pride and Prejudice present Charlotte Lucas's marriage to Mr Collins as a rational choice rather than a failure?",
+   "skill_tags": [
+    "Charlotte Lucas",
+    "marriage",
+    "economics",
+    "critical perspectives"
+   ],
+   "criteria": [
+    {
+     "mark": 6,
+     "descriptor": "Develops a perceptive, sustained thesis on the extent to which Charlotte's marriage is presented as a rational choice rather than a failure, supported by judicious, detailed reference to the text and precise analysis of how form and language shape meaning"
+    },
+    {
+     "mark": 5,
+     "descriptor": "Develops a clear thesis on the extent to which Charlotte's marriage is presented as a rational choice rather than a failure, supported by relevant, detailed textual reference and thoughtful analysis"
+    },
+    {
+     "mark": 4,
+     "descriptor": "Presents a sound response to the extent to which Charlotte's marriage is presented as a rational choice rather than a failure, with relevant textual reference and some analysis of form and language"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Presents a response to the extent to which Charlotte's marriage is presented as a rational choice rather than a failure that is partly descriptive, with general textual reference"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Retells or describes the text with limited relevance to the extent to which Charlotte's marriage is presented as a rational choice rather than a failure"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Makes a limited or general comment about the text"
+    }
+   ],
+   "checklist": [
+    "States a qualified judgement (for example: rational within the novel's economic world, yet presented as a diminished life)",
+    "Analyses Charlotte's own explanation of her choice (chapter 22) and its economic context (limited options for women without fortune)",
+    "Analyses Elizabeth's shocked response and the narration's handling of it",
+    "Analyses Elizabeth's visit to Hunsford: how Charlotte manages her household and her husband",
+    "Considers critical perspectives (for example a feminist or economic reading) and the novel's own judgement",
+    "Evidence comes from your own copy: brief, accurate quotations with chapter references (chapter numbering differs between one-volume and three-volume editions)"
+   ],
+   "next_steps": {
+    "0": "Give a clear judgement with a degree (largely, partly) in your first sentence.",
+    "1": "Analyse Charlotte's own explanation in chapter 22 and the economic facts that make it rational.",
+    "2": "Analyse Elizabeth's response and decide whether the novel endorses her view.",
+    "3": "Use Elizabeth's visit to Hunsford to show what Charlotte's marriage is like in practice.",
+    "4": "Bring in a critical perspective (economic, feminist or historicist) and weigh it against the novel's romantic resolution.",
+    "5": "Refine for Band 6: keep the judgement visible throughout and show how the novel's construction (narration, juxtaposition with Elizabeth's choices) shapes it."
+   },
+   "plan": "Thesis: Austen presents Charlotte's marriage as a rational, even courageous, choice within an economic system that leaves women like her few alternatives, while still showing its emotional cost; the novel thus treats it less as a personal failure than as an indictment of the system that makes it sensible.\n\nParagraph 1 (Charlotte's reasoning): Analyse chapter 22, where Charlotte explains that she is not romantic and asks only for a comfortable home. Explain her situation: an unmarried woman in her late twenties without fortune, for whom marriage is the only respectable provision. Earlier, in chapter 6, she has already given her unsentimental views on marriage to Elizabeth.\n\nParagraph 2 (Elizabeth's response): Analyse Elizabeth's shock and her sense that her friend has sacrificed every better feeling. Consider whether the narrator endorses Elizabeth here, or whether the novel invites us to see her judgement as another instance of quick and partial assessment.\n\nParagraph 3 (Hunsford in practice): Analyse Elizabeth's visit (from chapter 28). Note how Charlotte has arranged her household to spend as little time with Collins as possible, and how she appears content with her home and duties. Explain how the narration balances comedy at Collins's expense with respect for Charlotte's management.\n\nParagraph 4 (critical perspectives and judgement): Apply an economic or feminist reading: the entail on Longbourn and Mrs Bennet's anxieties show what Charlotte avoids. Weigh this against the novel's romantic ending for Elizabeth, which depends on extraordinary luck. Conclude that Charlotte's marriage is rational and presented with sympathy, yet the novel never lets us mistake it for happiness.\n\nEvidence to gather: brief quotations from chapters 6, 22 and the Hunsford chapters.",
+   "suggested_words": [
+    350,
+    450
+   ],
+   "difficulty": 3
+  },
+  {
+   "module": "EN-CSL",
+   "marks": 6,
+   "verb": "Analyse",
+   "demand": "analyse",
+   "response_type": "analytical",
+   "text": "Analyse how Austen uses free indirect discourse to shape the reader's judgement of Elizabeth Bennet.",
+   "skill_tags": [
+    "free indirect discourse",
+    "narration",
+    "judgement"
+   ],
+   "criteria": [
+    {
+     "mark": 6,
+     "descriptor": "Develops a perceptive, sustained thesis on how free indirect discourse shapes the reader's judgement of Elizabeth, supported by judicious, detailed reference to the text and precise analysis of how form and language shape meaning"
+    },
+    {
+     "mark": 5,
+     "descriptor": "Develops a clear thesis on how free indirect discourse shapes the reader's judgement of Elizabeth, supported by relevant, detailed textual reference and thoughtful analysis"
+    },
+    {
+     "mark": 4,
+     "descriptor": "Presents a sound response to how free indirect discourse shapes the reader's judgement of Elizabeth, with relevant textual reference and some analysis of form and language"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Presents a response to how free indirect discourse shapes the reader's judgement of Elizabeth that is partly descriptive, with general textual reference"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Retells or describes the text with limited relevance to how free indirect discourse shapes the reader's judgement of Elizabeth"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Makes a limited or general comment about the text"
+    }
+   ],
+   "checklist": [
+    "Defines free indirect discourse accurately (third-person narration that takes on a character's thoughts and idiom without quotation marks)",
+    "Analyses at least TWO passages where the narration merges with Elizabeth's perspective (for example after meeting Wickham, and in chapter 36)",
+    "Explains how the technique creates both sympathy and ironic distance",
+    "Explains how the reader is drawn into Elizabeth's prejudice and then into her correction",
+    "Links the technique to the novel's concern with judgement and self-knowledge",
+    "Evidence comes from your own copy: brief, accurate quotations with chapter references (chapter numbering differs between one-volume and three-volume editions)"
+   ],
+   "next_steps": {
+    "0": "Define free indirect discourse accurately in one sentence and explain why it suits a novel about judgement.",
+    "1": "Analyse one passage where the narration adopts Elizabeth's view and the reader shares her (mistaken) judgement.",
+    "2": "Explain how the narrator keeps an ironic distance at the same time, so attentive readers can sense the error.",
+    "3": "Analyse a second passage, ideally chapter 36, where the technique reveals Elizabeth correcting herself.",
+    "4": "Explain the overall effect on the reader's judgement of Elizabeth: sympathy, critique, or both?",
+    "5": "Refine for Band 6: sustain the argument across the novel and connect the technique to Austen's broader critique of hasty judgement."
+   },
+   "plan": "Thesis: Free indirect discourse lets Austen place the reader inside Elizabeth's perceptions while retaining the narrator's ironic overview; the reader therefore shares Elizabeth's prejudice, enjoys her wit, and then experiences her correction from within, so that our judgement of her becomes affectionate but clear-sighted.\n\nParagraph 1 (definition and purpose): Define the technique and explain that much of the novel is focalised through Elizabeth. Explain why this suits a novel about first impressions: we see as she sees.\n\nParagraph 2 (sharing the error): Analyse the narration after Elizabeth's conversation with Wickham (around chapter 16) and her subsequent reflections. Show how her approval of his manners and her resentment of Darcy colour the narration, so that the reader is invited to accept Wickham's story.\n\nParagraph 3 (ironic distance): Explain how small signals (the narrator's comments, the impropriety of Wickham confiding in a near stranger, Darcy's behaviour seen from outside) allow an attentive reader to sense that Elizabeth's judgement is partial.\n\nParagraph 4 (correction from within): Analyse chapter 36, where free indirect discourse follows Elizabeth's rereading of the letter and her recognition of her own vanity. The reader experiences self-knowledge as a process, not a verdict.\n\nConclusion: The technique makes the reader complicit in prejudice and in its correction, turning the novel's concern with judgement into an experience of reading.\n\nEvidence to gather: brief quotations from the Wickham chapters and chapter 36 in your edition.",
+   "suggested_words": [
+    350,
+    450
+   ],
+   "difficulty": 3
+  },
+  {
+   "module": "EN-CSL",
+   "marks": 5,
+   "verb": "Analyse",
+   "demand": "analyse",
+   "response_type": "analytical",
+   "text": "Analyse how Austen uses Elizabeth's visit to Pemberley to reshape both Elizabeth's and the reader's view of Darcy.",
+   "skill_tags": [
+    "Pemberley",
+    "setting",
+    "characterisation"
+   ],
+   "criteria": [
+    {
+     "mark": 5,
+     "descriptor": "Develops a perceptive, sustained thesis on how the Pemberley visit reshapes Elizabeth's and the reader's view of Darcy, supported by judicious, detailed reference to the text and precise analysis of how form and language shape meaning"
+    },
+    {
+     "mark": 4,
+     "descriptor": "Develops a clear thesis on how the Pemberley visit reshapes Elizabeth's and the reader's view of Darcy, supported by relevant, detailed textual reference and thoughtful analysis"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Presents a sound response to how the Pemberley visit reshapes Elizabeth's and the reader's view of Darcy, with relevant textual reference and some analysis of form and language"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Presents a response to how the Pemberley visit reshapes Elizabeth's and the reader's view of Darcy that is partly descriptive, with general textual reference"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Retells or describes the text with limited relevance to how the Pemberley visit reshapes Elizabeth's and the reader's view of Darcy"
+    }
+   ],
+   "checklist": [
+    "Makes a claim about how the visit reshapes perceptions (Darcy seen through his estate, his servants and his conduct)",
+    "Analyses the description of the house and grounds as an expression of character and taste",
+    "Analyses the housekeeper's testimony about Darcy as master and brother",
+    "Analyses Darcy's unexpected appearance and his civility to the Gardiners",
+    "Links the episode to the novel's concerns with judgement, class and evidence",
+    "Evidence comes from your own copy: brief, accurate quotations with chapter references (chapter numbering differs between one-volume and three-volume editions)"
+   ],
+   "next_steps": {
+    "0": "State how the visit changes the view of Darcy, and why it matters that it happens in his absence at first.",
+    "1": "Analyse how the estate is described and what it suggests about its owner.",
+    "2": "Analyse the housekeeper's account: why is a servant's testimony persuasive here?",
+    "3": "Analyse Darcy's arrival and his behaviour to the Gardiners, and how Elizabeth interprets it.",
+    "4": "Link the episode to the novel's larger argument about judging character from evidence rather than first impressions."
+   },
+   "plan": "Thesis: Austen stages Pemberley as a gathering of evidence: the estate, the housekeeper's testimony and Darcy's altered manners provide the kinds of proof that first impressions could not, so that Elizabeth and the reader revise their view of Darcy together.\n\nParagraph 1 (the estate): Analyse the description of the house and grounds (chapter 43) as natural, tasteful and unpretentious. Explain how the landscape is presented as an expression of its owner's character, and why Elizabeth's admiration matters.\n\nParagraph 2 (testimony): Analyse the housekeeper's praise of Darcy as a good master, landlord and brother. Explain why the testimony of someone who has known him since childhood, and who depends on him, is more persuasive than drawing-room manners, and how it contrasts with Wickham's earlier account.\n\nParagraph 3 (Darcy's conduct): Analyse Darcy's unexpected arrival, his embarrassment, and his courtesy to the Gardiners, relatives in trade whom he might once have despised. Explain how Elizabeth reads this as evidence of change brought about by her reproofs.\n\nParagraph 4 (significance): Explain that the episode turns the novel's concern with judgement into a method: character is revealed through conduct across contexts and classes. Note the critical point that Pemberley also represents wealth and power, and consider how that complicates the romance.\n\nEvidence to gather: brief quotations from chapters 43 and 44 in your edition.",
+   "suggested_words": [
+    260,
+    360
+   ],
+   "difficulty": 3
+  },
+  {
+   "module": "EN-CSL",
+   "marks": 6,
+   "verb": "Evaluate",
+   "demand": "evaluate",
+   "response_type": "analytical",
+   "text": "Some readers see Pride and Prejudice as a romantic comedy; others see it as a sharp critique of an economic system that constrains women. Evaluate these readings with reference to the novel.",
+   "skill_tags": [
+    "critical readings",
+    "economics",
+    "genre",
+    "irony"
+   ],
+   "criteria": [
+    {
+     "mark": 6,
+     "descriptor": "Develops a perceptive, sustained thesis on competing readings of the novel as romantic comedy and as economic critique, supported by judicious, detailed reference to the text and precise analysis of how form and language shape meaning"
+    },
+    {
+     "mark": 5,
+     "descriptor": "Develops a clear thesis on competing readings of the novel as romantic comedy and as economic critique, supported by relevant, detailed textual reference and thoughtful analysis"
+    },
+    {
+     "mark": 4,
+     "descriptor": "Presents a sound response to competing readings of the novel as romantic comedy and as economic critique, with relevant textual reference and some analysis of form and language"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Presents a response to competing readings of the novel as romantic comedy and as economic critique that is partly descriptive, with general textual reference"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Retells or describes the text with limited relevance to competing readings of the novel as romantic comedy and as economic critique"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Makes a limited or general comment about the text"
+    }
+   ],
+   "checklist": [
+    "States a clear evaluative position on the two readings (for example: the novel sustains both, with critique embedded in comic form)",
+    "Supports the romantic-comedy reading with structure (misunderstanding, obstacles, reconciliation, marriages)",
+    "Supports the critique reading with the entail, Charlotte's marriage, Lydia's elopement and the women's financial dependence",
+    "Analyses how irony and narration allow comedy and critique to coexist",
+    "Shows a personal, critical judgement informed by the text rather than by critics' names",
+    "Evidence comes from your own copy: brief, accurate quotations with chapter references (chapter numbering differs between one-volume and three-volume editions)"
+   ],
+   "next_steps": {
+    "0": "State your position on the two readings clearly in your first sentence.",
+    "1": "Support the romantic-comedy reading with the novel's structure and ending.",
+    "2": "Support the critique reading with at least two specific episodes involving money, inheritance or marriage.",
+    "3": "Analyse how Austen's irony allows the novel to entertain and criticise at once.",
+    "4": "Weigh the readings: which does the novel's construction favour, and does its happy ending resolve or sharpen the critique?",
+    "5": "Refine for Band 6: develop your own critical perspective, grounded in textual detail, and show how the novel's integrity supports it."
+   },
+   "plan": "Thesis: The novel is both, and its achievement is that the readings depend on each other: the romantic comedy delivers its pleasure through a world in which marriage is an economic necessity, and Austen's irony keeps the reader aware that Elizabeth's happy ending is the exception the system rarely allows.\n\nParagraph 1 (romantic comedy): Analyse the structure: mutual misjudgement, obstacles of pride and class, revelation, reform and union. Explain how wit, misunderstanding and the parallel courtship of Jane and Bingley follow comic conventions, and how the ending rewards growth in self-knowledge.\n\nParagraph 2 (economic critique): Analyse the entail of Longbourn to Mr Collins, which makes the Bennet daughters' futures precarious; Charlotte's marriage (chapter 22) as rational self-protection; and Lydia's elopement, resolved only by money paid in secret. Explain how these show women's dependence on marriage for security and reputation.\n\nParagraph 3 (irony as the bridge): Analyse how the ironic narrator lets comedy carry critique: the opening sentence, Mrs Bennet's nerves, Mr Collins's pompous proposal (chapter 19) and Mr Bennet's detached wit are funny, yet each exposes a social or economic failure.\n\nParagraph 4 (evaluation): Consider whether the happy ending neutralises the critique. Argue that the improbability of Elizabeth's marriage to a man of vast fortune, after refusing two proposals, highlights how unusual her freedom is. Conclude with your own critical position.\n\nEvidence to gather: brief quotations from the opening chapter, chapters 19 and 22, and the elopement chapters.",
+   "suggested_words": [
+    350,
+    450
+   ],
+   "difficulty": 3
+  },
+  {
+   "module": "EN-CSL",
+   "marks": 4,
+   "verb": "Explain",
+   "demand": "explain",
+   "response_type": "analytical",
+   "text": "Explain how Austen uses Mr Collins as a vehicle for satire in Pride and Prejudice.",
+   "skill_tags": [
+    "satire",
+    "characterisation",
+    "Mr Collins"
+   ],
+   "criteria": [
+    {
+     "mark": 4,
+     "descriptor": "Develops a perceptive, sustained thesis on how Mr Collins is used as a vehicle for satire, supported by judicious, detailed reference to the text and precise analysis of how form and language shape meaning"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Develops a clear thesis on how Mr Collins is used as a vehicle for satire, supported by relevant, detailed textual reference and thoughtful analysis"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Presents a response to how Mr Collins is used as a vehicle for satire that is partly descriptive, with general textual reference"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Retells or describes the text with limited relevance to how Mr Collins is used as a vehicle for satire"
+    }
+   ],
+   "checklist": [
+    "Identifies the targets of the satire (obsequiousness to rank, mercenary marriage, clerical self-importance)",
+    "Explains at least ONE episode in detail (his letter to Mr Bennet, his proposal to Elizabeth, his deference to Lady Catherine)",
+    "Explains the techniques that create satire (pompous diction, self-revealing speech, juxtaposition, narrator's irony)",
+    "Explains the serious point behind the comedy (the entail; Charlotte's acceptance)",
+    "Evidence comes from your own copy: brief, accurate quotations with chapter references (chapter numbering differs between one-volume and three-volume editions)"
+   ],
+   "next_steps": {
+    "0": "Name what Austen is satirising through Mr Collins, not just that he is ridiculous.",
+    "1": "Explain one episode where his own words expose him, quoting briefly from your copy.",
+    "2": "Explain a technique of satire in that episode (for example his formal, self-congratulating diction or his inability to hear a refusal).",
+    "3": "Explain the serious point behind the comedy, such as the entail or Charlotte's decision to marry him."
+   },
+   "plan": "Thesis: Mr Collins condemns himself out of his own mouth: through his pompous letters and speeches, Austen satirises servility to rank, the treatment of marriage as a transaction and the self-importance of a clergyman more devoted to his patroness than to his calling, while reminding readers that such a man still holds real power over women's futures.\n\nParagraph move 1 (introduction through a letter): Explain how his letter to Mr Bennet (chapter 13) reveals his character before he arrives, and how Mr Bennet and Elizabeth's amused reactions guide the reader's judgement.\n\nParagraph move 2 (the proposal): Explain the proposal to Elizabeth (chapter 19): his numbered reasons for marrying, his reference to Lady Catherine's advice, and his refusal to accept her refusal as sincere. Show how the comedy exposes a view of women as interchangeable and their refusals as mere form.\n\nParagraph move 3 (serious point): Explain that Collins will inherit Longbourn through the entail, so the man the reader laughs at could turn the Bennet women out of their home. Charlotte's acceptance shows that a ridiculous man can still be a rational choice for a woman without fortune.\n\nEvidence to gather: brief quotations from chapters 13 and 19.",
+   "suggested_words": [
+    200,
+    280
+   ],
+   "difficulty": 2
+  },
+  {
+   "module": "EN-CSL",
+   "marks": 5,
+   "verb": "Analyse",
+   "demand": "analyse",
+   "response_type": "analytical",
+   "text": "Analyse the role of Lady Catherine de Bourgh's confrontation with Elizabeth (chapter 56) in the novel's exploration of class and independence.",
+   "skill_tags": [
+    "class",
+    "independence",
+    "dialogue",
+    "irony"
+   ],
+   "criteria": [
+    {
+     "mark": 5,
+     "descriptor": "Develops a perceptive, sustained thesis on the role of Lady Catherine's confrontation with Elizabeth in exploring class and independence, supported by judicious, detailed reference to the text and precise analysis of how form and language shape meaning"
+    },
+    {
+     "mark": 4,
+     "descriptor": "Develops a clear thesis on the role of Lady Catherine's confrontation with Elizabeth in exploring class and independence, supported by relevant, detailed textual reference and thoughtful analysis"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Presents a sound response to the role of Lady Catherine's confrontation with Elizabeth in exploring class and independence, with relevant textual reference and some analysis of form and language"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Presents a response to the role of Lady Catherine's confrontation with Elizabeth in exploring class and independence that is partly descriptive, with general textual reference"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Retells or describes the text with limited relevance to the role of Lady Catherine's confrontation with Elizabeth in exploring class and independence"
+    }
+   ],
+   "checklist": [
+    "Makes a claim about the confrontation's role (a public test of Elizabeth's independence against inherited rank)",
+    "Analyses Lady Catherine's arguments from rank, family and propriety, and their rhetorical force",
+    "Analyses Elizabeth's replies: her composure, logic and refusal to promise",
+    "Explains the irony that the confrontation advances the marriage it aims to prevent",
+    "Links the scene to the novel's wider treatment of class (Darcy's first proposal, the Gardiners, Pemberley)",
+    "Evidence comes from your own copy: brief, accurate quotations with chapter references (chapter numbering differs between one-volume and three-volume editions)"
+   ],
+   "next_steps": {
+    "0": "State the role the scene plays in the novel's argument about class and independence.",
+    "1": "Analyse Lady Catherine's arguments: what does she assume rank entitles her to?",
+    "2": "Analyse how Elizabeth answers her, focusing on the structure and tone of her replies.",
+    "3": "Explain the scene's consequences and their irony (how Darcy learns of it).",
+    "4": "Connect the scene to at least one earlier episode about class to show its place in the whole novel."
+   },
+   "plan": "Thesis: The confrontation dramatises the novel's central conflict between inherited rank and individual merit in its starkest form; Elizabeth's refusal to be intimidated affirms her independence of mind, and the irony that Lady Catherine's interference brings about the marriage she opposes shows rank undone by its own arrogance.\n\nParagraph 1 (setting and stakes): Explain the situation: Lady Catherine arrives unannounced at Longbourn, having heard a rumour of an engagement, and insists on speaking to Elizabeth alone outdoors.\n\nParagraph 2 (rank's arguments): Analyse Lady Catherine's arguments from family, fortune, a supposed prior arrangement with her daughter, and the disgrace of Elizabeth's connections. Explain how her imperious questions and commands assume that rank entitles her to obedience.\n\nParagraph 3 (Elizabeth's independence): Analyse Elizabeth's replies: calm, logical, refusing to answer questions she considers impertinent and refusing to promise. Explain how she asserts equality as a gentleman's daughter and her right to act for her own happiness.\n\nParagraph 4 (irony and connection): Explain that Lady Catherine reports the conversation to Darcy, which gives him hope and leads to the second proposal (chapter 58). Link the scene to Darcy's first proposal, where he dwelt on her inferior connections, and to his later respect for the Gardiners, showing how far the novel has travelled in its treatment of class.\n\nEvidence to gather: brief quotations from chapter 56 and chapter 58.",
+   "suggested_words": [
+    260,
+    360
+   ],
+   "difficulty": 3
+  },
+  {
+   "module": "EN-CSL",
+   "marks": 6,
+   "verb": "Synthesise",
+   "demand": "synthesise",
+   "response_type": "analytical",
+   "text": "Drawing on the whole novel, explain how Austen's construction of Pride and Prejudice (structure, narrative voice and dialogue) sustains its exploration of judgement and self-knowledge.",
+   "skill_tags": [
+    "textual integrity",
+    "structure",
+    "narration",
+    "dialogue"
+   ],
+   "criteria": [
+    {
+     "mark": 6,
+     "descriptor": "Develops a perceptive, sustained thesis on how the novel's construction sustains its exploration of judgement and self-knowledge, supported by judicious, detailed reference to the text and precise analysis of how form and language shape meaning"
+    },
+    {
+     "mark": 5,
+     "descriptor": "Develops a clear thesis on how the novel's construction sustains its exploration of judgement and self-knowledge, supported by relevant, detailed textual reference and thoughtful analysis"
+    },
+    {
+     "mark": 4,
+     "descriptor": "Presents a sound response to how the novel's construction sustains its exploration of judgement and self-knowledge, with relevant textual reference and some analysis of form and language"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Presents a response to how the novel's construction sustains its exploration of judgement and self-knowledge that is partly descriptive, with general textual reference"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Retells or describes the text with limited relevance to how the novel's construction sustains its exploration of judgement and self-knowledge"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Makes a limited or general comment about the text"
+    }
+   ],
+   "checklist": [
+    "Constructs a thesis about textual integrity: how form and meaning work together across the whole novel",
+    "Analyses structure (first impressions, accumulating evidence, reversal, reconciliation; parallel plots)",
+    "Analyses the ironic narrator and free indirect discourse as instruments of judgement",
+    "Analyses dialogue as a revealer of character (wit, self-exposure, set-piece confrontations)",
+    "Draws on episodes from the beginning, middle and end of the novel",
+    "Evidence comes from your own copy: brief, accurate quotations with chapter references (chapter numbering differs between one-volume and three-volume editions)"
+   ],
+   "next_steps": {
+    "0": "State a thesis that links the novel's construction to its concern with judgement and self-knowledge.",
+    "1": "Analyse the structure: how does the order of events (impression, evidence, reversal) teach readers to judge?",
+    "2": "Analyse the narrative voice, especially irony and free indirect discourse, with one specific passage.",
+    "3": "Analyse dialogue as evidence of character, using one set-piece scene.",
+    "4": "Combine these elements to show how they work together (textual integrity), using episodes from across the novel.",
+    "5": "Refine for Band 6: conclude with a synthesised judgement about why the novel's construction makes its insights durable for readers today."
+   },
+   "plan": "Thesis: Pride and Prejudice is constructed as an education in judgement: its structure withholds and then supplies evidence, its ironic and focalised narration lets readers make and correct errors alongside Elizabeth, and its dialogue makes characters reveal themselves. Form and meaning are inseparable, which is the source of the novel's textual integrity.\n\nParagraph 1 (structure): Trace the novel's movement from first impressions at the Meryton assembly (chapter 3), through accumulating and misleading evidence (Wickham's account), to reversal (the letter in chapter 35 and the self-recognition in chapter 36), and reconciliation (chapter 58). Note the parallel plots (Jane and Bingley; Charlotte and Collins; Lydia and Wickham) that test the same question of judgement in different ways.\n\nParagraph 2 (narrative voice): Analyse the ironic narrator of the opening chapter and the free indirect discourse of the middle chapters. Explain how readers are taught to distrust pronouncements, then drawn into Elizabeth's prejudice, then into her correction.\n\nParagraph 3 (dialogue): Analyse a set-piece of dialogue, such as the Netherfield conversations about accomplishment and pride (chapters 8 to 11) or the Hunsford proposal (chapter 34). Explain how wit can both reveal and conceal, and how characters like Collins and Lady Catherine expose themselves through speech.\n\nParagraph 4 (synthesis): Explain how these elements work together: the reader judges, misjudges and revises, so self-knowledge becomes an experience, not just a theme. Conclude with why this construction keeps the novel relevant: it trains the habit of revising first impressions.\n\nEvidence to gather: brief quotations from chapters 1, 3, 34 to 36 and 58.",
+   "suggested_words": [
+    350,
+    450
+   ],
+   "difficulty": 3
+  },
+  {
+   "module": "EN-CSL",
+   "marks": 3,
+   "verb": "Identify",
+   "demand": "identify",
+   "response_type": "analytical",
+   "text": "Identify ONE way Austen contrasts Jane and Elizabeth Bennet, and explain its significance for the novel's concerns.",
+   "skill_tags": [
+    "characterisation",
+    "contrast",
+    "judgement"
+   ],
+   "criteria": [
+    {
+     "mark": 3,
+     "descriptor": "Develops a perceptive, sustained thesis on one contrast between Jane and Elizabeth and its significance, supported by judicious, detailed reference to the text and precise analysis of how form and language shape meaning"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Presents a sound response to one contrast between Jane and Elizabeth and its significance, with relevant textual reference and some analysis of form and language"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Retells or describes the text with limited relevance to one contrast between Jane and Elizabeth and its significance"
+    }
+   ],
+   "checklist": [
+    "Identifies a precise contrast (for example Jane's candour and readiness to think well of everyone versus Elizabeth's quick, critical judgement)",
+    "Supports the contrast with a specific episode (for example their conversation after the first ball, or their differing responses to Wickham's account)",
+    "Explains how the contrast serves the novel's concern with judgement",
+    "Evidence comes from your own copy: brief, accurate quotations with chapter references (chapter numbering differs between one-volume and three-volume editions)"
+   ],
+   "next_steps": {
+    "0": "Name the contrast in one precise sentence, avoiding vague words such as nice or smart.",
+    "1": "Support the contrast with one specific episode and a brief quotation from your copy.",
+    "2": "Explain the significance: how does the contrast help the novel explore judgement, prejudice or self-knowledge?"
+   },
+   "plan": "Thesis: Austen contrasts Jane's candour, her readiness to think well of everyone, with Elizabeth's quick and critical judgement; the contrast matters because each sister's habit of mind is shown to be both a virtue and a source of error, so the novel's ideal lies between them.\n\nMove 1 (the contrast): Identify the contrast and use an early conversation between the sisters, such as their discussion after the Meryton assembly (around chapter 4), where Elizabeth teases Jane for liking everyone and Jane defends charitable judgement.\n\nMove 2 (the episode): Use their responses to Wickham's account of Darcy (around chapter 17): Jane refuses to condemn either man and looks for a misunderstanding, while Elizabeth readily believes Wickham.\n\nMove 3 (significance): Explain that events prove Jane right about Darcy's character but wrong about the Bingley sisters' friendship, while Elizabeth's sharpness leads her astray about Wickham. The contrast shows that neither generosity nor scepticism alone guarantees sound judgement; evidence and self-examination are required.\n\nEvidence to gather: one brief quotation from each sister in the episodes above, with chapter references.",
+   "suggested_words": [
+    150,
+    220
+   ],
+   "difficulty": 2
   }
  ]
 }
