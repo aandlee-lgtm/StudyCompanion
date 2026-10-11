@@ -180,3 +180,17 @@ def test_feedback_page_renders_offline_legal_feedback(db, client):
     assert page.status_code == 200
     assert "Authorities in your answer" in page.text and "not in your bank" in page.text
     assert "Current information checked" in page.text and "An improved argument" in page.text
+
+
+def test_legal_marking_prompt_dimensions_date_and_correction_rule(db):
+    from app.ai import prompts
+    from app.services.assessment.written import written_ctx
+
+    q = next(q for q in _legal_questions(db) if q.marks >= 4)
+    text = prompts.marking(written_ctx(db, q, "My response.", {}))
+    assert f"TODAY: {clock.today().isoformat()}" in text and "background, not contemporary" in text
+    assert "LEGAL EVIDENCE BANK (verification status per item" in text and '"status": "unverified"' in text
+    for dim in ("knowledge of relevant law", "law reform", "responsiveness to stimulus", "integration of evidence"):
+        assert dim in text
+    assert '"textual evidence"' not in text  # English dimensions are replaced for Legal
+    assert "unverified/invented authority" in text and "Possible issue — verify:" in text
