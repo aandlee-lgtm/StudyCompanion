@@ -68,6 +68,18 @@ def test_only_counted_attempts_are_analysed(db):
     assert next(f for f in ds.facts if f.question_id == sq2.question_id).skipped
 
 
+def test_dashboard_during_a_session(db, client):
+    from app.services import assessment
+
+    sess = _first_session(db)
+    for sq in sess.questions[:2]:
+        assessment.submit(db, sq.question, "12345", sq=sq, time_seconds=60)
+        sq.status = "submitted"
+    db.commit()
+    page = client.get("/").text
+    assert f"2 / {len(sess.questions)} questions" in page and "Continue" in page
+
+
 def test_specification_example_maths_context_insight(db):
     """'Consistently strong at differentiation mechanics but lose marks when calculus is embedded
     in modelling questions' — fired from the data, with the numbers."""

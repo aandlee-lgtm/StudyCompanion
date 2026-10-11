@@ -735,11 +735,22 @@ def dashboard(db: Session) -> dict:
     week_start = today - timedelta(days=today.weekday())
     from app.services import sessions as sessions_service
 
-    sess = sessions_service.get_session(db, today)
     try:
-        sprog = sessions_service.progress(sess) if sess is not None and sess.questions else None
-    except Exception:
-        sprog = None
+        sess = sessions_service.get_session(db, today)
+    except Exception:  # the selection package owns sessions: degrade to "no session" rather than fail the dashboard
+        sess = None
+    sprog = None
+    if sess is not None and sess.questions:
+        try:
+            raw = sessions_service.progress(sess) or {}
+        except Exception:
+            raw = {}
+        n_total = int(raw.get("n_total") or len(sess.questions))
+        n_done = int(raw.get("n_done") if raw.get("n_done") is not None else
+                     sum(1 for q in sess.questions if q.status in ("submitted", "skipped")))
+        sprog = {"n_done": n_done, "n_total": n_total, "pct": int(raw.get("pct") if raw.get("pct") is not None else
+                                                                    round(100 * n_done / n_total) if n_total else 0),
+                 "remaining_minutes": raw.get("remaining_minutes")}
     try:
         streak = sessions_service.weekday_streak(db, today)
     except Exception:
