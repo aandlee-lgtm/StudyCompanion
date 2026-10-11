@@ -51,6 +51,13 @@ def _plan(db: Session) -> dict[int, LearningPlanItem]:
     return {p.id: p for p in db.execute(select(LearningPlanItem).order_by(LearningPlanItem.subject_id, LearningPlanItem.position)).scalars()}
 
 
+def _get_q(db: Session, qid: int) -> Question:
+    q = db.get(Question, qid)
+    if q is None:
+        raise ValueError("Question not found.")
+    return q
+
+
 def _back(url: str, qid: int | None = None, flash: str | None = None) -> RedirectResponse:
     if not url.startswith("/"):
         url = "/admin/review"
@@ -161,14 +168,14 @@ def reveal(qid: int, db: Session = Depends(get_db)):
 
 @router.post("/questions/{qid}/retire")
 def retire(qid: int, reason: str = Form(""), db: Session = Depends(get_db)):
-    review.retire(db, db.get(Question, qid), reason)
+    review.retire(db, _get_q(db, qid), reason)
     db.commit()
     return _back(f"/questions/{qid}", flash="Retired: it will not be served again until restored.")
 
 
 @router.post("/questions/{qid}/restore")
 def restore(qid: int, db: Session = Depends(get_db)):
-    review.restore(db, db.get(Question, qid))
+    review.restore(db, _get_q(db, qid))
     db.commit()
     return RedirectResponse(f"/admin/review/{qid}", status_code=303)
 
@@ -197,7 +204,7 @@ def _review_ctx(db: Session) -> dict:
     return {"plan": plan, "plan_items": list(plan.values()), "relevances": RELEVANCE,
             "outcomes": db.execute(select(SyllabusOutcome).where(SyllabusOutcome.official.is_(True)).order_by(SyllabusOutcome.code)).scalars().all(),
             "stimuli": db.execute(select(Stimulus).order_by(Stimulus.subject_id, Stimulus.id.desc())).scalars().all(),
-            "currencies": review.CURRENCIES}
+            "currencies": review.CURRENCIES, "admin_mode": bool(st.get(db, "admin_mode"))}
 
 
 def _links(db: Session, qs: list[Question]) -> dict[int, list[int]]:
@@ -356,7 +363,7 @@ def adapt_form(qid: int, request: Request, db: Session = Depends(get_db), draft:
 def adapt_draft(qid: int, request: Request, instructions: str = Form(""), db: Session = Depends(get_db)):
     from app.ai.factory import get_provider
 
-    q = db.get(Question, qid)
+    q = _get_q(db, qid)
     provider = get_provider(st.all_settings(db))
     if not getattr(provider, "generative", False):
         return RedirectResponse(f"/admin/review/{qid}/adapt?flash=" + quote("AI is not configured: write the adapted wording yourself."), status_code=303)
@@ -370,7 +377,7 @@ def adapt_draft(qid: int, request: Request, instructions: str = Form(""), db: Se
 @router.post("/admin/review/{qid}/adapt/save")
 async def adapt_save(qid: int, request: Request, db: Session = Depends(get_db)):
     form = await request.form()
-    q = db.get(Question, qid)
+    q = _get_q(db, qid)
     opts = [str(form.get(f"option_{i}") or "").strip() for i in range(4)] if "option_0" in form else None
     answer = {"type": "mcq", "value": str(form.get("answer_letter")).upper()} if form.get("answer_letter") else None
     try:

@@ -186,3 +186,27 @@ def test_retire_and_restore_from_detail(client, db, pdfs):
     client.post(f"/questions/{q.id}/restore")
     db.expire_all()
     assert db.get(Question, q.id).approval_status == "pending"
+
+
+def test_no_answer_fields_before_an_attempt_unless_admin_mode(client, db, pdfs):
+    # adaptive-01 (3)/(4): no solution step, model answer or answer value on the detail page of
+    # an unattempted question, and no stored key in the review card unless administrator mode is on
+    q = db.execute(select(Question).where(Question.approved.is_(True), Question.solution.is_not(None))).scalars().all()
+    q = next(x for x in q if (x.solution or {}).get("steps"))
+    page = client.get(f"/questions/{q.id}").text
+    assert "Worked solution" not in page and "Model response" not in page
+    qs, _ = _import_maths(db, pdfs)
+    mcq = qs["4"]  # key D
+    card = client.get(f"/admin/review/{mcq.id}").text
+    assert 'value="D" checked' not in card and "<strong>Answer:</strong>" not in card and "hidden so they do not spoil" in card
+    st.set_(db, "admin_mode", True)
+    db.commit()
+    card = client.get(f"/admin/review/{mcq.id}").text
+    assert 'value="D" checked' in card and "<strong>Answer:</strong> D" in card
+
+
+def test_missing_question_is_a_clean_error_not_a_500(client):
+    for url in ("/questions/999999/retire", "/admin/review/999999/approve", "/admin/review/999999/adapt/save"):
+        r = client.post(url, data={})
+        assert r.status_code in (400, 404, 422), url
+    assert client.get("/admin/review/999999").status_code in (400, 404)

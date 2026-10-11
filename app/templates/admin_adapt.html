@@ -27,7 +27,7 @@
     </div>
     {% if q.question_type == 'mcq' %}
       {% for i in range(4) %}<div class="field"><label>Option {{ 'ABCD'[i] }}</label><input type="text" name="option_{{ i }}" value="{{ (q.options or [])[i] if (q.options or [])|length > i else '' }}"></div>{% endfor %}
-      <div class="field"><label>Correct answer</label><div class="row">{% for l in 'ABCD' %}<label class="row"><input type="radio" name="answer_letter" value="{{ l }}" {{ 'checked' if q.answer and q.answer.value == l }}> {{ l }}</label>{% endfor %}</div></div>
+      <div class="field"><label>Correct answer</label><div class="row">{% for l in 'ABCD' %}<label class="row"><input type="radio" name="answer_letter" value="{{ l }}" {{ 'checked' if admin_mode and q.answer and q.answer.value == l }}> {{ l }}</label>{% endfor %}</div></div>
     {% endif %}
     <div class="field"><label>Subtopics</label><select name="plan_item_ids" multiple size="6">{% for it in plan_items if it.subject_id == q.subject_id %}<option value="{{ it.id }}" {{ 'selected' if it.id in required }}>{{ it.code }} {{ it.title|truncate(48) }} — {{ it.status }}</option>{% endfor %}</select></div>
     {% if code == 'ENGLISH' %}
