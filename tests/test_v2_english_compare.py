@@ -196,3 +196,18 @@ def test_ai_why_lost_is_grounded_and_checks_the_quoted_sentence(db):
     a2 = assessment.submit(db, q, WEAK)
     text2 = assessment.why_lost(db, a2)
     assert "Use the narrator's reason" in text2 and "You wrote" not in text2
+
+
+def test_question_page_writing_interface(client, db):
+    paired = next(x for x in db.execute(select(Question).where(Question.category == "unseen")).scalars()
+                  if x.stimulus and len(x.stimulus.reading_set()) > 1)
+    page = htmllib.unescape(client.get(f"/practice/{paired.id}").text)
+    assert 'id="reading-pane"' in page and "Text 1" in page and "Text 2" in page and "¶ numbers" in page
+    assert page.index('id="reading-pane"') < page.index('id="answer-form"')  # writing.js puts them side by side at desktop width
+    assert "data-word-count" in page and "suggested" in page and "Full-screen writing (text beside your answer)" in page
+    assert f"What a {paired.marks}-mark" in page and "a guide, not a target" in page
+    craft = next(x for x in db.execute(select(Question).where(Question.category == "course")).scalars()
+                 if (x.solution or {}).get("response_type") == "imaginative")
+    page = htmllib.unescape(client.get(f"/practice/{craft.id}").text)
+    lo, hi = craft.solution["suggested_words"]
+    assert f"(suggested {lo}–{hi})" in page and "A composition judged on control" in page and 'id="reading-pane"' not in page

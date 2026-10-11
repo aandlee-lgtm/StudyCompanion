@@ -1,4 +1,10 @@
-{# Writing interface for English/Legal (owner: english-logic). #}
+{# Writing interface for English/Legal (owner: english-logic). Context: q, code, latest, sq, draft_answer.
+   Toolbar: word count against a suggested range (a guide, not a target), suggested time, timer, save state and
+   full-screen writing that keeps the passage and question beside the answer (writing.js). #}
+{% set sol = q.solution or {} %}
+{% set ranges = {1: [15, 40], 2: [40, 80], 3: [70, 130], 4: [100, 180], 5: [150, 250], 6: [200, 350]} %}
+{% set sw = sol.suggested_words if (sol.suggested_words and sol.suggested_words|length == 2) else (ranges[q.marks] if q.marks in ranges else [50 * q.marks, 70 * q.marks]) %}
+{% set craft = sol.response_type in ['imaginative', 'discursive', 'persuasive', 'reflective', 'rewrite'] %}
 {% set prev = latest.feedback.payload if (latest and latest.feedback) else none %}
 {% if prev and prev.comparison_items %}{% set todo = prev.comparison_items|rejectattr('status', 'equalto', 'met')|list %}
       <details class="box en-retry" open><summary><strong>Work from your feedback</strong> — attempt {{ latest.attempt_number }} ({{ latest.mark_awarded|round(1) }}/{{ latest.mark_possible|int }}) is loaded below; edit it rather than starting again</summary>
@@ -6,6 +12,27 @@
       </details>
 {% elif latest %}<p class="small muted">Your previous answer (attempt {{ latest.attempt_number }}) is loaded below — edit it rather than starting again.</p>
 {% endif %}
-      <div class="toolbar"><span id="word-count">0 words</span><span>Suggested time ~{{ q.estimated_minutes|round|int }} min</span><span>Time on this question <span class="timer" id="q-timer">0:00</span></span><a href="#" id="fullscreen">Full-screen writing (Esc to exit)</a><span>Autosaves</span></div>
-      <textarea class="writing" name="answer" data-autosave placeholder="Write your response here.">{{ draft_answer }}</textarea>
-      <p class="tiny muted">There is no word target: write what the mark value and directive verb require.</p>
+{% if code == 'ENGLISH' %}
+      {% set points = {1: 'one accurate point', 2: 'one clear point supported by one piece of evidence, briefly explained', 3: 'a clear point with apt evidence and an explanation of its effect (or two briefer points)', 4: 'two developed points, each linking evidence to a technique and explaining how it shapes meaning', 5: 'two or three developed points, integrated evidence and an explicit judgement or comparison', 6: 'a thesis and three developed points with integrated evidence and perceptive analysis of form and meaning'} %}
+      <details class="box en-scale no-print"><summary>What a {{ q.marks }}-mark {% if q.directive_verb %}‘{{ q.directive_verb }}’ {% endif %}{{ 'task' if craft else 'answer' }} needs</summary>
+        <ul class="small">
+          {% if craft %}
+          <li>A composition judged on control: every choice of detail, structure, voice and tense serves the purpose — not the number of techniques.</li>
+          {% if sol.response_type == 'reflective' or 'reflect' in q.question_text|lower %}<li>The reflection names a deliberate choice, its effect on the reader and how it serves the purpose.</li>{% endif %}
+          {% else %}
+          <li>{{ points[q.marks] if q.marks in points else points[6] }}.</li>
+          <li>Each piece of evidence: a short, exact quotation → the technique or feature → its effect → the link back to the question.</li>
+          {% endif %}
+          <li>About {{ sw[0] }}–{{ sw[1] }} words and ~{{ q.estimated_minutes|round|int }} minutes — a guide, not a target. Development earns marks; length alone does not.</li>
+        </ul>
+      </details>
+{% endif %}
+      <div class="toolbar en-toolbar" data-suggest-low="{{ sw[0] }}" data-suggest-high="{{ sw[1] }}">
+        <span><span id="word-count" data-word-count>0 words</span>{% if code == 'ENGLISH' %} <span class="muted">(suggested {{ sw[0] }}–{{ sw[1] }})</span>{% endif %}</span>
+        <span>Suggested time ~{{ q.estimated_minutes|round|int }} min</span>
+        <span>Time on this question <span class="timer" id="q-timer" data-q-timer>0:00</span></span>
+        <a href="#" id="fullscreen" role="button">Full-screen writing{% if reading %} (text beside your answer){% endif %}</a>
+        <span data-save-state>{{ 'Autosaves' if sq else '' }}</span>
+      </div>
+      <textarea class="writing" id="answer-text" name="answer" data-autosave placeholder="Write your response here.">{{ draft_answer }}</textarea>
+      <p class="tiny muted">{% if code == 'ENGLISH' %}The suggested length is a guide, not a target: write what the mark value and directive verb require.{% else %}There is no word target: write what the mark value and directive verb require.{% endif %}</p>

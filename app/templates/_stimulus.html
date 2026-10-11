@@ -1,9 +1,21 @@
-{# Passage / stimulus display (owner: english-logic). Context: reading (list of Stimulus). #}
-{% for st in reading %}
-<div class="stimulus {{ 'poem' if st.form == 'Poetry' }}" style="margin-top:14px">
-  <h3>{{ st.title }}</h3>
-  {{ st.body | paras }}
-  {% if st.image_path %}<img src="/media/{{ st.image_path.split('/')[-1] }}" alt="Stimulus from the source document" style="max-width:100%">{% endif %}
-  <div class="attribution">{{ st.form }} · {{ st.attribution }}</div>
+{# Passage / stimulus display (owner: english-logic). Context: reading (list of Stimulus), q, code.
+   The reading pane sits beside the writing area at desktop width and in full-screen writing (writing.js). #}
+{% if reading %}
+<div class="en-reading" id="reading-pane" data-texts="{{ reading|length }}">
+  {% if reading|length > 1 or (code == 'ENGLISH' and reading|length == 1) %}
+  <div class="en-reading-bar no-print">
+    <span class="small muted">{% if reading|length > 1 %}{{ reading|length }} texts — the question says which to use{% else %}The text{% endif %}</span>
+    <button type="button" class="btn small" data-para-numbers aria-pressed="false" title="Number the paragraphs so you can refer to them">¶ numbers</button>
+  </div>
+  {% endif %}
+  {% for st in reading %}
+  <div class="stimulus {{ 'poem' if st.form == 'Poetry' }}" style="margin-top:{{ '8px' if loop.first else '14px' }}">
+    <h3>{% if reading|length > 1 %}<span class="en-textno">Text {{ loop.index }}</span> {% endif %}{{ st.title }}</h3>
+    {% if st.headnote %}<p class="en-headnote">{{ st.headnote }}</p>{% endif %}
+    <div class="en-body">{{ st.body | paras }}</div>
+    {% if st.image_path %}<img src="/media/{{ st.image_path.split('/')[-1] }}" alt="Stimulus from the source document" style="max-width:100%">{% endif %}
+    <div class="attribution">{{ st.form }} · {{ st.attribution }}</div>
+  </div>
+  {% endfor %}
 </div>
-{% endfor %}
+{% endif %}
