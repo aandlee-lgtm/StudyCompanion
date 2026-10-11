@@ -1,0 +1,42 @@
+{# One turn of an "Ask about this feedback" thread (owner: followup). Needs `r` (a FeedbackQuestion)
+   and `fu_ai` (whether an AI provider can answer now). #}
+<li class="fu-turn fu-{{ r.status }}" id="fu-{{ r.id }}">
+  <div class="fu-q"><span class="fu-who">You asked</span>{{ r.question_text | paras }}</div>
+  {% if r.status == 'answered' and r.answer %}{% set ans = r.answer %}
+  <div class="fu-a">
+    <div class="fu-who">Explanation</div>
+    {{ ans.answer | paras }}
+    {% if ans.steps %}<ol class="steps fu-steps">{% for s in ans.steps %}<li>{{ s }}</li>{% endfor %}</ol>{% endif %}
+    {% if ans.example %}<div class="fu-example"><div class="label">{{ 'A similar example' if r.chip == 'similar' else 'Example' }}</div>{{ ans.example | paras }}</div>{% endif %}
+    {% set checks = ans.checks or {} %}
+    {% if checks.unverified_quotes %}<div class="notice warn small">These words are in quotation marks but are not in the text, your
+      response or the feedback, so do not rely on them as quotations: {{ checks.unverified_quotes | join('; ') }}</div>{% endif %}
+    {% if checks.unverified_references %}<div class="notice warn small"><strong>Unverified references.</strong> These are not in your
+      verified Legal evidence bank — check them with your teacher before using them: {{ checks.unverified_references | join('; ') }}</div>{% endif %}
+    <div class="fu-meta tiny muted">
+      <span>AI explanation{% if r.model %} ({{ r.model }}){% endif %} · explains the feedback, never changes your mark · not an official NESA judgement</span>
+      {% if r.for_teacher %}<span class="pill {{ 'good' if r.teacher_resolved }}">{{ 'asked in class' if r.teacher_resolved else 'saved for my teacher' }}</span>
+      {% else %}<form method="post" action="/followup/{{ r.id }}/teacher" data-fu-action><input type="hidden" name="back" value="{{ r.page_url or '' }}">
+        <button class="btn link tiny" type="submit">Still unsure? Save for my teacher</button></form>{% endif %}
+    </div>
+  </div>
+  {% elif r.status == 'offline' %}
+  <div class="fu-a fu-saved small">
+    <span class="pill {{ 'good' if r.teacher_resolved else 'warn' }}">{{ 'asked in class' if r.teacher_resolved else 'saved for my teacher' }}</span>
+    Free questions need Claude, so this question was saved to <a href="/errors#teacher-questions">Questions for my teacher</a>.
+    {% if fu_ai %}<form method="post" action="/followup/{{ r.id }}/retry" data-fu-action class="fu-inline"><input type="hidden" name="back" value="{{ r.page_url or '' }}">
+      <button class="btn small" type="submit">Ask Claude now</button></form>{% endif %}
+  </div>
+  {% else %}
+  <div class="fu-a fu-failed small">
+    <div class="notice warn">{{ r.error or 'This question could not be answered.' }}</div>
+    <div class="row">
+      {% if fu_ai %}<form method="post" action="/followup/{{ r.id }}/retry" data-fu-action><input type="hidden" name="back" value="{{ r.page_url or '' }}">
+        <button class="btn small" type="submit">Ask again</button></form>{% endif %}
+      {% if r.for_teacher %}<span class="pill warn">saved for my teacher</span>
+      {% else %}<form method="post" action="/followup/{{ r.id }}/teacher" data-fu-action><input type="hidden" name="back" value="{{ r.page_url or '' }}">
+        <button class="btn small" type="submit">Save for my teacher</button></form>{% endif %}
+    </div>
+  </div>
+  {% endif %}
+</li>

@@ -93,6 +93,10 @@ DEFAULTS.update({  # adaptive
 })
 DEFAULTS.update({  # ingestion
 })
+DEFAULTS.update({  # followup
+    # "Ask about this feedback": maximum questions (turns) in one attempt's thread.
+    "followup_max_turns": 20,
+})
 DEFAULTS.update({  # platform
     "ai_effort": "high",  # Claude output_config.effort for marking
     "setup_completed_at": None,

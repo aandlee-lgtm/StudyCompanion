@@ -19,4 +19,5 @@
     <td>{% if not e.resolved %}<form method="post" action="/errors/{{ e.id }}/resolve"><button class="btn small">Resolved</button></form>{% else %}<span class="pill good">resolved</span>{% endif %}</td></tr>
   {% else %}<tr><td colspan="5" class="muted">No errors recorded{{ ' for this filter' if subject }}.</td></tr>{% endfor %}
 </table></div>
+{% include "_teacher_questions.html" %}
 {% endblock %}

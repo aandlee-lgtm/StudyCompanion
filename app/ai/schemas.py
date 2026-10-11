@@ -125,3 +125,34 @@ class WorkingReading(BaseModel):
     @classmethod
     def _short_parts(cls, v: dict[str, str]) -> dict[str, str]:
         return {str(k)[:20]: str(a)[:400] for k, a in list(v.items())[:12]}
+
+
+class FollowUpAnswer(BaseModel):
+    """v2-followup: an answer to a student's question about feedback they already received.
+    Deliberately has no mark field: a follow-up answer explains the feedback and can never
+    re-mark the attempt."""
+
+    answer: str = Field(min_length=1, max_length=8000)
+    steps: list[str] = Field(default=[], max_length=30)
+    example: str = Field(default="", max_length=4000)
+
+    @field_validator("answer", mode="before")
+    @classmethod
+    def _answer_text(cls, v):
+        return v.strip() if isinstance(v, str) else v
+
+    @field_validator("steps", mode="before")
+    @classmethod
+    def _clean_steps(cls, v):
+        if v is None:
+            return []
+        if isinstance(v, str):
+            v = [v]
+        if not isinstance(v, list):
+            return v  # let validation reject it
+        return [str(s).strip()[:1500] for s in v if isinstance(s, (str, int, float)) and str(s).strip()][:12]
+
+    @field_validator("example", mode="before")
+    @classmethod
+    def _clean_example(cls, v):
+        return "" if v is None else (v.strip() if isinstance(v, str) else v)
