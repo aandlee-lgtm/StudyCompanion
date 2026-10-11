@@ -3860,6 +3860,775 @@
     }
    ],
    "length_words": 529
+  },
+  {
+   "key": "harry-letter-pair",
+   "title": "Letter from France, 1917",
+   "form": "Letter",
+   "complexity": 2,
+   "author": "Original text (HSC Companion)",
+   "headnote": "Text 1 is an original letter written in the style of the First World War, from a fictional Australian soldier, Harry, to his mother. Text 2 is an original memoir extract by Harry's fictional great-niece, a century later. Nell is Harry's younger sister.",
+   "theme_tags": [
+    "war",
+    "memory",
+    "family",
+    "silence",
+    "remembrance"
+   ],
+   "body": "France, 2nd October 1917\n\nDear Mother,\n\nYour parcel came on Tuesday and I want you to know that the socks were the best thing that has happened to me since August, and that I am wearing both pairs at once, which the sergeant says is against regulations, though he has not said which regulation. The cake did not survive the journey as a cake, but we ate it as crumbs with a spoon and it was very fine crumbs.\n\nWe are out of the line for a few days, in a village I am not allowed to name, sleeping in a barn with a great many other fellows and a great many rats, who are the only ones of us that look well fed. There is an old woman here who sells us eggs and calls us all Australie, as if it were one person's name, and I suppose to her it is.\n\nYou are not to worry. I know that you will, so I am telling you not to so that you will at least worry less. I am well and I keep my head down, as Father told me, and Jack Pearce from the dairy is in my section, and we talk about home until the others tell us to shut up.\n\nI think about the creek at the bottom paddock a good deal. When I get back I am going to sit on the bank there for a whole day and not do one useful thing, and you are not to call me in for tea.\n\nThere are things here I will not write about, and you are not to ask me about them when I come home. I will tell you instead about the eggs, and the old woman, and how the poplars along the road go yellow all at once, like a lamp turned up.\n\nGive my love to Father and to Nell, and tell Nell she can have my bike until I want it back.\n\nYour loving son,\nHarry",
+   "pair": {
+    "title": "The Biscuit Tin",
+    "form": "Memoir",
+    "author": "Original text (HSC Companion)",
+    "headnote": "",
+    "body": "The letter lives in a biscuit tin in my grandmother's wardrobe, between her wedding certificate and a lock of hair in an envelope that just says Harry, which I was not allowed to open as a child and have still not opened.\n\nMy grandmother was Nell. She was nine when her brother wrote to their mother about the socks and the cake and the yellow poplars, and she was ninety-one when she showed me the letter for the first time, her hands so careful with the paper that it seemed she was holding something that might wake.\n\n'He never came back for the bike,' she said.\n\nThat was all she said about it. I knew, the way you know family facts without ever being told them, that Harry had been killed in France a few weeks after the letter was written, and that his mother had never sat by the creek again either. I knew there was a photograph in the hallway of a young man in a slouch hat whose face I had walked past ten thousand times without looking at.\n\nWhat I did not know, until I read the letter myself, was that he was funny. That he made jokes about socks and regulations. That he told his mother not to worry so that she would worry less, which is the kind of logic I recognise, because my grandmother used it on me my whole life.\n\nI have read the letter perhaps fifty times now. The line I return to is the one where he says there are things he will not write about. I used to read it as protection, a son sparing his mother. Lately I read it differently. I think he was protecting the letter, too: keeping one small piece of paper free of the war, so that something he made would stay about eggs and poplars and a creek.\n\nIf that was his plan, it worked. A hundred years later, it is the eggs I remember.\n\nMy grandmother died last spring. The bike went long before that, of course, sold or rusted or given away. But I have the tin now, and the letter, and the envelope I have still not opened, and I have decided that I am not going to. Some things you keep by not looking."
+   },
+   "questions": [
+    {
+     "marks": 3,
+     "verb": "Explain",
+     "demand": "explain",
+     "text": "In Text 1, explain how and why Harry uses humour in his letter.",
+     "skill_tags": [
+      "humour",
+      "purpose",
+      "audience",
+      "tone"
+     ],
+     "criteria": [
+      {
+       "mark": 3,
+       "descriptor": "Provides a precise, well-reasoned explanation of how and why Harry uses humour, integrating well-chosen textual evidence and making the cause-and-effect relationship explicit"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides a sound explanation of how and why Harry uses humour with appropriate textual reference"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of how and why Harry uses humour, relying on paraphrase or retelling"
+      }
+     ],
+     "checklist": [
+      "Gives examples of humour (the socks \"against regulations\"; the cake as \"very fine crumbs\"; the well-fed rats)",
+      "Explains the purpose: reassurance and protection of his mother",
+      "Links the humour to what he refuses to write about (\"There are things here I will not write about\")",
+      "Explains the playful logic of \"so that you will at least worry less\""
+     ],
+     "next_steps": {
+      "0": "Quote one example of humour and explain what makes it funny.",
+      "1": "Explain WHY Harry jokes: who is the letter for, and what does he want her to feel?",
+      "2": "Connect the humour to the sentence where he refuses to write about some things, and explain what the humour hides."
+     },
+     "model": "Harry uses humour to reassure his mother and to keep the horror of the war out of the letter. He jokes that wearing two pairs of socks is \"against regulations, though he has not said which regulation\", and that the ruined cake was eaten as \"very fine crumbs\", turning hardship into comedy. Even the rats become comic as \"the only ones of us that look well fed\". This light tone serves a protective purpose that he later makes explicit: \"There are things here I will not write about\". His playful logic, telling her not to worry \"so that you will at least worry less\", shows that humour is his way of caring for her while acknowledging what he cannot change.",
+     "difficulty": 1
+    },
+    {
+     "marks": 4,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "In Text 2, analyse how the narrator's understanding of Harry changes.",
+     "skill_tags": [
+      "perspective",
+      "memory",
+      "structure"
+     ],
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Provides a perceptive, sustained analysis of how the narrator's understanding of Harry changes in Text 2, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a thoughtful analysis of how the narrator's understanding of Harry changes in Text 2, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how the narrator's understanding of Harry changes in Text 2, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how the narrator's understanding of Harry changes in Text 2 or identifies a relevant technique with little explanation of its effect"
+      }
+     ],
+     "checklist": [
+      "Makes a claim about the change (from inherited fact to intimate knowledge to interpretation)",
+      "Analyses the early distance (family facts known \"without ever being told\"; the photograph passed \"ten thousand times\")",
+      "Analyses the discovery \"he was funny\" and the accumulating fragments that follow",
+      "Analyses the change of reading signalled by \"Lately I read it differently\" and the idea of \"protecting the letter\""
+     ],
+     "next_steps": {
+      "0": "Make a claim describing how the narrator's understanding moves, then support the starting point with the photograph.",
+      "1": "Analyse the moment of discovery and the sentence structure that conveys it.",
+      "2": "Analyse how her reading of one line changes over time, and what the new reading credits Harry with.",
+      "3": "Link the stages into one argument about moving from knowing about Harry to knowing him."
+     },
+     "model": "The narrator's understanding of Harry changes from an inherited, distant fact to intimate personal knowledge, and finally to an interpretation of his intentions. At first he exists only as family knowledge absorbed \"the way you know family facts without ever being told them\", and as a photograph she had walked past \"ten thousand times without looking at\", a hyperbole conveying how familiar yet invisible he was. Reading the letter changes this: the emphatic sentence \"What I did not know, until I read the letter myself, was that he was funny\" marks a discovery of personality, and the fragments that follow, \"That he made jokes about socks and regulations\", accumulate like evidence. She even recognises his logic as a family trait her grandmother used, linking Harry to living memory. Finally, her understanding deepens through rereading: \"I used to read it as protection... Lately I read it differently.\" Her new interpretation, that he was \"protecting the letter, too\", credits Harry with deliberate artistry. The narrator moves from knowing about Harry to knowing him.",
+     "difficulty": 2
+    },
+    {
+     "marks": 6,
+     "verb": "Synthesise",
+     "demand": "synthesise",
+     "text": "Drawing on both texts, what do they suggest about how war is remembered through what is said and what is left unsaid?",
+     "skill_tags": [
+      "synthesis",
+      "memory",
+      "silence",
+      "war"
+     ],
+     "criteria": [
+      {
+       "mark": 6,
+       "descriptor": "Constructs a perceptive, coherent synthesis of what both texts suggest about remembering war through the said and the unsaid, combining insights from across the text(s) into a new understanding supported by well-chosen evidence"
+      },
+      {
+       "mark": 5,
+       "descriptor": "Constructs a thoughtful synthesis of what both texts suggest about remembering war through the said and the unsaid, drawing together relevant, analysed evidence"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Draws together ideas about what both texts suggest about remembering war through the said and the unsaid with relevant evidence and some explanation"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Discusses relevant ideas about what both texts suggest about remembering war through the said and the unsaid without fully combining them"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Describes aspects of the text(s) with limited reference to what both texts suggest about remembering war through the said and the unsaid"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Makes a limited or general comment relevant to the question"
+      }
+     ],
+     "checklist": [
+      "Constructs an insight about silence as preservation, not only absence",
+      "Analyses Harry's selection of domestic detail and his explicit refusal to write about the war",
+      "Analyses the memoir's restraint (Harry's death never narrated; \"He never came back for the bike\")",
+      "Analyses the narrator's reinterpretation and \"A hundred years later, it is the eggs I remember\"",
+      "Connects the unopened envelope (\"Some things you keep by not looking.\") to Harry's request",
+      "Concludes with a synthesised judgement about humane remembrance"
+     ],
+     "next_steps": {
+      "0": "Write a thesis that answers the question for both texts together.",
+      "1": "Analyse what Harry chooses to include and exclude in Text 1, with brief quotations.",
+      "2": "Analyse how Text 2 handles Harry's death and grief, and how its restraint mirrors his.",
+      "3": "Explain how the narrator's reinterpretation shows the effect of Harry's choices a century later.",
+      "4": "Link the two acts of withholding (Harry's and the narrator's) into one insight.",
+      "5": "Refine for Band 6: keep both texts in each paragraph and end with an insight about remembrance, not a summary."
+     },
+     "model": "Together, the texts suggest that the memory of war is preserved as much by what is withheld as by what is said: Harry's deliberate silences protect both his family and the human texture of his life, and the memoir shows later generations honouring him by respecting those silences rather than filling them.\n\nIn Text 1, Harry chooses what to preserve. He fills the letter with small domestic details, the cake eaten \"as crumbs with a spoon\", the old woman who calls the soldiers Australie \"as if it were one person's name\", and the poplars that turn yellow \"like a lamp turned up\". He explicitly withholds the rest: \"There are things here I will not write about, and you are not to ask me about them\". The letter keeps the war's violence unspoken.\n\nText 2 reveals both the cost and the success of that choice. Harry's death is never narrated directly; it is known only as a family fact, and Nell's single sentence, \"He never came back for the bike\", turns his casual promise into an elegy. The memoir mirrors Harry's restraint, condensing grief into an object rather than a statement.\n\nThe narrator then reinterprets the silence. She once read it as \"protection\", but comes to see Harry as \"protecting the letter, too\", keeping it \"free of the war\". Her conclusion, \"A hundred years later, it is the eggs I remember\", confirms that his selective record shapes how he survives in memory: as a funny, observant young man rather than a casualty.\n\nBoth texts finally make withholding an act of love. Harry tells his mother not to ask; the narrator decides not to open the envelope marked \"Harry\", reasoning that \"Some things you keep by not looking.\" Her choice echoes his across a century.\n\nSynthesised, the texts suggest that war is remembered most humanely not through complete testimony but through fragments chosen with care, and that silence, far from erasing the past, can be what keeps it intact.",
+     "difficulty": 3
+    }
+   ],
+   "length_words": 720
+  },
+  {
+   "key": "groundwater-speech",
+   "title": "What You Cannot See",
+   "form": "Speech",
+   "complexity": 2,
+   "author": "Original text (HSC Companion)",
+   "headnote": "This is an original speech by a fictional hydrologist (a scientist who studies water) at a community meeting in Tellum Creek, a fictional inland town. All figures in the speech are part of the fiction. An aquifer is a layer of rock that holds groundwater.",
+   "theme_tags": [
+    "environment",
+    "time",
+    "community",
+    "responsibility",
+    "rural towns"
+   ],
+   "body": "Thank you for coming out on a cold night. I know some of you have driven forty minutes to be here, and I know some of you have heard people like me talk about water before, and gone home no wiser and a good deal crankier. I'll try to do better.\n\nI want to start with a glass of water. This one. It came out of the tap in this hall twenty minutes ago. It's clear, it's cold, it tastes fine. And it is about eleven thousand years old.\n\nThat's not a figure of speech. The water under this town sits in sandstone, in tiny spaces between the grains, the way water sits in a sponge. Most of it fell as rain a very long time ago and has been seeping down, slowly, ever since. Every time you turn on a tap in Tellum Creek, you are drinking the weather of a world with no wheat, no fences, and a very different coastline.\n\nHere's the problem. We are taking it out faster than it is going in. Not by a little. Our measurements from the monitoring bores show the level dropping by about forty centimetres a year. You can't see that. Nobody wakes up and notices that an aquifer is forty centimetres lower. There is no flood, no fire, no photograph for the front page. That is exactly what makes it dangerous.\n\nNow, I'm not here to tell you who to blame. The farms use it. The town uses it. The new feedlot will use it. Most of you are some combination of all three, and some of you are related to all three. Blame is easy, and it doesn't put a single litre back in the ground.\n\nWhat I am here to tell you is that the decision in front of the council next month is not really about this year, or the next five. It's about whether there is water under Tellum Creek for the kids at the back of this room when they are as old as I am. And the trouble with groundwater is that by the time you can see the problem, it's too late to fix it in a lifetime. Eleven thousand years to fill. A few generations to empty.\n\nSo I'm asking you for something unusual. I'm asking you to care about something you will never see. I'm asking you to be the kind of town that thinks in centuries, like the water does.\n\nYou don't have to take my word for it. The monitoring data is public. I'll put the link on the screen, and I'll stay as long as anyone wants to ask me questions, including the cranky ones.\n\nAnd before you go, have a glass of water. Taste it properly. It's the oldest thing in this room, older than the hall, older than the town, older than the river. It got here before us. The question is whether it will still be here after we're gone.",
+   "pair": null,
+   "questions": [
+    {
+     "marks": 2,
+     "verb": "Identify",
+     "demand": "identify",
+     "text": "Identify the speaker's main purpose, and ONE way she acknowledges her audience's attitude.",
+     "skill_tags": [
+      "purpose",
+      "audience"
+     ],
+     "criteria": [
+      {
+       "mark": 2,
+       "descriptor": "Precisely identifies the speaker's purpose and how she acknowledges her audience and explains its significance with apt, accurately quoted evidence"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Identifies a relevant feature of the speaker's purpose and how she acknowledges her audience with little or no explanation"
+      }
+     ],
+     "checklist": [
+      "Identifies the purpose: persuading the town to protect its groundwater before the council's decision",
+      "Identifies one way she acknowledges the audience's scepticism (\"no wiser and a good deal crankier\"; inviting \"the cranky ones\")",
+      "Briefly explains the effect (disarming resistance, building trust)"
+     ],
+     "next_steps": {
+      "0": "State the purpose in one precise sentence that mentions the coming decision.",
+      "1": "Quote one moment where she recognises how the audience feels, and say what that achieves."
+     },
+     "model": "The speaker's main purpose is to persuade the community to support long-term protection of the town's groundwater before the council's decision next month. She acknowledges her audience's scepticism directly, admitting that some have heard experts before \"and gone home no wiser and a good deal crankier\", a self-deprecating admission that disarms resistance and makes her seem honest and approachable.",
+     "difficulty": 1
+    },
+    {
+     "marks": 3,
+     "verb": "Explain",
+     "demand": "explain",
+     "text": "Explain the significance of the glass of water in the speech.",
+     "skill_tags": [
+      "symbol",
+      "structure",
+      "speech"
+     ],
+     "criteria": [
+      {
+       "mark": 3,
+       "descriptor": "Provides a precise, well-reasoned explanation of the significance of the glass of water, integrating well-chosen textual evidence and making the cause-and-effect relationship explicit"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides a sound explanation of the significance of the glass of water with appropriate textual reference"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of the significance of the glass of water, relying on paraphrase or retelling"
+      }
+     ],
+     "checklist": [
+      "Explains the glass as a visual prop that makes a hidden resource tangible",
+      "Explains the surprise of \"about eleven thousand years old\" after the ordinary description",
+      "Explains the return to the glass at the end (\"Taste it properly\") and the circular structure",
+      "Explains the glass as a symbol of what is at stake"
+     ],
+     "next_steps": {
+      "0": "Explain what the glass does at the start of the speech, with a quotation.",
+      "1": "Explain why the speaker returns to it at the end, and what the circular structure achieves.",
+      "2": "Explain what the glass comes to symbolise for the audience by the end of the speech."
+     },
+     "model": "The glass of water is a visual prop that turns an abstract, hidden resource into something the audience can see and taste. At the opening the speaker presents it as ordinary, \"clear, it's cold, it tastes fine\", then reveals that it is \"about eleven thousand years old\", a surprising juxtaposition that captures attention and introduces the speech's concern with deep time. At the close she returns to it, inviting the audience to \"Taste it properly\" and calling it \"the oldest thing in this room\". This circular structure makes the glass a symbol of everything at stake, so that each listener leaves having physically experienced the resource she wants them to protect.",
+     "difficulty": 1
+    },
+    {
+     "marks": 5,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "Analyse how the speaker makes an invisible problem feel urgent to her audience.",
+     "skill_tags": [
+      "persuasion",
+      "imagery",
+      "rhetoric",
+      "audience"
+     ],
+     "criteria": [
+      {
+       "mark": 5,
+       "descriptor": "Provides a perceptive, sustained analysis of how the speaker makes an invisible problem feel urgent, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Provides a thoughtful analysis of how the speaker makes an invisible problem feel urgent, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a sound analysis of how the speaker makes an invisible problem feel urgent, using relevant evidence with some explanation of effect"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how the speaker makes an invisible problem feel urgent, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how the speaker makes an invisible problem feel urgent or identifies a relevant technique with little explanation of its effect"
+      }
+     ],
+     "checklist": [
+      "Makes a claim about her strategies (concrete images, the danger of quietness, time and children, unity)",
+      "Analyses the sponge simile and \"the weather of a world with no wheat, no fences\"",
+      "Analyses the tricolon of absent disasters (\"no flood, no fire, no photograph for the front page\")",
+      "Analyses the reference to \"the kids at the back of this room\" and the antithesis of filling and emptying",
+      "Analyses her refusal to blame and the appeal to think \"in centuries\""
+     ],
+     "next_steps": {
+      "0": "Make a claim that names the speaker's main strategies, then support the first with an image of the hidden water.",
+      "1": "Analyse how she turns the invisibility of the problem into the reason it is dangerous.",
+      "2": "Analyse how she uses time and the children in the room to create urgency.",
+      "3": "Analyse how avoiding blame keeps the audience united, and why that matters for her purpose.",
+      "4": "Link the strategies into one argument, ending with her challenge to be a town that thinks in centuries."
+     },
+     "model": "The speaker makes an invisible problem urgent by translating it into concrete images, presenting its quietness as the danger, and reframing the issue in terms of time and children.\n\nFirst, she makes the hidden aquifer tangible. The simile that water sits in sandstone \"the way water sits in a sponge\" gives listeners a familiar picture of something they will never see, and the claim that \"you are drinking the weather of a world with no wheat, no fences\" connects daily routine to deep time, making the resource feel precious.\n\nSecond, she turns invisibility itself into the source of danger. After stating the decline of \"about forty centimetres a year\", she lists what is missing: \"There is no flood, no fire, no photograph for the front page.\" The tricolon of absent disasters contrasts groundwater loss with the crises that usually command attention, and the short sentence \"That is exactly what makes it dangerous\" makes the argument explicit.\n\nThird, she reframes the decision through future generations. Her reference to \"the kids at the back of this room\" makes the stakes visible, and the antithesis \"Eleven thousand years to fill. A few generations to empty.\" compresses the imbalance into two memorable fragments.\n\nFinally, she avoids division. By refusing to assign blame, since \"it doesn't put a single litre back in the ground\", she keeps the whole room on side, and her anaphoric appeal, \"I'm asking you to care about something you will never see\", turns invisibility into a moral challenge: to be a town that \"thinks in centuries, like the water does.\"",
+     "difficulty": 3
+    }
+   ],
+   "length_words": 496
+  },
+  {
+   "key": "grade-one-violin",
+   "title": "Grade One at Forty-Three",
+   "form": "Personal essay",
+   "complexity": 2,
+   "author": "Original text (HSC Companion)",
+   "headnote": "This is an original personal essay. The writer is fictional. Ashfield is a suburb of Sydney; music students sit graded practical exams, beginning at Grade One.",
+   "theme_tags": [
+    "learning",
+    "failure",
+    "music",
+    "ageing",
+    "joy"
+   ],
+   "body": "At forty-three, I sat my Grade One violin exam in a church hall in Ashfield, between a seven-year-old in a tartan pinafore and a nine-year-old who was, I later learned, sitting Grade Three. I was the only candidate whose mother had not driven them there. I was also the only one who cried in the car park afterwards, though in fairness to me, I had passed.\n\nI started lessons the year my daughter left home. I told people it was to keep my brain young, which is the kind of reason adults are allowed to give for doing something useless. The truth is that I had wanted to play the violin since I was eight, when a woman played at my grandfather's funeral and I understood, for the first time, that a sound could be sad on someone's behalf. My parents said violins were expensive and I would give up. They were right on both counts, eventually. But it took me thirty-five years to give up, and then another five to start again.\n\nNobody warns you how bad you will be. Not slightly bad, not endearingly bad, but bad in a way that makes the dog leave the room. For the first six months, every note I played sounded like a door being opened slowly in a horror film. My teacher, a patient woman of about twenty-five, would listen with her head on one side, as if trying to hear the music I intended behind the music I made, and then say, kindly, 'Okay. Let's try that again.'\n\nWhat I had forgotten, in thirty years of being competent at things, was what it feels like to be a beginner. Adults arrange their lives to avoid it. We do the jobs we're good at, cook the meals we know, take the routes we've driven a thousand times. We call this experience, and it is, but it is also a kind of fortress, and after a while you forget you are living inside one.\n\nBeing a beginner at forty-three meant being bad in public, or at least in front of my teacher and the dog. It meant practising scales while my neighbours could hear. It meant accepting that I would never be good, not really, not in the time I have left, and doing it anyway. That last part is the hardest, and the most important. Almost everything we are taught about effort assumes a reward at the end of it: the job, the grade, the trophy. The violin offers no such bargain. I will never play in an orchestra. Nobody will ever pay to hear me. I practise because, for twenty minutes a day, I am fully absorbed in trying to make one sound slightly less terrible than the last, and that absorption is its own reward.\n\nI sometimes think about the woman at my grandfather's funeral. I don't know her name. She was probably an amateur too, someone's neighbour, asked to play because she could. She was not, I suspect, very good. It didn't matter. She played, and an eight-year-old in the second row heard grief turned into something you could hold.\n\nMy exam piece was a folk tune, sixteen bars long. I played it slightly too fast and missed the F sharp in bar eleven. The examiner wrote: Good sense of line. Enjoy your playing.\n\nI am trying to.",
+   "pair": null,
+   "questions": [
+    {
+     "marks": 3,
+     "verb": "Explain",
+     "demand": "explain",
+     "text": "Explain how the metaphor of experience as \"a kind of fortress\" develops the writer's argument.",
+     "skill_tags": [
+      "metaphor",
+      "argument",
+      "ideas"
+     ],
+     "criteria": [
+      {
+       "mark": 3,
+       "descriptor": "Provides a precise, well-reasoned explanation of how the fortress metaphor develops the argument, integrating well-chosen textual evidence and making the cause-and-effect relationship explicit"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides a sound explanation of how the fortress metaphor develops the argument with appropriate textual reference"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of how the fortress metaphor develops the argument, relying on paraphrase or retelling"
+      }
+     ],
+     "checklist": [
+      "Explains the list of safe adult habits that precedes the metaphor",
+      "Explains the concession \"We call this experience, and it is\"",
+      "Explains how the metaphor reframes competence as confinement, and \"you forget you are living inside one\"",
+      "Links the metaphor to her decision to become a beginner"
+     ],
+     "next_steps": {
+      "0": "Explain what the fortress stands for, using the list of adult habits before it.",
+      "1": "Explain what the metaphor adds: how does it change the way we see experience and competence?",
+      "2": "Link the metaphor to the essay's argument about why being a beginner matters."
+     },
+     "model": "The metaphor of experience as \"a kind of fortress\" develops the writer's argument that competence, though valuable, can imprison adults. She first lists the safe habits of adulthood, the jobs \"we're good at\", the meals \"we know\", the routes \"we've driven a thousand times\", and concedes that \"We call this experience, and it is\". The metaphor then reframes these habits as defensive walls that protect adults from the vulnerability of not knowing. The final clause, \"after a while you forget you are living inside one\", suggests that this confinement becomes invisible. The metaphor therefore justifies her return to the violin: being a beginner means leaving the fortress and accepting exposure.",
+     "difficulty": 1
+    },
+    {
+     "marks": 4,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "Analyse how the writer frames the essay with two performances (her exam and the funeral she remembers) to shape its meaning.",
+     "skill_tags": [
+      "structure",
+      "framing",
+      "anecdote"
+     ],
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Provides a perceptive, sustained analysis of how the two framing performances shape the essay's meaning, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a thoughtful analysis of how the two framing performances shape the essay's meaning, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how the two framing performances shape the essay's meaning, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how the two framing performances shape the essay's meaning or identifies a relevant technique with little explanation of its effect"
+      }
+     ],
+     "checklist": [
+      "Makes a claim about the frame (amateur music valued for human meaning, not excellence)",
+      "Analyses the comic, self-deprecating exam opening",
+      "Analyses the funeral memory as motive (\"a sound could be sad on someone's behalf\") and its return (\"It didn't matter.\")",
+      "Analyses the parallel between the two amateurs",
+      "Analyses the ending (\"Enjoy your playing.\" / \"I am trying to.\")"
+     ],
+     "next_steps": {
+      "0": "Make a claim about what the two performances together suggest, then describe the opening scene with a quotation.",
+      "1": "Analyse the funeral memory: what did the eight-year-old learn, and how is the memory reinterpreted later?",
+      "2": "Explain the parallel between the woman at the funeral and the writer.",
+      "3": "Analyse how the essay ends, and why ending on a short sentence suits the argument."
+     },
+     "model": "The essay is framed by two performances, the writer's Grade One exam and the funeral performance she remembers from childhood, and the frame shapes its central idea that amateur music is valuable for its human meaning rather than its excellence. The opening scene is comic and self-deprecating: she sat the exam \"between a seven-year-old in a tartan pinafore\" and a younger candidate at a higher grade, and she cried in the car park \"though in fairness to me, I had passed.\" This establishes her as an unlikely beginner. The funeral memory supplies the motive, the moment she understood \"that a sound could be sad on someone's behalf\", and late in the essay she returns to it with a new insight: the violinist \"was not, I suspect, very good. It didn't matter.\" The parallel between the two amateurs implies that what matters is the act of playing. The closing return to the exam completes the frame: the examiner's comment, \"Enjoy your playing\", and the writer's understated reply, \"I am trying to.\", turn the argument into an ongoing practice rather than a conclusion.",
+     "difficulty": 2
+    },
+    {
+     "marks": 5,
+     "verb": "Evaluate",
+     "demand": "evaluate",
+     "text": "The writer claims that accepting you will never be good, and doing it anyway, is \"the hardest, and the most important\" part of being an adult beginner. To what extent do you find her argument persuasive? Support your judgement with close reference to the essay.",
+     "skill_tags": [
+      "personal judgement",
+      "argument",
+      "persuasion"
+     ],
+     "criteria": [
+      {
+       "mark": 5,
+       "descriptor": "Makes a perceptive, well-justified judgement about the persuasiveness of the writer's argument about being an adult beginner, weighing evidence from across the text and analysing how language and form support the judgement"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Makes a clear, reasoned judgement about the persuasiveness of the writer's argument about being an adult beginner, supported by relevant, well-analysed evidence"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Makes a sound judgement about the persuasiveness of the writer's argument about being an adult beginner with relevant evidence and some analysis"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Offers a judgement about the persuasiveness of the writer's argument about being an adult beginner that is asserted more than argued, with some textual support"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes the persuasiveness of the writer's argument about being an adult beginner with an implied or unsupported judgement"
+      }
+     ],
+     "checklist": [
+      "States a clear personal judgement with a degree (largely, partly)",
+      "Analyses her candour and comic self-deprecation as sources of credibility",
+      "Analyses the contrast between effort for reward and effort for absorption (\"The violin offers no such bargain.\")",
+      "Uses the funeral anecdote as emotional support for the argument",
+      "Considers a limitation (for example cost and time, hinted at in \"violins were expensive\")"
+     ],
+     "next_steps": {
+      "0": "State your judgement clearly in the first sentence, with a degree.",
+      "1": "Support it by analysing one source of the writer's credibility, such as her honesty about how bad she was.",
+      "2": "Analyse the core of her argument: the contrast between effort for reward and effort for absorption.",
+      "3": "Consider a limitation or counter-argument and decide how much it weakens her case.",
+      "4": "Weigh these into a final, qualified judgement that refers to the essay's ending."
+     },
+     "model": "The writer's argument that accepting permanent mediocrity is \"the hardest, and the most important\" part of being an adult beginner is largely persuasive, because she earns it through candid personal experience; however, it depends partly on a privilege of time and money that she does not fully acknowledge.\n\nHer honesty is her strongest resource. She refuses to romanticise learning, describing herself as \"bad in a way that makes the dog leave the room\" and comparing her early notes to \"a door being opened slowly in a horror film\". Because she admits failure so vividly, her claims about its value sound credible rather than sentimental.\n\nHer central argument rests on a clear contrast. She observes that \"Almost everything we are taught about effort assumes a reward at the end of it\", then asserts that \"The violin offers no such bargain.\" The plain sentences \"I will never play in an orchestra. Nobody will ever pay to hear me.\" make her renunciation of achievement concrete, and her description of being \"fully absorbed\" for \"twenty minutes a day\" presents an appealing, achievable alternative.\n\nThe funeral anecdote adds emotional weight: if an unremarkable amateur could make a child hear \"grief turned into something you could hold\", excellence is not the measure of music's worth.\n\nYet the argument's reach is limited. Lessons, instruments and leisure cost money and time, as her parents' objection that \"violins were expensive\" hints, and for many adults the obstacle is not pride but circumstance. Within a personal essay, however, the case persuades: she shows rather than tells the value of trying, and her final line, \"I am trying to.\", embodies the humility she recommends.",
+     "difficulty": 3
+    }
+   ],
+   "length_words": 560
+  },
+  {
+   "key": "wattle-crescent-pair",
+   "title": "For Sale: 14 Wattle Crescent",
+   "form": "Media",
+   "complexity": 1,
+   "author": "Original text (HSC Companion)",
+   "headnote": "Text 1 is an original real-estate advertisement. Text 2 is an extract from an original short story about the same house. The suburb, agency, agent and characters are fictional. STCA means subject to council approval.",
+   "theme_tags": [
+    "home",
+    "change",
+    "family",
+    "language and power",
+    "ageing"
+   ],
+   "body": "FOR SALE | 14 Wattle Crescent, Ironbark Hill\nAuction Saturday 10 am, on site\n\nFamily Haven with Room to Grow\n\nLovingly held by the same family for over thirty years, this solid brick home is ready for its next chapter. Set on a generous 650 square metre block in one of Ironbark Hill's most tightly held pockets, it offers an exciting opportunity to renovate, extend or rebuild (STCA).\n\nInside, a light-filled living area flows to a classic kitchen brimming with potential. Three bedrooms, all with built-ins, and a family bathroom offer plenty of space for growing families, while the sunroom, currently used as a sewing room, would make a perfect home office.\n\nOutside, a sun-drenched backyard with established fruit trees and a much-loved cubby house provides endless scope for the kids, or for the landscaper of your dreams. A single lock-up garage with internal access completes the picture.\n\nWalk to schools, shops and transport. Opportunities like this are rare. Inspect today and imagine the possibilities.\n\nContact: Sharon, Ridgeline Realty\nDisclaimer: All information has been obtained from sources believed to be reliable, but its accuracy cannot be guaranteed. Interested parties should rely on their own inquiries.",
+   "pair": {
+    "title": "The Last Night at Wattle Crescent",
+    "form": "Prose fiction",
+    "author": "Original text (HSC Companion)",
+    "headnote": "",
+    "body": "On the last night my mother wanted fish and chips, eaten off the paper on the kitchen floor, because the table had already gone to my brother's.\n\n'Like when we moved in,' she said. 'We didn't have a table then either.'\n\nThe house echoed now. Without the rugs and the bookcases, every sound we made came back to us slightly changed, the way your own voice sounds on a recording. My mother kept touching things as she passed them: the light switch with the chip in its corner, the doorframe in the hall with our heights pencilled up it in three colours, the window latch she'd been asking my father to fix since 1994.\n\n'The agent said the kitchen was brimming with potential,' she said. 'I said, I know, it's been brimming for thirty years.'\n\nAfter we ate, she wanted to go out to the yard. It was nearly dark. The lemon tree was heavy with fruit no one would pick, and the cubby house my father built the summer I turned six leaned slightly to the left, the way it always had, because he'd measured once and cut twice. My mother stood beside it with her hand on the roof as if it were the head of an old dog.\n\n'They'll knock it down,' she said. 'The people who buy it. They'll knock the whole lot down and build one of those houses with a cinema in it.'\n\n'You don't know that.'\n\n'I read the ad,' she said. 'Room to grow. Imagine the possibilities.' She said the words carefully, as though translating them. 'That means a bulldozer.'\n\nI didn't argue. She was probably right. Ironbark Hill had become the kind of suburb where the old brick houses came down one by one and the new ones went up to the edges of the blocks, white and square, with no trees.\n\nWe stood there while the yard went dark around us. Somewhere down the street a dog barked and another one answered. My mother picked a lemon, and then another, and put them in the pockets of her cardigan.\n\n'For the new place,' she said. The new place was a unit on the second floor with a balcony the size of a bath mat.\n\n'You'll need a tree for those,' I said.\n\n'I'll need a lot of things.' She looked at the house, at the sewing room window, at the dark kitchen where we had eaten off the floor. 'I'll make do.'\n\nAt the gate she stopped and looked back, not for long, and then she put her arm through mine, and her pockets full of lemons knocked gently against my hip all the way to the car."
+   },
+   "questions": [
+    {
+     "marks": 2,
+     "verb": "Identify",
+     "demand": "identify",
+     "text": "In Text 1, identify TWO euphemisms the advertisement uses and explain what each implies.",
+     "skill_tags": [
+      "euphemism",
+      "persuasive language",
+      "media"
+     ],
+     "criteria": [
+      {
+       "mark": 2,
+       "descriptor": "Precisely identifies two euphemisms in the advertisement and what they imply and explains its significance with apt, accurately quoted evidence"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Identifies a relevant feature of two euphemisms in the advertisement and what they imply with little or no explanation"
+      }
+     ],
+     "checklist": [
+      "Identifies two genuine euphemisms (for example \"brimming with potential\"; \"renovate, extend or rebuild\"; \"ready for its next chapter\")",
+      "Explains what each implies (an old kitchen; likely demolition; the end of a family's time there)"
+     ],
+     "next_steps": {
+      "0": "Quote two phrases that make something unattractive sound appealing.",
+      "1": "For each, explain in plain words what it really implies about the house."
+     },
+     "model": "One euphemism is \"a classic kitchen brimming with potential\", which implies the kitchen is old and will need renovating. Another is \"an exciting opportunity to renovate, extend or rebuild\", which implies the house itself may be demolished, so that its real value lies in the land. Both disguise age and the likely loss of the home as attractive possibilities.",
+     "difficulty": 1
+    },
+    {
+     "marks": 4,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "In Text 2, analyse how the writer uses objects in the house and garden to represent the mother's attachment to the past.",
+     "skill_tags": [
+      "symbol",
+      "detail",
+      "characterisation"
+     ],
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Provides a perceptive, sustained analysis of how objects represent the mother's attachment to the past, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a thoughtful analysis of how objects represent the mother's attachment to the past, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how objects represent the mother's attachment to the past, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how objects represent the mother's attachment to the past or identifies a relevant technique with little explanation of its effect"
+      }
+     ],
+     "checklist": [
+      "Makes a claim: the objects preserve the lived history of the house",
+      "Analyses the list of touched fixtures, especially the pencilled heights",
+      "Analyses the window latch and the cubby house as traces of the father",
+      "Analyses the simile of the cubby \"as if it were the head of an old dog\"",
+      "Analyses the lemons carried \"For the new place\" and the final image"
+     ],
+     "next_steps": {
+      "0": "Make a claim about what the objects represent, then support it with the things the mother touches inside.",
+      "1": "Analyse the objects connected to the father and what they suggest about the family's history.",
+      "2": "Analyse the simile used for the cubby house and the feeling it conveys.",
+      "3": "Analyse the lemons and the final image, and explain what they suggest about carrying the past forward."
+     },
+     "model": "The writer uses objects to show that the mother's attachment is to the lived history of the house, which the objects preserve. As she walks through the empty rooms she keeps \"touching things\", and the list of specific details, \"the light switch with the chip in its corner, the doorframe in the hall with our heights pencilled up it in three colours\", turns ordinary fixtures into a record of family life; the pencilled heights literally measure time. The window latch she had been \"asking my father to fix since 1994\" adds humour and tender exasperation, quietly signalling the absent father. In the garden, the cubby house that leans \"because he'd measured once and cut twice\" embodies the father's imperfect labour and love, and the simile of her hand on its roof \"as if it were the head of an old dog\" conveys affection for something ageing and loyal. Finally, the lemons she pockets \"For the new place\" show her carrying part of the old life forward, and the image of them knocking \"gently against my hip\" suggests that the past will accompany her, small but persistent.",
+     "difficulty": 2
+    },
+    {
+     "marks": 6,
+     "verb": "Compare",
+     "demand": "compare",
+     "text": "Compare how Text 1 and Text 2 represent the same house. In your answer, consider what each perspective reveals and what it conceals.",
+     "skill_tags": [
+      "comparison",
+      "perspective",
+      "critical reading",
+      "language and power"
+     ],
+     "criteria": [
+      {
+       "mark": 6,
+       "descriptor": "Provides a perceptive, integrated comparison of how the two texts represent the same house and what each reveals and conceals, analysing similarities and differences with well-chosen evidence from both texts"
+      },
+      {
+       "mark": 5,
+       "descriptor": "Provides a thoughtful comparison of how the two texts represent the same house and what each reveals and conceals, with relevant, analysed evidence from both texts"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Provides a sound comparison of how the two texts represent the same house and what each reveals and conceals, with relevant evidence from both texts and some explanation"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Discusses both texts in relation to how the two texts represent the same house and what each reveals and conceals, mostly separately, with some evidence"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Describes one or both texts with limited reference to how the two texts represent the same house and what each reveals and conceals"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Makes a limited or general comment about one or both texts"
+      }
+     ],
+     "checklist": [
+      "Makes an integrated thesis (future possibility and market value versus past and lived meaning)",
+      "Analyses the advertisement's future-oriented language and its treatment of history as a selling point",
+      "Analyses how the story supplies the history the advertisement summarises (the doorframe, the cubby)",
+      "Analyses how Text 2 decodes Text 1's euphemisms (\"That means a bulldozer.\")",
+      "Considers what Text 2 conceals or the legitimacy of Text 1's genre (for example the disclaimer; \"I'll make do.\")",
+      "Concludes with an insight only the comparison makes possible"
+     ],
+     "next_steps": {
+      "0": "Write a thesis that compares the two representations directly in one sentence.",
+      "1": "Compare how each text treats the family's thirty years in the house, with a quotation from each.",
+      "2": "Compare the cubby house in both texts and explain the difference in language and purpose.",
+      "3": "Analyse how Text 2 reads Text 1 critically, translating its euphemisms.",
+      "4": "Consider fairness: what does each perspective leave out, and is the advertisement simply false?",
+      "5": "Refine for Band 6: integrate both texts in each paragraph and conclude with an insight about the difference between a house and a home."
+     },
+     "model": "Text 1 and Text 2 represent the same house from opposite perspectives: the advertisement presents a property defined by future possibility, while the story presents a home defined by the past. Each perspective reveals something the other conceals, and together they expose the gap between market value and lived meaning.\n\nThe advertisement speaks the language of opportunity. Its headline, \"Family Haven with Room to Grow\", and its closing imperative, \"Inspect today and imagine the possibilities\", invite buyers to project their own lives onto the house. History appears only as a selling point: the home has been \"Lovingly held by the same family for over thirty years\" and is \"ready for its next chapter\", phrases that compress three decades into a cliché before moving on.\n\nText 2 dwells on exactly what the advertisement summarises. The pencilled heights, the chipped light switch and the cubby that leans \"because he'd measured once and cut twice\" are the substance of those thirty years. Where the advertisement offers the cubby as \"much-loved\" scope \"for the kids, or for the landscaper of your dreams\", the story shows a woman resting her hand on its roof \"as if it were the head of an old dog\".\n\nThe story also exposes the advertisement's euphemisms. The mother's dry joke that the kitchen has \"been brimming for thirty years\" deflates the agent's phrase, and she translates \"Room to grow. Imagine the possibilities.\" into its real meaning: \"That means a bulldozer.\"\n\nYet Text 1 is not simply false. Its disclaimer that its information \"cannot be guaranteed\" is honest about its genre, and buyers do need to imagine their own lives. Text 2 is partial too: its nostalgia sees mostly loss, while the mother herself concedes, \"I'll make do.\"\n\nTogether, the texts suggest that a house is two things at once: an asset valued for what it could become, and a home valued for what it has been. The story's attention to objects reveals what the advertisement's language is designed to leave out.",
+     "difficulty": 2
+    }
+   ],
+   "length_words": 643
+  },
+  {
+   "key": "saltwater-reviews-pair",
+   "title": "Saltwater Hymn: A Five-Star Review",
+   "form": "Review",
+   "complexity": 2,
+   "author": "Original text (HSC Companion)",
+   "headnote": "Text 1 and Text 2 are original reviews of the same fictional play by two different fictional reviewers. The play, playwright, actors and theatre are invented.",
+   "theme_tags": [
+    "reviewing",
+    "judgement",
+    "theatre",
+    "taste",
+    "perspective"
+   ],
+   "body": "Saltwater Hymn | Harbourside Theatre | Five stars\n\nEvery few years a play arrives that makes you want to stop strangers in the foyer and tell them what they have just seen. Saltwater Hymn is that play.\n\nDani Reyes's debut follows three generations of women in a fishing family on the south coast, over a single night when a boat fails to return. That is all the plot there is, and it is all the plot the play needs. For ninety unbroken minutes, Reyes lets her characters talk, argue, sing and wait, and the waiting becomes almost unbearable, in the best sense.\n\nThe performances are extraordinary. As the grandmother, Lorraine Fitch delivers a monologue about her husband's first boat that had the audience so silent you could hear the hum of the lighting rig. Kiara Dunn, as the youngest daughter, is all fury and wit until the final scene, when a single line, spoken almost under her breath, undoes everything she has built.\n\nThe design deserves its own review. A sloping floor of grey boards suggests both a jetty and a deck; a strip of blue light along the back wall rises and falls like a tide all night, so slowly that you notice it only when it has gone.\n\nYes, there are moments when the dialogue strains for poetry. Who cares? This is a play unafraid of feeling, and it trusts its audience to feel with it. I left in tears, and I was not alone.\n\nGo. Take someone you love. Then call your mother.",
+   "pair": {
+    "title": "Saltwater Hymn: A Two-and-a-Half-Star Review",
+    "form": "Review",
+    "author": "Original text (HSC Companion)",
+    "headnote": "",
+    "body": "Saltwater Hymn | Harbourside Theatre | Two and a half stars\n\nThere is a great deal to admire in Saltwater Hymn, and a great deal to endure.\n\nDani Reyes clearly has an ear for the rhythms of coastal speech, and in its first half-hour the play crackles: the three women circle each other with the wary humour of people who have shared a kitchen too long. Lorraine Fitch, as the grandmother, is magnificent, and her monologue about her husband's first boat is the best writing in the play.\n\nThe trouble is that it is also the longest, and it is followed by several more. As the night wears on, the characters stop talking to each other and start making speeches, each one more lyrical than the last, until the effect is less like a family in crisis than like a poetry reading in a power blackout. When the youngest daughter finally speaks the line that is meant to break our hearts, it arrives so heavily signposted that I had guessed it twenty minutes earlier.\n\nThe design is handsome, if a touch obvious: the strip of blue light along the back wall, rising and falling like a tide, is lovely for ten minutes and a metaphor for the next eighty. And ninety minutes without an interval is a long time to hold one note, however beautiful.\n\nNone of this means Reyes lacks talent. She plainly has it, in abundance. What she needs now is the confidence to trust silence as much as she trusts language, and an editor brave enough to cut her favourite lines.\n\nThe audience around me wept. I admired the craft and checked my watch."
+   },
+   "questions": [
+    {
+     "marks": 3,
+     "verb": "Explain",
+     "demand": "explain",
+     "text": "In Text 1, explain how the reviewer conveys enthusiasm for the play.",
+     "skill_tags": [
+      "evaluative language",
+      "hyperbole",
+      "audience"
+     ],
+     "criteria": [
+      {
+       "mark": 3,
+       "descriptor": "Provides a precise, well-reasoned explanation of how the reviewer in Text 1 conveys enthusiasm, integrating well-chosen textual evidence and making the cause-and-effect relationship explicit"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides a sound explanation of how the reviewer in Text 1 conveys enthusiasm with appropriate textual reference"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of how the reviewer in Text 1 conveys enthusiasm, relying on paraphrase or retelling"
+      }
+     ],
+     "checklist": [
+      "Explains the hyperbolic opening (\"makes you want to stop strangers in the foyer\")",
+      "Explains the use of concrete sensory evidence (\"so silent you could hear the hum of the lighting rig\")",
+      "Explains how a weakness is dismissed (\"Who cares?\")",
+      "Explains the closing imperatives (\"Go. Take someone you love. Then call your mother.\")"
+     ],
+     "next_steps": {
+      "0": "Quote one example of enthusiastic language and explain the technique.",
+      "1": "Explain how the reviewer supports enthusiasm with specific evidence from the production.",
+      "2": "Explain how the ending turns the reviewer's enthusiasm into instructions for the reader."
+     },
+     "model": "The reviewer conveys enthusiasm through hyperbole, vivid sensory evidence and direct address. The opening claim that the play \"makes you want to stop strangers in the foyer\" turns personal excitement into an urge to share it. Praise is supported by concrete detail: the grandmother's monologue left the audience \"so silent you could hear the hum of the lighting rig\". The reviewer even dismisses a weakness with a rhetorical question, \"Who cares?\", showing that enthusiasm outweighs criticism. Finally, the sequence of imperatives, \"Go. Take someone you love. Then call your mother.\", converts admiration into instructions, as if the reviewer's feeling must be passed on.",
+     "difficulty": 1
+    },
+    {
+     "marks": 4,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "In Text 2, analyse how the reviewer uses humour to deliver criticism.",
+     "skill_tags": [
+      "humour",
+      "irony",
+      "bathos",
+      "evaluation"
+     ],
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Provides a perceptive, sustained analysis of how the reviewer in Text 2 uses humour to deliver criticism, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a thoughtful analysis of how the reviewer in Text 2 uses humour to deliver criticism, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how the reviewer in Text 2 uses humour to deliver criticism, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how the reviewer in Text 2 uses humour to deliver criticism or identifies a relevant technique with little explanation of its effect"
+      }
+     ],
+     "checklist": [
+      "Makes a claim: humour makes criticism seem witty and fair rather than cruel",
+      "Analyses the opening antithesis (\"a great deal to admire... and a great deal to endure\")",
+      "Analyses the simile of \"a poetry reading in a power blackout\"",
+      "Analyses praise turned into criticism (\"also the longest\"; \"lovely for ten minutes and a metaphor for the next eighty\")",
+      "Analyses the bathos of \"I admired the craft and checked my watch.\""
+     ],
+     "next_steps": {
+      "0": "Make a claim about why the reviewer uses humour, then analyse the opening sentence.",
+      "1": "Analyse the central simile and the problem it exaggerates.",
+      "2": "Show how the reviewer turns praise into criticism with a comic twist, using one example.",
+      "3": "Analyse the final sentence and explain how it sums up the review."
+     },
+     "model": "The reviewer uses wry humour to deliver criticism in a way that seems witty rather than cruel, which helps the negative judgement persuade. The opening antithesis, \"a great deal to admire... and a great deal to endure\", announces the review's balance with a comic twist on \"endure\". The central simile, that the play becomes \"less like a family in crisis than like a poetry reading in a power blackout\", exaggerates the problem of lyrical speeches into a memorable image. The reviewer also turns praise into a joke against the play: the best monologue is \"also the longest\". Similarly, the tide of light is \"lovely for ten minutes and a metaphor for the next eighty\", a witty contrast implying obviousness. The final sentence, \"I admired the craft and checked my watch.\", uses bathos: high praise is paired with a mundane gesture, summing up the verdict in a single deflating action. The humour makes the reviewer seem perceptive and fair, so readers trust the criticism.",
+     "difficulty": 2
+    },
+    {
+     "marks": 5,
+     "verb": "Compare",
+     "demand": "compare",
+     "text": "Compare how the two reviewers evaluate the same features of the production, and explain what their differences suggest about reviewing.",
+     "skill_tags": [
+      "comparison",
+      "evaluation",
+      "perspective"
+     ],
+     "criteria": [
+      {
+       "mark": 5,
+       "descriptor": "Provides a perceptive, integrated comparison of how the two reviewers evaluate the same features and what this suggests about reviewing, analysing similarities and differences with well-chosen evidence from both texts"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Provides a thoughtful comparison of how the two reviewers evaluate the same features and what this suggests about reviewing, with relevant, analysed evidence from both texts"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a sound comparison of how the two reviewers evaluate the same features and what this suggests about reviewing, with relevant evidence from both texts and some explanation"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Discusses both texts in relation to how the two reviewers evaluate the same features and what this suggests about reviewing, mostly separately, with some evidence"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes one or both texts with limited reference to how the two reviewers evaluate the same features and what this suggests about reviewing"
+      }
+     ],
+     "checklist": [
+      "Makes an integrated thesis (same evidence, opposite judgements shaped by values)",
+      "Compares the treatment of the grandmother's monologue",
+      "Compares the treatment of the climactic line (\"undoes everything she has built\" / \"so heavily signposted\")",
+      "Compares the design and running time (\"only when it has gone\" / \"a touch obvious\"; \"unbroken\" / \"a long time to hold one note\")",
+      "Notes each reviewer's concession and draws a conclusion about the nature of reviewing"
+     ],
+     "next_steps": {
+      "0": "Write a thesis that names what the reviewers share and where they differ.",
+      "1": "Compare one feature both reviewers discuss, quoting each.",
+      "2": "Compare a second feature and explain what the difference reveals about each reviewer's values.",
+      "3": "Notice the concessions each reviewer makes, and explain what they show.",
+      "4": "Conclude with an insight about what reviewing is, based on your comparison."
+     },
+     "model": "The two reviewers evaluate the same features, the monologues, the climactic line, the design and the length, but reach opposite judgements, which suggests that reviewing measures a critic's values as much as the production itself.\n\nBoth admire the grandmother's monologue. Text 1 presents it as proof of extraordinary performance, while Text 2 calls it \"the best writing in the play\" but adds that it is \"also the longest\", turning the same moment into the start of a problem.\n\nThe climactic line divides them most clearly. In Text 1 it is spoken \"almost under her breath\" and \"undoes everything she has built\", an emotional climax. In Text 2 it \"arrives so heavily signposted\" that the reviewer guessed it \"twenty minutes earlier\". The difference reveals what each values: emotional surrender versus surprise and restraint.\n\nThe design receives parallel descriptions. Both note the strip of blue light rising and falling \"like a tide\", but Text 1 admires its subtlety, noticed \"only when it has gone\", whereas Text 2 finds it \"a touch obvious\". Even the running time is praised in Text 1 as \"unbroken\" and criticised in Text 2 as \"a long time to hold one note\".\n\nEach reviewer also concedes the other's point in passing: Text 1 admits \"the dialogue strains for poetry\", and Text 2 acknowledges that \"The audience around me wept.\" The disagreement is not about what happened on stage but about what matters.\n\nThe comparison suggests that a review is an argument rather than a measurement: each reviewer selects and frames shared evidence to support a judgement shaped by taste, which is why readers benefit from reading more than one.",
+     "difficulty": 3
+    }
+   ],
+   "length_words": 533
   }
  ]
 }
