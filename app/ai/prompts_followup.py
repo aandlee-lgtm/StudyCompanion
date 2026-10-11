@@ -221,7 +221,8 @@ def followup(ctx: dict, history: list[dict], question: str, chip: str | None = N
            "\"answer\"; use \"steps\" for a numbered explanation when a process is involved (otherwise []); \"example\" is an "
            "optional small extra example (otherwise \"\").")
     if ctx.get("subject") == "MATHS":
-        how += " Write mathematics in LaTeX inside \\( ... \\) (inline) — for example \\(2r^2 - 3r + 1 = 0\\)."
+        how += (" Write mathematics in LaTeX inside \\( ... \\) (inline) — for example \\(2r^2 - 3r + 1 = 0\\). Inside the JSON "
+                "strings every backslash is written twice, e.g. \"\\\\(x^2\\\\)\".")
     parts.append(how)
     parts.append("Reply ONLY with JSON of this shape: " + SHAPE)
     return "\n\n".join(p for p in parts if p)
