@@ -347,6 +347,14 @@ def _edit_data(form) -> dict:
     return data
 
 
+@router.post("/admin/mode")
+def admin_mode_toggle(on: str = Form(""), back: str = Form("/admin/review"), db: Session = Depends(get_db)):
+    """Administrator mode shows answer keys, guidelines and solutions before an attempt."""
+    st.set_(db, "admin_mode", bool(on))
+    db.commit()
+    return _back(back, flash="Administrator mode is " + ("on: answers and guidelines are visible." if on else "off: answers stay hidden until you attempt a question."))
+
+
 # --------------------------------------------------------------- adaptation editor ---
 @router.get("/admin/review/{qid}/adapt")
 def adapt_form(qid: int, request: Request, db: Session = Depends(get_db), draft: str = ""):

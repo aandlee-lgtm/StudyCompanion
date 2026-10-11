@@ -210,3 +210,14 @@ def test_missing_question_is_a_clean_error_not_a_500(client):
         r = client.post(url, data={})
         assert r.status_code in (400, 404, 422), url
     assert client.get("/admin/review/999999").status_code in (400, 404)
+
+
+def test_admin_mode_toggle_from_review(client, db):
+    r = client.post("/admin/mode", data={"on": "1", "back": "/admin/review"}, follow_redirects=False)
+    assert r.status_code == 303
+    db.expire_all()
+    assert st.get(db, "admin_mode") is True
+    client.post("/admin/mode", data={"on": "", "back": "/admin/review"})
+    db.expire_all()
+    assert not st.get(db, "admin_mode")
+    assert "Administrator mode is <strong>off" in client.get("/admin/review").text

@@ -5,6 +5,9 @@
 <h1>{{ 'Review question' if single else 'Administrator review' }}</h1>
 {% if not single %}<p class="lead">Imported questions wait here until a person approves them. Approval always passes the validation checks (real question text, marks that add up, a multiple-choice key, a subtopic, linked texts, current law). Nothing reaches a daily session before its subtopics are unlocked.</p>{% endif %}
 {% if flash %}<div class="notice">{{ flash }}</div>{% endif %}
+<form method="post" action="/admin/mode" class="row small ing-mode"><input type="hidden" name="back" value="{{ back }}"><input type="hidden" name="on" value="{{ '' if admin_mode else '1' }}">
+  <span>Administrator mode is <strong>{{ 'on' if admin_mode else 'off' }}</strong>{{ ' — answer keys, guidelines and solutions are visible everywhere' if admin_mode else ' — stored answer keys and guidelines are hidden' }}.</span>
+  <button class="btn small" {% if not admin_mode %}onclick="return confirm('Show answer keys, guidelines and solutions? Seeing them spoils those questions for your own practice.');"{% endif %}>{{ 'Turn off' if admin_mode else 'Turn on' }}</button></form>
 {% if not single %}
 <form class="card ing-filters small" method="get">
   <select name="state">{% for s in ['pending', 'approved', 'rejected', 'adapted', 'retired'] %}<option value="{{ s }}" {{ 'selected' if (f.state or 'pending') == s }}>{{ s|capitalize }}</option>{% endfor %}</select>
