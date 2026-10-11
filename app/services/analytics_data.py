@@ -95,6 +95,7 @@ class Dataset:
         self.mastery: dict[int, Mastery] = {m.plan_item_id: m for m in db.execute(select(Mastery)).scalars()}
         self.attempts_total = 0
         self.facts: list[Fact] = []
+        self.model_word_cache: dict[int, int] = {}
         self._load()
 
     # ------------------------------------------------------------------ loading ---
