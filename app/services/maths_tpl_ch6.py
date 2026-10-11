@@ -333,31 +333,52 @@ def t_6D(r: Rng, d: int) -> Generated:
             skill="Evaluate a definite trigonometric integral exactly.",
             params={"form": "def", "f": str(integrand), "lo": "0", "hi": str(hi)},
         )
-    a = pick(r, [1, 2, 3])
-    D = sp.diff(x * sin(a * x), x)
-    F = x * sin(a * x) / a + cos(a * x) / a**2
-    hi = pi / (2 * a)
-    val = sp.nsimplify(F.subs(x, hi) - F.subs(x, 0))
+    a = pick(r, [1, 2, 3, 4])
+    kind = pick(r, ["sin", "cos"])
+    hi = pick(r, [pi / (2 * a), pi / a, pi / (3 * a)])
     ax = "x" if a == 1 else f"{a}x"
+    if kind == "sin":  # d/dx(x sin ax) = sin ax + a x cos ax  =>  ∫ x cos ax
+        g_, other, integrand = x * sin(a * x), "cos", x * cos(a * x)
+        F = x * sin(a * x) / a + cos(a * x) / a**2
+        slip = x * sin(a * x) / a - cos(a * x) / a**2
+        line_b = (f"(b) So \\(x\\sin {ax} = \\displaystyle\\int \\sin {ax}\\,dx + {co(a, '')}\\int x\\cos {ax}\\,dx"
+                  f" = {L(-cos(a * x) / a)} + {co(a, '')}\\int x\\cos {ax}\\,dx\\).")
+        line_a = f"(a) Product rule: \\(\\dfrac{{d}}{{dx}}(x\\sin {ax}) = \\sin {ax} + {co(a, '')}x\\cos {ax}\\)."
+    else:  # d/dx(x cos ax) = cos ax - a x sin ax  =>  ∫ x sin ax
+        g_, other, integrand = x * cos(a * x), "sin", x * sin(a * x)
+        F = sin(a * x) / a**2 - x * cos(a * x) / a
+        slip = -sin(a * x) / a**2 - x * cos(a * x) / a
+        line_b = (f"(b) So \\(x\\cos {ax} = \\displaystyle\\int \\cos {ax}\\,dx - {co(a, '')}\\int x\\sin {ax}\\,dx"
+                  f" = {L(sin(a * x) / a)} - {co(a, '')}\\int x\\sin {ax}\\,dx\\).")
+        line_a = f"(a) Product rule: \\(\\dfrac{{d}}{{dx}}(x\\cos {ax}) = \\cos {ax} - {co(a, '')}x\\sin {ax}\\)."
+    D = sp.diff(g_, x)
+    F_hi, F_0 = sp.nsimplify(F.subs(x, hi)), sp.nsimplify(F.subs(x, 0))
+    val = sp.nsimplify(F_hi - F_0)
+    fname = "sin" if kind == "sin" else "cos"
     text = multipart(
         "",
-        [("a", f"Differentiate \\(x\\sin {ax}\\).", 1), ("b", f"Hence find \\(\\displaystyle\\int x\\cos {ax}\\,dx\\).", 2),
-         ("c", f"Hence evaluate \\(\\displaystyle\\int_0^{{{L(hi)}}} x\\cos {ax}\\,dx\\), giving an exact answer.", 2)])
-    steps = [f"(a) Product rule: \\(\\dfrac{{d}}{{dx}}(x\\sin {ax}) = \\sin {ax} + {co(a, '')}x\\cos {ax}\\).",
-             f"(b) So \\(x\\sin {ax} = \\displaystyle\\int \\sin {ax}\\,dx + {co(a, '')}\\int x\\cos {ax}\\,dx = -{L(cos(a * x) / a)} + {co(a, '')}\\int x\\cos {ax}\\,dx\\).",
-             f"Rearranging: \\(\\displaystyle\\int x\\cos {ax}\\,dx = {L(F)} + C\\).",
-             f"(c) \\(\\Big[{L(F)}\\Big]_0^{{{L(hi)}}} = {L(sp.nsimplify(F.subs(x, hi)))} - {pn(sp.nsimplify(F.subs(x, 0)))} = {L(val)}\\)."]
+        [("a", f"Differentiate \\(x\\{fname} {ax}\\).", 1), ("b", f"Hence find \\(\\displaystyle\\int x\\{other} {ax}\\,dx\\).", 2),
+         ("c", f"Hence evaluate \\(\\displaystyle\\int_0^{{{L(hi)}}} x\\{other} {ax}\\,dx\\), giving an exact answer.", 2)])
+    steps = [line_a, line_b,
+             f"Rearranging: \\(\\displaystyle\\int x\\{other} {ax}\\,dx = {L(F)} + C\\).",
+             f"(c) \\(\\Big[{L(F)}\\Big]_0^{{{L(hi)}}} = {L(F_hi)} - {pn(F_0)} = {L(val)}\\)."]
+    ces = [err(a * x * cos(a * x) if kind == "sin" else -a * x * sin(a * x),
+               "formula selection", "product rule", "Use the product rule: both \\(x\\) and the trigonometric factor vary.", step=1, part="a"),
+           err(slip, "careless error", "sign error",
+               "\\(\\int\\sin ax\\,dx = -\\frac1a\\cos ax\\) and \\(\\int\\cos ax\\,dx = \\frac1a\\sin ax\\): watch the signs.", step=3, part="b")]
+    if F_0 != 0:
+        ces.append(err(F_hi, "incomplete reasoning", "limits of integration", "At \\(x = 0\\), \\(\\cos 0 = 1\\): subtract that value.", step=4, part="c"))
+    else:
+        ces.append(err(sp.nsimplify(integrand.subs(x, hi)), "conceptual", "integration rules", "Evaluate the primitive from (b) at the limits, not the integrand.", step=4, part="c"))
     return Generated(
         text, A_parts(P("a", 1, A_expr(D)), P("b", 2, A_prim(F)), P("c", 2, A_num(val))), 5, 3, steps,
         "A product-rule derivative, read backwards, gives an integral that has no direct rule in this course.",
         "In (b) integrate the whole line from (a), then rearrange for the integral you want.",
-        quicker="Check (b) by differentiating: the \\(\\sin\\) terms must cancel.",
-        common_errors=[err(a * x * cos(a * x), "formula selection", "product rule", "Use the product rule: both \\(x\\) and \\(\\sin\\) vary.", step=1, part="a"),
-                       err(x * sin(a * x) / a - cos(a * x) / a**2, "careless error", "sign error", "\\(\\int\\sin ax\\,dx = -\\frac1a\\cos ax\\): watch the double negative.", step=3, part="b"),
-                       err(sp.nsimplify(F.subs(x, hi)), "incomplete reasoning", "limits of integration", "At \\(x = 0\\), \\(\\cos 0 = 1\\): subtract that value.", step=4, part="c")],
-        skill="Integrate x cos(ax) using a given derivative.",
+        quicker="Check (b) by differentiating: the terms without \\(x\\) as a factor must cancel.",
+        common_errors=ces,
+        skill=f"Integrate x {other}(ax) using a given derivative.",
         checkpoints=[cp(D, "the derivative from (a)", step=1, part="b")],
-        params={"form": "parts", "a": a},
+        params={"form": "parts", "a": a, "kind": kind, "hi": str(hi)},
     )
 
 

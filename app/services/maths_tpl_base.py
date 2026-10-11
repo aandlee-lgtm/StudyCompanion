@@ -289,8 +289,14 @@ def pl(e, var=x) -> str:
 def rnd(v, dp: int) -> str:
     """``v`` rounded (half up) to ``dp`` places, as a student would type it — for common errors on
     'correct to n decimal places' questions."""
+    from decimal import ROUND_HALF_UP, Decimal
+
     from app.marking.maths import rounded_value, stored_ast
 
+    vv = sp.sympify(v)
+    if vv.is_Rational and (len(str(vv.p)) > 12 or len(str(vv.q)) > 12):
+        # e.g. 200·(21/20)^17: too many digits for the answer parser, so round a 40-digit value directly
+        return str(Decimal(str(sp.N(vv, 40))).quantize(Decimal(1).scaleb(-dp), rounding=ROUND_HALF_UP))
     return str(rounded_value(stored_ast(ex(v)), dp))
 
 

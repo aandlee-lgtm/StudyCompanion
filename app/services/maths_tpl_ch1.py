@@ -327,7 +327,7 @@ def t_1D(r: Rng, d: int) -> Generated:
          ("c", f"Which term is the first to exceed \\({bound}\\)? Give its term number.", 2)])
     steps = [f"(a) \\((x + {a})^2 = x(x + {b})\\) gives \\({co(b - 2 * a, "x")} = {a * a}\\), so \\(x = {xx}\\).",
              f"(b) \\(r = \\dfrac{{{xx + a}}}{{{xx}}} = {L(rr)}\\).",
-             f"(c) \\({xx}\\left({L(rr)}\\right)^{{n-1}} > {bound}\\), so \\(n - 1 > \\dfrac{{\\ln({L(sp.Rational(bound, xx))})}}{{\\ln({L(rr)})}} \\approx {math.log(bound / xx) / math.log(float(rr)):.3f}\\).",
+             f"(c) \\({co(xx, '')}\\left({L(rr)}\\right)^{{n-1}} > {bound}\\), so \\(n - 1 > \\dfrac{{\\ln({L(sp.Rational(bound, xx))})}}{{\\ln({L(rr)})}} \\approx {math.log(bound / xx) / math.log(float(rr)):.3f}\\).",
              f"So \\(n = {nn}\\)."]
     return Generated(
         text, A_parts(P("a", 2, A_num(xx)), P("b", 1, A_num(rr)), P("c", 2, A_num(nn))), 5, 3, steps,

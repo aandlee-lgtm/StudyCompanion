@@ -201,6 +201,131 @@ def v_1B(g):
     return {"a": xv, "b": lambda t: t1 + (t - 1) * d, "c": n}
 
 
+def first_over(term, bound):
+    """The first term number n whose value (term(n)) exceeds bound, by counting."""
+    n = 1
+    while term(n) <= bound:
+        n += 1
+    return n
+
+
+def num(v):
+    return mp.mpf(sp.Rational(v).p) / sp.Rational(v).q if not isinstance(v, (int, float)) else mp.mpf(v)
+
+
+@verifies("1C")
+def v_1C(g):
+    p = g.params
+    if p["form"] == "nth":
+        t = p["a"]
+        for _ in range(p["m"] - 1):
+            t *= p["r"]
+        return t
+    if p["form"] == "two_terms":
+        q = num(p["T5"]) / num(p["T2"])
+        rr = mp.sign(q) * mp.cbrt(abs(q))
+        return num(p["T5"]) * rr * rr
+    a, rr, bound = p["a"], p["r"], p["bound"]
+    nn = first_over(lambda n: a * rr ** (n - 1), bound)
+    return {"a": lambda n: a * mp.power(rr, n - 1), "b": nn, "c": a * rr ** (nn - 1)}
+
+
+@verifies("1D")
+def v_1D(g):
+    p = g.params
+    if p["form"] == "gm":
+        return mp.sqrt(p["p"] * p["m"])
+    if p["form"] == "ap":
+        kk, c = p["k"], p["c"]
+        return froot(lambda v: ((v + kk) - v) - (((c + 1) * v - kk) - (v + kk)), -1000, 1000)
+    a, b = p["a"], p["b"]
+    xv = froot(lambda v: (v + a) ** 2 - v * (v + b), mp.mpf("1e-9"), 10000)
+    if p["form"] == "gp":
+        return xv
+    rr = (xv + a) / xv
+    return {"a": xv, "b": rr, "c": first_over(lambda n: xv * rr ** (n - 1), p["bound"])}
+
+
+@verifies("1E")
+def v_1E(g):
+    p = g.params
+    if p["form"] == "sigma":
+        return sum(p["a"] * kk + p["b"] for kk in range(1, p["N"] + 1))
+    if p["form"] == "pow2":
+        return sum(2**kk for kk in range(p["lo"], p["lo"] + p["cnt"]))
+    S = lambda n: p["p"] * n * n + p["q"] * n  # noqa: E731
+    if p["form"] == "SnTn":
+        return S(p["m"]) - S(p["m"] - 1)
+    v = S(p["w"]) - S(p["w"] - 1)
+    return {"a": S(1), "b": lambda n: S(n) - S(n - 1), "c": next(n for n in range(1, 1000) if S(n) - S(n - 1) == v)}
+
+
+@verifies("1F")
+def v_1F(g):
+    p = g.params
+    if p["form"] == "Sn":
+        return sum(p["a"] + i * p["d"] for i in range(p["N"]))
+    if p["form"] == "findn":
+        tot, n = 0, 0
+        while tot < p["S"]:
+            tot += p["a"] + n * p["d"]
+            n += 1
+        assert tot == p["S"]
+        return n
+    mult = [v for v in range(p["A"], p["B"] + 1) if v % p["k"] == 0]
+    return {"a": len(mult), "b": sum(mult), "c": sum(v for v in range(p["A"], p["B"] + 1) if v % p["k"])}
+
+
+@verifies("1G")
+def v_1G(g):
+    p = g.params
+    a, rr = p["a"], Fraction(str(p["r"]))
+    if p["form"] == "Sn":
+        return float(sum(a * rr**i for i in range(p["N"])))
+    if p["form"] == "findn":
+        tot, n = 0, 0
+        while tot < p["S"]:
+            tot += a * rr**n
+            n += 1
+        assert tot == p["S"]
+        return n
+    part = lambda n: sum(a * rr**i for i in range(n))  # noqa: E731
+    rf = mp.mpf(rr.numerator) / rr.denominator
+    assert all(abs(a * (rf**j - 1) / (rf - 1) - float(part(j))) < 1e-6 for j in range(1, 12))  # closed form = partial sums
+    return {"a": lambda n: a * (mp.power(rf, n) - 1) / (rf - 1), "b": first_over(lambda n: part(n), p["bound"])}
+
+
+@verifies("1H")
+def v_1H(g):
+    p = g.params
+    if p["form"] == "Sinf":
+        rr = num(p["r"])
+        return sum(p["a"] * rr**i for i in range(400))
+    if p["form"] == "findr":
+        return froot(lambda rr: p["a"] / (1 - rr) - num(p["S"]), mp.mpf("-0.999999"), mp.mpf("0.999999"))
+    m = p["m"]
+    if p["form"] == "interval":
+        c = p["c"]
+        cs = [mp.mpf(m * m), mp.mpf(-2 * m * c), mp.mpf(c * c - 1)]
+        return sign_region(poly_fn(cs), real_roots(cs), False)
+    a = p["a"]
+    cs = [mp.mpf(m * m), mp.mpf(0), mp.mpf(-1)]
+    x1 = mp.mpf(1) / (2 * m)
+    return {"a": sign_region(poly_fn(cs), real_roots(cs), False), "b": sum(a * (m * x1) ** i for i in range(400)),
+            "c": froot(lambda v: a / (1 - m * v) - num(p["S2"]), -mp.mpf(1) / m + mp.mpf("1e-12"), mp.mpf(1) / m - mp.mpf("1e-12"))}
+
+
+@verifies("1I")
+def v_1I(g):
+    p = g.params
+    if p["form"] == "two":
+        return mp.mpf("0." + f"{p['dig']:02d}" * 20)
+    if p["form"] == "mixed":
+        return mp.mpf("0." + str(p["pre"]) + str(p["rep"]) * 40)
+    b = p["blk"]
+    return {"a": mp.mpf(b) / 1000, "b": mp.mpf(1) / 1000, "c": mp.mpf("0." + str(b) * 15)}
+
+
 # ------------------------------------------------------------------- chapter 2 ---
 @verifies("2A")
 def v_2A(g):
@@ -728,8 +853,10 @@ def v_6D(g):
         return fn(p["f"])
     if p["form"] == "def":
         return quad(fn(p["f"]), stored_num(p["lo"]), stored_num(p["hi"]))
-    a = p["a"]
-    return {"a": dfun(lambda t: t * mp.sin(a * t)), "b": lambda t: t * mp.cos(a * t), "c": quad(lambda t: t * mp.cos(a * t), 0, mp.pi / (2 * a))}
+    a, hi = p["a"], stored_num(p["hi"])
+    g_ = (lambda t: t * mp.sin(a * t)) if p["kind"] == "sin" else (lambda t: t * mp.cos(a * t))
+    h_ = (lambda t: t * mp.cos(a * t)) if p["kind"] == "sin" else (lambda t: t * mp.sin(a * t))
+    return {"a": dfun(g_), "b": h_, "c": quad(h_, 0, hi)}
 
 
 @verifies("6E")
@@ -746,6 +873,108 @@ def v_6E(g):
     h = lambda t: kv * mp.sin(t) - kv * v  # noqa: E731
     xs = roots_on(h, 0, mp.pi, 601)
     return {"a": xs, "b": quad(h, xs[0], xs[1])}
+
+
+# ------------------------------------------------------------------- chapter 7 ---
+def tfn(expr: str):
+    return fn(expr, "t")
+
+
+def roots_of(f, lo, hi, n=600):
+    return [r_ for r_ in roots_on(f, lo, hi, n)]
+
+
+def distance(v, T, n=600):
+    """Total distance travelled on [0, T] = integral of |v|, split at every sign change of v."""
+    cuts = [mp.mpf(0)] + roots_of(v, mp.mpf("1e-9"), T, n) + [mp.mpf(T)]
+    return sum(abs(quad(v, a, b)) for a, b in zip(cuts, cuts[1:]))
+
+
+@verifies("7A")
+def v_7A(g):
+    p = g.params
+    xf = tfn(p["x"])
+    v = dfun(xf)
+    if p["form"] == "v":
+        return v(p["m"])
+    if p["form"] == "a":
+        return mp.diff(xf, p["m"], 2)
+    rest = roots_of(v, mp.mpf("1e-9"), 30)
+    if p["form"] == "rest":
+        return {"a": rest, "b": mp.diff(xf, rest[0], 2)}
+    return {"a": v(0), "b": rest, "c": distance(v, p["T"]), "d": mp.diff(xf, p["m"], 2)}
+
+
+@verifies("7B")
+def v_7B(g):
+    p = g.params
+    if p["form"] == "x":
+        vf = tfn(p["v"])
+        return lambda s_: p["x0"] + quad(vf, 0, s_)
+    if p["form"] == "acc":
+        af = tfn(p["a"])
+        vf = lambda s_: p["v0"] + quad(af, 0, s_)  # noqa: E731
+        return p["x0"] + quad(vf, 0, p["T"])
+    if p["form"] == "expv":
+        return quad(lambda s_: p["A"] * mp.exp(-p["k"] * s_), 0, p["T"])
+    kf, a, b, T = p["k"], p["p"], p["q"], p["T"]
+    vf = lambda s_: kf * (s_ - a) * (s_ - b)  # noqa: E731
+    return {"a": lambda s_: quad(vf, 0, s_), "b": roots_of(vf, mp.mpf("1e-9"), 30), "c": distance(vf, T)}
+
+
+@verifies("7C")
+def v_7C(g):
+    p = g.params
+    if p["form"] == "rate":
+        return mp.diff(tfn(p["V"]), p["m"])
+    if p["form"] == "drain":
+        A, T, m = p["A"], p["T"], p["m"]
+        V = lambda s_: A * (T - s_) ** 2  # noqa: E731
+        out = lambda s_: -mp.diff(V, s_)  # noqa: E731
+        return {"a": out(m), "b": V(0), "c": froot(lambda s_: out(s_) - out(0) / 2, 0, T)}
+    P_ = tfn(p["P"])
+    dP = dfun(P_)
+    end = [r_ for r_ in roots_of(dP, mp.mpf("1e-6"), 40)][0]
+    assert dP(end / 2) > 0
+    fast = froot(dfun(P_, 2), mp.mpf("1e-9"), end)
+    assert mp.diff(P_, fast, 3) < 0
+    return {"a": dP(p["m"]), "b": [(0.0, float(end))], "c": fast}
+
+
+@verifies("7D")
+def v_7D(g):
+    p = g.params
+    if p["form"] == "fill":
+        return quad(tfn(p["R"]), 0, p["T"])
+    if p["form"] == "stop":
+        c, kv, V0 = p["c"], p["k"], p["V0"]
+        R = lambda s_: c - kv * s_  # noqa: E731
+        ts = froot(R, 0, 1000)
+        return {"a": ts, "b": V0 + quad(R, 0, ts)}
+    a, T, V0, m = p["a"], p["T"], p["V0"], p["m"]
+    R = lambda s_: a * s_ * (T - s_)  # noqa: E731
+    return {"a": froot(dfun(R), 0, T), "b": lambda s_: V0 + quad(R, 0, s_), "c": V0 + quad(R, 0, m), "d": quad(R, 0, T)}
+
+
+@verifies("7E")
+def v_7E(g):
+    p = g.params
+    if p["form"] == "eval":
+        return p["N0"] * mp.exp(stored_num(p["k"]) * p["T"])
+    if p["form"] == "half":
+        return froot(lambda kv: mp.exp(-kv * p["h"]) - mp.mpf(1) / 2, mp.mpf("1e-9"), 10)
+    if p["form"] == "k":
+        return froot(lambda kv: p["N0"] * mp.exp(kv * p["t1"]) - p["N0"] * stored_num(p["f"]), mp.mpf("1e-9"), 10)
+    if p["form"] == "growth":
+        N0, f, t1, T, M = p["N0"], stored_num(p["f"]), p["t1"], p["T"], p["M"]
+        kv = froot(lambda k_: N0 * mp.exp(k_ * t1) - N0 * f, mp.mpf("1e-9"), 10)
+        Pf = lambda s_: N0 * mp.exp(kv * s_)  # noqa: E731
+        tM = froot(lambda s_: Pf(s_) - M, 0, 1000)
+        return {"a": kv, "b": Pf(T), "c": tM, "d": mp.diff(Pf, tM)}
+    A, B, t1, T1, target = p["A"], p["B"], p["t1"], p["T1"], p["target"]
+    Bv = (A + B) - A
+    kv = froot(lambda k_: A + Bv * mp.exp(-k_ * t1) - T1, mp.mpf("1e-9"), 10)
+    return {"a": Bv, "b": kv, "c": froot(lambda s_: A + Bv * mp.exp(-kv * s_) - target, 0, 10000)}
 
 
 # --------------------------------------------------------------------- tests ---
