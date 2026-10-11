@@ -25,8 +25,6 @@
 
 {% if sq and sq.reason %}<p class="small muted">{{ sq.reason }}</p>{% endif %}
 
-{% include "_stimulus.html" %}
-
 {% if rebuild and show_form and not retry %}
 <section class="card rebuild" aria-label="Step-by-step practice" style="margin-top:16px">
   <h2 style="margin-top:0">Step-by-step practice: {{ rebuild.skill }}</h2>
@@ -62,11 +60,14 @@
 </section>
 {% endif %}
 
+{# The passage pane must come directly before the answer card: writing.js puts them side by side (english-14). #}
+{% include "_stimulus.html" %}
+
+
 
 {% set prev = latest if retry else None %}
 {% set pfb = (prev.feedback.payload if prev and prev.feedback else {}) %}
-<div class="{{ 'retry-layout' if retry else '' }}">
-{% if retry and prev %}
+{% if retry and prev %}<div class="retry-layout">
   <aside class="card retry-notes" aria-label="Feedback on attempt {{ prev.attempt_number }}">
     <div class="label">Attempt {{ prev.attempt_number }} · {{ prev.mark_awarded|round(1) }}/{{ prev.mark_possible|int }}</div>
     {% if pfb.kind == 'maths' %}
@@ -131,7 +132,7 @@
 
   {% include "_audit_line.html" %}
 </div>
-</div>
+{% if retry and prev %}</div>{% endif %}
 
 {% if latest and not show_form %}
 <div id="feedback">
@@ -152,7 +153,8 @@
   <div id="why-{{ a.id }}" class="notice why-box" hidden></div>
   <div class="card feedback" style="margin-top:12px">
     <div class="row"><span class="mark-big {{ 'ok' if a.fraction >= 0.85 else ('notok' if a.fraction < 0.5 else '') }}">{{ a.mark_awarded|round(1) }} / {{ a.mark_possible|int }}</span>
-      {% if a.marking_method == 'offline_estimate' and not fb.self_marked %}<span class="pill warn">ESTIMATE</span>{% endif %}
+      {% if a.marking_method == 'offline_estimate' and not fb.self_marked and not fb.pending_mark %}<span class="pill warn">ESTIMATE</span>{% endif %}
+      {% if fb.pending_mark and fb.guided %}<span class="pill">MARK PENDING</span>{% endif %}
       {% if fb.self_marked %}<span class="pill">SELF-MARKED</span>{% endif %}
       {% if fb.kind != 'written' %}<span class="small muted">{{ fb.label }}</span>{% endif %}</div>
     {% if fb.evidence_role and not fb.evidence_role.counts %}<p class="evidence-label tiny rehearsal">{{ fb.evidence_role.label }}</p>{% endif %}
@@ -192,7 +194,7 @@
         {% include "feedback_" ~ fb.kind ~ ".html" %}
       {% endif %}
 
-      {% if a.marking_method == 'offline_estimate' and not fb.self_marked and not fb.guided_self_mark and a.counts_for_mastery %}
+      {% if a.marking_method == 'offline_estimate' and not fb.self_marked and not fb.guided and not fb.guided_self_mark and a.counts_for_mastery %}
       <div class="notice warn estimate-confirm">
         <p class="small"><strong>Mark confidence: low (offline estimate).</strong> No revision item or error-journal entry was created from it. Confirm your mark against the criteria to update your schedule.</p>
         <form method="post" action="/attempt/{{ a.id }}/self-mark">

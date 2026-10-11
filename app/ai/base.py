@@ -81,13 +81,16 @@ class AIProvider(ABC):
         return self.complete_json(prompts.SYSTEM, prompts.mapping(ctx), MappingResult)
 
     def mark_response(self, ctx: dict, images: list[Image] | None = None) -> MarkingResult:
-        """``images``: photos of the student's handwritten working, read alongside the response."""
+        """``images``: photos of the student's handwritten working, read alongside the response.
+        A subject module may validate with a MarkingResult subclass (``MARKING_SCHEMA``, e.g. English)."""
         user = prompts.marking(ctx)
         if images:
             from app.ai import prompts_working
 
             user += prompts_working.marking_addendum(len(images))
-        return self.complete_json(prompts.SYSTEM, user, MarkingResult, images=images)
+        sub = prompts._subject_module(ctx.get("subject", ""))
+        schema = getattr(sub, "MARKING_SCHEMA", None) or MarkingResult
+        return self.complete_json(prompts.SYSTEM, user, schema, images=images)
 
     def read_working(self, ctx: dict, images: list[Image]) -> WorkingReading:
         """Transcribe photographed handwritten working and the final answer (not marked)."""

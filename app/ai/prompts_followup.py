@@ -119,6 +119,21 @@ def _feedback_text(fb: dict) -> str:
         items = [str(x) for x in (fb.get(key) or []) if str(x).strip()]
         if items:
             lines.append(f"- {label}: " + " | ".join(_clip(x, 600) for x in items[:10]))
+    comp = [c for c in (fb.get("comparison_items") or []) if isinstance(c, dict)]
+    if comp:  # English: the point-by-point comparison of the student's response with what the question needed
+        rows = []
+        for c in comp[:12]:
+            row = f"[{c.get('status') or 'point'}] {c.get('point', '')}"
+            if c.get("student_text"):
+                row += f" — student wrote: \"{c['student_text']}\""
+            if c.get("issue"):
+                row += f" — issue: {c['issue']}"
+            if c.get("why"):
+                row += f" — why it matters: {c['why']}"
+            if c.get("try"):
+                row += f" — try this: {c['try']}"
+            rows.append("  * " + _clip(row, 900))
+        lines.append("- Point-by-point comparison of the student's response with what the question needed:\n" + "\n".join(rows))
     errors = fb.get("errors") or []
     if errors:
         lines.append("- Errors: " + " | ".join(_clip(f"{e.get('category', '')}: {e.get('description', '')}", 400) for e in errors[:10]

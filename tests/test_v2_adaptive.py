@@ -183,7 +183,11 @@ def test_model_answer_under_offline_estimate_creates_no_weak_item_or_journal(db)
             assert db.execute(select(ErrorJournal).where(ErrorJournal.attempt_id == a.id)).first() is None
             weak = [r for r in open_items(db, q) if r.source_attempt_id == a.id and r.kind != "recycle"]
             assert weak == []
-            assert a.feedback.payload["schedule"]["estimated"] is True
+            sched = a.feedback.payload["schedule"]
+            if code == "ENGLISH":  # english-03: offline English waits for guided self-marking instead of estimating
+                assert sched.get("pending") is True and a.feedback.payload.get("pending_mark")
+            else:
+                assert sched["estimated"] is True
 
 
 def test_confirming_an_estimate_replaces_it(db):  # adaptive-06 / adaptive-16
@@ -335,8 +339,17 @@ def test_why_lost_written_names_bands_and_quotes_the_student(db):
     q.solution = dict(q.solution or {}, criteria=[{"mark": q.marks, "descriptor": "Perceptive analysis"}, {"mark": 1, "descriptor": "Identifies a technique"}])
     db.commit()
     a = assessment.submit(db, q, "The writer uses a metaphor. It is about memory and the past and it is effective.")
+    # english-03/12: offline English is self-marked against the checklist first; the subject's own ladder
+    # explainer then names the level reached and the next one
+    from app.services.assessment import english
+    from app.services.assessment.written import why_lost_written
+
+    english.apply_guided_self_mark(db, a, [0])
     why = assessment.why_lost(db, a)
-    assert "band" in why
+    assert "1-mark level" in why and "next level" in why.lower()
+    # the generic written explainer (used when no subject explainer applies) names the bands
+    generic = why_lost_written(q, a.feedback.payload, a)
+    assert "band" in generic and "Identifies a technique" in generic and "Perceptive analysis" in generic
 
 
 def test_legal_ai_why_lost_rejects_invented_citations(db):  # adaptive-14

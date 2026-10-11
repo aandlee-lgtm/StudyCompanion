@@ -57,7 +57,11 @@ def why_lost(db: Session, attempt: Attempt) -> str:
     elif kind == "self_mark":
         text = explain_self_marked(q, p, attempt)
     else:
-        text = _ai_written(db, q, p, attempt, code)
+        text = None
+        if code == "ENGLISH" and get_provider(st.all_settings(db)).generative:
+            text = english.ai_why_lost(db, q, p, attempt)  # v2-english-logic: ladder, passage and a verified sentence upgrade
+        if text is None:
+            text = _ai_written(db, q, p, attempt, code)
         if text is None:
             text = legal.why_lost(q, p, attempt) if code == "LEGAL" else english.why_lost(q, p, attempt)
         text = text or why_lost_written(q, p, attempt)

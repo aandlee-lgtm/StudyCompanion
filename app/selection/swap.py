@@ -248,7 +248,9 @@ def _single(ctx: StudentContext, pool: Pool, unit: Unit, reason: str, swapped_be
     others = [x.question for x in unit.sess.questions if x.subject_code == code and x.id != unit.sqs[0].id]
     counts = {"pool": 0, "fresh": 0, "topic": 0, "rules": 0}
     stage: list[Scored] = []
-    other_forms = {form_key(q) for q in others} if code == "MATHS" else set()
+    # one question per form per session; questions swapped out earlier today count too (a template
+    # sibling of a question the student already swapped away is not "a different one")
+    other_forms = {form_key(q) for q in [*others, *swapped_before]} if code == "MATHS" else set()
     orig_form = form_key(orig) if code == "MATHS" else None
     for s in pool.cands:
         q = s.question

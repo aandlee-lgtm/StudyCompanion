@@ -8,6 +8,7 @@ from app.models import LearningPlanItem, LegalEvidence, Question, RevisionQueue
 from app.selection.context import build_context
 from app.selection.engine import build_daily_selection, maths_difficulty_quota
 from app.services import assessment, clock, plan, sessions
+from app.services.assessment import english
 from app.services import settings as st
 from tests.conftest import TUESDAY, answer_correctly, plan_item
 from tests.fakes import FakeProvider, marking_json
@@ -45,17 +46,23 @@ def test_C_superficial_english_response(db):
     a = assessment.submit(db, q, "The writer uses a metaphor. It is about memory.")
     db.commit()
     p = a.feedback.payload
-    assert 0 < a.mark_possible and a.mark_awarded <= 2  # appropriate partial (or low) mark
+    # v2 (english-03): offline there is no keyword estimate; the answer waits for guided self-marking
+    assert p["pending_mark"] and a.mark_awarded == 0 and "Not marked yet" in p["label"]  # honest labelling without AI
     assert p["model_answer"]  # Band 6 model response for this question
+    english.apply_guided_self_mark(db, a, [0])
+    db.commit()
+    p = a.feedback.payload
+    assert 0 < a.mark_possible and a.mark_awarded <= 2  # appropriate partial (or low) mark
     assert p["comparison"]  # comparison with the student's response
-    assert "Offline estimate" in p["label"]  # honest labelling without AI
+    assert "Self-marked" in p["label"]
     why = assessment.why_lost(db, a)
     assert "4-mark" in why and "Analyse" in why
     # with an AI provider the full feedback structure is shown
     factory.set_test_provider(FakeProvider(default=__import__("json").loads(marking_json(1.5, 4))))
     a2 = assessment.submit(db, q, "The writer uses a metaphor. It is about memory.")
     r = a2.feedback.payload["result"]
-    assert r["comparison"] and r["model_answer"] and r["improved_answer"]
+    # v2 (english-05): the vetted model is kept, so the AI is not asked for (or shown) a new one
+    assert r["comparison"] and a2.feedback.payload["model_answer"] == q.model_answer and r["improved_answer"]
     assert "technique identification without analysis" in a2.feedback.error_categories
 
 

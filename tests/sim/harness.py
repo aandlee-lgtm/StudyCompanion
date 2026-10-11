@@ -187,6 +187,30 @@ def _respond(q, good: bool) -> tuple[str, str]:
 
 
 # ----------------------------------------------------------------------- runner ---
+V2_SEED_FILES = {"english_sets.json", "english_course.json", "legal_v2.json", "legal_evidence_v2.json"}
+
+
+def _prepare_with_v1_seed_only(data_dir: Path, url: str) -> None:
+    """Seed only the v1 content files (the v2 content packages are left out), so the small-bank
+    simulations really run with a small bank."""
+    import shutil
+
+    from app.database_setup import prepare_database
+    from app.services import seed as seed_mod
+
+    v1 = data_dir / "v1_seed"
+    v1.mkdir(exist_ok=True)
+    for f in seed_mod.SEED_DIR.glob("*.json"):
+        if f.name not in V2_SEED_FILES:
+            shutil.copy(f, v1 / f.name)
+    orig = seed_mod.SEED_DIR
+    seed_mod.SEED_DIR = v1
+    try:
+        prepare_database(url)
+    finally:
+        seed_mod.SEED_DIR = orig
+
+
 def run_sim(data_dir: Path, profile: str = "mixed", weeks: int = 4, *, start: date = date(2026, 10, 12), v2_bank: bool = True,
             advance_every: int = 4, mode: str | None = None, miss: set[date] | None = None, missaction: str | None = None,
             holiday: tuple[date, date] | None = None, seed: int = 7) -> SimResult:
@@ -210,7 +234,10 @@ def run_sim(data_dir: Path, profile: str = "mixed", weeks: int = 4, *, start: da
         dbfile = data_dir / "sim.db"
         if dbfile.exists():
             dbfile.unlink()
-        prepare_database(f"sqlite:///{dbfile}")
+        if v2_bank:
+            prepare_database(f"sqlite:///{dbfile}")
+        else:
+            _prepare_with_v1_seed_only(data_dir, f"sqlite:///{dbfile}")
         db = SessionLocal()
         st.set_(db, "setup_complete", True)
         st.set_(db, "year12_start_date", start.isoformat())

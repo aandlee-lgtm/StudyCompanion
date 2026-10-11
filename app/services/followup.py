@@ -50,12 +50,14 @@ _HANDLED = {
     "divergence", "divergence_step", "concept", "quicker", "technique", "outcome", "revision", "error_category", "notes",
     "correct", "explanation", "guideline", "guideline_official", "self_marked",
     "evidence_role", "solution_shown", "model_viewed",  # v2-adaptive bookkeeping, not feedback
+    "comparison_items", "comparison_source", "comparison_dropped",  # rendered explicitly (English comparison)
 }
 _RESULT_KEYS = ("performance_level", "marking_rationale", "next_level", "improvement_task", "improved_argument", "strengths",
                 "weaknesses", "missing_elements", "corrections", "evidence_suggestions", "improvements", "revision_recommendation",
                 "errors", "criteria", "dimensions")
 _DIRECT_KEYS = ("note", "correct", "student_answer", "student_parsed", "correct_answer", "divergence", "divergence_step",
-                "error_category", "explanation", "concept", "quicker", "technique", "revision", "notes", "comparison", "improved_answer")
+                "error_category", "explanation", "concept", "quicker", "technique", "revision", "notes", "comparison", "improved_answer",
+                "comparison_items")  # English point-by-point comparison (owner request 2026-10-11): the best grounding for English
 
 
 class FollowUpError(ValueError):

@@ -120,15 +120,24 @@ def test_mcq_grounding_has_options_correct_option_and_explanation(client, db):
 
 def test_english_grounding_has_stimulus_response_feedback_model_and_criteria(client, db):
     q = _english_q(db)
-    p = FakeProvider(replies=[marking_json(1, q.marks)], default=json.loads(_reply()))
+    items = [{"point": "Explain the effect of the image", "student_quote": "The writer uses a metaphor about the harbour wind.",
+              "status": "weak", "issue": "Names the metaphor but not what it suggests",
+              "why_it_matters": "Analysis marks need the effect", "try_this": "The harbour wind suggests the memory is still cold."}]
+    p = FakeProvider(replies=[marking_json(1, q.marks, comparison_items=items)], default=json.loads(_reply()))
     factory.set_test_provider(p)
     a = _submit(db, q, "The writer uses a metaphor about the harbour wind.")
+    assert a.feedback.payload["comparison_items"], "the English comparison is stored on the feedback"
     assert _ask(client, a, "What does 'explain' need here?").json()["ok"]
     prompt = p.prompts[-1]
+    # english-05: a vetted model answer is kept, so the follow-up is grounded in it (not the AI's own model)
+    model = q.model_answer or "A Band 6 response that analyses the metaphor"
     for needle in ("STIMULUS", q.stimulus.body[:60], "<<<RESPONSE", "metaphor about the harbour wind", f"1 / {q.marks}",
                    "Relevant quotation", "Descriptive", "technique identification without analysis",
-                   "MODEL RESPONSE", "A Band 6 response that analyses the metaphor", q.marking_guideline[:40],
-                   "app-authored, NOT an official NESA marking guideline", "Explain (NESA glossary:", "Comparison with the model response"):
+                   "MODEL RESPONSE", model[:40], q.marking_guideline[:40],
+                   "app-authored, NOT an official NESA marking guideline", "Explain (NESA glossary:",
+                   # owner request 2026-10-11: the English point-by-point comparison grounds the follow-up
+                   "Point-by-point comparison", "Names the metaphor but not what it suggests",
+                   "The harbour wind suggests the memory is still cold."):
         assert needle in prompt, needle
 
 
@@ -353,7 +362,9 @@ def test_unverified_quotes_and_legal_references_are_flagged(client, db):
     q = _english_q(db)
     words = q.stimulus.body.split()[:6]
     real = " ".join(words)
-    p = FakeProvider(replies=[marking_json(1, q.marks), _reply(f'The text says "{real}" but never "the sea swallowed every last memory".')])
+    # English marking (english-logic) re-asks once for elements its reply left out: answer that with an empty patch
+    p = FakeProvider(replies=[marking_json(1, q.marks), json.dumps({}),
+                              _reply(f'The text says "{real}" but never "the sea swallowed every last memory".')])
     factory.set_test_provider(p)
     a = _submit(db, q, "An answer.")
     j = _ask(client, a, "Which quote should I use?").json()
@@ -441,7 +452,7 @@ def test_other_feedback_fields_are_passed_through_to_the_prompt(client, db):
     factory.set_test_provider(p)
     a = _submit(db, q, "My response.")
     fbrow = a.feedback
-    fbrow.payload = {**fbrow.payload, "comparison_items": [{"you_wrote": "My response.", "missing": "a link to the idea of memory"}]}
+    fbrow.payload = {**fbrow.payload, "some_new_key": [{"you_wrote": "My response.", "missing": "a link to the idea of memory"}]}
     db.commit()
     _ask(client, a, "What was missing?")
     assert "Other feedback shown to the student" in p.prompts[-1] and "a link to the idea of memory" in p.prompts[-1]
