@@ -539,3 +539,16 @@ def test_legal_mix_rules_for_a_replacement():
     assert not sw._legal_ok(q("mcq"), sa, [mcq, sa])  # at most one multiple-choice question ...
     assert sw._legal_ok(q("mcq"), sa, [mcq, ext])  # ... two on an extended-response day
     assert sw._legal_ok(q("mcq"), mcq, [mcq, sa])  # an MCQ for an MCQ keeps the count
+
+
+def test_locking_the_last_open_topic_says_the_subject_will_pause(db):
+    sess = _today(db, bank=False)
+    legal_items = [it for it in db.execute(select(LearningPlanItem)).scalars() if it.subject.code == "LEGAL"]
+    sq = _rows(sess, "LEGAL")[0]
+    for it in legal_items:
+        if it.id != sq.question.plan_item_id and it.status != LOCKED:
+            it.status = LOCKED  # every other Legal topic is already "Not taught yet"
+    db.commit()
+    rec = sessions.swap_question(db, sess, sq, "not_learnt", lock=True)
+    db.commit()
+    assert rec.outcome == "removed" and "No Legal Studies topic is open now" in rec.message

@@ -615,6 +615,13 @@ def swap_question(db: Session, sess: DailySession, sq: SessionQuestion, reason: 
     if locked is not None:
         msg += (f" {sw.item_name(locked)} is now marked Not taught yet, so sessions leave it out until you change it on "
                 "the Learning plan.")
+        open_items = db.execute(select(LearningPlanItem.id).where(
+            LearningPlanItem.subject_id == locked.subject_id, LearningPlanItem.status != LOCKED,
+            LearningPlanItem.active.is_(True))).first()
+        if open_items is None:
+            subj = sw.SUBJECT_LABEL[code]
+            msg += (f" No {subj} topic is open now, so sessions will have no {subj} questions until you mark a topic as "
+                    "Learning now on the Learning plan.")
     if reason == "not_learnt" and orig_item is not None and not unit.passage:
         same = [x.position for x in sess.questions if x.question.plan_item_id == orig_item.id and x.status not in ANSWERED]
         if same:
