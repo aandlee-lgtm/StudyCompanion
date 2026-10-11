@@ -1133,6 +1133,267 @@ def v_8F(g):
     return {"a": F, "b": _level_payment(F, r_, p["N2"]), "c": paid_out(500, F, r_, p["W2"])}
 
 
+# ---------------------------------------------------------------- chapters 9-10 ---
+# Discrete answers by enumerating outcomes (or by the definition Var = E[(X - mu)^2]); continuous ones by
+# numerical integration and bisection; normal ones from our own 4-decimal-place table of Phi.
+import itertools  # noqa: E402
+
+
+def phi_tab(z) -> Fraction:
+    """P(Z <= z) to 4 dp as a table gives it (negative z by symmetry, as students do)."""
+    from decimal import ROUND_HALF_UP, Decimal
+
+    z = Fr(str(z))
+    if z < 0:
+        return 1 - phi_tab(-z)
+    with mp.workdps(40):
+        v = mp.ncdf(mq(z))
+        return Fr(str(Decimal(mp.nstr(v, 30)).quantize(Decimal("0.0001"), rounding=ROUND_HALF_UP)))
+
+
+EMPIRICAL = {1: Fr(68, 100), 2: Fr(95, 100), 3: Fr(997, 1000)}
+
+
+def dist_var(vals, probs):
+    mu = sum(v * p for v, p in zip(vals, probs))
+    return sum((v - mu) ** 2 * p for v, p in zip(vals, probs))
+
+
+def pdf_k(f, lo, hi):
+    return 1 / mp.quad(f, [lo, hi])
+
+
+def two_marbles(R, B):
+    """Distribution of the number of red marbles in two draws without replacement, by enumeration."""
+    balls = ["r"] * R + ["b"] * B
+    pairs = list(itertools.permutations(range(len(balls)), 2))
+    count = {0: 0, 1: 0, 2: 0}
+    for i, j in pairs:
+        count[(balls[i] == "r") + (balls[j] == "r")] += 1
+    return {kk: Fr(c, len(pairs)) for kk, c in count.items()}
+
+
+@verifies("9A")
+def v_9A(g):
+    p = g.params
+    if p["form"] == "k":
+        k_ = sp.Symbol("k")
+        return sp.solve(sum(c * k_ for c in p["cs"]) - 1, k_)[0]
+    if p["form"] == "event":
+        probs = [Fr(w, 20) for w in p["ws"]]
+        cut = p["xs"][p["j"]] if p["kind"] == "ge" else p["xs"][p["j"] + 1]
+        keep = (lambda v: v >= cut) if p["kind"] == "ge" else (lambda v: v < cut)
+        return sum(pr for v, pr in zip(p["xs"], probs) if keep(v))
+    if p["form"] == "kq":
+        k_ = sp.Symbol("k")
+        cells = [c * k_ for c in p["cs"]]
+        cells.insert(p["pos"], p["q"] * k_**2)
+        roots = [rt for rt in sp.solve(sum(cells) - 1, k_) if all(0 <= c.subs(k_, rt) <= 1 for c in cells)]
+        assert len(roots) == 1
+        probs = [c.subs(k_, roots[0]) for c in cells]
+        return {"a": roots[0], "b": sum(probs[p["j"]:])}
+    if p["form"] == "bag":
+        dist = two_marbles(p["R"], p["B"])
+        return {"a": dist[0], "b": dist[1], "c": dist[1] + dist[2], "d": dist[2] / (dist[1] + dist[2])}
+    nd = p["nd"]
+    rolls = list(itertools.product(range(1, nd + 1), repeat=2))
+    pmf = {v: Fr(sum(1 for a, b in rolls if max(a, b) == v), len(rolls)) for v in range(1, nd + 1)}
+    slope = pmf[2] - pmf[1]
+    assert all(pmf[v] == pmf[1] + (v - 1) * slope for v in pmf)  # P(X = k) is linear in k
+    ge = sum(pr for v, pr in pmf.items() if v >= p["m"])
+    return {"a": pmf[p["a"]], "b": lambda kv: mq(pmf[1]) + (kv - 1) * mq(slope), "c": ge, "d": pmf[nd] / ge}
+
+
+@verifies("9B")
+def v_9B(g):
+    p = g.params
+    if p["form"] == "table":
+        return sum(v * Fr(w, 20) for v, w in zip(p["xs"], p["ws"]))
+    if p["form"] == "lin":
+        mu = Fr(p["mu"])
+        return sum((p["a"] * v + p["b"]) * Fr(1, 2) for v in (mu - 3, mu + 3))
+    if p["form"] == "game":
+        prize = lambda face: p["W1"] if face == 6 else (p["W2"] if face in (4, 5) else 0)  # noqa: E731
+        ep = sum(Fr(prize(f_), 6) for f_ in range(1, 7))
+        return {"a": ep, "b": ep - p["c"], "c": p["n"] * (ep - p["c"])}
+    if p["form"] == "ab":
+        a_, b_ = sp.symbols("a b")
+        probs = [sp.Rational(w, 10) for w in p["ws"]]
+        mean = sum(v * pr for v, pr in zip(p["xs"], probs))
+        probs[p["i"]], probs[p["j"]] = a_, b_
+        sol = sp.solve([sum(probs) - 1, sum(v * pr for v, pr in zip(p["xs"], probs)) - mean], [a_, b_])
+        return [sol[a_], sol[b_]]
+    dist = two_marbles(p["R"], p["B"])
+    ep = p["A1"] * dist[2] + p["A2"] * dist[1]
+    return {"a": dist[2], "b": dist[1], "c": ep, "d": ep, "e": p["n"] * (p["c"] - ep)}
+
+
+@verifies("9C")
+def v_9C(g):
+    p = g.params
+    if p["form"] == "fromE":
+        return Fr(p["s2"]) - Fr(p["mu"]) ** 2
+    if p["form"] == "lin":
+        s = mp.sqrt(p["var"])
+        return dist_var([p["a"] * v + p["b"] for v in (-s, s)], [mp.mpf(1) / 2] * 2)
+    if p["form"] == "table":
+        v = dist_var(p["xs"], [Fr(w, 20) for w in p["ws"]])
+        return mp.sqrt(mq(v)) if p["sd"] else v
+    k_ = Fr(1, sum(p["cs"]))
+    probs = [c * k_ for c in p["cs"]]
+    ys = [p["a"] * v + p["b"] for v in p["xs"]]
+    return {"a": k_, "b": sum(v * pr for v, pr in zip(p["xs"], probs)), "c": dist_var(p["xs"], probs), "d": mp.sqrt(mq(dist_var(ys, probs)))}
+
+
+@verifies("10A")
+def v_10A(g):
+    p = g.params
+    fs = p["fs"]
+    n_ = sum(fs)
+    if p["form"] == "cf":
+        return sum(fs[: p["j"] + 1])
+    if p["form"] == "rel":
+        return Fr(sum(fs[: p["j"] + 1]), n_)
+    b = p["bounds"]
+    mean = sum(f * Fr(lo + hi, 2) for f, lo, hi in zip(fs, b, b[1:])) / n_
+    if p["form"] == "mean":
+        return {"a": mean, "b": Fr(sum(f for f, lo in zip(fs, b) if lo >= b[p["j"]]), n_)}
+    pts = [(b[0], 0)] + [(b[i + 1], sum(fs[: i + 1])) for i in range(5)]
+
+    def ogive(xv):
+        for (x0, c0), (x1, c1) in zip(pts, pts[1:]):
+            if x0 <= xv <= x1:
+                return c0 + (c1 - c0) * (xv - x0) / (x1 - x0)
+        raise AssertionError
+    return {"a": mean, "b": dict(pts)[b[p["j"] + 1]], "c": bisect_mp(lambda xv: ogive(xv) - mp.mpf(n_) / 2, b[0], b[5])}
+
+
+@verifies("10B")
+def v_10B(g):
+    p = g.params
+    f_ = p["form"]
+    if f_ in ("k", "P", "cdf", "pow"):
+        n_, a_ = p["n"], p["a"]
+        k_ = pdf_k(lambda s_: s_**n_, 0, a_)
+        F = lambda s_: k_ * mp.quad(lambda u: u**n_, [0, s_])  # noqa: E731
+        if f_ == "k":
+            return k_
+        if f_ == "P":
+            return F(p["b"])
+        if f_ == "cdf":
+            return {"a": F, "b": F(p["b2"]) - F(p["b1"])}
+        return {"a": k_, "b": F, "c": F(p["b2"]) - F(p["b1"]), "d": bisect_mp(lambda s_: F(s_) - mp.mpf(1) / 2, 0, a_)}
+    if f_ == "quad":
+        a_ = p["a"]
+        k_ = pdf_k(lambda s_: s_ * (a_ - s_), 0, a_)
+        return {"a": k_, "b": k_ * mp.quad(lambda s_: s_ * (a_ - s_), [0, p["b"]])}
+    lam = mq(Fr(p["lam"]))
+    if g.difficulty == 1:
+        return mp.quad(lambda s_: lam * mp.exp(-lam * s_), [p["b"], mp.inf])
+    k_ = pdf_k(lambda s_: mp.exp(-lam * s_), 0, mp.inf)
+    F = lambda s_: k_ * mp.quad(lambda u: mp.exp(-lam * u), [0, s_])  # noqa: E731
+    return {"a": k_, "b": F, "c": 1 - F(p["b"]), "d": bisect_mp(lambda s_: F(s_) - mp.mpf(1) / 2, 0, 100)}
+
+
+def _moments(f, lo, hi):
+    m1 = mp.quad(lambda s_: s_ * f(s_), [lo, hi])
+    return m1, mp.quad(lambda s_: (s_ - m1) ** 2 * f(s_), [lo, hi])
+
+
+@verifies("10C")
+def v_10C(g):
+    p = g.params
+    f_ = p["form"]
+    if f_ == "uni":
+        a_, b_ = p["a"], p["b"]
+        m1, var = _moments(lambda s_: mp.mpf(1) / (b_ - a_), a_, b_)
+        return m1 if g.difficulty == 1 else {"a": m1, "b": var}
+    if f_ == "lin":
+        return _moments(lambda s_: 2 * s_ / mp.mpf(p["a"]) ** 2, 0, p["a"])[0]
+    a_ = p["a"]
+    shape = (lambda s_: s_ ** p["n"]) if f_ == "pow" else (lambda s_: s_ * (a_ - s_))
+    k_ = pdf_k(shape, 0, a_)
+    m1, var = _moments(lambda s_: k_ * shape(s_), 0, a_)
+    if g.difficulty == 2:
+        return {"a": m1, "b": var}
+    upto = m1 if f_ == "pow" else mq(Fr(p["b"]))
+    return {"a": k_, "b": m1, "c": var, "d": k_ * mp.quad(shape, [0, upto])}
+
+
+def emp(k1, k2):
+    return (EMPIRICAL[k1] + EMPIRICAL[k2]) / 2
+
+
+@verifies("10D")
+def v_10D(g):
+    p = g.params
+    f_ = p["form"]
+    if f_ == "emp":
+        return 100 * emp(p["k1"], p["k2"])
+    if f_ == "upper":
+        return 1 - phi_tab(p["z"])
+    if f_ == "neg":
+        return phi_tab("-" + p["z"])
+    if f_ == "symm":
+        return phi_tab(p["z"]) - phi_tab("-" + p["z"])
+    if f_ == "between":
+        return phi_tab(p["z2"]) - phi_tab(p["z1"])
+    if f_ == "straddle":
+        return phi_tab(p["z2"]) - phi_tab("-" + p["z1"])
+    za, zb, zc = p["za"], p["zb"], p["zc"]
+    return {"a": 1 - phi_tab(zb), "b": phi_tab(zb) - phi_tab("-" + za), "c": phi_tab("-" + zc) + 1 - phi_tab(zc),
+            "d": (1 - phi_tab(zb)) / Fr(1, 2)}
+
+
+def zs(xv, mu, sigma):
+    return Fr(xv - mu, sigma)
+
+
+@verifies("10E")
+def v_10E(g):
+    p = g.params
+    f_ = p["form"]
+    if f_ == "emp":
+        return 100 * emp(p["k1"], p["k2"])
+    if f_ == "z":
+        return zs(p["x"], p["mu"], p["sigma"])
+    if f_ == "x":
+        return p["mu"] + Fr(p["zz"]) * p["sigma"]
+    mu, s = p["mu"], p["sigma"]
+    if f_ == "between":
+        return phi_tab(zs(p["x2"], mu, s)) - phi_tab(zs(p["x1"], mu, s))
+    za = zs(p["xa"], mu, s)
+    tail = 1 - phi_tab(za)
+    return {"a": za, "b": tail, "c": phi_tab(za) - phi_tab(zs(p["xb"], mu, s)), "d": p["N"] * tail}
+
+
+@verifies("10F")
+def v_10F(g):
+    p = g.params
+    f_ = p["form"]
+    if f_ == "count":
+        return p["N"] * emp(p["k1"], p["k2"])
+    if f_ == "cut":
+        return p["mu"] + Fr(p["zq"]) * p["sigma"]
+    if f_ == "qc":
+        mu, s = p["mu"], p["sigma"]
+        rej = phi_tab(zs(p["lo"], mu, s)) + 1 - phi_tab(zs(p["hi"], mu, s))
+        return {"a": rej, "b": p["N"] * rej}
+    if f_ == "mean":
+        return bisect_mp(lambda m: (p["a"] - m) / p["sigma"] - mq(Fr(p["zq"])), -1000, 5000)
+    mu, s = p["mu"], p["sigma"]
+    zq = Fr(p["zq"])
+    return {"a": 1 - phi_tab(zs(p["xa"], mu, s)), "b": 100 * EMPIRICAL[p["k"]], "c": mu + zq * s,
+            "d": bisect_mp(lambda m: (p["xa"] - m) / s - mq(zq), -1000, 5000)}
+
+
+def test_quoted_normal_quantiles_are_right():
+    from app.services.maths_tpl_ch9_10 import ZQ
+
+    for top, zq in ZQ:
+        assert abs(mp.ncdf(mp.mpf(zq)) - (1 - mp.mpf(top) / 100)) < 0.001, (top, zq)
+
+
 # --------------------------------------------------------------------- tests ---
 def test_every_plan_subtopic_has_its_own_v2_template():
     missing = [c for c in plan_codes() if c not in ENRICHMENT and c not in mt.V2_CODES]
