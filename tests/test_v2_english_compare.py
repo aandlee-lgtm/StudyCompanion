@@ -211,3 +211,18 @@ def test_question_page_writing_interface(client, db):
     page = htmllib.unescape(client.get(f"/practice/{craft.id}").text)
     lo, hi = craft.solution["suggested_words"]
     assert f"(suggested {lo}–{hi})" in page and "A composition judged on control" in page and 'id="reading-pane"' not in page
+
+
+def test_ai_feedback_page_shows_checked_comparison_first(client, db):
+    q = _q(db)
+    items = [{"point": "Explain the relationship", "student_quote": "It is about memory and family.", "status": "weak",
+              "issue": "Names a topic, not a relationship", "why_it_matters": "An 'explain' needs the reason",
+              "try_this": "Agreeing protects her mother, so the narrator hides her own fear."},
+             {"point": "Invented", "student_quote": "A sentence that is not in the answer at all.", "status": "weak", "issue": "x",
+              "why_it_matters": "y", "try_this": "z"}]
+    factory.set_test_provider(FakeProvider(default=_ai_reply(q, items)))
+    client.post(f"/practice/{q.id}/submit", data={"answer": WEAK, "time_seconds": "60"})
+    page = htmllib.unescape(client.get(f"/practice/{q.id}").text)
+    assert "every sentence quoted as yours was checked" in page and "1 point that misquoted your answer was left out" in page
+    assert page.index("“It is about memory and family.”") < page.index("Marks and criteria")
+    assert "A sentence that is not in the answer at all." not in page
