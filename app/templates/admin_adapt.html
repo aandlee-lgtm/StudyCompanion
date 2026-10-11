@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+{% set meta = q.import_meta or {} %}
+<a class="small" href="/admin/review/{{ q.id }}">← Back to the review card</a>
+<h1>Adapt a historical question</h1>
+<p class="lead">The original stays in the bank as a source question and is never served. Your adapted copy is labelled <strong>ADAPTED FROM HISTORICAL QUESTION: {{ label }}</strong> and must pass the same checks before it is approved.</p>
+{% if flash %}<div class="notice">{{ flash }}</div>{% endif %}
+<div class="grid g2 ing-adapt">
+  <div class="card">
+    <h3>Original <span class="pill {{ q.relevance_status }}">{{ q.relevance_status }}</span></h3>
+    <div class="question-text">{{ q.question_text | paras }}</div>
+    {% if q.options %}<ul class="small">{% for o in q.options %}<li>{{ o }}</li>{% endfor %}</ul>{% endif %}
+    {% if q.question_image %}<img src="/media/{{ q.question_image.split('/')[-1] }}" alt="Crop from the source paper" class="ing-crop">{% endif %}
+    <p class="small muted">{{ q.marks }} marks · {{ label }}{% if code == 'LEGAL' %} · legal facts: {{ q.legal_fact_currency or 'check' }}{% endif %}</p>
+    {% if q.mappings %}<p class="small muted">{{ q.mappings[-1].mapping_reason }}</p>{% endif %}
+    <form method="post" action="/admin/review/{{ q.id }}/adapt/draft" class="box">
+      <div class="field"><label>Ask the AI for a draft (optional; you edit it before saving)</label><input type="text" name="instructions" placeholder="e.g. replace the superseded text with your prescribed text; keep the 6-mark analysis demand"></div>
+      <button class="btn small">Draft with AI</button>
+    </form>
+  </div>
+  <form class="card" method="post" action="/admin/review/{{ q.id }}/adapt/save">
+    <h3>Adapted copy</h3>
+    <div class="field"><label>Question text</label><textarea name="text" rows="8" required>{{ draft }}</textarea></div>
+    <div class="grid g2">
+      <div class="field"><label>Marks</label><input type="number" name="marks" min="1" max="25" value="{{ q.marks }}"></div>
+      <div class="field"><label>Directive verb</label><input type="text" name="directive_verb" value="{{ q.directive_verb or '' }}"></div>
+    </div>
+    {% if q.question_type == 'mcq' %}
+      {% for i in range(4) %}<div class="field"><label>Option {{ 'ABCD'[i] }}</label><input type="text" name="option_{{ i }}" value="{{ (q.options or [])[i] if (q.options or [])|length > i else '' }}"></div>{% endfor %}
+      <div class="field"><label>Correct answer</label><div class="row">{% for l in 'ABCD' %}<label class="row"><input type="radio" name="answer_letter" value="{{ l }}" {{ 'checked' if q.answer and q.answer.value == l }}> {{ l }}</label>{% endfor %}</div></div>
+    {% endif %}
+    <div class="field"><label>Subtopics</label><select name="plan_item_ids" multiple size="6">{% for it in plan_items if it.subject_id == q.subject_id %}<option value="{{ it.id }}" {{ 'selected' if it.id in required }}>{{ it.code }} {{ it.title|truncate(48) }} — {{ it.status }}</option>{% endfor %}</select></div>
+    {% if code == 'ENGLISH' %}
+      <div class="field"><label>Category</label><select name="category"><option value="unseen" {{ 'selected' if q.category == 'unseen' }}>Unseen text</option><option value="course" {{ 'selected' if q.category != 'unseen' }}>Course-linked</option></select></div>
+      <input type="hidden" name="stimuli_present" value="1">
+      <div class="field"><label>Texts</label><select name="stimulus_ids" multiple size="4">{% for s in stimuli if s.subject_id == q.subject_id %}<option value="{{ s.id }}" {{ 'selected' if s.id in links }}>{{ s.title|truncate(60) }}</option>{% endfor %}</select></div>
+    {% endif %}
+    {% if code == 'LEGAL' %}<div class="field"><label>Legal fact currency of the adapted wording</label><select name="legal_fact_currency">{% for c in currencies %}<option {{ 'selected' if c == 'current' }}>{{ c }}</option>{% endfor %}</select></div>{% endif %}
+    <div class="field"><label>Model answer or marking notes (optional)</label><textarea name="model_answer" rows="3"></textarea></div>
+    <div class="field"><label>Adaptation note (required: what changed and why)</label><input type="text" name="note" required placeholder="e.g. Replaced the superseded prescribed text; same skill and marks."></div>
+    <label class="row small"><input type="checkbox" name="approve_now" value="1" checked> Approve now if every check passes</label>
+    <button class="btn primary">Save adapted copy</button>
+  </form>
+</div>
+{% endblock %}

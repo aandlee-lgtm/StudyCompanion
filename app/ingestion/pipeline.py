@@ -544,7 +544,7 @@ def remove_unused_questions(db: Session, source_id: int) -> int:
     for q in db.execute(select(Question).where(Question.source_id == source_id)).scalars().all():
         used = db.execute(select(Attempt.id).where(Attempt.question_id == q.id).limit(1)).first() or \
             db.execute(select(QuestionExposure.id).where(QuestionExposure.question_id == q.id).limit(1)).first()
-        if used or q.approval_status == APPROVAL_APPROVED:
+        if used or q.approval_status in (APPROVAL_APPROVED, "adapted", "retired"):  # keep sources of adapted copies
             continue
         delete_question_rows(db, q)
         n += 1

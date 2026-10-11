@@ -1,1 +1,31 @@
 /* v2 styles owned by the ingestion package */
+.ing-filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.ing-filters select, .ing-filters input { max-width: 220px; }
+.ing-search { min-width: 220px; flex: 1 1 220px; }
+.ing-narrow { width: 80px; }
+.ing-table-wrap { overflow-x: auto; }
+.ing-table th a { color: inherit; text-decoration: none; }
+.ing-batch { margin-top: 12px; flex-wrap: wrap; gap: 8px; }
+.ing-card { margin: 14px 0; scroll-margin-top: 12px; }
+.ing-card:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+.ing-card.ing-needs-fix { border-left: 4px solid var(--warn); }
+.ing-side { margin-top: 10px; align-items: start; }
+.ing-left .question-text { white-space: normal; }
+.ing-options { margin: 6px 0 6px 18px; }
+.ing-crop { max-width: 100%; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
+.ing-issues ul { margin: 6px 0 0 18px; padding: 0; }
+.ing-actions { flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.ing-reason { width: 140px; }
+.ing-edit { margin-top: 8px; }
+.ing-edit summary { cursor: pointer; }
+.ing-part .ing-span2 { grid-column: span 2; }
+.ing-criteria td:last-child, .ing-criteria th:last-child { width: 70px; text-align: right; }
+.ing-hidden { border-style: dashed; }
+.ing-log { white-space: pre-wrap; max-height: 320px; overflow: auto; font-size: 12px; background: var(--surface-2); padding: 8px; border-radius: var(--radius); }
+.ing-audit .ing-why { max-width: 48ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ing-adapt textarea { font-family: var(--font); }
+@media (max-width: 760px) {
+  .ing-filters select, .ing-filters input { max-width: 100%; flex: 1 1 140px; }
+  .ing-part .ing-span2 { grid-column: auto; }
+  .ing-audit .ing-why { white-space: normal; }
+}

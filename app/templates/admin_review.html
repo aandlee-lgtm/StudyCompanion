@@ -1,34 +1,149 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Administrator review</h1>
-<p class="lead">Imported questions whose 2027 mapping is uncertain (PARTIAL, ADAPTABLE or low confidence). Automated mapping is not infallible: nothing here reaches the student until you approve it. REJECT questions are never shown.</p>
+{% macro qs_link(extra) -%}?{% for k, v in f.items() if k not in extra and k not in ['page', 'flash'] %}{{ k }}={{ v|urlencode }}&{% endfor %}{% for k, v in extra.items() %}{{ k }}={{ v|urlencode }}&{% endfor %}{%- endmacro %}
+{% if single %}<a class="small" href="/admin/review">← Review queue</a> · <a class="small" href="/questions/{{ queue[0].id }}">Question page</a>{% endif %}
+<h1>{{ 'Review question' if single else 'Administrator review' }}</h1>
+{% if not single %}<p class="lead">Imported questions wait here until a person approves them. Approval always passes the validation checks (real question text, marks that add up, a multiple-choice key, a subtopic, linked texts, current law). Nothing reaches a daily session before its subtopics are unlocked.</p>{% endif %}
+{% if flash %}<div class="notice">{{ flash }}</div>{% endif %}
+{% if not single %}
+<form class="card ing-filters small" method="get">
+  <select name="state">{% for s in ['pending', 'approved', 'rejected', 'adapted', 'retired'] %}<option value="{{ s }}" {{ 'selected' if (f.state or 'pending') == s }}>{{ s|capitalize }}</option>{% endfor %}</select>
+  <select name="subject"><option value="">Subject</option>{% for c in ['MATHS','ENGLISH','LEGAL'] %}<option value="{{ c }}" {{ 'selected' if f.subject == c }}>{{ SUBJECT_SHORT[c] }}</option>{% endfor %}</select>
+  <select name="source"><option value="">Source</option>{% for s in sources %}<option value="{{ s.id }}" {{ 'selected' if f.source == s.id|string }}>{{ s.title|truncate(50) }}</option>{% endfor %}</select>
+  <select name="status"><option value="">Any check status</option><option value="needs_fix" {{ 'selected' if f.status == 'needs_fix' }}>Needs fixing</option><option value="ready" {{ 'selected' if f.status == 'ready' }}>Ready to decide</option></select>
+  <select name="conf"><option value="">Any confidence</option><option value="low" {{ 'selected' if f.conf == 'low' }}>Low confidence (&lt; 70%)</option></select>
+  <button class="btn small primary">Filter</button>
+  <span class="tiny muted">Keys: j/k next/previous · a approve · r reject · e edit</span>
+</form>
+<form id="batch" class="card row small ing-batch" method="post" action="/admin/review/batch">
+  <input type="hidden" name="back" value="{{ back }}">
+  <label class="row"><input type="checkbox" id="ing-all"> Select all on this page</label>
+  <select name="action"><option value="approve">Approve ticked (each must pass the checks)</option><option value="reject">Reject ticked</option><option value="retire">Retire ticked</option></select>
+  <input type="text" name="reason" placeholder="Reason (reject/retire)">
+  <button class="btn small">Apply</button>
+  <span class="muted">{{ total }} question{{ 's' if total != 1 }}</span>
+</form>
+{% endif %}
 {% for q in queue %}
+{% set meta = q.import_meta or {} %}
 {% set m = q.mappings[-1] if q.mappings else None %}
-<div class="card" style="margin-bottom:14px">
-  <div class="spread"><strong>{{ q.source.title }}{% if q.question_number %} · Q{{ q.question_number }}{% endif %}{% if q.source_page %} · p. {{ q.source_page }}{% endif %}</strong>
-    <span class="row"><span class="pill {{ q.historical_or_generated }}">{{ ORIGIN_LABELS[q.historical_or_generated] }}</span>{% if m %}<span class="pill {{ m.relevance_classification }}">{{ m.relevance_classification }}</span>{% endif %}</span></div>
-  <div class="side" style="margin-top:10px">
-    <div>{{ q.question_text | paras }}{% if q.options %}<ul class="small">{% for o in q.options %}<li>{{ o }}</li>{% endfor %}</ul>{% endif %}
-      {% if q.question_image %}<img src="/media/{{ q.question_image.split('/')[-1] }}" alt="" style="max-width:100%">{% endif %}
-      <p class="small muted">{{ q.marks }} marks{% if q.marking_guideline %} · marking guideline attached{% endif %}</p></div>
-    <div class="small">
-      {% if m %}<p><strong>Proposed 2027 topic:</strong> {{ m.focus_area or '—' }}</p><p><strong>Relevance:</strong> {{ m.relevance_classification }} · <strong>confidence</strong> {{ (m.mapping_confidence*100)|round|int }}%</p><p><strong>Explanation ({{ m.mapped_by }}):</strong> {{ m.mapping_reason }}</p>{% endif %}
-      <div class="row">
-        <form method="post" action="/admin/review/{{ q.id }}/approve"><button class="btn small primary">Approve</button></form>
-        <form method="post" action="/admin/review/{{ q.id }}/adapt"><button class="btn small" title="Approve and label ADAPTED FROM HISTORICAL QUESTION">Mark adaptable</button></form>
-        <form method="post" action="/admin/review/{{ q.id }}/reject" class="row"><input type="text" name="reason" placeholder="Reason (optional)"><button class="btn small danger">Reject</button></form>
+{% set issues = meta.validation or [] %}
+{% set blocking = issues|selectattr('blocking')|list %}
+{% set code = codes[q.subject_id] %}
+<div class="card ing-card{{ ' ing-needs-fix' if meta.status == 'needs_fix' }}" id="q{{ q.id }}" tabindex="-1" data-qid="{{ q.id }}">
+  <div class="spread">
+    <label class="row"><input type="checkbox" name="ids" value="{{ q.id }}" form="batch" class="ing-tick"{{ ' hidden' if single }}>
+      <strong>{{ q.source.title if q.source else 'Manual' }}{% if q.question_number %} · Q{{ q.question_number }}{% endif %}{% if q.source_page %} · p. {{ q.source_page }}{% endif %}</strong></label>
+    <span class="row small">
+      {% if meta.section %}<span class="pill">Section {{ meta.section }}{% if meta.question_title %} · {{ meta.question_title }}{% endif %}</span>{% endif %}
+      {% if meta.alternative_group %}<span class="pill" title="EITHER/OR alternatives share the marks">EITHER/OR Q{{ meta.alternative_group }}</span>{% endif %}
+      <span class="pill {{ q.historical_or_generated }}">{{ ORIGIN_LABELS[q.historical_or_generated] }}</span>
+      <span class="pill {{ q.relevance_status }}">{{ q.relevance_status }}</span>
+      <span class="pill {{ q.approval_status }}">{{ q.approval_status }}</span>
+      {% if meta.status == 'needs_fix' %}<span class="pill bad">needs fixing</span>{% endif %}
+      {% if q.source and q.source.local_file %}<a class="tiny" href="/sources/{{ q.source_id }}/pdf#page={{ q.source_page or 1 }}" target="_blank" rel="noopener">PDF p. {{ q.source_page or 1 }}</a>{% endif %}
+    </span>
+  </div>
+  <div class="side ing-side">
+    <div class="ing-left">
+      {% for sid in links.get(q.id, []) %}{% set s = (stimuli|selectattr('id', 'equalto', sid)|first) %}{% if s %}<details class="box small"><summary>{{ s.title }}{% if s.form %} ({{ s.form }}){% endif %}</summary>{{ s.body | paras }}<p class="attribution">{{ s.attribution }}</p></details>{% endif %}{% endfor %}
+      <div class="question-text">{{ q.question_text | paras }}</div>
+      {% if q.options %}<ol class="small ing-options" type="A">{% for o in q.options %}<li>{{ o[3:] if o[1:3] == '. ' else o }}</li>{% endfor %}</ol>{% endif %}
+      {% if q.question_image %}<img src="/media/{{ q.question_image.split('/')[-1] }}" alt="Crop from the source paper" class="ing-crop">{% endif %}
+      <p class="small muted">{{ q.marks }} mark{{ 's' if q.marks != 1 }}{% if meta.heading_marks %} (heading says {{ meta.heading_marks }}){% endif %} · {{ q.question_type }}{% if q.parts %} · parts {% for p in q.parts %}{{ p.label }} {{ p.marks }}{{ ', ' if not loop.last }}{% endfor %}{% endif %}{% if q.directive_verb %} · {{ q.directive_verb }}{% endif %}</p>
+      {% if q.marking_guideline or q.answer %}<details class="box small"><summary>Answer key and marking guideline <span class="muted">(opening this spoils the question for your own practice)</span></summary>
+        {% if q.answer %}<p><strong>Answer:</strong> {{ q.answer.value if q.answer.value is defined else q.answer }}</p>{% endif %}
+        {% if q.marking_guideline %}{{ q.marking_guideline | paras }}<p class="tiny muted">{{ (meta.guideline_kind or ('official_nesa' if q.guideline_official else 'third_party'))|replace('_', ' ') }}</p>{% endif %}
+      </details>{% endif %}
+    </div>
+    <div class="small ing-right">
+      {% if blocking %}<div class="notice warn ing-issues"><strong>Blocks approval</strong><ul>{% for i in blocking %}<li data-field="{{ i.field }}">{{ i.message }}</li>{% endfor %}</ul></div>
+      {% elif q.approval_status == 'pending' %}<div class="notice good">All checks pass: ready to approve.</div>{% endif %}
+      {% for i in issues if not i.blocking %}<p class="tiny muted">Note: {{ i.message }}</p>{% endfor %}
+      {% set item = plan.get(q.plan_item_id) %}
+      <p><strong>Subtopic:</strong> {% if item %}{{ item.code }} {{ item.title }} <span class="pill {{ item.status }}">{{ item.status }}</span>{% else %}<span class="pill bad">UNMAPPED</span>{% endif %}
+        {% for rid in (meta.required_plan_item_ids or []) if rid != q.plan_item_id and plan.get(rid) %}<br><span class="muted">also needs</span> {{ plan[rid].code }} <span class="pill {{ plan[rid].status }}">{{ plan[rid].status }}</span>{% endfor %}</p>
+      {% if meta.candidates %}<p class="tiny muted">Candidates: {% for c in meta.candidates[:3] %}{{ c.code }} ({{ c.score|round(1) }}, {{ c.status }}){{ ' · ' if not loop.last }}{% endfor %}</p>{% endif %}
+      {% if m %}<p><strong>Relevance:</strong> {{ m.relevance_classification }} · confidence {{ (q.mapping_confidence*100)|round|int }}% · {{ m.mapped_by }}{% if meta.skill_relevance %} · skill relevance {{ meta.skill_relevance }}{% endif %}{% if code == 'LEGAL' %} · <strong>legal facts: {{ q.legal_fact_currency or 'check' }}</strong>{% endif %}</p>
+        <p class="muted">{{ m.mapping_reason }}</p>{% endif %}
+      {% if meta.auto_approval_blockers and q.approval_status == 'pending' %}<details><summary class="tiny">Why it was not approved automatically</summary><ul class="tiny">{% for b in meta.auto_approval_blockers %}<li>{{ b }}</li>{% endfor %}</ul></details>{% endif %}
+      <div class="row ing-actions">
+        {% if q.approval_status != 'approved' %}<form method="post" action="/admin/review/{{ q.id }}/approve"><input type="hidden" name="back" value="{{ back }}"><button class="btn small primary ing-approve"{{ ' disabled title="Fix the blocking issues first"' if blocking }}>Approve</button></form>{% endif %}
+        {% if q.approval_status == 'approved' %}<form method="post" action="/admin/review/{{ q.id }}/retire"><input type="hidden" name="back" value="{{ back }}"><button class="btn small">Retire</button></form>{% endif %}
+        {% if q.approval_status in ['rejected', 'retired', 'adapted'] %}<form method="post" action="/admin/review/{{ q.id }}/restore"><input type="hidden" name="back" value="{{ back }}"><button class="btn small">Restore</button></form>{% endif %}
+        {% if q.historical_or_generated != 'ADAPTED' and q.approval_status != 'rejected' %}<a class="btn small" href="/admin/review/{{ q.id }}/adapt" title="Create an ADAPTED copy; the original stays unservable">Adapt…</a>{% endif %}
+        {% if q.approval_status != 'rejected' %}<form method="post" action="/admin/review/{{ q.id }}/reject" class="row"><input type="hidden" name="back" value="{{ back }}"><input type="text" name="reason" placeholder="Reason" class="ing-reason"><button class="btn small danger">Reject</button></form>{% endif %}
       </div>
-      <details style="margin-top:8px"><summary>Edit mapping</summary>
-        <form method="post" action="/admin/review/{{ q.id }}/edit">
-          <div class="field"><label>Learning-plan item</label><select name="plan_item_id">{% for it in plan_items if it.subject_id == q.subject_id %}<option value="{{ it.id }}" {{ 'selected' if it.id == q.plan_item_id }}>{{ it.code }} {{ it.title }}</option>{% endfor %}</select></div>
-          <div class="field"><label>Relevance</label><select name="relevance">{% for r in relevances %}<option {{ 'selected' if r == q.relevance_status }}>{{ r }}</option>{% endfor %}</select></div>
-          <div class="field"><label>Reason</label><input type="text" name="reason"></div>
-          {% if codes[q.subject_id] == 'MATHS' %}<div class="field"><label>Answer for automatic marking (optional)</label><div class="row"><select name="answer_type"><option value="">none</option><option value="num">number/exact value</option><option value="expr">expression</option><option value="set">list of values</option><option value="antiderivative">primitive</option></select><input type="text" name="answer_value" placeholder="e.g. 3/4 or 2*x*exp(x)"></div></div>{% endif %}
-          <button class="btn small">Save mapping</button> <span class="tiny muted">Then approve.</span>
+      {% if q.parts and q.relevance_status == 'PARTIAL' and not meta.kept_parts %}
+      <form method="post" action="/admin/review/{{ q.id }}/keep_parts" class="box"><input type="hidden" name="back" value="{{ back }}">
+        <strong>Keep only the aligned parts</strong>{% for p in q.parts %}<label class="row"><input type="checkbox" name="keep" value="{{ p.id }}" checked> {{ p.label }} ({{ p.marks }}) {{ p.text|truncate(60) }}</label>{% endfor %}
+        <button class="btn small">Keep ticked parts</button></form>{% endif %}
+      <details class="ing-edit"{{ ' open' if single or meta.status == 'needs_fix' }}><summary><strong>Edit</strong> text, marks, parts, key, subtopic, relevance…</summary>
+        <form method="post" action="/admin/review/{{ q.id }}/edit"><input type="hidden" name="back" value="{{ back }}">
+          <div class="field"><label>Question text</label><textarea name="question_text" rows="5">{{ q.question_text }}</textarea></div>
+          <div class="grid g3">
+            <div class="field"><label>Marks</label><input type="number" name="marks" min="1" max="25" value="{{ q.marks }}"></div>
+            <div class="field"><label>Type</label><select name="question_type">{% for t in ['mcq', 'short_answer', 'working', 'extended'] %}<option {{ 'selected' if q.question_type == t }}>{{ t }}</option>{% endfor %}</select></div>
+            <div class="field"><label>Difficulty</label><select name="difficulty">{% for d in [1, 2, 3] %}<option {{ 'selected' if q.difficulty == d }}>{{ d }}</option>{% endfor %}</select></div>
+          </div>
+          {% for p in q.parts %}<div class="grid g3 ing-part"><div class="field"><label>Part {{ p.label }} marks</label><input type="number" name="part_marks_{{ p.id }}" min="1" max="20" value="{{ p.marks }}"></div><div class="field ing-span2"><label>Part {{ p.label }} text</label><input type="text" name="part_text_{{ p.id }}" value="{{ p.text }}"></div></div>{% endfor %}
+          {% if q.question_type == 'mcq' %}
+            {% for i in range(4) %}<div class="field"><label>Option {{ 'ABCD'[i] }}</label><input type="text" name="option_{{ i }}" value="{{ (q.options or [])[i] if (q.options or [])|length > i else '' }}"></div>{% endfor %}
+            <div class="field"><label>Correct answer</label><div class="row">{% for l in 'ABCD' %}<label class="row"><input type="radio" name="answer_letter" value="{{ l }}" {{ 'checked' if q.answer and q.answer.value == l }}> {{ l }}</label>{% endfor %}</div></div>
+          {% elif code == 'MATHS' %}
+            <div class="field"><label>Answer for automatic marking (optional)</label><div class="row"><select name="answer_type"><option value="">none</option>{% for t, l in [('num','number / exact value'),('expr','expression'),('set','list of values'),('antiderivative','primitive')] %}<option value="{{ t }}" {{ 'selected' if q.answer and q.answer.type == t }}>{{ l }}</option>{% endfor %}</select><input type="text" name="answer_value" value="{{ q.answer.value if q.answer and q.answer.value is defined else '' }}" placeholder="e.g. 3/4 or 2*x*exp(x)"></div></div>
+          {% endif %}
+          <div class="field"><label>Subtopics this question needs (the latest in the plan becomes the primary, so it is released late, never early)</label>
+            <select name="plan_item_ids" multiple size="6">{% for it in plan_items if it.subject_id == q.subject_id %}<option value="{{ it.id }}" {{ 'selected' if it.id in (meta.required_plan_item_ids or [q.plan_item_id]) }}>{{ it.code }} {{ it.title|truncate(48) }} — {{ it.status }}{{ '' if it.active else ' (inactive)' }}</option>{% endfor %}</select></div>
+          <div class="grid g3">
+            <div class="field"><label>Relevance</label><select name="relevance">{% for r in relevances %}<option {{ 'selected' if r == q.relevance_status }}>{{ r }}</option>{% endfor %}</select></div>
+            {% if code == 'ENGLISH' %}<div class="field"><label>Category</label><select name="category"><option value="">choose</option><option value="unseen" {{ 'selected' if q.category == 'unseen' }}>Unseen text</option><option value="course" {{ 'selected' if q.category == 'course' }}>Course-linked</option></select></div>{% endif %}
+            {% if code == 'LEGAL' %}<div class="field"><label>Legal fact currency</label><select name="legal_fact_currency">{% for c in currencies %}<option {{ 'selected' if (q.legal_fact_currency or 'check') == c }}>{{ c }}</option>{% endfor %}</select></div>
+              <div class="field"><label>Category</label><select name="category"><option value="core" {{ 'selected' if q.category == 'core' }}>Core</option><option value="option" {{ 'selected' if q.category == 'option' }}>Option</option></select></div>{% endif %}
+            <div class="field"><label>Directive verb</label><input type="text" name="directive_verb" value="{{ q.directive_verb or '' }}"></div>
+          </div>
+          {% set outs = outcomes|selectattr('subject_id', 'equalto', q.subject_id)|list %}
+          {% if outs %}<input type="hidden" name="outcomes_present" value="1"><div class="field"><label>Syllabus outcomes</label><select name="outcome_codes" multiple size="4">{% for o in outs %}<option value="{{ o.code }}" {{ 'selected' if o.code in (meta.outcome_codes or []) or o.id == q.syllabus_outcome_id }}>{{ o.code }} — {{ o.description|truncate(70) }}</option>{% endfor %}</select></div>{% endif %}
+          <div class="field"><label>Why it is here (one sentence the student sees)</label><input type="text" name="student_rationale" value="{{ meta.student_rationale or '' }}"></div>
+          <div class="field"><label>Reason for the change (kept in the review history)</label><input type="text" name="reason"></div>
+          {% if meta.segment_issues and not meta.segment_ack %}<label class="row"><input type="checkbox" name="segment_ack" value="1"> Segmentation checked against the PDF</label>{% endif %}
+          <button class="btn small primary">Save</button> <span class="tiny muted">Saving re-runs the checks; approve afterwards.</span>
         </form>
       </details>
+      {% if code == 'ENGLISH' %}
+      <details class="ing-edit"><summary><strong>Texts</strong> ({{ links.get(q.id, [])|length }} linked)</summary>
+        <form method="post" action="/admin/review/{{ q.id }}/stimulus"><input type="hidden" name="back" value="{{ back }}">
+          <div class="field"><label>Linked texts</label><select name="stimulus_ids" multiple size="5">{% for s in stimuli if s.subject_id == q.subject_id %}<option value="{{ s.id }}" {{ 'selected' if s.id in links.get(q.id, []) }}>{{ s.title|truncate(60) }}{% if s.source_id == q.source_id %} (this paper){% endif %}</option>{% endfor %}</select></div>
+          <button class="btn small">Save links</button></form>
+        <form method="post" action="/admin/review/{{ q.id }}/stimulus" class="box"><input type="hidden" name="back" value="{{ back }}">
+          <strong>Paste a text</strong>
+          <div class="grid g2"><div class="field"><label>Title</label><input type="text" name="title" placeholder="Text 1 — Prose fiction"></div><div class="field"><label>Form</label><input type="text" name="form" placeholder="Prose fiction"></div></div>
+          <div class="field"><label>Text</label><textarea name="body" rows="5"></textarea></div>
+          <div class="grid g2"><div class="field"><label>Attribution (required)</label><input type="text" name="attribution" placeholder="© Author, Year, Publisher"></div>
+            <div class="field"><label>Provenance</label><select name="provenance"><option value="historical">From the NESA paper</option><option value="public_domain">Public domain</option><option value="licensed">Licensed</option><option value="generated_original">Original (GENERATED)</option></select></div></div>
+          <button class="btn small">Create and link</button></form>
+      </details>{% endif %}
     </div>
   </div>
 </div>
-{% else %}<div class="card"><p class="muted">The review queue is empty.</p></div>{% endfor %}
+{% else %}<div class="card"><p class="muted">Nothing to review here.</p></div>{% endfor %}
+{% if not single and total > page_size %}<div class="row">{% if page > 1 %}<a class="btn small" href="{{ qs_link({'page': page - 1}) }}">← Previous</a>{% endif %}<span class="small muted">Page {{ page }} of {{ (total + page_size - 1) // page_size }}</span>{% if page * page_size < total %}<a class="btn small" href="{{ qs_link({'page': page + 1}) }}">Next →</a>{% endif %}</div>{% endif %}
+<script>
+(function () {
+  var all = document.getElementById('ing-all');
+  if (all) all.addEventListener('change', function () { document.querySelectorAll('.ing-tick').forEach(function (c) { c.checked = all.checked; }); });
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.ing-card'));
+  var idx = Math.max(0, cards.findIndex(function (c) { return '#' + c.id === location.hash; }));
+  function focus(i) { if (!cards.length) return; idx = Math.max(0, Math.min(cards.length - 1, i)); cards[idx].focus(); cards[idx].scrollIntoView({block: 'start'}); }
+  document.addEventListener('keydown', function (e) {
+    var t = e.target.tagName;
+    if (t === 'INPUT' || t === 'TEXTAREA' || t === 'SELECT' || e.metaKey || e.ctrlKey || e.altKey || !cards.length) return;
+    var card = cards[idx];
+    if (e.key === 'j') { focus(idx + 1); } else if (e.key === 'k') { focus(idx - 1); }
+    else if (e.key === 'a') { var b = card.querySelector('.ing-approve'); if (b && !b.disabled) b.click(); }
+    else if (e.key === 'r') { var r = card.querySelector('.ing-reason'); if (r) { e.preventDefault(); r.focus(); } }
+    else if (e.key === 'e') { var d = card.querySelector('.ing-edit'); if (d) { d.open = true; var f = d.querySelector('textarea, input:not([type=hidden])'); if (f) { e.preventDefault(); f.focus(); } } }
+  });
+})();
+</script>
 {% endblock %}

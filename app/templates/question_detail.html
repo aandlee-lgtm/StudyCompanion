@@ -1,45 +1,70 @@
 {% extends "base.html" %}
 {% block content %}
+{% set a = audit_info(q, item, mapping) %}
 <a class="small" href="/questions">← Question library</a>
-<h1>Question {{ q.id }}</h1>
-<div class="row small"><span class="pill {{ q.historical_or_generated }}">{{ ORIGIN_LABELS[q.historical_or_generated] }}</span><span class="pill {{ q.relevance_status }}">{{ q.relevance_status }}</span><span class="pill {{ q.approval_status }}">{{ q.approval_status }}</span>{% if q.is_extension %}<span class="pill bad">EXTENSION — never served</span>{% endif %}</div>
+<div class="spread"><h1>Question {{ q.question_number or q.id }}{% if q.source %} <span class="muted small">· {{ q.source.title }}</span>{% endif %}</h1>
+  <div class="row small">
+    {% if q.approval_status == 'approved' %}<form method="post" action="/questions/{{ q.id }}/retire" class="row"><input type="text" name="reason" placeholder="Why retire? (optional)"><button class="btn small" title="Withdraw from the daily pool; history is kept">Retire</button></form>
+    {% elif q.approval_status in ['retired', 'rejected', 'adapted'] %}<form method="post" action="/questions/{{ q.id }}/restore"><button class="btn small">Restore to review</button></form>{% endif %}
+    {% if q.source_id and q.import_meta %}<a class="btn small" href="/admin/review/{{ q.id }}">Edit / re-map</a>{% endif %}
+  </div>
+</div>
+{% if flash %}<div class="notice">{{ flash }}</div>{% endif %}
+<div class="row small"><span class="pill {{ q.historical_or_generated }}">{{ ORIGIN_LABELS[q.historical_or_generated] }}</span><span class="pill {{ q.relevance_status }}">{{ q.relevance_status }}</span><span class="pill {{ q.approval_status }}">{{ q.approval_status }}</span>{% if q.is_extension %}<span class="pill bad">EXTENSION — never served</span>{% endif %}{% if blocked and q.approval_status == 'approved' %}<span class="pill LOCKED" title="Not in the daily pool yet">{{ blocked }}</span>{% endif %}</div>
+{% if adapted_from %}<p class="small">Adapted from <a href="/questions/{{ adapted_from.id }}">{{ q.import_meta.adaptation.from_label if q.import_meta and q.import_meta.adaptation else 'the original question' }}</a>{% if q.import_meta and q.import_meta.adaptation %} — {{ q.import_meta.adaptation.note }}{% endif %}</p>{% endif %}
 <div class="grid g2" style="margin-top:14px">
   <div class="card">
-    <h3>Original question</h3>
-    {% if q.stimulus %}{% for st in q.stimulus.reading_set() %}<details class="box"><summary>{{ st.title }} ({{ st.form }})</summary>{{ st.body | paras }}<p class="attribution">{{ st.attribution }}</p></details>{% endfor %}{% endif %}
+    <h3>Question</h3>
+    {% for t in texts %}<details class="box"><summary>{{ t.label or t.stimulus.title }} — {{ t.stimulus.title }}{% if t.stimulus.form %} ({{ t.stimulus.form }}){% endif %}</summary>{{ t.stimulus.body | paras }}<p class="attribution">{{ t.stimulus.attribution }}</p></details>
+    {% else %}{% if q.stimulus %}{% for st in q.stimulus.reading_set() %}<details class="box"><summary>{{ st.title }} ({{ st.form }})</summary>{{ st.body | paras }}<p class="attribution">{{ st.attribution }}</p></details>{% endfor %}{% endif %}{% endfor %}
     {{ q.question_text | paras }}
     {% if q.options %}<ul>{% for o in q.options %}<li>{{ o }}</li>{% endfor %}</ul>{% endif %}
-    {% if q.question_image %}<img src="/media/{{ q.question_image.split('/')[-1] }}" alt="Rendered from source" style="max-width:100%">{% endif %}
-    <p class="small muted">{{ q.marks }} marks · {{ q.question_type }} · difficulty {{ q.difficulty }} · ~{{ q.estimated_minutes }} min{% if q.directive_verb %} · {{ q.directive_verb }}{% endif %}</p>
-    <p><a class="btn small" href="/practice/{{ q.id }}">Practise this question</a></p>
+    {% if q.question_image %}<img src="/media/{{ q.question_image.split('/')[-1] }}" alt="Rendered from the source paper" class="ing-crop">{% endif %}
+    <p class="small muted">{{ q.marks }} mark{{ 's' if q.marks != 1 }} · {{ q.question_type }} · difficulty {{ q.difficulty }} · ~{{ q.estimated_minutes }} min{% if q.directive_verb %} · {{ q.directive_verb }}{% endif %}</p>
+    {% if q.approved %}<p><a class="btn small primary" href="/practice/{{ q.id }}">{{ 'Practise this question' if not attempts else 'Practise again' }}</a></p>{% endif %}
   </div>
   <div class="card">
     <h3>Where did this come from?</h3>
     <table class="small">
-      <tr><td>Source</td><td>{{ q.source.title }} <span class="muted">(tier {{ q.source.tier }}{{ ', official' if q.source.official }})</span></td></tr>
-      <tr><td>Exam / year</td><td>{{ q.source_exam or '—' }} {{ q.source_year or '' }}</td></tr>
-      <tr><td>Question number</td><td>{{ q.question_number or '—' }}</td></tr>
-      <tr><td>Page</td><td>{{ q.source_page or '—' }}</td></tr>
-      <tr><td>Document</td><td>{{ q.source.local_file or q.source.url or '—' }}</td></tr>
+      <tr><td>Source</td><td>{{ a.source }}{% if a.pdf %} · <a href="{{ a.pdf }}" target="_blank" rel="noopener">open the PDF</a>{% endif %}{% if q.source %} <span class="muted">(tier {{ q.source.tier }}{{ ', official' if q.source.official }})</span>{% endif %}</td></tr>
+      <tr><td>2027 mapping</td><td>{{ a.mapping }}{% if item %} <span class="pill {{ item.status }}">{{ item.status }}</span>{% endif %}</td></tr>
+      {% if required|length > 1 %}<tr><td>Also needs</td><td>{% for it in required if it.id != q.plan_item_id %}{{ it.code }} <span class="pill {{ it.status }}">{{ it.status }}</span> {% endfor %}</td></tr>{% endif %}
+      {% if a.outcome %}<tr><td>Outcome</td><td>{{ a.outcome }}</td></tr>{% endif %}
+      <tr><td>Relevance</td><td>{{ a.relevance }}</td></tr>
+      {% if a.rationale %}<tr><td>Why it is here</td><td>{{ a.rationale }}</td></tr>{% endif %}
+      {% if q.legal_fact_currency %}<tr><td>Legal fact currency</td><td>{{ q.legal_fact_currency }}{% if a.facts_checked_on %} (checked {{ a.facts_checked_on }}){% endif %}</td></tr>{% endif %}
     </table>
-    <h3>Why is it relevant?</h3>
-    <table class="small">
-      <tr><td>2027 mapping</td><td>{{ item.topic.name if item and item.topic else '—' }}{% if item %} · {{ item.code }} {{ item.title }}{% endif %}</td></tr>
-      <tr><td>Relevance</td><td>{{ q.relevance_status }} (score {{ q.relevance_score }}, confidence {{ q.mapping_confidence }})</td></tr>
-      {% if q.legal_fact_currency %}<tr><td>Legal fact currency</td><td>{{ q.legal_fact_currency }}</td></tr>{% endif %}
-    </table>
-    <h3>Mapping history</h3>
-    {% for m in q.mappings %}<p class="small"><span class="pill {{ m.relevance_classification }}">{{ m.relevance_classification }}</span> {{ m.mapping_reason }} <span class="muted">({{ m.mapped_by }}, {{ m.review_status }}, {{ m.created_at | fdate('%d %b %Y') }})</span></p>{% endfor %}
+    <details><summary class="small">Mapping and review history</summary>
+      {% for m in q.mappings %}<p class="small"><span class="pill {{ m.relevance_classification }}">{{ m.relevance_classification }}</span> {{ m.mapping_reason }} <span class="muted">({{ m.mapped_by }}, {{ m.review_status }}, {{ m.created_at | fdate('%d %b %Y') }})</span></p>{% endfor %}
+      {% for d in decisions %}<p class="small">{{ d.created_at | fdate('%d %b %Y') }} · <strong>{{ d.action }}</strong> ({{ d.actor }}){% if d.note %} — {{ d.note|truncate(140) }}{% endif %}</p>{% endfor %}
+    </details>
   </div>
 </div>
-{% if q.marking_guideline %}<div class="card" style="margin-top:16px"><h3>Marking {{ 'guidelines (official NESA)' if q.guideline_official else 'criteria (app-authored, not official NESA)' }}</h3>{{ q.marking_guideline | paras }}</div>{% endif %}
-{% if q.solution and q.solution.steps %}<details class="box"><summary>Worked solution</summary><ol class="steps">{% for s in q.solution.steps %}<li>{{ s }}</li>{% endfor %}</ol></details>{% endif %}
-{% if q.model_answer %}<details class="box"><summary>Model response</summary><div class="model">{{ q.model_answer | paras }}</div></details>{% endif %}
+<div id="solution">
+{% if revealed %}
+  {% if admin_mode and not attempts %}<p class="small muted">Shown because administrator mode is on (Settings).</p>{% endif %}
+  {% if q.answer and q.answer.type == 'mcq' %}<div class="card" style="margin-top:16px"><h3>Answer</h3><p>{{ q.answer.value }}</p></div>{% endif %}
+  {% if guidelines %}<div class="card" style="margin-top:16px"><h3>Marking {{ 'guidelines (official NESA)' if q.guideline_official else 'criteria (not official NESA)' }}</h3>
+    {% for g in guidelines %}<h4 class="small">{{ g.label or '' }}</h4>
+      {% if g.criteria %}<table class="small ing-criteria"><tr><th>Criteria</th><th>Marks</th></tr>{% for c in g.criteria %}<tr><td>{{ c.criterion }}</td><td>{{ c.marks }}</td></tr>{% endfor %}</table>{% else %}{{ g.text | paras }}{% endif %}
+      {% if g.sample_answer %}<details class="box"><summary>Sample answer</summary>{{ g.sample_answer | paras }}</details>{% endif %}
+    {% endfor %}</div>
+  {% elif q.marking_guideline %}<div class="card" style="margin-top:16px"><h3>Marking {{ 'guidelines (official NESA)' if q.guideline_official else 'criteria (app-authored, not official NESA)' }}</h3>{{ q.marking_guideline | paras }}</div>{% endif %}
+  {% if q.solution and q.solution.steps %}<details class="box" open><summary>Worked solution</summary><ol class="steps">{% for s in q.solution.steps %}<li>{{ s }}</li>{% endfor %}</ol></details>{% endif %}
+  {% if q.model_answer %}<details class="box"><summary>Model response</summary><div class="model">{{ q.model_answer | paras }}</div></details>{% endif %}
+{% elif q.marking_guideline or q.model_answer or (q.solution and q.solution.steps) or guidelines or q.answer %}
+  <div class="card ing-hidden" style="margin-top:16px">
+    <h3>Solution and marking criteria hidden</h3>
+    <p class="small">They stay hidden until you attempt this question, so the first attempt is a true test.{% if q.approved %} <a href="/practice/{{ q.id }}">Attempt it now</a>.{% endif %}</p>
+    <form method="post" action="/questions/{{ q.id }}/reveal" onsubmit="return confirm('Reveal the solution? This is recorded as a skip, so the question comes back for revision.');"><button class="btn small">Reveal anyway (records a skip)</button></form>
+  </div>
+{% endif %}
+</div>
 <h2>Attempt history</h2>
 <div class="card"><table>
   <tr><th>Date</th><th>Attempt</th><th>Mark</th><th>Confidence</th><th>Method</th><th>Feedback</th></tr>
-  {% for a in attempts %}<tr><td class="small">{{ a.submitted_at | fdate('%d %b %Y') }}</td><td>{{ a.attempt_number }}</td><td>{{ 'skipped' if a.skipped else (a.mark_awarded|round(1) ~ '/' ~ a.mark_possible|int) }}</td><td class="small">{{ a.confidence or '—' }}</td><td class="small">{{ a.marking_method }}</td>
-    <td class="small">{% if a.feedback %}{{ a.feedback.payload.label|truncate(80) }}{% if a.feedback.why_lost %}<br><em>{{ a.feedback.why_lost|truncate(120) }}</em>{% endif %}{% endif %}</td></tr>
+  {% for at in attempts %}<tr><td class="small">{{ at.submitted_at | fdate('%d %b %Y') }}</td><td>{{ at.attempt_number }}</td><td>{{ 'skipped' if at.skipped else (at.mark_awarded|round(1) ~ '/' ~ at.mark_possible|int) }}</td><td class="small">{{ at.confidence or '—' }}</td><td class="small">{{ at.marking_method }}</td>
+    <td class="small">{% if at.feedback %}{{ at.feedback.payload.label|truncate(80) }}{% if at.feedback.why_lost %}<br><em>{{ at.feedback.why_lost|truncate(120) }}</em>{% endif %}{% endif %}</td></tr>
   {% else %}<tr><td colspan="6" class="muted">Not attempted yet.</td></tr>{% endfor %}
 </table>
 {% if exp %}<p class="small muted">First seen {{ exp.first_seen | fdate }} · last seen {{ exp.last_seen | fdate }} · {{ exp.attempts }} attempt(s) · mastery {{ (exp.mastery*100)|round|int }}% · next revision {{ exp.next_revision_date | fdate }}</p>{% endif %}

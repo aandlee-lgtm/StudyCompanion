@@ -2,26 +2,51 @@
 {% block main_class %}narrow{% endblock %}
 {% block content %}
 <h1>Import an examination paper</h1>
-<p class="lead">Upload a NESA HSC paper, official sample paper or a trial paper (PDF) and, if you have it, its marking guidelines. The original PDF is kept; questions that depend on diagrams are rendered from it for private study.</p>
+<p class="lead">Upload a NESA HSC paper, an official sample paper or a trial paper (PDF), with its marking guidelines and, for English Paper 1, the stimulus booklet. The original PDFs are kept. Nothing is served until it passes the checks, is approved and its subtopics are unlocked.</p>
+{% if error %}<div class="notice warn">{{ error }}{% if duplicate %}<br><span class="small">Tick “Replace previous import” below to re-segment it (attempted or approved questions are kept).</span>{% endif %}</div>{% endif %}
 {% if report %}
-<div class="notice {{ 'good' if report.questions else 'warn' }}">
-  Imported {{ report.questions }} question{{ 's' if report.questions != 1 }}: {{ report.approved }} approved automatically (DIRECT, high confidence), {{ report.queued }} sent to the <a href="/admin/review">review queue</a>, {{ report.rejected }} rejected (e.g. Extension or removed content), {{ report.duplicates }} duplicate{{ 's' if report.duplicates != 1 }} skipped.
-  {% for w in report.warnings %}<br><span class="small">{{ w }}</span>{% endfor %}
+<div class="notice {{ 'good' if report.questions or report.dry_run else 'warn' }}">
+  {% if report.dry_run %}<strong>Dry run</strong> — nothing was saved. {{ report.segments|length }} question unit{{ 's' if report.segments|length != 1 }} detected.
+  {% else %}Imported {{ report.questions }} question{{ 's' if report.questions != 1 }}: {{ report.approved }} approved automatically (passed every check), {{ report.queued }} sent to the <a href="/admin/review?source={{ report.source_id }}">review queue</a>{% if report.needs_fix %} ({{ report.needs_fix }} need fixing){% endif %}, {{ report.rejected }} rejected (Extension or removed content), {{ report.duplicates }} duplicate{{ 's' if report.duplicates != 1 }} skipped{% if report.failed %}, <strong>{{ report.failed }} could not be imported</strong>{% endif %}.
+  {% if report.stimuli %}<br>{{ report.stimuli }} text{{ 's' if report.stimuli != 1 }} imported from the stimulus booklet.{% endif %}
+  <br><a href="/sources/{{ report.source_id }}">Source page and import log</a>{% endif %}
 </div>
+<div class="card small">
+  {% for e in report.expected %}<p>Section {{ e.section }} ({{ e.mode }}): expected {{ e.expected }} (Questions {{ e.range }}), detected {{ e.detected }}{% if e.expected != e.detected %} <span class="pill bad">check</span>{% endif %}</p>{% endfor %}
+  {% if report.guideline_total %}<p>Marking guideline matched for {{ report.guideline_matched }} of {{ report.guideline_total }} written units.</p>{% endif %}
+  {% if report.mcq_total %}<p>Multiple-choice answer key found for {{ report.mcq_keyed }} of {{ report.mcq_total }} questions.</p>{% endif %}
+  {% for w in report.warnings %}<p class="muted">{{ w }}</p>{% endfor %}
+  {% for e in report.errors %}<p class="bad">{{ e }}</p>{% endfor %}
+  {% for d in report.duplicate_list %}<p class="muted">Q{{ d.number }} duplicates <a href="/questions/{{ d.existing_id }}">question {{ d.existing_id }}</a>{% if d.existing_source %} ({{ d.existing_source }}){% endif %}.</p>{% endfor %}
+</div>
+{% if report.dry_run and report.segments %}
+<div class="card ing-table-wrap"><table class="small ing-table">
+  <tr><th>Q</th><th>Section</th><th>Marks</th><th>Parts</th><th>Options</th><th>Key</th><th>Guideline</th><th>Texts</th><th>Issues</th><th>Start of text</th></tr>
+  {% for s in report.segments %}<tr><td>{{ s.number }}</td><td>{{ s.section }}</td><td>{{ s.marks if s.marks is not none else '?' }}</td><td>{{ s.parts|join(' ') }}</td><td>{{ s.options or '' }}</td><td>{{ s.key or '' }}</td><td>{{ 'yes' if s.guideline else '' }}</td><td>{{ s.texts|join(', ') }}</td><td>{{ s.issues|join('; ') }}</td><td>{{ s.preview }}</td></tr>{% endfor %}
+</table></div>{% endif %}
 {% endif %}
 <form class="card" method="post" action="/admin/import" enctype="multipart/form-data">
-  <div class="field"><label>Title</label><input type="text" name="title" required placeholder="e.g. NESA 2023 HSC Mathematics Advanced"></div>
+  <div class="field"><label>Title</label><input type="text" name="title" required value="{{ form.title or '' }}" placeholder="e.g. NESA 2023 HSC Mathematics Advanced"></div>
   <div class="grid g3">
-    <div class="field"><label>Type</label><select name="source_type"><option value="hsc_exam">NESA HSC examination</option><option value="sample_exam">NESA sample / specimen paper</option><option value="trial">Trial / school paper (TRIAL / NON-NESA)</option></select></div>
-    <div class="field"><label>Subject</label><select name="subject"><option value="">Detect</option><option value="MATHS">Mathematics Advanced</option><option value="ENGLISH">English Advanced</option><option value="LEGAL">Legal Studies</option></select></div>
-    <div class="field"><label>Year</label><input type="text" name="year" placeholder="Detect"></div>
+    <div class="field"><label>Type</label><select name="source_type">{% for v, l in [('hsc_exam','NESA HSC examination'),('sample_exam','NESA sample / specimen paper'),('trial','Trial / school paper (TRIAL / NON-NESA)')] %}<option value="{{ v }}" {{ 'selected' if form.source_type == v }}>{{ l }}</option>{% endfor %}</select></div>
+    <div class="field"><label>Subject</label><select name="subject"><option value="">Detect</option>{% for v, l in [('MATHS','Mathematics Advanced'),('ENGLISH','English Advanced'),('LEGAL','Legal Studies')] %}<option value="{{ v }}" {{ 'selected' if form.subject == v }}>{{ l }}</option>{% endfor %}</select></div>
+    <div class="field"><label>Year</label><input type="text" name="year" value="{{ form.year or '' }}" placeholder="Detect"></div>
   </div>
-  <div class="field"><label>Organisation (for trial papers)</label><input type="text" name="organisation"></div>
-  <div class="field"><label>Source URL (optional)</label><input type="url" name="url"></div>
+  <div class="field"><label>Organisation (for trial papers)</label><input type="text" name="organisation" value="{{ form.organisation or '' }}"></div>
+  <div class="field"><label>Source URL (optional)</label><input type="url" name="url" value="{{ form.url or '' }}"></div>
   <div class="field"><label>Examination paper (PDF)</label><input type="file" name="paper" accept="application/pdf" required></div>
-  <div class="field"><label>Marking guidelines (PDF, optional)</label><input type="file" name="guideline" accept="application/pdf"></div>
-  <p class="small muted">Trial papers are labelled TRIAL / NON-NESA and are never presented as HSC questions. Do not import commercial material you are not licensed to use.</p>
+  <div class="grid g2">
+    <div class="field"><label>Marking guidelines (PDF, optional)</label><input type="file" name="guideline" accept="application/pdf"></div>
+    <div class="field"><label>Who wrote the guidelines?</label><select name="guideline_kind"><option value="">Infer from the paper type</option>{% for v, l in [('official_nesa','Official NESA'),('school_trial','School / trial'),('third_party','Third party')] %}<option value="{{ v }}" {{ 'selected' if form.guideline_kind == v }}>{{ l }}</option>{% endfor %}</select></div>
+  </div>
+  <div class="field"><label>Stimulus booklet (PDF, English Paper 1)</label><input type="file" name="stimulus" accept="application/pdf"></div>
+  <div class="row small">
+    <label class="row"><input type="checkbox" name="dry_run" value="1"> Dry run (preview the segmentation without saving)</label>
+    <label class="row"><input type="checkbox" name="replace" value="1"> Replace previous import of this PDF</label>
+    <label class="row"><input type="checkbox" name="confirm_subject" value="1"> Confirm subject when it differs from the detected one</label>
+  </div>
+  <p class="small muted">Trial papers are labelled TRIAL / NON-NESA and are never presented as HSC questions. Extension and other courses are refused. Do not import commercial material you are not licensed to use.</p>
   <button class="btn primary">Import</button>
 </form>
-<p class="small muted">Command line alternative: <code>python scripts/import_nesa.py paper.pdf --title "..." --guideline guide.pdf</code></p>
+<p class="small muted">Command line: <code>python scripts/import_nesa.py paper.pdf --title "..." --guideline guide.pdf --stimulus booklet.pdf --dry-run</code></p>
 {% endblock %}
