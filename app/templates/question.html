@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{# Question page frame (owner: adaptive). Includes partials owned by other packages:
+   _stimulus.html, _answer_mcq.html, _answer_maths.html, _answer_written.html, _audit_line.html, feedback_<kind>.html. #}
 {% block title %}{{ SUBJECT_SHORT[code] }} question · HSC Companion{% endblock %}
 {% block content %}
 <div class="spread">
@@ -25,13 +27,37 @@
 
 {% include "_stimulus.html" %}
 
+{% set prev = latest if retry else None %}
+{% set pfb = (prev.feedback.payload if prev and prev.feedback else {}) %}
+<div class="{{ 'retry-layout' if retry else '' }}">
+{% if retry and prev %}
+  <aside class="card retry-notes" aria-label="Feedback on attempt {{ prev.attempt_number }}">
+    <div class="label">Attempt {{ prev.attempt_number }} · {{ prev.mark_awarded|round(1) }}/{{ prev.mark_possible|int }}</div>
+    {% if pfb.kind == 'maths' %}
+      {% if pfb.divergence %}<p><strong>Hint.</strong> {{ pfb.divergence }}</p>{% endif %}
+      {% if pfb.concept %}<p><strong>Key idea.</strong> {{ pfb.concept }}</p>{% endif %}
+      {% if pfb.working %}<details><summary>Your previous working</summary>{{ pfb.working | paras }}</details>{% endif %}
+    {% else %}
+      {% set r = pfb.result or {} %}
+      {% if r.criteria %}<h3>Criteria</h3><ul class="plain">{% for c in r.criteria %}<li><strong>{{ c.name }}</strong> — {{ c.judgement }}{% if c.comment %}<br><span class="small muted">{{ c.comment }}</span>{% endif %}</li>{% endfor %}</ul>{% endif %}
+      {% if r.weaknesses %}<h3>What prevented a higher mark</h3><ul>{% for w in r.weaknesses %}<li>{{ w }}</li>{% endfor %}</ul>{% endif %}
+      {% if r.improvements %}<h3>Concrete actions</h3><ul>{% for w in r.improvements %}<li>{{ w }}</li>{% endfor %}</ul>{% endif %}
+      {% if r.next_level %}<p class="small"><strong>Next level:</strong> {{ r.next_level }}</p>{% endif %}
+      {% if prev.feedback.why_lost %}<details><summary>Why you lost marks</summary>{{ prev.feedback.why_lost | paras }}</details>{% endif %}
+    {% endif %}
+    <p class="tiny muted">{% if prev.model_viewed_at %}You opened the model for attempt {{ prev.attempt_number }}: this rewrite will be labelled “after viewing the model”.{% else %}The model stays hidden while you rewrite.{% endif %}</p>
+  </aside>
+{% endif %}
+
 <div class="card" style="margin-top:16px">
   <div class="question-text">{{ q.question_text | paras }}</div>
   {% if image %}<p><img src="{{ image }}" alt="Question region rendered from the source PDF for private study" style="max-width:100%; border:1px solid var(--line); border-radius:8px"></p>
   <p class="tiny muted">Rendered from the original PDF (page {{ q.source_page }}) for private study.</p>{% endif %}
 
   {% if show_form %}
-  <form id="answer-form" method="post" action="{{ base }}/submit" data-save-url="{{ base + '/draft' if sq else '' }}" data-spent="{{ sq.time_spent_seconds if sq else 0 }}">
+  <p class="evidence-label tiny {{ 'muted' if next_evidence.counts else 'rehearsal' }}" data-role="{{ next_evidence.role }}">{{ next_evidence.label }}</p>
+  <form id="answer-form" method="post" action="{{ base }}/submit" data-save-url="{{ base }}/draft" data-spent="{{ spent_seconds }}"
+        data-kind="{{ kind }}" data-marks="{{ q.marks }}" data-skip-url="{{ base }}/skip">
     <input type="hidden" name="time_seconds" value="0">
     {% if kind == 'mcq' %}
       {% include "_answer_mcq.html" %}
@@ -48,44 +74,118 @@
     </div>
     {% endif %}
     <div class="row">
-      <button class="btn primary" type="submit">{{ 'Submit again' if latest else 'Submit answer' }}</button>
+      <button class="btn primary" type="submit">{{ 'Submit rewrite' if retry else ('Submit again' if latest else 'Submit answer') }}</button>
       {% if not latest %}
-      <button class="btn" formaction="{{ base }}/skip" formnovalidate onclick="return confirm('Show the answer and skip? This is recorded as skipped, not correct.')">Show answer / skip</button>
+      <button class="btn" formaction="{{ base }}/skip" formnovalidate data-skip onclick="return confirm('Show the answer and skip? This is recorded as skipped, not correct.')">Show answer / skip</button>
       {% endif %}
+      {% if retry %}<a class="btn" href="{{ base }}#feedback">Cancel rewrite</a>{% endif %}
+      <span class="tiny muted" id="save-status" aria-live="polite">{% if draft_saved_at %}Draft saved {{ draft_saved_at | fdate('%H:%M') }}{% endif %}</span>
     </div>
   </form>
+  <dialog id="short-answer-dialog" class="card">
+    <p><strong>This looks like a skip.</strong> <span data-short-count></span></p>
+    <p class="small muted">A very short answer is usually not an attempt yet. Record it honestly as skipped (the answer is shown), or keep writing.</p>
+    <div class="row">
+      <button class="btn" type="button" data-short="write">Keep writing</button>
+      <button class="btn" type="button" data-short="skip">Record as skipped and show the answer</button>
+      <button class="btn primary" type="button" data-short="submit">Submit anyway</button>
+    </div>
+  </dialog>
   {% endif %}
 
   {% include "_audit_line.html" %}
+</div>
 </div>
 
 {% if latest and not show_form %}
 <div id="feedback">
   {% set a = latest %}{% set fb = a.feedback.payload %}
+  {% set hint_first = fb.kind == 'maths' and not fb.correct and fb.solution_shown is defined and not fb.solution_shown %}
   <div class="spread" style="margin-top:22px">
     <h2 style="margin:0">Feedback{% if attempts|length > 1 %} · attempt {{ a.attempt_number }}{% endif %}</h2>
     <div class="row no-print">
-      {% if a.mark_awarded < a.mark_possible and fb.kind != 'self_mark' %}<button class="btn primary" data-why="/attempt/{{ a.id }}/why" data-target="why-{{ a.id }}">Why did I lose the mark?</button>{% endif %}
-      {% if fb.kind in ['written','maths'] and a.mark_awarded < a.mark_possible %}<a class="btn" href="{{ base }}?retry=1#answer-form">Try again</a>{% endif %}
+      {% if a.mark_awarded < a.mark_possible and fb.kind != 'self_mark' and not fb.pending_mark %}<button class="btn primary" data-why="/attempt/{{ a.id }}/why" data-target="why-{{ a.id }}">Why did I lose the mark?</button>{% endif %}
+      {% if can_retry %}<a class="btn" href="{{ base }}?retry=1#answer-form">{{ 'Try again with this hint' if hint_first else 'Try again' }}</a>{% endif %}
+      {% if hint_first %}
+      <form method="post" action="/attempt/{{ a.id }}/model-viewed" class="inline"><input type="hidden" name="back" value="{{ base }}"><button class="btn">Show full solution</button></form>
+      {% endif %}
       <button class="btn" data-toggle="fb-detail" data-label-show="Show detailed feedback" data-label-hide="Hide detailed feedback">Hide detailed feedback</button>
       {% if pos and pos < total %}<a class="btn" href="/session/{{ s.id }}/q/{{ pos + 1 }}">Next question →</a>{% elif pos %}<a class="btn" href="/session/{{ s.id }}/summary">Finish session</a>{% endif %}
     </div>
   </div>
-  <div id="why-{{ a.id }}" class="notice" hidden></div>
+  <div id="why-{{ a.id }}" class="notice why-box" hidden></div>
   <div class="card feedback" style="margin-top:12px">
     <div class="row"><span class="mark-big {{ 'ok' if a.fraction >= 0.85 else ('notok' if a.fraction < 0.5 else '') }}">{{ a.mark_awarded|round(1) }} / {{ a.mark_possible|int }}</span>
+      {% if a.marking_method == 'offline_estimate' and not fb.self_marked %}<span class="pill warn">ESTIMATE</span>{% endif %}
+      {% if fb.self_marked %}<span class="pill">SELF-MARKED</span>{% endif %}
       {% if fb.kind != 'written' %}<span class="small muted">{{ fb.label }}</span>{% endif %}</div>
-    {% if fb.previous %}<p class="small">Attempt {{ fb.previous.attempt_number }}: {{ fb.previous.mark|round(1) }}/{{ fb.previous.max|int }} → attempt {{ a.attempt_number }}: {{ a.mark_awarded|round(1) }}/{{ a.mark_possible|int }}
-      {% if fb.previous.change > 0 %}<strong class="ok">(+{{ fb.previous.change }})</strong>{% elif fb.previous.change < 0 %}<strong class="notok">({{ fb.previous.change }})</strong>{% else %}(no change){% endif %}</p>{% endif %}
+    {% if fb.evidence and not fb.evidence.counts %}<p class="evidence-label tiny rehearsal">{{ fb.evidence.label }}</p>{% endif %}
+    {% if fb.skip_reason %}<p class="notice warn small">{{ fb.skip_reason }}</p>{% endif %}
+
+    {% if fb.previous %}
+    <div class="improvement">
+      <p class="small"><strong>Attempt {{ fb.previous.attempt_number }} → attempt {{ a.attempt_number }}:</strong> {{ fb.previous.mark|round(1) }}/{{ fb.previous.max|int }} → {{ a.mark_awarded|round(1) }}/{{ a.mark_possible|int }}
+        {% if fb.previous.change > 0 %}<strong class="ok">(+{{ fb.previous.change }})</strong>{% elif fb.previous.change < 0 %}<strong class="notok">({{ fb.previous.change }})</strong>{% else %}(no change){% endif %}
+        {% if fb.previous.after_model %}<span class="pill warn">rewritten after viewing the model</span>{% endif %}</p>
+      {% set imp = fb.improvement or {} %}
+      {% if imp.criteria %}
+      <table class="small"><tr><th>Criterion</th><th>Attempt {{ fb.previous.attempt_number }}</th><th>Attempt {{ a.attempt_number }}</th><th></th></tr>
+        {% for c in imp.criteria %}<tr><td>{{ c.criterion }}</td><td>{{ c.before }}</td><td>{{ c.after }}</td><td><span class="pill {{ 'good' if c.status == 'improved' else ('warn' if c.status == 'still missing' else '') }}">{{ c.status }}</span></td></tr>{% endfor %}
+      </table>{% endif %}
+      {% if imp.addressed or imp.still_missing %}<div class="side small">
+        <div><div class="label">Addressed</div><ul>{% for w in imp.addressed %}<li>{{ w }}</li>{% else %}<li class="muted">—</li>{% endfor %}</ul></div>
+        <div><div class="label">Still missing</div><ul>{% for w in imp.still_missing %}<li>{{ w }}</li>{% else %}<li class="muted">—</li>{% endfor %}</ul></div>
+      </div>{% endif %}
+      {% if imp.features %}<p class="tiny muted">{% for f in imp.features %}{{ f.feature }} {{ f.before }} → {{ f.after }}{{ ' · ' if not loop.last }}{% endfor %}</p>{% endif %}
+      {% if imp.added_sentences %}<details class="small"><summary>New in attempt {{ a.attempt_number }} ({{ imp.added_sentences|length }} sentence{{ 's' if imp.added_sentences|length != 1 }})</summary>
+        <ul class="added">{% for s_ in imp.added_sentences %}<li><mark>{{ s_ }}</mark></li>{% endfor %}</ul></details>{% endif %}
+      {% if imp.now_correct %}<p class="small ok">Correct on the rewrite.</p>{% endif %}
+    </div>
+    {% endif %}
+
     <div id="fb-detail">
-      {% include "feedback_" ~ fb.kind ~ ".html" %}
-      {% if fb.schedule %}<p class="tiny muted">Next exact repeat no earlier than {{ fb.schedule.next_revision }} ({{ fb.schedule.bucket|replace('_',' ') }} answer){% if a.confidence %}; confidence recorded: {{ a.confidence|replace('_',' ') }}{% endif %}.</p>{% endif %}
+      {% if hint_first %}
+        <div class="side">
+          <div><div class="label">Your answer</div><p>{{ fb.student_answer }}</p></div>
+          <div><div class="label">Mark</div><p>{{ fb.mark|round(1) }} / {{ fb.max }}</p></div>
+        </div>
+        {% if fb.divergence %}<div class="notice bad"><strong>Where your reasoning diverged.</strong> {{ fb.divergence }}</div>{% endif %}
+        {% if fb.concept %}<h3>Key idea</h3><p>{{ fb.concept }}</p>{% endif %}
+        <p class="small muted">The correct answer and the full worked solution are hidden so you can try again with this hint. Choose “Show full solution” to see everything.</p>
+      {% else %}
+        {% include "feedback_" ~ fb.kind ~ ".html" %}
+      {% endif %}
+
+      {% if a.marking_method == 'offline_estimate' and not fb.self_marked and not fb.guided_self_mark and a.counts_for_mastery %}
+      <div class="notice warn estimate-confirm">
+        <p class="small"><strong>Mark confidence: low (offline estimate).</strong> No revision item or error-journal entry was created from it. Confirm your mark against the criteria to update your schedule.</p>
+        <form method="post" action="/attempt/{{ a.id }}/self-mark">
+          <input type="hidden" name="back" value="{{ base }}">
+          {% if ladder %}
+          <fieldset class="ladder"><legend class="small">Which band best describes your answer?</legend>
+            {% for c in ladder %}<label class="check"><input type="radio" name="mark" value="{{ c.mark }}" required {{ 'checked' if (a.mark_awarded|round) == c.mark }}> <strong>{{ c.mark }}</strong> — {{ c.descriptor }}</label>{% endfor %}
+            <label class="check"><input type="radio" name="mark" value="0"> <strong>0</strong> — none of these</label>
+          </fieldset>
+          {% else %}
+          <label class="small">Mark you earned <input type="number" name="mark" min="0" max="{{ q.marks }}" step="0.5" value="{{ a.mark_awarded }}"></label>
+          {% endif %}
+          <button class="btn small">Confirm mark</button>
+        </form>
+      </div>
+      {% endif %}
+
+      {% if fb.schedule %}
+      <p class="schedule small {{ 'muted' if fb.schedule.rehearsal }}">{{ fb.schedule.headline or ('Next exact repeat no earlier than ' ~ fb.schedule.next_revision) }}</p>
+      {% if fb.schedule.next_revision and not fb.schedule.rehearsal %}<p class="tiny muted">This exact question: not before {{ fb.schedule.next_revision }}{% if a.confidence %} · confidence recorded: {{ a.confidence|replace('_',' ') }}{% endif %}{% if fb.schedule.reliability is defined and fb.schedule.reliability < 1 %} · mark reliability {{ (fb.schedule.reliability * 100)|round|int }}%{% endif %}.</p>{% endif %}
+      {% endif %}
     </div>
   </div>
-  {% if attempts|length > 1 %}
-  <details class="box"><summary>Your attempts</summary>
-    <div class="{{ 'side' if attempts|length == 2 else '' }}">
-    {% for at in attempts %}<div><h3>Attempt {{ at.attempt_number }} — {{ at.mark_awarded|round(1) }}/{{ at.mark_possible|int }}</h3>{{ at.response_text | paras }}</div>{% endfor %}
+  {% if chain|length > 1 %}
+  <details class="box"><summary>Your attempts at this question ({{ chain|length }})</summary>
+    <div class="{{ 'side' if chain|length == 2 else 'attempt-list' }}">
+    {% for at in chain %}<div><h3>Attempt {{ loop.index }} — {{ at.mark_awarded|round(1) }}/{{ at.mark_possible|int }}</h3>
+      <p class="tiny muted">{{ at.submitted_at | fdate('%a %d %b') }} · {{ role_label(at) }}{% if at.model_viewed_at %} · model viewed{% endif %}</p>
+      {{ at.response_text | paras if at.response_text else '' }}</div>{% endfor %}
     </div>
   </details>
   {% endif %}
