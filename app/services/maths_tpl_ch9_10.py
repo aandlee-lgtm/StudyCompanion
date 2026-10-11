@@ -537,7 +537,7 @@ def t_10A(r: Rng, d: int) -> Generated:
         text = multipart(stem, [("a", "Use the class centres to estimate the mean, correct to 1 decimal place.", 2),
                                 ("b", f"Estimate the probability that a randomly chosen case has \\({v} \\ge {bounds[j]}\\).", 1)])
         steps = [f"(a) Class centres: {', '.join(dl(c) for c in centres)}.",
-                 f"\\(\\bar{{{v}}} \\approx \\dfrac{{\\sum f c}}{{\\sum f}} = \\dfrac{{{L(sum(f * c for f, c in zip(fs, centres)))}}}{{{n_}}} \\approx {rnd(mean, 1)}\\).",
+                 f"\\(\\bar{{{v}}} \\approx \\dfrac{{\\sum f c}}{{\\sum f}} = \\dfrac{{{dl(sum(f * c for f, c in zip(fs, centres)))}}}{{{n_}}} \\approx {rnd(mean, 1)}\\).",
                  f"(b) Cases with \\({v} \\ge {bounds[j]}\\): \\({' + '.join(str(f) for f in fs[j:])} = {n_ - cum[j - 1]}\\), so \\(P \\approx {L(pge)}\\)."]
         return Generated(
             text, A_parts(P("a", 2, A_round(mean, 1)), P("b", 1, A_num(pge))), 3, 2, steps,
@@ -559,7 +559,7 @@ def t_10A(r: Rng, d: int) -> Generated:
     text = multipart(stem, [("a", "Use the class centres to estimate the mean, correct to 1 decimal place.", 2),
                             ("b", f"Find the cumulative frequency at \\({v} = {bounds[j + 1]}\\).", 1),
                             ("c", "Assuming the data are spread evenly within each class (a cumulative frequency polygon), estimate the median, correct to 1 decimal place.", 2)])
-    steps = [f"(a) Class centres {', '.join(dl(c) for c in centres)}: \\(\\bar{{{v}}} \\approx \\dfrac{{{L(sum(f * c for f, c in zip(fs, centres)))}}}{{{n_}}} \\approx {rnd(mean, 1)}\\).",
+    steps = [f"(a) Class centres {', '.join(dl(c) for c in centres)}: \\(\\bar{{{v}}} \\approx \\dfrac{{{dl(sum(f * c for f, c in zip(fs, centres)))}}}{{{n_}}} \\approx {rnd(mean, 1)}\\).",
              f"(b) Cumulative frequencies at the upper boundaries: {', '.join(str(c) for c in cum)}; at \\({v} = {bounds[j + 1]}\\) it is {cum[j]}.",
              f"(c) The median has cumulative frequency \\(\\frac{{{n_}}}{{2}} = {dl(half)}\\), which lies in the class \\({bounds[mc]} \\le {v} < {bounds[mc + 1]}\\).",
              f"Interpolate: \\({bounds[mc]} + \\dfrac{{{dl(half)} - {below}}}{{{fs[mc]}}}\\times {w} \\approx {rnd(med, 1)}\\)."]
@@ -869,4 +869,380 @@ def t_10C(r: Rng, d: int) -> Generated:
                        err(E2 - E, "formula selection", EV, "Square the mean before subtracting.", step=4, part="c")],
         skill="Mean and variance of a symmetric polynomial pdf.",
         params={"form": "quad", "a": a_, "b": str(b_)},
+    )
+
+
+# ======================================================================= 10D ===
+def zpick(r: Rng, lo: int = 10, hi: int = 250) -> sp.Rational:
+    return sp.Rational(r.randint(lo, hi), 100)
+
+
+def A_p(v) -> dict:
+    """A probability from table values: exact decimal, with a tolerance for calculator values."""
+    return A_approx(dstr(v), PTOL)
+
+
+EMP = {1: sp.Rational(68, 100), 2: sp.Rational(95, 100), 3: sp.Rational(997, 1000)}
+
+
+def emp_between(k1: int, k2: int) -> sp.Rational:
+    """P(-k1 < Z < k2) by the empirical rule (68-95-99.7)."""
+    return EMP[k1] / 2 + EMP[k2] / 2
+
+
+def t_10D(r: Rng, d: int) -> Generated:
+    if d == 1:
+        form = pick(r, ["upper", "neg", "emp"])
+        if form == "emp":
+            k1, k2 = pick(r, [(1, 2), (2, 1), (1, 3), (3, 1), (2, 3), (3, 2), (1, 1), (2, 2)])
+            pc = emp_between(k1, k2) * 100
+            return Generated(
+                f"\\(Z\\) has the standard normal distribution. Use the empirical rule (about 68%, 95% and 99.7% of values lie within 1, 2 and 3 standard deviations of the mean) "
+                f"to estimate the percentage of values with \\(-{k1} < Z < {k2}\\).",
+                A_approx(dstr(pc), 0.05, "%"), 2, 1,
+                [f"By symmetry, between \\(-{k1}\\) and 0 lies half of {dstr(EMP[k1] * 100)}%, i.e. {dstr(EMP[k1] * 50)}%; between 0 and {k2} lies {dstr(EMP[k2] * 50)}%.",
+                 f"Total \\(\\approx {dstr(pc)}\\%\\)."],
+                "The standard normal curve is symmetric about 0, so each 'within k standard deviations' percentage splits equally either side.",
+                "Sketch the bell curve, shade the region and split it at 0.",
+                quicker="The answer must lie between the two 'within' percentages for the two bounds.",
+                common_errors=[err(dstr(EMP[max(k1, k2)] * 100), "incomplete reasoning", ND, "The interval is not symmetric: split it at 0 and halve each percentage.", step=1),
+                               err(dstr((EMP[k1] + EMP[k2]) * 100), "conceptual", ND, "Each side of 0 holds only half of the 'within' percentage.", step=1)],
+                skill="Use the empirical rule with the standard normal distribution.",
+                params={"form": "emp", "k1": k1, "k2": k2},
+            )
+        z = zpick(r)
+        ph = phi4(z)
+        ans = 1 - ph
+        q_txt = f"P(Z > {zt(z)})" if form == "upper" else f"P(Z < -{zt(z)})"
+        return Generated(
+            f"\\(Z\\) has the standard normal distribution. {given(z)} Find \\({q_txt}\\).",
+            A_p(ans), 1, 1,
+            [(f"\\(P(Z > {zt(z)}) = 1 - P(Z \\le {zt(z)}) = 1 - {dstr(ph)} = {dstr(ans)}\\)." if form == "upper" else
+              f"By symmetry \\(P(Z < -{zt(z)}) = P(Z > {zt(z)}) = 1 - {dstr(ph)} = {dstr(ans)}\\).")],
+            "Tables give the area to the LEFT of \\(z\\); use the complement and the symmetry of the curve for other areas.",
+            "Sketch the curve and shade the area you need before using the table.",
+            quicker="Areas in the tails beyond \\(\\pm z\\) are equal, and each is less than 0.5 for \\(z > 0\\).",
+            common_errors=[err(dstr(ph), "interpretation", ND, "That is the area to the left of " + zt(z) + "; you need the other side.", step=1),
+                           err(dstr(sp.Rational(1, 2) - ph if ph < sp.Rational(1, 2) else ph - sp.Rational(1, 2)), "conceptual", ND,
+                               "Areas are measured from the far left, not from 0.", step=1)],
+            skill="Find tail probabilities for the standard normal distribution.",
+            params={"form": form, "z": str(z)},
+        )
+    if d == 2:
+        form = pick(r, ["between", "straddle", "symm"])
+        if form == "symm":
+            z = zpick(r, 20, 250)
+            ph = phi4(z)
+            ans = 2 * ph - 1
+            return Generated(
+                f"\\(Z\\) has the standard normal distribution. {given(z)} Find \\(P(-{zt(z)} < Z < {zt(z)})\\).",
+                A_p(ans), 2, 2,
+                [f"The area above {zt(z)} is \\(1 - {dstr(ph)} = {dstr(1 - ph)}\\), and by symmetry so is the area below \\(-{zt(z)}\\).",
+                 f"\\(P(-{zt(z)} < Z < {zt(z)}) = 1 - 2\\times {dstr(1 - ph)} = {dstr(ans)}\\)."],
+                "Symmetry of the normal curve: \\(P(-z < Z < z) = 2P(Z < z) - 1\\).",
+                "Subtract both tails from the total area 1.",
+                quicker="Compare with the empirical rule: within 1 sd is about 0.68, within 2 sd about 0.95.",
+                common_errors=[err(dstr(2 * ph), "incomplete reasoning", ND, "A probability can't exceed 1: subtract 1 (the two tails).", step=2),
+                               err(dstr(ph - (1 - ph) / 2), "conceptual", ND, "Remove the whole lower tail, not half of it.", step=2)],
+                skill="Use symmetry to find a central normal probability.",
+                params={"form": "symm", "z": str(z)},
+            )
+        z1, z2 = zpick(r, 10, 200), zpick(r, 10, 250)
+        if form == "between":
+            z1, z2 = sorted([z1, z2])
+            if z1 == z2:
+                z2 += sp.Rational(1, 10)
+            p1, p2 = phi4(z1), phi4(z2)
+            ans = p2 - p1
+            return Generated(
+                f"\\(Z\\) has the standard normal distribution. {given(z1, z2)} Find \\(P({zt(z1)} < Z < {zt(z2)})\\).",
+                A_p(ans), 2, 2,
+                [f"\\(P({zt(z1)} < Z < {zt(z2)}) = P(Z < {zt(z2)}) - P(Z < {zt(z1)})\\).",
+                 f"\\(= {dstr(p2)} - {dstr(p1)} = {dstr(ans)}\\)."],
+                "The area between two values is the difference of the areas to their left.",
+                "Larger \\(z\\) minus smaller \\(z\\) — the answer must be positive.",
+                quicker="Sketch: the shaded strip lies wholly on one side of 0, so the answer is less than 0.5.",
+                common_errors=[err(dstr(p2 + p1 - 1), "conceptual", "sign error", "Both values are above the mean; no symmetry step is needed.", step=1),
+                               err(dstr(1 - p1), "incomplete reasoning", ND, "That is everything above " + zt(z1) + "; remove the part above " + zt(z2) + " too.", step=1)],
+                skill="Find the probability between two positive z-values.",
+                params={"form": "between", "z1": str(z1), "z2": str(z2)},
+            )
+        p1, p2 = phi4(z1), phi4(z2)
+        ans = p2 - (1 - p1)
+        return Generated(
+            f"\\(Z\\) has the standard normal distribution. {given(z1, z2)} Find \\(P(-{zt(z1)} < Z < {zt(z2)})\\).",
+            A_p(ans), 2, 2,
+            [f"By symmetry \\(P(Z < -{zt(z1)}) = 1 - P(Z < {zt(z1)}) = {dstr(1 - p1)}\\).",
+             f"\\(P(-{zt(z1)} < Z < {zt(z2)}) = {dstr(p2)} - {dstr(1 - p1)} = {dstr(ans)}\\)."],
+            "Negative \\(z\\)-values come from symmetry: \\(P(Z < -a) = 1 - P(Z < a)\\).",
+            "Sketch and shade; the region crosses 0, so the answer is more than either half on its own.",
+            quicker="Check against the empirical rule for the nearest whole \\(z\\)-values.",
+            common_errors=[err(dstr(p2 - p1), "careless error", "sign error", f"\\(P(Z < -{zt(z1)})\\) is not \\(P(Z < {zt(z1)})\\): use symmetry for the negative value.", step=1),
+                           err(dstr(p2 + p1), "conceptual", ND, "A probability can't exceed 1; subtract the area below the lower value.", step=2)],
+            skill="Find a normal probability across the mean.",
+            params={"form": "straddle", "z1": str(z1), "z2": str(z2)},
+        )
+    za, zb = zpick(r, 30, 200), zpick(r, 30, 250)
+    zc = zpick(r, 50, 250)
+    pa, pb, pc = phi4(za), phi4(zb), phi4(zc)
+    text = multipart(
+        f"\\(Z\\) has the standard normal distribution. {given(za, zb, zc)}",
+        [("a", f"Find \\(P(Z > {zt(zb)})\\).", 1), ("b", f"Find \\(P(-{zt(za)} < Z < {zt(zb)})\\).", 2),
+         ("c", f"Find \\(P(|Z| > {zt(zc)})\\).", 1), ("d", f"Find \\(P(Z > {zt(zb)} \\mid Z > 0)\\).", 1)])
+    steps = [f"(a) \\(1 - {dstr(pb)} = {dstr(1 - pb)}\\).",
+             f"(b) \\(P(Z < -{zt(za)}) = 1 - {dstr(pa)} = {dstr(1 - pa)}\\) by symmetry,",
+             f"so \\(P(-{zt(za)} < Z < {zt(zb)}) = {dstr(pb)} - {dstr(1 - pa)} = {dstr(pb - 1 + pa)}\\).",
+             f"(c) Both tails: \\(2\\times(1 - {dstr(pc)}) = {dstr(2 * (1 - pc))}\\).",
+             f"(d) \\(\\dfrac{{P(Z > {zt(zb)})}}{{P(Z > 0)}} = \\dfrac{{{dstr(1 - pb)}}}{{0.5}} = {dstr(2 * (1 - pb))}\\)."]
+    return Generated(
+        text, A_parts(P("a", 1, A_p(1 - pb)), P("b", 2, A_p(pb - 1 + pa)), P("c", 1, A_p(2 * (1 - pc))), P("d", 1, A_p(2 * (1 - pb)))), 5, 3, steps,
+        "Every standard normal probability comes from the left-area table, the complement \\(1 - P\\) and the symmetry of the curve about 0.",
+        "Sketch and shade for every part; write the table value you use.",
+        quicker="(d): half the curve lies above 0, so the conditional probability is twice the unconditional one.",
+        common_errors=[err(dstr(pb), "interpretation", ND, "That is the area to the left; you need the right tail.", step=1, part="a"),
+                       err(dstr(pb - pa), "careless error", "sign error", "Use symmetry for the negative value: \\(P(Z < -a) = 1 - P(Z < a)\\).", step=2, part="b"),
+                       err(dstr(1 - pc), "incomplete reasoning", ND, "\\(|Z| > c\\) has two tails.", step=4, part="c"),
+                       err(dstr(1 - pb), "interpretation", PI, "Given \\(Z > 0\\), divide by \\(P(Z > 0) = 0.5\\).", step=5, part="d")],
+        skill="Standard normal probabilities: tails, intervals, absolute values and conditional probability.",
+        params={"form": "parts", "za": str(za), "zb": str(zb), "zc": str(zc)},
+    )
+
+
+# ======================================================================= 10E ===
+# (context, unit, possible means, possible standard deviations); every sigma divides 100 so integer
+# values give z-values with at most 2 decimal places.
+SCENES = [("The marks in an examination", "marks", [55, 60, 62, 65, 68, 70, 72], [4, 5, 10]),
+          ("The heights of a group of seedlings", "cm", [20, 24, 30, 36, 40], [2, 4, 5]),
+          ("The masses of packets of rice", "g", [500, 750, 1000], [4, 5, 10, 20, 25]),
+          ("The times taken to complete a puzzle", "seconds", [90, 120, 150, 180], [10, 20, 25]),
+          ("The lengths of bolts from a machine", "mm", [40, 50, 60, 80, 100], [2, 4, 5])]
+
+
+def _normal(r: Rng):
+    scene, unit, mus, sigmas = pick(r, SCENES)
+    return pick(r, mus), pick(r, sigmas), scene, unit
+
+
+def _score(r: Rng, mu, sigma, lo=0.2, hi=2.5, sign=1):
+    """An integer score whose z-value (2 dp) has |z| in [lo, hi]."""
+    while True:
+        xv = mu + sign * r.randint(1, int(hi * sigma))
+        z = sp.Rational(xv - mu, sigma)
+        if lo <= abs(z) <= hi:
+            return xv, z
+
+
+def t_10E(r: Rng, d: int) -> Generated:
+    mu, sigma, scene, unit = _normal(r)
+    intro = f"{scene} are normally distributed with mean {mu} {unit} and standard deviation {sigma} {unit}."
+    if d == 1:
+        form = pick(r, ["z", "x", "emp"])
+        if form == "z":
+            xv, z = _score(r, mu, sigma, sign=pick(r, [1, -1]))
+            return Generated(
+                f"{intro} Find the \\(z\\)-score of a value of {xv} {unit}.",
+                A_num(dstr(z)), 1, 1,
+                [f"\\(z = \\dfrac{{x - \\mu}}{{\\sigma}} = \\dfrac{{{xv} - {mu}}}{{{sigma}}} = {dstr(z)}\\)."],
+                "A \\(z\\)-score counts how many standard deviations a value lies above (+) or below (−) the mean.",
+                "Subtract the mean first, then divide by the standard deviation.",
+                quicker="Values below the mean have negative \\(z\\)-scores.",
+                common_errors=[err(dstr(-z), "careless error", "sign error", "Subtract the mean from the value, not the reverse.", step=1),
+                               err(dstr(sp.Rational(xv, sigma) - mu), "algebraic", "algebra", "Subtract the mean before dividing: \\(z = \\frac{x - \\mu}{\\sigma}\\).", step=1)],
+                skill="Calculate a z-score.",
+                params={"form": "z", "mu": mu, "sigma": sigma, "x": xv},
+            )
+        if form == "x":
+            z = sp.Rational(0)
+            while z == 0:
+                z = sp.Rational(r.randint(-250, 250), 100)
+            xv = mu + z * sigma
+            return Generated(
+                f"{intro} Which value has a \\(z\\)-score of \\({dstr(z)}\\)?",
+                A_num(dstr(xv)), 1, 1,
+                [f"\\(x = \\mu + z\\sigma = {mu} + {pdl(z)}\\times {sigma} = {dstr(xv)}\\)."],
+                "Rearranging \\(z = \\frac{x - \\mu}{\\sigma}\\) gives \\(x = \\mu + z\\sigma\\).",
+                "Multiply \\(z\\) by the standard deviation, then add the mean.",
+                quicker="A negative \\(z\\)-score gives a value below the mean.",
+                common_errors=[err(dstr(mu - z * sigma), "careless error", "sign error", "Add \\(z\\sigma\\) to the mean (a negative \\(z\\) takes you below it).", step=1),
+                               err(dstr(mu + z), "formula selection", ND, "Multiply \\(z\\) by the standard deviation.", step=1)],
+                skill="Find the value with a given z-score.",
+                params={"form": "x", "mu": mu, "sigma": sigma, "zz": str(z)},
+            )
+        k1, k2 = pick(r, [(1, 2), (2, 1), (1, 3), (2, 3), (1, 1), (2, 2), (3, 1)])
+        lo, hi = mu - k1 * sigma, mu + k2 * sigma
+        pc = emp_between(k1, k2) * 100
+        return Generated(
+            f"{intro} Use the empirical rule (68–95–99.7) to estimate the percentage of values between {lo} and {hi} {unit}.",
+            A_approx(dstr(pc), 0.05, "%"), 2, 1,
+            [f"\\({lo}\\) has \\(z = -{k1}\\) and \\({hi}\\) has \\(z = {k2}\\).",
+             f"Below the mean: {dstr(EMP[k1] * 50)}%; above: {dstr(EMP[k2] * 50)}%. Total \\(\\approx {dstr(pc)}\\%\\)."],
+            "The empirical rule: about 68%, 95% and 99.7% of a normal population lie within 1, 2 and 3 standard deviations of the mean.",
+            "Convert each bound to a \\(z\\)-score, then split the region at the mean.",
+            quicker="Draw the bell curve with the mean and ±1, ±2, ±3 standard deviations marked.",
+            common_errors=[err(dstr(EMP[max(k1, k2)] * 100), "incomplete reasoning", ND, "The region isn't symmetric: halve each 'within' percentage.", step=2),
+                           err(dstr((EMP[k1] + EMP[k2]) * 100), "conceptual", ND, "Only half of each 'within' percentage lies on each side of the mean.", step=2)],
+            skill="Apply the empirical rule to a general normal distribution.",
+            params={"form": "emp", "k1": k1, "k2": k2},
+        )
+    if d == 2:
+        x1, z1 = _score(r, mu, sigma, 0.2, 2.2, -1)
+        x2, z2 = _score(r, mu, sigma, 0.2, 2.5, 1)
+        p1, p2 = phi4(-z1), phi4(z2)
+        ans = p2 - (1 - p1)
+        return Generated(
+            f"{intro} {given(-z1, z2)} Find the probability that a randomly chosen value lies between {x1} and {x2} {unit}.",
+            A_p(ans), 3, 2,
+            [f"Standardise: \\(z_1 = \\dfrac{{{x1} - {mu}}}{{{sigma}}} = {dstr(z1)}\\), \\(z_2 = \\dfrac{{{x2} - {mu}}}{{{sigma}}} = {dstr(z2)}\\).",
+             f"\\(P({dstr(z1)} < Z < {dstr(z2)}) = P(Z < {dstr(z2)}) - P(Z < {dstr(z1)})\\), and \\(P(Z < {dstr(z1)}) = 1 - {dstr(p1)} = {dstr(1 - p1)}\\).",
+             f"\\(= {dstr(p2)} - {dstr(1 - p1)} = {dstr(ans)}\\)."],
+            "Any normal variable is standardised by \\(z = \\frac{x - \\mu}{\\sigma}\\); then the standard normal table applies.",
+            "Write the \\(z\\)-values, sketch, then combine table values.",
+            quicker="Check the size against the empirical rule.",
+            common_errors=[err(dstr(p2 - p1), "careless error", "sign error", "The lower value is below the mean: use symmetry, \\(P(Z < -a) = 1 - P(Z < a)\\).", step=2),
+                           err(dstr(p2 + p1), "conceptual", ND, "A probability can't exceed 1; subtract the area below the lower value.", step=3)],
+            skill="Find a probability for a general normal distribution.",
+            checkpoints=[cp(dstr(z1), "z-score of the lower value", step=1), cp(dstr(z2), "z-score of the upper value", step=1)],
+            params={"form": "between", "mu": mu, "sigma": sigma, "x1": x1, "x2": x2},
+        )
+    xa, za = _score(r, mu, sigma, 0.3, 2.5, 1)
+    xb, zb = _score(r, mu, sigma, 0.2, 2.2, -1)
+    N_ = pick(r, [200, 500, 1000, 2000])
+    pa, pb = phi4(za), phi4(-zb)
+    text = multipart(f"{intro} {given(za, -zb)}",
+                     [("a", f"Find the \\(z\\)-score of {xa} {unit}.", 1),
+                      ("b", f"Find the probability that a value is more than {xa} {unit}.", 1),
+                      ("c", f"Find the probability that a value is between {xb} and {xa} {unit}.", 2),
+                      ("d", f"In a sample of {N_}, how many values would you expect to exceed {xa} {unit}? Answer to the nearest whole number.", 1)])
+    steps = [f"(a) \\(z = \\dfrac{{{xa} - {mu}}}{{{sigma}}} = {dstr(za)}\\).",
+             f"(b) \\(P(Z > {dstr(za)}) = 1 - {dstr(pa)} = {dstr(1 - pa)}\\).",
+             f"(c) \\({xb}\\) has \\(z = {dstr(zb)}\\); \\(P(Z < {dstr(zb)}) = 1 - {dstr(pb)} = {dstr(1 - pb)}\\).",
+             f"\\(P({dstr(zb)} < Z < {dstr(za)}) = {dstr(pa)} - {dstr(1 - pb)} = {dstr(pa - 1 + pb)}\\).",
+             f"(d) \\({N_}\\times {dstr(1 - pa)} = {dstr(N_ * (1 - pa))} \\approx {rnd(N_ * (1 - pa), 0)}\\)."]
+    return Generated(
+        text, A_parts(P("a", 1, A_num(dstr(za))), P("b", 1, A_p(1 - pa)), P("c", 2, A_p(pa - 1 + pb)), P("d", 1, A_round(N_ * (1 - pa), 0))), 5, 3, steps,
+        "Standardise, use the table with complements and symmetry, and multiply a probability by the sample size for an expected count.",
+        "Show each \\(z\\)-score and each table value — HSC marking rewards the setting out.",
+        quicker="(d) should be a sensible fraction of the sample: compare with (b).",
+        common_errors=[err(dstr(-za), "careless error", "sign error", "Subtract the mean from the value.", step=1, part="a"),
+                       err(dstr(pa), "interpretation", ND, "That is the area to the left; 'more than' needs the right tail.", step=2, part="b"),
+                       err(dstr(pa - pb), "careless error", "sign error", "The lower value is below the mean: use symmetry.", step=3, part="c"),
+                       err(rnd(N_ * pa, 0), "interpretation", ND, "Use the probability of exceeding the value, from (b).", step=5, part="d")],
+        skill="Solve a multi-step problem with a general normal distribution.",
+        params={"form": "parts", "mu": mu, "sigma": sigma, "xa": xa, "xb": xb, "N": N_},
+    )
+
+
+# ======================================================================= 10F ===
+ZQ = [("10", "1.28"), ("5", "1.64"), ("2.5", "1.96"), ("1", "2.33"), ("20", "0.84"), ("15", "1.04"), ("25", "0.67")]
+
+
+def t_10F(r: Rng, d: int) -> Generated:
+    mu, sigma, scene, unit = _normal(r)
+    intro = f"{scene} are normally distributed with mean {mu} {unit} and standard deviation {sigma} {unit}."
+    if d == 1:
+        if r.random() < 0.5:
+            k1, k2 = pick(r, [(1, 2), (2, 1), (1, 1), (2, 2), (1, 3), (3, 3)])
+            N_ = pick(r, [200, 400, 1000, 2000])
+            while (emp_between(k1, k2) * N_).q != 1:  # a whole-number expected count
+                N_ *= 10
+            cnt = emp_between(k1, k2) * N_
+            return Generated(
+                f"{intro} In a sample of {N_}, use the empirical rule (68–95–99.7) to estimate how many values lie between {mu - k1 * sigma} and {mu + k2 * sigma} {unit}.",
+                A_approx(dstr(cnt), 0.5), 2, 1,
+                [f"The bounds are \\(z = -{k1}\\) and \\(z = {k2}\\): about {dstr(emp_between(k1, k2) * 100)}% of values.",
+                 f"\\({dstr(emp_between(k1, k2))}\\times {N_} = {dstr(cnt)}\\)."],
+                "An expected count is the sample size times the probability.",
+                "Find the percentage with the empirical rule first, then scale to the sample.",
+                quicker="The count must be less than the sample size and more than half of it for a region containing the mean and at least one sd each side.",
+                common_errors=[err(dstr(EMP[max(k1, k2)] * N_), "incomplete reasoning", ND, "The region isn't symmetric unless the two bounds are equally far from the mean.", step=1),
+                               err(dstr(emp_between(k1, k2) * 100), "interpretation", ND, "That is the percentage; multiply the proportion by the sample size.", step=2)],
+                skill="Estimate a count with the empirical rule.",
+                params={"form": "count", "k1": k1, "k2": k2, "N": N_},
+            )
+        top, zq = pick(r, ZQ)
+        cut = mu + sp.Rational(zq) * sigma
+        return Generated(
+            f"{intro} The top {top}% of values lie above a cut-off. Given that \\(P(Z < {zq}) \\approx {dstr(1 - sp.Rational(top) / 100)}\\), find the cut-off.",
+            A_approx(dstr(cut), max(0.05, 0.004 * sigma)), 2, 1,
+            [f"The cut-off has \\(z = {zq}\\).", f"\\(x = \\mu + z\\sigma = {mu} + {zq}\\times {sigma} = {dstr(cut)}\\) {unit}."],
+            "A percentile of a normal distribution comes from its \\(z\\)-value: \\(x = \\mu + z\\sigma\\).",
+            "Identify the \\(z\\)-value for the given area, then un-standardise.",
+            quicker="The top few percent lie well above the mean, so the cut-off must exceed the mean.",
+            common_errors=[err(dstr(mu - sp.Rational(zq) * sigma), "careless error", "sign error", "The TOP values lie above the mean: add \\(z\\sigma\\).", step=2),
+                           err(dstr(mu + sp.Rational(zq)), "formula selection", ND, "Multiply \\(z\\) by the standard deviation.", step=2)],
+            skill="Find a cut-off value for a normal distribution.",
+            params={"form": "cut", "mu": mu, "sigma": sigma, "zq": zq},
+        )
+    if d == 2:
+        if r.random() < 0.5:
+            lo, zl = _score(r, mu, sigma, 0.8, 2.5, -1)
+            hi, zh = _score(r, mu, sigma, 0.8, 2.5, 1)
+            N_ = pick(r, [500, 1000, 2000, 5000])
+            pl_, ph_ = phi4(-zl), phi4(zh)
+            rej = (1 - pl_) + (1 - ph_)
+            text = multipart(
+                f"{intro} An item is rejected if it is below {lo} {unit} or above {hi} {unit}. {given(-zl, zh)}",
+                [("a", "Find the proportion of items that are rejected.", 2),
+                 ("b", f"In a batch of {N_} items, how many would you expect to be rejected? Answer to the nearest whole number.", 1)])
+            steps = [f"(a) \\(z\\)-scores: \\({dstr(zl)}\\) and \\({dstr(zh)}\\).",
+                     f"\\(P(Z < {dstr(zl)}) = 1 - {dstr(pl_)} = {dstr(1 - pl_)}\\); \\(P(Z > {dstr(zh)}) = 1 - {dstr(ph_)} = {dstr(1 - ph_)}\\).",
+                     f"Rejected: \\({dstr(1 - pl_)} + {dstr(1 - ph_)} = {dstr(rej)}\\).",
+                     f"(b) \\({N_}\\times {dstr(rej)} = {dstr(N_ * rej)} \\approx {rnd(N_ * rej, 0)}\\)."]
+            return Generated(
+                text, A_parts(P("a", 2, A_p(rej)), P("b", 1, A_round(N_ * rej, 0))), 3, 2, steps,
+                "Quality control: the rejected proportion is the area in both tails beyond the specification limits.",
+                "Standardise both limits and add the two tail areas.",
+                quicker="Check with the empirical rule: limits about 2 sd away reject roughly 5%.",
+                common_errors=[err(dstr(1 - rej), "interpretation", ND, "That is the proportion accepted.", step=3, part="a"),
+                               err(dstr(1 - ph_), "incomplete reasoning", ND, "Items can be rejected at both ends: add the lower tail too.", step=3, part="a")],
+                skill="Use the normal distribution for quality control.",
+                params={"form": "qc", "mu": mu, "sigma": sigma, "lo": lo, "hi": hi, "N": N_},
+            )
+        top, zq = pick(r, ZQ)
+        a_ = mu + r.randint(1, 3) * sigma
+        new_mu = a_ - sp.Rational(zq) * sigma
+        return Generated(
+            f"A machine fills packets with a standard deviation of {sigma} g. The mean can be adjusted. Only {top}% of packets may weigh more than {a_} g. "
+            f"Given that \\(P(Z < {zq}) \\approx {dstr(1 - sp.Rational(top) / 100)}\\), find the largest mean that achieves this.",
+            A_approx(dstr(new_mu), max(0.05, 0.004 * sigma), "g"), 3, 2,
+            [f"\\(P(X > {a_}) = {dstr(sp.Rational(top) / 100)}\\) means {a_} g has \\(z = {zq}\\).",
+             f"\\(\\dfrac{{{a_} - \\mu}}{{{sigma}}} = {zq}\\).",
+             f"\\(\\mu = {a_} - {zq}\\times {sigma} = {dstr(new_mu)}\\) g."],
+            "Working backwards: a known tail area fixes the \\(z\\)-value of the boundary, and \\(z = \\frac{x - \\mu}{\\sigma}\\) then gives the unknown mean.",
+            "Write the standardising equation with the unknown and solve it.",
+            quicker="The mean must sit below the limit by \\(z\\) standard deviations.",
+            common_errors=[err(dstr(a_ + sp.Rational(zq) * sigma), "careless error", "sign error", "The limit is ABOVE the mean, so subtract \\(z\\sigma\\).", step=3),
+                           err(dstr(a_ - sp.Rational(zq)), "algebraic", "algebra", "Multiply \\(z\\) by \\(\\sigma\\) when rearranging.", step=3)],
+            skill="Find an unknown mean from a normal probability.",
+            params={"form": "mean", "a": a_, "sigma": sigma, "zq": zq},
+        )
+    top, zq = pick(r, ZQ)
+    k = pick(r, [1, 2, 3])
+    xa, za = _score(r, mu, sigma, 0.3, 2.5, 1)
+    pa = phi4(za)
+    cut = mu + sp.Rational(zq) * sigma
+    text = multipart(
+        f"{intro} {given(za)}",
+        [("a", f"Find the probability that a value exceeds {xa} {unit}.", 1),
+         ("b", f"Using the empirical rule, what percentage of values lie within {k} standard deviation{'s' if k > 1 else ''} of the mean?", 1),
+         ("c", f"The top {top}% of values are labelled 'premium'. Given \\(P(Z < {zq}) \\approx {dstr(1 - sp.Rational(top) / 100)}\\), find the smallest premium value.", 1),
+         ("d", f"The mean is to be changed (the standard deviation stays {sigma} {unit}) so that only {top}% of values exceed {xa} {unit}. Find the new mean.", 2)])
+    new_mu = xa - sp.Rational(zq) * sigma
+    steps = [f"(a) \\(z = \\dfrac{{{xa} - {mu}}}{{{sigma}}} = {dstr(za)}\\); \\(P(Z > {dstr(za)}) = 1 - {dstr(pa)} = {dstr(1 - pa)}\\).",
+             f"(b) About {dstr(EMP[k] * 100)}% (the empirical rule).",
+             f"(c) \\(x = {mu} + {zq}\\times {sigma} = {dstr(cut)}\\) {unit}.",
+             f"(d) Now {xa} must have \\(z = {zq}\\): \\(\\dfrac{{{xa} - \\mu}}{{{sigma}}} = {zq}\\).",
+             f"\\(\\mu = {xa} - {zq}\\times {sigma} = {dstr(new_mu)}\\) {unit}."]
+    return Generated(
+        text, A_parts(P("a", 1, A_p(1 - pa)), P("b", 1, A_approx(dstr(EMP[k] * 100), 0.05, "%")),
+                      P("c", 1, A_approx(dstr(cut), max(0.05, 0.004 * sigma))), P("d", 2, A_approx(dstr(new_mu), max(0.05, 0.004 * sigma)))), 5, 3, steps,
+        "Normal models answer forwards questions (value → probability) and backwards ones (probability → value, or → an unknown mean).",
+        "For backwards questions write \\(z = \\frac{x - \\mu}{\\sigma}\\) with the unknown and solve.",
+        quicker="(d) must move the mean down if the tail above the value is to shrink.",
+        common_errors=[err(dstr(pa), "interpretation", ND, "'Exceeds' needs the right tail.", step=1, part="a"),
+                       err(dstr(EMP[k] * 50), "conceptual", ND, "'Within' covers both sides of the mean.", step=2, part="b"),
+                       err(dstr(mu - sp.Rational(zq) * sigma), "careless error", "sign error", "The top values lie above the mean.", step=3, part="c"),
+                       err(dstr(xa + sp.Rational(zq) * sigma), "careless error", "sign error", "The value is above the mean: subtract \\(z\\sigma\\).", step=5, part="d")],
+        skill="Apply the normal distribution forwards and backwards in context.",
+        params={"form": "parts", "mu": mu, "sigma": sigma, "xa": xa, "zq": zq, "k": k},
     )
