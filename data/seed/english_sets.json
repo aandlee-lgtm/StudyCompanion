@@ -751,6 +751,780 @@
     }
    ],
    "length_words": 466
+  },
+  {
+   "key": "interpreter-pair",
+   "title": "The Interpreter",
+   "form": "Prose fiction",
+   "complexity": 2,
+   "author": "Original text (HSC Companion)",
+   "headnote": "Text 1 is an extract from an original short story; Text 2 is an original poem. Both are about language and family across generations.",
+   "theme_tags": [
+    "language",
+    "migration",
+    "family",
+    "generations"
+   ],
+   "body": "The doctor talks to me, not to my father. This is the first thing I notice, and I am fourteen, so I notice it with a kind of pleasure.\n\n'Ask him whether the pain is sharp or dull,' she says. 'Ask him how long.'\n\nI turn to my father. He is sitting very straight on the plastic chair, his good jacket buttoned, his hands on his knees the way he sits in the photographs from before. I ask him in Vietnamese, and I make the question gentler on the way through, because the doctor's English is quick and flat and my father's ears go red when people are quick with him.\n\n'Since Tết,' he says. 'It is nothing. Tell her it is nothing.'\n\n'Since about February,' I tell the doctor. 'He says it's sharp sometimes.'\n\nHe did not say that. But I have heard him at night, the small sound he makes turning over, and I think the doctor should know. My father watches my mouth while I speak, trying to catch the shape of his own words in it. I watch him watching me. Between us there is a little bridge made of my voice, and I am the only one who can walk across it.\n\nThe doctor writes something. She asks about his work, the lifting, the hours. I translate warehouse and night shift and twenty-two years. I do not translate the part where he says, 'Tell her I have never missed a day,' because the doctor has already looked at the clock, and because I know it would sound, in English, like a man asking for a medal.\n\nOn the way out the receptionist says something about a referral, and my father nods as if he understands, and thanks her twice in his careful English, and I see her smile at him the way people smile at children who have said a new word. I want to tell her he was an engineer once. I want to tell her he can recite poems I will never be able to read. Instead I take the paper from her and fold it into my school bag.\n\nIn the car he says, 'What did you tell her?'\n\n'Everything,' I say.\n\nHe starts the engine and does not look at me, and I understand that he knows I am lying, and that he is grateful, and that both of these things are true at once, the way it is both day and night somewhere at every minute.",
+   "pair": {
+    "title": "Mother Tongue",
+    "form": "Poetry",
+    "author": "Original text (HSC Companion)",
+    "headnote": "",
+    "body": "My grandmother kept her language in a tin\nwith the buttons and the rubber bands,\nand when I was small she would open it for me:\nwords like boiled sweets, sharp at the edges,\nthat she placed on my tongue and told me not to swallow.\n\nI swallowed them. I was a child.\nI swallowed the word for the blue hour after rain\nand the word for the cousin who does not visit\nand the word for the ache you get from loving a place\nthat is not where you are.\n\nNow she is ninety and the tin is empty,\nor I have lost the key, or there was never a key,\nonly her hands, which were the key.\nOn the phone she says a sentence and waits.\nI say, Yes, Nonna. I say, Me too.\nI say the three words I still own\nas if they were the whole of the house.\n\nSomewhere inside me is a room\nwhere all those swallowed words are still dissolving,\nsweetening something I can't name.\nI go there sometimes. I don't turn on the light."
+   },
+   "questions": [
+    {
+     "marks": 3,
+     "verb": "Explain",
+     "demand": "explain",
+     "text": "In Text 1, explain how the narrator uses her role as interpreter to protect her father.",
+     "skill_tags": [
+      "characterisation",
+      "power",
+      "perspective"
+     ],
+     "criteria": [
+      {
+       "mark": 3,
+       "descriptor": "Provides a precise, well-reasoned explanation of how the narrator uses her role as interpreter to protect her father, integrating well-chosen textual evidence and making the cause-and-effect relationship explicit"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides a sound explanation of how the narrator uses her role as interpreter to protect her father with appropriate textual reference"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of how the narrator uses her role as interpreter to protect her father, relying on paraphrase or retelling"
+      }
+     ],
+     "checklist": [
+      "Explains softening the doctor's questions (\"gentler on the way through\") because of his embarrassment",
+      "Explains adding what he withholds (\"sharp sometimes\") for the sake of his health",
+      "Explains omitting \"never missed a day\" to protect his dignity",
+      "Notes the reversal of the parent-child relationship"
+     ],
+     "next_steps": {
+      "0": "Identify one thing the narrator changes when she translates and quote it.",
+      "1": "Explain WHY she makes that change: what is she protecting her father from (embarrassment, illness, judgement)?",
+      "2": "Cover a range of choices (softening, adding, omitting) and draw them together into a point about how the relationship has been reversed."
+     },
+     "model": "In Text 1, the narrator uses her control of translation to protect both her father's dignity and his health, even when this means altering his words. She softens the doctor's questions, making them \"gentler on the way through\", because her father's ears \"go red when people are quick with him\", showing her sensitivity to his humiliation. She also adds information he withholds, telling the doctor the pain is \"sharp sometimes\" because she has heard \"the small sound he makes turning over\" at night, putting his wellbeing ahead of his stoic \"It is nothing.\" Finally, she omits his claim that he has \"never missed a day\", fearing it would sound \"like a man asking for a medal\". Each choice reveals a protective, almost parental care that reverses the usual relationship between father and child.",
+     "difficulty": 1
+    },
+    {
+     "marks": 4,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "Analyse how the poet represents the speaker's sense of loss in Text 2.",
+     "skill_tags": [
+      "imagery",
+      "extended metaphor",
+      "tone",
+      "representation"
+     ],
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Provides a perceptive, sustained analysis of how the speaker's sense of loss is represented, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a thoughtful analysis of how the speaker's sense of loss is represented, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how the speaker's sense of loss is represented, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how the speaker's sense of loss is represented or identifies a relevant technique with little explanation of its effect"
+      }
+     ],
+     "checklist": [
+      "Analyses the tin metaphor: language as domestic, precious and fragile",
+      "Analyses the boiled sweets simile and the instruction \"not to swallow\"",
+      "Explains the short confessional sentences \"I swallowed them. I was a child.\"",
+      "Analyses the key image and \"the three words I still own\" / \"the whole of the house\"",
+      "Considers the final stanza: loss internalised as feeling (\"still dissolving\")"
+     ],
+     "next_steps": {
+      "0": "State what kind of loss the poem represents (gradual, partly self-inflicted, inward) and support it with one image.",
+      "1": "Analyse the central metaphor of the tin or the boiled sweets: what does it suggest about how the language was given and lost?",
+      "2": "Analyse a second technique from a different stanza, such as the short confessional sentences or the key that may never have existed.",
+      "3": "Trace the loss across the whole poem and finish with the final stanza: is anything kept? Explain how the ending complicates the sense of loss."
+     },
+     "model": "Text 2 represents the speaker's loss as gradual, partly self-inflicted and ultimately internalised. The extended metaphor of a language kept \"in a tin / with the buttons and the rubber bands\" makes it domestic and precious but also fragile, a household treasure rather than a public possession. The simile of words \"like boiled sweets, sharp at the edges\" captures their sensory pleasure, yet the instruction \"not to swallow\" hints that a language must be held and used, not consumed. The blunt confession \"I swallowed them. I was a child.\" uses short sentences to convey both guilt and self-forgiveness. In the third stanza, the tricolon of uncertainty, the tin is empty, \"or I have lost the key, or there was never a key, / only her hands\", shows the speaker realising that the language lived in her grandmother's presence and cannot be recovered without her. Treating the \"three words I still own\" \"as if they were the whole of the house\" exposes how little remains. Even so, the closing image of words \"still dissolving, / sweetening something I can't name\" suggests that the loss is not total: the language survives as feeling rather than speech.",
+     "difficulty": 2
+    },
+    {
+     "marks": 6,
+     "verb": "Compare",
+     "demand": "compare",
+     "text": "Compare how Text 1 and Text 2 represent language as both a connection and a barrier between generations.",
+     "skill_tags": [
+      "comparison",
+      "language and identity",
+      "form"
+     ],
+     "criteria": [
+      {
+       "mark": 6,
+       "descriptor": "Provides a perceptive, integrated comparison of how both texts represent language as connection and barrier between generations, analysing similarities and differences with well-chosen evidence from both texts"
+      },
+      {
+       "mark": 5,
+       "descriptor": "Provides a thoughtful comparison of how both texts represent language as connection and barrier between generations, with relevant, analysed evidence from both texts"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Provides a sound comparison of how both texts represent language as connection and barrier between generations, with relevant evidence from both texts and some explanation"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Discusses both texts in relation to how both texts represent language as connection and barrier between generations, mostly separately, with some evidence"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Describes one or both texts with limited reference to how both texts represent language as connection and barrier between generations"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Makes a limited or general comment about one or both texts"
+      }
+     ],
+     "checklist": [
+      "Makes an integrated comparative thesis (for example: in Text 1 the child holds linguistic power; in Text 2 she has surrendered it)",
+      "Analyses the bridge metaphor in Text 1 and the infantilising smile at the father",
+      "Analyses the minimal phone exchange (\"Yes, Nonna\", \"Me too\") and the empty tin in Text 2",
+      "Compares how connection survives beyond words in both endings (the father's gratitude; words \"still dissolving\")",
+      "Comments on form: prose narrative and dramatic irony versus lyric metaphor"
+     ],
+     "next_steps": {
+      "0": "Write a thesis that names BOTH texts and states a similarity or difference about language between generations.",
+      "1": "Support each text with at least one analysed quotation: show what language connects and what it blocks.",
+      "2": "Move from separate discussion to comparison: use linking phrases (whereas, similarly, in contrast) inside paragraphs, not just between them.",
+      "3": "Compare the direction of loss or power: who holds the language in each text, and what does that change?",
+      "4": "Compare the endings: how does each text suggest connection survives where words fail?",
+      "5": "For Band 6, add a comparison of form (prose narrative versus lyric poem) and finish with a synthesising judgement about language as both bridge and barrier."
+     },
+     "model": "Both texts represent language as the medium through which love between generations is expressed, yet each shows that language can also separate the people it connects. Text 1 locates this tension in a public, practical setting where the child holds linguistic power, while Text 2 presents a private, inward loss in which the child has surrendered that power.\n\nIn Text 1, language connects through mediation. The metaphor of \"a little bridge made of my voice\" captures the narrator's role as the only link between her father and the doctor, but the bridge also isolates her: \"I am the only one who can walk across it.\" Language is a barrier for the father, whose \"careful English\" earns the smile given to \"children who have said a new word\", a simile that exposes how English infantilises him. The narrator's silent wish to say \"he was an engineer once\" shows that what cannot be translated is his dignity.\n\nText 2 reverses the direction of loss. Here the older generation holds the richer language and the younger has let it go: \"I swallowed them. I was a child.\" Whereas the narrator of Text 1 chooses what to leave out, the speaker of Text 2 has no choice left; on the phone she can only answer \"Yes, Nonna\" and \"Me too\", a minimal exchange in which love persists while meaning thins. The barrier is not a doctor's clock but time itself, figured in the tin that is now \"empty\".\n\nBoth texts nonetheless suggest that connection survives beyond words. In Text 1, the father \"does not look at me\", yet the narrator understands that he knows she is lying and is \"grateful\", an understanding captured in the analogy that \"it is both day and night somewhere at every minute.\" In Text 2, the lost words are \"still dissolving, / sweetening something I can't name\", a metaphor that relocates language from speech to feeling. Through prose narrative and lyric metaphor respectively, the texts together suggest that between generations language is never simply a bridge or a wall, but both at once, and that love often lives in the silence where translation fails.",
+     "difficulty": 3
+    }
+   ],
+   "length_words": 598
+  },
+  {
+   "key": "penalty-scene",
+   "title": "Penalty",
+   "form": "Drama",
+   "complexity": 1,
+   "author": "Original text (HSC Companion)",
+   "headnote": "This is an original short scene written for performance. The characters are fictional.",
+   "theme_tags": [
+    "fathers and sons",
+    "pressure",
+    "sport",
+    "generations"
+   ],
+   "body": "A car parked outside a suburban soccer ground, late afternoon. DANNY (12) sits in the passenger seat in a muddy uniform, boots still on. His father, MARK (40s), is in the driver's seat. The engine is off. A trophy, not theirs, glints through the windscreen as another family walks past.\n\nMARK: Seatbelt.\n\n(DANNY doesn't move. MARK waits, then reaches across and does it up for him, the way he did when DANNY was small. DANNY lets him.)\n\nMARK: You want the radio?\n\nDANNY: No.\n\nMARK: Right.\n\n(Pause. MARK taps the steering wheel, two beats, stops.)\n\nMARK: The keeper guessed right. That's all that was. Fifty-fifty. Professionals miss those.\n\nDANNY: You said go left.\n\nMARK: I said — (He stops.) I said if you're not sure, go left.\n\nDANNY: I was sure. I was going to go right. Then I looked at you.\n\n(Silence. Outside, someone toots a horn and cheers. MARK watches them in the rear-view mirror until they are gone.)\n\nMARK: When I was your age, my dad came to one game. One. Under-thirteens, against Penrith. I scored twice and he left at half-time because the car was making a noise.\n\nDANNY: You've told me.\n\nMARK: Have I.\n\nDANNY: Every time we lose.\n\n(MARK almost laughs. It doesn't quite arrive.)\n\nMARK: So I come to all of them. Every Saturday. I thought that was — I thought if I was there, you'd...\n\nDANNY: I know.\n\nMARK: Do you?\n\n(DANNY looks at his boots. He starts unlacing one, slowly, very carefully, as if it matters.)\n\nDANNY: Next time can you stand somewhere I can't see you?\n\n(It lands. MARK sits with it. He takes his hands off the wheel and puts them in his lap.)\n\nMARK: Yeah. (Beat.) Yeah, mate. I can do that.\n\nDANNY: Not far. Just — behind the goal or something. Where the other dads are.\n\nMARK: Behind the goal.\n\nDANNY: So I know you're there. I just don't want to look.\n\n(MARK nods. He starts the car. The radio comes on by itself, loud, a song neither of them likes. Neither of them turns it off.)\n\nMARK: Maccas?\n\nDANNY: (after a moment) Yeah.\n\n(MARK pulls out. As the car turns, DANNY reaches over and turns the radio down, just a little. MARK lets him. Lights fade.)",
+   "pair": null,
+   "questions": [
+    {
+     "marks": 2,
+     "verb": "Identify",
+     "demand": "identify",
+     "text": "Identify what the stage direction in which Mark does up Danny's seatbelt suggests about their relationship.",
+     "skill_tags": [
+      "stage directions",
+      "characterisation",
+      "drama"
+     ],
+     "criteria": [
+      {
+       "mark": 2,
+       "descriptor": "Precisely identifies what the seatbelt stage direction suggests about the relationship and explains its significance with apt, accurately quoted evidence"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Identifies a relevant feature of what the seatbelt stage direction suggests about the relationship with little or no explanation"
+      }
+     ],
+     "checklist": [
+      "Identifies Mark's protective, even parental-to-a-small-child, care",
+      "Quotes \"the way he did when DANNY was small\" or \"DANNY lets him\"",
+      "Notes the silent acceptance: closeness without words"
+     ],
+     "next_steps": {
+      "0": "Say what the gesture shows about Mark's feelings for Danny, and quote the stage direction.",
+      "1": "Add the second half of the moment: explain what Danny's response (\"DANNY lets him\") shows about how he feels at this point."
+     },
+     "model": "The stage direction suggests that Mark still treats Danny protectively, almost as a young child, and that Danny, in his disappointment, accepts this care. The detail that Mark does it up \"the way he did when DANNY was small\" links the gesture to the past, while \"DANNY lets him\" shows a silent acceptance, suggesting that their relationship is close even when neither can speak about the loss.",
+     "difficulty": 1
+    },
+    {
+     "marks": 4,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "Analyse how the playwright uses dialogue and silence to reveal the tension between father and son.",
+     "skill_tags": [
+      "dialogue",
+      "subtext",
+      "stage directions",
+      "drama"
+     ],
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Provides a perceptive, sustained analysis of how dialogue and silence reveal the tension between father and son, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a thoughtful analysis of how dialogue and silence reveal the tension between father and son, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how dialogue and silence reveal the tension between father and son, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how dialogue and silence reveal the tension between father and son or identifies a relevant technique with little explanation of its effect"
+      }
+     ],
+     "checklist": [
+      "Analyses Mark's functional, evasive opening lines (\"Seatbelt.\", \"You want the radio?\")",
+      "Analyses the exchange \"You said go left\" / \"I said — (He stops.)\" as the source of tension",
+      "Explains the silence after \"Then I looked at you\" and the rear-view mirror direction",
+      "Analyses the deflation of Mark's anecdote (\"Every time we lose\", \"It doesn't quite arrive\")",
+      "Explains the unfinished sentence \"I thought if I was there, you'd...\""
+     ],
+     "next_steps": {
+      "0": "Identify the main source of tension in the scene and quote the line where it surfaces.",
+      "1": "Analyse how the short, clipped lines work: what are the characters avoiding saying?",
+      "2": "Bring in silence and stage directions (the pause, the rear-view mirror, the unfinished sentence) and explain what they reveal that dialogue cannot.",
+      "3": "Develop a sustained argument that the scene's real meaning is in its subtext, tracing how the tension builds to Danny's request."
+     },
+     "model": "The playwright uses clipped dialogue and carefully placed silences to show that the real conflict lies beneath what the characters say. Mark's opening lines, \"Seatbelt.\" and \"You want the radio?\", are functional and evasive, offering practical care instead of talking about the loss. When Mark rationalises the miss, \"Fifty-fifty. Professionals miss those\", Danny's terse reply, \"You said go left\", exposes the source of the tension, and Mark's broken \"I said — (He stops.)\" dramatises his realisation mid-sentence. The silence that follows Danny's admission, \"Then I looked at you\", is extended by the stage direction in which Mark watches celebrating strangers \"in the rear-view mirror until they are gone\", a visual suggestion of him looking back at his own past. Mark's anecdote about his father is then deflated by Danny's flat \"Every time we lose\", and the direction \"It doesn't quite arrive\" makes even Mark's laughter incomplete. The fragment \"I thought if I was there, you'd...\" trails into silence because Mark cannot articulate what his presence was meant to achieve. Throughout, what is left unsaid carries the scene's emotional weight.",
+     "difficulty": 2
+    },
+    {
+     "marks": 5,
+     "verb": "Evaluate",
+     "demand": "evaluate",
+     "text": "Evaluate the extent to which the ending of the scene resolves the conflict between Danny and Mark.",
+     "skill_tags": [
+      "ending",
+      "resolution",
+      "symbolism",
+      "judgement"
+     ],
+     "criteria": [
+      {
+       "mark": 5,
+       "descriptor": "Makes a perceptive, well-justified judgement about the extent to which the ending resolves the conflict, weighing evidence from across the text and analysing how language and form support the judgement"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Makes a clear, reasoned judgement about the extent to which the ending resolves the conflict, supported by relevant, well-analysed evidence"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Makes a sound judgement about the extent to which the ending resolves the conflict with relevant evidence and some analysis"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Offers a judgement about the extent to which the ending resolves the conflict that is asserted more than argued, with some textual support"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes the extent to which the ending resolves the conflict with an implied or unsupported judgement"
+      }
+     ],
+     "checklist": [
+      "Reaches a qualified judgement (resolves the immediate conflict; the deeper pattern only partly)",
+      "Analyses Danny's request and \"It lands\", and Mark taking \"his hands off the wheel\"",
+      "Explains \"So I know you're there. I just don't want to look.\" as distinguishing presence from pressure",
+      "Analyses the radio and \"MARK lets him\" as reversing the opening seatbelt moment",
+      "Notes what stays unresolved (Mark's \"Do you?\" is never answered)"
+     ],
+     "next_steps": {
+      "0": "Answer the question with a clear judgement: does the ending fully resolve the conflict, partly resolve it, or not at all?",
+      "1": "Analyse Danny's request and Mark's response, including at least one stage direction.",
+      "2": "Explain how the final actions (the radio, Maccas, the turning down of the volume) express a change in the relationship.",
+      "3": "Consider what remains unresolved and use it to qualify your judgement.",
+      "4": "Refine for a top mark: connect the ending to the opening (the seatbelt) and to Mark's story about his own father to show how far the cycle has changed."
+     },
+     "model": "The ending resolves the immediate conflict through a small, mutual compromise, but it leaves the deeper pattern of inherited pressure only partly addressed, which makes it a convincing rather than a neat resolution.\n\nThe turning point is Danny's request: \"Next time can you stand somewhere I can't see you?\" The stage direction \"It lands\" signals its force, and Mark's gesture of taking \"his hands off the wheel\" and putting them \"in his lap\" symbolically surrenders control. His reply, \"Yeah, mate. I can do that\", is plain but sincere, marking a genuine shift.\n\nDanny's clarification is crucial to the emotional balance: \"So I know you're there. I just don't want to look.\" The line distinguishes presence from pressure, reassuring Mark that he is wanted while setting a boundary. This reframes Mark's anecdote about his own absent father; the son does not want the absence Mark suffered, only some distance. The cycle is adjusted rather than repeated.\n\nThe final moments express reconciliation through action rather than words. The loud song \"neither of them likes\" is left playing, since \"Neither of them turns it off\", suggesting a shared, tolerant discomfort, and the brief exchange \"Maccas?\" and \"Yeah.\" restores ordinary routine. Most tellingly, Danny turns the radio down \"just a little\" and \"MARK lets him\", mirroring the opening seatbelt moment but reversing it: now the son acts and the father allows.\n\nHowever, the playwright does not resolve everything. Mark's question \"Do you?\" is never answered, and his need to be present remains. The ending is effective because it resolves the scene's conflict in a modest, believable way while acknowledging that the relationship will keep negotiating its distance.",
+     "difficulty": 2
+    }
+   ],
+   "length_words": 380
+  },
+  {
+   "key": "housekeeper-monologue",
+   "title": "The Housekeeper, to the New Girl",
+   "form": "Poetry",
+   "complexity": 3,
+   "author": "Original text (HSC Companion)",
+   "headnote": "This is an original dramatic monologue written in an older style. It is set in a wealthy Sydney household in the 1880s; the speaker is a fictional housekeeper addressing a newly hired maid. A 'character' was a written reference from a former employer; the 'copper' was a large boiler used for washing clothes.",
+   "theme_tags": [
+    "class",
+    "power",
+    "silence",
+    "complicity",
+    "colonial Sydney"
+   ],
+   "body": "Mind how you set the tray, girl. Silver first,\nthen china, then yourself, and last of all\nyour opinions, which in this house are kept\nlike spoons that are not ours to use. Sit down.\nYou'll not sit often here, so learn it now.\n\nThe mistress rings at seven. Not before.\nYou'll know her bell; it has a peevish note,\nas if the house had wronged it in the night.\nThe master takes his tea at eight, alone,\nand reads the shipping news aloud to no one.\nYou'll answer when he speaks. He does not speak.\n\nThe girl before you? Bridget. Clever hands.\nShe dressed the mistress's hair as if it mattered,\nand sang at the copper, which I let her do,\nfor there's no rule against a song, God knows,\nthough there is one against its being heard.\nA brooch was lost in March. A garnet brooch.\nThe mistress turned the house out like a drawer\nand found it nowhere, and found Bridget handy.\nThey sent her off without a character.\nYou'll know what that means soon enough, I'd wager.\n\nThe young master came home that week from town\nwith a new watch-chain and a careless laugh.\nI keep the linen. I keep the household books.\nI keep my counsel, which is the hardest keeping.\nDon't look at me like that. Pour out the tea.\n\nYou'll do. You're quiet. Quiet girls do well.\nAnd if you hear the copper singing, girl,\non wash-days, when the steam is thick and low,\nyou'll tell yourself it's only water boiling.",
+   "pair": null,
+   "questions": [
+    {
+     "marks": 3,
+     "verb": "Explain",
+     "demand": "explain",
+     "text": "Explain what the first stanza reveals about the speaker's view of a servant's place in the household.",
+     "skill_tags": [
+      "perspective",
+      "voice",
+      "context"
+     ],
+     "criteria": [
+      {
+       "mark": 3,
+       "descriptor": "Provides a precise, well-reasoned explanation of the speaker's view of a servant's place as revealed in the first stanza, integrating well-chosen textual evidence and making the cause-and-effect relationship explicit"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides a sound explanation of the speaker's view of a servant's place as revealed in the first stanza with appropriate textual reference"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of the speaker's view of a servant's place as revealed in the first stanza, relying on paraphrase or retelling"
+      }
+     ],
+     "checklist": [
+      "Explains the ordered list that ranks \"yourself\" below silver and china",
+      "Explains the simile of opinions kept \"like spoons that are not ours to use\"",
+      "Explains the undercut command \"Sit down\" / \"You'll not sit often here\"",
+      "Notes the brisk imperatives of a woman who enforces the hierarchy"
+     ],
+     "next_steps": {
+      "0": "State the speaker's view of a servant's place in one sentence, then quote the list in the opening lines.",
+      "1": "Explain what the comparison of opinions to spoons suggests about who owns a servant's thoughts.",
+      "2": "Show how the imperative voice reveals that the speaker has absorbed the hierarchy and now enforces it, using a second quotation."
+     },
+     "model": "The first stanza reveals that the speaker believes a servant must subordinate herself completely to the household. Her ordered list, \"Silver first, / then china, then yourself\", places the girl below the objects she serves, and \"last of all / your opinions\" ranks her inner life lowest. The simile comparing opinions to \"spoons that are not ours to use\" implies that a servant's thoughts effectively belong to her employers, to be kept but never used. Even the command \"Sit down\" is undercut by the warning \"You'll not sit often here\", showing that rest, like opinion, is a rare privilege. The brisk imperatives present a woman who has internalised the hierarchy and now enforces it.",
+     "difficulty": 2
+    },
+    {
+     "marks": 4,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "Analyse how the poet reveals more to the reader than the speaker openly says about the missing brooch.",
+     "skill_tags": [
+      "dramatic irony",
+      "implication",
+      "juxtaposition",
+      "dramatic monologue"
+     ],
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Provides a perceptive, sustained analysis of how the poem reveals, through implication, more than the speaker states about the brooch, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a thoughtful analysis of how the poem reveals, through implication, more than the speaker states about the brooch, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how the poem reveals, through implication, more than the speaker states about the brooch, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how the poem reveals, through implication, more than the speaker states about the brooch or identifies a relevant technique with little explanation of its effect"
+      }
+     ],
+     "checklist": [
+      "Explains the sardonic repetition in \"found it nowhere, and found Bridget handy\"",
+      "Analyses the juxtaposition of Bridget's dismissal with the young master's \"new watch-chain\"",
+      "Explains \"careless\" as a judgement the speaker cannot state directly",
+      "Analyses the anaphora of \"I keep\" and the confession \"the hardest keeping\"",
+      "Interprets \"Don't look at me like that\" as a sign the new girl (and reader) has understood"
+     ],
+     "next_steps": {
+      "0": "State what the reader comes to suspect about the brooch, and quote the line that first raises doubt about Bridget's guilt.",
+      "1": "Analyse the juxtaposition across the stanza break: why does the young master's watch-chain appear straight after Bridget's dismissal?",
+      "2": "Analyse how the speaker's repeated \"I keep\" reveals what she knows and what it costs her.",
+      "3": "Show that the accusation is made entirely through implication, and explain how the form (a dramatic monologue to a listener) makes this possible."
+     },
+     "model": "The poet uses juxtaposition, implication and the speaker's guarded tone to suggest that the young master, not Bridget, took the brooch, and that the housekeeper knows it. The accusation against Bridget is framed sardonically: the mistress \"found it nowhere, and found Bridget handy\", where the repetition of \"found\" exposes the injustice of choosing a convenient scapegoat. The stanza break then places a seemingly unrelated detail directly after Bridget's dismissal: the young master returned \"with a new watch-chain and a careless laugh\". The speaker never states a connection, but the juxtaposition invites the reader to infer that the garnet brooch paid for the chain, and \"careless\" implies his indifference to the harm caused. The anaphora of \"I keep the linen. I keep the household books.\" reveals that the housekeeper has access to the accounts and therefore to knowledge, while the climactic \"I keep my counsel, which is the hardest keeping\" confesses the moral cost of her silence. Her sudden command \"Don't look at me like that\" suggests the new girl has understood, signalling to the reader that the inference is correct. The poem makes its accusation entirely through implication.",
+     "difficulty": 2
+    },
+    {
+     "marks": 6,
+     "verb": "Evaluate",
+     "demand": "evaluate",
+     "text": "Evaluate the extent to which the poem invites sympathy for the housekeeper.",
+     "skill_tags": [
+      "judgement",
+      "dramatic monologue",
+      "complicity",
+      "context"
+     ],
+     "criteria": [
+      {
+       "mark": 6,
+       "descriptor": "Makes a perceptive, well-justified judgement about the extent to which the poem invites sympathy for the housekeeper, weighing evidence from across the text and analysing how language and form support the judgement"
+      },
+      {
+       "mark": 5,
+       "descriptor": "Makes a clear, reasoned judgement about the extent to which the poem invites sympathy for the housekeeper, supported by relevant, well-analysed evidence"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Makes a sound judgement about the extent to which the poem invites sympathy for the housekeeper with relevant evidence and some analysis"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Offers a judgement about the extent to which the poem invites sympathy for the housekeeper that is asserted more than argued, with some textual support"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Describes the extent to which the poem invites sympathy for the housekeeper with an implied or unsupported judgement"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Makes a limited or general comment about the text"
+      }
+     ],
+     "checklist": [
+      "Reaches a qualified judgement: she is complicit, yet the monologue exposes the cost of complicity",
+      "Uses evidence of complicity (training the girl in self-erasure; \"it's only water boiling\")",
+      "Uses evidence of powerlessness (the \"peevish\" bell, the master who \"does not speak\") and her tenderness towards Bridget",
+      "Analyses the irony of \"no rule against a song\" / \"against its being heard\"",
+      "Analyses \"the hardest keeping\" and the closing copper image as signs of a troubled conscience",
+      "Explains how the dramatic monologue form shapes the reader's judgement"
+     ],
+     "next_steps": {
+      "0": "Begin with a judgement: how much sympathy does the poem invite, and for what reasons?",
+      "1": "Present the case against the housekeeper with evidence: how does she take part in the household's injustice?",
+      "2": "Present the case for sympathy with evidence: how is her hardness shaped by powerlessness or by feeling for Bridget?",
+      "3": "Analyse language closely in both cases (for example the irony about songs, or the phrase \"the hardest keeping\") rather than summarising the story.",
+      "4": "Weigh the two cases and explain how the ending (the copper \"singing\") affects your final judgement.",
+      "5": "For Band 6, discuss how the dramatic monologue form itself shapes sympathy: the speaker reveals more of her conscience than she intends."
+     },
+     "model": "The poem invites considerable but qualified sympathy for the housekeeper: she is complicit in an unjust household, yet the dramatic monologue lets the reader hear the cost of that complicity, so she emerges as both an agent and a casualty of the hierarchy she enforces.\n\nThe case against her is clear. She trains the new girl in self-erasure, ranking \"yourself\" below silver and china, and she knew that Bridget was dismissed \"without a character\" yet did nothing. Her remark \"You'll know what that means soon enough, I'd wager\" carries a hint of threat, and the closing instruction that the girl should tell herself \"it's only water boiling\" asks her to adopt the same willed blindness. In this sense the housekeeper perpetuates injustice.\n\nHowever, the poet repeatedly signals that her hardness is a survival strategy shaped by powerlessness. The mistress's bell with \"a peevish note, / as if the house had wronged it\" and the master who \"does not speak\" depict employers who are petty and indifferent, which places the speaker's coldness in context. Her memory of Bridget is tender, \"Clever hands\", and she recalls the girl who \"sang at the copper, which I let her do\". The aside \"there's no rule against a song, God knows, / though there is one against its being heard\" is bitterly ironic, revealing her awareness that servants may have inner lives only if they remain unheard.\n\nThe strongest source of sympathy is her confession that keeping \"my counsel\" is \"the hardest keeping\". The phrase concedes a guilt she cannot act upon, and the closing image of the copper \"singing\" on wash-days suggests she is haunted by Bridget's absence. The steam \"thick and low\" obscures sight, mirroring the moral fog in which she lives.\n\nUltimately, the dramatic monologue form makes sympathy hard to withhold, because the speaker exposes more of her conscience than she intends. She is not innocent, but the poem suggests her silence is the product of a system that punishes speech, so the reader judges the household more harshly than the woman who serves it.",
+     "difficulty": 3
+    }
+   ],
+   "length_words": 258
+  },
+  {
+   "key": "defence-of-boredom",
+   "title": "In Defence of Boredom",
+   "form": "Personal essay",
+   "complexity": 2,
+   "author": "Original text (HSC Companion)",
+   "headnote": "This is an original personal essay. The writer is fictional.",
+   "theme_tags": [
+    "childhood",
+    "technology",
+    "imagination",
+    "attention"
+   ],
+   "body": "When I was nine, the most boring place in the world was my grandmother's lounge room in Launceston on a Sunday afternoon. There was a clock that ticked as if it were being paid by the tick. There was a bowl of wax fruit nobody was allowed to touch. There was a television, but it lived under a crocheted cover, like a budgie that had been put to bed. And there was me, on the carpet, with nothing to do for three hours while the adults talked about people who had died.\n\nI want to say clearly, before I go on, that I hated it. I am not one of those people who looks back on childhood suffering and calls it character. I was bored to the point of physical pain. I counted the squares in the carpet pattern. I tried to read the newspaper upside down. I lay on my back and stared at the ceiling until the light fitting began to look like a jellyfish, and then like a face, and then like a map of an island that does not exist, which I named and populated and governed, with some cruelty, for the rest of the afternoon.\n\nThat island, it turns out, is the reason I am a writer.\n\nI have been thinking about this because I have not been bored, properly bored, in perhaps eleven years. I have a phone. You have a phone. Between us we have abolished the waiting room, the bus stop, the queue at the bank, the ten minutes before a film starts. Every gap in the day now has something in it, the way every gap in a cheap wall has filler. I can no longer remember the last time I stared at a ceiling long enough for it to become anything other than a ceiling.\n\nThe usual way to argue this is with research, and there is research, though I am suspicious of anyone who tells you that a study has proved something about your soul. So let me argue it the other way, from the carpet. Boredom is not empty. Boredom is the feeling of your mind discovering that nobody is going to entertain it, and deciding, slowly and resentfully, to entertain itself. It is the dull grey waiting room outside imagination. You cannot get into the room without sitting in the waiting room first.\n\nI do not want to romanticise this. Boredom is also what happens to people in jobs that grind them down, in hospitals, in detention, in lives with no doors in them. That boredom is not a gift. It is a wound, and nobody should be told to be grateful for it. The boredom I am defending is a smaller and more privileged thing: the bored afternoon that has an end.\n\nBut I think it is worth defending. Last month, on a delayed train, my phone died. For forty minutes I looked out of the window at the backs of houses, their washing lines and trampolines and bins. Around the twentieth minute, something unlocked. I began to wonder about the people who lived there, and then to invent them, and by the time the train moved I had the first page of a story.\n\nMy grandmother's clock is in my hallway now. It still ticks as if it is being paid by the tick. I have never once wanted to throw it out.",
+   "pair": null,
+   "questions": [
+    {
+     "marks": 2,
+     "verb": "Identify",
+     "demand": "identify",
+     "text": "Identify the writer's central claim about boredom, using ONE quotation that expresses it.",
+     "skill_tags": [
+      "argument",
+      "thesis"
+     ],
+     "criteria": [
+      {
+       "mark": 2,
+       "descriptor": "Precisely identifies the writer's central claim about boredom and explains its significance with apt, accurately quoted evidence"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Identifies a relevant feature of the writer's central claim about boredom with little or no explanation"
+      }
+     ],
+     "checklist": [
+      "States the claim: temporary, ordinary boredom is valuable because it leads the mind to imagine",
+      "Selects an apt quotation (for example \"the dull grey waiting room outside imagination\")",
+      "Briefly explains how the quotation expresses the claim"
+     ],
+     "next_steps": {
+      "0": "State the claim in your own words in one sentence; avoid simply saying the essay is about boredom.",
+      "1": "Choose the quotation that most directly expresses the claim and explain in a phrase how it does so."
+     },
+     "model": "The writer's central claim is that ordinary, temporary boredom is valuable because it forces the mind to create its own entertainment, and so leads to imagination. This is expressed in the metaphor that boredom is \"the dull grey waiting room outside imagination\", which presents boredom as an uncomfortable but necessary stage that the mind must pass through before creativity begins.",
+     "difficulty": 1
+    },
+    {
+     "marks": 5,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "Analyse how the writer's tone shifts across the essay and how these shifts support the argument.",
+     "skill_tags": [
+      "tone",
+      "structure",
+      "voice",
+      "argument"
+     ],
+     "criteria": [
+      {
+       "mark": 5,
+       "descriptor": "Provides a perceptive, sustained analysis of how shifts in tone support the essay's argument, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Provides a thoughtful analysis of how shifts in tone support the essay's argument, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a sound analysis of how shifts in tone support the essay's argument, using relevant evidence with some explanation of effect"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how shifts in tone support the essay's argument, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how shifts in tone support the essay's argument or identifies a relevant technique with little explanation of its effect"
+      }
+     ],
+     "checklist": [
+      "Traces at least three tonal stages (comic nostalgia, revelation and direct address, sober concession, warm closure)",
+      "Analyses the comic similes of the opening (\"paid by the tick\", the budgie)",
+      "Analyses the one-line paragraph about the island and the inclusive \"I have a phone. You have a phone.\"",
+      "Explains how the serious concession (\"It is a wound\") narrows and strengthens the claim",
+      "Explains the circular return to the clock with changed feeling"
+     ],
+     "next_steps": {
+      "0": "Identify at least two different tones in the essay and quote where each appears.",
+      "1": "Explain how each tone affects the reader: for example, how the comic opening makes us share the child's suffering.",
+      "2": "Locate the shifts precisely (for instance the one-line paragraph, or \"I do not want to romanticise this\") and analyse what changes there.",
+      "3": "Link every shift to the argument: show how each one makes the defence of boredom more trustworthy or more precise.",
+      "4": "Organise the answer as a journey through the essay and end with how the final image transforms the opening one."
+     },
+     "model": "The writer's tone moves from comic nostalgia to reflective argument, then to sober qualification and finally to quiet affirmation, and each shift strengthens the credibility of the defence of boredom.\n\nThe opening is playful. Hyperbole and simile, such as the clock that ticked \"as if it were being paid by the tick\" and the television under its cover \"like a budgie that had been put to bed\", make the grandmother's lounge room comically lifeless, so the reader shares the child's suffering. The writer then insists \"that I hated it\", refusing to sentimentalise; this honesty earns trust before the argument begins.\n\nThe one-line paragraph \"That island, it turns out, is the reason I am a writer\" shifts the tone to revelation. The following paragraph adopts a direct, inclusive register: \"I have a phone. You have a phone.\" The parallel sentences implicate the reader, and the comparison with filler in \"every gap in a cheap wall\" makes constant stimulation seem shoddy.\n\nThe most significant shift is to seriousness: \"I do not want to romanticise this.\" Here the writer acknowledges boredom in \"detention\" and in \"lives with no doors in them\", calling it \"a wound\". This sober concession limits the claim to \"the bored afternoon that has an end\", making the argument more precise and harder to dismiss.\n\nThe ending returns to a gentle, warm tone. The clock that still ticks \"as if it is being paid by the tick\" echoes the opening, but now with affection: \"I have never once wanted to throw it out.\" The circular return shows the writer's attitude transformed, embodying the argument that boredom, remembered, becomes valuable.",
+     "difficulty": 3
+    },
+    {
+     "marks": 6,
+     "verb": "Evaluate",
+     "demand": "evaluate",
+     "text": "To what extent do you find the writer's defence of boredom convincing? Justify your response with close reference to the essay.",
+     "skill_tags": [
+      "personal judgement",
+      "argument",
+      "evidence",
+      "evaluation"
+     ],
+     "criteria": [
+      {
+       "mark": 6,
+       "descriptor": "Makes a perceptive, well-justified judgement about how convincing the writer's defence of boredom is, weighing evidence from across the text and analysing how language and form support the judgement"
+      },
+      {
+       "mark": 5,
+       "descriptor": "Makes a clear, reasoned judgement about how convincing the writer's defence of boredom is, supported by relevant, well-analysed evidence"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Makes a sound judgement about how convincing the writer's defence of boredom is with relevant evidence and some analysis"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Offers a judgement about how convincing the writer's defence of boredom is that is asserted more than argued, with some textual support"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Describes how convincing the writer's defence of boredom is with an implied or unsupported judgement"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Makes a limited or general comment about the text"
+      }
+     ],
+     "checklist": [
+      "States a personal, qualified judgement and sustains it",
+      "Explains how the ceiling sequence enacts the movement from boredom to imagination",
+      "Evaluates the redefinition of boredom and the waiting-room metaphor (noting it is an assertion)",
+      "Evaluates the handling of counter-arguments: suspicion of research; the concession about \"detention\"",
+      "Identifies a limitation (anecdotal evidence from a writer predisposed to value imagination)"
+     ],
+     "next_steps": {
+      "0": "Give your own judgement in the first sentence; a to-what-extent question needs a degree (completely, largely, partly, hardly).",
+      "1": "Support your judgement with the essay's strongest piece of evidence and analyse why it persuades (or does not).",
+      "2": "Evaluate the writer's definition of boredom and the waiting-room metaphor: are they argued or just asserted?",
+      "3": "Weigh how the writer deals with objections, including the concession about harmful boredom.",
+      "4": "Identify a genuine limitation in the essay's reasoning or evidence and explain how it affects your judgement.",
+      "5": "For Band 6, keep your judgement consistent across every paragraph and finish by defining exactly what kind of argument the essay succeeds (or fails) in making."
+     },
+     "model": "I find the writer's defence of boredom largely convincing, because it argues from vivid personal evidence, defines its terms honestly and anticipates the strongest objection. Its persuasiveness is limited, however, by its reliance on a single kind of experience, which the writer openly admits is privileged.\n\nThe essay's greatest strength is that it shows rather than asserts the process it defends. The account of staring at the ceiling until the light fitting looked \"like a jellyfish, and then like a face, and then like a map of an island that does not exist\" enacts the movement from boredom to invention; the cumulative structure lets the reader watch imagination arrive. When the writer then claims, \"That island, it turns out, is the reason I am a writer\", the conclusion feels earned.\n\nThe writer is also convincing in redefining boredom precisely. Rather than \"empty\", it is \"the feeling of your mind discovering that nobody is going to entertain it\", and the metaphor of \"the dull grey waiting room outside imagination\" captures both its discomfort and its purpose. The claim that \"You cannot get into the room without sitting in the waiting room first\" is memorable, though it is an assertion rather than a demonstrated truth.\n\nThe handling of counter-arguments adds credibility. The writer is wary of research that claims to have \"proved something about your soul\", choosing to argue \"from the carpet\", which some readers may see as evasive. More persuasively, the writer concedes that for people in grinding jobs or \"detention\" boredom \"is a wound\", limiting the case to \"the bored afternoon that has an end\". This honesty prevents the essay from sounding glib.\n\nThe weakness is that the evidence is anecdotal and comes from a writer, someone predisposed to value imaginative drift. The train anecdote, in which the \"first page of a story\" arrives after forty minutes, may not persuade a reader who simply finds boredom unpleasant.\n\nOverall, I find the essay convincing as a reflective argument rather than a proof: its candour, imagery and careful limits make a modest claim persuasively, even if they cannot make a universal one.",
+     "difficulty": 3
+    }
+   ],
+   "length_words": 568
+  },
+  {
+   "key": "last-milk-bar",
+   "title": "The Last Milk Bar on Ferris Street",
+   "form": "Feature article",
+   "complexity": 1,
+   "author": "Original text (HSC Companion)",
+   "headnote": "This is an original feature article. The people, the shop and the suburb are fictional.",
+   "theme_tags": [
+    "community",
+    "change",
+    "migration",
+    "small business",
+    "generations"
+   ],
+   "body": "At 6.15 every morning, Eleni Kostas turns the sign on the door of the Ferris Street Milk Bar from CLOSED to OPEN, and then, because the hinge is loose, she turns it back again with her thumb so it stays straight. She has done this for forty-three years. 'The sign is older than my son,' she says. 'It complains more, too.'\n\nThe milk bar sits on the corner of Ferris and Dunn streets, in a suburb that has changed around it like water around a stone. The fruit shop is now a pilates studio. The bank is a café that serves coffee in jars. Across the road, a supermarket with self-service lanes and a car park the size of a football field opened six years ago. And still, every morning, a small queue forms outside Eleni's door: tradies wanting pies, schoolkids wanting mixed lollies, an elderly man who wants nothing but the newspaper and ten minutes of conversation about the football.\n\nMilk bars were once everywhere in Australian suburbs, many of them run by migrant families, Greek and Italian especially, who worked long hours behind counters stacked with sweets and magazines. Most have now closed. Eleni knows she is something of a survivor. She does not seem to find it romantic.\n\n'People come in and take photos,' she says, wiping down a counter that is already clean. 'They say, oh, it's so nostalgic. Then they go and buy their milk at the supermarket.' She shrugs. 'Nostalgia doesn't pay the electricity.'\n\nHer husband, Kostas, died fifteen years ago. (Yes, she says, laughing, she married a man whose first name was her surname. 'Everybody in the village thought it was very efficient.') Since then she has run the shop alone, with occasional help from her granddaughter, Sofia, who is nineteen and studying engineering.\n\nSofia has opinions about the business. She has set up a card machine, an Instagram account and a spreadsheet. 'Yiayia's system was a notebook,' she says. 'Which was actually incredible. She knew every customer's tab to the cent. But you can't sell a notebook.'\n\nIs she going to take over? Sofia laughs, then stops laughing. 'I don't know,' she says. 'I love it. But I don't want to love it the way she loves it. She hasn't had a holiday since 1994.'\n\nWhat keeps people coming back is difficult to measure. Tom Le, a plumber who has stopped here every working day for a decade, struggles to explain. 'The pies are fine,' he says. 'They're not the best pies.' He thinks. 'She asked about my daughter when she was sick. Every day. Even after she was better, Eleni still asked. You don't get that at the servo.'\n\nAt closing time, Eleni counts the till by hand, though the card machine has already done it for her. She saves the coins in a biscuit tin for her grandchildren. When I ask what will happen to the shop when she retires, she looks at me as if I have asked something faintly rude.\n\n'Retire,' she says, trying the word like an unfamiliar sweet. Then she turns the sign. It swings crooked. She leaves it.",
+   "pair": null,
+   "questions": [
+    {
+     "marks": 3,
+     "verb": "Explain",
+     "demand": "explain",
+     "text": "Explain how the opening paragraph engages the reader and introduces the article's focus.",
+     "skill_tags": [
+      "opening",
+      "feature writing",
+      "anecdotal lede"
+     ],
+     "criteria": [
+      {
+       "mark": 3,
+       "descriptor": "Provides a precise, well-reasoned explanation of how the opening paragraph engages the reader and introduces the focus, integrating well-chosen textual evidence and making the cause-and-effect relationship explicit"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides a sound explanation of how the opening paragraph engages the reader and introduces the focus with appropriate textual reference"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of how the opening paragraph engages the reader and introduces the focus, relying on paraphrase or retelling"
+      }
+     ],
+     "checklist": [
+      "Identifies the anecdotal lede (a specific time and ritual) rather than a general statement",
+      "Explains how the sign ritual characterises Eleni as meticulous and devoted",
+      "Explains \"for forty-three years\" as introducing the focus on endurance and change",
+      "Explains the effect of ending on Eleni's own witty quotation"
+     ],
+     "next_steps": {
+      "0": "Identify how the article begins (with a specific scene rather than a general claim) and quote one precise detail.",
+      "1": "Explain how that detail engages the reader: what does it make us picture or feel about Eleni?",
+      "2": "Connect the opening to the article's wider focus, the survival of the milk bar amid change, and explain how ending on Eleni's own voice prepares for this."
+     },
+     "model": "The opening engages the reader through a precise, anecdotal lede rather than a general statement. The specific time, \"At 6.15 every morning\", and the small ritual of turning the sign back \"with her thumb so it stays straight\" create an intimate, visual scene that characterises Eleni as meticulous and devoted. The detail that she has done this \"for forty-three years\" establishes the article's focus on endurance amid change, while the loose hinge hints at the business's age and fragility. Ending the paragraph with Eleni's own humorous line, \"It complains more, too\", introduces her dry wit and voice, so the reader is drawn in by a character before the article explains its broader subject, the decline of the suburban milk bar.",
+     "difficulty": 1
+    },
+    {
+     "marks": 4,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "Analyse how the writer represents Eleni Kostas.",
+     "skill_tags": [
+      "characterisation",
+      "representation",
+      "quotation in journalism"
+     ],
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Provides a perceptive, sustained analysis of how Eleni Kostas is represented, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a thoughtful analysis of how Eleni Kostas is represented, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how Eleni Kostas is represented, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how Eleni Kostas is represented or identifies a relevant technique with little explanation of its effect"
+      }
+     ],
+     "checklist": [
+      "Makes a claim about the representation (resilient, unsentimental, devoted, resisting nostalgia)",
+      "Analyses revealing actions (wiping \"a counter that is already clean\")",
+      "Analyses her direct speech, especially \"Nostalgia doesn't pay the electricity\"",
+      "Uses other voices (Tom Le, Sofia) to show care and its cost",
+      "Analyses the \"unfamiliar sweet\" simile at the end"
+     ],
+     "next_steps": {
+      "0": "State how Eleni is represented in two or three precise words, then support the claim with one detail.",
+      "1": "Analyse how the writer characterises her through actions as well as words.",
+      "2": "Use the other people quoted in the article (Tom Le, Sofia) to deepen your account of Eleni.",
+      "3": "Build a single argument about the representation, for example that the article presents endurance rather than nostalgia, and show how every piece of evidence supports it."
+     },
+     "model": "The writer represents Eleni as resilient, unsentimental and quietly devoted to her community, resisting the nostalgic image that outsiders project onto her. Her actions characterise her before her words do: she wipes \"a counter that is already clean\", a detail that suggests habitual pride and care. Her direct speech reveals a sharp, pragmatic humour, most clearly in the aphorism \"Nostalgia doesn't pay the electricity\", which rejects the romanticising gaze of customers who \"take photos\" but shop elsewhere. The writer reinforces this in narration, noting that she \"does not seem to find it romantic\", so the article itself avoids sentimentalising her. Other voices complete the portrait. Tom Le's testimony, \"She asked about my daughter when she was sick. Every day.\", reveals the care that makes her shop valuable, while Sofia's remark that she \"hasn't had a holiday since 1994\" hints at the personal cost of her dedication. Finally, the simile of Eleni saying \"Retire\" while \"trying the word like an unfamiliar sweet\" suggests that work is so central to her identity that rest is almost foreign to her. She emerges as a figure of endurance rather than nostalgia.",
+     "difficulty": 2
+    },
+    {
+     "marks": 5,
+     "verb": "Synthesise",
+     "demand": "synthesise",
+     "text": "Drawing on the whole article, what does it suggest about what communities lose and what they keep as suburbs change?",
+     "skill_tags": [
+      "synthesis",
+      "theme",
+      "community",
+      "change"
+     ],
+     "criteria": [
+      {
+       "mark": 5,
+       "descriptor": "Constructs a perceptive, coherent synthesis of what the article suggests communities lose and keep as suburbs change, combining insights from across the text(s) into a new understanding supported by well-chosen evidence"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Constructs a thoughtful synthesis of what the article suggests communities lose and keep as suburbs change, drawing together relevant, analysed evidence"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Draws together ideas about what the article suggests communities lose and keep as suburbs change with relevant evidence and some explanation"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Discusses relevant ideas about what the article suggests communities lose and keep as suburbs change without fully combining them"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of the text(s) with limited reference to what the article suggests communities lose and keep as suburbs change"
+      }
+     ],
+     "checklist": [
+      "Constructs an overall position combining loss and continuity",
+      "Uses the \"water around a stone\" image and the list of replacement businesses",
+      "Identifies relationship and attention as what is lost (\"You don't get that at the servo\")",
+      "Shows the article resisting simple nostalgia (Eleni's remark; Sofia's adaptations and ambivalence)",
+      "Draws on the ending (the sign that \"swings crooked\") to complete the synthesis"
+     ],
+     "next_steps": {
+      "0": "Answer the question as a whole: write one sentence saying what is lost AND what is kept.",
+      "1": "Support the side of loss with evidence from more than one part of the article.",
+      "2": "Support the side of continuity (what is kept), including how the next generation (Sofia) adapts the business.",
+      "3": "Combine the ideas rather than listing them: show how loss and continuity are connected in the article's view of change.",
+      "4": "Use the final image of the crooked sign to bring your synthesis to a precise conclusion."
+     },
+     "model": "The article suggests that as suburbs change, communities gain convenience and novelty but risk losing the personal attention and continuity that small businesses provide; yet it also implies that what is valuable can be partly carried forward, in a new form, by the next generation.\n\nThe central image of the suburb that \"has changed around it like water around a stone\" frames the milk bar as a fixed point amid gentrification. The list of replacements, the fruit shop now \"a pilates studio\" and the bank \"a café that serves coffee in jars\", is gently satirical, implying that newer businesses cater to lifestyle rather than daily need. The supermarket with \"a car park the size of a football field\" represents scale and efficiency, against which the \"small queue\" outside Eleni's shop seems fragile but loyal.\n\nWhat is lost, the article suggests, is relationship. Tom Le's comment \"You don't get that at the servo\" identifies personal care as the milk bar's real product, something \"difficult to measure\", and Eleni's notebook, in which she \"knew every customer's tab to the cent\", represents a form of knowledge built on trust.\n\nHowever, the article resists simple nostalgia. Eleni's dry remark that \"Nostalgia doesn't pay the electricity\" warns that sentiment alone cannot sustain such places, while Sofia's card machine, \"Instagram account and a spreadsheet\" show adaptation is possible. Sofia's ambivalence, \"I don't want to love it the way she loves it\", suggests the next generation may keep the values without the self-sacrifice.\n\nThe final image of the sign that \"swings crooked\" and is left that way draws these ideas together: imperfection and change are accepted, but for now the shop stays open.",
+     "difficulty": 2
+    }
+   ],
+   "length_words": 523
   }
  ]
 }
