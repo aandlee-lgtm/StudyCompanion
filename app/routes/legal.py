@@ -1,6 +1,8 @@
 from __future__ import annotations
 
-from fastapi import APIRouter, Depends, Form, Request
+from urllib.parse import quote
+
+from fastapi import APIRouter, Depends, Form, HTTPException, Request
 from fastapi.responses import RedirectResponse
 from sqlalchemy import select
 from sqlalchemy.orm import Session
@@ -8,6 +10,7 @@ from sqlalchemy.orm import Session
 from app.db import get_db
 from app.models import LegalEvidence, LegalEvidenceTopic, Subject, SyllabusTopic
 from app.routes.common import render, templates
+from app.services import clock
 from app.services import legal_evidence as le
 from app.services import legal_plan as lp
 from app.services import settings as st
@@ -31,36 +34,76 @@ def legal_topics_pending() -> bool:
 
 
 templates.env.globals["legal_topics_pending"] = legal_topics_pending
-TYPES = ["legislation", "case", "law_reform", "report", "inquiry", "treaty", "media", "issue"]
+TYPES = ["legislation", "case", "law_reform", "report", "inquiry", "treaty", "institution", "media", "issue"]
+
+
+def _ev(db: Session, eid: int) -> LegalEvidence:
+    ev = db.get(LegalEvidence, eid)
+    if ev is None:
+        raise HTTPException(status_code=404, detail="That evidence item does not exist.")
+    return ev
+
+
+def _legal_topics(db: Session) -> list[SyllabusTopic]:
+    legal = db.execute(select(Subject).where(Subject.code == "LEGAL")).scalar_one()
+    return db.execute(select(SyllabusTopic).where(SyllabusTopic.subject_id == legal.id).order_by(SyllabusTopic.position)).scalars().all()
+
+
+def _sub_area_choices(db: Session) -> list[tuple[str, str]]:
+    return [(i.code, i.title) for i in lp.legal_items(db) if lp.is_sub_area(i) or lp.is_option(i)]
 
 
 @router.get("/legal-evidence")
-def bank(request: Request, topic: str = "", item_type: str = "", q: str = "", db: Session = Depends(get_db)):
+def bank(request: Request, topic: str = "", item_type: str = "", q: str = "", state: str = "", sub_area: str = "",
+         db: Session = Depends(get_db)):
     stmt = select(LegalEvidence).order_by(LegalEvidence.item_type, LegalEvidence.title)
     if topic.isdigit():
         stmt = stmt.join(LegalEvidenceTopic).where(LegalEvidenceTopic.topic_id == int(topic))
-    if item_type:
-        stmt = stmt.where(LegalEvidence.item_type == item_type)
+    all_items = db.execute(select(LegalEvidence)).scalars().all()
     items = db.execute(stmt).scalars().unique().all()
+    if item_type:
+        items = [i for i in items if i.item_type == item_type]
+    if sub_area:
+        items = [i for i in items if (i.sub_area or "") == sub_area]
     if q:
-        items = [i for i in items if q.lower() in (i.title + i.summary + (i.issue or "")).lower()]
-    legal = db.execute(select(Subject).where(Subject.code == "LEGAL")).scalar_one()
-    topics = db.execute(select(SyllabusTopic).where(SyllabusTopic.subject_id == legal.id).order_by(SyllabusTopic.position)).scalars().all()
+        ql = q.lower()
+        items = [i for i in items if ql in " ".join([i.title, i.summary or "", i.issue or "", " ".join(i.aliases or [])]).lower()]
+    today, sett = clock.today(), st.all_settings(db)
+    if state in ("unverified", "recheck_due", "verified", "outdated"):
+        items = [i for i in items if le.state_of(i, today, sett) == state]
+    topics = _legal_topics(db)
     tnames = {t.id: t.name for t in topics}
     picker = lp.picker(db)
-    return render(request, "legal.html", items=items, topics=topics, tnames=tnames, types=TYPES, f=request.query_params,
-                  picker=picker if picker["pending"] else None, picker_next="/legal-evidence", msg=request.query_params.get("msg"))
+    return render(request, "legal.html", items=items, groups=le.grouped(db, items, today, sett), counts=le.counts(all_items, today, sett),
+                  topics=topics, tnames=tnames, types=TYPES, f=request.query_params, sub_areas=_sub_area_choices(db),
+                  statuses=le.STATUSES, picker=picker if picker["pending"] else None, picker_next="/legal-evidence",
+                  msg=request.query_params.get("msg"))
+
+
+@router.get("/legal-evidence/{eid}")
+def item(eid: int, request: Request, db: Session = Depends(get_db)):
+    """One item: details, the edit form (legal-18), the verification dialog and its history (legal-19)."""
+    ev = _ev(db, eid)
+    topics = _legal_topics(db)
+    linked = {t.topic_id for t in ev.topics}
+    return render(request, "legal_evidence_item.html", e=ev, topics=topics, linked=linked, types=TYPES, statuses=le.STATUSES,
+                  sub_areas=_sub_area_choices(db), checklist=le.CHECKLIST, history=le.history(db, ev),
+                  state=le.state_of(ev, clock.today(), st.all_settings(db)), msg=request.query_params.get("msg"))
 
 
 @router.post("/legal-evidence/add")
 def add(db: Session = Depends(get_db), title: str = Form(...), item_type: str = Form("media"), date: str = Form(""), jurisdiction: str = Form("NSW"),
         issue: str = Form(""), summary: str = Form(...), legal_significance: str = Form(""), syllabus_link: str = Form(""), source: str = Form(""),
-        source_url: str = Form(""), topic_ids: list[int] = Form([]), verified: int = Form(0)):
-    le.add_manual(db, {"title": title, "item_type": item_type, "date": date or None, "jurisdiction": jurisdiction, "issue": issue or None,
-                       "summary": summary, "legal_significance": legal_significance, "syllabus_link": syllabus_link or None, "source": source or None,
-                       "source_url": source_url or None, "verified": bool(verified)}, topic_ids)
+        source_url: str = Form(""), topic_ids: list[int] = Form([]), verified: int = Form(0), aliases: str = Form(""), status: str = Form("unknown"),
+        sub_area: str = Form(""), version_as_at: str = Form("")):
+    if item_type not in TYPES:
+        raise ValueError(f"Unknown item type '{item_type}'.")
+    ev = le.add_manual(db, {"title": title.strip(), "item_type": item_type, "date": date or None, "jurisdiction": jurisdiction, "issue": issue or None,
+                            "summary": summary, "legal_significance": legal_significance, "syllabus_link": syllabus_link or None, "source": source or None,
+                            "source_url": source_url or None, "verified": bool(verified), "aliases": aliases, "status": status if status in le.STATUSES else "unknown",
+                            "sub_area": sub_area or None, "version_as_at": version_as_at or None}, topic_ids)
     db.commit()
-    return RedirectResponse("/legal-evidence", status_code=303)
+    return RedirectResponse(f"/legal-evidence#ev{ev.id}", status_code=303)
 
 
 @router.post("/legal-evidence/fetch")
@@ -70,15 +113,45 @@ def fetch(db: Session = Depends(get_db), url: str = Form(...), topic_ids: list[i
     return RedirectResponse("/legal-evidence", status_code=303)
 
 
-@router.post("/legal-evidence/{eid}/verify")
-def verify(eid: int, db: Session = Depends(get_db)):
-    le.mark_verified(db, db.get(LegalEvidence, eid))
+@router.post("/legal-evidence/{eid}/edit")
+def edit(eid: int, db: Session = Depends(get_db), title: str = Form(...), item_type: str = Form(...), date: str = Form(""), jurisdiction: str = Form(...),
+         issue: str = Form(""), summary: str = Form(...), legal_significance: str = Form(""), syllabus_link: str = Form(""), source: str = Form(...),
+         source_url: str = Form(""), source_type: str = Form("primary"), status: str = Form("unknown"), superseded_by: str = Form(""),
+         sub_area: str = Form(""), version_as_at: str = Form(""), aliases: str = Form(""), issue_tags: str = Form(""), topic_ids: list[int] = Form([])):
+    ev = _ev(db, eid)
+    if item_type not in TYPES:
+        raise ValueError(f"Unknown item type '{item_type}'.")
+    try:
+        reset = le.update_item(db, ev, {"title": title, "item_type": item_type, "date": date, "jurisdiction": jurisdiction, "issue": issue,
+                                        "summary": summary, "legal_significance": legal_significance, "syllabus_link": syllabus_link,
+                                        "source": source, "source_url": source_url, "source_type": source_type, "status": status,
+                                        "superseded_by": superseded_by, "sub_area": sub_area, "version_as_at": version_as_at,
+                                        "aliases": aliases, "issue_tags": issue_tags}, topic_ids)
+    except ValueError as exc:
+        db.rollback()
+        return RedirectResponse(f"/legal-evidence/{eid}?msg=" + quote(str(exc)), status_code=303)
     db.commit()
-    return RedirectResponse(f"/legal-evidence#ev{eid}", status_code=303)
+    msg = "Saved." + (" The edit changed checked facts, so the item needs verifying again." if reset else "")
+    return RedirectResponse(f"/legal-evidence/{eid}?msg=" + quote(msg), status_code=303)
+
+
+@router.post("/legal-evidence/{eid}/verify")
+def verify(eid: int, db: Session = Depends(get_db), title_year: int = Form(0), jurisdiction: int = Form(0), summary: int = Form(0),
+           current: int = Form(0), version_as_at: str = Form(""), note: str = Form(""), corrected_summary: str = Form(""), status: str = Form("")):
+    """The verification dialog (legal-19): a checklist, the version read and an optional note."""
+    ev = _ev(db, eid)
+    try:
+        le.record_check(db, ev, {"title_year": title_year, "jurisdiction": jurisdiction, "summary": summary, "current": current},
+                        version_as_at=version_as_at, note=note, corrected_summary=corrected_summary, status=status or None)
+    except ValueError as exc:
+        db.rollback()
+        return RedirectResponse(f"/legal-evidence/{eid}?msg=" + quote(str(exc)) + "#verify", status_code=303)
+    db.commit()
+    return RedirectResponse(f"/legal-evidence/{eid}?msg=" + quote(f"Verified on {clock.today():%d %b %Y}."), status_code=303)
 
 
 @router.post("/legal-evidence/{eid}/delete")
 def delete(eid: int, db: Session = Depends(get_db)):
-    db.delete(db.get(LegalEvidence, eid))
+    le.delete_item(db, _ev(db, eid))
     db.commit()
     return RedirectResponse("/legal-evidence", status_code=303)

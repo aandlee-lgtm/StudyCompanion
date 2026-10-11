@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{# v2-legal-logic: one evidence item — details, verification dialog and history (legal-19), edit form (legal-18). #}
+{% block content %}
+<p class="small"><a href="/legal-evidence#ev{{ e.id }}">← Legal evidence bank</a></p>
+<h1>{{ e.title }}</h1>
+{% if msg %}<div class="notice" role="status">{{ msg }}</div>{% endif %}
+{% set STATE_LABEL = {'verified': 'verified', 'recheck_due': 're-check due', 'unverified': 'not yet verified', 'outdated': 'recorded as outdated'} %}
+<p class="row">
+  <span class="pill">{{ e.item_type|replace('_',' ') }}</span><span class="pill">{{ e.jurisdiction }}</span>
+  <span class="pill">{{ e.status|replace('_',' ') }}</span>
+  <span class="pill {{ {'verified':'good','recheck_due':'warn'}.get(state, 'bad') }}">{{ STATE_LABEL[state] }}{% if e.last_verified_date %} — last checked {{ e.last_verified_date | fdate('%d %b %Y') }}{% endif %}</span>
+</p>
+<div class="card">
+  <p>{{ e.summary }}</p>
+  {% if e.legal_significance %}<p class="small"><strong>Legal significance:</strong> {{ e.legal_significance }}</p>{% endif %}
+  <p class="small">{{ e.date or 'date not recorded' }}{% if e.issue %} · {{ e.issue }}{% endif %}{% if e.version_as_at %} · version read: {{ e.version_as_at }}{% endif %}{% if e.superseded_by %} · replaced by {{ e.superseded_by }}{% endif %}</p>
+  <p class="small">Source: {% if e.source_url %}<a href="{{ e.source_url }}" target="_blank" rel="noopener">{{ e.source }}</a>{% else %}{{ e.source }}{% endif %} · {{ e.source_type }} · reliability {{ e.reliability }}</p>
+  {% if e.verification_note %}<p class="tiny muted">{{ e.verification_note }}</p>{% endif %}
+</div>
+
+<section class="card legal-verify" id="verify" aria-labelledby="verify-h">
+  <h2 id="verify-h">Verify against the source</h2>
+  <ol class="small">
+    <li>{% if e.source_url %}<a href="{{ e.source_url }}" target="_blank" rel="noopener">Open the source</a>{% else %}Find the official source (legislation website, court, AHRC, law reform commission, UN){% endif %} and read it.</li>
+    <li>Tick each point only if you checked it. Nothing here is verified for you.</li>
+  </ol>
+  <form method="post" action="/legal-evidence/{{ e.id }}/verify">
+    {% for k, label in checklist.items() %}<label class="check"><input type="checkbox" name="{{ k }}" value="1"> {{ label }}</label>{% endfor %}
+    <div class="grid g2" style="margin-top:8px">
+      <div class="field"><label for="v-as-at">Version you read{% if e.item_type == 'legislation' %} (required: the "as at" / current version date){% else %} (optional){% endif %}</label>
+        <input id="v-as-at" type="text" name="version_as_at" value="{{ e.version_as_at or '' }}" {{ 'required' if e.item_type == 'legislation' }} placeholder="e.g. as at 1 October 2026"></div>
+      <div class="field"><label for="v-status">Status after checking</label>
+        <select id="v-status" name="status">{% for stt in statuses %}<option value="{{ stt }}" {{ 'selected' if e.status == stt }}>{{ stt|replace('_',' ') }}</option>{% endfor %}</select></div>
+    </div>
+    <div class="field"><label for="v-sum">Corrected summary (optional — leave empty if the summary is right)</label><textarea id="v-sum" name="corrected_summary" rows="3"></textarea></div>
+    <div class="field"><label for="v-note">Note (optional)</label><input id="v-note" type="text" name="note" placeholder="What you checked, e.g. s 17 still in force"></div>
+    <button class="btn primary small">Record the check</button>
+  </form>
+  {% if history %}
+  <h3>Verification history</h3>
+  <table class="small"><thead><tr><th>Checked</th><th>Version</th><th>Points</th><th>Note</th></tr></thead><tbody>
+    {% for h in history %}<tr><td>{{ h.checked_on | fdate('%d %b %Y') }}</td><td>{{ h.version_as_at or '—' }}</td>
+      <td>{{ (h.checklist or {}).values()|select|list|length }} of {{ checklist|length }}{% if h.summary_corrected %}, summary corrected{% endif %}</td><td>{{ h.note or '' }}</td></tr>{% endfor %}
+  </tbody></table>
+  {% else %}<p class="tiny muted">Not checked yet.</p>{% endif %}
+</section>
+
+<section class="card" id="edit" aria-labelledby="edit-h">
+  <h2 id="edit-h">Edit</h2>
+  <p class="tiny muted">Changing the title, date, jurisdiction, summary, status or source link means the last check no longer covers the item, so it becomes unverified until you check it again.</p>
+  <form method="post" action="/legal-evidence/{{ e.id }}/edit">
+    <div class="field"><label>Title (exact name of the Act, case, treaty or report)</label><input type="text" name="title" value="{{ e.title }}" required></div>
+    <div class="grid g3">
+      <div class="field"><label>Type</label><select name="item_type">{% for t in types %}<option value="{{ t }}" {{ 'selected' if e.item_type == t }}>{{ t|replace('_',' ') }}</option>{% endfor %}</select></div>
+      <div class="field"><label>Date</label><input type="text" name="date" value="{{ e.date or '' }}"></div>
+      <div class="field"><label>Jurisdiction</label><input type="text" name="jurisdiction" value="{{ e.jurisdiction }}" required></div>
+    </div>
+    <div class="grid g3">
+      <div class="field"><label>Status</label><select name="status">{% for stt in statuses %}<option value="{{ stt }}" {{ 'selected' if e.status == stt }}>{{ stt|replace('_',' ') }}</option>{% endfor %}</select></div>
+      <div class="field"><label>Replaced by (title)</label><input type="text" name="superseded_by" value="{{ e.superseded_by or '' }}"></div>
+      <div class="field"><label>Version read</label><input type="text" name="version_as_at" value="{{ e.version_as_at or '' }}"></div>
+    </div>
+    <div class="grid g2">
+      <div class="field"><label>Sub-area</label><select name="sub_area"><option value="">—</option>{% for code, title in sub_areas %}<option value="{{ code }}" {{ 'selected' if e.sub_area == code }}>{{ title }}</option>{% endfor %}</select></div>
+      <div class="field"><label>Issue</label><input type="text" name="issue" value="{{ e.issue or '' }}"></div>
+    </div>
+    <div class="grid g2">
+      <div class="field"><label>Also cited as (comma separated)</label><input type="text" name="aliases" value="{{ (e.aliases or [])|join(', ') }}"></div>
+      <div class="field"><label>Issue tags (comma separated)</label><input type="text" name="issue_tags" value="{{ (e.issue_tags or [])|join(', ') }}"></div>
+    </div>
+    <div class="field"><label>Summary</label><textarea name="summary" rows="4" required>{{ e.summary }}</textarea></div>
+    <div class="field"><label>Legal significance</label><textarea name="legal_significance" rows="2">{{ e.legal_significance or '' }}</textarea></div>
+    <div class="field"><label>Syllabus link</label><input type="text" name="syllabus_link" value="{{ e.syllabus_link or '' }}"></div>
+    <div class="grid g3">
+      <div class="field"><label>Source</label><input type="text" name="source" value="{{ e.source }}" required></div>
+      <div class="field"><label>Source URL</label><input type="url" name="source_url" value="{{ e.source_url or '' }}"></div>
+      <div class="field"><label>Source type</label><select name="source_type">{% for t in ['primary','official','commentary','journalism'] %}<option {{ 'selected' if e.source_type == t }}>{{ t }}</option>{% endfor %}</select></div>
+    </div>
+    <div class="field"><label>Topics</label>{% for t in topics %}<label class="check"><input type="checkbox" name="topic_ids" value="{{ t.id }}" {{ 'checked' if t.id in linked }}> {{ t.name }}</label>{% endfor %}</div>
+    <button class="btn primary small">Save changes</button>
+  </form>
+  <form method="post" action="/legal-evidence/{{ e.id }}/delete" onsubmit="return confirm('Delete this item and its verification history?')" style="margin-top:12px">
+    <button class="btn small danger">Delete this item</button>
+  </form>
+</section>
+{% endblock %}

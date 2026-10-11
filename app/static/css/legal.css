@@ -57,3 +57,16 @@
 .legal-scaffold li { margin-bottom: 4px; }
 .legal-compare td:first-child { width: 26%; font-weight: 600; }
 .legal-task { border-left: 3px solid var(--legal); padding: 6px 10px; background: var(--surface-2); border-radius: var(--radius); }
+
+/* ---- Evidence bank: grouping, counts, verification (legal-18/19) ---- */
+.legal-bank-counts { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; align-items: center; }
+.legal-bank-counts a.pill { text-decoration: none; }
+.legal-bank-states { display: inline-flex; flex-wrap: wrap; gap: 6px; margin-left: auto; }
+.legal-bank-filter select, .legal-bank-filter input[type=text] { max-width: 100%; }
+.legal-bank-group { margin-top: 18px; }
+.legal-bank-group h2 { font-size: 1.15rem; color: var(--legal); margin-bottom: 4px; }
+.legal-bank-issue { font-size: .95rem; margin: 12px 0 6px; color: var(--muted); }
+.legal-ev { margin-top: 10px; }
+.legal-ev h4 a { color: inherit; }
+.legal-verify .check { display: flex; gap: 8px; align-items: flex-start; margin: 4px 0; }
+@media (max-width: 640px) { .legal-bank-states { margin-left: 0; } }
