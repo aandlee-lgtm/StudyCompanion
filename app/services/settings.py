@@ -67,6 +67,9 @@ DEFAULTS.update({  # legal
 DEFAULTS.update({  # adaptive
 })
 DEFAULTS.update({  # ingestion
+    "auto_approve_imports": True,  # AI-mapped imports that pass every validation gate may be approved without review
+    "admin_mode": False,  # show answers, guidelines and model responses in the library and review screens before an attempt
+    "review_page_size": 25,
 })
 DEFAULTS.update({  # platform
 })
