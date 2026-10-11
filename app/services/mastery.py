@@ -119,9 +119,10 @@ def nice_date(d: date) -> str:
 
 # ------------------------------------------------------------------ queue helpers ---
 def _open_items(db: Session, plan_item_id: int | None, question_id: int | None = None) -> list[RevisionQueue]:
+    db.flush()  # the session does not autoflush: items closed a moment ago must not be found as open
     q = select(RevisionQueue).where(RevisionQueue.status == "open")
     q = q.where(RevisionQueue.plan_item_id == plan_item_id) if plan_item_id else q.where(RevisionQueue.question_id == question_id)
-    return list(db.execute(q.order_by(RevisionQueue.due_date, RevisionQueue.id)).scalars())
+    return [r for r in db.execute(q.order_by(RevisionQueue.due_date, RevisionQueue.id)).scalars() if r.status == "open"]
 
 
 def _reason(kind: str, item: LearningPlanItem | None, tag: str | None = None) -> str:

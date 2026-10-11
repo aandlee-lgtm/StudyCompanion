@@ -18,6 +18,7 @@ from datetime import date, datetime
 
 from sqlalchemy import select
 from sqlalchemy.orm import Session
+from sqlalchemy.orm.attributes import flag_modified
 
 from app.ai.factory import get_provider
 from app.marking import rubric
@@ -194,7 +195,7 @@ def submit(db: Session, q: Question, response: str, *, sq: SessionQuestion | Non
     items = error_journal.items_for(code, q, payload, cats, method)
     pending = payload.get("pending_mark") or payload.get("kind") == "self_mark" or method == "self"
     estimated = method == "offline_estimate"
-    fb = AttemptFeedback(attempt_id=attempt.id, payload=payload, error_categories=[] if estimated else [i["category"] for i in items])
+    fb = AttemptFeedback(attempt_id=attempt.id, payload=dict(payload), error_categories=[] if estimated else [i["category"] for i in items])
     db.add(fb)
     db.flush()
     if cls["role"] == "retry":
@@ -213,6 +214,7 @@ def submit(db: Session, q: Question, response: str, *, sq: SessionQuestion | Non
         mastery.log_rehearsal(db, attempt, q, today)
         payload["schedule"] = {"rehearsal": True, "headline": cls["label"]}
     fb.payload = dict(payload)
+    flag_modified(fb, "payload")  # JSON column: always persist the final payload
     if sq is not None:
         sq.status = "skipped" if skipped else "submitted"
         sq.time_spent_seconds = max(sq.time_spent_seconds, time_seconds)
@@ -312,6 +314,7 @@ def apply_self_mark(db: Session, attempt: Attempt, mark: float, *, categories: l
                                  "so the schedule itself is unchanged.")
             payload["schedule"] = sched
     fb.payload = payload
+    flag_modified(fb, "payload")
     db.flush()
 
 
@@ -326,6 +329,7 @@ def mark_model_viewed(db: Session, attempt: Attempt) -> bool:
             if p.get("kind") == "maths":
                 p["solution_shown"] = True
             fb.payload = p
+            flag_modified(fb, "payload")
         db.flush()
         return True
     return False
