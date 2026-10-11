@@ -283,7 +283,7 @@ def t_Y11_TRANS(r: Rng, d: int) -> Generated:
     h, k = nonzero(r, -4, 4), nonzero(r, -6, 6)
     g = sp.expand(a * f.subs(x, x - h) + k)
     vx, vy = m + h, -a * m * m + k
-    how = (f"reflected in the \\(x\\)-axis" + (f" and dilated vertically by a factor of \\({-a}\\)" if a != -1 else "") if a < 0
+    how = ("reflected in the \\(x\\)-axis" + (f" and dilated vertically by a factor of \\({-a}\\)" if a != -1 else "") if a < 0
            else f"dilated vertically by a factor of \\({a}\\)")
     text = multipart(f"Let \\(f(x) = {pl(f)}\\).",
                      [("a", "Find the coordinates of the vertex of \\(y = f(x)\\).", 1),
