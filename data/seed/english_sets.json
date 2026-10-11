@@ -2315,6 +2315,769 @@
     }
    ],
    "length_words": 289
+  },
+  {
+   "key": "pool-eulogy",
+   "title": "It's Not Cold",
+   "form": "Speech",
+   "complexity": 1,
+   "author": "Original text (HSC Companion)",
+   "headnote": "This is an original eulogy, delivered by a former swimmer at the funeral of a swimming-pool coach in a country town. The speaker, the coach and the town of Yarrumba are fictional.",
+   "theme_tags": [
+    "grief",
+    "community",
+    "mentors",
+    "rural towns",
+    "sport"
+   ],
+   "body": "Lorna Pike taught half this town to swim, and she taught the other half to stop complaining about the cold.\n\nIf you grew up in Yarrumba, you know the sound I mean: a whistle at six in the morning, so loud the magpies left the pool fence, and a voice behind it saying, 'It's not cold. You're just not moving yet.' I heard that sentence four hundred times between the ages of seven and seventeen. I believed it about twice.\n\nLorna ran the pool for thirty-one summers. She opened it in October, when the water was still green at the deep end, and she closed it in March, when the last of us had stopped turning up. In between she ran learn-to-swim for the toddlers, squad for the keen kids, aqua aerobics for the ladies from the CWA, and a Tuesday night session for adults who had never learned and were too embarrassed to say so. She never told anyone who came to the Tuesday nights. Some of them are here today. You know who you are. She kept your secret, and so will I.\n\nShe was not a soft woman. She would tell you your tumble turn looked like a dropped wardrobe. She would tell your parents, too. But if you were the kid whose family couldn't pay for the season pass, you would find, somehow, that your name was already on the list, and if you asked about it she would look at you as if you'd said something in Latin.\n\nI want to tell you about one morning. I was twelve, and I had come last in the district carnival by the length of a whole pool, and I had decided I was finished with swimming forever. I sat in the change rooms in my towel and would not come out. Lorna didn't come in after me. She just stood outside the door and talked about the weather for twenty minutes, the drought, the price of chlorine, the new council, until I came out because I was bored. Then she handed me a kickboard and said, 'Two laps. Nobody's watching.' Nobody was. It was the best swim of my life.\n\nThat was her method. She didn't fix you. She waited beside you until you were ready to move, and then she made sure you had something to hold on to.\n\nThe council has asked me to say that the pool will be renamed in her honour, and I'm glad. But I think Lorna would want something harder than a sign. She would want the pool open in October, green water and all. She would want the Tuesday nights to keep going. She would want somebody standing on the edge at six in the morning with a whistle and a terrible joke, telling some shivering kid it's not cold.\n\nSo here is what I am asking. If she taught you, teach someone. If she kept your secret, keep somebody else's. And when you go past the pool this summer and hear that whistle, and you will hear it, whoever is blowing it, get in.\n\nIt's not cold. You're just not moving yet.",
+   "pair": null,
+   "questions": [
+    {
+     "marks": 2,
+     "verb": "Identify",
+     "demand": "identify",
+     "text": "Identify the tone of the opening sentence and explain how it suits the occasion.",
+     "skill_tags": [
+      "tone",
+      "audience",
+      "purpose"
+     ],
+     "criteria": [
+      {
+       "mark": 2,
+       "descriptor": "Precisely identifies the tone of the opening sentence and its suitability and explains its significance with apt, accurately quoted evidence"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Identifies a relevant feature of the tone of the opening sentence and its suitability with little or no explanation"
+      }
+     ],
+     "checklist": [
+      "Identifies an affectionate, gently humorous tone",
+      "Refers to the balanced structure and comic turn of the sentence",
+      "Explains why humour suits a eulogy for a community figure (shared recognition, warmth before grief)"
+     ],
+     "next_steps": {
+      "0": "Name the tone with a precise adjective (for example affectionate, wry, gently humorous) and quote the part of the sentence that creates it.",
+      "1": "Explain why that tone suits a funeral for this person and this audience, rather than only describing it."
+     },
+     "model": "The opening sentence has an affectionate, gently humorous tone. Its balanced structure (\"taught half this town to swim, and she taught the other half to stop complaining about the cold\") builds to a comic punchline that captures Lorna's toughness. This suits the eulogy because it celebrates her character in a way the whole community recognises, offering warmth and shared laughter before the speech turns towards grief.",
+     "difficulty": 1
+    },
+    {
+     "marks": 4,
+     "verb": "Explain",
+     "demand": "explain",
+     "text": "Explain how the speaker uses the change-room anecdote to characterise Lorna.",
+     "skill_tags": [
+      "anecdote",
+      "characterisation",
+      "speech"
+     ],
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Provides a precise, well-reasoned explanation of how the change-room anecdote characterises Lorna, integrating well-chosen textual evidence and making the cause-and-effect relationship explicit"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a clear explanation of how the change-room anecdote characterises Lorna, supported by relevant, accurately quoted evidence"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how the change-room anecdote characterises Lorna, with general or partly relevant reference to the text"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of how the change-room anecdote characterises Lorna, relying on paraphrase or retelling"
+      }
+     ],
+     "checklist": [
+      "Explains the stakes of the anecdote (the child's humiliation and decision to quit)",
+      "Explains Lorna's tactful strategy: talking about the weather \"for twenty minutes\"",
+      "Explains the significance of \"Two laps. Nobody's watching.\" and the echo \"Nobody was.\"",
+      "Links the anecdote to the speaker's summary of Lorna's method (\"She didn't fix you.\")"
+     ],
+     "next_steps": {
+      "0": "Say what the anecdote reveals about Lorna in one sentence, then support it with what she does outside the change rooms.",
+      "1": "Explain WHY her strategy works: what does talking about the drought and the chlorine do for the embarrassed child?",
+      "2": "Explain the effect of her words \"Two laps. Nobody's watching.\" and the speaker's echo, \"Nobody was.\"",
+      "3": "Connect the anecdote to the sentence that follows it, showing how one memory becomes a portrait of her whole method."
+     },
+     "model": "The change-room anecdote characterises Lorna as a coach whose toughness concealed patience and tact. The speaker establishes the stakes with self-deprecating hyperbole: she had come last \"by the length of a whole pool\" and decided she was \"finished with swimming forever.\" Lorna's response is surprising. She \"didn't come in after me\" but \"stood outside the door and talked about the weather for twenty minutes\", and the list of mundane topics, \"the drought, the price of chlorine, the new council\", shows her deliberately refusing to make the child's failure a drama. Her strategy respects the girl's pride while ensuring she is not alone. Her instruction, \"Two laps. Nobody's watching.\", offers a small, private task rather than a pep talk, and the speaker's echo, \"Nobody was.\", confirms that Lorna understood the child's fear of being seen. The speaker then draws out the meaning: \"She didn't fix you. She waited beside you until you were ready to move\". The image of giving a child \"something to hold on to\", like the kickboard, turns one memory into a portrait of her whole method.",
+     "difficulty": 2
+    },
+    {
+     "marks": 5,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "Analyse how the speaker transforms Lorna's catchphrase, \"It's not cold. You're just not moving yet.\", into the central message of the speech.",
+     "skill_tags": [
+      "structure",
+      "repetition",
+      "purpose",
+      "call to action"
+     ],
+     "criteria": [
+      {
+       "mark": 5,
+       "descriptor": "Provides a perceptive, sustained analysis of how the catchphrase becomes the speech's central message, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Provides a thoughtful analysis of how the catchphrase becomes the speech's central message, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a sound analysis of how the catchphrase becomes the speech's central message, using relevant evidence with some explanation of effect"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how the catchphrase becomes the speech's central message, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how the catchphrase becomes the speech's central message or identifies a relevant technique with little explanation of its effect"
+      }
+     ],
+     "checklist": [
+      "Traces the catchphrase from comic characterisation to principle to instruction",
+      "Analyses the hyperbole \"four hundred times\" and the humour of \"I believed it about twice\"",
+      "Links the verb \"move\" in Lorna's method to the catchphrase",
+      "Analyses the anaphora of \"She would want\" and the parallel imperatives (\"If she taught you, teach someone.\")",
+      "Explains the circular structure and the new meaning of the final line"
+     ],
+     "next_steps": {
+      "0": "Make a claim about how the meaning of the catchphrase changes across the speech.",
+      "1": "Analyse its first appearance: what does it reveal about Lorna, and how does the speaker's humour involve the audience?",
+      "2": "Show the link between the catchphrase and Lorna's method, using the word \"move\".",
+      "3": "Analyse the call to action: the repeated \"She would want\" and the parallel imperatives.",
+      "4": "Explain the effect of repeating the catchphrase as the final line: what are \"cold\" and \"moving\" now, for a grieving audience?"
+     },
+     "model": "The speaker transforms Lorna's catchphrase from a remembered joke into a principle for living, and finally into an instruction to the grieving community, so that the speech ends by letting Lorna's voice speak again.\n\nThe phrase first appears as comic characterisation. Set against \"a whistle at six in the morning, so loud the magpies left the pool fence\", the line \"It's not cold. You're just not moving yet.\" captures Lorna's brisk, unsentimental toughness, and the speaker's hyperbolic aside, \"I heard that sentence four hundred times between the ages of seven and seventeen. I believed it about twice.\", invites shared laughter from listeners who heard it too.\n\nThe change-room anecdote then reveals the philosophy inside the joke. The speaker distils Lorna's method in short declaratives: \"She didn't fix you. She waited beside you until you were ready to move\". The verb \"move\" links directly to the catchphrase: discomfort is not denied, but it is overcome by action rather than by rescue.\n\nIn the final section the phrase becomes a call to action. The anaphora of \"She would want\" builds a picture of a living memorial, \"something harder than a sign\", and the parallel imperatives \"If she taught you, teach someone. If she kept your secret, keep somebody else's.\" convert gratitude into obligation. The blunt command \"get in.\" applies the old poolside instruction to the whole community.\n\nFinally, the speaker repeats the catchphrase as her closing line. Its meaning has expanded: the cold is now grief, and moving means continuing Lorna's work. The circular structure lets the speech end in Lorna's own words, so that she both comforts and challenges the mourners one last time.",
+     "difficulty": 2
+    }
+   ],
+   "length_words": 524
+  },
+  {
+   "key": "names-not-figures-pair",
+   "title": "Figures Do Not Have Names",
+   "form": "Speech",
+   "complexity": 3,
+   "author": "Original text (HSC Companion)",
+   "headnote": "Text 1 is an original speech written in the style of the early 1930s, when many Australians were unemployed during the Great Depression; the speaker is fictional. Text 2 is an original feature article extract about a food-delivery rider; the rider, the journalist and the platform are fictional.",
+   "theme_tags": [
+    "work",
+    "dignity",
+    "power",
+    "economics",
+    "history"
+   ],
+   "body": "Speech at a meeting of the unemployed, the Domain, Sydney, 1931\n\nFriends, and I call you friends, for there is no other word for men who have stood in the same queue since daylight:\n\nThey tell us that there is no work. I say there is work enough in this city for every pair of hands in this park. There are roads unmade and houses unbuilt and children unfed, and there are men here who can make and build and feed, and the only thing that stands between the two is a ledger in a bank in Pitt Street.\n\nThey tell us to be patient. We have been patient. We were patient in the trenches, where we were told we were fighting for a better world. We were patient at the wharves and in the shearing sheds, where we were told the good times were coming. Patience, friends, is a fine virtue in a man with a full belly. In a man with hungry children it begins to look very like surrender.\n\nThey tell us that we are a burden. Look about you. Look at the man beside you. That man laid the bricks of the very building where they tell him he is a burden. That man's hands drove the rivets of the bridge they are so proud of. There is not a stone in this city that was not lifted by somebody's father.\n\nI do not ask for charity. Charity is what is given to a man you have decided is less than yourself. I ask for work, and wages for work, and the plain respect that is owed to any man who will put his back to a load.\n\nAnd I say this to the gentlemen in their offices, who will read of this meeting in tomorrow's papers: you may count us as figures in your columns. But figures do not stand in the rain. Figures do not have names. Every man here has a name, and before this winter is out, by God, you shall learn some of them.",
+   "pair": {
+    "title": "The App Doesn't Know His Name",
+    "form": "Feature article",
+    "author": "Original text (HSC Companion)",
+    "headnote": "",
+    "body": "It is 9.40 pm on a Friday in Parramatta, and Arjun has been riding since eleven this morning. His phone is clamped to the handlebars of a second-hand e-bike, and every few minutes it chimes, a bright, cheerful sound, like a game show contestant getting an answer right. Each chime is an offer: a burger, four kilometres, $6.80. He has fifteen seconds to accept.\n\n'If you say no too many times,' he says, 'it stops asking.'\n\nArjun is twenty-six. In Hyderabad he studied civil engineering. Here, he is what the platform calls an independent contractor, which means he supplies the bike, the phone, the insurance and the body, and the app supplies the work, when it chooses to. He doesn't have a manager. He has a rating: 4.91 out of five. He knows the number the way other people know their height.\n\nNobody has ever been rude to him, exactly. That is part of the strangeness. The customers he delivers to mostly don't look at him at all; they take the bag at the door with their eyes on a screen, or they have left instructions to leave it on the mat and not to knock. Once, a woman in Westmead came out to the gate in her dressing gown with a glass of water, because it was thirty-eight degrees. He still talks about her. He doesn't know her name either.\n\nThe platform, in a statement, said that riders 'value the flexibility' of the work and that its pay model 'reflects market conditions'. Both of these things may be true. Arjun does value the flexibility; it lets him study for his engineering accreditation in the mornings. And the market conditions are certainly reflected, in the way a puddle reflects the sky.\n\nAt 10.15 the chime comes again. A bubble tea, two kilometres, $5.20. He taps accept before I can ask whether it's worth it.\n\n'Everything is worth it,' he says, pulling his helmet on, 'until you add it up.'\n\nThen he is gone into the traffic, a small green light among the red ones, and somewhere a restaurant tablet is already printing his first name."
+   },
+   "questions": [
+    {
+     "marks": 3,
+     "verb": "Explain",
+     "demand": "explain",
+     "text": "In Text 1, explain how the speaker challenges the claims made by those in power.",
+     "skill_tags": [
+      "rhetoric",
+      "anaphora",
+      "argument"
+     ],
+     "criteria": [
+      {
+       "mark": 3,
+       "descriptor": "Provides a precise, well-reasoned explanation of how the speaker in Text 1 challenges the claims of those in power, integrating well-chosen textual evidence and making the cause-and-effect relationship explicit"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides a sound explanation of how the speaker in Text 1 challenges the claims of those in power with appropriate textual reference"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of how the speaker in Text 1 challenges the claims of those in power, relying on paraphrase or retelling"
+      }
+     ],
+     "checklist": [
+      "Explains the rebuttal structure introduced by the anaphora \"They tell us\"",
+      "Explains the contrast between needs and idle hands, and the metonym of the \"ledger in a bank in Pitt Street\"",
+      "Explains the redefinition of patience (\"begins to look very like surrender\")",
+      "Explains the direct address \"Look at the man beside you\" as evidence that answers the charge of being \"a burden\""
+     ],
+     "next_steps": {
+      "0": "Identify the pattern that structures the speech (the repeated \"They tell us\") and explain what it does.",
+      "1": "Explain HOW the speaker answers one claim: choose patience or work, quote the answer, and explain the technique.",
+      "2": "Show that the challenges build: explain how the answer to \"a burden\" turns the crowd itself into evidence."
+     },
+     "model": "The speaker structures his speech as a series of rebuttals, using the anaphora \"They tell us\" to introduce each official claim before dismantling it. Against the claim that there is no work, he sets the parallel list \"roads unmade and houses unbuilt and children unfed\", arguing that the only obstacle is \"a ledger in a bank in Pitt Street\", a metonym that reduces power to cold accounting. He redefines patience through antithesis: a virtue \"in a man with a full belly\", it \"begins to look very like surrender\" to the hungry. Finally, he answers the claim that the unemployed are \"a burden\" with direct address, \"Look at the man beside you\", reminding the crowd that their labour built the city. Each claim is turned back on its makers.",
+     "difficulty": 2
+    },
+    {
+     "marks": 4,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "In Text 2, analyse how the writer represents the impersonal nature of Arjun's working life.",
+     "skill_tags": [
+      "representation",
+      "irony",
+      "feature writing"
+     ],
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Provides a perceptive, sustained analysis of how Text 2 represents the impersonal nature of Arjun's work, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a thoughtful analysis of how Text 2 represents the impersonal nature of Arjun's work, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how Text 2 represents the impersonal nature of Arjun's work, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how Text 2 represents the impersonal nature of Arjun's work or identifies a relevant technique with little explanation of its effect"
+      }
+     ],
+     "checklist": [
+      "Makes a claim: Arjun is measured rather than known",
+      "Analyses the game-show simile and the fifteen-second deadline",
+      "Analyses the list \"the bike, the phone, the insurance and the body\" and the rating that replaces a manager",
+      "Analyses the customers' indifference and the exception of the woman with the glass of water",
+      "Analyses the closing image of the \"small green light\" and the printed \"first name\""
+     ],
+     "next_steps": {
+      "0": "State a clear claim about Arjun's working life, then support it with one detail about the app.",
+      "1": "Analyse a technique in your evidence, such as the game-show simile, and explain the irony of its cheerful tone.",
+      "2": "Add evidence about people as well as the app: the customers, and the one woman who brings water.",
+      "3": "Use the final paragraph to complete your argument, explaining what the image of the light and the printed name suggest."
+     },
+     "model": "The writer represents Arjun's working life as governed by an impersonal system that measures him rather than knows him. The app's chime is compared to \"a game show contestant getting an answer right\", a simile whose cheerful tone ironically disguises the pressure of an offer he has \"fifteen seconds to accept\". Arjun's own words personify the platform as a withholding employer: \"If you say no too many times... it stops asking.\" The writer's list, \"the bike, the phone, the insurance and the body\", places his body among replaceable equipment, while the short, parallel sentences \"He doesn't have a manager. He has a rating\" substitute a number for a relationship, a number he knows \"the way other people know their height\". The customers mirror this impersonality, taking the bag \"with their eyes on a screen\". Even the single moment of kindness, the woman with a glass of water, ends with \"He doesn't know her name either.\" The final image completes the pattern: Arjun disappears as \"a small green light among the red ones\", reduced to a dot in traffic while a tablet prints only \"his first name\".",
+     "difficulty": 2
+    },
+    {
+     "marks": 6,
+     "verb": "Compare",
+     "demand": "compare",
+     "text": "Compare how Text 1 and Text 2 represent the dignity of work and what threatens it.",
+     "skill_tags": [
+      "comparison",
+      "context",
+      "representation",
+      "voice"
+     ],
+     "criteria": [
+      {
+       "mark": 6,
+       "descriptor": "Provides a perceptive, integrated comparison of how the two texts represent the dignity of work and the threats to it, analysing similarities and differences with well-chosen evidence from both texts"
+      },
+      {
+       "mark": 5,
+       "descriptor": "Provides a thoughtful comparison of how the two texts represent the dignity of work and the threats to it, with relevant, analysed evidence from both texts"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Provides a sound comparison of how the two texts represent the dignity of work and the threats to it, with relevant evidence from both texts and some explanation"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Discusses both texts in relation to how the two texts represent the dignity of work and the threats to it, mostly separately, with some evidence"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Describes one or both texts with limited reference to how the two texts represent the dignity of work and the threats to it"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Makes a limited or general comment about one or both texts"
+      }
+     ],
+     "checklist": [
+      "Makes an integrated thesis (for example: both oppose names to figures, but Text 1 lacks work while Text 2 lacks recognition)",
+      "Compares the names-versus-numbers motif (\"Figures do not have names\"; the rating and the printed \"first name\")",
+      "Compares the distant systems of power (the ledger; the app) and how each text exposes official language",
+      "Contrasts voice and response: collective oratory and demands versus quiet, individual observation",
+      "Considers context (Depression-era and contemporary) and what each text includes or excludes",
+      "Reaches a synthesised conclusion about what dignity in work requires"
+     ],
+     "next_steps": {
+      "0": "Write a thesis that compares the two texts in one sentence, naming a similarity and a difference.",
+      "1": "Develop the main similarity with a quotation from each text, explaining how each technique works.",
+      "2": "Develop a difference, especially in voice: compare the speech's collective \"we\" with the article's observing journalist.",
+      "3": "Integrate your comparison: discuss both texts within each paragraph rather than one text per paragraph.",
+      "4": "Add context and critical reading: consider the 1931 and present-day situations, and who each text includes or leaves out.",
+      "5": "Refine for Band 6: conclude with a judgement that only the comparison makes possible, about what dignity in work depends on."
+     },
+     "model": "Both texts insist that work carries a dignity that is threatened when people are reduced to numbers, but they locate the threat differently. Text 1 confronts a system that withholds work from people who want it; Text 2 examines a system that supplies work while withholding recognition. Read together, they suggest that dignity depends less on employment itself than on being known.\n\nBoth texts set names against figures. The speaker in Text 1 warns the \"gentlemen in their offices\" that \"figures do not stand in the rain. Figures do not have names\", and his closing threat that \"you shall learn some of them\" asserts identity as a form of power. Text 2 shows the figures winning: Arjun has \"a rating: 4.91 out of five\" instead of a manager, and the article closes on a tablet printing only \"his first name\". Even his one moment of human connection ends with \"He doesn't know her name either.\"\n\nBoth texts also locate power in distant, abstract systems. Text 1's \"ledger in a bank in Pitt Street\" anticipates Text 2's app, which supplies work \"when it chooses to\". Each text exposes official language: the speaker mocks the refrain \"They tell us\", while the journalist quotes the platform's claim that riders \"value the flexibility\" and undercuts its \"market conditions\" with the ironic simile \"in the way a puddle reflects the sky\".\n\nThe texts differ most in voice and response. Text 1 is collective and oratorical: its inclusive \"we\", its demand for \"work, and wages for work, and the plain respect\", and its oath \"by God\" rouse a crowd to action. Text 2 is quiet and individual. Arjun is an \"independent contractor\" who rides alone, and his aphorism \"Everything is worth it... until you add it up\" registers weary calculation rather than defiance. Notably, Text 1's dignity belongs only to \"men\", while Text 2 finds its one moment of grace in a woman at a gate.\n\nTogether, the texts suggest that work and wages are not sufficient without the third term the 1931 speaker named: respect, which in both eras depends on being seen as a person rather than counted as a figure.",
+     "difficulty": 3
+    }
+   ],
+   "length_words": 698
+  },
+  {
+   "key": "visiting-hours",
+   "title": "Visiting Hours",
+   "form": "Drama",
+   "complexity": 2,
+   "author": "Original text (HSC Companion)",
+   "headnote": "This is an original short scene from a play. Dana and Michael are adult siblings waiting while their father is in surgery. They have not spoken for eleven years. A header is a grain harvester.",
+   "theme_tags": [
+    "family",
+    "estrangement",
+    "rural life",
+    "grief",
+    "reconciliation"
+   ],
+   "body": "A family room in a regional hospital, late at night. A vending machine hums. Two vinyl chairs with an empty one between them, a box of tissues, a television mounted high on the wall with the sound off. DANA, forty, in work clothes, sits very upright with her handbag on her knees. MICHAEL, thirty-six, in a football jumper, enters with two cups of machine coffee. He holds one out. She looks at it.\n\nMICHAEL: White, no sugar. (Beat.) Or has that changed too?\n\nDANA: It's fine. (She takes it. She does not drink.)\n\nMICHAEL: (sitting, leaving one chair between them) Nurse said another hour. Maybe two.\n\nDANA: I spoke to the surgeon.\n\nMICHAEL: Course you did.\n\nDANA: Someone had to.\n\n(Pause. On the television, silent, a man points at a weather map.)\n\nMICHAEL: He asked for you. Before they took him down. He said, 'Is Dana coming?'\n\nDANA: (a fraction too fast) And what did you say?\n\nMICHAEL: I said you were on your way.\n\nDANA: I was.\n\nMICHAEL: Eleven years is a long way.\n\n(DANA puts the coffee down on the floor, carefully, as if it might go off.)\n\nDANA: You don't get to do that. You were here. You got to be here.\n\nMICHAEL: Got to.\n\nDANA: Yes, got to. You got the farm, and the ute, and the Sunday roasts, and him telling everyone at the pub how you'd turned the place around —\n\nMICHAEL: I got the overdraft. I got him falling off the header in August because he wouldn't let me drive it. I got him calling me by your name when the sugar was low.\n\n(Silence. DANA looks at him for the first time.)\n\nDANA: My name?\n\nMICHAEL: Dana, get the gate. Dana, where's the — (He stops.) Three, four times a week. Like you'd just gone into town.\n\n(DANA picks up the coffee again. She holds it with both hands.)\n\nDANA: He never rang.\n\nMICHAEL: Neither did you.\n\nDANA: I wrote. At Christmas. I wrote every Christmas.\n\nMICHAEL: I know. They're in the dresser. (Beat.) He opened them. He just didn't know what you wanted him to say.\n\nDANA: Sorry. I wanted him to say sorry.\n\nMICHAEL: (quietly) Yeah. Well. He's not a sorry kind of bloke. He's more of a get-the-gate kind of bloke.\n\n(Something that is almost a laugh escapes DANA. She covers her mouth. MICHAEL moves, slowly, into the empty chair between them. Neither speaks. On the television, the weather map shows rain moving in from the west.)\n\nDANA: That'll be good for the crop.\n\nMICHAEL: Yeah. It will.\n\n(The lights fade slowly as they watch the silent screen.)",
+   "pair": null,
+   "questions": [
+    {
+     "marks": 3,
+     "verb": "Explain",
+     "demand": "explain",
+     "text": "Explain how the playwright uses stage directions in the opening of the scene to establish the distance between the siblings.",
+     "skill_tags": [
+      "stage directions",
+      "setting",
+      "characterisation"
+     ],
+     "criteria": [
+      {
+       "mark": 3,
+       "descriptor": "Provides a precise, well-reasoned explanation of how the opening stage directions establish the siblings' distance, integrating well-chosen textual evidence and making the cause-and-effect relationship explicit"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides a sound explanation of how the opening stage directions establish the siblings' distance with appropriate textual reference"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of how the opening stage directions establish the siblings' distance, relying on paraphrase or retelling"
+      }
+     ],
+     "checklist": [
+      "Explains the costume contrast (\"in work clothes\"; \"in a football jumper\")",
+      "Explains Dana's posture (\"sits very upright with her handbag on her knees\") as formal and ready to leave",
+      "Explains the hesitation in \"He holds one out. She looks at it.\"",
+      "Explains the empty chair (\"leaving one chair between them\") as a visual symbol"
+     ],
+     "next_steps": {
+      "0": "Choose one stage direction that shows distance, quote it, and explain what an audience would see and infer.",
+      "1": "Add a second, different kind of direction (costume, posture, movement or set) and explain how it adds to the impression of distance.",
+      "2": "Show how the opening directions prepare for later action, such as Michael moving into the empty chair."
+     },
+     "model": "The opening stage directions establish distance through contrast, posture and space. Dana is \"in work clothes\" and Michael \"in a football jumper\", a visual contrast that suggests they now live in different worlds. Dana \"sits very upright with her handbag on her knees\", a posture of formality and readiness to leave, as if she were a visitor rather than family. When Michael offers coffee, the terse directions \"He holds one out. She looks at it.\" create a hesitation that reveals mistrust. Michael then sits \"leaving one chair between them\", a physical gap that becomes a visual symbol of their estrangement and prepares for the moment late in the scene when he moves into it.",
+     "difficulty": 1
+    },
+    {
+     "marks": 4,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "Analyse how the repeated phrase \"got to\" exposes the siblings' different versions of the past.",
+     "skill_tags": [
+      "dialogue",
+      "repetition",
+      "conflict",
+      "perspective"
+     ],
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Provides a perceptive, sustained analysis of how the repeated phrase exposes the siblings' different versions of the past, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a thoughtful analysis of how the repeated phrase exposes the siblings' different versions of the past, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how the repeated phrase exposes the siblings' different versions of the past, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how the repeated phrase exposes the siblings' different versions of the past or identifies a relevant technique with little explanation of its effect"
+      }
+     ],
+     "checklist": [
+      "Makes a claim: each sibling believes the other received what they were denied",
+      "Analyses Dana's framing of staying as privilege (\"You got to be here.\")",
+      "Analyses Michael's fragmentary echo \"Got to.\" and Dana's list with polysyndeton",
+      "Analyses Michael's answering anaphora (\"I got the overdraft. I got him falling off the header\")",
+      "Explains the turning point \"I got him calling me by your name\""
+     ],
+     "next_steps": {
+      "0": "Make a claim about what the phrase reveals about each sibling's view of the past.",
+      "1": "Analyse how Dana uses the phrase: what does she believe Michael received by staying?",
+      "2": "Analyse Michael's reply: show how he reuses the same verb to list burdens instead of privileges.",
+      "3": "Explain why the last item in Michael's list changes the direction of the scene."
+     },
+     "model": "The repetition of \"got to\" turns a single phrase into the hinge of the siblings' conflict, revealing that each regards the other as the one who received what they were denied. Dana uses it to frame staying as a privilege: \"You were here. You got to be here.\" Michael's flat echo, \"Got to.\", repeated as a fragment, questions her assumption, and Dana's insistence, \"Yes, got to\", leads into a list of what she imagines he gained: \"the farm, and the ute, and the Sunday roasts\". The polysyndeton makes the inheritance sound abundant and settled. Michael answers with his own anaphoric list built on the same verb, \"I got the overdraft. I got him falling off the header in August\", which recasts staying as debt and danger. The parallel structure shows that the siblings share a grammar of grievance but have filled it with opposite content. Michael's final item, \"I got him calling me by your name\", is the turning point: it reveals that what Dana believed she was excluded from was itself haunted by her absence.",
+     "difficulty": 2
+    },
+    {
+     "marks": 6,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "Analyse how the scene moves from conflict towards a fragile reconciliation. In your answer, refer to dialogue, silence and staging.",
+     "skill_tags": [
+      "structure",
+      "subtext",
+      "silence",
+      "staging"
+     ],
+     "criteria": [
+      {
+       "mark": 6,
+       "descriptor": "Provides a perceptive, sustained analysis of how the scene moves from conflict towards a fragile reconciliation, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 5,
+       "descriptor": "Provides a thoughtful analysis of how the scene moves from conflict towards a fragile reconciliation, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Provides a sound analysis of how the scene moves from conflict towards a fragile reconciliation, using relevant evidence with some explanation of effect"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides some explanation of how the scene moves from conflict towards a fragile reconciliation, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Describes how the scene moves from conflict towards a fragile reconciliation or identifies a relevant technique with little explanation of its effect"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Makes a limited or general comment about the text"
+      }
+     ],
+     "checklist": [
+      "Makes a claim about the shape of the scene (conflict, revelation, shared silence; suspended rather than resolved)",
+      "Analyses the barbed opening dialogue (\"Or has that changed too?\", \"Course you did.\")",
+      "Analyses the revelation and the direction \"DANA looks at him for the first time\"",
+      "Analyses humour and silence as bridges (\"not a sorry kind of bloke\"; \"Neither speaks\")",
+      "Analyses the staging of the empty chair and the silent weather map",
+      "Explains why the ending is fragile (understated dialogue, unresolved surgery)"
+     ],
+     "next_steps": {
+      "0": "Make a claim about how the scene is structured, using the words conflict and reconciliation.",
+      "1": "Analyse the conflict in the opening dialogue with one precise quotation and its subtext.",
+      "2": "Identify and analyse the turning point, including the stage direction that marks it.",
+      "3": "Analyse silence and staging: what changes when Michael moves into the empty chair?",
+      "4": "Explain why the reconciliation is fragile rather than complete, using the final exchange and the weather map.",
+      "5": "Refine for Band 6: integrate dialogue, silence and staging in every paragraph and keep the focus on how the scene MOVES."
+     },
+     "model": "The scene dramatises reconciliation not as a resolution but as a shift in where the siblings look and sit. It moves from guarded hostility, through a revelation that changes Dana's understanding of the past, to a shared silence in which the conflict is suspended rather than settled.\n\nThe opening establishes conflict through clipped, barbed dialogue. Michael's \"Or has that changed too?\" turns an offer of coffee into an accusation, and his sarcastic \"Course you did.\" answers Dana's competence with resentment; her reply, \"Someone had to.\", implies that he is less capable. The silent television, on which \"a man points at a weather map\", underlines their failure to communicate.\n\nThe turning point comes through revelation. Michael's disclosure that their father called him \"by your name when the sugar was low\" stops the argument, and the direction \"DANA looks at him for the first time\" marks the shift from defensiveness to attention. His broken-off imitation, \"Dana, get the gate. Dana, where's the\", shows that the father's love was expressed in the language of daily work. Dana's \"Sorry. I wanted him to say sorry.\" is the scene's most exposed moment, and Michael's dry reply that their father is \"not a sorry kind of bloke\" turns grief into a shared joke. The direction that \"Something that is almost a laugh escapes DANA\" captures how tentative the connection is.\n\nStaging then does what dialogue cannot. Michael \"moves, slowly, into the empty chair between them\", closing the gap established at the start, and the fact that \"Neither speaks\" suggests that silence, once a weapon, has become a space they can share.\n\nThe ending is deliberately understated. Dana's \"That'll be good for the crop.\" is her first sentence in the language of the farm and of their father, and Michael's \"Yeah. It will.\" accepts it. The rain \"moving in from the west\" offers hope, but it remains on a silent screen, and the father's surgery is unresolved. The reconciliation is real, yet fragile: a beginning rather than an ending.",
+     "difficulty": 3
+    }
+   ],
+   "length_words": 439
+  },
+  {
+   "key": "counting-season-review",
+   "title": "Review: The Counting Season",
+   "form": "Review",
+   "complexity": 2,
+   "author": "Original text (HSC Companion)",
+   "headnote": "This is an original book review of a fictional novel. The novel, its author and the reviewer are invented. The Newell Highway is an inland road in New South Wales.",
+   "theme_tags": [
+    "reviewing",
+    "silence",
+    "family",
+    "rural life",
+    "judgement"
+   ],
+   "body": "There is a kind of novel that announces itself as important in its first sentence and then spends three hundred pages trying to live up to the announcement. Lena Marchetti's debut is not that kind of novel. The Counting Season begins with a girl counting the cars that pass her family's service station on the Newell Highway, and for a long time it seems content to keep counting. This is its great strength and, eventually, its problem.\n\nThe girl is Bianca, fourteen, and the year is 1998. Her father has stopped speaking, not out of anger, the novel is careful to tell us, but because 'the words had worn out, the way a tyre wears out, from the inside where you can't see it'. Bianca's mother runs the station, the till, the roadhouse kitchen and the family's silence with the same tired efficiency. Nothing much happens. A truck driver leaves a book behind. A cousin visits from Griffith. A dog goes missing and comes back.\n\nMarchetti's prose is remarkable for what it refuses to do. It refuses to explain. It refuses, almost entirely, to describe the father's illness in clinical terms; instead we see it the way Bianca sees it, through objects: his reading glasses folded on the windowsill for a whole season, the newspaper still in its plastic sleeve. These chapters have the patience of a long drive, and like a long drive they produce in the reader a strange, receptive calm in which the smallest event, a magpie on a bowser, becomes luminous.\n\nThe trouble arrives in the final forty pages, when the novel seems to lose its nerve. Having trusted silence for so long, Marchetti suddenly gives the father a lengthy speech at a family dinner in which he explains himself, his war, his marriage and his regrets, in complete and grammatical paragraphs. It is beautifully written. It is also, I think, a mistake. After three hundred pages teaching us to read what is not said, we are handed everything, and the effect is less like revelation than like the radio coming on too loud in a quiet car.\n\nStill, it would be churlish to let an ending outweigh a book this assured. Marchetti has a gift for the overlooked: for the inland, the in-between, the people who serve you petrol and do not expect to be remembered. The Counting Season is a debut of real distinction, flawed in the way that ambitious first novels often are, by not quite trusting its own best instincts.\n\nRead it slowly. Then argue with the ending.\n\nFour stars.",
+   "pair": null,
+   "questions": [
+    {
+     "marks": 2,
+     "verb": "Identify",
+     "demand": "identify",
+     "text": "Identify the reviewer's overall judgement of the novel, with ONE phrase that conveys it.",
+     "skill_tags": [
+      "evaluative language",
+      "purpose"
+     ],
+     "criteria": [
+      {
+       "mark": 2,
+       "descriptor": "Precisely identifies the reviewer's overall judgement and explains its significance with apt, accurately quoted evidence"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Identifies a relevant feature of the reviewer's overall judgement with little or no explanation"
+      }
+     ],
+     "checklist": [
+      "States the overall judgement precisely (an impressive but flawed debut)",
+      "Quotes a phrase that conveys it, such as \"a debut of real distinction\"",
+      "Comments briefly on how the phrase balances praise and reservation"
+     ],
+     "next_steps": {
+      "0": "State the judgement in your own words (positive, negative or mixed, and how strongly), then quote one phrase that shows it.",
+      "1": "Explain in one sentence how your chosen phrase conveys both the praise and the reservation."
+     },
+     "model": "The reviewer judges the novel to be an impressive but flawed debut: largely excellent, but weakened by its ending. This is conveyed in the phrase \"a debut of real distinction, flawed in the way that ambitious first novels often are\". The concessive structure balances strong praise against a specific reservation, and the \"Four stars\" rating confirms a positive but qualified verdict.",
+     "difficulty": 1
+    },
+    {
+     "marks": 3,
+     "verb": "Explain",
+     "demand": "explain",
+     "text": "Explain why the reviewer considers the novel's ending \"a mistake\".",
+     "skill_tags": [
+      "argument",
+      "evaluation",
+      "simile"
+     ],
+     "criteria": [
+      {
+       "mark": 3,
+       "descriptor": "Provides a precise, well-reasoned explanation of why the reviewer considers the ending a mistake, integrating well-chosen textual evidence and making the cause-and-effect relationship explicit"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides a sound explanation of why the reviewer considers the ending a mistake with appropriate textual reference"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of why the reviewer considers the ending a mistake, relying on paraphrase or retelling"
+      }
+     ],
+     "checklist": [
+      "Explains the novel's established method of silence (\"It refuses to explain.\")",
+      "Explains how the father's speech breaks that method (\"complete and grammatical paragraphs\")",
+      "Uses the reviewer's reasoning (\"we are handed everything\")",
+      "Explains the simile of \"the radio coming on too loud in a quiet car\""
+     ],
+     "next_steps": {
+      "0": "State the reviewer's reason in one sentence: what does the ending do that the rest of the novel does not?",
+      "1": "Support the reason with a quotation describing the father's speech and one describing the rest of the novel.",
+      "2": "Explain the reviewer's simile about the radio and how it makes the criticism vivid."
+     },
+     "model": "The reviewer considers the ending a mistake because it abandons the method that made the novel powerful. For most of the book Marchetti's prose \"refuses to explain\", teaching the reader to interpret objects and silences. In the final pages, however, the father delivers a speech explaining \"his war, his marriage and his regrets, in complete and grammatical paragraphs\". The reviewer argues that after \"three hundred pages teaching us to read what is not said\", the reader is suddenly given everything, so the ending contradicts the reading habits the novel has built. The simile of \"the radio coming on too loud in a quiet car\" captures how jarring this shift feels.",
+     "difficulty": 1
+    },
+    {
+     "marks": 5,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "Analyse how the reviewer establishes credibility and persuades the reader to share their judgement.",
+     "skill_tags": [
+      "persuasion",
+      "voice",
+      "evidence",
+      "purpose and audience"
+     ],
+     "criteria": [
+      {
+       "mark": 5,
+       "descriptor": "Provides a perceptive, sustained analysis of how the reviewer establishes credibility and persuades the reader, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Provides a thoughtful analysis of how the reviewer establishes credibility and persuades the reader, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a sound analysis of how the reviewer establishes credibility and persuades the reader, using relevant evidence with some explanation of effect"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how the reviewer establishes credibility and persuades the reader, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how the reviewer establishes credibility and persuades the reader or identifies a relevant technique with little explanation of its effect"
+      }
+     ],
+     "checklist": [
+      "Makes a claim about the reviewer's persona (discerning, fair, attentive)",
+      "Analyses the opening generalisation and balanced thesis (\"its great strength and, eventually, its problem\")",
+      "Analyses the use of precise evidence from the novel (quotation and detail)",
+      "Analyses how the reviewer's own figurative language mirrors the book's qualities",
+      "Analyses the handling of criticism (concession, the hedge \"I think\") and the closing imperatives"
+     ],
+     "next_steps": {
+      "0": "Make a claim about the kind of reviewer the writer presents themselves as, and why readers would trust them.",
+      "1": "Analyse the opening paragraph: how does it signal fairness and experience?",
+      "2": "Show how evidence from the novel (a quotation or detail) persuades better than plain assertion.",
+      "3": "Analyse how criticism is delivered so that it seems fair, using the paragraph about the ending.",
+      "4": "Draw the strategies together and explain what the closing imperatives ask the reader to do."
+     },
+     "model": "The reviewer establishes credibility by appearing discerning, fair and attentive to detail, so that both the praise and the criticism seem earned rather than arbitrary.\n\nThe opening positions the reviewer as an experienced, sceptical reader. The generalisation about novels that announce themselves \"as important in its first sentence\" and then spend \"three hundred pages trying to live up to the announcement\" implies wide reading and resistance to hype, so the praise that follows carries weight. The paragraph ends with a balanced thesis, \"This is its great strength and, eventually, its problem\", signalling an even-handed assessment from the start.\n\nThe reviewer then proves the claims with precise evidence. Quoting the novel's simile that the father's words had worn out \"the way a tyre wears out\" demonstrates the prose rather than merely asserting its quality, and specific details, \"his reading glasses folded on the windowsill for a whole season\", show close reading. The reviewer's own figurative language mirrors the book's: the chapters have \"the patience of a long drive\", and \"a magpie on a bowser\" becomes \"luminous\", so the review enacts the receptive attention it praises.\n\nCriticism is handled with equal care. The short sentences \"It is beautifully written. It is also, I think, a mistake.\" concede quality before judging, and the hedge \"I think\" sounds honest rather than dogmatic. The final paragraph's concession, \"it would be churlish to let an ending outweigh a book this assured\", restores balance.\n\nFinally, the imperatives \"Read it slowly. Then argue with the ending.\" invite the reader into the debate, persuading them that the reviewer's judgement is one they can test for themselves.",
+     "difficulty": 3
+    }
+   ],
+   "length_words": 428
+  },
+  {
+   "key": "ghazal-leaving",
+   "title": "Ghazal for the City I Am Leaving",
+   "form": "Poetry",
+   "complexity": 3,
+   "author": "Original text (HSC Companion)",
+   "headnote": "This is an original ghazal, a form from Arabic, Persian and Urdu poetry made of self-contained couplets. In this version every couplet ends with the same word, and in the final couplet the poet addresses herself by name, as ghazal poets traditionally do. The poet, Ayesha, is fictional. Auburn, Granville, Harris Park and Blacktown are suburbs of western Sydney.",
+   "theme_tags": [
+    "belonging",
+    "migration",
+    "family",
+    "place",
+    "leaving"
+   ],
+   "body": "I have packed the kettle and the good knives. It takes a year to leave.\nThe jacarandas will flower without me. They have never learned to leave.\n\nAt Circular Quay the ferries shoulder in and out like patient cattle.\nOnly the wake behind them, widening, rehearses how to leave.\n\nMy mother crossed two oceans with one suitcase and a tin of seeds.\nShe grew curry leaves in Blacktown. She said you never wholly leave.\n\nEach room goes back to being a room once the pictures are down.\nThe nail holes stare like questions I forgot to ask. And still I leave.\n\nMy friends say, You'll be back, the way you wish a swimmer luck\nat the edge of the surf: half blessing, half permission to leave.\n\nMy grandfather kept the key to a house across a border he never crossed again.\nI have the key now. It opens nothing. It is how we learned to leave.\n\nThis city never asked me to belong. It simply let me stay.\nThat is the kindness of large cities: they make it easy to leave.\n\nFrom the plane I will try to name the suburbs by their lights,\nAuburn, Granville, Harris Park, and lose them one by one, and leave.\n\nAyesha, when they ask you over there where you are from,\nsay the name of a city that taught you how to leave.",
+   "pair": null,
+   "questions": [
+    {
+     "marks": 3,
+     "verb": "Explain",
+     "demand": "explain",
+     "text": "Explain the effect of ending every couplet with the word \"leave\".",
+     "skill_tags": [
+      "form",
+      "refrain",
+      "repetition"
+     ],
+     "criteria": [
+      {
+       "mark": 3,
+       "descriptor": "Provides a precise, well-reasoned explanation of the effect of the repeated final word, integrating well-chosen textual evidence and making the cause-and-effect relationship explicit"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides a sound explanation of the effect of the repeated final word with appropriate textual reference"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of the effect of the repeated final word, relying on paraphrase or retelling"
+      }
+     ],
+     "checklist": [
+      "Explains that departure becomes the poem's inescapable destination",
+      "Shows the refrain gathering different meanings in at least two couplets",
+      "Explains how the refrain unifies self-contained couplets"
+     ],
+     "next_steps": {
+      "0": "State the main effect of the repetition in one sentence, then quote one couplet ending to support it.",
+      "1": "Show that the word changes meaning: compare two couplets where \"leave\" means something different.",
+      "2": "Connect the repetition to the ghazal form: explain how the refrain binds separate couplets, and how that suits a speaker gathering memories before departure."
+     },
+     "model": "Ending every couplet with \"leave\" makes departure the poem's inescapable destination: however each couplet begins, it is drawn back to the same word, just as the speaker's thoughts keep returning to the act of going. The refrain also gathers shifting meanings. In \"It takes a year to leave\" it suggests slow, practical effort; in \"you never wholly leave\" it implies that leaving is impossible; and in \"It is how we learned to leave\" it becomes a family inheritance. Because ghazal couplets are self-contained, the refrain is what binds them, so repetition creates unity from fragments, mirroring a speaker trying to hold scattered memories together as she goes.",
+     "difficulty": 2
+    },
+    {
+     "marks": 4,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "Analyse how the poet represents the speaker's family history of leaving.",
+     "skill_tags": [
+      "symbol",
+      "family",
+      "migration",
+      "imagery"
+     ],
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Provides a perceptive, sustained analysis of how the poem represents the family's history of leaving, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a thoughtful analysis of how the poem represents the family's history of leaving, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how the poem represents the family's history of leaving, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how the poem represents the family's history of leaving or identifies a relevant technique with little explanation of its effect"
+      }
+     ],
+     "checklist": [
+      "Makes a claim: leaving is an inheritance carried in objects",
+      "Analyses the mother's suitcase and \"tin of seeds\", and the curry leaves in Blacktown",
+      "Analyses the grandfather's key and the flat sentences \"I have the key now. It opens nothing.\"",
+      "Explains \"It is how we learned to leave\" and how the speaker's own departure fits (or differs from) the pattern"
+     ],
+     "next_steps": {
+      "0": "Make a claim about how the family's history of leaving is represented, then support it with the mother's couplet.",
+      "1": "Analyse a symbol: explain what the seeds or the key stand for, and why.",
+      "2": "Contrast the mother's and the grandfather's experiences of leaving, using the language of each couplet.",
+      "3": "Explain how the speaker places her own departure within this history, and whether hers is the same."
+     },
+     "model": "The poet represents leaving as an inheritance passed down through generations, each of whom carries something material that stands for what cannot be carried. The mother \"crossed two oceans with one suitcase and a tin of seeds\"; the seeds symbolise a culture transplanted rather than abandoned, and the specific, suburban result, \"She grew curry leaves in Blacktown\", shows heritage taking root in a new place. Her saying, \"you never wholly leave\", offers one family lesson: that origins persist. The grandfather's key offers a darker one. He kept it for \"a house across a border he never crossed again\", an image of displacement and loss, and the speaker's flat, short sentences, \"I have the key now. It opens nothing.\", convey the inheritance of a grief that has no practical use but cannot be discarded. The couplet's conclusion, \"It is how we learned to leave\", suggests that leaving has become a family skill, almost a tradition. By placing her own departure within these generations, the speaker presents herself as continuing a pattern, though, unlike her grandfather, she leaves by choice.",
+     "difficulty": 2
+    },
+    {
+     "marks": 6,
+     "verb": "Synthesise",
+     "demand": "synthesise",
+     "text": "Drawing on the whole poem, what does it suggest about the relationship between place and belonging?",
+     "skill_tags": [
+      "synthesis",
+      "belonging",
+      "place",
+      "ending"
+     ],
+     "criteria": [
+      {
+       "mark": 6,
+       "descriptor": "Constructs a perceptive, coherent synthesis of what the poem suggests about place and belonging, combining insights from across the text(s) into a new understanding supported by well-chosen evidence"
+      },
+      {
+       "mark": 5,
+       "descriptor": "Constructs a thoughtful synthesis of what the poem suggests about place and belonging, drawing together relevant, analysed evidence"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Draws together ideas about what the poem suggests about place and belonging with relevant evidence and some explanation"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Discusses relevant ideas about what the poem suggests about place and belonging without fully combining them"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Describes aspects of the text(s) with limited reference to what the poem suggests about place and belonging"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Makes a limited or general comment relevant to the question"
+      }
+     ],
+     "checklist": [
+      "Constructs an overall insight (for example: belonging is made through care, memory and inheritance, and is clearest at departure)",
+      "Analyses the distinction between staying and belonging (\"It simply let me stay.\")",
+      "Uses the mother's seeds and the grandfather's key to show belonging outlasting place",
+      "Analyses the naming of ordinary things and suburbs as a form of attachment",
+      "Interprets the paradox of the final couplet (\"a city that taught you how to leave\")"
+     ],
+     "next_steps": {
+      "0": "Write a thesis that answers the question directly: what is the relationship between place and belonging in this poem?",
+      "1": "Support your thesis with the couplet about the city that \"let me stay\" and explain its distinction.",
+      "2": "Add evidence from the family couplets and explain how they show belonging carried beyond a place.",
+      "3": "Analyse the speaker's acts of naming (objects and suburbs) and what they reveal about attachment.",
+      "4": "Combine your points into a single insight, and use the final couplet's paradox to complete it.",
+      "5": "Refine for Band 6: integrate quotations from across the poem in each paragraph and make your conclusion more than a summary."
+     },
+     "model": "The poem suggests that belonging is not simply granted by a place or ended by leaving it; it is made through attention, memory and inheritance, and it is often understood most fully at the moment of departure.\n\nFirst, the poem distinguishes between being permitted to stay and belonging. The speaker observes that \"This city never asked me to belong. It simply let me stay.\" The distinction is ambivalent: the city's indifference is called \"the kindness of large cities\", because it imposes no demands, yet the same quality makes it \"easy to leave\". Belonging, the poem implies, requires more than tolerance.\n\nSecond, the poem shows that belonging is constructed by people rather than by place. The mother makes Blacktown a home by growing \"curry leaves\" from her \"tin of seeds\", so belonging is cultivated, literally rooted, through care. Her claim that \"you never wholly leave\" suggests that places also persist in those who leave them, an idea reinforced by the grandfather's key, which \"opens nothing\" yet is still kept. Belonging can outlast the place it refers to.\n\nThird, the act of leaving intensifies the speaker's attachment. The ordinary details she lists, \"the kettle and the good knives\", the \"nail holes\" that stare \"like questions I forgot to ask\", and the litany of suburbs, \"Auburn, Granville, Harris Park\", show a love expressed through precise naming. Yet the image of losing the suburbs \"one by one\" from the plane suggests that this belonging is fragile and dependent on memory.\n\nThe final couplet draws these ideas together. Addressing herself as \"Ayesha\", the speaker imagines being asked where she is from and tells herself to \"say the name of a city that taught you how to leave.\" The paradox is the poem's central insight: Sydney's gift is not permanence but the capacity to carry a place within one's identity. Belonging, then, is portable and inherited, like the seeds and the key: never wholly left, never wholly kept.",
+     "difficulty": 3
+    }
+   ],
+   "length_words": 229
   }
  ]
 }
