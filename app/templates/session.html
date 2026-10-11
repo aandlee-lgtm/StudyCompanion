@@ -33,6 +33,8 @@
   <div class="card kpi"><div class="label">Overall</div><div class="stat">{{ p.pct }}%</div><div class="bar"><span style="width: {{ p.pct }}%"></span></div></div>
 </div>
 
+{% if swap_notice %}<div class="notice {{ 'warn' if swap_notice.outcome == 'removed' else 'good' }} sel-swap-note" id="swap-note" role="status">{{ swap_notice.message }}</div>{% endif %}
+
 {% if s.status == 'completed' %}<div class="notice good spread"><span>Session complete.</span><a class="btn small" href="/session/{{ s.id }}/summary">See the summary</a></div>
 {% elif s.status == 'closed' %}<div class="notice spread"><span>You closed this session with {{ p.n_total - p.n_done }} question{{ 's' if p.n_total - p.n_done != 1 }} not attempted (they do not count against you).</span><a class="btn small" href="/session/{{ s.id }}/summary">Summary</a></div>
 {% elif is_past and p.n_done %}
@@ -50,6 +52,12 @@
   {% if ex.time and ex.time.total %}<p class="small">Expected time about {{ ex.time.total | round | int }} minutes{% if ex.subject_minutes %} (Mathematics {{ ex.subject_minutes.get('MATHS', 0) | round | int }}, English {{ ex.subject_minutes.get('ENGLISH', 0) | round | int }}, Legal Studies {{ ex.subject_minutes.get('LEGAL', 0) | round | int }}){% endif %}; target window {{ ex.time.lo | round | int }}–{{ ex.time.hi | round | int }} minutes.</p>{% endif %}
   {% for n in ex.notes or [] %}<p class="small muted">{{ n }}</p>{% endfor %}
   {% if ex.difficulty and ex.difficulty.band %}<p class="small muted">Mathematics difficulty mix today: {{ ex.difficulty.quota.get('1', 0) }} foundation, {{ ex.difficulty.quota.get('2', 0) }} HSC-standard, {{ ex.difficulty.quota.get('3', 0) }} challenging.</p>{% endif %}
+  {% if swaps %}
+  <p class="small sel-swaps-head"><strong>Swaps you made</strong></p>
+  <ul class="small sel-swaps-log">
+    {% for w in swaps %}<li>{% if (w.details or {}).get('local_time') %}<span class="muted">{{ w.details.local_time }}</span> · {% endif %}{{ w.message }}</li>{% endfor %}
+  </ul>
+  {% endif %}
 </details>
 {% endif %}
 
@@ -61,7 +69,10 @@
   {% set unseen = qs | selectattr('question.category', 'equalto', 'unseen') | list %}
   {% if unseen and unseen[0].question.stimulus %}
   {% set texts = unseen[0].question.stimulus.reading_set() %}
+  <div class="sel-text-row">
   <p class="small sel-text-line">Today's text: {% for t in texts %}<strong>{{ t.title }}</strong>{% if t.form %} ({{ t.form | lower }}){% endif %}{% if not loop.last %} and {% endif %}{% endfor %}{% if (ex.reading or {}).get('ENGLISH') %} · about {{ [1, ex.reading.ENGLISH | round | int] | max }} min reading{% endif %}</p>
+  {% with sq=unseen[0], swap=(swap_controls or {}).get(unseen[0].id), back='session' %}{% include "_swap_control.html" %}{% endwith %}
+  </div>
   {% endif %}
 {% endif %}
 <div class="card qlist">
@@ -69,14 +80,19 @@
   {% set a = firsts.get(sq.id) %}
   {% set kind = (sq.score_breakdown or {}).get('kind') %}
   {% set flags = (sq.score_breakdown or {}).get('flags') or [] %}
+  {% set ctl = (swap_controls or {}).get(sq.id) %}
+  <div class="sel-qrow" id="q{{ sq.position }}">
   <a href="/session/{{ s.id }}/q/{{ sq.position }}">
     <span><span class="status-dot {{ sq.status }}"></span><strong>Q{{ sq.position }}</strong>
       {% if kind == 'retry' %}<span class="pill warn">Rewrite</span>{% elif kind in ('ladder', 'repeat', 'near_duplicate') %}<span class="pill warn">Repeat</span>{% elif kind == 'due' %}<span class="pill">Revision due</span>{% endif %}
       {% if 'catch_up' in flags %}<span class="pill">Catch-up</span>{% endif %}
+      {% if (sq.score_breakdown or {}).get('swap') %}<span class="pill">Swapped in</span>{% endif %}
       · <span class="clamp">{{ sq.question.question_text | striptags }}</span>
       <br><span class="small muted">{{ sq.reason }}</span></span>
     <span class="small muted" style="white-space:nowrap">{% if a %}<strong class="{{ 'ok' if a.fraction >= 0.85 else '' }}">{{ a.mark_awarded|round(1) }}/{{ a.mark_possible|int }}</strong>{% else %}{{ sq.question.marks }} mark{{ 's' if sq.question.marks != 1 }} · ~{{ sq.question.estimated_minutes|round|int }} min{% endif %}</span>
   </a>
+  {% if ctl and not ctl.is_set %}{% with swap=ctl, back='session' %}{% include "_swap_control.html" %}{% endwith %}{% endif %}
+  </div>
   {% endfor %}
 </div>
 {% endif %}

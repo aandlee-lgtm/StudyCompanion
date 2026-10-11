@@ -562,7 +562,7 @@ def swap_question(db: Session, sess: DailySession, sq: SessionQuestion, reason: 
             row.draft_text = None
             row.draft_saved_at = None
             row.time_spent_seconds = 0
-            row.reason = f"Swapped in ({sw.REASON_TEXT[reason]}). {s.reason}"
+            row.reason = f"Swapped in ({sw.REASON_TEXT[reason]}). {s.reason}".replace("..", ".")
             row.score_breakdown = {**s.breakdown, "total": s.score, "bucket": s.bucket, "tier": s.tier, "kind": s.kind,
                                    "flags": list(s.facts.get("flags") or []), "timed": rep.ctx.profile.timed if rep.ctx else False,
                                    "swap": {"id": rec.id, "reason": reason, "replaced": old_qid}}

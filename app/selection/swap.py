@@ -36,7 +36,8 @@ from app.selection.pool import Pool, near_duplicate, reading_minutes
 from app.selection.scoring import FRESH, Scored, learning_bucket
 
 REASONS = ("not_learnt", "different")
-REASON_TEXT = {"not_learnt": "not learnt yet", "different": "asked for a different one"}
+REASON_TEXT = {"not_learnt": "in place of a question on something you have not learnt yet",
+               "different": "you asked for a different question"}
 ANSWERED = ("submitted", "skipped")
 FINISHED = ("completed", "closed", "missed", "skipped")
 LINE_PREFIX = {"MATHS": "Mathematics:", "ENGLISH": "English:", "LEGAL": "Legal Studies"}
