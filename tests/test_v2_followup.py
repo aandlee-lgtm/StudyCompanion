@@ -434,3 +434,24 @@ def test_migration_chains_after_swap_when_present(tmp_path):
     (merged / "0004_swap.py").write_text('revision = "0004_swap"\n')
     mod = load(merged / src.name)
     assert mod.revision == "0005_followup" and mod.down_revision == "0004_swap"
+
+
+def test_other_feedback_fields_are_passed_through_to_the_prompt(client, db):
+    """Fields other packages add to the feedback payload (e.g. English comparison items) still ground the answer."""
+    q = _english_q(db)
+    p = FakeProvider(replies=[marking_json(1, q.marks)], default=json.loads(_reply()))
+    factory.set_test_provider(p)
+    a = _submit(db, q, "My response.")
+    fbrow = a.feedback
+    fbrow.payload = {**fbrow.payload, "comparison_items": [{"you_wrote": "My response.", "missing": "a link to the idea of memory"}]}
+    db.commit()
+    _ask(client, a, "What was missing?")
+    assert "Other feedback shown to the student" in p.prompts[-1] and "a link to the idea of memory" in p.prompts[-1]
+
+
+def test_long_history_keeps_every_question_and_recent_answers():
+    hist = [{"question": f"question {i}", "answer": f"answer {i} " + "x" * 2400, "steps": [], "example": ""} for i in range(19)]
+    convo = prompts_followup._conversation(hist)
+    assert all(f"question {i}" in convo for i in range(19))
+    assert "answer 18 " in convo and "answer 0 " not in convo and "earlier answer omitted" in convo
+    assert convo.index("question 0") < convo.index("question 18")

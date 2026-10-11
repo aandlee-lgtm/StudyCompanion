@@ -137,6 +137,30 @@ def _feedback_text(fb: dict) -> str:
     return "\n".join(lines)
 
 
+HISTORY_BUDGET = 24000  # characters of earlier answers sent in full; older answers are summarised by their question
+
+
+def _conversation(history: list[dict]) -> str:
+    """Every earlier turn, oldest first. The most recent answers are sent in full; when the thread
+    is long, the oldest answers are left out (their questions are still listed) to keep the prompt
+    a sensible size."""
+    turns, used = [], 0
+    for h in reversed(history):
+        question = f"Student: <<<{_fence(h['question'], 1200)}>>>"
+        reply = h.get("answer") or ""
+        if h.get("steps"):
+            reply += "\nSteps: " + " / ".join(h["steps"])
+        if h.get("example"):
+            reply += "\nExample: " + h["example"]
+        reply = _clip(reply, 2500)
+        if used + len(reply) <= HISTORY_BUDGET:
+            used += len(reply)
+            turns.append(f"{question}\nYou: {reply}")
+        else:
+            turns.append(f"{question}\nYou: (earlier answer omitted for length)")
+    return "\n".join(reversed(turns))
+
+
 def followup(ctx: dict, history: list[dict], question: str, chip: str | None = None) -> str:
     """``ctx`` comes from ``app.services.followup.grounding``; ``history`` is the earlier answered
     turns of this attempt's thread (oldest first)."""
@@ -189,16 +213,7 @@ def followup(ctx: dict, history: list[dict], question: str, chip: str | None = N
             parts.append("LEGAL EVIDENCE BANK: no verified items for this topic. Do not name specific cases, statistics or "
                          "legislation that are not in the material above; suggest the student checks with their teacher.")
     if history:
-        convo = []
-        for h in history:
-            convo.append(f"Student: <<<{_fence(h['question'], 1200)}>>>")
-            reply = h.get("answer") or ""
-            if h.get("steps"):
-                reply += "\nSteps: " + " / ".join(h["steps"])
-            if h.get("example"):
-                reply += "\nExample: " + h["example"]
-            convo.append(f"You: {_clip(reply, 2500)}")
-        parts.append("CONVERSATION SO FAR ABOUT THIS FEEDBACK (oldest first):\n" + "\n".join(convo))
+        parts.append("CONVERSATION SO FAR ABOUT THIS FEEDBACK (oldest first):\n" + _conversation(history))
     parts.append(f"STUDENT'S NEW QUESTION:\n<<<QUESTION\n{_fence(question, 1500)}\nQUESTION>>>")
     if chip in CHIP_INSTRUCTIONS:
         parts.append("WHAT THE STUDENT WANTS: " + CHIP_INSTRUCTIONS[chip])

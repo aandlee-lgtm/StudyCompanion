@@ -35,7 +35,7 @@
     </div>
     <label class="fu-label" for="fu-q-{{ a.id }}">Your question</label>
     <textarea id="fu-q-{{ a.id }}" name="question" rows="2" maxlength="{{ FOLLOWUP_MAX_CHARS }}" required
-      placeholder="e.g. Why is the answer negative?  What does 'evaluate' need here?"></textarea>
+      placeholder="{{ {'MATHS': 'e.g. Why is the answer negative? Where did my working go wrong?', 'LEGAL': 'e.g. What does ‘evaluate’ need here? Which evidence would have helped?'}.get(fu.subject, 'e.g. What does ‘analyse’ need here? Why is my paragraph called descriptive?') }}"></textarea>
     <div class="spread fu-send">
       <span class="tiny muted">{% if fu.ai %}AI explanation, not an official NESA judgement · Ctrl+Enter to send{% else %}Saved on this computer for your teacher{% endif %}</span>
       <button class="btn primary" type="submit">{{ 'Ask' if fu.ai else 'Save for my teacher' }}</button>

@@ -69,8 +69,9 @@
     var pending = pendingTurn(text);
     list.appendChild(pending);
     pending.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    var request = post(form, { chip: chip });  // read the form before its fields are disabled
     busy(form, true);
-    post(form, { chip: chip }).then(function (j) {
+    request.then(function (j) {
       pending.remove();
       if (j.html) {
         var li = fragment(j.html);
@@ -96,8 +97,9 @@
   function action(form) {
     var panel = form.closest("[data-fu-panel]");
     var turn = form.closest(".fu-turn");
+    var request = post(form, {});
     busy(form, true);
-    post(form, {}).then(function (j) {
+    request.then(function (j) {
       if (j.html && turn) {
         var li = fragment(j.html);
         turn.replaceWith(li);

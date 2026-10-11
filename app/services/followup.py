@@ -439,7 +439,7 @@ def view(db: Session, attempt: Attempt) -> dict:
                                    .order_by(FeedbackQuestion.id)).all()
             earlier = [r for r in prev_rows if r.status != FAILED]
     return {
-        "attempt": attempt, "rows": rows, "used": used, "max": limit, "remaining": max(0, limit - used), "ai": provider.generative,
+        "attempt": attempt, "subject": subject_code(db, attempt.question), "rows": rows, "used": used, "max": limit, "remaining": max(0, limit - used), "ai": provider.generative,
         "provider_name": provider.name, "chips": chips, "reference": None if provider.generative else reference(db, attempt),
         "earlier": earlier, "teacher_count": sum(1 for r in rows if r.for_teacher and not r.teacher_resolved),
     }
