@@ -110,6 +110,23 @@ def test_different_never_brings_back_a_sibling_form_or_a_swapped_out_question(db
     assert len(seen_ids) >= 3
 
 
+def test_rebuilding_the_session_keeps_swapped_out_questions_away(db):
+    """Integration (swap note 4): a mode change rebuilds today's set without the questions (or passage
+    sets) the student swapped away earlier today."""
+    sess = _today(db)
+    out: set[int] = set()
+    for code in ("MATHS", "LEGAL", "ENGLISH"):
+        sq = _rows(sess, code)[0]
+        unit = sw.unit_for(sess, sq)
+        out |= {q.id for q in unit.questions}
+        sessions.swap_question(db, sess, sq, "different")
+        db.commit()
+        db.refresh(sess)
+    rebuilt = sessions.rebuild(db, sess, "light")
+    db.commit()
+    assert rebuilt.questions and not ({x.question_id for x in rebuilt.questions} & out)
+
+
 def _only_candidates(db, sess, code, keep: set[int]) -> None:
     """Make ``keep`` the only questions of ``code`` outside the session that could be served."""
     subj = db.execute(select(Subject).where(Subject.code == code)).scalar_one()

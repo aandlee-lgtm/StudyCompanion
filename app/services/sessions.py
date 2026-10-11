@@ -260,11 +260,24 @@ def rebuild(db: Session, sess: DailySession, mode: str, catch_up: dict[int, dict
     The session keeps its number."""
     if any(q.status in ANSWERED for q in sess.questions):
         raise ValueError("This session already has answers; it cannot be rebuilt.")
+    out = _swapped_out_today(db, sess)  # read before the rows go: questions swapped away today stay away (v2-swap)
     for q in list(sess.questions):
         db.delete(q)
     db.flush()
     db.refresh(sess)
-    return generate(db, sess.session_date, mode, existing=sess, catch_up=catch_up)
+    return generate(db, sess.session_date, mode, existing=sess, exclude_ids=out or None, catch_up=catch_up)
+
+
+def _swapped_out_today(db: Session, sess: DailySession) -> set[int]:
+    """Questions swapped out of this session, with the rest of any passage set they belonged to."""
+    from app.models import Question
+    from app.selection.swap import swapped_out_ids
+
+    ids = swapped_out_ids(db, sess)
+    stims = {q.stimulus_id for q in (db.get(Question, i) for i in ids) if q is not None and q.stimulus_id}
+    if stims:
+        ids |= set(db.execute(select(Question.id).where(Question.stimulus_id.in_(stims))).scalars())
+    return ids
 
 
 # ------------------------------------------------------------ missed sessions ---
