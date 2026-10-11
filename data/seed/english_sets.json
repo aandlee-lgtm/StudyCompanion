@@ -4031,7 +4031,7 @@
    "form": "Speech",
    "complexity": 2,
    "author": "Original text (HSC Companion)",
-   "headnote": "This is an original speech by a fictional hydrologist (a scientist who studies water) at a community meeting in Tellum Creek, a fictional inland town. All figures in the speech are part of the fiction. An aquifer is a layer of rock that holds groundwater.",
+   "headnote": "This is an original speech by a fictional hydrologist (a scientist who studies water). She is addressing a community meeting in Tellum Creek, a fictional inland town. All figures in the speech are part of the fiction. An aquifer is a layer of rock that holds groundwater.",
    "theme_tags": [
     "environment",
     "time",
@@ -4170,7 +4170,7 @@
    "form": "Personal essay",
    "complexity": 2,
    "author": "Original text (HSC Companion)",
-   "headnote": "This is an original personal essay. The writer is fictional. Ashfield is a suburb of Sydney; music students sit graded practical exams, beginning at Grade One.",
+   "headnote": "This is an original personal essay. The writer, her daughter and her violin teacher are fictional. Ashfield is a suburb of Sydney; music students sit graded practical exams, beginning at Grade One.",
    "theme_tags": [
     "learning",
     "failure",
@@ -4260,7 +4260,7 @@
       "2": "Explain the parallel between the woman at the funeral and the writer.",
       "3": "Analyse how the essay ends, and why ending on a short sentence suits the argument."
      },
-     "model": "The essay is framed by two performances, the writer's Grade One exam and the funeral performance she remembers from childhood, and the frame shapes its central idea that amateur music is valuable for its human meaning rather than its excellence. The opening scene is comic and self-deprecating: she sat the exam \"between a seven-year-old in a tartan pinafore\" and a younger candidate at a higher grade, and she cried in the car park \"though in fairness to me, I had passed.\" This establishes her as an unlikely beginner. The funeral memory supplies the motive, the moment she understood \"that a sound could be sad on someone's behalf\", and late in the essay she returns to it with a new insight: the violinist \"was not, I suspect, very good. It didn't matter.\" The parallel between the two amateurs implies that what matters is the act of playing. The closing return to the exam completes the frame: the examiner's comment, \"Enjoy your playing\", and the writer's understated reply, \"I am trying to.\", turn the argument into an ongoing practice rather than a conclusion.",
+     "model": "The essay is framed by two performances, the writer's Grade One exam and the funeral performance she remembers from childhood, and the frame shapes its central idea that amateur music is valuable for its human meaning rather than its excellence. The opening scene is comic and self-deprecating: she sat the exam \"between a seven-year-old in a tartan pinafore\" and a nine-year-old already two grades ahead of her, and she cried in the car park \"though in fairness to me, I had passed.\" This establishes her as an unlikely beginner. The funeral memory supplies the motive, the moment she understood \"that a sound could be sad on someone's behalf\", and late in the essay she returns to it with a new insight: the violinist \"was not, I suspect, very good. It didn't matter.\" The parallel between the two amateurs implies that what matters is the act of playing. The closing return to the exam completes the frame: the examiner's comment, \"Enjoy your playing\", and the writer's understated reply, \"I am trying to.\", turn the argument into an ongoing practice rather than a conclusion.",
      "difficulty": 2
     },
     {
@@ -4359,12 +4359,14 @@
       }
      ],
      "checklist": [
-      "Identifies two genuine euphemisms (for example \"brimming with potential\"; \"renovate, extend or rebuild\"; \"ready for its next chapter\")",
-      "Explains what each implies (an old kitchen; likely demolition; the end of a family's time there)"
+      "Identifies two genuine euphemisms, quoted accurately (for example \"brimming with potential\"; \"renovate, extend or rebuild\"; \"ready for its next chapter\")",
+      "Chooses phrases that soften a drawback, not plain description or simple praise such as \"solid brick home\"",
+      "Explains in plain terms what each implies (an old, unrenovated kitchen; the likely demolition of the house; the end of a family's time there)",
+      "Shows how each phrase recasts a drawback (age, wear, a probable bulldozer) as an opportunity for the buyer"
      ],
      "next_steps": {
-      "0": "Quote two phrases that make something unattractive sound appealing.",
-      "1": "For each, explain in plain words what it really implies about the house."
+      "0": "Quote two phrases that make a drawback sound appealing; check that each softens a problem rather than simply praising the house.",
+      "1": "For each phrase, explain in plain words what it really implies about the house and why the advertisement avoids saying it directly."
      },
      "model": "One euphemism is \"a classic kitchen brimming with potential\", which implies the kitchen is old and will need renovating. Another is \"an exciting opportunity to renovate, extend or rebuild\", which implies the house itself may be demolished, so that its real value lies in the land. Both disguise age and the likely loss of the home as attractive possibilities.",
      "difficulty": 1
@@ -4582,49 +4584,50 @@
      "marks": 5,
      "verb": "Compare",
      "demand": "compare",
-     "text": "Compare how the two reviewers evaluate the same features of the production, and explain what their differences suggest about reviewing.",
+     "text": "Compare how Text 1 and Text 2 judge the same production of Saltwater Hymn. To what extent do their differences reveal more about the reviewers than about the play?",
      "skill_tags": [
       "comparison",
       "evaluation",
-      "perspective"
+      "perspective",
+      "critical judgement"
      ],
      "criteria": [
       {
        "mark": 5,
-       "descriptor": "Provides a perceptive, integrated comparison of how the two reviewers evaluate the same features and what this suggests about reviewing, analysing similarities and differences with well-chosen evidence from both texts"
+       "descriptor": "Provides a perceptive, integrated comparison of how Text 1 and Text 2 judge the same production, analysing shared evidence and opposing values with well-chosen quotations from both, and reaches a well-justified, qualified judgement about what the differences reveal"
       },
       {
        "mark": 4,
-       "descriptor": "Provides a thoughtful comparison of how the two reviewers evaluate the same features and what this suggests about reviewing, with relevant, analysed evidence from both texts"
+       "descriptor": "Provides a thoughtful comparison of how the two reviews judge shared features of the production, with relevant, analysed evidence from both texts and a clear judgement about what the differences reveal"
       },
       {
        "mark": 3,
-       "descriptor": "Provides a sound comparison of how the two reviewers evaluate the same features and what this suggests about reviewing, with relevant evidence from both texts and some explanation"
+       "descriptor": "Provides a sound comparison of how the two reviews judge the production, with relevant evidence from both texts, some explanation and a stated judgement"
       },
       {
        "mark": 2,
-       "descriptor": "Discusses both texts in relation to how the two reviewers evaluate the same features and what this suggests about reviewing, mostly separately, with some evidence"
+       "descriptor": "Discusses both reviews' judgements, mostly separately, with some evidence; the judgement about what the differences reveal is asserted or implied"
       },
       {
        "mark": 1,
-       "descriptor": "Describes one or both texts with limited reference to how the two reviewers evaluate the same features and what this suggests about reviewing"
+       "descriptor": "Describes one or both reviews with limited reference to how they judge the production"
       }
      ],
      "checklist": [
-      "Makes an integrated thesis (same evidence, opposite judgements shaped by values)",
-      "Compares the treatment of the grandmother's monologue",
-      "Compares the treatment of the climactic line (\"undoes everything she has built\" / \"so heavily signposted\")",
-      "Compares the design and running time (\"only when it has gone\" / \"a touch obvious\"; \"unbroken\" / \"a long time to hold one note\")",
-      "Notes each reviewer's concession and draws a conclusion about the nature of reviewing"
+      "Makes an integrated, qualified judgement: the reviews share most of their evidence but weigh it by different values, so they reveal the reviewers as much as the play, though not instead of it",
+      "Compares a feature both reviewers notice but weigh differently, such as the monologue (\"the best writing in the play\" yet \"also the longest\") or the blue light (\"only when it has gone\" / \"lovely for ten minutes\")",
+      "Compares the climactic line (\"undoes everything she has built\" / \"so heavily signposted\") as evidence of opposing values: emotional surrender versus surprise and restraint",
+      "Compares how each reviewer offers their own reaction as a verdict (\"I left in tears, and I was not alone.\" / \"I admired the craft and checked my watch.\")",
+      "Weighs counter-evidence: each review's concession (\"the dialogue strains for poetry\"; \"The audience around me wept.\") shows the play constrains both judgements"
      ],
      "next_steps": {
-      "0": "Write a thesis that names what the reviewers share and where they differ.",
-      "1": "Compare one feature both reviewers discuss, quoting each.",
-      "2": "Compare a second feature and explain what the difference reveals about each reviewer's values.",
-      "3": "Notice the concessions each reviewer makes, and explain what they show.",
-      "4": "Conclude with an insight about what reviewing is, based on your comparison."
+      "0": "Find ONE feature of the production that both reviewers discuss (the monologue, the climactic line, the blue light or the running time) and quote what each says about it.",
+      "1": "Move from describing each review separately to comparing them: put both reviewers' words about the same feature in one sentence and explain what each judgement shows the reviewer values.",
+      "2": "Add a second shared feature and answer the question directly: say how far the differences reveal the reviewers rather than the play.",
+      "3": "Test your judgement against counter-evidence: what do both reviews agree on, and what does each concede? Explain how this limits the claim that a review is only about its reviewer.",
+      "4": "Refine for Band 6: integrate both texts in every paragraph, analyse the language of judgement rather than only the opinions, and end with a qualified insight about what reading the two reviews together reveals."
      },
-     "model": "The two reviewers evaluate the same features, the monologues, the climactic line, the design and the length, but reach opposite judgements, which suggests that reviewing measures a critic's values as much as the production itself.\n\nBoth admire the grandmother's monologue. Text 1 presents it as proof of extraordinary performance, while Text 2 calls it \"the best writing in the play\" but adds that it is \"also the longest\", turning the same moment into the start of a problem.\n\nThe climactic line divides them most clearly. In Text 1 it is spoken \"almost under her breath\" and \"undoes everything she has built\", an emotional climax. In Text 2 it \"arrives so heavily signposted\" that the reviewer guessed it \"twenty minutes earlier\". The difference reveals what each values: emotional surrender versus surprise and restraint.\n\nThe design receives parallel descriptions. Both note the strip of blue light rising and falling \"like a tide\", but Text 1 admires its subtlety, noticed \"only when it has gone\", whereas Text 2 finds it \"a touch obvious\". Even the running time is praised in Text 1 as \"unbroken\" and criticised in Text 2 as \"a long time to hold one note\".\n\nEach reviewer also concedes the other's point in passing: Text 1 admits \"the dialogue strains for poetry\", and Text 2 acknowledges that \"The audience around me wept.\" The disagreement is not about what happened on stage but about what matters.\n\nThe comparison suggests that a review is an argument rather than a measurement: each reviewer selects and frames shared evidence to support a judgement shaped by taste, which is why readers benefit from reading more than one.",
+     "model": "Text 1 and Text 2 describe the same production yet reach opposite verdicts, suggesting that a review reveals much about its reviewer's values. However, because both record the same features and each concedes the other's case, their differences reveal the reviewers alongside the play, not instead of it.\n\nThe reviewers share their evidence but weigh it differently. Both praise the grandmother's monologue, but where Text 1 offers the audience's silence as proof of extraordinary acting, Text 2 adds that \"the best writing in the play\" is \"also the longest\". Both see the strip of blue light rising and falling \"like a tide\", but Text 1 admires a subtlety noticed \"only when it has gone\", whereas Text 2 finds it \"lovely for ten minutes and a metaphor for the next eighty\". Even the running time is \"ninety unbroken minutes\" to one and \"a long time to hold one note\" to the other.\n\nThe climactic line exposes their values most sharply. In Text 1 it is spoken \"almost under her breath\" and \"undoes everything she has built\"; in Text 2 it \"arrives so heavily signposted\" that the critic guessed it early. One prizes emotional surrender, the other surprise and restraint, a contrast sealed by their closing lines: \"I left in tears, and I was not alone\" against the bathos of \"I admired the craft and checked my watch.\"\n\nYet the play constrains both judgements. Text 1 admits \"the dialogue strains for poetry\", and Text 2 acknowledges that \"The audience around me wept.\" Both critics saw the same strengths and flaws; they disagree about which matter more.\n\nThe differences therefore reveal the reviewers' priorities, but not at the play's expense. Read together, the reviews give a fuller account than either alone: a moving, overwritten debut whose worth depends on whether an audience wants to be swept away or surprised.",
      "difficulty": 3
     }
    ],
