@@ -737,6 +737,26 @@ def _mark_interval(resp: str, answer: dict, marks: float, common_errors=None) ->
 _LABEL_RE = re.compile(r"(?:^|\n|;)\s*\(\s*([a-h]|i{1,3}|iv|v|vi)\s*\)\s*|(?:^|\n)\s*([a-h])\s*[).:]\s+", re.I)
 
 
+def _strip_wrapping(s: str) -> str:
+    """Remove brackets that wrap the WHOLE answer, e.g. '(2, 3)' or '{1, 4}', but never a closing
+    bracket that belongs to a function call such as 'ln(2), ln(3)'."""
+    pairs = {"(": ")", "[": "]", "{": "}"}
+    s = s.strip()
+    for _ in range(4):
+        if len(s) < 2 or s[0] not in pairs or s[-1] != pairs[s[0]]:
+            break
+        depth = 0
+        for i, ch in enumerate(s):
+            if ch in "([{":
+                depth += 1
+            elif ch in ")]}":
+                depth -= 1
+                if depth == 0 and i < len(s) - 1:
+                    return s  # the first bracket closes early: it does not wrap everything
+        s = s[1:-1].strip()
+    return s
+
+
 def split_parts(resp: str, labels: list[str]) -> dict[str, str]:
     """'(a) 3\\n(b) x^2' -> {'a': '3', 'b': 'x^2'}; unlabelled lines are taken in order."""
     text = (resp or "").strip()
@@ -838,7 +858,7 @@ def _mark(response: str, answer: dict, marks: int, common_errors: list[dict], op
                                _region_text(region, "x"), topic_tag="inequality direction", latex=region_latex(region, "x"))
 
     if kind == "set":
-        bare = re.sub(r"^[\s(\[{]+|[\s)\]}]+$", "", normalise(resp))
+        bare = _strip_wrapping(normalise(resp))
         parts = [p for p in re.split(r"\s*(?:,|;|\bor\b|\band\b)\s*", bare) if p.strip()][:12]
         try:
             got = [read_value(p, allowed, numeric=False).ast for p in parts]

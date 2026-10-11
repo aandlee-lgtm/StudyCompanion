@@ -19,7 +19,14 @@ from fractions import Fraction
 import sympy as sp
 
 x, n, t, k = sp.symbols("x n t k")
-L = sp.latex
+
+
+def L(e, **kw) -> str:
+    """LaTeX in NSW notation: natural logarithms print as ln."""
+    kw.setdefault("ln_notation", True)
+    return sp.latex(e, **kw)
+
+
 Rng = random.Random
 
 
@@ -288,11 +295,12 @@ def rnd(v, dp: int) -> str:
 
 
 def co(c, term: str = "") -> str:
-    """A coefficient written in front of ``term`` without a redundant 1: co(1, 'x') -> 'x', co(-1, 'x') -> '-x'."""
+    """A coefficient written in front of ``term`` without a redundant 1: co(1, 'x') -> 'x', co(-1, 'x') -> '-x',
+    co(3, 'x') -> '3x'; with no term it is a prefix: co(1) -> '', co(-1) -> '-'."""
     c = sp.sympify(c)
-    if term and c == 1:
+    if c == 1:
         return term
-    if term and c == -1:
+    if c == -1:
         return "-" + term
     return L(c) + term
 

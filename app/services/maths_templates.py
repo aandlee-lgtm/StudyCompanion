@@ -91,6 +91,7 @@ _GLITCHES = [
     (re.compile(r"\+\s*-\s*\d"), "'+ -' in text"),
     (re.compile(r"(?<![\d.])\+\s*0(?![\d.])"), "'+ 0' term"),
     (re.compile(r"(?<![\d.{a-zA-Z^_])1\s*[a-z](?![a-zA-Z])(?!\})"), "coefficient 1 written"),
+    (re.compile(r"(?<![\d.{a-zA-Z^_\\])1\s*(?:\\ln|\\log|\\sin|\\cos|\\tan|e\^)"), "coefficient 1 written"),
     (re.compile(r"\bNone\b"), "'None' in text"),
     (re.compile(r"- -"), "'- -' in text"),
 ]
