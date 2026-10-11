@@ -56,6 +56,12 @@ COMPARE = [r"whereas", r"while", r"unlike", r"in contrast", r"by contrast", r"bo
 REFORM = r"\b(?:law reforms?|reform(?:s|ed)?|amend(?:ed|ment|ments)|repeal(?:ed)?|introduced|recommend(?:ed|ation|ations)|replaced)\b"
 EVALUATIVE = {"evaluate", "assess", "discuss", "to what extent", "justify", "critically analyse", "critically evaluate"}
 WORDS_PER_MARK = 35  # short answers; extended responses use 45
+# An authority that is in the evidence bank but not yet verified earns most of the credit: the
+# student used a real, known item; the bank's verification is the student's next job, not a
+# marking fault. Invented, repealed or superseded authorities earn nothing and cost marks.
+UNVERIFIED_CREDIT = 0.75
+_DATED_LEGAL = re.compile(r"\b(?:amend\w*|reform\w*|introduc\w+|pass(?:ed)?|enact\w*|court|parliament|commission|report|inquiry|"
+                          r"review|ruled?|held|decision|judgment|legislation|act|bill)\b", re.I)
 
 
 def _rx(words: list[str]) -> re.Pattern:
@@ -80,12 +86,21 @@ def stem(w: str) -> str:
     return w[:7]
 
 
-def key_terms(text: str) -> list[str]:
+# rubric wording that says HOW an element is shown, not WHAT it is ("names a specific ...", "at least two")
+META = set("""name names named naming specific specifically least relevant relevantly describe describes described accurate accurately
+link links linked linking each example examples question identify identifies identified explain explains explained outline outlines
+outlined clear clearly correct correctly appropriate appropriately valid including include includes such studied response answer student
+mention mentions mentioned reference references referring demonstrate demonstrates shows show showing uses using use used confused
+rather instead given provide provides provided makes make made well developed sound detailed brief briefly""".split())
+NUMBER_WORDS = {"one": 1, "two": 2, "three": 3, "four": 4, "both": 2}
+
+
+def key_terms(text: str, meta: bool = False) -> list[str]:
     out: list[str] = []
     for w in re.findall(r"[A-Za-z][A-Za-z'’\-]*|\d{2,4}", text or ""):
         for part in re.split(r"[-’']", w):
             lw = part.lower()
-            if len(lw) < 3 or lw in STOP:
+            if len(lw) < 3 or lw in STOP or (meta and lw in META):
                 continue
             s = stem(lw)
             if s and s not in out:
@@ -127,7 +142,15 @@ def match_element(e, resp_terms: set[str], resp_lower: str) -> tuple[float, list
     if isinstance(e, dict) and e.get("any"):
         hits = [t for t in e["any"] if re.search(r"(?<![\w-])" + re.escape(t.lower()) + r"(?![\w-])", resp_lower)]
         return (1.0 if hits else 0.0), hits
-    terms = key_terms(element_text(e))
+    text = element_text(e)
+    alts = re.search(r"\(([^()]*,[^()]*,[^()]*)\)", text)  # "Two purposes (punishment, deterrence, ...)": any N of the list
+    if alts:
+        options = [a.strip() for a in re.split(r",|\bor\b|\band\b", alts.group(1)) if a.strip()]
+        need_n = next((n for w, n in NUMBER_WORDS.items() if re.search(rf"\b{w}\b", text[:alts.start()], re.I)), 1)
+        found = [o for o in options if (ks := key_terms(o, meta=True)) and all(k in resp_terms for k in ks[:2])]
+        if found:
+            return (1.0 if len(found) >= need_n else 0.5), found
+    terms = key_terms(text, meta=True)
     if not terms:
         return 0.0, []
     hits = [t for t in terms if t in resp_terms]
@@ -190,6 +213,13 @@ def features(text: str, bank: cit.Bank, today: date, settings: dict | None = Non
         ys = [int(y) for y in re.findall(r"\b(20\d\d)\b", sent)]
         if any(y >= today.year - years for y in ys) and any(r.citation.start >= 0 and r.citation.name in sent for r in good):
             recent.append(sent.strip()[:80])
+    # a dated recent development described without a bank item counts for half (it needs a source)
+    dated_only: list[str] = []
+    if not recent:
+        for sent in re.findall(r"[^.!?\n]+[.!?]?", text or ""):
+            ys = [int(y) for y in re.findall(r"\b(20\d\d)\b", sent)]
+            if any(today.year - years <= y <= today.year for y in ys) and _DATED_LEGAL.search(sent):
+                dated_only.append(sent.strip()[:80])
     media_only = bool(recent) and all((r.item.item_type == "media") for r in good if r.item and r.item.title in recent)
     return {
         "words": words(text), "terms": legal_terms(text), "judgement": judgement_count(text), "cause": len(_CAUSE_RX.findall(text or "")),
@@ -197,7 +227,7 @@ def features(text: str, bank: cit.Bank, today: date, settings: dict | None = Non
         "legislation": sorted({r.item.title for r in good if r.item.item_type in ("legislation", "law_reform")}),
         "cases": sorted({r.item.title for r in good if r.item.item_type == "case"}),
         "other_items": sorted({r.item.title for r in good if r.item.item_type not in ("legislation", "law_reform", "case")}),
-        "contemporary": sorted(set(recent)), "media_only_contemporary": media_only,
+        "contemporary": sorted(set(recent)), "media_only_contemporary": media_only, "contemporary_unsourced": dated_only[:3],
         "not_in_bank": [r.citation.name for r in auth if r.status == "not_in_bank"],
         "outdated": [r.citation.name for r in auth if r.status == "outdated" or r.possibly_outdated],
     }
@@ -253,6 +283,8 @@ def estimate(q, response: str, bank: cit.Bank, today: date, settings: dict | Non
     f = features(text, bank, today, s, res)
     criteria_blob = " ".join([q.marking_guideline or "", " ".join(element_text(e) for e in sol.get("required_elements") or []),
                               q.question_text or ""]).lower()
+    # "ONE contemporary human rights issue you have studied" names the topic; it does not ask for contemporary evidence
+    criteria_blob = re.sub(r"contemporary (?:human rights )?issues?", "the issue", criteria_blob)
     comps: list[Component] = []
     corrections: list[str] = []
     journal: list[dict] = []
@@ -276,13 +308,14 @@ def estimate(q, response: str, bank: cit.Bank, today: date, settings: dict | Non
 
     # 2. authorities resolved against the whole bank (legal-04 a/b)
     auth = [r for r in res if r.citation.kind != "statistic"]
-    needs_authority = marks >= 5 or bool(re.search(r"\b(legislation|acts?|cases?|authorit\w*|statutes?|treat(?:y|ies)|conventions?|law reform)\b", criteria_blob))
+    needs_authority = marks >= 5 or bool(re.search(r"\b(legislation|statutes?|case law|decided cases|cases such as|legal authorit\w*|authorities|"
+                                                   r"treat(?:y|ies)|conventions?|international instruments?|relevant law|acts? and cases)\b", criteria_blob))
     credit = 0.0
     for r in auth:
         if r.status in ("verified", "recheck_due"):
             credit += 1.0
         elif r.status == "unverified":
-            credit += 0.5
+            credit += UNVERIFIED_CREDIT
     if needs_authority:
         need = _need_authorities(marks)
         score = min(1.0, credit / need)
@@ -330,8 +363,11 @@ def estimate(q, response: str, bank: cit.Bank, today: date, settings: dict | Non
     # 5. contemporary evidence (legal-04 d)
     if marks >= 6 or (verb in EVALUATIVE and marks >= 5) or re.search(r"contemporary|recent|current", criteria_blob):
         years = int(s.get("legal_contemporary_years", 5) or 5)
-        comps.append(Component("contemporary", "Contemporary evidence (dated, from your bank)", 0.1, 1.0 if f["contemporary"] else 0.0,
-                               ", ".join(f["contemporary"][:3]) or f"none from the last {years} years",
+        c_score = 1.0 if f["contemporary"] else (0.5 if f["contemporary_unsourced"] else 0.0)
+        c_note = (", ".join(f["contemporary"][:3]) or
+                  ("a recent development without a source from your evidence bank — add its source" if f["contemporary_unsourced"]
+                   else f"none from the last {years} years"))
+        comps.append(Component("contemporary", "Contemporary evidence (dated, from your bank)", 0.1, c_score, c_note,
                                f"Add one development from the last {years} years (a case, reform or report from your evidence bank) and say what it shows.",
                                "insufficient contemporary evidence"))
 

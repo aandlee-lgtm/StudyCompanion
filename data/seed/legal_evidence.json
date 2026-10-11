@@ -268,7 +268,29 @@
    "sub_area": "LS-HR-ENFORCE",
    "aliases": [
     "Charter of Human Rights and Responsibilities Act",
-    "Victorian Charter of Human Rights"
+    "Victorian Charter of Human Rights",
+    "Victorian Charter"
+   ],
+   "status": "in_force"
+  },
+  {
+   "title": "Sex Discrimination Act 1984 (Cth)",
+   "item_type": "legislation",
+   "date": "1984",
+   "jurisdiction": "Commonwealth",
+   "topics": [
+    "LS-HR"
+   ],
+   "issue": "Discrimination and equality",
+   "summary": "Commonwealth Act making discrimination on the ground of sex (and related grounds) unlawful in areas of public life such as employment, education and the provision of services; complaints go to the Australian Human Rights Commission.",
+   "legal_significance": "Domestic statute that implements obligations under CEDAW; an example of rights protected by ordinary legislation rather than a constitutional bill of rights.",
+   "syllabus_link": "Human rights: promoting and enforcing human rights in Australia (statute law)",
+   "source": "Federal Register of Legislation",
+   "source_url": "https://www.legislation.gov.au/",
+   "source_type": "primary",
+   "sub_area": "LS-HR-ENFORCE",
+   "aliases": [
+    "Sex Discrimination Act"
    ],
    "status": "in_force"
   }

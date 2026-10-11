@@ -47,3 +47,13 @@
 .legal-picker-again .legal-picker { border: 0; box-shadow: none; padding: 8px 0 0; margin: 0; }
 .legal-any-order { margin: 0 0 12px; }
 .legal-topics-notice .btn { flex: none; }
+
+/* ---- Legal feedback: citation chips, evidence cards, scaffold, comparison (legal-03/04/15) ---- */
+.legal-chips, .legal-elements { list-style: none; padding: 0; margin: 6px 0 12px; display: flex; flex-direction: column; gap: 4px; }
+.legal-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; margin: 8px 0 14px; }
+.legal-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 12px; background: var(--surface-2); min-width: 0; }
+.legal-card p { margin: 4px 0 0; }
+.legal-card .spread { gap: 8px; align-items: flex-start; }
+.legal-scaffold li { margin-bottom: 4px; }
+.legal-compare td:first-child { width: 26%; font-weight: 600; }
+.legal-task { border-left: 3px solid var(--legal); padding: 6px 10px; background: var(--surface-2); border-radius: var(--radius); }
