@@ -1,5 +1,5 @@
 {
- "_note": "v2 Legal Studies practice questions written for HSC Companion (labelled GENERATED; not past HSC questions). Written on 2026-10-10 from general knowledge without access to official sites. Model answers cite only items in the Legal evidence bank, by exact title. Questions marked legal_fact_currency 'check' rely on details that change over time: verify the cited evidence items before relying on them. Stimulus material is HYPOTHETICAL unless it says otherwise. Extra keys beyond the v2 format: 'explanation' (MCQ one-line summary), 'currency_note' ('Before you rely on this' text for 'check' questions), 'model_note' (how to adapt a model to the student's own issue), and 'range' on criteria rows that span several marks.",
+ "_note": "v2 Legal Studies practice questions written for HSC Companion (labelled GENERATED; not past HSC questions). Written in October 2026 from general knowledge without access to official sites. Model answers cite only items in the Legal evidence bank, by exact title. Questions marked legal_fact_currency 'check' rely on details that change over time: verify the cited evidence items before relying on them. Stimulus material is HYPOTHETICAL unless it says otherwise. Extra keys beyond the v2 format: 'explanation' (MCQ one-line summary), 'currency_note' ('Before you rely on this' text for 'check' questions), 'model_note' (how to adapt a model to the student's own issue), and 'range' on criteria rows that span several marks.",
  "questions": [
   {
    "topic": "LS-CRIME",
@@ -2545,6 +2545,65 @@
    ],
    "legal_fact_currency": "check",
    "currency_note": "Before you rely on this: The dates given for the federal franchise (1902 for women; 1962 for Aboriginal people) are stated from general knowledge and are not yet linked to an evidence-bank item. These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-TRIAL",
+   "type": "extended",
+   "marks": 15,
+   "difficulty": 3,
+   "verb": "Evaluate",
+   "text": "Evaluate the extent to which the criminal trial process balances the rights of the accused with the interests of victims and the community.",
+   "criteria": [
+    {
+     "mark": 15,
+     "range": "13–15",
+     "descriptor": "sophisticated, sustained judgement about the extent to which the criminal trial process balances the rights of the accused with the interests of victims and the community; extensive, accurate knowledge of the adversary system, legal representation, evidence, juries, defences and appeals; integrates relevant legislation, cases and law reform; cohesive response using precise legal terminology"
+    },
+    {
+     "mark": 12,
+     "range": "10–12",
+     "descriptor": "sound judgement about the balance struck by the criminal trial process; thorough knowledge and understanding of the relevant law; supports the argument with relevant legislation, cases and contemporary evidence; well-organised response using appropriate legal terminology"
+    },
+    {
+     "mark": 9,
+     "range": "7–9",
+     "descriptor": "some judgement about the balance struck by the criminal trial process; describes relevant law with some analysis; uses some examples of legislation, cases or other evidence; organised response with some legal terminology"
+    },
+    {
+     "mark": 6,
+     "range": "4–6",
+     "descriptor": "describes aspects of the criminal trial process; limited or general use of legal examples; limited judgement"
+    },
+    {
+     "mark": 3,
+     "range": "1–3",
+     "descriptor": "makes general or limited statements about the criminal trial process"
+    }
+   ],
+   "required_elements": [
+    "An explicit, sustained judgement about the balance",
+    "The adversary system, the presumption of innocence and the burden and standard of proof",
+    "Legal representation and legal aid (Dietrich)",
+    "Juries: community participation, majority verdicts, judge-alone trials",
+    "Rules of evidence, including the exclusion of improperly obtained evidence",
+    "The position of victims and complainants, including law reform",
+    "Defences and the special verdict; finality of verdicts and double jeopardy reform"
+   ],
+   "model": "The criminal trial process in NSW strikes a balance that strongly protects the rights of the accused, and over recent decades law reform has moved it some way towards the interests of victims and the community. To a large extent the balance is appropriate, because the consequences of convicting an innocent person are so serious that the trial must be weighted in the accused's favour. However, inequality of resources, delay, and the burden that the adversary system places on victims mean that the balance is not always achieved in practice.\n\nThe foundation of the trial process is the presumption of innocence. In Woolmington v DPP [1935] AC 462 the House of Lords described the prosecution's duty to prove guilt as the 'golden thread' of the criminal law, and Australian courts apply the same principle: the prosecution must prove every element of the offence beyond reasonable doubt, and the accused does not have to give evidence or prove anything. In the adversary system, each side presents its case before an impartial judge, and the accused can test the prosecution's evidence through cross-examination. These protections are justified because the state, with its police and prosecutors, has far greater resources than most accused people. They also serve the community's interest, because public confidence in the justice system depends on convictions being reliable.\n\nThe protection is only real, however, if the accused can participate effectively, and that depends heavily on legal representation. In Dietrich v The Queen (1992) 177 CLR 292 the High Court held that there is no absolute right to publicly funded counsel, but that the trial of an accused charged with a serious offence who, through no fault of their own, cannot obtain representation should generally be adjourned or stayed because it would otherwise be unfair. Dietrich protects fairness in the most serious cases, but it does not guarantee representation in less serious matters, and the quality of representation depends on legal aid funding. Inequality of resources therefore remains one of the main limits on the balance.\n\nThe jury is the main way the community participates in the trial. Under the Jury Act 1977 (NSW), jurors are drawn at random from the community to decide guilt in serious trials, which gives the verdict democratic legitimacy. The Act also allows majority verdicts in limited circumstances, after a minimum period of deliberation, when a unanimous verdict cannot be reached. This reform serves the community and victims by reducing hung juries and costly retrials, while the strict conditions preserve a high threshold for conviction. Under the Criminal Procedure Act 1986 (NSW), a trial may be heard by a judge alone in some circumstances, for example where prejudicial publicity threatens the accused's right to an impartial jury. Together these provisions show the trial process adapting the jury system to protect both fairness and efficiency.\n\nThe rules of evidence protect the accused but can frustrate the interests of victims. The Evidence Act 1995 (NSW) controls what the jury may hear, and gives the court a discretion to exclude evidence that was obtained improperly or illegally unless the desirability of admitting it outweighs the undesirability of admitting evidence obtained in that way. This protects the integrity of the process and discourages unlawful investigation. Because the exclusion is a balancing exercise rather than automatic, it also allows the court to consider the gravity of the offence and the importance of the evidence, which is a reasonable compromise between the accused's rights and the community's interest in convicting the guilty.\n\nThe position of victims, especially complainants in sexual offence trials, is where the balance has been most criticised and most reformed. Complainants have traditionally been treated as witnesses rather than participants, and cross-examination about their conduct could be distressing. Reforms have provided protections such as alternative arrangements for giving evidence. The Crimes Legislation Amendment (Sexual Consent Reforms) Act 2021 (NSW) introduced an affirmative consent model and was accompanied by directions that judges can give juries to address common misconceptions about consent. These reforms improve the trial experience and the fairness of outcomes for complainants, although the trial remains a difficult experience for many victims and the success of the reforms depends on how they operate in practice.\n\nThe law on defences shows a careful balance between the accused and the community. Under the Mental Health and Cognitive Impairment Forensic Provisions Act 2020 (NSW), a person whose mental health or cognitive impairment meant they did not know the nature or wrongfulness of their conduct receives a special verdict of 'act proven but not criminally responsible'. The verdict recognises that punishment would be unjust, while allowing the court to order detention or conditional release to protect the community.\n\nFinally, the balance between finality and justice has been adjusted through reform of double jeopardy. In R v Carroll (2002) 213 CLR 635 the High Court held that a perjury prosecution against a man who had been acquitted of murder was an abuse of process because it sought to controvert the acquittal. Public concern after the case led to amendments to the Crimes (Appeal and Review) Act 2001 (NSW), allowing the Court of Criminal Appeal to order a retrial of an acquitted person for certain very serious offences where there is fresh and compelling evidence or the acquittal was tainted. Because these exceptions are narrow and require an appellate court order, they serve victims and the community in rare cases without removing the accused's protection from repeated prosecution.\n\nOverall, the criminal trial process balances the rights of the accused with the interests of victims and the community to a considerable extent. Its protections for the accused are strong and justified, and reforms to juries, evidence, sexual offence trials and double jeopardy have improved the position of victims and the community. The balance is weakest where resources are unequal and where victims continue to experience the trial as an ordeal, so further reform should focus on legal aid funding, delay and support for complainants rather than on weakening the presumption of innocence.",
+   "evidence_titles": [
+    "Woolmington v DPP [1935] AC 462",
+    "Dietrich v The Queen (1992) 177 CLR 292",
+    "Jury Act 1977 (NSW)",
+    "Criminal Procedure Act 1986 (NSW)",
+    "Evidence Act 1995 (NSW)",
+    "Crimes Legislation Amendment (Sexual Consent Reforms) Act 2021 (NSW)",
+    "Mental Health and Cognitive Impairment Forensic Provisions Act 2020 (NSW)",
+    "R v Carroll (2002) 213 CLR 635",
+    "Crimes (Appeal and Review) Act 2001 (NSW)"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: Majority-verdict conditions, judge-alone trial rules, the jury directions on consent and the arrangements for complainants giving evidence change over time; check them against the current Jury Act 1977 (NSW) and Criminal Procedure Act 1986 (NSW). These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
   }
  ]
 }
