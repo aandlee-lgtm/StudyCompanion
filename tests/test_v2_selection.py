@@ -187,6 +187,48 @@ def test_extended_response_plan_rotates_topics(db):
     assert not extended_plan(thursday)["due"]  # Term 4: Fridays only
 
 
+def test_extended_rotation_groups_sub_areas_under_their_topic(db):
+    """Legal sub-areas (LS-CRIME-TRIAL ...) are plan items too: an essay on a Crime sub-area counts
+    for Crime, so the next extended response is on Human rights, wherever its question is filed."""
+    from app.models import LearningPlanItem
+    from app.selection.legal import extended_plan, pick_legal, topic_roots
+    from app.selection.pool import Pool
+
+    crime, hr = plan_item(db, "LS-CRIME"), plan_item(db, "LS-HR")
+    subs = {}
+    for parent, code in ((crime, "LS-CRIME-TRIAL"), (hr, "LS-HR-ENFORCE")):
+        it = LearningPlanItem(subject_id=parent.subject_id, code=code, title=code, position=parent.position + 1,
+                              status=parent.status, active=True)
+        db.add(it)
+        db.flush()
+        subs[code] = it
+    from app.models.common import ORIGIN_GENERATED
+    from app.services import question_bank as qb
+
+    src = qb.get_or_create_source(db, "Selection test bank (LEGAL)", organisation="test", subject_id=hr.subject_id,
+                                  source_type="generated", tier=4)
+    qb.create_question(db, subject_code="LEGAL", source_id=src.id, plan_item_id=subs["LS-HR-ENFORCE"].id, topic_id=hr.topic_id,
+                       question_text="Evaluate the effectiveness of enforcement mechanisms for one human right (synthetic test).",
+                       marks=15, question_type="extended", directive_verb="Evaluate", difficulty=3, category="core",
+                       historical_or_generated=ORIGIN_GENERATED, model_answer="Synthetic model answer.", mapping_reason="test")
+    db.flush()
+    clock.set_today(FRIDAY)
+    ctx = build_context(db, FRIDAY)
+    roots = topic_roots(ctx)
+    assert roots[subs["LS-CRIME-TRIAL"].id] == crime.id and roots[subs["LS-HR-ENFORCE"].id] == hr.id and roots[crime.id] == crime.id
+    ctx.sessions_before = 12
+    ctx.legal_history = [{"date": FRIDAY - timedelta(days=35), "type": "extended", "item": subs["LS-CRIME-TRIAL"].id, "qid": 1,
+                          "stimulus_id": None, "verb": "Evaluate", "marks": 15}]
+    plan = extended_plan(ctx)
+    assert plan["due"] and plan["rotation"][0] == hr.id and set(plan["rotation"]) >= {crime.id, hr.id}
+    assert subs["LS-CRIME-TRIAL"].id not in plan["rotation"]
+    options, facts = pick_legal(ctx, Pool(db, ctx, "LEGAL"), 3)
+    assert facts["extended"]["topic"] == hr.id
+    best = max(options, key=lambda o: o.value)
+    assert any(legal_format(s.question) == "extended" and topic_roots(ctx)[s.question.plan_item_id] == hr.id for s in best.items)
+    db.rollback()
+
+
 # ---------------------------------------------------------- missed days ---
 def _setup_on(db, d):
     st.set_(db, "setup_completed_on", d.isoformat())

@@ -46,6 +46,20 @@ def _study_days(ctx: StudentContext) -> list[int]:
     return sorted(ctx.settings.get("weekdays") or [0, 1, 2, 3, 4])
 
 
+def topic_roots(ctx: StudentContext) -> dict[int, int]:
+    """Legal plan item id -> the id of its topic. A sub-area item (``LS-CRIME-TRIAL``) belongs to the
+    topic whose code is its shortest prefix (``LS-CRIME``), so the extended-response rotation
+    alternates Crime / Human rights / options rather than sub-areas."""
+    legal = [it for it in ctx.plan.values() if it.subject.code == "LEGAL"]
+    by_code = {it.code: it for it in legal}
+    out: dict[int, int] = {}
+    for it in legal:
+        parts = (it.code or "").split("-")
+        root = next((by_code[c] for c in ("-".join(parts[:k]) for k in range(1, len(parts))) if c in by_code), it)
+        out[it.id] = root.id
+    return out
+
+
 def extended_plan(ctx: StudentContext, pool: Pool | None = None) -> dict:
     """Is an extended response due today, and which topic is next in the rotation?"""
     per_month = extended_per_month(ctx)
@@ -76,10 +90,12 @@ def extended_plan(ctx: StudentContext, pool: Pool | None = None) -> dict:
     else:
         plan["due"] = True
     # topic rotation: the topic whose last extended response is oldest (never first)
+    roots = topic_roots(ctx)
     last_by_item: dict = {}
     for h in hist:
-        last_by_item.setdefault(h["item"], h["date"])
-    topics = [it for it in ctx.plan.values() if it.subject.code == "LEGAL" and it.active and it.status != LOCKED]
+        last_by_item.setdefault(roots.get(h["item"], h["item"]), h["date"])
+    topic_ids = {roots[it.id] for it in ctx.plan.values() if it.subject.code == "LEGAL" and it.active and it.status != LOCKED}
+    topics = [ctx.plan[i] for i in topic_ids if i in ctx.plan]
     topics.sort(key=lambda it: (last_by_item.get(it.id) is not None, last_by_item.get(it.id) or ctx.today, it.position))
     plan["rotation"] = [it.id for it in topics]
     return plan
@@ -138,14 +154,16 @@ def pick_legal(ctx: StudentContext, pool: Pool, n: int | None = None) -> tuple[l
         lists[f] = pool.ranked(lambda s, f=f: fmt_of(s) == f and s.tier <= FRESH, k=k)
     ext_cands: list[Scored] = []
     if ext["due"]:
+        roots = topic_roots(ctx)
         for item_id in ext["rotation"]:
-            got = pool.ranked(lambda s, i=item_id: fmt_of(s) == "extended" and s.question.plan_item_id == i and s.tier <= FRESH, k=2)
+            got = pool.ranked(lambda s, i=item_id: fmt_of(s) == "extended" and roots.get(s.question.plan_item_id, s.question.plan_item_id) == i
+                              and s.tier <= FRESH, k=2)
             if got:
                 for s in got:
                     s.facts["rotation_topic"] = item_id
                 ext_cands = got
                 break
-        facts["extended"]["topic"] = ext_cands[0].question.plan_item_id if ext_cands else None
+        facts["extended"]["topic"] = ext_cands[0].facts.get("rotation_topic") if ext_cands else None
         if not ext_cands:
             facts["extended"]["why"] = "no unseen extended response is available for any topic"
     fresh_total = sum(len(v) for v in lists.values())
