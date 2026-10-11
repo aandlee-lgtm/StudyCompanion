@@ -2,8 +2,6 @@
    needs `a` (the attempt whose feedback is shown) and, optionally, `base` (this page's URL). #}
 {% if a is defined and a and followup_view is defined %}{% set fu = followup_view(a) %}{% set fu_ai = fu.ai %}
 {% set fu_solution = 'worked solution' if (a.feedback.payload.kind if a.feedback else '') in ['maths','mcq','self_mark','skipped'] else 'model response' %}
-<link rel="stylesheet" href="/static/css/followup.css">
-<script defer src="/static/js/followup.js"></script>
 <section class="card fu no-print" id="followup-{{ a.id }}" data-fu-panel aria-labelledby="fu-h-{{ a.id }}">
   <div class="spread">
     <h2 id="fu-h-{{ a.id }}" class="fu-title">Ask about this feedback</h2>

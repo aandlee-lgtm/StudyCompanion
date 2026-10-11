@@ -244,6 +244,29 @@ def test_not_learnt_with_lock_marks_the_topic_not_taught_and_future_sessions_avo
     assert all(x.question.plan_item_id != item_id for x in nxt.questions)
 
 
+def test_legal_lock_goes_through_the_legal_plan_and_keeps_the_core_header_in_sync(db):
+    """Integration (legal-logic note 2): a Legal sub-area is locked with legal_plan.set_item_status, so
+    the core topic's header status follows its sub-areas."""
+    from app.services import legal_plan as lp
+
+    sess = _today(db)
+    sq = _rows(sess, "LEGAL")[0]
+    item = db.get(LearningPlanItem, sq.question.plan_item_id)
+    parent = lp.parent_of(db, item)
+    assert parent is not None and lp.is_sub_area(item)
+    for k in lp.sub_areas_of(db, parent):  # only this sub-area of its topic is open
+        if k.id != item.id and k.status != LOCKED:
+            k.status = LOCKED
+    lp.sync_parent(db, parent)
+    db.commit()
+    assert parent.status != LOCKED
+    sessions.swap_question(db, sess, sq, "not_learnt", lock=True)
+    db.commit()
+    db.expire_all()
+    assert db.get(LearningPlanItem, item.id).status == LOCKED
+    assert db.get(LearningPlanItem, parent.id).status == LOCKED  # header synced: no open sub-area left
+
+
 def test_lock_is_never_silent_and_defaults_follow_the_subject(db):
     sess = _today(db)
     controls = sessions.swap_controls(db, sess)

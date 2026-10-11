@@ -3,7 +3,6 @@
 {% if followup_teacher_questions is defined %}{% set tq = followup_teacher_questions() %}
 {% set tq_subject = subject if subject is defined else '' %}
 {% set tq_rows = tq | selectattr('subject', 'equalto', tq_subject) | list if tq_subject else tq %}
-<link rel="stylesheet" href="/static/css/followup.css">
 <h2 id="teacher-questions">Questions for my teacher</h2>
 <p class="small muted">Questions you asked about feedback and want to take to class — saved automatically when no AI provider is
   set up, or when you choose "Save for my teacher". Tick one off once it has been answered.</p>

@@ -21,4 +21,7 @@ router = APIRouter()
 def home(request: Request, db: Session = Depends(get_db)):
     d = analytics.dashboard(db)
     db.commit()
-    return render(request, "dashboard.html", d=d, name=st.get(db, "student_name"), hour=datetime.now().hour, target=st.get(db, "target_minutes"))
+    from app.routes.today import _bank_health  # selection-17: the Question bank card (never breaks the page)
+
+    return render(request, "dashboard.html", d=d, name=st.get(db, "student_name"), hour=datetime.now().hour, target=st.get(db, "target_minutes"),
+                  health=_bank_health(db, d["today"]))

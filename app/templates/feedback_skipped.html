@@ -9,3 +9,4 @@
 {% if q.model_answer %}<h3>Model response</h3><div class="model">{{ q.model_answer | paras }}</div>{% endif %}
 {% if sol.guidance %}<h3>What a strong response does</h3><ul>{% for g in sol.guidance %}<li>{{ g }}</li>{% endfor %}</ul>{% endif %}
 {% if q.marking_guideline %}<h3>Marking {{ 'guidelines (official NESA)' if q.guideline_official else 'criteria (app-authored, not official)' }}</h3>{{ q.marking_guideline | paras }}{% endif %}
+{% if code == 'LEGAL' %}{% include "_legal_currency.html" %}{% endif %}{# legal-03 #}

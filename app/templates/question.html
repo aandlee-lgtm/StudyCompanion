@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {# Question page frame (owner: adaptive). Includes partials owned by other packages:
-   _stimulus.html, _answer_mcq.html, _answer_maths.html, _answer_written.html, _audit_line.html, feedback_<kind>.html. #}
+   _stimulus.html, _answer_mcq.html, _answer_maths.html, _answer_written.html, _audit_line.html, feedback_<kind>.html,
+   _swap_control.html (swap), _legal_currency.html (legal-logic), _feedback_followup.html (followup). #}
 {% block title %}{{ SUBJECT_SHORT[code] }} question · HSC Companion{% endblock %}
 {% block content %}
 <div class="spread">
@@ -24,6 +25,7 @@
 </div>
 
 {% if sq and sq.reason %}<p class="small muted">{{ sq.reason }}</p>{% endif %}
+{% include "_swap_control.html" %}{# v2-swap: renders nothing once the question is answered or skipped #}
 
 {% if rebuild and show_form and not retry %}
 <section class="card rebuild" aria-label="Step-by-step practice" style="margin-top:16px">
@@ -90,6 +92,7 @@
   <div class="question-text">{{ q.question_text | paras }}</div>
   {% if image %}<p><img src="{{ image }}" alt="Question region rendered from the source PDF for private study" style="max-width:100%; border:1px solid var(--line); border-radius:8px"></p>
   <p class="tiny muted">Rendered from the original PDF (page {{ q.source_page }}) for private study.</p>{% endif %}
+  {% if code == 'LEGAL' and show_form %}{% include "_legal_currency.html" %}{% endif %}{# legal-03; feedback pages show their own line #}
 
   {% if show_form %}
   <p class="evidence-label tiny {{ 'muted' if next_evidence.counts else 'rehearsal' }}" data-role="{{ next_evidence.role }}">{{ next_evidence.label }}</p>

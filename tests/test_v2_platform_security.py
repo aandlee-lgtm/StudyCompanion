@@ -34,3 +34,32 @@ def test_wizard_sets_each_english_module_independently(db, client):
     assert r.status_code == 303
     db.expire_all()
     assert (plan_item(db, "EN-THE").status, plan_item(db, "EN-TC").status, plan_item(db, "EN-CSL").status) == ("LEARNED", "LEARNING", "LOCKED")
+
+
+def test_every_state_changing_route_is_covered_by_the_csrf_middleware(client):
+    """Integration check: every POST/PUT/PATCH/DELETE route of every package (swap, follow-up, English
+    self-mark, Legal topics and evidence, working photos, ...) is refused cross-site."""
+    import re
+
+    unsafe = {"POST", "PUT", "PATCH", "DELETE"}
+
+    def walk(items):  # FastAPI nests included routers (``original_router``)
+        for r in items:
+            inner = getattr(r, "original_router", None)
+            if inner is not None:
+                yield from walk(inner.routes)
+            elif getattr(r, "methods", None):
+                yield r
+
+    routes = [r for r in walk(client.app.routes) if r.methods & unsafe]
+    assert len(routes) > 30
+    paths = {r.path for r in routes}
+    for expected in ("/session/{sid}/q/{pos}/swap", "/attempt/{aid}/followup", "/english/attempt/{aid}/self-mark"):
+        assert any(p.replace(" ", "") == expected or re.sub(r"\{[^}]+\}", "{}", p) == re.sub(r"\{[^}]+\}", "{}", expected)
+                   for p in paths), expected
+    for r in routes:
+        path = re.sub(r"\{[^}]+\}", "1", r.path)
+        for method in sorted((r.methods or set()) & unsafe):
+            for headers in ({"Sec-Fetch-Site": "cross-site"}, {"Origin": "https://evil.example"}):
+                resp = client.request(method, path, headers=headers)
+                assert resp.status_code == 403, (method, r.path, headers, resp.status_code)

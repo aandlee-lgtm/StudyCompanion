@@ -109,10 +109,18 @@ def check_stimulus_weekly(res: SimResult) -> None:
             assert n >= 2, f"week of {monday}: {n} stimulus questions"
 
 
+def _legal_topic(code: str) -> str:
+    """Core topic of a Legal plan item: since legal-logic, questions sit on sub-areas (LS-HR-NATURE ...)."""
+    for core in ("LS-CRIME", "LS-HR"):
+        if code == core or code.startswith(core + "-"):
+            return core
+    return code
+
+
 def check_extended(res: SimResult) -> None:
     ext = [(r.day, i["item"]) for r in res.study_days() for i in r.items if i["format"] == "extended"]
     assert ext, "no extended response at all"
-    first4 = {item for _d, item in ext[:4]}
+    first4 = {_legal_topic(item) for _d, item in ext[:4]}
     if len(ext) >= 2:
         assert {"LS-CRIME", "LS-HR"} <= first4, ext
     for (d1, _a), (d2, _b) in zip(ext, ext[1:]):

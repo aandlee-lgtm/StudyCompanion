@@ -539,8 +539,14 @@ def swap_question(db: Session, sess: DailySession, sq: SessionQuestion, reason: 
 
     locked = None
     offer = sw.lock_offer(unit)
-    if reason == "not_learnt" and lock and offer:
-        locked = plan_service.set_status(db, offer["item_id"], LOCKED)  # explicit choice: never silent
+    if reason == "not_learnt" and lock and offer:  # explicit choice: never silent
+        if code == "LEGAL":
+            # Legal sub-areas and options: legal_plan keeps the option slots and the core topic's header in sync
+            from app.services import legal_plan
+
+            locked = legal_plan.set_item_status(db, db.get(LearningPlanItem, offer["item_id"]), LOCKED)
+        else:
+            locked = plan_service.set_status(db, offer["item_id"], LOCKED)
     if code == "MATHS":
         _top_up_templates(db)
     rep = sw.find_replacement(db, unit, reason, today)
