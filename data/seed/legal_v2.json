@@ -1,4 +1,1006 @@
 {
  "_note": "v2 Legal Studies practice questions written for HSC Companion (labelled GENERATED; not past HSC questions). Written on 2026-10-10 from general knowledge without access to official sites. Model answers cite only items in the Legal evidence bank, by exact title. Questions marked legal_fact_currency 'check' rely on details that change over time: verify the cited evidence items before relying on them. Stimulus material is HYPOTHETICAL unless it says otherwise. Extra keys beyond the v2 format: 'explanation' (MCQ one-line summary), 'currency_note' ('Before you rely on this' text for 'check' questions), 'model_note' (how to adapt a model to the student's own issue), and 'range' on criteria rows that span several marks.",
- "questions": []
+ "questions": [
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-NATURE",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 2,
+   "verb": null,
+   "text": "A statute creates a strict liability offence of selling a restricted product to a person under 18. Priya, a shop assistant, sells the product to a 16-year-old after checking a convincing fake identity card showing the buyer is 19. Which statement best describes Priya's legal position?",
+   "options": [
+    "A. She must be acquitted because the prosecution cannot prove she intended to sell to a person under 18.",
+    "B. She may rely on an honest and reasonable mistake of fact, because mens rea need not be proved but that defence remains available.",
+    "C. She has no defence at all, because once the act is proved, liability follows automatically.",
+    "D. She is guilty only if the prosecution proves she was reckless about the buyer's age."
+   ],
+   "answer": "B",
+   "option_rationales": {
+    "A": "Tempting because most serious offences require mens rea, but for a strict liability offence the prosecution does not need to prove intention, so the absence of intent alone does not lead to acquittal.",
+    "B": "This is the key feature of strict liability explained in He Kaw Teh v The Queen (1985) 157 CLR 523: the prosecution does not have to prove a guilty mind, but the accused can rely on an honest and reasonable mistaken belief in facts that would make the act innocent. Checking a convincing identity card supports such a belief.",
+    "C": "This describes absolute liability, where not even an honest and reasonable mistake is a defence. The statute here creates strict liability, which still allows that defence.",
+    "D": "Recklessness is a form of mens rea. For a strict liability offence the prosecution does not have to prove intention, knowledge or recklessness."
+   },
+   "explanation": "Strict liability removes the need to prove mens rea but keeps the defence of honest and reasonable mistake of fact; absolute liability removes both.",
+   "evidence_titles": [
+    "He Kaw Teh v The Queen (1985) 157 CLR 523"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-NATURE",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 1,
+   "verb": null,
+   "text": "At Daniel's trial for assault, his barrister calls no evidence. At the end of the trial the jury think Daniel probably was the attacker, but they have a reasonable doubt about it. What should the jury do?",
+   "options": [
+    "A. Convict, because Daniel did not give evidence to prove he was somewhere else.",
+    "B. Convict, because they think it more likely than not that Daniel was the attacker.",
+    "C. Ask the judge to shift the burden of proof onto Daniel, since he chose to stay silent.",
+    "D. Acquit, because the prosecution must prove every element beyond reasonable doubt."
+   ],
+   "answer": "D",
+   "option_rationales": {
+    "A": "Tempting if you think the accused has to answer the case, but the accused does not have to prove innocence or give evidence. The burden stays on the prosecution throughout.",
+    "B": "'More likely than not' is the balance of probabilities, the civil standard. A criminal conviction needs proof beyond reasonable doubt, which is a much higher standard.",
+    "C": "The burden of proving the elements of the offence does not shift to the accused because they stay silent. Statutory exceptions exist for some defences, but none applies to this general situation.",
+    "D": "The prosecution carries the burden of proof and must prove guilt beyond reasonable doubt. This is the 'golden thread' described in Woolmington v DPP [1935] AC 462. If a reasonable doubt remains, the jury must acquit, however likely guilt seems."
+   },
+   "explanation": "Burden of proof on the prosecution; standard of proof beyond reasonable doubt; a reasonable doubt means acquittal.",
+   "evidence_titles": [
+    "Woolmington v DPP [1935] AC 462"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-NATURE",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 2,
+   "verb": null,
+   "text": "Mel agrees in advance to help Tom rob a bank. She drives him there, waits outside with the engine running while he commits the robbery, and then drives him away. How is Mel's role best classified?",
+   "options": [
+    "A. As a principal in the second degree (an aider and abettor), because she was nearby assisting the crime with knowledge of the plan.",
+    "B. As a principal in the first degree, because she drove the vehicle used in the robbery.",
+    "C. Only as an accessory after the fact, because her main help came after the robbery.",
+    "D. As no party to the crime, because she never entered the bank."
+   ],
+   "answer": "A",
+   "option_rationales": {
+    "A": "A person who is present, or close by and ready to help, while the crime is committed, and who intends to assist it, aids and abets the offence. Waiting with the engine running to help the escape is a classic example. In NSW, aiders and abettors can generally be punished as if they were the principal offender.",
+    "B": "The principal in the first degree is the person who actually commits the act that makes up the offence (here, Tom, who carried out the robbery). Driving the car is assistance, not the robbery itself.",
+    "C": "Tempting because she drove Tom away afterwards, but she agreed beforehand and was waiting nearby to assist during the robbery. An accessory after the fact only helps an offender after the crime, without having taken part in it.",
+    "D": "A person does not need to be at the exact spot where the act occurs. Being close by and ready to help, with knowledge of the plan, is enough to make someone a party to the offence."
+   },
+   "explanation": "Parties to a crime: principal in the first degree (does the act), principal in the second degree (present and assisting), accessory before the fact (helps beforehand, absent) and accessory after the fact (helps afterwards).",
+   "evidence_titles": [],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-NATURE",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 3,
+   "verb": null,
+   "text": "Sam is tried for a serious assault. Expert evidence shows that, at the time, a mental health impairment meant he did not know that what he was doing was wrong. If the defence is established under the Mental Health and Cognitive Impairment Forensic Provisions Act 2020 (NSW), what verdict is returned?",
+   "options": [
+    "A. Not guilty, and Sam must be released unconditionally.",
+    "B. Guilty, with the impairment treated only as a mitigating factor in sentencing.",
+    "C. Act proven but not criminally responsible.",
+    "D. Guilty of manslaughter instead of the original charge."
+   ],
+   "answer": "C",
+   "option_rationales": {
+    "A": "Tempting because the defence is a complete defence, but the special verdict is not an ordinary acquittal: the court can make orders for detention or conditional release to protect the person and the community.",
+    "B": "Mental health issues can mitigate a sentence when no defence is established, but here the defence is established, so Sam is not criminally responsible and no conviction follows.",
+    "C": "This is the special verdict under the 2020 Act. It replaced the older verdict of 'not guilty by reason of mental illness'. After the verdict, the court can order that the person be detained or released, with or without conditions.",
+    "D": "Manslaughter is relevant only where the charge is murder and a partial defence reduces it. Sam is charged with assault, and this defence is a complete one."
+   },
+   "explanation": "The mental health impairment or cognitive impairment defence leads to the special verdict 'act proven but not criminally responsible', not an ordinary acquittal.",
+   "evidence_titles": [
+    "Mental Health and Cognitive Impairment Forensic Provisions Act 2020 (NSW)"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: The name of the special verdict and the court's powers after it come from the Mental Health and Cognitive Impairment Forensic Provisions Act 2020 (NSW). These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-INVESTIGATION",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 2,
+   "verb": null,
+   "text": "A police officer suspects on reasonable grounds that Jordan stole a phone. Jordan gives his correct name and address, and nothing suggests he will flee, reoffend or interfere with evidence. Under the Law Enforcement (Powers and Responsibilities) Act 2002 (NSW), what is the best view of arresting Jordan without a warrant?",
+   "options": [
+    "A. The arrest is lawful, because reasonable suspicion that an offence was committed is always enough.",
+    "B. The arrest is unlawful, because police can arrest only under a warrant issued by a magistrate.",
+    "C. The arrest is lawful only if Jordan first agrees to go with the officer.",
+    "D. The arrest may be unlawful, because the officer must also be satisfied that arrest is reasonably necessary for a listed reason; a court attendance notice may be more appropriate."
+   ],
+   "answer": "D",
+   "option_rationales": {
+    "A": "Tempting because reasonable suspicion is the starting point for most police powers, but arrest without a warrant also requires that the arrest be reasonably necessary for one of the reasons in the Act.",
+    "B": "Police in NSW have a statutory power to arrest without a warrant. The question is whether the conditions for that power are met, not whether a warrant exists.",
+    "C": "Arrest is a coercive power that does not depend on consent. A person who voluntarily accompanies police is not under arrest at all.",
+    "D": "Under LEPRA, reasonable suspicion is necessary but not sufficient: the officer must also be satisfied that arrest is reasonably necessary, for example to stop the offence, prevent flight, establish identity or protect evidence. If none applies, proceeding by court attendance notice is the appropriate course."
+   },
+   "explanation": "In NSW, arrest without a warrant needs both reasonable suspicion and that arrest is reasonably necessary for a reason listed in the Law Enforcement (Powers and Responsibilities) Act 2002 (NSW).",
+   "evidence_titles": [
+    "Law Enforcement (Powers and Responsibilities) Act 2002 (NSW)"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: The conditions for arrest without a warrant are in the Law Enforcement (Powers and Responsibilities) Act 2002 (NSW), which is amended from time to time. These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-INVESTIGATION",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 2,
+   "verb": null,
+   "text": "Police search Lena's car without a warrant and without any reasonable suspicion, and find stolen goods. At her trial, what is the most accurate statement about whether the goods can be used as evidence?",
+   "options": [
+    "A. The court has a discretion to exclude the evidence unless the desirability of admitting it outweighs the undesirability of admitting evidence obtained in that way.",
+    "B. The evidence must be excluded automatically because it was obtained illegally.",
+    "C. The evidence must be admitted because it is relevant and reliable, however it was obtained.",
+    "D. The evidence can be used only if Lena agrees to its use at the trial."
+   ],
+   "answer": "A",
+   "option_rationales": {
+    "A": "This is the discretion in the Evidence Act 1995 (NSW) for improperly or illegally obtained evidence. The court weighs matters such as the seriousness of the impropriety, the importance of the evidence and the gravity of the offence.",
+    "B": "Tempting because the search was unlawful, but Australian law has no automatic exclusionary rule. The court must weigh the competing considerations before deciding.",
+    "C": "Relevance is necessary for admissibility but not sufficient. The way evidence was obtained can lead a court to exclude it.",
+    "D": "Admissibility is decided by the court applying the rules of evidence, not by the accused's consent."
+   },
+   "explanation": "Illegally or improperly obtained evidence is not automatically excluded; the court has a balancing discretion.",
+   "evidence_titles": [
+    "Evidence Act 1995 (NSW)"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-INVESTIGATION",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 2,
+   "verb": null,
+   "text": "Ahmed is arrested for a minor offence. After being cautioned, he declines to answer questions in the police interview. At his Local Court hearing the prosecutor argues that his silence shows he is guilty. What is the general position in NSW?",
+   "options": [
+    "A. The court may treat his silence as an admission because he had been cautioned.",
+    "B. Generally, no unfavourable inference may be drawn from his silence during official questioning.",
+    "C. His silence is protected only if a lawyer was present during the interview.",
+    "D. Silence is evidence of guilt for summary offences but not for indictable offences."
+   ],
+   "answer": "B",
+   "option_rationales": {
+    "A": "The caution tells a suspect that they do not have to say anything. Treating silence after a caution as an admission would undermine the right to silence.",
+    "B": "The Evidence Act 1995 (NSW) generally prevents an unfavourable inference being drawn from a suspect's silence when questioned by police. A limited exception applies only to some serious indictable offences after a special caution, which is not this case.",
+    "C": "Tempting because a lawyer's presence is one condition of the limited exception for some serious indictable offences, but the general protection of silence does not depend on a lawyer being present.",
+    "D": "There is no rule making silence evidence of guilt for summary offences. The general protection applies regardless of the type of offence; the narrow exception concerns some serious indictable offences."
+   },
+   "explanation": "The right to silence: generally no unfavourable inference from silence in official questioning, with a narrow statutory exception for some serious indictable offences.",
+   "evidence_titles": [
+    "Evidence Act 1995 (NSW)"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: The conditions of the exception for some serious indictable offences are set out in the Evidence Act 1995 (NSW). These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-INVESTIGATION",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 1,
+   "verb": null,
+   "text": "Detectives want to secretly install a listening device in a suspect's home to record conversations about a planned drug supply. What is generally required before they may do so in NSW?",
+   "options": [
+    "A. Nothing, because police may use any device during a serious investigation.",
+    "B. The suspect's written consent.",
+    "C. A surveillance device warrant issued by a judicial officer under the Surveillance Devices Act 2007 (NSW).",
+    "D. Approval from the Director of Public Prosecutions."
+   ],
+   "answer": "C",
+   "option_rationales": {
+    "A": "Tempting because the investigation concerns a serious offence, but covert surveillance powers are regulated by statute precisely because they intrude on privacy.",
+    "B": "Seeking consent would defeat the purpose of covert surveillance. The law instead requires independent authorisation by warrant.",
+    "C": "Covert use of a listening device by police generally requires a warrant. Requiring independent judicial authorisation is a safeguard that balances investigative needs against privacy.",
+    "D": "The Director of Public Prosecutions conducts prosecutions; it does not authorise surveillance. Surveillance device warrants are issued by judicial officers."
+   },
+   "explanation": "Covert surveillance by police is generally authorised by warrant under the Surveillance Devices Act 2007 (NSW), a judicial safeguard on investigative power.",
+   "evidence_titles": [
+    "Surveillance Devices Act 2007 (NSW)"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-TRIAL",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 2,
+   "verb": null,
+   "text": "Kai is charged with an indictable offence that has received intense and prejudicial media coverage. His lawyer is worried that jurors may already have formed a view. Which option may be available under NSW law?",
+   "options": [
+    "A. Kai may apply for a trial by judge alone, which the court may order if it is in the interests of justice.",
+    "B. Kai can insist that his trial be held in the Local Court instead.",
+    "C. The prosecution must withdraw the charge because a fair trial is now impossible.",
+    "D. Kai can choose which members of the jury panel will hear his case."
+   ],
+   "answer": "A",
+   "option_rationales": {
+    "A": "The Criminal Procedure Act 1986 (NSW) allows a judge-alone trial in some circumstances, including on the accused's application where the court considers it in the interests of justice. Prejudicial publicity is a common reason for such an application.",
+    "B": "Tempting because the Local Court has no jury, but the accused cannot simply move a serious indictable matter to the Local Court. Which court hears a matter depends on the offence and the legislation.",
+    "C": "Prejudicial publicity rarely makes a fair trial impossible. Courts manage it through directions to the jury, delays, changes of venue or a judge-alone trial.",
+    "D": "The parties have a limited number of challenges to prospective jurors, but they cannot choose the jury."
+   },
+   "explanation": "A judge-alone trial is one way the criminal trial process responds to concerns about jury prejudice.",
+   "evidence_titles": [
+    "Criminal Procedure Act 1986 (NSW)"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: The conditions for a judge-alone trial are set out in the Criminal Procedure Act 1986 (NSW). These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-TRIAL",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 1,
+   "verb": null,
+   "text": "Before trial, the prosecution agrees to withdraw a charge of robbery in company if Mia pleads guilty to a less serious charge of larceny. Which term best describes this process?",
+   "options": [
+    "A. Double jeopardy, because Mia can never be tried for the robbery.",
+    "B. A sentencing discount, which the judge must grant before any plea is entered.",
+    "C. Diversion, which avoids a conviction by dealing with the matter outside court.",
+    "D. Charge negotiation, in which the accused pleads guilty to a lesser or different charge and the more serious charge is withdrawn."
+   ],
+   "answer": "D",
+   "option_rationales": {
+    "A": "Tempting because the robbery charge is withdrawn, but double jeopardy concerns being tried again after an acquittal or conviction. Here no trial on the robbery charge took place.",
+    "B": "A guilty plea can attract a reduced sentence, but that is a sentencing matter decided by the court after the plea. It is not the agreement between the parties about which charges proceed.",
+    "C": "Diversion, such as a caution or conference for young people, keeps a matter out of court. Mia is pleading guilty in court and will be convicted and sentenced.",
+    "D": "This is charge negotiation (sometimes called plea bargaining). It saves time and cost and spares witnesses, but critics argue it can lead to outcomes that do not reflect the full criminality of the conduct."
+   },
+   "explanation": "Charge negotiation is a pre-trial process between the prosecution and the defence about which charges proceed.",
+   "evidence_titles": [],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-TRIAL",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 2,
+   "verb": null,
+   "text": "Tom is charged with a serious indictable offence. He has no money, has been refused legal aid, and cannot get a lawyer despite genuine efforts. He asks the trial judge for help. Based on Dietrich v The Queen (1992) 177 CLR 292, what is the most likely outcome?",
+   "options": [
+    "A. The judge must order the government to pay for a barrister of Tom's choice.",
+    "B. The judge may adjourn or stay the trial until he can be represented, because the trial would otherwise be unfair.",
+    "C. The trial must go ahead, because there is no right to legal representation at all.",
+    "D. The charges must be dismissed permanently."
+   ],
+   "answer": "B",
+   "option_rationales": {
+    "A": "Tempting because Dietrich is about access to representation, but the High Court held there is no right to publicly funded counsel. The remedy is to delay or stay the trial, not to order funding.",
+    "B": "In Dietrich v The Queen (1992) 177 CLR 292 the High Court held that, in the absence of exceptional circumstances, the trial of an accused charged with a serious offence who is unrepresented through no fault of their own should be adjourned, postponed or stayed.",
+    "C": "Although there is no absolute right to state-funded counsel, the courts' power to prevent an unfair trial means an unrepresented accused in a serious case is protected.",
+    "D": "A stay can last until representation is available. Dietrich did not hold that charges must be permanently dismissed."
+   },
+   "explanation": "Dietrich: no right to publicly funded counsel, but a serious trial that would be unfair without representation can be adjourned or stayed.",
+   "evidence_titles": [
+    "Dietrich v The Queen (1992) 177 CLR 292"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-TRIAL",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 2,
+   "verb": null,
+   "text": "After many hours of deliberation in a NSW criminal trial for a state offence, 11 of the 12 jurors agree that the accused is guilty, but one juror will not agree. Which statement is most accurate?",
+   "options": [
+    "A. The judge must discharge the jury immediately, because NSW verdicts must always be unanimous.",
+    "B. The accused is guilty because a simple majority of jurors is enough.",
+    "C. The court may accept an 11 to 1 majority verdict if the conditions in the Jury Act 1977 (NSW) are met, including a minimum period of deliberation.",
+    "D. The judge must now decide the verdict personally instead of the jury."
+   ],
+   "answer": "C",
+   "option_rationales": {
+    "A": "Tempting because unanimity is the starting point, but NSW law permits majority verdicts in limited circumstances for state offences.",
+    "B": "A simple majority (for example 7 to 5) is never enough. Any majority verdict is subject to strict conditions.",
+    "C": "The Jury Act 1977 (NSW) allows majority verdicts in limited circumstances: the jury must have deliberated for at least a minimum period that the court considers reasonable, and the court must be satisfied that a unanimous verdict is unlikely.",
+    "D": "The judge does not take over the verdict. If no lawful verdict can be reached, the jury is discharged and a retrial may be ordered."
+   },
+   "explanation": "Majority verdicts are possible in NSW for state offences, but only under conditions in the Jury Act 1977 (NSW).",
+   "evidence_titles": [
+    "Jury Act 1977 (NSW)"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: The conditions for majority verdicts (minimum deliberation time and the size of the majority) are set out in the Jury Act 1977 (NSW). These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-SENTENCING",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 1,
+   "verb": null,
+   "text": "Sentencing a man for a series of violent home invasions, a judge says the sentence must 'make clear that the community will not tolerate such conduct, and warn others who might be tempted to act similarly'. Which purposes of sentencing is the judge mainly emphasising?",
+   "options": [
+    "A. Rehabilitation and specific deterrence.",
+    "B. Protection of the community and rehabilitation.",
+    "C. Denunciation and general deterrence.",
+    "D. Retribution only, because deterrence is not a recognised purpose of sentencing in NSW."
+   ],
+   "answer": "C",
+   "option_rationales": {
+    "A": "Specific deterrence aims to deter this offender and rehabilitation aims to reform him. The judge's words are directed at the community and at other people.",
+    "B": "Tempting because the offences were violent, but the judge's words focus on condemning the conduct and deterring others, not on incapacitating or reforming this offender.",
+    "C": "Saying the community 'will not tolerate such conduct' is denunciation; warning 'others' is general deterrence. Both are purposes of sentencing set out in the Crimes (Sentencing Procedure) Act 1999 (NSW).",
+    "D": "Deterrence of the offender and of others is one of the purposes of sentencing in NSW legislation."
+   },
+   "explanation": "Denunciation condemns the conduct; general deterrence warns others; specific deterrence targets the offender.",
+   "evidence_titles": [
+    "Crimes (Sentencing Procedure) Act 1999 (NSW)"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-SENTENCING",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 1,
+   "verb": null,
+   "text": "Ella pleaded guilty at the first opportunity, has no prior convictions, and has started counselling. The offence was committed in company with two others. Which of these facts is an aggravating factor?",
+   "options": [
+    "A. That the offence was committed in company.",
+    "B. That she pleaded guilty at the first opportunity.",
+    "C. That she has no prior convictions.",
+    "D. That she has started counselling."
+   ],
+   "answer": "A",
+   "option_rationales": {
+    "A": "Committing an offence in company is listed as an aggravating factor in the Crimes (Sentencing Procedure) Act 1999 (NSW), because group offending is usually more intimidating and harmful.",
+    "B": "An early guilty plea usually reduces a sentence, because it saves time and cost and spares victims and witnesses. It is not an aggravating factor.",
+    "C": "Tempting because it is a fact about her history, but a lack of prior convictions (good character) usually mitigates a sentence.",
+    "D": "Steps towards rehabilitation usually count in the offender's favour, as they suggest good prospects of rehabilitation."
+   },
+   "explanation": "Aggravating factors increase the seriousness of an offence; mitigating factors and an early guilty plea can reduce the sentence.",
+   "evidence_titles": [
+    "Crimes (Sentencing Procedure) Act 1999 (NSW)"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-SENTENCING",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 3,
+   "verb": null,
+   "text": "A sentencing judge sets a 'starting point' of ten years, then subtracts two years for remorse and adds one year for prior convictions, presenting each step as a fixed arithmetic adjustment. Which High Court approach does this method sit most uneasily with?",
+   "options": [
+    "A. The principle of proportionality in Veen v The Queen (No 2) (1988) 164 CLR 465.",
+    "B. The presumption of doli incapax in RP v The Queen [2016] HCA 53.",
+    "C. The rule in Muldrock v The Queen (2011) 244 CLR 120 that a standard non-parole period is a mandatory starting point.",
+    "D. The instinctive synthesis approach in Markarian v The Queen (2005) 228 CLR 357."
+   ],
+   "answer": "D",
+   "option_rationales": {
+    "A": "Veen (No 2) concerns how severe a sentence may be relative to the offence. It does not deal with the arithmetic method described here.",
+    "B": "RP concerns the criminal responsibility of children aged 10 to 13. It has nothing to do with the method of calculating a sentence.",
+    "C": "Tempting because Muldrock concerns sentencing method, but it held the opposite: a standard non-parole period is not a mandatory starting point and is only one guidepost among the relevant factors.",
+    "D": "Markarian endorsed instinctive synthesis: the judge identifies all relevant factors and weighs them together to reach a single sentence, rather than adding and subtracting fixed amounts step by step."
+   },
+   "explanation": "Instinctive synthesis (Markarian) weighs all factors together; Muldrock rejected a two-stage approach to standard non-parole periods.",
+   "evidence_titles": [
+    "Markarian v The Queen (2005) 228 CLR 357",
+    "Veen v The Queen (No 2) (1988) 164 CLR 465",
+    "RP v The Queen [2016] HCA 53",
+    "Muldrock v The Queen (2011) 244 CLR 120"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-SENTENCING",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 2,
+   "verb": null,
+   "text": "A judge thinks an offender with many prior convictions is likely to reoffend, and proposes a sentence much longer than the offence itself deserves in order to keep the community safe. According to Veen v The Queen (No 2) (1988) 164 CLR 465, which principle applies?",
+   "options": [
+    "A. Prior convictions are irrelevant to sentencing and must be ignored.",
+    "B. Protecting the community is relevant, but a sentence must not go beyond what is proportionate to the gravity of the offence merely to protect society.",
+    "C. Community protection allows any sentence up to the maximum penalty, whatever the offence's seriousness.",
+    "D. Repeat offenders must receive the maximum penalty for the offence."
+   ],
+   "answer": "B",
+   "option_rationales": {
+    "A": "Tempting if you focus on proportionality alone, but antecedents remain relevant. They can, for example, reduce the leniency an offender with a good record might otherwise receive.",
+    "B": "This is the principle of proportionality in Veen v The Queen (No 2) (1988) 164 CLR 465. Prior convictions and community protection can be weighed within a proportionate sentence, but cannot justify a sentence beyond it.",
+    "C": "This is the approach the High Court rejected: protection of society cannot by itself justify a disproportionate sentence.",
+    "D": "There is no general rule that repeat offenders receive the maximum penalty. Maximum penalties are generally reserved for the worst category of cases."
+   },
+   "explanation": "Proportionality (Veen No 2): the sentence must fit the gravity of the offence; protection of society operates within that limit.",
+   "evidence_titles": [
+    "Veen v The Queen (No 2) (1988) 164 CLR 465"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-YOUNG",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 2,
+   "verb": null,
+   "text": "Sam, aged 12, is charged with intentionally damaging property. To rebut the presumption of doli incapax, what must the prosecution prove, in addition to the elements of the offence?",
+   "options": [
+    "A. That Sam was capable of forming an intention to damage the property.",
+    "B. That Sam knew his conduct was seriously wrong, as distinct from merely naughty or mischievous.",
+    "C. That Sam's parents had failed to supervise him properly.",
+    "D. Nothing more, because the presumption applies only to children under 10."
+   ],
+   "answer": "B",
+   "option_rationales": {
+    "A": "Tempting because intention is the mens rea of the offence, but doli incapax asks a different question: whether the child knew the conduct was seriously wrong. A child can intend an act without understanding its wrongness.",
+    "B": "In RP v The Queen [2016] HCA 53 the High Court confirmed that, for a child aged 10 to 13, the prosecution must prove beyond reasonable doubt that the child understood the act was seriously wrong in a moral sense.",
+    "C": "Parental supervision may be part of the background, but it is not what the prosecution must prove to rebut the presumption.",
+    "D": "Children under 10 cannot be criminally responsible at all under the Children (Criminal Proceedings) Act 1987 (NSW). For children aged 10 to 13 there is a rebuttable presumption, which the prosecution must rebut."
+   },
+   "explanation": "Under 10: conclusively not criminally responsible. Aged 10 to 13: presumed doli incapax unless the prosecution proves the child knew the act was seriously wrong (RP v The Queen).",
+   "evidence_titles": [
+    "RP v The Queen [2016] HCA 53",
+    "Children (Criminal Proceedings) Act 1987 (NSW)"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: The minimum age of criminal responsibility in NSW (10, in the Children (Criminal Proceedings) Act 1987 (NSW)) is the subject of reform debate in Australia. These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-YOUNG",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 2,
+   "verb": null,
+   "text": "Mia, aged 15, admits to police that she committed a minor offence. Police decide to give her a caution under the Young Offenders Act 1997 (NSW). Which statement is most accurate?",
+   "options": [
+    "A. A caution is a conviction that will appear on her criminal record for life.",
+    "B. She could receive a caution even if she denied the offence, as long as police believed she did it.",
+    "C. A caution is not a conviction, but it is recorded and can be taken into account if she offends again.",
+    "D. Once cautioned, she can never be cautioned again for any offence."
+   ],
+   "answer": "C",
+   "option_rationales": {
+    "A": "A caution is an alternative to court proceedings and does not involve a finding of guilt by a court, so it is not a conviction.",
+    "B": "Tempting because police decide whether to caution, but an admission by the young person is a precondition for a caution under the Young Offenders Act 1997 (NSW).",
+    "C": "Cautions divert young people from court and do not result in a conviction. They are, however, recorded, the number a young person may receive is limited, and they can be referred to in later proceedings.",
+    "D": "The Act limits the number of cautions a young person can receive, but it does not limit cautions to a single occasion."
+   },
+   "explanation": "Diversion under the Young Offenders Act 1997 (NSW): warnings, cautions and youth justice conferences require an admission, avoid a conviction, but are recorded.",
+   "evidence_titles": [
+    "Young Offenders Act 1997 (NSW)"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: Eligibility rules for warnings, cautions and conferences, including the limit on the number of cautions, are in the Young Offenders Act 1997 (NSW). These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-YOUNG",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 2,
+   "verb": null,
+   "text": "A 16-year-old is charged with a serious offence in NSW. A journalist wants to publish his name. What is the general position?",
+   "options": [
+    "A. Publishing his name is generally prohibited, subject to limited exceptions in the Children (Criminal Proceedings) Act 1987 (NSW).",
+    "B. Publication is allowed once he is charged, because criminal proceedings are open to the public.",
+    "C. Publication is allowed as soon as he turns 18, whatever the outcome of the case.",
+    "D. Publication is allowed if the investigating police officer consents."
+   ],
+   "answer": "A",
+   "option_rationales": {
+    "A": "NSW law generally prohibits publishing the names of children involved in criminal proceedings, to protect their privacy and prospects of rehabilitation. Limited statutory exceptions exist.",
+    "B": "Tempting because of the principle of open justice, but for children the law makes an exception to protect identity.",
+    "C": "Turning 18 does not by itself lift the protection for proceedings that concerned him as a child.",
+    "D": "Police consent does not authorise publication. Any exceptions are set out in the legislation."
+   },
+   "explanation": "Children's identities in criminal proceedings are generally protected from publication, an exception to open justice.",
+   "evidence_titles": [
+    "Children (Criminal Proceedings) Act 1987 (NSW)"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: The exceptions to the ban on naming children are set out in the Children (Criminal Proceedings) Act 1987 (NSW). These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-YOUNG",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 1,
+   "verb": null,
+   "text": "In a hypothetical country, children charged with minor offences are routinely held in detention for months while awaiting trial. Which principle of the Convention on the Rights of the Child (1989) is most directly engaged?",
+   "options": [
+    "A. The right of peoples to self-determination.",
+    "B. Children charged with offences must be tried in adult courts.",
+    "C. The best interests of the child must be the sole consideration in every decision.",
+    "D. Detention of a child should be used only as a measure of last resort and for the shortest appropriate period of time."
+   ],
+   "answer": "D",
+   "option_rationales": {
+    "A": "Self-determination is a collective right of peoples. It does not deal with the detention of individual children.",
+    "B": "The Convention encourages specialised approaches for children, not trial in adult courts.",
+    "C": "Tempting because the best interests principle is central, but Article 3 makes the child's best interests 'a primary consideration', not the only one. The detention principle in Article 37 is more directly engaged.",
+    "D": "Article 37 of the Convention on the Rights of the Child (1989) requires that arrest, detention or imprisonment of a child be used only as a last resort and for the shortest appropriate time."
+   },
+   "explanation": "CRC Article 37: detention of children only as a last resort and for the shortest appropriate time.",
+   "evidence_titles": [
+    "Convention on the Rights of the Child (1989)"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-INTERNATIONAL",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 2,
+   "verb": null,
+   "text": "State X is a party to the Rome Statute. It is genuinely investigating and prosecuting its own former military commander for war crimes, in fair proceedings. The ICC Prosecutor also wishes to prosecute him. What is the likely position under the Rome Statute?",
+   "options": [
+    "A. The ICC has priority over national courts for all war crimes.",
+    "B. The ICC can act only if the UN General Assembly votes to refer the case.",
+    "C. The ICC must hear the case, because commanders cannot be tried by their own state.",
+    "D. The case is likely to be inadmissible before the ICC, because of the principle of complementarity."
+   ],
+   "answer": "D",
+   "option_rationales": {
+    "A": "Tempting because the ICC is the permanent international criminal court, but it does not have primacy over national courts; national courts have the first opportunity.",
+    "B": "Cases can reach the ICC through a referral by a state party or the Security Council, or by the Prosecutor acting on their own initiative. The General Assembly has no referral role.",
+    "C": "States can and should prosecute their own nationals for international crimes. That is the point of complementarity.",
+    "D": "Under the Rome Statute of the International Criminal Court (1998), the ICC complements national courts: a case is generally inadmissible where a state with jurisdiction is genuinely investigating or prosecuting it. The ICC acts where states are unwilling or unable."
+   },
+   "explanation": "Complementarity: the ICC is a court of last resort that acts only when states are unwilling or unable genuinely to prosecute.",
+   "evidence_titles": [
+    "Rome Statute of the International Criminal Court (1998)"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-INTERNATIONAL",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 1,
+   "verb": null,
+   "text": "Police in three countries cooperate to dismantle a syndicate that moves illicit drugs from Asia to Australia. How is this crime best classified?",
+   "options": [
+    "A. As a crime against the international community, prosecuted mainly by the International Criminal Court.",
+    "B. As a transnational crime, dealt with mainly through domestic law and cooperation between states.",
+    "C. As a crime against the sovereignty of the state, like treason.",
+    "D. As an international crime only if one of the states is not a party to the Rome Statute."
+   ],
+   "answer": "B",
+   "option_rationales": {
+    "A": "Tempting because the crime is international in scope, but drug trafficking is not within the ICC's jurisdiction, which covers genocide, crimes against humanity, war crimes and aggression.",
+    "B": "Drug trafficking across borders is a transnational crime. It is prosecuted under domestic laws, such as the drug offences in the Criminal Code Act 1995 (Cth), supported by cooperation such as extradition and police intelligence sharing.",
+    "C": "Crimes against the sovereignty of the state threaten the state's security or system of government. Drug trafficking is a profit-driven crime that crosses borders.",
+    "D": "Whether a state is a party to the Rome Statute of the International Criminal Court (1998) does not change how drug trafficking is classified."
+   },
+   "explanation": "Transnational crimes cross borders and are dealt with by domestic law and state cooperation; crimes against the international community are the most serious crimes, such as genocide.",
+   "evidence_titles": [
+    "Criminal Code Act 1995 (Cth)",
+    "Rome Statute of the International Criminal Court (1998)"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-INTERNATIONAL",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 2,
+   "verb": null,
+   "text": "In a hypothetical armed conflict, members of a militia kill a large number of civilians. Which additional element must be proved for the killings to amount to genocide as defined in the Genocide Convention?",
+   "options": [
+    "A. That the killings took place during an international armed conflict.",
+    "B. That more than a set number of people were killed.",
+    "C. An intent to destroy, in whole or in part, a national, ethnical, racial or religious group as such.",
+    "D. That the state concerned was a party to the Rome Statute at the time."
+   ],
+   "answer": "C",
+   "option_rationales": {
+    "A": "Tempting because war crimes are linked to armed conflict, but genocide can be committed in peacetime or during any conflict.",
+    "B": "There is no minimum number of victims. The defining feature is the intent to destroy a protected group in whole or in part.",
+    "C": "The Convention on the Prevention and Punishment of the Crime of Genocide (1948) requires this specific intent. The same definition was adopted in the Rome Statute of the International Criminal Court (1998).",
+    "D": "Being a party to the Rome Statute affects whether the ICC has jurisdiction, not whether conduct meets the definition of genocide."
+   },
+   "explanation": "Genocide requires a specific intent to destroy a protected group, in whole or in part.",
+   "evidence_titles": [
+    "Convention on the Prevention and Punishment of the Crime of Genocide (1948)",
+    "Rome Statute of the International Criminal Court (1998)"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-CRIME",
+   "sub_area": "LS-CRIME-INTERNATIONAL",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 2,
+   "verb": null,
+   "text": "An Australian citizen is suspected of a serious fraud committed in another country and has returned to Australia. The other country asks Australia to send him back for trial. Which statement is most accurate?",
+   "options": [
+    "A. Australia may surrender him under the Extradition Act 1988 (Cth) if the legal requirements are met, but extradition can be refused on specified grounds.",
+    "B. Australia must surrender him immediately, because every state must extradite whenever asked.",
+    "C. The International Criminal Court will decide which country tries him.",
+    "D. Australia can never extradite its own citizens."
+   ],
+   "answer": "A",
+   "option_rationales": {
+    "A": "Extradition is governed by the Extradition Act 1988 (Cth) and Australia's arrangements with other countries. Requests must satisfy legal requirements and can be refused on grounds set out in the law.",
+    "B": "There is no general duty to extradite on request. Extradition depends on legal arrangements and conditions, which shows the role of state sovereignty.",
+    "C": "Fraud is not within the ICC's jurisdiction, and the ICC does not allocate cases between states.",
+    "D": "Tempting because some countries refuse to extradite their nationals, but Australian law does not prevent the extradition of Australian citizens as such."
+   },
+   "explanation": "Extradition depends on domestic law and arrangements between states, and can be refused on specified grounds.",
+   "evidence_titles": [
+    "Extradition Act 1988 (Cth)"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: The grounds on which extradition may be refused are set out in the Extradition Act 1988 (Cth). These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
+  },
+  {
+   "topic": "LS-HR",
+   "sub_area": "LS-HR-NATURE",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 1,
+   "verb": null,
+   "text": "A group of Indigenous communities seeks the right to make decisions about its own economic, social and cultural development. Which kind of human right is mainly being asserted?",
+   "options": [
+    "A. An individual civil right to a fair trial.",
+    "B. A state's right to sovereignty over its territory.",
+    "C. A collective right of self-determination.",
+    "D. A right that exists only in domestic law, not in international law."
+   ],
+   "answer": "C",
+   "option_rationales": {
+    "A": "A fair trial is an individual civil right. The communities are claiming a right held by the group as a people.",
+    "B": "Tempting because self-determination concerns control over a people's affairs, but state sovereignty is a principle of international law held by states, not a human right held by peoples.",
+    "C": "Self-determination belongs to peoples, not just individuals. It appears in Article 1 of the International Covenant on Civil and Political Rights (1966) and is recognised for Indigenous peoples in the United Nations Declaration on the Rights of Indigenous Peoples (2007).",
+    "D": "Self-determination is recognised in international instruments, including the ICCPR and the International Covenant on Economic, Social and Cultural Rights (1966)."
+   },
+   "explanation": "Collective rights, such as self-determination, are held by groups or peoples rather than by individuals.",
+   "evidence_titles": [
+    "International Covenant on Civil and Political Rights (1966)",
+    "United Nations Declaration on the Rights of Indigenous Peoples (2007)",
+    "International Covenant on Economic, Social and Cultural Rights (1966)"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-HR",
+   "sub_area": "LS-HR-NATURE",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 2,
+   "verb": null,
+   "text": "A student argues that because the Universal Declaration of Human Rights (1948) is a General Assembly resolution, none of its content can bind states. Which response is most accurate?",
+   "options": [
+    "A. The Declaration itself is not a treaty, but much of its content was reflected in later binding treaties and some of it is regarded as customary international law.",
+    "B. The Declaration is a binding treaty because every UN member state signed it.",
+    "C. The Declaration became binding in Australia when Parliament enacted it as a statute.",
+    "D. Only the economic and social rights in the Declaration are binding."
+   ],
+   "answer": "A",
+   "option_rationales": {
+    "A": "The Universal Declaration of Human Rights (1948) is not binding in itself, but its rights were developed into binding treaties such as the International Covenant on Civil and Political Rights (1966) and the International Covenant on Economic, Social and Cultural Rights (1966), and some rights are now accepted as customary international law.",
+    "B": "General Assembly declarations are not treaties and are not signed and ratified like treaties.",
+    "C": "Tempting because treaties are often implemented by statute, but the Declaration has not been enacted as an Australian statute.",
+    "D": "No part of the Declaration is binding as such. Both civil and political rights and economic, social and cultural rights were later developed into separate binding covenants."
+   },
+   "explanation": "The UDHR is non-binding 'soft law', but its content shaped binding treaties and customary international law.",
+   "evidence_titles": [
+    "Universal Declaration of Human Rights (1948)",
+    "International Covenant on Civil and Political Rights (1966)",
+    "International Covenant on Economic, Social and Cultural Rights (1966)"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-HR",
+   "sub_area": "LS-HR-NATURE",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 2,
+   "verb": null,
+   "text": "A state that is not a party to a particular torture treaty argues that it is free to use torture in interrogations. Why is the state still bound by the prohibition of torture?",
+   "options": [
+    "A. Because the UN Security Council has legislated a binding torture code for every state.",
+    "B. Because each state's domestic courts automatically apply all UN treaties.",
+    "C. Because joining the United Nations under the UN Charter made every UN treaty binding on members.",
+    "D. Because the prohibition is part of customary international law, which arises from consistent state practice accepted as law."
+   ],
+   "answer": "D",
+   "option_rationales": {
+    "A": "The Security Council can make binding decisions about threats to international peace and security, but it does not legislate a general human rights code.",
+    "B": "Whether treaties apply in domestic courts depends on each state's legal system. In Australia, for example, treaties generally need legislation to become part of domestic law.",
+    "C": "Tempting because UN membership carries obligations under the Charter of the United Nations (1945), but joining the UN does not make every treaty binding. Treaties bind only the states that become parties.",
+    "D": "Customary international law binds states whether or not they have ratified a treaty. The prohibition of torture is widely regarded as part of customary law, as well as being in treaties such as the Convention against Torture and Other Cruel, Inhuman or Degrading Treatment or Punishment (1984)."
+   },
+   "explanation": "Customary international law (state practice plus a sense of legal obligation) can bind states that are not parties to a treaty.",
+   "evidence_titles": [
+    "Convention against Torture and Other Cruel, Inhuman or Degrading Treatment or Punishment (1984)",
+    "Charter of the United Nations (1945)"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-HR",
+   "sub_area": "LS-HR-NATURE",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 1,
+   "verb": null,
+   "text": "Which statement best describes the significance of the Magna Carta (1215) in the development of human rights?",
+   "options": [
+    "A. It created voting rights for all adults in England.",
+    "B. It helped establish that rulers are subject to the law, although its protections originally applied only to a narrow class of free men.",
+    "C. It was the first binding international human rights treaty.",
+    "D. It abolished slavery throughout England and its territories."
+   ],
+   "answer": "B",
+   "option_rationales": {
+    "A": "Universal adult suffrage developed many centuries later. The Magna Carta did not deal with voting.",
+    "B": "The Magna Carta (1215) limited the King's power and promised that free men would not be imprisoned except by lawful judgment or the law of the land. It is a milestone in the rule of law, but it was not a universal statement of rights.",
+    "C": "Tempting because it is often described as an early charter of rights, but it was an agreement between an English king and his barons, not an international treaty.",
+    "D": "The abolition of slavery came centuries later and is a separate development in the history of human rights."
+   },
+   "explanation": "The Magna Carta is an early step towards the rule of law, not a universal or international guarantee of rights.",
+   "evidence_titles": [
+    "Magna Carta (1215)"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-HR",
+   "sub_area": "LS-HR-ENFORCE",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 2,
+   "verb": null,
+   "text": "A Commonwealth law restricts political advertising. A challenger argues it breaches 'the constitutional right to free speech'. Which statement best reflects the reasoning in Lange v Australian Broadcasting Corporation (1997) 189 CLR 520?",
+   "options": [
+    "A. The Australian Constitution implies a freedom of political communication that limits legislative power; it is not a personal right to free speech.",
+    "B. The Constitution contains an express guarantee of freedom of speech in section 116.",
+    "C. There is no constitutional protection of political communication of any kind.",
+    "D. The freedom lets individuals sue other individuals for damages when their speech is restricted."
+   ],
+   "answer": "A",
+   "option_rationales": {
+    "A": "In Lange v Australian Broadcasting Corporation (1997) 189 CLR 520 the High Court held that the freedom is implied from the system of representative and responsible government. It restricts laws that burden political communication, rather than giving individuals a free-standing right.",
+    "B": "Tempting because section 116 is one of the few express rights, but it concerns freedom of religion from Commonwealth laws, not freedom of speech.",
+    "C": "The High Court has recognised an implied freedom of political communication, although it is limited.",
+    "D": "The implied freedom limits government power; it does not create a personal right to sue for damages."
+   },
+   "explanation": "The implied freedom of political communication is a limit on government power, not a personal right.",
+   "evidence_titles": [
+    "Lange v Australian Broadcasting Corporation (1997) 189 CLR 520",
+    "Australian Constitution"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-HR",
+   "sub_area": "LS-HR-ENFORCE",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 2,
+   "verb": null,
+   "text": "The Queensland Supreme Court concludes that a Queensland law cannot be interpreted compatibly with human rights. Under the Human Rights Act 2019 (Qld), what can the Court do?",
+   "options": [
+    "A. Strike the law down as invalid.",
+    "B. Order the Queensland Parliament to amend the law within a fixed time.",
+    "C. Refer the law to the UN Human Rights Committee for a binding ruling.",
+    "D. Declare that the law cannot be interpreted compatibly with human rights; the declaration does not affect the law's validity."
+   ],
+   "answer": "D",
+   "option_rationales": {
+    "A": "Tempting because courts can invalidate laws that breach the Australian Constitution, but statutory human rights Acts do not let courts invalidate legislation.",
+    "B": "Courts cannot order Parliament to legislate. A declaration leads to a response from the Government, not a binding order.",
+    "C": "Courts do not refer laws to the Human Rights Committee, and the Committee's views are not binding rulings.",
+    "D": "The Human Rights Act 2019 (Qld) follows a 'dialogue' model: the Supreme Court can make a declaration that the law is incompatible, and the Government must respond, but the law keeps operating. Parliament remains sovereign."
+   },
+   "explanation": "Statutory human rights Acts (Vic, ACT, Qld) allow declarations of incompatibility but preserve parliamentary sovereignty.",
+   "evidence_titles": [
+    "Human Rights Act 2019 (Qld)",
+    "Australian Constitution"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: The remedies and processes under the Human Rights Act 2019 (Qld) should be confirmed against the current Act. These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
+  },
+  {
+   "topic": "LS-HR",
+   "sub_area": "LS-HR-ENFORCE",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 2,
+   "verb": null,
+   "text": "A woman in Australia believes a law breaches her rights under the ICCPR. She has exhausted all domestic remedies. Which international avenue is open to her?",
+   "options": [
+    "A. Suing Australia in the International Court of Justice.",
+    "B. Applying to the International Criminal Court.",
+    "C. Submitting a communication to the UN Human Rights Committee, whose views are not legally binding.",
+    "D. Asking the UN Security Council to invalidate the law."
+   ],
+   "answer": "C",
+   "option_rationales": {
+    "A": "Tempting because the International Court of Justice is the UN's principal court, but only states can be parties to contentious cases before it.",
+    "B": "The International Criminal Court tries individuals for international crimes. It does not hear complaints that a state's laws breach human rights.",
+    "C": "Under the Optional Protocol to the International Covenant on Civil and Political Rights (1966), individuals in states parties such as Australia can complain to the Human Rights Committee. Its views are not binding, but they can lead to change, as in Toonen v Australia (UN Human Rights Committee, 1994).",
+    "D": "The Security Council deals with threats to international peace and security. It cannot invalidate a state's domestic laws."
+   },
+   "explanation": "The First Optional Protocol lets individuals complain to the Human Rights Committee about breaches of the International Covenant on Civil and Political Rights (1966); its views rely on state cooperation.",
+   "evidence_titles": [
+    "Optional Protocol to the International Covenant on Civil and Political Rights (1966)",
+    "Toonen v Australia (UN Human Rights Committee, 1994)",
+    "International Covenant on Civil and Political Rights (1966)"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-HR",
+   "sub_area": "LS-HR-ENFORCE",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 1,
+   "verb": null,
+   "text": "A Commonwealth bill is introduced with a statement of compatibility. The Parliamentary Joint Committee on Human Rights then reports that the bill may unjustifiably limit the right to liberty. What is the legal effect of the Committee's report?",
+   "options": [
+    "A. The bill cannot proceed until the High Court approves it.",
+    "B. Parliament can still pass the bill; the statement and the report do not affect the law's validity.",
+    "C. The bill is automatically invalid if it is passed.",
+    "D. The bill must be put to the people at a referendum."
+   ],
+   "answer": "B",
+   "option_rationales": {
+    "A": "The High Court does not review bills before they are passed; it decides cases about laws that have already been made.",
+    "B": "The Human Rights (Parliamentary Scrutiny) Act 2011 (Cth) creates a scrutiny process that informs debate. It does not stop Parliament passing laws that limit rights, and it does not give courts a power to invalidate them.",
+    "C": "Tempting because the report identifies a rights problem, but the scrutiny regime has no effect on the validity of a law that Parliament chooses to pass.",
+    "D": "Referendums are needed to change the Australian Constitution, not to pass ordinary legislation."
+   },
+   "explanation": "Parliamentary scrutiny is a non-judicial 'dialogue' mechanism: it can shape debate, but Parliament can still pass rights-limiting laws.",
+   "evidence_titles": [
+    "Human Rights (Parliamentary Scrutiny) Act 2011 (Cth)",
+    "Australian Constitution"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-HR",
+   "sub_area": "LS-HR-ISSUE",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 1,
+   "verb": null,
+   "text": "An asylum seeker who fears persecution because of her political opinion arrives in a country that is a party to the Refugee Convention. Which obligation most directly prevents that country from sending her back to the place she fled?",
+   "options": [
+    "A. Non-refoulement under the Convention Relating to the Status of Refugees (1951).",
+    "B. Complementarity under the Rome Statute.",
+    "C. The right of peoples to self-determination.",
+    "D. Universal jurisdiction."
+   ],
+   "answer": "A",
+   "option_rationales": {
+    "A": "Non-refoulement is the core protection in the Convention Relating to the Status of Refugees (1951): a state must not return a refugee to a place where their life or freedom would be threatened on a Convention ground, such as political opinion.",
+    "B": "Complementarity, under the Rome Statute of the International Criminal Court (1998), decides when the ICC can hear a case. It has nothing to do with returning asylum seekers.",
+    "C": "Tempting because it is a key human rights principle, but self-determination is a collective right of peoples and does not govern the return of an individual asylum seeker.",
+    "D": "Universal jurisdiction allows states to prosecute certain grave crimes wherever committed. It does not protect asylum seekers from being returned."
+   },
+   "explanation": "Non-refoulement: refugees must not be returned to a place where their life or freedom would be threatened.",
+   "evidence_titles": [
+    "Convention Relating to the Status of Refugees (1951)",
+    "Rome Statute of the International Criminal Court (1998)"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-HR",
+   "sub_area": "LS-HR-ISSUE",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 3,
+   "verb": null,
+   "text": "A non-citizen in immigration detention cannot be removed from Australia, because no country will accept him and there is no real prospect of removal in the reasonably foreseeable future. Following NZYQ v Minister for Immigration, Citizenship and Multicultural Affairs (2023), what is the position?",
+   "options": [
+    "A. He can be detained indefinitely, as held in Al-Kateb v Godwin, which remains good law.",
+    "B. He must be granted Australian citizenship.",
+    "C. His case must go to the UN Human Rights Council for a binding decision.",
+    "D. The Migration Act's detention provisions cannot validly authorise his continued detention in these circumstances."
+   ],
+   "answer": "D",
+   "option_rationales": {
+    "A": "Tempting because Al-Kateb v Godwin (2004) 219 CLR 562 upheld indefinite detention, but the High Court overruled it in NZYQ, so it is no longer good law on this point.",
+    "B": "Release from detention does not give a person citizenship or any particular visa.",
+    "C": "The United Nations Human Rights Council is an inter-governmental body. It cannot make binding decisions in individual cases.",
+    "D": "In NZYQ v Minister for Immigration, Citizenship and Multicultural Affairs (2023) the High Court held that the detention provisions of the Migration Act 1958 (Cth) cannot validly authorise continued detention where there is no real prospect of removal in the reasonably foreseeable future."
+   },
+   "explanation": "NZYQ (2023) overruled Al-Kateb on indefinite immigration detention where removal is not reasonably foreseeable.",
+   "evidence_titles": [
+    "NZYQ v Minister for Immigration, Citizenship and Multicultural Affairs (2023)",
+    "Migration Act 1958 (Cth)",
+    "Al-Kateb v Godwin (2004) 219 CLR 562",
+    "United Nations Human Rights Council"
+   ],
+   "legal_fact_currency": "check",
+   "currency_note": "Before you rely on this: NZYQ was followed by new Commonwealth legislation and further cases, and the Migration Act 1958 (Cth) is frequently amended. These details are stated as at the time of writing (October 2026) and may have changed; verify them against the current source before using them in an answer."
+  },
+  {
+   "topic": "LS-HR",
+   "sub_area": "LS-HR-ISSUE",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 2,
+   "verb": null,
+   "text": "A non-state armed group recruits 16-year-olds to fight in a conflict. Which instrument most directly addresses the recruitment and use of people under 18 by such armed groups?",
+   "options": [
+    "A. The Rome Statute, because it makes recruiting anyone under 18 a war crime.",
+    "B. The Optional Protocol on the involvement of children in armed conflict.",
+    "C. The Refugee Convention.",
+    "D. The Genocide Convention."
+   ],
+   "answer": "B",
+   "option_rationales": {
+    "A": "Tempting because the Rome Statute of the International Criminal Court (1998) does criminalise child recruitment, but its war crime covers children under 15, not under 18.",
+    "B": "The Optional Protocol to the Convention on the Rights of the Child on the involvement of children in armed conflict (2000) provides that armed groups distinct from a state's armed forces should not recruit or use people under 18 in hostilities, raising the standard of age 15 in the Convention on the Rights of the Child (1989).",
+    "C": "The Convention Relating to the Status of Refugees (1951) protects people fleeing persecution. It does not regulate recruitment by armed groups.",
+    "D": "The Convention on the Prevention and Punishment of the Crime of Genocide (1948) concerns acts intended to destroy protected groups. Recruiting child soldiers is not genocide in itself."
+   },
+   "explanation": "Child soldiers: CRC (age 15), the Optional Protocol on children in armed conflict (age 18 for direct participation and for armed groups), and the Rome Statute war crime (under 15).",
+   "evidence_titles": [
+    "Optional Protocol to the Convention on the Rights of the Child on the involvement of children in armed conflict (2000)",
+    "Convention on the Rights of the Child (1989)",
+    "Rome Statute of the International Criminal Court (1998)",
+    "Convention Relating to the Status of Refugees (1951)",
+    "Convention on the Prevention and Punishment of the Crime of Genocide (1948)"
+   ],
+   "legal_fact_currency": "current"
+  },
+  {
+   "topic": "LS-HR",
+   "sub_area": "LS-HR-ISSUE",
+   "type": "mcq",
+   "marks": 1,
+   "difficulty": 1,
+   "verb": null,
+   "text": "Which of the following is the best example of a NON-LEGAL measure to promote a human right in a contemporary issue?",
+   "options": [
+    "A. A High Court decision that a detention law is invalid.",
+    "B. A statute that makes a form of discrimination unlawful.",
+    "C. A campaign by an NGO, reported widely in the media, that pressures a government to change a policy.",
+    "D. Australia's ratification of a human rights treaty."
+   ],
+   "answer": "C",
+   "option_rationales": {
+    "A": "Tempting because courts are central to enforcing rights, but a court decision is a legal measure.",
+    "B": "Legislation is a legal measure: it creates enforceable rights and duties.",
+    "C": "Non-government organisations and the media are non-legal measures: they create no binding rules but can influence governments by raising awareness, documenting abuses and building political pressure.",
+    "D": "Ratification creates binding international legal obligations, so it is a legal measure, even though enforcement may depend on domestic implementation."
+   },
+   "explanation": "Legal measures create or apply binding law (treaties, statutes, courts); non-legal measures (NGOs, media) work through awareness and pressure.",
+   "evidence_titles": [],
+   "legal_fact_currency": "current"
+  }
+ ]
 }
