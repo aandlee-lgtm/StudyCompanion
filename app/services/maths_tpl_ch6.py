@@ -234,7 +234,7 @@ def t_6C(r: Rng, d: int) -> Generated:
             A_expr(tan_), 3, 2,
             [f"The point: \\(y = {co(A, '')}\\{fname}\\left({L(x0)}\\right) = {L(y0)}\\).",
              f"The gradient: \\(y' = {L(sp.diff(f, x))}\\), so \\(m = {L(m)}\\).",
-             f"\\(y - {pn(y0)} = {pn(m)}\\left(x - {L(x0)}\\right)\\), so \\(y = {L(sp.expand(tan_))}\\)."],
+             f"\\(y - {pn(y0)} = {co(m, '') if m.is_positive else pn(m)}\\left(x - {L(x0)}\\right)\\), so \\(y = {L(sp.expand(tan_))}\\)."],
             "The tangent line passes through the point of contact with gradient \\(f'(x_0)\\); with trigonometric curves both are exact values.",
             "Leave \\(\\pi\\) in the equation: it is an exact constant.",
             quicker="Check that your line passes through the point by substituting \\(x_0\\).",
