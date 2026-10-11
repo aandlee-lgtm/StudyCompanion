@@ -455,3 +455,14 @@ def test_long_history_keeps_every_question_and_recent_answers():
     assert all(f"question {i}" in convo for i in range(19))
     assert "answer 18 " in convo and "answer 0 " not in convo and "earlier answer omitted" in convo
     assert convo.index("question 0") < convo.index("question 18")
+
+
+def test_offline_reference_for_mcq_shows_the_correct_option(client, db):
+    q = _mcq_q(db)
+    wrong = next(o for o in q.options if not o.strip().upper().startswith(q.answer["value"].upper()))[:1]
+    a = _submit(db, q, wrong)
+    ref = fu.reference(db, a)
+    assert ref["mcq_answer"] == assessment.answer_display(q) and ref["correct_answer"] is None
+    skipped = assessment.submit(db, q, "", skipped=True)
+    db.commit()
+    assert fu.reference(db, skipped)["mcq_answer"] == assessment.answer_display(q)

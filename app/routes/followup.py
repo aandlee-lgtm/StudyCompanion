@@ -23,7 +23,7 @@ def _wants_json(request: Request) -> bool:
 
 
 def _safe_back(back: str | None, fallback: str = "/") -> str:
-    return fu._safe_page(back) or fallback
+    return fu.safe_page(back) or fallback
 
 
 def _turn_html(db: Session, row: FeedbackQuestion) -> str:
@@ -46,7 +46,7 @@ def _row_json(db: Session, row: FeedbackQuestion) -> dict:
     return out
 
 
-def _error(request: Request, exc: fu.FollowUpError, back: str):
+def _error(request: Request, exc: fu.FollowUpError):
     if _wants_json(request):
         return JSONResponse({"ok": False, "error": str(exc)}, status_code=exc.status)
     from app.routes.common import render_error
@@ -75,7 +75,7 @@ def ask(aid: int, request: Request, question: str = Form(""), chip: str = Form("
         row = fu.ask(db, attempt, question, chip or None, page_url=back)
     except fu.FollowUpError as exc:
         db.rollback()
-        return _error(request, exc, back)
+        return _error(request, exc)
     db.commit()
     if _wants_json(request):
         return JSONResponse(_row_json(db, row))
@@ -86,13 +86,13 @@ def ask(aid: int, request: Request, question: str = Form(""), chip: str = Form("
 def retry(fid: int, request: Request, back: str = Form(""), db: Session = Depends(get_db)):
     row = db.get(FeedbackQuestion, fid)
     if row is None:
-        return _error(request, fu.FollowUpError("Unknown question.", 404), "/")
+        return _error(request, fu.FollowUpError("Unknown question.", 404))
     back = _safe_back(back, row.page_url or "/")
     try:
         fu.retry(db, row)
     except fu.FollowUpError as exc:
         db.rollback()
-        return _error(request, exc, back)
+        return _error(request, exc)
     db.commit()
     if _wants_json(request):
         return JSONResponse(_row_json(db, row))
@@ -103,7 +103,7 @@ def retry(fid: int, request: Request, back: str = Form(""), db: Session = Depend
 def save_for_teacher(fid: int, request: Request, back: str = Form(""), db: Session = Depends(get_db)):
     row = db.get(FeedbackQuestion, fid)
     if row is None:
-        return _error(request, fu.FollowUpError("Unknown question.", 404), "/")
+        return _error(request, fu.FollowUpError("Unknown question.", 404))
     fu.save_for_teacher(db, row)
     db.commit()
     if _wants_json(request):
@@ -115,7 +115,7 @@ def save_for_teacher(fid: int, request: Request, back: str = Form(""), db: Sessi
 def resolve(fid: int, request: Request, back: str = Form("/errors"), db: Session = Depends(get_db)):
     row = db.get(FeedbackQuestion, fid)
     if row is None:
-        return _error(request, fu.FollowUpError("Unknown question.", 404), "/errors")
+        return _error(request, fu.FollowUpError("Unknown question.", 404))
     fu.resolve_teacher_question(db, row)
     db.commit()
     if _wants_json(request):

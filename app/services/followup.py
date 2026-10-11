@@ -179,9 +179,11 @@ def reference(db: Session, attempt: Attempt, ctx: dict | None = None) -> dict:
     model answer, criteria and the feedback's key explanations."""
     ctx = ctx or grounding(db, attempt)
     fb = ctx["feedback"]
+    is_mcq = ctx["options"] is not None
     return {
-        "subject": ctx["subject"], "kind": ctx["kind"], "correct_answer": ctx["correct_answer"] if ctx["subject"] == "MATHS" else None,
-        "options": ctx["options"], "mcq_answer": fb.get("correct_answer") if ctx["kind"] == "mcq" else None,
+        "subject": ctx["subject"], "kind": ctx["kind"], "options": ctx["options"],
+        "correct_answer": ctx["correct_answer"] if ctx["subject"] == "MATHS" and not is_mcq else None,  # LaTeX
+        "mcq_answer": (fb.get("correct_answer") or ctx["correct_answer"]) if is_mcq else None,  # option text
         "worked_solution": ctx["worked_solution"], "explanation": fb.get("explanation"), "concept": fb.get("concept"),
         "divergence": fb.get("divergence"), "model_answer": ctx["model_answer"], "model_answer_source": ctx["model_answer_source"],
         "criteria": ctx["criteria"], "criteria_official": ctx["criteria_official"], "criteria_judgements": fb.get("criteria") or [],
@@ -232,7 +234,7 @@ def _clean_question(text: str | None, chip: str | None) -> tuple[str, str | None
     return text, chip
 
 
-def _safe_page(page_url: str | None) -> str | None:
+def safe_page(page_url: str | None) -> str | None:
     if page_url and page_url.startswith("/") and not page_url.startswith("//") and "\\" not in page_url and len(page_url) <= 300:
         return page_url
     return None
@@ -252,7 +254,7 @@ def ask(db: Session, attempt: Attempt | None, text: str | None, chip: str | None
     if len(rows) >= MAX_ROWS_PER_ATTEMPT:
         raise FollowUpError("This thread is full. Save anything still unclear for your teacher.", 409)
     row = FeedbackQuestion(attempt_id=attempt.id, question_id=attempt.question_id, turn=len(rows) + 1, question_text=text, chip=chip,
-                           status=ANSWERED, page_url=_safe_page(page_url))
+                           status=ANSWERED, page_url=safe_page(page_url))
     db.add(row)
     db.flush()
     _answer(db, attempt, row, rows)
