@@ -673,7 +673,27 @@ def stored_region(answer: dict) -> list[Iv]:
     return _merge(out)
 
 
-def _mark_interval(resp: str, answer: dict, marks: float) -> MathsResult:
+def _same_region(a: list[Iv], b: list[Iv], ends_matter: bool) -> bool:
+    if len(a) != len(b) or not all(_end_equal(g.lo, w.lo) and _end_equal(g.hi, w.hi) for g, w in zip(a, b)):
+        return False
+    return not ends_matter or all(g.lo_closed == w.lo_closed and g.hi_closed == w.hi_closed for g, w in zip(a, b))
+
+
+def _interval_common_error(got: list[Iv], answer: dict, common_errors, marks: float, shown: str, latex: str) -> MathsResult | None:
+    var = answer.get("var", "x")
+    for ce in common_errors or []:
+        try:
+            region = _merge(parse_region(str(ce["answer"]), var, _vars_for(answer)))
+        except (ParseError, KeyError, TypeError, ValueError):
+            continue
+        if _same_region(got, region, answer.get("ends", "matter") != "ignore"):
+            cm = min(float(ce.get("marks", 0) or 0), max(0.0, marks - 1))
+            return MathsResult(False, cm, marks, ce.get("category") or "conceptual", ce.get("diagnosis"), shown,
+                               topic_tag=ce.get("topic_tag"), step=ce.get("step"), latex=latex, common_error=True)
+    return None
+
+
+def _mark_interval(resp: str, answer: dict, marks: float, common_errors=None) -> MathsResult:
     var = answer.get("var", "x")
     allowed = _vars_for(answer)
     want = stored_region(answer)
@@ -700,6 +720,9 @@ def _mark_interval(resp: str, answer: dict, marks: float) -> MathsResult:
         return MathsResult(False, max(0.0, marks - 1), marks, "notation",
                            "The region is right but an endpoint is wrongly included or excluded: check < versus ≤.", shown,
                            topic_tag="inequality direction", latex=latex)
+    ce = _interval_common_error(got, answer, common_errors, marks, shown, latex)
+    if ce is not None:
+        return ce
     g_ends = [e for iv in got for e in (iv.lo, iv.hi) if e is not None]
     w_ends = [e for iv in want for e in (iv.lo, iv.hi) if e is not None]
     if g_ends and len(g_ends) == len(w_ends) and all(any(_end_equal(a, b) for b in w_ends) for a in g_ends):
@@ -787,13 +810,18 @@ def _mark(response: str, answer: dict, marks: int, common_errors: list[dict], op
         ok = letter == str(answer.get("value", "")).upper()
         if not letter:
             return MathsResult(False, 0, marks, "notation", "Give the letter of one option (A, B, C or D).", resp[:60], parsed=False)
+        if not ok:
+            ce = next((c for c in common_errors if str(c.get("answer", "")).strip().upper() == letter), None)
+            if ce:
+                return MathsResult(False, 0, marks, ce.get("category") or "conceptual", ce.get("diagnosis"), letter,
+                                   topic_tag=ce.get("topic_tag"), step=ce.get("step"), common_error=True)
         return MathsResult(ok, marks if ok else 0, marks, None if ok else "conceptual", None, letter)
 
     if kind == "parts":
         return _mark_parts(resp, answer, marks, common_errors, options)
 
     if kind == "interval":
-        return _mark_interval(resp, answer, marks)
+        return _mark_interval(resp, answer, marks, common_errors)
 
     allowed = _vars_for(answer)
     names = list(allowed)

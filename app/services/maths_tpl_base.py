@@ -243,3 +243,37 @@ def series(terms) -> str:
     for v in terms[1:]:
         s += f" - {L(-v)}" if v.is_negative else f" + {L(v)}"
     return s
+
+
+def S(*vals) -> str:
+    """A comma-separated answer string for a set / ordered-pair common error."""
+    return ", ".join(ex(v) for v in vals)
+
+
+def region(intervals, var: str = "x") -> str:
+    """The typed form of a region, for interval common errors: [(lo, hi, lo_closed, hi_closed)]."""
+    return model_response(A_iv(intervals, var))
+
+
+def mcq_options(*texts: str) -> list[str]:
+    return [f"{chr(65 + i)}. {t}" for i, t in enumerate(texts)]
+
+
+def pl(e, var=x) -> str:
+    """LaTeX for a polynomial in descending powers of ``var`` even when it has symbolic coefficients
+    (SymPy alone would print 'k x + x^{3} + 4 x^{2}')."""
+    e = sp.expand(sp.sympify(e))
+    try:
+        poly = sp.Poly(e, var)
+    except sp.PolynomialError:
+        return L(e)
+    out = ""
+    for (deg,), coeff in sorted(poly.terms(), key=lambda t: -t[0][0]):
+        tl = L(coeff * var**deg).strip()
+        if not out:
+            out = tl
+        elif tl.startswith("-"):
+            out += " - " + tl[1:].lstrip()
+        else:
+            out += " + " + tl
+    return out or "0"
