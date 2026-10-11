@@ -53,6 +53,39 @@ def word_range(marks: int, response_type: str = "analytical", suggested: list | 
     return 50 * marks, 70 * marks
 
 
+def estimate_minutes(marks: int, response_type: str = "analytical", suggested: list | tuple | None = None) -> float:
+    """Composition time comes from the word target (about 20 words a minute drafting plus planning);
+    analytical answers from the mark value (english-04)."""
+    if response_type in CRAFT_TYPES and suggested and len(suggested) == 2:
+        return float(round(int(suggested[1]) / 20 + (2 if response_type in ("reflective", "rewrite") else 3)))
+    return round(1.75 * marks + 0.5, 1)
+
+
+def text_scope(question: str, n_texts: int, verb: str | None = None) -> list[int]:
+    """Which texts of a reading set a question is about: [0], [1] or [0, 1] (Text 1 = the main text)."""
+    if n_texts < 2:
+        return [0]
+    t = (question or "").lower()
+    one = re.search(r"\btext (1|one)\b", t)
+    two = re.search(r"\btext (2|two)\b", t)
+    if (one and two) or re.search(r"\bboth texts\b|\bthe two texts\b|\bthese texts\b|\beach text\b|\bboth\b", t) or (verb or "").lower() == "compare":
+        return [0, 1]
+    if one:
+        return [0]
+    if two:
+        return [1]
+    return [0, 1]
+
+
+def ladder_text(ladder: list[dict]) -> str:
+    """The ladder as the plain 'N marks: …' lines stored in ``Question.marking_guideline``."""
+    rows = []
+    for e in sorted(normalise_ladder(ladder), key=lambda e: -e["mark"]):
+        span = f"{e['low']}–{e['mark']}" if e.get("low") is not None else str(e["mark"])
+        rows.append(f"{span} mark{'s' if e['mark'] != 1 or e.get('low') is not None else ''}: {e['descriptor']}")
+    return "\n".join(rows)
+
+
 def parse_ladder(text: str | None) -> list[dict]:
     """'4 marks: …' / '1-2 marks: …' lines, or NESA-style rows ending in a mark or range."""
     out: list[dict] = []
@@ -176,8 +209,10 @@ def meta(q, paired: bool | None = None) -> dict:
     sol = dict(q.solution or {})
     rt = sol.get("response_type") or ("imaginative" if (q.directive_verb or "").lower() == "compose" else
                                       ("comparative" if (q.directive_verb or "").lower() == "compare" else "analytical"))
+    n_texts = len(q.stimulus.reading_set()) if q.stimulus else 0
+    scope = [i for i in (sol.get("texts") or text_scope(q.question_text, n_texts, q.directive_verb)) if i < max(n_texts, 1)] or [0]
     if paired is None:
-        paired = bool(q.stimulus and len(q.stimulus.reading_set()) > 1)
+        paired = n_texts > 1 and len(scope) > 1
     has_text = bool(q.stimulus and (q.stimulus.body or "").strip())
     ladder = normalise_ladder(sol.get("criteria")) or (parse_ladder(q.marking_guideline) if q.marking_guideline else [])
     ladder = [e for e in ladder if 0 < e["mark"] <= q.marks] or generic_ladder(q.marks, q.directive_verb, rt)
@@ -194,6 +229,7 @@ def meta(q, paired: bool | None = None) -> dict:
         "next_steps": next_steps, "plan": sol.get("plan"), "suggested_words": list(word_range(q.marks, rt, sol.get("suggested_words"))),
         "text_complexity": sol.get("text_complexity"), "model_source": sol.get("model_source") or ("app_authored" if q.model_answer else None),
         "model_status": sol.get("model_status"), "paired": paired, "has_text": has_text, "module": sol.get("module"),
+        "texts": scope if n_texts > 1 else [0], "n_texts": n_texts, "form": sol.get("form") or (q.stimulus.form if q.stimulus else None),
     }
 
 

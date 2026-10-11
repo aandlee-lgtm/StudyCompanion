@@ -64,6 +64,11 @@ class Stimulus(Base):
     source_id: Mapped[int | None] = mapped_column(ForeignKey("sources.id"), nullable=True)
     source_page: Mapped[int | None] = mapped_column(Integer, nullable=True)
     paired_with_id: Mapped[int | None] = mapped_column(ForeignKey("stimuli.id"), nullable=True)
+    # v2-english-logic: context line shown above the text, text complexity 1-3 (vocabulary, syntax,
+    # ambiguity, cultural distance) and seed metadata (set key, theme tags, length in words)
+    headnote: Mapped[str | None] = mapped_column(Text, nullable=True)  # v2-english-logic
+    complexity: Mapped[int | None] = mapped_column(Integer, nullable=True)  # v2-english-logic
+    meta: Mapped[dict | None] = mapped_column(JSON, nullable=True)  # v2-english-logic
 
     source: Mapped[Source | None] = relationship(foreign_keys=[source_id])
     paired_with: Mapped["Stimulus | None"] = relationship(remote_side="Stimulus.id", foreign_keys=[paired_with_id], back_populates="paired_by")
