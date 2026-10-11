@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 
 from app.models import Attempt, LearningPlanItem, PracticeDraft, Question, SessionQuestion
 from app.models.common import utcnow
-from app.services import assessment, clock, sessions
+from app.services import assessment, clock, revision, sessions
 from app.services import settings as st
 from app.services.assessment import core
 from app.services.assessment.written import criteria_ladder
@@ -97,12 +97,14 @@ def question_context(db: Session, q: Question, sq: SessionQuestion | None, retry
         if latest.feedback and (latest.feedback.payload or {}).get("working") and not working:
             working = latest.feedback.payload["working"]
     code = assessment.subject_code(db, q)
+    rebuild = revision.rebuild_ladder(db, q) if latest is None else None  # adaptive-19: worked example first
     kind = "mcq" if q.question_type == "mcq" else ("maths" if code == "MATHS" else "written")
     return {"q": q, "sq": sq, "attempts": attempts, "chain": chain, "latest": latest, "item": item, "mapping": mapping, "code": code,
             "kind": kind, "show_form": latest is None or retry, "retry": retry, "can_retry": can_retry(latest),
             "draft_answer": answer, "draft_working": working, "draft_saved_at": draft_saved_at, "spent_seconds": spent or 0,
             "next_evidence": cls, "role_label": role_label, "ladder": criteria_ladder(q),
             "reading": q.stimulus.reading_set() if q.stimulus else [], "ask_confidence": st.get(db, "ask_confidence"),
+            "rebuild": rebuild,
             "image": ("/media/" + q.question_image.split("/")[-1]) if q.question_image else None}
 
 

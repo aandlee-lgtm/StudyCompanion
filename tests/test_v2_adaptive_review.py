@@ -160,3 +160,36 @@ def test_attempt_rows_exist(db):  # sanity: helpers used above rely on counted a
     assessment.submit(db, qs[0], right(qs[0]), confidence="confident")
     db.commit()
     assert db.execute(select(Attempt)).scalars().first().counts_for_mastery
+
+
+def test_rebuild_state_shows_worked_then_faded_example_first(client, db):  # adaptive-19
+    from tests.test_v2_adaptive import skill
+
+    qs = maths_qs(db, n=8)
+    for i, q in enumerate(qs[:4]):
+        clock.set_today(TUESDAY + timedelta(days=i))
+        assessment.submit(db, q, "987654", confidence="unsure")
+    db.commit()
+    assert skill(db, qs[0]).state == "rebuild"
+    page = client.get(f"/practice/{qs[5].id}").text
+    assert "Step-by-step practice" in page and "Read a worked example" in page and "Finish a partly worked example" in page
+    assert "Check your completion" in page and page.index("Read a worked example") < page.index('id="answer-form"')
+    # examples come only from questions already answered on this skill
+    shown = [q for q in qs[:4] if q.question_text[:40] in page or (q.question_text[:40].replace("&", "&amp;")) in page]
+    assert shown and qs[5].question_text[:30] not in page.split("Answer this question")[0]
+    # once answered, the ladder is gone from the feedback view
+    client.post(f"/practice/{qs[5].id}/submit", data={"answer": right(qs[5]), "confidence": "confident", "time_seconds": "40"})
+    assert "Read a worked example" not in client.get(f"/practice/{qs[5].id}").text
+
+
+def test_rebuild_scaffold_for_written_subjects(db):
+    from app.models import Mastery, Question
+    from app.services.revision import rebuild_ladder
+    from tests.test_v2_adaptive import written_q
+
+    q = written_q(db, "LEGAL")
+    db.add(Mastery(plan_item_id=q.plan_item_id, mastery=0.2, attempts=5, state="rebuild"))
+    db.commit()
+    lad = rebuild_ladder(db, q)
+    assert lad and lad["scaffold"]["steps"] and lad["scaffold"]["starters"] and lad["worked"] is None
+    assert isinstance(db.get(Question, q.id), Question)

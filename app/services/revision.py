@@ -250,3 +250,66 @@ def refresh_set_status(db: Session, s: RevisionSet) -> list[dict]:
         s.status, s.completed_at = "completed", utcnow()
         db.flush()
     return rows
+
+
+# ------------------------------------------------------------ rebuild ladder ---
+# General study scaffolds by directive-verb tier (no subject facts are asserted here).
+VERB_TIERS = {
+    "identify": 1, "outline": 1, "define": 1, "describe": 1, "recall": 1, "state": 1,
+    "explain": 2, "discuss": 2, "compare": 2, "distinguish": 2, "account": 2, "examine": 2,
+    "analyse": 3, "assess": 3, "evaluate": 3, "justify": 3, "critically": 3, "to what extent": 3,
+}
+TIER_LADDER = {
+    1: ["Name the feature, term or point the question asks for.", "Add one precise detail or example that shows it."],
+    2: ["Name the point.", "Explain how or why it works — the cause and effect.", "Support it with evidence (a quotation, a case, a law or a figure)."],
+    3: ["Name the point.", "Explain how it works, with evidence.", "Weigh it: how well, how far, compared with what — and give your judgement."],
+}
+STARTERS = {
+    "ENGLISH": ["The composer uses … to …", "This is evident in “…”, where …", "As a result, the reader/audience …",
+                "This shapes the text's meaning by …"],
+    "LEGAL": ["The legal term … means …", "This applies here because …", "For example, … (case, legislation or report from your evidence bank)",
+              "This is effective/ineffective in achieving justice because …", "On balance, …"],
+}
+
+
+def _tier(verb: str | None) -> int:
+    v = (verb or "").lower()
+    return next((t for k, t in VERB_TIERS.items() if k in v), 2)
+
+
+def rebuild_ladder(db: Session, q: Question) -> dict | None:
+    """Step-by-step practice for a skill in the rebuild state (adaptive-19): a worked example, a faded
+    example to complete, then the question itself. Examples come only from questions on this skill that
+    the student has already answered (their solutions were shown in feedback), so nothing fresh is spoiled."""
+    if not q.plan_item_id:
+        return None
+    m = db.execute(select(Mastery).where(Mastery.plan_item_id == q.plan_item_id)).scalar_one_or_none()
+    if m is None or m.state != "rebuild":
+        return None
+    item = db.get(LearningPlanItem, q.plan_item_id)
+    code = item.subject.code if item else ""
+    answered = db.execute(select(Question).join(Attempt, Attempt.question_id == Question.id)
+                          .where(Question.plan_item_id == q.plan_item_id, Question.id != q.id, Question.approved.is_(True))
+                          .order_by(Question.difficulty, Question.marks, Question.id).distinct()).scalars().all()
+    out: dict = {"skill": _skill_name(item), "correct": m.rebuild_correct or 0, "needed": ms.REBUILD_EXIT_CORRECT, "since": m.state_since,
+                 "code": code, "worked": None, "faded": None, "scaffold": None}
+    if code == "MATHS":
+        examples = [x for x in answered if isinstance(x.solution, dict) and len(x.solution.get("steps") or []) >= 2]
+        if examples:
+            w = examples[0]
+            out["worked"] = {"question": w, "steps": w.solution["steps"], "concept": w.solution.get("concept"),
+                             "technique": w.solution.get("technique")}
+        if len(examples) > 1:
+            f = examples[1]
+            steps = f.solution["steps"]
+            k = 1 if len(steps) <= 3 else 2
+            out["faded"] = {"question": f, "shown": steps[:-k], "hidden": steps[-k:]}
+    else:
+        model = next((x for x in answered if x.model_answer), None)
+        if model is not None:
+            out["worked"] = {"question": model, "model": model.model_answer}
+        tier = _tier(q.directive_verb)
+        out["scaffold"] = {"verb": q.directive_verb or "respond", "tier": tier, "steps": TIER_LADDER[tier],
+                           "paragraphs": max(1, min(4, round((q.marks or 2) / 2))) if (q.marks or 0) >= 3 else 1,
+                           "starters": STARTERS.get(code, [])}
+    return out

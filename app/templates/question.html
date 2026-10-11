@@ -27,6 +27,42 @@
 
 {% include "_stimulus.html" %}
 
+{% if rebuild and show_form and not retry %}
+<section class="card rebuild" aria-label="Step-by-step practice" style="margin-top:16px">
+  <h2 style="margin-top:0">Step-by-step practice: {{ rebuild.skill }}</h2>
+  <p class="small muted">This skill needs rebuilding, so the question comes after a worked example{{ ' and a partly worked one' if rebuild.faded }}. It returns to normal practice after {{ rebuild.needed }} correct answers ({{ rebuild.correct }} so far). If it still feels unclear, it is worth asking your teacher about it.</p>
+  {% if rebuild.worked %}{% set w = rebuild.worked %}
+  <div class="rebuild-step">
+    <h3>Step 1 · Read a worked example</h3>
+    <div class="question-text">{{ w.question.question_text | paras }}</div>
+    {% if w.steps %}<ol>{% for st_ in w.steps %}<li>{{ st_ }}</li>{% endfor %}</ol>
+      {% if w.concept %}<p class="small"><strong>Key idea.</strong> {{ w.concept }}</p>{% endif %}
+      {% if w.technique %}<p class="small"><strong>Technique.</strong> {{ w.technique }}</p>{% endif %}
+    {% elif w.model %}<details><summary>Model answer (from a question you have already answered)</summary>{{ w.model | paras }}</details>{% endif %}
+    <p class="small"><strong>Explain it to yourself:</strong> before moving on, say why each step follows from the one before{{ ' and what the key idea is' if w.steps }}.</p>
+  </div>
+  {% endif %}
+  {% if rebuild.faded %}{% set f = rebuild.faded %}
+  <div class="rebuild-step faded">
+    <h3>Step 2 · Finish a partly worked example</h3>
+    <div class="question-text">{{ f.question.question_text | paras }}</div>
+    <ol>{% for st_ in f.shown %}<li>{{ st_ }}</li>{% endfor %}<li class="hidden-step">Your turn: complete the last step{{ 's' if f.hidden|length > 1 }} on paper.</li></ol>
+    <details><summary>Check your completion</summary><ol start="{{ f.shown|length + 1 }}">{% for st_ in f.hidden %}<li>{{ st_ }}</li>{% endfor %}</ol></details>
+  </div>
+  {% endif %}
+  {% if rebuild.scaffold %}{% set sc = rebuild.scaffold %}
+  <div class="rebuild-step">
+    <h3>{{ 'Step 2' if rebuild.worked else 'Step 1' }} · Plan before you write</h3>
+    <p class="small">“{{ sc.verb | capitalize }}” asks for this sequence{% if sc.paragraphs > 1 %}, in about {{ sc.paragraphs }} paragraphs for {{ q.marks }} marks{% endif %}:</p>
+    <ol class="small">{% for s_ in sc.steps %}<li>{{ s_ }}</li>{% endfor %}</ol>
+    {% if sc.starters %}<p class="small muted">Sentence starters: {% for s_ in sc.starters %}“{{ s_ }}”{{ ' · ' if not loop.last }}{% endfor %}</p>{% endif %}
+  </div>
+  {% endif %}
+  <div class="rebuild-step"><h3>{{ 'Step 3' if (rebuild.worked and (rebuild.faded or rebuild.scaffold)) else 'Now' }} · Answer this question</h3><p class="small muted">Below — it counts as normal.</p></div>
+</section>
+{% endif %}
+
+
 {% set prev = latest if retry else None %}
 {% set pfb = (prev.feedback.payload if prev and prev.feedback else {}) %}
 <div class="{{ 'retry-layout' if retry else '' }}">
