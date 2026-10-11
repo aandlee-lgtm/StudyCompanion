@@ -570,6 +570,571 @@
     400
    ],
    "difficulty": 3
+  },
+  {
+   "module": "EN-TC",
+   "marks": 4,
+   "verb": "Explain",
+   "demand": "explain",
+   "response_type": "analytical",
+   "text": "Explain how Hamlet's soliloquy in Act 3, Scene 1 dramatises the mind's struggle with uncertainty about death.",
+   "skill_tags": [
+    "soliloquy",
+    "death",
+    "thought and action"
+   ],
+   "criteria": [
+    {
+     "mark": 4,
+     "descriptor": "Develops a perceptive, sustained thesis on how the Act 3, Scene 1 soliloquy dramatises the mind's struggle with uncertainty about death, supported by judicious, detailed reference to the text and precise analysis of how form and language shape meaning"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Develops a clear thesis on how the Act 3, Scene 1 soliloquy dramatises the mind's struggle with uncertainty about death, supported by relevant, detailed textual reference and thoughtful analysis"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Presents a response to how the Act 3, Scene 1 soliloquy dramatises the mind's struggle with uncertainty about death that is partly descriptive, with general textual reference"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Retells or describes the text with limited relevance to how the Act 3, Scene 1 soliloquy dramatises the mind's struggle with uncertainty about death"
+    }
+   ],
+   "checklist": [
+    "Explains the soliloquy's movement of thought (weighing existence against non-existence; death as sleep; the fear of what follows)",
+    "Explains how the soliloquy form gives the audience access to private thought",
+    "Explains at least TWO language features (rhetorical questions, extended metaphor, generalising pronouns, antithesis)",
+    "Links the uncertainty about death to the play's wider tension between thought and action",
+    "Evidence comes from your own copies: brief, accurate quotations with act, scene and line (Hamlet) or the poem's first line (Dickinson)"
+   ],
+   "next_steps": {
+    "0": "State in one sentence what the soliloquy reveals about Hamlet's (or the human) mind facing death.",
+    "1": "Explain how the soliloquy form works: who hears it, and why it lets the audience follow thought as it happens.",
+    "2": "Explain two language features, quoting briefly from your edition, and show how each expresses uncertainty.",
+    "3": "Link the soliloquy's conclusion about thought and resolve to the play's broader tension between thinking and acting."
+   },
+   "plan": "Thesis: The soliloquy stages thinking itself: Hamlet reasons his way from a general question about existence towards the dread of an unknown afterlife, and the form lets the audience watch uncertainty grow until it explains why thought delays action.\n\nParagraph move 1 (form and situation): Explain that Hamlet believes himself alone (although Claudius and Polonius have arranged to observe the scene with Ophelia), and that the soliloquy gives the audience privileged access to his reasoning. Note that he speaks in general terms rather than about his own revenge.\n\nParagraph move 2 (language of uncertainty): Trace the argument: the opening antithesis between being and not being; the comparison of death to sleep, which first seems comforting and then becomes troubling when he considers what dreams might come; the catalogue of life's injustices that people endure. Explain how the rhetorical questions and the shift to generalising pronouns make his uncertainty universal.\n\nParagraph move 3 (link to action): Explain the conclusion he reaches: that awareness and fear of the unknown make people hesitate, so resolve weakens and enterprises lose their momentum. Link this to the wider play, where reflection repeatedly delays revenge.\n\nEvidence to gather: three brief quotations from your edition (the opening antithesis, the sleep metaphor, the conclusion about conscience), with line references.",
+   "suggested_words": [
+    200,
+    280
+   ],
+   "difficulty": 2
+  },
+  {
+   "module": "EN-TC",
+   "marks": 5,
+   "verb": "Analyse",
+   "demand": "analyse",
+   "response_type": "analytical",
+   "text": "Analyse how ONE of your prescribed Emily Dickinson poems represents the mind confronting death or mortality.",
+   "skill_tags": [
+    "Dickinson",
+    "form",
+    "death",
+    "consciousness"
+   ],
+   "criteria": [
+    {
+     "mark": 5,
+     "descriptor": "Develops a perceptive, sustained thesis on how one prescribed Dickinson poem represents the mind confronting death, supported by judicious, detailed reference to the text and precise analysis of how form and language shape meaning"
+    },
+    {
+     "mark": 4,
+     "descriptor": "Develops a clear thesis on how one prescribed Dickinson poem represents the mind confronting death, supported by relevant, detailed textual reference and thoughtful analysis"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Presents a sound response to how one prescribed Dickinson poem represents the mind confronting death, with relevant textual reference and some analysis of form and language"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Presents a response to how one prescribed Dickinson poem represents the mind confronting death that is partly descriptive, with general textual reference"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Retells or describes the text with limited relevance to how one prescribed Dickinson poem represents the mind confronting death"
+    }
+   ],
+   "checklist": [
+    "Chooses ONE prescribed poem and makes a clear claim about how it represents the mind facing death",
+    "Analyses Dickinson's characteristic form features in that poem (dashes, slant rhyme, hymn-like metre, capitalisation, compression)",
+    "Analyses imagery or personification used to make death or consciousness concrete",
+    "Analyses the poem's ending and what it leaves unresolved",
+    "Uses a poem that is on your verified prescribed list (check the official NESA prescription in your Learning plan)",
+    "Evidence comes from your own copies: brief, accurate quotations with act, scene and line (Hamlet) or the poem's first line (Dickinson)"
+   ],
+   "next_steps": {
+    "0": "Name the poem by its first line and state your claim about how it represents the mind confronting death.",
+    "1": "Analyse one image or personification and explain how it makes an abstract experience concrete.",
+    "2": "Analyse form: explain how dashes, metre, rhyme or capitalisation shape the reader's experience of the poem.",
+    "3": "Analyse the ending and what it withholds: does the poem reach certainty or stop at the threshold?",
+    "4": "Link your analysis into one argument, and note how the poem's context (nineteenth-century New England faith and doubt) adds to its meaning."
+   },
+   "plan": "Thesis (adapt to your chosen poem): Dickinson represents the mind at the edge of death through compressed, hymn-like forms that she unsettles from within, so that the reader experiences both the comfort of familiar structures and the disorientation of a consciousness approaching what it cannot know.\n\nParagraph 1 (claim and context): Identify the poem by its first line. State whether it presents death as a journey, a visitor, an interruption, a process inside the mind or something else. Note briefly the context of Dickinson's Amherst, where religious certainty about the afterlife was strongly promoted, and her own reluctance to make a public profession of faith.\n\nParagraph 2 (imagery): Analyse the central image or personification. Explain how Dickinson makes an abstraction concrete and often domestic, and what is unsettling about the ordinary terms in which death is presented.\n\nParagraph 3 (form): Analyse the metre (often based on the alternating lines of hymn or common metre), the slant rhymes and the dashes. Explain how the dashes interrupt and suspend thought, and how slant rhyme withholds the closure a full rhyme would give.\n\nParagraph 4 (ending): Analyse the final stanza or lines. Explain whether the poem arrives at knowledge or breaks off at a threshold, and what this suggests about the limits of the mind.\n\nEvidence to gather: three brief quotations from your copy of the poem, chosen to show image, form and ending.",
+   "suggested_words": [
+    260,
+    360
+   ],
+   "difficulty": 3
+  },
+  {
+   "module": "EN-TC",
+   "marks": 6,
+   "verb": "Compare",
+   "demand": "compare",
+   "response_type": "comparative",
+   "text": "Compare how Hamlet and ONE of your prescribed Emily Dickinson poems represent death as something the living cannot know.",
+   "skill_tags": [
+    "comparison",
+    "death",
+    "context",
+    "form"
+   ],
+   "criteria": [
+    {
+     "mark": 6,
+     "descriptor": "Develops a perceptive, integrated argument about how both texts represent death as unknowable, showing how each text illuminates the other, with judicious, detailed reference to both"
+    },
+    {
+     "mark": 5,
+     "descriptor": "Develops a clear argument about how both texts represent death as unknowable with relevant, detailed reference to both texts and thoughtful analysis of their conversation"
+    },
+    {
+     "mark": 4,
+     "descriptor": "Presents a sound discussion of how both texts represent death as unknowable that connects both texts with relevant reference"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Discusses both texts in relation to how both texts represent death as unknowable, largely separately, with some reference"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Describes one or both texts with limited relevance to how both texts represent death as unknowable"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Makes a limited or general comment about one or both texts"
+    }
+   ],
+   "checklist": [
+    "Develops an integrated thesis about how the texts converse on the unknowability of death",
+    "Uses specific moments in Hamlet (for example the Act 3, Scene 1 soliloquy, the graveyard scene, the final scene) and ONE prescribed poem",
+    "Compares form: public dramatic soliloquy and staged action versus compressed private lyric",
+    "Considers context and values (Elizabethan religious uncertainty; nineteenth-century New England faith and doubt)",
+    "Uses a poem that is on your verified prescribed list (check the official NESA prescription in your Learning plan)",
+    "Evidence comes from your own copies: brief, accurate quotations with act, scene and line (Hamlet) or the poem's first line (Dickinson)"
+   ],
+   "next_steps": {
+    "0": "Write a thesis that compares the two texts directly, naming a similarity and a difference in how they represent death.",
+    "1": "Support the similarity with one moment from Hamlet and one from the poem.",
+    "2": "Compare form: explain how a soliloquy on stage and a short lyric on the page each represent a mind facing the unknown.",
+    "3": "Develop a difference in perspective or tone (for example dread, curiosity, irony, calm) with evidence from both texts.",
+    "4": "Integrate context: explain how each text's religious and cultural context shapes its uncertainty.",
+    "5": "Refine for Band 6: show the conversation (what each text helps us see in the other) and conclude with a judgement only the comparison makes possible."
+   },
+   "plan": "Thesis: Both texts represent death as the limit of human knowledge, but they meet that limit differently: Hamlet dramatises a restless mind that argues, jokes and finally submits to providence, while Dickinson's poem compresses the encounter into a single, quietly estranging experience. Read together, they show that uncertainty about death can produce both paralysis and a strange, attentive calm.\n\nParagraph 1 (shared uncertainty): Use the Act 3, Scene 1 soliloquy, where Hamlet fears the unknown after death more than death itself. Pair it with the moment in your chosen poem where the speaker approaches or imagines death and stops short of knowledge. Compare how both texts use questions, suspension or unfinished thought.\n\nParagraph 2 (form): Contrast dramatic and lyric form. Hamlet speaks at length in blank verse before an audience; his thought unfolds in time and is interrupted by action. Dickinson's poem uses short stanzas, dashes and slant rhyme to hold the moment still. Explain how each form makes the reader experience uncertainty.\n\nParagraph 3 (tone and change): Trace Hamlet's movement from dread, through the graveyard scene's grim humour about the body's fate, to his acceptance of readiness in Act 5, Scene 2. Compare this with the tone of your chosen poem: is it calm, ironic, curious or unsettled?\n\nParagraph 4 (context and conversation): Explain the religious contexts: the Ghost's suggestion of purgatory in a Protestant England, and Dickinson's resistance to the revivalist certainty of her community. Conclude that the conversation reveals uncertainty about death as a constant across centuries, and that each text answers it with a different discipline of mind.\n\nEvidence to gather: two brief quotations from Hamlet (with act, scene and line) and two from the poem.",
+   "suggested_words": [
+    350,
+    450
+   ],
+   "difficulty": 3
+  },
+  {
+   "module": "EN-TC",
+   "marks": 6,
+   "verb": "Analyse",
+   "demand": "analyse",
+   "response_type": "comparative",
+   "text": "Analyse how reading Hamlet alongside your prescribed Emily Dickinson poetry illuminates the tension between a private inner self and the public performance of identity.",
+   "skill_tags": [
+    "inner self",
+    "performance",
+    "textual conversation"
+   ],
+   "criteria": [
+    {
+     "mark": 6,
+     "descriptor": "Develops a perceptive, integrated argument about the tension between the private inner self and public performance of identity across both texts, showing how each text illuminates the other, with judicious, detailed reference to both"
+    },
+    {
+     "mark": 5,
+     "descriptor": "Develops a clear argument about the tension between the private inner self and public performance of identity across both texts with relevant, detailed reference to both texts and thoughtful analysis of their conversation"
+    },
+    {
+     "mark": 4,
+     "descriptor": "Presents a sound discussion of the tension between the private inner self and public performance of identity across both texts that connects both texts with relevant reference"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Discusses both texts in relation to the tension between the private inner self and public performance of identity across both texts, largely separately, with some reference"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Describes one or both texts with limited relevance to the tension between the private inner self and public performance of identity across both texts"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Makes a limited or general comment about one or both texts"
+    }
+   ],
+   "checklist": [
+    "Develops a thesis on how each text illuminates the other on the inner self versus public performance",
+    "Analyses Hamlet's distinction between outward show and inner truth, his feigned madness and the play-within-the-play",
+    "Analyses at least ONE prescribed poem that explores interiority, concealment or a withdrawn self",
+    "Compares how dramatic and lyric forms represent inner life (soliloquy, performance, compression, the dash)",
+    "Uses a poem that is on your verified prescribed list (check the official NESA prescription in your Learning plan)",
+    "Evidence comes from your own copies: brief, accurate quotations with act, scene and line (Hamlet) or the poem's first line (Dickinson)"
+   ],
+   "next_steps": {
+    "0": "State a thesis that explains what the conversation between the texts reveals about inner and outer selves.",
+    "1": "Analyse one moment in Hamlet where the gap between appearance and inner truth is central (for example Act 1, Scene 2 or the Mousetrap in Act 3, Scene 2).",
+    "2": "Analyse one prescribed poem that presents a hidden or private self, focusing on form and imagery.",
+    "3": "Compare the forms: explain how theatre and lyric poetry differ in how they reveal or conceal the self.",
+    "4": "Explain what each text helps you notice in the other (the textual conversation), with evidence from both.",
+    "5": "Refine for Band 6: integrate both texts in every paragraph and consider context (a court under surveillance; a poet who chose privacy over publication)."
+   },
+   "plan": "Thesis: Both texts distrust the performances that society demands, but Hamlet turns performance into a weapon, staging madness and plays to expose the truth, whereas Dickinson's poetry withdraws into a private, compressed inwardness. Read together, they suggest that the inner self can only be protected, or revealed, by controlling how it is performed.\n\nParagraph 1 (Hamlet and outward show): Use Act 1, Scene 2, where Hamlet rejects the outward signs of mourning as things a person might merely act, and insists on an inner grief beyond show. Analyse the contrast between the public court and his private soliloquy that follows.\n\nParagraph 2 (performance as strategy): Analyse Hamlet's decision to put on an antic disposition and his use of the play-within-the-play in Act 3, Scene 2 to catch the king's conscience. Explain how performance becomes a tool of truth in a court of spies and surveillance.\n\nParagraph 3 (Dickinson's inwardness): Choose a prescribed poem that presents a private, withdrawn or divided self. Analyse how dashes, capitalisation, ellipsis and riddling compression keep the self partly concealed even as the poem reveals it.\n\nParagraph 4 (conversation and context): Compare the public stage with the private manuscript: Hamlet must speak aloud to an audience, while Dickinson published very little in her lifetime. Conclude that the conversation shows two strategies for preserving an inner self against social expectation: theatrical irony and lyric reticence.\n\nEvidence to gather: brief quotations from Act 1, Scene 2 and Act 3, Scene 2 (with line references) and from one prescribed poem.",
+   "suggested_words": [
+    350,
+    450
+   ],
+   "difficulty": 3
+  },
+  {
+   "module": "EN-TC",
+   "marks": 5,
+   "verb": "Explain",
+   "demand": "explain",
+   "response_type": "comparative",
+   "text": "Explain how the dramatic form of Hamlet and the lyric form of your prescribed Emily Dickinson poems offer different ways of representing inner life.",
+   "skill_tags": [
+    "form",
+    "lyric",
+    "drama",
+    "inner life"
+   ],
+   "criteria": [
+    {
+     "mark": 5,
+     "descriptor": "Develops a perceptive, integrated argument about how dramatic and lyric forms represent inner life differently, showing how each text illuminates the other, with judicious, detailed reference to both"
+    },
+    {
+     "mark": 4,
+     "descriptor": "Develops a clear argument about how dramatic and lyric forms represent inner life differently with relevant, detailed reference to both texts and thoughtful analysis of their conversation"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Presents a sound discussion of how dramatic and lyric forms represent inner life differently that connects both texts with relevant reference"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Discusses both texts in relation to how dramatic and lyric forms represent inner life differently, largely separately, with some reference"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Describes one or both texts with limited relevance to how dramatic and lyric forms represent inner life differently"
+    }
+   ],
+   "checklist": [
+    "Explains features of dramatic form in Hamlet (soliloquy, aside, blank verse and prose, staging, audience)",
+    "Explains features of Dickinson's lyric form (brevity, stanza and metre, dashes, slant rhyme, the speaking I)",
+    "Uses one specific moment from Hamlet and one prescribed poem as evidence",
+    "Explains what each form allows and limits, and what the contrast reveals",
+    "Uses a poem that is on your verified prescribed list (check the official NESA prescription in your Learning plan)",
+    "Evidence comes from your own copies: brief, accurate quotations with act, scene and line (Hamlet) or the poem's first line (Dickinson)"
+   ],
+   "next_steps": {
+    "0": "State the main difference between the forms in one sentence (for example, unfolding in time before an audience versus compressing a moment on the page).",
+    "1": "Explain one feature of dramatic form using a specific soliloquy or scene from Hamlet.",
+    "2": "Explain one feature of lyric form using a specific prescribed poem.",
+    "3": "Explain what each form makes possible that the other cannot, using your two examples.",
+    "4": "Draw a conclusion about what the contrast reveals about representing inner life, linking to the idea of a textual conversation."
+   },
+   "plan": "Thesis: Hamlet represents inner life as thought unfolding in time before witnesses, interrupted by action and other voices; Dickinson's lyric represents inner life as a moment compressed and held still on the page. The contrast shows that form does not merely contain an inner life but shapes what that inner life can be.\n\nParagraph 1 (dramatic form): Explain the soliloquy as the play's chief device for inner life. Choose one soliloquy (for example Act 1, Scene 2 or Act 2, Scene 2) and explain how its length, its shifts of direction and its blank verse rhythm let the audience follow a mind changing course. Note that the inner self is always potentially overheard, as when Polonius and Claudius spy.\n\nParagraph 2 (lyric form): Choose one prescribed poem. Explain how brevity, regular short stanzas, dashes and slant rhyme compress a complex inner state into a few lines, and how the speaking voice addresses no audience but the reader.\n\nParagraph 3 (what each allows): Explain that drama allows inner life to collide with action and consequence, while lyric allows a single perception to be examined from within, without plot. Each also has limits: Hamlet must externalise, while the lyric cannot show change over time in the same way.\n\nConclusion: Link to the module: reading the texts together reveals how form shapes our understanding of the self.\n\nEvidence to gather: one brief quotation from a soliloquy (with line reference) and two from the poem.",
+   "suggested_words": [
+    260,
+    360
+   ],
+   "difficulty": 3
+  },
+  {
+   "module": "EN-TC",
+   "marks": 6,
+   "verb": "Evaluate",
+   "demand": "evaluate",
+   "response_type": "comparative",
+   "text": "To what extent do Hamlet and your prescribed Emily Dickinson poetry share a scepticism about certainty? Refer to Hamlet and at least ONE prescribed poem.",
+   "skill_tags": [
+    "scepticism",
+    "faith",
+    "judgement",
+    "context"
+   ],
+   "criteria": [
+    {
+     "mark": 6,
+     "descriptor": "Develops a perceptive, integrated argument about the extent to which both texts share a scepticism about certainty, showing how each text illuminates the other, with judicious, detailed reference to both"
+    },
+    {
+     "mark": 5,
+     "descriptor": "Develops a clear argument about the extent to which both texts share a scepticism about certainty with relevant, detailed reference to both texts and thoughtful analysis of their conversation"
+    },
+    {
+     "mark": 4,
+     "descriptor": "Presents a sound discussion of the extent to which both texts share a scepticism about certainty that connects both texts with relevant reference"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Discusses both texts in relation to the extent to which both texts share a scepticism about certainty, largely separately, with some reference"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Describes one or both texts with limited relevance to the extent to which both texts share a scepticism about certainty"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Makes a limited or general comment about one or both texts"
+    }
+   ],
+   "checklist": [
+    "States a qualified judgement about the extent of shared scepticism",
+    "Analyses Hamlet's doubts (about the Ghost, about death and the afterlife, about action) and how they shift by Act 5",
+    "Analyses at least ONE prescribed poem where certainty (religious, emotional or perceptual) is questioned",
+    "Distinguishes the kinds and tones of doubt in each text (anguished, ironic, playful, reverent)",
+    "Considers context (Reformation uncertainties; nineteenth-century New England faith, science and revivalism)",
+    "Uses a poem that is on your verified prescribed list (check the official NESA prescription in your Learning plan)"
+   ],
+   "next_steps": {
+    "0": "Give a clear judgement with a degree (largely, partly) in your first sentence.",
+    "1": "Support it with one example of doubt in Hamlet, such as his testing of the Ghost's truthfulness, and one from a prescribed poem.",
+    "2": "Analyse how each text expresses doubt through form and language, not just what it doubts.",
+    "3": "Distinguish between the texts: do they doubt the same things, in the same tone? Explain the difference.",
+    "4": "Consider Hamlet's later acceptance of providence in Act 5, Scene 2, and decide whether it qualifies your judgement.",
+    "5": "Refine for Band 6: integrate context and keep your judgement visible in each paragraph, concluding with what the conversation reveals."
+   },
+   "plan": "Thesis: To a large extent the texts share a scepticism about certainty, especially certainty about death and the unseen; however, they differ in the tone and outcome of their doubt. Hamlet's scepticism is anguished and finally gives way to an acceptance of providence, while Dickinson's remains open, ironic and exploratory.\n\nParagraph 1 (Hamlet's doubts): Analyse Hamlet's uncertainty about the Ghost: whether it is truly his father or a devil, which leads him to test Claudius with the play. Add his uncertainty about the afterlife in Act 3, Scene 1. Explain how soliloquy and rhetorical questions dramatise doubt as a mental ordeal.\n\nParagraph 2 (Dickinson's doubts): Choose a prescribed poem that questions religious or perceptual certainty. Analyse how dashes, slant rhyme and unexpected images unsettle confident statements, and how the poem may end on a question, a threshold or an ironic turn.\n\nParagraph 3 (difference in tone and resolution): Contrast Hamlet's shift in Act 5, Scene 2, where he accepts that events are shaped by providence and that readiness is what matters, with the open endings typical of Dickinson. Evaluate whether Hamlet's acceptance is a resolution of doubt or a different way of living with it.\n\nParagraph 4 (context and judgement): Explain the Reformation debates behind the Ghost and purgatory, and the religious revivals and scientific change of Dickinson's era. Conclude with a qualified judgement: the texts share scepticism as a starting point, but Hamlet seeks release from it while Dickinson makes it a way of seeing.\n\nEvidence to gather: brief quotations from Act 2, Scene 2 or Act 3, Scene 1 and from Act 5, Scene 2 (with line references), and from one prescribed poem.",
+   "suggested_words": [
+    350,
+    450
+   ],
+   "difficulty": 3
+  },
+  {
+   "module": "EN-TC",
+   "marks": 4,
+   "verb": "Analyse",
+   "demand": "analyse",
+   "response_type": "analytical",
+   "text": "Analyse how the graveyard scene (Act 5, Scene 1) reshapes Hamlet's attitude to mortality.",
+   "skill_tags": [
+    "mortality",
+    "tone",
+    "turning point"
+   ],
+   "criteria": [
+    {
+     "mark": 4,
+     "descriptor": "Develops a perceptive, sustained thesis on how the graveyard scene reshapes Hamlet's attitude to mortality, supported by judicious, detailed reference to the text and precise analysis of how form and language shape meaning"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Develops a clear thesis on how the graveyard scene reshapes Hamlet's attitude to mortality, supported by relevant, detailed textual reference and thoughtful analysis"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Presents a response to how the graveyard scene reshapes Hamlet's attitude to mortality that is partly descriptive, with general textual reference"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Retells or describes the text with limited relevance to how the graveyard scene reshapes Hamlet's attitude to mortality"
+    }
+   ],
+   "checklist": [
+    "Makes a claim about the change in Hamlet's attitude (from anguished speculation to a grimly comic, physical acceptance)",
+    "Analyses the gravediggers' humour and its effect on tone",
+    "Analyses Hamlet's response to Yorick's skull and his reflections on the fate of great men's bodies",
+    "Links the scene to Ophelia's burial and to Hamlet's later readiness in Act 5, Scene 2",
+    "Evidence comes from your own copies: brief, accurate quotations with act, scene and line (Hamlet) or the poem's first line (Dickinson)"
+   ],
+   "next_steps": {
+    "0": "State how Hamlet's attitude to death in this scene differs from his attitude earlier in the play.",
+    "1": "Analyse the gravediggers' dialogue: how does their humour change the way death is presented?",
+    "2": "Analyse Hamlet's response to Yorick's skull, quoting briefly from your edition, and explain its significance.",
+    "3": "Link the scene forward: explain how Ophelia's funeral and the next scene complete the change in his attitude."
+   },
+   "plan": "Thesis: The graveyard scene moves Hamlet's thinking about death from abstract dread to concrete, physical recognition: through the gravediggers' humour and Yorick's skull, death becomes ordinary, levelling and certain, which prepares him for the calmer acceptance of the final scene.\n\nParagraph move 1 (tone): Analyse the gravediggers' prose dialogue, puns and songs. Explain how their comic familiarity with death, as part of their daily work, contrasts with the anguished verse of Hamlet's earlier soliloquies.\n\nParagraph move 2 (the skull): Analyse Hamlet's recognition of Yorick, a person he knew and loved as a child. Explain how the physical presence of the skull turns death from an idea into a body, and how his reflections on great conquerors returning to dust show that death levels all ranks.\n\nParagraph move 3 (forward link): Explain how Ophelia's funeral immediately makes mortality personal again, provoking Hamlet's outburst with Laertes. Then link to Act 5, Scene 2, where he speaks of providence and readiness: the graveyard has helped him accept death as inevitable rather than as a problem to be solved.\n\nEvidence to gather: brief quotations from the Yorick passage and the reflections on great men's remains, with line references.",
+   "suggested_words": [
+    200,
+    280
+   ],
+   "difficulty": 2
+  },
+  {
+   "module": "EN-TC",
+   "marks": 5,
+   "verb": "Analyse",
+   "demand": "analyse",
+   "response_type": "comparative",
+   "text": "Analyse how Hamlet and your prescribed Emily Dickinson poetry represent the relationship between the individual and the expectations of society.",
+   "skill_tags": [
+    "individual and society",
+    "resistance",
+    "context"
+   ],
+   "criteria": [
+    {
+     "mark": 5,
+     "descriptor": "Develops a perceptive, integrated argument about how both texts represent the individual against social expectation, showing how each text illuminates the other, with judicious, detailed reference to both"
+    },
+    {
+     "mark": 4,
+     "descriptor": "Develops a clear argument about how both texts represent the individual against social expectation with relevant, detailed reference to both texts and thoughtful analysis of their conversation"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Presents a sound discussion of how both texts represent the individual against social expectation that connects both texts with relevant reference"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Discusses both texts in relation to how both texts represent the individual against social expectation, largely separately, with some reference"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Describes one or both texts with limited relevance to how both texts represent the individual against social expectation"
+    }
+   ],
+   "checklist": [
+    "Develops a thesis about how each text represents an individual resisting or negotiating social expectation",
+    "Analyses Hamlet's position at court (expected mourning, duty to avenge, expectations of a prince) with specific scenes",
+    "Analyses at least ONE prescribed poem that sets an individual perspective against social convention",
+    "Compares the forms and tones of resistance (wit, feigned madness, irony, withdrawal, compression)",
+    "Uses a poem that is on your verified prescribed list (check the official NESA prescription in your Learning plan)"
+   ],
+   "next_steps": {
+    "0": "State a thesis that compares how the individual stands against social expectation in each text.",
+    "1": "Analyse one scene in Hamlet where social expectation presses on Hamlet (for example Act 1, Scene 2 or his exchanges with Rosencrantz and Guildenstern in Act 2, Scene 2).",
+    "2": "Analyse a prescribed poem that presents an individual view at odds with convention, focusing on how form expresses it.",
+    "3": "Compare the strategies of resistance in the two texts and what they cost the individual.",
+    "4": "Draw a conclusion about what the textual conversation reveals, linking to the contexts of a royal court and a nineteenth-century New England town."
+   },
+   "plan": "Thesis: Both texts show individuals pressed by social expectation, but Hamlet resists from inside a court that watches him constantly, using wit and feigned madness, while Dickinson's speakers often resist through withdrawal and irony; together they suggest that independence of mind always carries a social cost.\n\nParagraph 1 (Hamlet at court): Use Act 1, Scene 2, where Claudius and Gertrude urge Hamlet to end his mourning and accept the new order. Analyse how his bitter wordplay and the soliloquy that follows show a private self refusing public expectation.\n\nParagraph 2 (surveillance and strategy): Use Act 2, Scene 2, where Rosencrantz and Guildenstern are sent to probe him. Analyse how he detects and outwits them, and how feigned madness lets him speak truths that convention forbids.\n\nParagraph 3 (Dickinson): Choose a prescribed poem in which the speaker's perspective is at odds with the majority or with convention. Analyse how compression, irony, dashes and unexpected capitalisation give force to a single, independent voice.\n\nParagraph 4 (comparison and cost): Compare outcomes: Hamlet's resistance draws him into violence and ends in his death; the Dickinson speaker's resistance is quieter and may lead to isolation. Conclude with what the conversation reveals about the price of thinking for oneself.\n\nEvidence to gather: brief quotations from Act 1, Scene 2 and Act 2, Scene 2 (with line references) and from one prescribed poem.",
+   "suggested_words": [
+    260,
+    360
+   ],
+   "difficulty": 3
+  },
+  {
+   "module": "EN-TC",
+   "marks": 6,
+   "verb": "Synthesise",
+   "demand": "synthesise",
+   "response_type": "comparative",
+   "text": "What new understanding of grief emerges from reading Hamlet in conversation with your prescribed Emily Dickinson poetry?",
+   "skill_tags": [
+    "grief",
+    "synthesis",
+    "form"
+   ],
+   "criteria": [
+    {
+     "mark": 6,
+     "descriptor": "Develops a perceptive, integrated argument about the new understanding of grief that emerges from the conversation between the texts, showing how each text illuminates the other, with judicious, detailed reference to both"
+    },
+    {
+     "mark": 5,
+     "descriptor": "Develops a clear argument about the new understanding of grief that emerges from the conversation between the texts with relevant, detailed reference to both texts and thoughtful analysis of their conversation"
+    },
+    {
+     "mark": 4,
+     "descriptor": "Presents a sound discussion of the new understanding of grief that emerges from the conversation between the texts that connects both texts with relevant reference"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Discusses both texts in relation to the new understanding of grief that emerges from the conversation between the texts, largely separately, with some reference"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Describes one or both texts with limited relevance to the new understanding of grief that emerges from the conversation between the texts"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Makes a limited or general comment about one or both texts"
+    }
+   ],
+   "checklist": [
+    "Constructs an insight about grief that neither text provides alone",
+    "Analyses grief in Hamlet across several moments (Act 1, Scene 2; Ophelia's madness in Act 4, Scene 5; the graveyard)",
+    "Analyses at least ONE prescribed poem that treats loss, pain or aftermath",
+    "Compares how dramatic and lyric forms represent the experience and expression of grief",
+    "Reaches a synthesised conclusion that goes beyond summary",
+    "Uses a poem that is on your verified prescribed list (check the official NESA prescription in your Learning plan)"
+   ],
+   "next_steps": {
+    "0": "Write a thesis that names the new understanding of grief that comes from reading the texts together.",
+    "1": "Support it with one moment of grief in Hamlet and explain how the play presents it.",
+    "2": "Support it with a prescribed poem and explain how its form presents loss or its aftermath.",
+    "3": "Show what each text adds to the other: what does Dickinson help you notice in Hamlet's grief, and vice versa?",
+    "4": "Use a second moment from Hamlet (for example Ophelia's madness or the graveyard) to deepen the synthesis.",
+    "5": "Refine for Band 6: make the conclusion a genuinely new insight and keep both texts present in every paragraph."
+   },
+   "plan": "Thesis: Read together, the texts suggest that grief is not only an emotion but a disturbance of time and of expression: Hamlet's grief is excessive, public and restless, while Dickinson's poetry often presents loss in its aftermath, as numbness or altered perception. The conversation reveals grief as something that cannot be performed correctly, only lived through.\n\nParagraph 1 (grief that cannot be shown): Use Act 1, Scene 2, where Hamlet insists his grief exceeds any outward display, while Claudius urges that prolonged mourning is unmanly and against reason. Analyse the conflict between authentic and socially acceptable grief.\n\nParagraph 2 (grief that breaks expression): Use Ophelia's madness in Act 4, Scene 5. Analyse how fragmented songs and flowers express grief that ordinary speech cannot, and how the court responds.\n\nParagraph 3 (Dickinson's aftermath): Choose a prescribed poem dealing with pain, loss or its aftermath. Analyse how dashes, measured stanzas and precise, sometimes cold, imagery present grief as altered consciousness rather than lament.\n\nParagraph 4 (synthesis): Explain what each text reveals in the other: Dickinson's restraint exposes how theatrical, even self-dramatising, Hamlet's grief can be, while Hamlet's public world shows the social pressures behind a poet's private reticence. Conclude with a synthesised insight about grief as a struggle for adequate form.\n\nEvidence to gather: brief quotations from Act 1, Scene 2 and Act 4, Scene 5 (with line references) and from one prescribed poem.",
+   "suggested_words": [
+    350,
+    450
+   ],
+   "difficulty": 3
+  },
+  {
+   "module": "EN-TC",
+   "marks": 4,
+   "verb": "Explain",
+   "demand": "explain",
+   "response_type": "analytical",
+   "text": "Explain how ONE aspect of context (historical, religious or literary) shapes the representation of death in either Hamlet or one of your prescribed Emily Dickinson poems.",
+   "skill_tags": [
+    "context",
+    "religion",
+    "death"
+   ],
+   "criteria": [
+    {
+     "mark": 4,
+     "descriptor": "Develops a perceptive, sustained thesis on how one aspect of context shapes the representation of death, supported by judicious, detailed reference to the text and precise analysis of how form and language shape meaning"
+    },
+    {
+     "mark": 3,
+     "descriptor": "Develops a clear thesis on how one aspect of context shapes the representation of death, supported by relevant, detailed textual reference and thoughtful analysis"
+    },
+    {
+     "mark": 2,
+     "descriptor": "Presents a response to how one aspect of context shapes the representation of death that is partly descriptive, with general textual reference"
+    },
+    {
+     "mark": 1,
+     "descriptor": "Retells or describes the text with limited relevance to how one aspect of context shapes the representation of death"
+    }
+   ],
+   "checklist": [
+    "Identifies a relevant, accurate context (for example Reformation debates about purgatory; the revenge tragedy tradition; nineteenth-century New England revivalism and Dickinson's resistance to public profession of faith)",
+    "Explains how that context shapes specific elements of the text",
+    "Uses one or two specific moments or lines from the chosen text",
+    "Explains why the context deepens the reader's understanding rather than simply adding background",
+    "Evidence comes from your own copies: brief, accurate quotations with act, scene and line (Hamlet) or the poem's first line (Dickinson)"
+   ],
+   "next_steps": {
+    "0": "Name the context precisely and accurately in one sentence; avoid general claims such as people were religious then.",
+    "1": "Connect the context to one specific moment or poem and explain the link.",
+    "2": "Explain how the context shapes the text's language or form, quoting briefly from your copy.",
+    "3": "Explain why knowing this context changes or deepens your interpretation."
+   },
+   "plan": "Thesis (Hamlet option): The religious uncertainties of Reformation England shape the play's representation of death: the Ghost's claim to suffer in a place of purging fires evokes a Catholic belief officially rejected by the Protestant church, so the play opens with a question the culture itself could not settle, making death a matter of anxious interpretation.\n\nParagraph move 1 (context): Explain briefly that England had become officially Protestant, and that purgatory had been rejected as doctrine. Note that Hamlet has been studying at Wittenberg, a university associated with Luther.\n\nParagraph move 2 (text): Use Act 1, Scene 5, where the Ghost describes his suffering and demands remembrance, and Hamlet's later doubt in Act 2, Scene 2 about whether the spirit might be a devil. Explain how this uncertainty drives his need to test the Ghost.\n\nParagraph move 3 (significance): Explain that the context turns death into an epistemological problem (a problem of knowledge) as well as an emotional one, which helps explain Hamlet's delay and his dread of the unknown in Act 3, Scene 1.\n\nDickinson option: Use the religious revivals of nineteenth-century Amherst and Dickinson's choice not to make a public profession of faith; explain how a prescribed poem questions confident doctrines about the afterlife.\n\nEvidence to gather: one or two brief quotations with line references.",
+   "suggested_words": [
+    200,
+    280
+   ],
+   "difficulty": 2
   }
  ]
 }
