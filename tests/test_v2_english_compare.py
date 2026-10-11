@@ -173,3 +173,26 @@ def test_feedback_page_leads_with_the_comparison_and_retry_is_prefilled(client, 
     assert "The wharf 'looked brighter' which shows the mother is confused." in page  # their sentence, correctly quoted
     retry = htmllib.unescape(client.get(f"/practice/{q.id}?retry=1").text)
     assert "Work from your feedback" in retry and f">{WEAK}</textarea>" in retry
+
+
+def test_ai_why_lost_is_grounded_and_checks_the_quoted_sentence(db):
+    q = _q(db)
+    valid = [{"point": "Explain the relationship", "student_quote": "It is about memory and family.", "status": "weak", "issue": "x",
+              "why_it_matters": "y", "try_this": "z"}]
+    why = {"did_well_specific": "You noticed the wharf detail.", "gap_principle": "A 2-mark explain needs the reason, not the topic.",
+           "passage_specific_next_step": "Use the narrator's reason for agreeing.",
+           "example_sentence_upgrade": {"student_sentence": "It is about memory and family.",
+                                        "upgraded": "Agreeing is 'easier than asking what else she was remembering wrongly', so the narrator protects her."}}
+    p = FakeProvider(replies=[json.dumps(_ai_reply(q, valid)), json.dumps(why)])
+    factory.set_test_provider(p)
+    a = assessment.submit(db, q, WEAK)
+    text = assessment.why_lost(db, a)
+    assert "MARK LADDER" in p.prompts[-1] and "STIMULUS" in p.prompts[-1] and "AUTHORED NEXT STEPS" in p.prompts[-1]
+    assert "You wrote: “It is about memory and family.”" in text and "One level up" in text and "Check against the text" not in text
+    # a 'student sentence' the student never wrote is not shown as theirs
+    why["example_sentence_upgrade"]["student_sentence"] = "Memory is the main theme of the whole passage."
+    p2 = FakeProvider(replies=[json.dumps(_ai_reply(q, valid)), json.dumps(why)])
+    factory.set_test_provider(p2)
+    a2 = assessment.submit(db, q, WEAK)
+    text2 = assessment.why_lost(db, a2)
+    assert "Use the narrator's reason" in text2 and "You wrote" not in text2

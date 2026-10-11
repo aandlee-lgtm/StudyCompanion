@@ -420,3 +420,41 @@ def why_lost(q: Question, p: dict, attempt) -> str | None:
         c = misq[0]
         parts.append(f"Accuracy matters too: “{c['quote']}” is not in the text as written. {c.get('note') or ''}".strip())
     return "\n\n".join(parts)
+
+
+def ai_why_lost(db: Session, q: Question, p: dict, attempt) -> str | None:
+    """'Why did I lose the mark?' with an AI provider, grounded in THIS question (english-12): the
+    stimulus, the mark ladder, the authored next steps and the reference response are sent; the reply
+    must quote one of the student's own sentences (checked verbatim) and show it rewritten one level
+    up. Returns None (so the caller falls back) when there is no English payload or the AI fails."""
+    from app.ai import prompts, prompts_english
+    from app.ai.base import AIError, AIUnavailable
+    from app.ai.factory import get_provider
+    from app.ai.schemas_english import EnglishWhyLost
+    from app.services import settings as st
+
+    eng = p.get("english")
+    if not eng or p.get("pending_mark"):
+        return None
+    try:
+        provider = get_provider(st.all_settings(db))
+        if not provider.generative:
+            return None
+        texts = eg.reading_texts(q)
+        ctx = {"marks": q.marks, "directive_verb": q.directive_verb, "question": q.question_text,
+               "stimulus": "\n\n".join(f"Text {i + 1}:\n{t}" if len(texts) > 1 else t for i, t in enumerate(texts)),
+               "ladder": eng.get("ladder") or [], "next_steps": eng.get("next_steps") or {}, "reference": p.get("model_answer") or "",
+               "mark": attempt.mark_awarded, "response": attempt.response_text or ""}
+        r = provider.complete_json(prompts.SYSTEM, prompts_english.why_lost_prompt(ctx), EnglishWhyLost)
+    except (AIError, AIUnavailable, Exception) as exc:  # noqa: BLE001 - the offline ladder explanation is the fallback
+        log.warning("English why-lost AI failed: %s", exc)
+        return None
+    parts = [r.did_well_specific.strip(), r.gap_principle.strip(), "Next step: " + r.passage_specific_next_step.strip()]
+    up = r.example_sentence_upgrade
+    if up and up.student_sentence.strip() and up.upgraded.strip() and ec.is_verbatim(up.student_sentence, attempt.response_text or ""):
+        line = f"You wrote: “{up.student_sentence.strip()}”\nOne level up: “{up.upgraded.strip()}”"
+        bad = [c.quote for c in quotes.verify_quotes(up.upgraded, texts) if not c.found] if texts else []
+        if bad:
+            line += "\n(Check against the text before using: " + "; ".join(f"“{b}”" for b in bad) + " — not found exactly as written.)"
+        parts.append(line)
+    return "\n\n".join(x for x in parts if x)

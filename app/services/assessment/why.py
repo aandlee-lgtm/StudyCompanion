@@ -32,7 +32,9 @@ def why_lost(db: Session, attempt: Attempt) -> str:
     else:
         text = None
         provider = get_provider(st.all_settings(db))
-        if provider.generative:
+        if provider.generative and subject_code(db, q) == "ENGLISH":
+            text = english.ai_why_lost(db, q, p, attempt)  # v2-english-logic: ladder, passage and a verified sentence upgrade
+        if provider.generative and text is None:
             try:
                 text = provider.generate_feedback({
                     "subject_name": db.get(Subject, q.subject_id).name, "marks": q.marks, "directive_verb": q.directive_verb,
