@@ -57,15 +57,25 @@ def test_import_paper_pipeline_offline(db, tmp_path):
     assert not {q.id for q in qs} & {s.question.id for s in sel.items}
 
 
-def test_high_confidence_direct_ai_mapping_auto_approves(db, tmp_path):
+def test_high_confidence_direct_ai_mapping_auto_approves_only_through_the_gate(db, tmp_path):
+    # v2 (sources-04/10, legal-12): AI confidence alone never approves. The MCQ has no answer key
+    # and Question 11's parts (2 + 3) do not add to its heading (14 marks), so nothing passes the
+    # validation gate and everything is queued for review.
     paper = make_pdf(tmp_path / "p.pdf", PAPER)
-    fake = FakeProvider(default={"topic_code": "MA12-SEQ", "focus_area": "Sequences and series", "relevance": "DIRECT", "relevance_score": 0.95,
+    fake = FakeProvider(default={"plan_item_codes": ["1F"], "topic_code": "MA12-SEQ", "relevance": "DIRECT", "relevance_score": 0.95,
                                  "confidence": 0.93, "reason": "Arithmetic series: unchanged in the 2027 syllabus."})
     from app.ai import factory
 
     factory.set_test_provider(fake)
     r = pipeline.import_paper(db, paper, title="NESA 2023 (AI)")
-    assert r.approved == r.questions
+    assert r.questions == 3 and r.approved == 0 and r.queued == 3
+    # with a consistent heading and an answer key, the same AI mapping is approved automatically
+    fixed = make_pdf(tmp_path / "p2.pdf", [PAPER[0].replace("first 10 terms", "first 12 terms"), PAPER[1].replace("(14 marks)", "(5 marks)")])
+    key = make_pdf(tmp_path / "k.pdf", ["Section I\nMultiple-choice Answer Key\nQuestion Answer\n1 A\n"] + GUIDE)
+    r2 = pipeline.import_paper(db, fixed, title="NESA 2023 (AI, keyed)", guideline_pdf=key)
+    assert r2.approved == r2.questions == 3
+    mcq = db.execute(select(Question).where(Question.source_id == r2.source_id, Question.question_number == "1")).scalar_one()
+    assert mcq.answer == {"type": "mcq", "value": "A"} and mcq.plan_item_id == plan_item(db, "1F").id
 
 
 def test_extension_paper_refused(db, tmp_path):
@@ -82,17 +92,19 @@ def test_extension_content_rejected_by_mapping(db, tmp_path):
 
 
 def test_review_actions(db, tmp_path):
+    # v2: approval passes the validation gate (an MCQ needs its key), and 'adapt' keeps the
+    # original as a non-servable ADAPTABLE source question instead of approving it as written.
     paper = make_pdf(tmp_path / "p.pdf", PAPER)
     r = pipeline.import_paper(db, paper, title="Review test")
-    qs = db.execute(select(Question).where(Question.source_id == r.source_id)).scalars().all()
+    qs = db.execute(select(Question).where(Question.source_id == r.source_id).order_by(Question.id)).scalars().all()
     item = plan_item(db, "1F")
-    pipeline.edit_mapping(db, qs[0], plan_item_id=item.id, relevance="DIRECT", reason="AP sum", answer={"type": "num", "value": "155"})
+    pipeline.edit_mapping(db, qs[0], plan_item_id=item.id, relevance="DIRECT", reason="AP sum", answer={"type": "mcq", "value": "A"})
     pipeline.approve(db, qs[0])
     pipeline.reject(db, qs[1], "obsolete")
     pipeline.approve(db, qs[2], adapted=True)
     assert qs[0].approved and qs[0].plan_item_id == item.id
     assert qs[1].approval_status == APPROVAL_REJECTED and qs[1].relevance_status == "REJECT"
-    assert qs[2].historical_or_generated == "ADAPTED"
+    assert qs[2].relevance_status == "ADAPTABLE" and not qs[2].approved
 
 
 def test_fingerprint_ignores_numbering_and_spacing():
