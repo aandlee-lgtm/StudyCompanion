@@ -484,7 +484,7 @@ def ai_proposal(provider, subject: Subject, unit, cands: list[Cand], offline: Pr
     by_code = {c.code: c for c in pool}
     cited = [by_code[c] for c in res.plan_item_codes if c in by_code]
     p = Proposal(mapped_by="ai", relevance=res.relevance, relevance_score=res.relevance_score, confidence=res.confidence,
-                 reason=res.reason, is_extension=res.is_extension_content, content_descriptor=res.content_descriptor,
+                 reason=res.reason, is_extension=res.is_extension_content or offline.is_extension, content_descriptor=res.content_descriptor,
                  original_topic=res.original_topic or offline.original_topic, skill_relevance=res.skill_relevance,
                  legal_fact_currency=res.legal_fact_currency, student_rationale=res.student_rationale, directive_verb=res.directive_verb,
                  difficulty=res.difficulty)
@@ -507,6 +507,8 @@ def ai_proposal(provider, subject: Subject, unit, cands: list[Cand], offline: Pr
         p.reason = forced_reason + " " + p.reason
     if p.is_extension:
         p.relevance = REJECT
+        if offline.is_extension and not res.is_extension_content:
+            p.reason += " (Extension content was detected by keyword — e.g. induction or vectors — so it is rejected whatever the AI said.)"
     if subject.code == "LEGAL":
         p.legal_fact_currency = p.legal_fact_currency or "check"
         if p.legal_fact_currency == "outdated" and p.relevance == DIRECT:

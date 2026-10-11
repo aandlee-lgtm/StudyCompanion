@@ -12,6 +12,7 @@ from datetime import timedelta
 from sqlalchemy import select
 from sqlalchemy.orm import Session, selectinload
 
+from app.ingestion.servable import requirements_unlocked  # v2-ingestion
 from app.models import LearningPlanItem, Question, Subject
 from app.models.common import (
     APPROVAL_APPROVED,
@@ -55,6 +56,8 @@ def is_servable(ctx: StudentContext, q: Question) -> bool:
         return False
     item = ctx.plan.get(q.plan_item_id)
     if item is None or item.status == LOCKED or not item.active:
+        return False
+    if q.import_meta and not requirements_unlocked(ctx.plan, q):  # v2-ingestion: every required subtopic unlocked (sources-05)
         return False
     if item.enrichment and not ctx.settings.get("enrichment_enabled"):
         return False
