@@ -176,9 +176,32 @@ def verify_quote(quote: str, passages: list[str]) -> QuoteCheck:
                 best_ratio, best_text = r, t
         break
     closest = best_text if best_ratio >= 0.6 else None
+    if best_ratio < 0.85:  # an over-long or embellished quotation: the part that really is in the text reads better
+        run = longest_run(quote, passages)
+        if run:
+            closest = run
     note = (f"Not in the text as written. The text says “{closest}”." if closest
             else "These words do not appear in the text.")
     return QuoteCheck(quote=quote, found=False, closest=closest, note=note)
+
+
+def longest_run(quote: str, passages: list[str]) -> str | None:
+    """The longest run of the quotation's words that is in a passage (at least two words, at least
+    half the quotation, not only stopwords), in the passage's own wording."""
+    want = tokens(quote)
+    if len(want) < 2:
+        return None
+    for k in range(len(want), max(2, -(-len(want) // 2)) - 1, -1):
+        for i in range(0, len(want) - k + 1):
+            seq = want[i : i + k]
+            if all(w in STOPWORDS for w in seq):
+                continue
+            for p in passages:
+                shown, toks = _tokens_with_spans(p)
+                j = _find(seq, [t.word for t in toks])
+                if j >= 0:
+                    return shown[toks[j].start : toks[j + k - 1].end]
+    return None
 
 
 def verify_quotes(text: str, passages: list[str] | str) -> list[QuoteCheck]:

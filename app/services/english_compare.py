@@ -140,25 +140,8 @@ def _lower_first(s: str) -> str:
 
 
 def text_wording(quote: str, passages: list[str]) -> str | None:
-    """The longest run of the student's quoted words that really is in a passage (at least two words
-    and half the quotation), in the passage's own wording: the misquotation trimmed to what the
-    text says."""
-    want = quotes.tokens(quote)
-    if len(want) < 2:
-        return None
-    for k in range(len(want), max(1, math.ceil(len(want) / 2)) - 1, -1):
-        if k < 2:
-            break
-        for i in range(0, len(want) - k + 1):
-            seq = want[i : i + k]
-            if all(w in quotes.STOPWORDS for w in seq):
-                continue
-            for p in passages:
-                shown, toks = quotes._tokens_with_spans(p)
-                j = quotes._find(seq, [t.word for t in toks])
-                if j >= 0:
-                    return shown[toks[j].start : toks[j + k - 1].end]
-    return None
+    """The misquotation trimmed to what the text really says (see ``quotes.longest_run``)."""
+    return quotes.longest_run(quote, passages)
 
 
 _IRREGULAR = {"has": "have", "does": "do", "goes": "go"}
@@ -298,7 +281,7 @@ def offline_items(*, response: str, checklist: list[str], ticked: list[int], mar
             issue = ("You did not tick this item. This is your closest sentence, but it does not yet "
                      + (f"{task}." if task else f"do this: {_lower_first(item.rstrip('.'))}."))
         else:
-            issue = "Nothing in your answer does this yet."
+            issue = f"Your answer does not yet {task}." if task else "Your answer does not do this yet."
         if mex in used_models:
             mex = None
         if mex:
