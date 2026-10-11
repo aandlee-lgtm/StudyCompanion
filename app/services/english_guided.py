@@ -17,6 +17,7 @@ from __future__ import annotations
 import math
 import re
 
+from app.ai.schemas_english import ALL_ERRORS, ANALYTICAL_ERRORS, CRAFT_ERRORS  # noqa: F401
 from app.marking import quotes
 from app.services.assessment.common import MARKS_EXPECTATION, VERBS
 
@@ -24,12 +25,6 @@ RESPONSE_TYPES = ("analytical", "comparative", "imaginative", "discursive", "per
 CRAFT_TYPES = ("imaginative", "discursive", "persuasive", "reflective", "rewrite")
 DEMANDS = ("identify", "explain", "analyse", "compare", "evaluate", "synthesise")
 
-# Spec section 23 (English) plus Craft of Writing categories (english-04/18).
-ANALYTICAL_ERRORS = ["insufficient textual evidence", "technique identification without analysis", "weak thesis", "descriptive response",
-                     "poor comparison", "limited evaluation", "imprecise expression"]
-CRAFT_ERRORS = ["telling not showing", "uncontrolled tense or point of view", "reflection not linked to purpose", "structure lacks purpose",
-                "generic or clichéd detail"]
-ALL_ERRORS = ANALYTICAL_ERRORS + CRAFT_ERRORS
 
 # Suggested length for analytical answers by marks: a guide, never a target (english-13/16).
 WORD_RANGES = {1: (15, 40), 2: (40, 80), 3: (70, 130), 4: (100, 180), 5: (150, 250), 6: (200, 350)}
@@ -303,6 +298,10 @@ def checks(q, response: str, m: dict) -> dict:
         if rel is not None and rel < 0.15 and summ["verified"] == 0 and words >= 5:
             warn("off_text", "This answer may not address this text: very few of its words relate to the passage or the question. "
                              "If you wrote about another text by mistake, it cannot earn more than 1 mark here.", 1)
+        scope = set(m.get("texts") or [0])
+        if len(texts) > 1 and len(scope) == 1 and evidence_texts and not (evidence_texts & scope):
+            want, got = ("Text 1", "Text 2") if 0 in scope else ("Text 2", "Text 1")
+            warn("wrong_text", f"The question asks about {want}, but your evidence comes from {got}. Quote from {want}.", 1)
         if m["paired"] and len(texts) > 1 and len(evidence_texts) == 1 and words >= 5:
             only = "Text 1" if 0 in evidence_texts else "Text 2"
             cap = max(1, marks // 2)

@@ -10,7 +10,13 @@ from __future__ import annotations
 from pydantic import BaseModel, Field, field_validator
 
 from app.ai.schemas import ErrorItem, MarkingResult
-from app.services.english_guided import ALL_ERRORS
+
+# Spec section 23 (English) plus Craft of Writing categories (english-04/18).
+ANALYTICAL_ERRORS = ["insufficient textual evidence", "technique identification without analysis", "weak thesis", "descriptive response",
+                     "poor comparison", "limited evaluation", "imprecise expression"]
+CRAFT_ERRORS = ["telling not showing", "uncontrolled tense or point of view", "reflection not linked to purpose", "structure lacks purpose",
+                "generic or clichéd detail"]
+ALL_ERRORS = ANALYTICAL_ERRORS + CRAFT_ERRORS
 
 DIMENSIONS = ("textual evidence", "analysis", "form", "language", "argument", "structure", "expression", "precision", "sophistication")
 _DIM_ALIASES = {"evidence": "textual evidence", "textual_evidence": "textual evidence", "use of evidence": "textual evidence",

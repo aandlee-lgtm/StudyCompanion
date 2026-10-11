@@ -49,6 +49,7 @@ def written_ctx(db: Session, q: Question, response: str, settings: dict, maths: 
         "criteria": None if q.guideline_official else q.marking_guideline, "response": response, "model_answer": q.model_answer,
         "evidence": legal.evidence_for(db, q) if code == "LEGAL" else [], "feedback_depth": settings.get("feedback_depth", "full"),
         "paired": paired, "previous_attempt": previous,
+        "english": english.prompt_extra(q) if code == "ENGLISH" else None,  # v2-english-logic: ladder, checklist, reference model
     }
 
 

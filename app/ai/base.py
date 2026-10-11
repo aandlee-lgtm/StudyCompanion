@@ -65,7 +65,8 @@ class AIProvider(ABC):
         return self.complete_json(prompts.SYSTEM, prompts.mapping(ctx), MappingResult)
 
     def mark_response(self, ctx: dict) -> MarkingResult:
-        return self.complete_json(prompts.SYSTEM, prompts.marking(ctx), MarkingResult)
+        sub = prompts._subject_module(ctx.get("subject", ""))  # a subject may validate with a MarkingResult subclass
+        return self.complete_json(prompts.SYSTEM, prompts.marking(ctx), getattr(sub, "MARKING_SCHEMA", None) or MarkingResult)
 
     def generate_feedback(self, ctx: dict) -> WhyLost:
         return self.complete_json(prompts.SYSTEM, prompts.why_lost(ctx), WhyLost)
