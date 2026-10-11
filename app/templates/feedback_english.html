@@ -1,48 +1,111 @@
-{# English written feedback (owner: english-logic). #}
-{% set r = fb.result %}
+{# English written feedback (owner: english-logic). Context: a (Attempt), fb (payload), q, base. #}
+{% set r = fb.result %}{% set e = fb.english %}
 {% if fb.note %}<div class="notice warn">{{ fb.note }}</div>{% endif %}
-{% if fb.method == 'offline_estimate' %}<div class="notice warn small">{{ fb.label }}</div>{% else %}<p class="small"><strong>{{ fb.label }}</strong></p>{% endif %}
+{% macro response_view(e, a) -%}
+  <div class="en-response" aria-label="Your response with quotations checked">{% if e.checks.segments %}{% for s in e.checks.segments %}{% if s.q == 'ok' %}<mark class="q-ok" title="Found in the text">{{ s.t }}</mark>{% elif s.q == 'bad' %}<mark class="q-bad" title="{{ s.note }}">{{ s.t }}</mark>{% else %}{{ s.t }}{% endif %}{% endfor %}{% else %}{{ a.response_text }}{% endif %}</div>
+  {% if e.checks.quotes %}<p class="tiny muted"><mark class="q-ok">green</mark> = found in the text exactly · <mark class="q-bad">red</mark> = not found as written (hover for the closest wording)</p>{% endif %}
+{%- endmacro %}
+{% macro warnings(e) -%}
+  {% if e.checks.warnings %}<ul class="en-warnings">{% for w in e.checks.warnings %}<li class="{{ 'cap' if w.cap is not none }}">{{ w.message }}</li>{% endfor %}</ul>{% endif %}
+{%- endmacro %}
+{% macro ladder(rows, live=false) -%}
+  <table class="en-ladder">{% for c in rows %}<tr data-low="{{ c.low or c.mark }}" data-high="{{ c.mark }}" class="{{ 'reached' if c.reached }}"><td class="en-ladder-mark">{% if c.low %}{{ c.low }}–{% endif %}{{ c.mark }}</td><td>{{ c.descriptor }}</td></tr>{% endfor %}</table>
+{%- endmacro %}
+{% macro checklist_form(e, a, ticked, button) -%}
+  <form method="post" action="/english/attempt/{{ a.id }}/self-mark" class="en-checklist" data-guided data-marks="{{ a.mark_possible|int }}"
+        data-items="{{ e.checklist|length }}" data-cap="{{ e.checks.cap if e.checks.cap is not none else '' }}" data-preview="/english/attempt/{{ a.id }}/self-mark/preview">
+    <input type="hidden" name="back" value="{{ (base or '') ~ '#feedback' }}">
+    {% for item in e.checklist %}
+    <label class="check en-item"><input type="checkbox" name="tick" value="{{ loop.index0 }}" {{ 'checked' if loop.index0 in ticked }}> <span>{{ item }}</span></label>
+    {% endfor %}
+    <p class="en-live small">Mark from your ticks: <strong data-live-mark>{{ (e.self.final if e.self else 0) }}</strong> / {{ a.mark_possible|int }}
+      <span class="muted" data-live-note></span></p>
+    <button class="btn primary" type="submit">{{ button }}</button>
+  </form>
+{%- endmacro %}
+
+{% if e %}
+<p class="small"><strong>{{ fb.label }}</strong></p>
+
+{% if fb.pending_mark %}
+<section class="en-guided en-pending">
+  <h3>Mark your answer</h3>
+  <p class="small muted">Tick only what your answer really does — honest ticks make the revision schedule work for you. Each item is worth the
+    same; your whole mark is the share you tick.{% if e.checks.cap is not none %} The checks below cap this answer at <strong>{{ e.checks.cap }}/{{ a.mark_possible|int }}</strong>.{% endif %}</p>
+  <div class="en-mark-grid">
+    <div>
+      <h4>Your response</h4>
+      {{ response_view(e, a) }}
+      {{ warnings(e) }}
+    </div>
+    <div>
+      <h4>Checklist for this question</h4>
+      {{ checklist_form(e, a, [], 'Record my mark') }}
+    </div>
+  </div>
+  <h4>Mark ladder for this question <span class="tiny muted">(app-authored, not official NESA)</span></h4>
+  {{ ladder(e.ladder) }}
+</section>
+{% else %}
+<ol class="en-elements">
+  {% for row in e.elements %}
+  <li class="{{ 'wide' if row.n in [4, 6, 7, 17, 18] }}"><div class="en-el-title">{{ row.n }}. {{ row.title }}</div>
+    <div class="en-el-value">
+      {% set v = row.value %}
+      {% if v is string %}<span class="{{ 'muted' if v.startswith('Not assessed') }}">{{ v }}</span>
+      {% elif v and v[0] is mapping %}{{ ladder(v) }}
+      {% else %}<ul>{% for x in v %}<li>{{ x }}</li>{% endfor %}</ul>{% endif %}
+    </div></li>
+  {% endfor %}
+</ol>
+{% if e.not_assessed %}<p class="tiny muted">The AI's reply did not cover: {{ e.not_assessed|join(', ')|replace('_', ' ') }}. These are shown as "Not assessed" rather than guessed.</p>{% endif %}
+<h3>Your response</h3>
+{{ response_view(e, a) }}
+{{ warnings(e) }}
+{% if e.since_last %}<div class="side">
+  <div><h3>Since your last attempt</h3><ul>{% for x in e.since_last.addressed %}<li class="ok">Fixed: {{ x }}</li>{% endfor %}{% for x in e.since_last.new_issues %}<li class="notok">New: {{ x }}</li>{% endfor %}</ul></div>
+  <div><h3>Still missing</h3><ul>{% for x in e.since_last.still_missing %}<li>{{ x }}</li>{% else %}<li class="muted">Nothing — well done.</li>{% endfor %}</ul></div>
+</div>{% endif %}
+{% if r.errors %}<h3>Errors recorded in your journal</h3><ul>{% for x in r.errors %}<li><span class="pill">{{ x.category }}</span> {{ x.description }}</li>{% endfor %}</ul>{% endif %}
+{% if e.self %}<details class="box"><summary>Change your self-mark</summary>{{ checklist_form(e, a, e.self.ticked, 'Update my mark') }}</details>{% endif %}
+{% endif %}
+
+<h3>{{ 'Band 6 response plan' if e.model_kind == 'plan' else 'Band 6 standard model response' }}</h3>
+{% if fb.model_answer %}
+  <p><button class="btn small" data-toggle="model-{{ a.id }}" data-label-show="Show the {{ 'plan' if e.model_kind == 'plan' else 'model response' }}" data-label-hide="Hide it">Show the {{ 'plan' if e.model_kind == 'plan' else 'model response' }}</button>
+  <span class="tiny muted">{% if fb.pending_mark %}Open it to compare while you tick, or mark against the checklist first.{% else %}Try rewriting first if you like — it stays hidden until you open it.{% endif %}</span></p>
+  <div id="model-{{ a.id }}" hidden>
+    <div class="model">{{ fb.model_answer | paras }}</div>
+    <p class="tiny muted">{{ fb.model_answer_source }}. Not a reproduction of any published answer.</p>
+    {% if e.comparison_rows %}<h3>Comparison with your response</h3>
+      <dl class="en-compare">{% for c in e.comparison_rows %}<dt>{{ c.title }}</dt><dd>{{ c.text }}</dd>{% endfor %}</dl>
+    {% elif fb.comparison %}<h3>Comparison with your response</h3><p>{{ fb.comparison }}</p>{% endif %}
+    {% if fb.improved_answer %}<h3>Your answer — improved</h3><div class="model">{{ fb.improved_answer | paras }}</div>
+      {% if e.improved_unverified %}<p class="notice warn small">Check these quotations in the improved answer against the text — they were not found exactly as written: {% for c in e.improved_unverified %}“{{ c.quote }}”{{ ', ' if not loop.last }}{% endfor %}.</p>{% endif %}
+    {% endif %}
+  </div>
+{% else %}
+  <p class="small muted">There is no model response for this question yet{% if not e.craft %} (an AI provider can write one; it is kept only if its quotations check out){% endif %}. The checklist and ladder above show what a strong answer does.</p>
+{% endif %}
+{% if e.ai_model_rejected %}<p class="tiny muted">The AI's model answer was not shown because it quoted words that are not in the text.</p>{% endif %}
+{% if fb.criteria_official and fb.criteria_text %}<details><summary>Official NESA marking guideline</summary>{{ fb.criteria_text | paras }}</details>{% endif %}
+
+{% else %}
+{# Written answers without English metadata (e.g. AI-marked Maths free response). #}
+<p class="small"><strong>{{ fb.label }}</strong></p>
 <div class="grid g3">
   <div><div class="label">Mark</div><div>{{ r.mark_awarded|round(1) }} / {{ r.mark_possible|int }}</div></div>
   <div><div class="label">Estimated performance level</div><div>{{ r.performance_level or '—' }}</div></div>
   <div><div class="label">Syllabus outcome</div><div class="small">{{ (r.outcomes|join('; ')) or '—' }}</div></div>
 </div>
-{% if r.criteria %}<h3>{{ 'NESA criteria' if fb.criteria_official else 'Criteria' }}</h3>
+{% if r.criteria %}<h3>Criteria</h3>
 <table>{% for c in r.criteria %}<tr><td>{{ c.name }}</td><td><span class="pill {{ 'good' if c.judgement in ['met','present'] else ('warn' if 'part' in c.judgement else 'bad') }}">{{ c.judgement }}</span></td><td class="small">{{ c.comment }}</td></tr>{% endfor %}</table>{% endif %}
 <div class="side">
   <div><h3>What you did well</h3><ul>{% for s in r.strengths %}<li>{{ s }}</li>{% else %}<li class="muted">—</li>{% endfor %}</ul></div>
   <div><h3>What prevented a higher mark</h3><ul>{% for s in r.weaknesses %}<li>{{ s }}</li>{% else %}<li class="muted">—</li>{% endfor %}</ul></div>
 </div>
-{% if r.dimensions %}<h3>Quality of your response</h3><table>{% for k, v in r.dimensions.items() %}<tr><td style="width:28%">{{ k|capitalize }}</td><td class="small">{{ v }}</td></tr>{% endfor %}</table>{% endif %}
-{% if fb.subject == 'LEGAL' %}
-  {% if r.marking_rationale and fb.method != 'offline_estimate' %}<h3>Marking rationale</h3><p>{{ r.marking_rationale }}</p>{% endif %}
-  {% if r.missing_elements %}<h3>Missing elements</h3><ul>{% for x in r.missing_elements %}<li>{{ x }}</li>{% endfor %}</ul>{% endif %}
-  {% if r.corrections %}<div class="notice bad"><strong>Factual / legal corrections</strong><ul>{% for x in r.corrections %}<li>{{ x }}</li>{% endfor %}</ul></div>{% endif %}
-  {% if r.evidence_suggestions %}<h3>Evidence you could have used</h3><ul>{% for x in r.evidence_suggestions %}<li>{{ x }}</li>{% endfor %}</ul>{% endif %}
-  {% if r.improved_argument %}<h3>Improved argument</h3><p>{{ r.improved_argument }}</p>{% endif %}
-{% endif %}
-{% if r.errors %}<h3>Errors</h3><ul>{% for e in r.errors %}<li><span class="pill">{{ e.category }}</span> {{ e.description }}</li>{% endfor %}</ul>{% endif %}
 {% if r.next_level %}<h3>What a marker expects at the next level</h3><p>{{ r.next_level }}</p>{% endif %}
 {% if r.improvements %}<h3>Concrete actions</h3><ul>{% for x in r.improvements %}<li>{{ x }}</li>{% endfor %}</ul>{% endif %}
-{% if r.improvement_task %}<p><strong>Improvement task:</strong> {{ r.improvement_task }}</p>{% endif %}
-
-<h3>Band 6 standard model response</h3>
-{% if fb.model_answer %}
-  <p><button class="btn small" data-toggle="model-{{ a.id }}" data-label-show="Show the model response" data-label-hide="Hide the model response">Show the model response</button>
-  <span class="tiny muted">Try rewriting first if you like — the model stays hidden until you open it.</span></p>
-  <div id="model-{{ a.id }}" hidden>
-    <div class="model">{{ fb.model_answer | paras }}</div>
-    <p class="tiny muted">{{ fb.model_answer_source }}. Not a reproduction of any published answer.</p>
-    {% if fb.comparison %}<h3>Comparison with your response</h3><p>{{ fb.comparison }}</p>{% endif %}
-    {% if fb.improved_answer %}<h3>Your answer — improved</h3><div class="model">{{ fb.improved_answer | paras }}</div>{% endif %}
-  </div>
-{% else %}
-  <p class="small muted">A model response for this question needs an AI provider (Settings → AI). {% if fb.guidance %}Meanwhile, this is what a strong response does:{% endif %}</p>
-{% endif %}
-{% if fb.guidance %}<ul>{% for g in fb.guidance %}<li>{{ g }}</li>{% endfor %}</ul>{% endif %}
+{% if fb.model_answer %}<details><summary>Model response</summary><div class="model">{{ fb.model_answer | paras }}</div><p class="tiny muted">{{ fb.model_answer_source }}</p></details>{% endif %}
 {% if fb.criteria_text %}<details><summary>{{ 'Official NESA marking guideline' if fb.criteria_official else 'Marking criteria (app-authored, not official NESA)' }}</summary>{{ fb.criteria_text | paras }}</details>{% endif %}
-{% if fb.subject == 'LEGAL' %}
-  {% if fb.unverified_references %}<div class="notice warn"><strong>Unverified references.</strong> These authorities appear in the AI's text but are not in your verified evidence bank, so treat them with caution: {{ fb.unverified_references|join('; ') }}</div>{% endif %}
-  <p class="small">Current information checked: <strong>{{ fb.facts_checked or 'not yet verified — open the Legal evidence bank to check the sources' }}</strong></p>
-  <p class="tiny muted">{{ fb.disclaimer }}</p>
 {% endif %}
