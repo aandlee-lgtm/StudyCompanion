@@ -20,8 +20,8 @@ from app.services.maths_tpl_base import model_response
 X = sp.Symbol("x")
 SEEDS = range(12)
 ENRICHMENT = {"3D", "6F"}
-# Year 11 review items still use the v1 templates (not yet rewritten with difficulty tiers); see the report.
-DEFERRED: set[str] = {"Y11-FUNC", "Y11-TRANS", "Y11-TRIG", "Y11-CALC", "Y11-EXPLOG", "Y11-PROB"}
+# Every learning-plan code, Year 11 review included, has a v2 template (nothing deferred).
+DEFERRED: set[str] = set()
 
 
 def plan_codes() -> list[str]:
@@ -1387,6 +1387,202 @@ def v_10F(g):
     zq = Fr(p["zq"])
     return {"a": 1 - phi_tab(zs(p["xa"], mu, s)), "b": 100 * EMPIRICAL[p["k"]], "c": mu + zq * s,
             "d": bisect_mp(lambda m: (p["xa"] - m) / s - mq(zq), -1000, 5000)}
+
+
+# ------------------------------------------------------------- Year 11 review ---
+def scan_roots(f, lo, hi, n=4000):
+    """Sign-change roots of f on [lo, hi] using a grid offset by an irrational amount, so that no grid
+    point lands exactly on a (rational) root."""
+    off = mp.sqrt(2) / 997
+    return roots_on(f, mp.mpf(lo) - off, mp.mpf(hi) + off * mp.pi, n)
+
+
+def part(g, label):
+    return next(p_["answer"] for p_ in g.answer["parts"] if p_["label"] == label)
+
+
+def region_of(f, roots, positive: bool):
+    return sign_region(f, [float(v) for v in roots], positive)
+
+
+def check_closed(spec: dict, closed: bool):
+    for (lo, hi, lc, hc) in spec["intervals"]:
+        if str(lo) != "-oo":
+            assert lc == closed, spec
+        if str(hi) != "oo":
+            assert hc == closed, spec
+
+
+@verifies("Y11-FUNC")
+def v_Y11_FUNC(g):
+    p = g.params
+    f_ = p["form"]
+    if f_ == "eval":
+        return fn(p["f"])(p["m"])
+    if f_ == "solve":
+        return real_roots(poly_coeffs(p["f"]))
+    if f_ == "domain":
+        inner = fn(p["inner"])
+        rts = real_roots(poly_coeffs(p["inner"]))
+        check_closed(g.answer, True)
+        return region_of(inner, rts, True)
+    if f_ == "comp":
+        return fn(p["f"])(fn(p["g"])(p["m"]))
+    if f_ == "ineq":
+        f = fn(p["f"])
+        check_closed(g.answer, p["rel"] in ("\\le", "\\ge"))
+        return region_of(f, real_roots(poly_coeffs(p["f"])), p["rel"] in (">", "\\ge"))
+    if f_ == "dom2":
+        h = lambda t: p["k"] ** 2 - (t - p["c"]) ** 2  # noqa: E731
+        check_closed(g.answer, False)
+        return region_of(h, scan_roots(h, -50, 50, 2000), True)
+    f = fn(p["f"])
+    rts = real_roots(poly_coeffs(p["f"]))
+    vx = stationary(p["f"])[0]
+    if f_ == "parts1":
+        check_closed(part(g, "c"), p["rel"] == "\\le")
+        return {"a": rts, "b": [vx, f(vx)], "c": region_of(f, rts, p["rel"] == ">")}
+    gg = fn(p["g"])
+    comp = lambda t: f(gg(t))  # noqa: E731
+    check_closed(part(g, "c"), True)
+    return {"a": comp, "b": scan_roots(comp, -40, 40, 3200), "c": [(f(vx), None)]}
+
+
+@verifies("Y11-TRANS")
+def v_Y11_TRANS(g):
+    p = g.params
+    f_ = p["form"]
+    if f_ == "point":
+        b = Fr(p["b"])
+        return [Fr(p["p"]) / b, p["a"] * p["q"] + p["c"]]
+    if f_ in ("shift", "dil"):
+        base = fn(p["base"])
+        a = mq(Fr(p.get("a", 1)))
+        return lambda t: a * base(t - p["h"]) + p["k"]
+    f = fn(p["f"])
+    vx = stationary(p["f"])[0]
+    a, h, k = p["a"], p["h"], p["k"]
+    return {"a": [vx, f(vx)], "b": [vx + h, a * f(vx) + k], "c": lambda t: a * f(t - h) + k}
+
+
+def trig_solutions(name: str, v: float) -> list:
+    f = {"sin": mp.sin, "cos": mp.cos, "tan": mp.tan}[name]
+    h = lambda t: f(t) - v  # noqa: E731
+    off = mp.sqrt(2) / 997
+    grid = [-off + (2 * mp.pi + 2 * off) * i / 4000 for i in range(4001)]
+    out = []
+    for a_, b_ in zip(grid, grid[1:]):
+        ha, hb = h(a_), h(b_)
+        if ha * hb < 0 and abs(ha) < 1 and abs(hb) < 1:  # a crossing, not a tan asymptote
+            out.append(froot(h, a_, b_))
+    return [v for v in out if 0 <= v <= 2 * mp.pi]
+
+
+def deg(v):
+    return v * mp.pi / 180
+
+
+@verifies("Y11-TRIG")
+def v_Y11_TRIG(g):
+    p = g.params
+    f_ = p["form"]
+    if f_ == "exact":
+        return {"sin": mp.sin, "cos": mp.cos, "tan": mp.tan}[p["fn"]](stored_num(p["th"]))
+    if f_ == "rad":
+        return deg(p["deg"])
+    if f_ == "eq":
+        return trig_solutions(p["fn"], stored_num(p["v"]))
+    if f_ == "sector":
+        r_, th = p["r"], mp.mpf(stored_num(p["th"]))
+        return {"a": r_ * th, "b": r_ * r_ * th / 2, "c": r_ * r_ * th / 2 - r_ * r_ * mp.sin(th) / 2}
+    a, b, C = p["a"], p["b"], p["C"]
+    c = mp.sqrt(a * a + b * b - 2 * a * b * mp.cos(deg(C)))
+    if f_ == "cos":
+        return c
+    A = mp.acos((b * b + c * c - a * a) / (2 * b * c)) * 180 / mp.pi
+    # part (c) also gets the same nearest degree from the rounded c a student carries forward
+    c1 = mp.mpf(round(float(c), 1))
+    assert round(float(mp.acos((b * b + c1 * c1 - a * a) / (2 * b * c1)) * 180 / mp.pi)) == round(float(A))
+    return {"a": c, "b": a * b * mp.sin(deg(C)) / 2, "c": A}
+
+
+@verifies("Y11-CALC")
+def v_Y11_CALC(g):
+    p = g.params
+    f_ = p["form"]
+    F = fn(p["f"])
+    if f_ == "grad":
+        return mp.diff(F, p["m"])
+    if f_ in ("neg", "chain", "quot"):
+        return lambda t: mp.diff(F, t)
+    m = p["m"]
+    tangent = lambda t: F(m) + mp.diff(F, m) * (t - m)  # noqa: E731
+    if f_ == "tangent":
+        return tangent
+    cs = poly_coeffs(p["f"])
+    dcs = deriv_coeffs(cs)
+    shifted = dcs[:-1] + [dcs[-1] - mp.polyval(dcs, m)]
+    other = [v for v in real_roots(shifted) if abs(v - m) > 1e-6]
+    assert len(other) == 1
+    return {"a": lambda t: mp.diff(F, t), "b": tangent, "c": other[0]}
+
+
+def log_eq_root(b, m, k, op):
+    s = 1 if op == "+" else -1
+    h = lambda t: mp.log(t, b) + mp.log(t + s * k, b) - m  # noqa: E731
+    lo = mp.mpf(max(0, -s * k)) + mp.mpf("1e-12")
+    return bisect_mp(lambda t: h(t), Fr(str(mp.nstr(lo, 30))), 10**6)
+
+
+@verifies("Y11-EXPLOG")
+def v_Y11_EXPLOG(g):
+    p = g.params
+    f_ = p["form"]
+    if f_ == "logdiff":
+        return mp.log(p["X"], p["b"]) - mp.log(p["Y"], p["b"])
+    if f_ == "index":
+        return (mp.log(mq(Fr(p["rhs"])), p["b"]) - p["c"]) / p["a"]
+    if f_ == "ln":
+        return mp.log(p["c"]) / mp.log(p["a"])
+    if f_ == "logeq":
+        return log_eq_root(p["b"], p["m"], p["k"], p["op"])
+    b1, P_, Q_ = p["b1"], p["p"], p["q"]
+    h = lambda t: mp.power(b1, 2 * t) - (P_ + Q_) * mp.power(b1, t) + P_ * Q_  # noqa: E731
+    sols = scan_roots(h, -0.5, 3.5, 4000)
+    return {"a": mp.log(p["X"], p["lb"]) - mp.log(p["Y"], p["lb"]), "b": sols, "c": log_eq_root(p["b"], p["m"], p["k"], p["op"])}
+
+
+def survey(N, na, nb, nab):
+    people = [(i < na, nab > i or na <= i < na + nb - nab) for i in range(N)]
+    assert sum(a for a, _ in people) == na and sum(b for _, b in people) == nb and sum(a and b for a, b in people) == nab
+    return people
+
+
+@verifies("Y11-PROB")
+def v_Y11_PROB(g):
+    p = g.params
+    f_ = p["form"]
+    if f_ == "union":
+        return 1 - (1 - Fr(p["p1"])) * (1 - Fr(p["p2"]))
+    if f_ == "dice":
+        return Fr(sum(1 for i, j in itertools.product(range(1, 7), repeat=2) if i + j == p["s"]), 36)
+    if f_ in ("cond", "venn"):
+        people = survey(p["N"], p["na"], p["nb"], p["nab"])
+        N = len(people)
+        in_b = [a for a, b in people if b]
+        cond = Fr(sum(in_b), len(in_b))
+        if f_ == "cond":
+            return cond
+        return {"a": Fr(sum(1 for a, b in people if a or b), N), "b": Fr(sum(1 for a, b in people if not (a or b)), N),
+                "c": cond, "d": Fr(sum(1 for a, b in people if a != b), N)}
+    balls = ["r"] * p["R"] + ["b"] * p["B"]
+    pairs = [(balls[i], balls[j]) for i, j in itertools.permutations(range(len(balls)), 2)]
+    pr = lambda cond: Fr(sum(1 for pp in pairs if cond(pp)), len(pairs))  # noqa: E731
+    mix = pr(lambda pp: pp[0] != pp[1])
+    if f_ == "draw":
+        return mix
+    both, atl = pr(lambda pp: pp == ("r", "r")), pr(lambda pp: "r" in pp)
+    return {"a": both, "b": mix, "c": atl, "d": both / atl}
 
 
 def test_quoted_normal_quantiles_are_right():
