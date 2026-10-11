@@ -7,16 +7,7 @@
   </div>
 </div>
 
-{% for m in d.missed[:3] %}
-<div class="notice warn spread">
-  <span>You missed the session for <strong>{{ m.session_date | fdate('%A %d %B') }}</strong>. Nothing has piled up.</span>
-  <span class="row">
-    <form method="post" action="/missed/{{ m.id }}/resume"><button class="btn small">Resume missed session</button></form>
-    <form method="post" action="/missed/{{ m.id }}/revision"><button class="btn small">Move important revision forward</button></form>
-    <form method="post" action="/missed/{{ m.id }}/skip"><button class="btn small">Skip</button></form>
-  </span>
-</div>
-{% endfor %}
+{% include "_selection_missed.html" %}
 
 <div class="grid g2">
   <div class="card hero">

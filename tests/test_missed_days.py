@@ -19,13 +19,20 @@ def test_missed_day_does_not_accumulate(db):
 
 
 def test_missed_session_actions(db):
+    # v2: missed days are counted only from the day the app was first used (selection-11), so this
+    # test states that the app was set up on Tuesday.
+    from app.services import settings as st
+
+    st.set_(db, "setup_completed_on", TUESDAY.isoformat())
     clock.set_today(TUESDAY + timedelta(days=2))
-    sessions.get_or_create_today(db)
+    today = sessions.get_or_create_today(db)
     missed = db.execute(select(DailySession).where(DailySession.status == "missed")).scalars().all()
     assert missed
     m = missed[0]
     sessions.resume_missed(db, m)
     assert m.status == "generated" and len(m.questions) == 11
+    # v2: the resumed set shares nothing with today's set (selection-10)
+    assert not {q.question_id for q in m.questions} & {q.question_id for q in today.questions}
     other = db.execute(select(DailySession).where(DailySession.status == "missed")).scalars().all()
     if other:
         sessions.skip_missed(db, other[0])

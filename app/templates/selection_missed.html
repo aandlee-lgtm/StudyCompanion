@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Before today's session · HSC Companion{% endblock %}
+{% block main_class %}narrow{% endblock %}
+{% block content %}
+<div class="label">{{ today | fdate('%A %d %B %Y') }}</div>
+<h1>Before today's session</h1>
+<p class="lead">{{ notice.text }}</p>
+<p class="small muted">Today's set has not been built yet, so whatever you choose shapes it. You will never be given more than one day's work.</p>
+
+<div class="sel-choices">
+  <form method="post" action="/today/missed" class="card sel-choice">
+    <input type="hidden" name="action" value="catch_up">
+    <h3>Catch up on key revision</h3>
+    {% if notice.catch_up_names %}
+    <p class="small">Today's usual set, with up to {{ notice.catch_up_names | length }} of its slots given to the most important revision from the missed day{{ 's' if notice.days | length > 1 }}: {{ notice.catch_up_names | join(', ') }}. Nothing extra is added.</p>
+    {% else %}
+    <p class="small">No revision fell due on the missed day{{ 's' if notice.days | length > 1 }}, so today's set is unchanged.</p>
+    {% endif %}
+    <button class="btn primary">Catch up and start today</button>
+  </form>
+  <form method="post" action="/today/missed" class="card sel-choice">
+    <input type="hidden" name="action" value="resume">
+    <input type="hidden" name="sid" value="{{ notice.latest_id }}">
+    <h3>Do the missed session instead</h3>
+    <p class="small">A full set for {{ notice.days[-1] | fdate('%A %d %B') }}, planned from what you know today. Today's own session waits until you come back to Today.</p>
+    <button class="btn">Resume {{ notice.days[-1] | fdate('%A') }}'s session</button>
+  </form>
+  <form method="post" action="/today/missed" class="card sel-choice">
+    <input type="hidden" name="action" value="skip">
+    <h3>Skip and start today</h3>
+    <p class="small">The missed day{{ 's are' if notice.days | length > 1 else ' is' }} recorded; revision that is due still comes up in the coming days.</p>
+    <button class="btn">Skip</button>
+  </form>
+</div>
+
+{% if unfinished %}
+<h2>Unfinished sessions</h2>
+<div class="card qlist">
+  {% for u in unfinished %}
+  <div class="spread sel-row">
+    <span>{{ u.session_date | fdate('%A %d %B') }} · Session {{ u.session_number }}</span>
+    <span class="row"><a class="btn small" href="/session/{{ u.id }}">Finish</a>
+      <form method="post" action="/session/{{ u.id }}/close"><button class="btn small">Close it</button></form></span>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

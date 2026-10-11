@@ -1,57 +1,91 @@
 {% extends "base.html" %}
 {% block title %}Session {{ s.session_number }} · HSC Companion{% endblock %}
 {% block content %}
+{% set ex = s.explanation or {} %}
 <div class="spread">
   <div>
-    <div class="label">{{ s.session_date | fdate('%A %d %B %Y') }} · Session {{ s.session_number }}{% if s.mode != 'normal' %} · {{ s.mode|capitalize }} mode{% endif %}</div>
-    <h1>Today's practice</h1>
+    <div class="label">{{ s.session_date | fdate('%A %d %B %Y') }}{% if s.session_number %} · Session {{ s.session_number }}{% endif %}{% if s.mode != 'normal' %} · {{ {'light': 'Light day', 'holiday': 'Holiday / revision', 'exam': 'Exam'}.get(s.mode, s.mode|capitalize) }} mode{% endif %}{% if ex.phase and ex.phase.name != 'companion' %} · {{ ex.phase.label }} phase{% endif %}{% if ex.timed %} · Timed{% endif %}</div>
+    <h1>{{ "Today's practice" if not is_past else "Practice for " ~ (s.session_date | fdate('%A %d %B')) }}</h1>
     <p class="lead">Expected duration {{ s.expected_minutes | minutes }} · about {{ p.remaining_minutes | minutes }} remaining</p>
   </div>
-  <div class="card row">
-    <div><div class="label">Timer</div><div class="timer" id="session-timer" data-elapsed="{{ elapsed }}" data-running="{{ 1 if s.timer_started_at else 0 }}">0:00:00</div></div>
-    <form method="post" action="/session/{{ s.id }}/timer">
+  <div class="card row sel-timer-card">
+    <div>
+      <div class="label">Active time</div>
+      <div class="timer" id="session-timer" data-sid="{{ s.id }}" data-elapsed="{{ elapsed }}" data-running="{{ 1 if s.timer_started_at else 0 }}"
+           data-idle="{{ idle_minutes }}" data-done="{{ 1 if s.status in ('completed', 'closed') else 0 }}"
+           {% if ex.timed %}data-countdown="{{ (s.expected_minutes * 60) | int }}"{% endif %}>0:00:00</div>
+      {% if ex.timed %}<div class="small muted" id="session-countdown" aria-live="polite"></div>{% endif %}
+    </div>
+    {% if s.status not in ('completed', 'closed') %}
+    <form method="post" action="/session/{{ s.id }}/timer" id="timer-form">
       {% if s.timer_started_at %}<input type="hidden" name="action" value="pause"><button class="btn small">Pause</button>
       {% else %}<input type="hidden" name="action" value="start"><button class="btn small">{{ 'Resume' if elapsed else 'Start' }}</button>{% endif %}
     </form>
+    {% endif %}
   </div>
 </div>
+<p class="small muted sel-pause-note" id="pause-note" {% if not s.pause_note %}hidden{% endif %}>{{ s.pause_note or '' }}</p>
 
 <div class="grid g4" style="margin:12px 0 6px">
-  {% for code in ['MATHS','ENGLISH','LEGAL'] %}
+  {% for code in ['MATHS','ENGLISH','LEGAL'] %}{% if p.total.get(code) %}
   <div class="card kpi"><div class="label subj-{{ code }}">{{ SUBJECT_SHORT[code] }}</div><div class="stat">{{ p.done[code] }}/{{ p.total[code] }}</div></div>
-  {% endfor %}
+  {% endif %}{% endfor %}
   <div class="card kpi"><div class="label">Overall</div><div class="stat">{{ p.pct }}%</div><div class="bar"><span style="width: {{ p.pct }}%"></span></div></div>
 </div>
 
-{% if s.status == 'completed' %}<div class="notice good spread"><span>Session complete.</span><a class="btn small" href="/session/{{ s.id }}/summary">See the summary</a></div>{% endif %}
+{% if s.status == 'completed' %}<div class="notice good spread"><span>Session complete.</span><a class="btn small" href="/session/{{ s.id }}/summary">See the summary</a></div>
+{% elif s.status == 'closed' %}<div class="notice spread"><span>You closed this session with {{ p.n_total - p.n_done }} question{{ 's' if p.n_total - p.n_done != 1 }} not attempted (they do not count against you).</span><a class="btn small" href="/session/{{ s.id }}/summary">Summary</a></div>
+{% elif is_past and p.n_done %}
+<div class="notice warn spread">
+  <span>This session is unfinished: {{ p.n_total - p.n_done }} question{{ 's' if p.n_total - p.n_done != 1 }} (about {{ p.remaining_minutes | minutes }}) left.</span>
+  <form method="post" action="/session/{{ s.id }}/close"><button class="btn small">Close it</button></form>
+</div>
+{% endif %}
 
-{% if s.explanation and show_why %}
-<details class="box" {{ 'open' if not p.n_done else '' }}>
+{% if ex and show_why %}
+<details class="box sel-why" {{ 'open' if not p.n_done else '' }}>
   <summary>Why these questions?</summary>
-  {% for line in s.explanation.lines %}<p class="small">{{ line }}</p>{% endfor %}
-  {% if s.explanation.mode_note %}<p class="small">{{ s.explanation.mode_note }}</p>{% endif %}
-  {% for n in s.explanation.notes or [] %}<p class="small muted">{{ n }}</p>{% endfor %}
+  {% for line in ex.lines or [] %}<p class="small">{{ line }}</p>{% endfor %}
+  {% if ex.mode_note %}<p class="small">{{ ex.mode_note }}</p>{% endif %}
+  {% if ex.time and ex.time.total %}<p class="small">Expected time about {{ ex.time.total | round | int }} minutes{% if ex.subject_minutes %} (Mathematics {{ ex.subject_minutes.get('MATHS', 0) | round | int }}, English {{ ex.subject_minutes.get('ENGLISH', 0) | round | int }}, Legal Studies {{ ex.subject_minutes.get('LEGAL', 0) | round | int }}){% endif %}; target window {{ ex.time.lo | round | int }}–{{ ex.time.hi | round | int }} minutes.</p>{% endif %}
+  {% for n in ex.notes or [] %}<p class="small muted">{{ n }}</p>{% endfor %}
+  {% if ex.difficulty and ex.difficulty.band %}<p class="small muted">Mathematics difficulty mix today: {{ ex.difficulty.quota.get('1', 0) }} foundation, {{ ex.difficulty.quota.get('2', 0) }} HSC-standard, {{ ex.difficulty.quota.get('3', 0) }} challenging.</p>{% endif %}
 </details>
 {% endif %}
 
 {% for code in ['MATHS','ENGLISH','LEGAL'] %}
+{% set qs = s.questions | selectattr('subject_code', 'equalto', code) | list %}
+{% if qs %}
 <h2 class="subj-{{ code }}">{{ SUBJECT_NAMES[code] }}</h2>
+{% if code == 'ENGLISH' %}
+  {% set unseen = qs | selectattr('question.category', 'equalto', 'unseen') | list %}
+  {% if unseen and unseen[0].question.stimulus %}
+  {% set texts = unseen[0].question.stimulus.reading_set() %}
+  <p class="small sel-text-line">Today's text: {% for t in texts %}<strong>{{ t.title }}</strong>{% if t.form %} ({{ t.form | lower }}){% endif %}{% if not loop.last %} and {% endif %}{% endfor %}{% if (ex.reading or {}).get('ENGLISH') %} · about {{ [1, ex.reading.ENGLISH | round | int] | max }} min reading{% endif %}</p>
+  {% endif %}
+{% endif %}
 <div class="card qlist">
-  {% for sq in s.questions if sq.subject_code == code %}
+  {% for sq in qs %}
   {% set a = firsts.get(sq.id) %}
+  {% set kind = (sq.score_breakdown or {}).get('kind') %}
+  {% set flags = (sq.score_breakdown or {}).get('flags') or [] %}
   <a href="/session/{{ s.id }}/q/{{ sq.position }}">
-    <span><span class="status-dot {{ sq.status }}"></span><strong>Q{{ sq.position }}</strong> · <span class="clamp">{{ sq.question.question_text | striptags }}</span>
+    <span><span class="status-dot {{ sq.status }}"></span><strong>Q{{ sq.position }}</strong>
+      {% if kind == 'retry' %}<span class="pill warn">Rewrite</span>{% elif kind in ('ladder', 'repeat', 'near_duplicate') %}<span class="pill warn">Repeat</span>{% elif kind == 'due' %}<span class="pill">Revision due</span>{% endif %}
+      {% if 'catch_up' in flags %}<span class="pill">Catch-up</span>{% endif %}
+      · <span class="clamp">{{ sq.question.question_text | striptags }}</span>
       <br><span class="small muted">{{ sq.reason }}</span></span>
     <span class="small muted" style="white-space:nowrap">{% if a %}<strong class="{{ 'ok' if a.fraction >= 0.85 else '' }}">{{ a.mark_awarded|round(1) }}/{{ a.mark_possible|int }}</strong>{% else %}{{ sq.question.marks }} mark{{ 's' if sq.question.marks != 1 }} · ~{{ sq.question.estimated_minutes|round|int }} min{% endif %}</span>
   </a>
   {% endfor %}
 </div>
+{% endif %}
 {% endfor %}
 
 {% if can_rebuild %}
 <details class="box no-print">
   <summary>Change today's mode</summary>
-  <p class="small muted">Only possible before you answer anything. The new set is saved and will not change on refresh.</p>
+  <p class="small muted">Only possible before you answer anything. The new set is saved and will not change on refresh. A light day has fewer questions (about 45 minutes, no extended response); exam mode uses HSC-standard questions with a countdown.</p>
   <form method="post" action="/session/{{ s.id }}/mode" class="row">
     <select name="mode">
       {% for m, label in [('normal','Normal'),('light','Light day (shorter)'),('holiday','Holiday / revision'),('exam','Exam mode')] %}
@@ -61,4 +95,5 @@
   </form>
 </details>
 {% endif %}
+<p class="small muted"><a href="/sessions">All sessions</a></p>
 {% endblock %}

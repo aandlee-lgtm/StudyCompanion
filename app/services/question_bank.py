@@ -3,6 +3,7 @@ template-generated Mathematics bank so LEARNING subtopics never run dry."""
 from __future__ import annotations
 
 from datetime import date
+from functools import lru_cache
 
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
@@ -103,23 +104,57 @@ def template_tag(code: str, level: int) -> str:
     return f"Template {code} L{level}"
 
 
+@lru_cache(maxsize=None)
+def template_levels(code: str) -> dict[int, tuple[int, ...]]:
+    """Requested level -> the difficulties the template ACTUALLY produces (probed on a few seeds;
+    pure, so it never depends on the database). Used to top up by real difficulty and to report
+    templates that cannot produce a level (selection-08)."""
+    out: dict[int, tuple[int, ...]] = {}
+    for d in (1, 2, 3):
+        produced = set()
+        for seed in range(4):
+            try:
+                g = maths_templates.generate(code, 10_000 + seed, d)
+            except Exception:  # a template error must never break session generation
+                g = None
+            if g is not None:
+                produced.add(g.difficulty)
+        out[d] = tuple(sorted(produced))
+    return out
+
+
+def template_gaps(code: str) -> list[int]:
+    """Difficulty levels this item's template cannot produce."""
+    if code not in maths_templates.TEMPLATES:
+        return []
+    made = {x for v in template_levels(code).values() for x in v}
+    return [d for d in (1, 2, 3) if d not in made]
+
+
 def unseen_count(db: Session, item: LearningPlanItem, level: int) -> int:
+    """Unseen generated template questions on ``item`` whose ACTUAL difficulty is ``level``."""
     seen = select(QuestionExposure.question_id)
     return db.execute(
         select(func.count(Question.id)).where(
-            Question.plan_item_id == item.id, Question.source_exam == template_tag(item.code, level),
+            Question.plan_item_id == item.id, Question.source_exam.like(f"Template {item.code} L%"), Question.difficulty == level,
             Question.approved.is_(True), Question.id.not_in(seen),
         )
     ).scalar_one()
 
 
 def ensure_template_questions(db: Session, item: LearningPlanItem, per_difficulty: int = 2) -> int:
-    """Top up unseen template questions for ``item``. Returns how many were created."""
+    """Top up unseen template questions for ``item`` so each difficulty level the template can
+    really produce has ``per_difficulty`` unseen questions. Returns how many were created."""
     if item.code not in maths_templates.TEMPLATES:
         return 0
     created = 0
+    levels = template_levels(item.code)
     for d in (1, 2, 3):
+        if d not in levels.get(d, ()):
+            continue  # the template cannot produce this level when asked for it (see template_gaps)
         need = per_difficulty - unseen_count(db, item, d)
+        if need <= 0:
+            continue
         total = db.execute(select(func.count(Question.id)).where(Question.plan_item_id == item.id)).scalar_one()
         seed, tries = total * 7 + d, 0
         while need > 0 and tries < 25:
@@ -127,8 +162,9 @@ def ensure_template_questions(db: Session, item: LearningPlanItem, per_difficult
             seed += 1
             tries += 1
             if q is not None:
-                need -= 1
                 created += 1
+                if q.difficulty == d:
+                    need -= 1
     return created
 
 

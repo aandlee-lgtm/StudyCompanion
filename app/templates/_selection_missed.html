@@ -1,0 +1,14 @@
+{# One calm notice for recent missed days (selection-11). Expects ``d.missed`` (missed DailySession rows) and ``d.today``. #}
+{% set recent = [] %}
+{% for m in d.missed or [] %}{% if m.session_date < d.today and (d.today - m.session_date).days <= 7 %}{% set _ = recent.append(m) %}{% endif %}{% endfor %}
+{% if recent %}
+{% set recent = recent | sort(attribute='session_date') %}
+<div class="notice warn spread sel-missed">
+  <span>You missed {{ recent | length }} session{{ 's' if recent | length != 1 }} ({% for m in recent %}{{ m.session_date | fdate('%a %d %b') }}{% if not loop.last %}, {% endif %}{% endfor %}). Nothing has piled up.</span>
+  <span class="row">
+    <form method="post" action="/missed/all/catch_up"><button class="btn small">Catch up on key revision</button></form>
+    <form method="post" action="/missed/{{ recent[-1].id }}/resume"><button class="btn small">Resume {{ recent[-1].session_date | fdate('%A') }}</button></form>
+    <form method="post" action="/missed/all/skip"><button class="btn small">Dismiss</button></form>
+  </span>
+</div>
+{% endif %}

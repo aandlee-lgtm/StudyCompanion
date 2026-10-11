@@ -109,7 +109,10 @@ def test_time_budget(db):
 
 
 def test_time_budget_replaces_long_questions(db):
-    """A deliberately over-long day is shortened by swapping, keeping 5/3/3."""
+    """A deliberately over-long day is shortened, keeping 5/3/3.
+
+    v2: the time window is a constraint of the joint set optimiser (selection-01), so instead of
+    calling v1's post-hoc swapper this makes the first choice very long and re-plans."""
     from app.selection import engine
 
     ctx = build_context(db, TUESDAY)
@@ -117,14 +120,11 @@ def test_time_budget_replaces_long_questions(db):
     for s in sel.items:  # make the chosen questions very long
         s.question.estimated_minutes = 20
     db.flush()
-    groups = {c: engine.candidates(db, ctx, c) for c in ("MATHS", "ENGLISH", "LEGAL")}
-    pools = {c: engine._flatten(groups[c], 1) for c in groups}
     before = engine.expected_minutes(sel.items)
-    fixed, _ = engine.fit_budget(ctx, sel.items, pools)
-    after = engine.expected_minutes(fixed)
-    assert after < before
+    fixed = build_daily_selection(db, build_context(db, TUESDAY))
+    assert fixed.expected_minutes < before
     counts = {}
-    for s in fixed:
+    for s in fixed.items:
         counts[subject_code(s.question)] = counts.get(subject_code(s.question), 0) + 1
     assert counts == {"MATHS": 5, "ENGLISH": 3, "LEGAL": 3}
     db.rollback()

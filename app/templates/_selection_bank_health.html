@@ -1,0 +1,20 @@
+{# Question bank health card (selection-17). Include with `health` = selection.health.bank_health(db, today). #}
+{% if health %}
+<div class="card sel-health">
+  <h2>Question bank</h2>
+  <p class="muted sel-health-lead">What the daily selection can still serve as new, by its own rules (one unread passage a day for English).</p>
+  {% for code, label in [("MATHS", "Mathematics"), ("ENGLISH", "English"), ("LEGAL", "Legal Studies")] %}{% set h = health.get(code) %}
+  {% if h %}
+  <div class="sel-health-row">
+    <div class="spread"><strong>{{ label }}</strong>
+      <span class="pill {{ {'ok': 'good', 'low': 'warn', 'empty': 'bad'}.get(h.status, '') }}">{{ {'ok': 'Healthy', 'low': 'Running low', 'empty': 'Empty'}.get(h.status, h.status) }}</span></div>
+    <p>{{ h.text }}</p>
+    {% if code == "MATHS" %}{% for i in h.learning_items if i.low %}
+    <p class="sel-health-item"><span class="pill {{ 'bad' if i.empty else 'warn' }}">{{ i.code }}</span> {{ i.title }}: {{ i.fresh }} fresh question{{ '' if i.fresh == 1 else 's' }}, {{ i.forms }} form{{ '' if i.forms == 1 else 's' }}</p>
+    {% endfor %}{% endif %}
+    {% if h.action %}<p class="muted">{{ h.action }}</p>{% endif %}
+  </div>
+  {% endif %}
+  {% endfor %}
+</div>
+{% endif %}
