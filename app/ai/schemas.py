@@ -108,3 +108,20 @@ class LegalSourceSummary(BaseModel):
     summary: str
     legal_significance: str = ""
     syllabus_link: str | None = None
+
+
+class WorkingReading(BaseModel):
+    """What the AI read from photos of handwritten working. A transcription, never a mark: the
+    student confirms the final answer before it is marked like a typed answer."""
+
+    legible: bool = True
+    final_answer: str = Field(default="", max_length=400)
+    part_answers: dict[str, str] = {}
+    working_text: str = Field(default="", max_length=8000)
+    unclear: list[str] = []
+    notes: str = Field(default="", max_length=1000)
+
+    @field_validator("part_answers")
+    @classmethod
+    def _short_parts(cls, v: dict[str, str]) -> dict[str, str]:
+        return {str(k)[:20]: str(a)[:400] for k, a in list(v.items())[:12]}

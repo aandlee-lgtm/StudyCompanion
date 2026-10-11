@@ -29,4 +29,5 @@ from app.models.study import (  # noqa: F401
     TutorComment,
 )
 from app.models.legal import LegalEvidence, LegalEvidenceTopic  # noqa: F401
+from app.models.media import WorkingPhoto  # noqa: F401
 from app.models.settings import Setting  # noqa: F401

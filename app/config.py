@@ -57,6 +57,11 @@ class Config:
     def renders_dir(self) -> Path:
         return self.data_dir / "renders"
 
+    @property
+    def working_dir(self) -> Path:
+        """Photos of handwritten working attached to answers."""
+        return self.data_dir / "working"
+
     def resolve_data_file(self, stored: str | None) -> Path | None:
         """Find a stored PDF/render path even if the data folder moved (e.g. restored on another Mac)."""
         if not stored:
@@ -74,7 +79,7 @@ class Config:
         return bool(os.environ.get("OPENAI_API_KEY"))
 
     def ensure_dirs(self) -> None:
-        for d in (self.data_dir, self.backups_dir, self.sources_dir, self.renders_dir):
+        for d in (self.data_dir, self.backups_dir, self.sources_dir, self.renders_dir, self.working_dir):
             d.mkdir(parents=True, exist_ok=True)
 
 

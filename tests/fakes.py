@@ -9,15 +9,18 @@ from app.ai.base import AIProvider
 class FakeProvider(AIProvider):
     name = "fake"
     generative = True
+    vision = True
     model = "fake-model"
 
     def __init__(self, replies: list[str] | None = None, default: dict | None = None):
         self.replies = list(replies or [])
         self.default = default
         self.prompts: list[str] = []
+        self.images: list[list[tuple[str, bytes]]] = []
 
-    def _complete(self, system: str, user: str) -> str:
+    def _complete(self, system: str, user: str, images: list[tuple[str, bytes]] | None = None) -> str:
         self.prompts.append(user)
+        self.images.append(list(images or []))
         if self.replies:
             return self.replies.pop(0)
         return json.dumps(self.default or {})

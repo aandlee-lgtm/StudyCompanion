@@ -31,7 +31,7 @@ def _snapshot(db_path: Path, dest: Path) -> None:
     dst.close()
 
 
-FILE_FOLDERS = ("sources", "renders")  # imported PDFs and question/diagram renders
+FILE_FOLDERS = ("sources", "renders", "working")  # imported PDFs, question/diagram renders, photos of working
 
 
 def create_backup(db_path: Path | None = None, out_dir: Path | None = None, settings: dict | None = None,
@@ -41,6 +41,10 @@ def create_backup(db_path: Path | None = None, out_dir: Path | None = None, sett
     out_dir.mkdir(parents=True, exist_ok=True)
     stamp = datetime.now().strftime("%Y%m%d-%H%M%S")
     out = out_dir / f"hsc-companion-backup-{stamp}.zip"
+    n = 1
+    while out.exists():  # never overwrite an existing backup (e.g. the one being restored)
+        n += 1
+        out = out_dir / f"hsc-companion-backup-{stamp}-{n}.zip"
     with tempfile.TemporaryDirectory() as tmp:
         snap = Path(tmp) / "hsc_companion.db"
         _snapshot(db_path, snap)

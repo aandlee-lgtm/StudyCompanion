@@ -1,5 +1,6 @@
 """Provider-neutral AI interface. Add a provider by subclassing ``AIProvider`` and
-implementing ``_complete`` (one chat completion returning text)."""
+implementing ``_complete`` (one chat completion returning text). Providers that can read
+images accept ``images`` — a list of ``(media_type, bytes)`` — and set ``vision = True``."""
 from __future__ import annotations
 
 import json
@@ -11,7 +12,16 @@ from typing import TypeVar
 from pydantic import BaseModel, ValidationError
 
 from app.ai import prompts
-from app.ai.schemas import ClassifyResult, LegalSourceSummary, MappingResult, MarkingResult, ModelAnswer, QuestionVariant, WhyLost
+from app.ai.schemas import (
+    ClassifyResult,
+    LegalSourceSummary,
+    MappingResult,
+    MarkingResult,
+    ModelAnswer,
+    QuestionVariant,
+    WhyLost,
+    WorkingReading,
+)
 
 log = logging.getLogger(__name__)
 T = TypeVar("T", bound=BaseModel)
@@ -36,20 +46,26 @@ def extract_json(text: str) -> dict:
     return json.loads(text[start : end + 1])
 
 
+Image = tuple[str, bytes]  # (media type, image bytes)
+
+
 class AIProvider(ABC):
     name = "base"
     generative = True
+    vision = False
 
     @abstractmethod
     def _complete(self, system: str, user: str) -> str: ...
 
-    def complete_json(self, system: str, user: str, schema: type[T], retries: int = 1) -> T:
+    def complete_json(self, system: str, user: str, schema: type[T], retries: int = 1, images: list[Image] | None = None) -> T:
         """Call the model and validate its JSON. Malformed output is retried once with the
         validation error, then rejected — it never reaches the database."""
+        if images and not self.vision:
+            raise AIUnavailable(f"The '{self.name}' provider cannot read images")
         last_err: Exception | None = None
         for attempt in range(retries + 1):
             prompt = user if attempt == 0 else f"{user}\n\nYour previous reply was invalid ({last_err}). Reply with ONLY a JSON object matching the schema."
-            raw = self._complete(system, prompt)
+            raw = self._complete(system, prompt, images=images) if images else self._complete(system, prompt)
             try:
                 return schema.model_validate(extract_json(raw))
             except (ValueError, ValidationError) as exc:
@@ -64,8 +80,20 @@ class AIProvider(ABC):
     def map_to_syllabus(self, ctx: dict) -> MappingResult:
         return self.complete_json(prompts.SYSTEM, prompts.mapping(ctx), MappingResult)
 
-    def mark_response(self, ctx: dict) -> MarkingResult:
-        return self.complete_json(prompts.SYSTEM, prompts.marking(ctx), MarkingResult)
+    def mark_response(self, ctx: dict, images: list[Image] | None = None) -> MarkingResult:
+        """``images``: photos of the student's handwritten working, read alongside the response."""
+        user = prompts.marking(ctx)
+        if images:
+            from app.ai import prompts_working
+
+            user += prompts_working.marking_addendum(len(images))
+        return self.complete_json(prompts.SYSTEM, user, MarkingResult, images=images)
+
+    def read_working(self, ctx: dict, images: list[Image]) -> WorkingReading:
+        """Transcribe photographed handwritten working and the final answer (not marked)."""
+        from app.ai import prompts_working
+
+        return self.complete_json(prompts_working.SYSTEM, prompts_working.read_working(ctx, len(images)), WorkingReading, images=images)
 
     def generate_feedback(self, ctx: dict) -> WhyLost:
         return self.complete_json(prompts.SYSTEM, prompts.why_lost(ctx), WhyLost)

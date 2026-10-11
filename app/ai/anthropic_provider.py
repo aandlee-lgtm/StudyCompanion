@@ -9,6 +9,7 @@ and server-side refusal fallbacks (`fallbacks="default"`), so a request a safety
 declines is re-run on a fallback model inside the same call instead of failing."""
 from __future__ import annotations
 
+import base64
 import logging
 import os
 
@@ -22,6 +23,7 @@ FALLBACK_BETA = "server-side-fallback-2026-07-01"
 
 class AnthropicProvider(AIProvider):
     name = "anthropic"
+    vision = True
 
     def __init__(self, model: str | None = None, effort: str = "high", timeout: float = 600.0):
         try:
@@ -36,14 +38,22 @@ class AnthropicProvider(AIProvider):
         except Exception as exc:  # no credentials resolvable
             raise AIError(f"Anthropic client could not be created: {exc}") from exc
 
-    def _complete(self, system: str, user: str) -> str:
+    def _complete(self, system: str, user: str, images: list[tuple[str, bytes]] | None = None) -> str:
         sdk = self._sdk
+        content: str | list[dict] = user
+        if images:
+            content = []
+            for i, (media_type, data) in enumerate(images, 1):
+                content.append({"type": "text", "text": f"Photo {i} of {len(images)}:"})
+                content.append({"type": "image", "source": {"type": "base64", "media_type": media_type,
+                                                            "data": base64.b64encode(data).decode("ascii")}})
+            content.append({"type": "text", "text": user})
         try:
             response = self.client.beta.messages.create(
                 model=self.model,
                 max_tokens=16000,
                 system=system,
-                messages=[{"role": "user", "content": user}],
+                messages=[{"role": "user", "content": content}],
                 output_config={"effort": self.effort},
                 betas=[FALLBACK_BETA],
                 fallbacks="default",
