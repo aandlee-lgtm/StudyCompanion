@@ -1,14 +1,35 @@
+{# Maths feedback (owner: maths): the ten elements of spec 5C. #}
 <div class="side">
-  <div><div class="label">Your answer</div><p>{{ fb.student_answer }}{% if fb.student_parsed and fb.student_parsed != fb.student_answer %} <span class="muted small">(read as {{ fb.student_parsed }})</span>{% endif %}</p></div>
+  <div><div class="label">Your answer</div>
+    <p>{{ fb.student_answer }}{% if fb.student_latex and not fb.parts %} <span class="muted small">read as \({{ fb.student_latex }}\)</span>{% elif fb.student_parsed and fb.student_parsed != fb.student_answer and not fb.parts %} <span class="muted small">(read as {{ fb.student_parsed }})</span>{% endif %}</p></div>
   <div><div class="label">Correct answer</div><p>\({{ fb.correct_answer }}\)</p></div>
 </div>
-{% if fb.divergence %}<div class="notice bad"><strong>Where your reasoning diverged.</strong> {{ fb.divergence }}{% if fb.error_category %} <span class="pill bad">{{ fb.error_category }}</span>{% endif %}</div>{% endif %}
+{% if fb.parts %}
+<table class="maths-parts-table">
+  <thead><tr><th>Part</th><th>Your answer</th><th>Correct</th><th>Mark</th></tr></thead>
+  <tbody>
+  {% for p in fb.parts %}
+    <tr class="{{ 'ok-row' if p.correct else 'bad-row' }}">
+      <td>({{ p.label }})</td>
+      <td>{% if p.latex %}\({{ p.latex }}\){% elif p.given %}{{ p.given }}{% else %}<span class="muted">—</span>{% endif %}
+        {% if not p.correct and p.diagnosis %}<div class="tiny muted">{{ p.diagnosis }}</div>{% endif %}
+        {% if p.method_marks %}<div class="tiny">Method mark{{ 's' if p.method_marks != 1 }} found in your working: {{ (p.checkpoints_found or [])|join('; ') }}</div>{% endif %}</td>
+      <td>\({{ p.correct_answer }}\)</td>
+      <td class="nowrap">{{ p.mark|round(1) }} / {{ p.marks }}{% if not p.correct and p.category %}<br><span class="pill bad">{{ p.category }}</span>{% if p.topic_tag %} <span class="pill">{{ p.topic_tag }}</span>{% endif %}{% endif %}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+{% if fb.divergence %}<div class="notice bad"><strong>Where your reasoning diverged.</strong> {{ fb.divergence }}
+  {% if fb.error_category %}<span class="pill bad" title="Type of error">{{ fb.error_category }}</span>{% endif %}
+  {% if fb.error_topic_tag %}<span class="pill" title="Skill involved">{{ fb.error_topic_tag }}</span>{% endif %}</div>{% endif %}
 {% for n in fb.notes or [] %}<div class="notice">{{ n }}</div>{% endfor %}
 <h3>Complete worked solution</h3>
 <ol class="steps">{% for step in fb.worked_solution %}<li class="{{ 'diverge' if fb.divergence_step == loop.index }}">{{ step }}</li>{% endfor %}</ol>
 {% if fb.concept %}<h3>The concept</h3><p>{{ fb.concept }}</p>{% endif %}
 {% if fb.quicker %}<h3>A quicker method</h3><p>{{ fb.quicker }}</p>{% endif %}
 {% if fb.technique %}<h3>Exam technique</h3><p>{{ fb.technique }}</p>{% endif %}
-<h3>Syllabus</h3><p class="small">{{ fb.outcome or '—' }}</p>
+<h3>Syllabus</h3><p class="small">{{ fb.outcome or '—' }}{% if fb.skill %}<br><span class="muted">Skill assessed:</span> {{ fb.skill }}{% endif %}</p>
 {% if fb.revision %}<h3>Recommended revision</h3><p class="small">{{ fb.revision }}</p>{% endif %}
 {% if fb.working %}<details><summary>Your working</summary>{{ fb.working | paras }}</details>{% endif %}

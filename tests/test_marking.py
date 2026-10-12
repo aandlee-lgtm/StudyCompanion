@@ -49,7 +49,8 @@ def test_sets_unordered_and_partial():
 
 
 def test_error_classification():
-    assert mark_answer("-5", {"type": "num", "value": "5"}, 2).category == "sign"
+    r = mark_answer("-5", {"type": "num", "value": "5"}, 2)
+    assert r.category == "careless error" and r.topic_tag == "sign error"  # v2: two axes (5C category + spec-23 tag)
     r = mark_answer("7", {"type": "num", "value": "5"}, 2, [{"answer": "7", "category": "formula selection", "diagnosis": "Used a + nd"}])
     assert r.category == "formula selection" and "a + nd" in r.diagnosis
     assert mark_answer("abc((", {"type": "num", "value": "5"}, 2).category == "notation"
@@ -73,6 +74,6 @@ def test_all_templates_mark_their_own_answer():
         for d in (1, 2, 3):
             g = maths_templates.generate(code, 3, d)
             a = g.answer
-            resp = ", ".join(a["values"]) if a["type"] == "set" else a["value"]
-            r = mark_answer(resp, a, g.marks, g.common_errors)
+            resp = maths_templates.model_response(a)  # v2: interval / parts / mcq answer types
+            r = mark_answer(resp, a, g.marks, g.common_errors, options=g.options)
             assert r.correct, f"{code} L{d}: {resp} not accepted"

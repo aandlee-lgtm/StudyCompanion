@@ -1,11 +1,46 @@
-{# Maths answer input + working (owner: maths). #}
-      <div class="field">
-        <label for="ans">Final answer</label>
-        <input id="ans" type="text" name="answer" value="{{ draft_answer }}" data-math-preview autocomplete="off" placeholder="e.g. 3x^2 - 2,  sqrt(2)/2,  e^(2x),  2pi/3,  1/3 ln 2">
-        <div id="math-preview" class="preview-math"></div>
-        <span class="tiny muted">Type normally: ^ for powers, sqrt( ), pi, e^( ), ln( ). For several answers separate with commas. Simple LaTeX also works.</span>
+{# Maths answer input + working (owner: maths). Multi-part questions get one box per part; the
+   composed answer lives in one textarea ("(a) …" per line) so the form also works without JS. #}
+{% set spec = q.answer or {} %}
+{% set akind = spec.type or 'expr' %}
+{% if akind == 'parts' %}
+      {% set ns = namespace(t='') %}{% for p in spec.parts %}{% set ns.t = ns.t ~ '(' ~ p.label ~ ') \n' %}{% endfor %}
+      <div class="field maths-parts" data-maths-parts>
+        <label for="ans">Answers <span class="tiny muted">(one per part)</span></label>
+        <textarea id="ans" name="answer" rows="{{ spec.parts|length + 1 }}" class="maths-parts-raw" data-autosave autocomplete="off">{{ draft_answer or ns.t }}</textarea>
+        <span class="tiny muted maths-parts-hint">One line per part, starting with its label, e.g. <code>(a) 3/2</code>.</span>
+        {% for p in spec.parts %}
+        <div class="maths-part" data-part="{{ p.label }}" hidden>
+          <label for="ans-{{ p.label }}"><span class="maths-part-label">({{ p.label }})</span>{% if p.prompt %} <span class="small">{{ p.prompt }}</span>{% endif %}
+            <span class="tiny muted">· {{ p.marks }} mark{{ 's' if p.marks != 1 }}{% if p.answer.type == 'interval' %} · give a region, e.g. -2 &lt; x &lt; 3{% elif p.answer.type == 'set' %} · separate values with commas{% elif p.answer.type == 'antiderivative' %} · include + C{% elif p.answer.units %} · {{ p.answer.units }}{% endif %}</span></label>
+          {% if p.answer.type == 'mcq' and p.answer.options %}
+          <select id="ans-{{ p.label }}" data-part-input="{{ p.label }}" data-kind="mcq">
+            <option value="">Choose…</option>
+            {% for o in p.answer.options %}<option value="{{ o[:1] }}">{{ o }}</option>{% endfor %}
+          </select>
+          {% else %}
+          <input id="ans-{{ p.label }}" type="text" data-part-input="{{ p.label }}" data-kind="{{ p.answer.type }}" data-var="{{ p.answer.var or 'x' }}" autocomplete="off" spellcheck="false">
+          {% endif %}
+          <div class="preview-math" data-preview-for="{{ p.label }}" aria-live="polite"></div>
+        </div>
+        {% endfor %}
       </div>
+{% elif akind == 'mcq' and spec.options %}
+      <fieldset class="field maths-mcq">
+        <legend class="label">Choose one</legend>
+        {% for o in spec.options %}
+        <label class="check"><input type="radio" name="answer" value="{{ o[:1] }}" {{ 'checked' if draft_answer == o[:1] }}> {{ o }}</label>
+        {% endfor %}
+      </fieldset>
+{% else %}
+      <div class="field">
+        <label for="ans">Final answer{% if spec.units and spec.units != '%' %} <span class="tiny muted">({{ spec.units|replace('^2','²')|replace('^3','³') }})</span>{% endif %}</label>
+        <input id="ans" type="text" name="answer" value="{{ draft_answer }}" data-math-preview data-autosave data-kind="{{ akind }}" data-var="{{ spec.var or 'x' }}" autocomplete="off" spellcheck="false"
+          placeholder="{% if akind == 'interval' %}e.g. -2 < x < 3,  x <= 1 or x > 4,  (-2, 3){% elif akind == 'set' %}e.g. 2, -3{% elif akind == 'antiderivative' %}e.g. x^3/3 + 2x + C{% else %}e.g. 3x^2 - 2,  sqrt(2)/2,  e^(2x),  2pi/3,  1/3 ln 2{% endif %}">
+        <div id="math-preview" class="preview-math" aria-live="polite"></div>
+        <span class="tiny muted">Type normally: ^ for powers, sqrt( ), pi, e^( ), ln( ), |x|. {% if akind == 'set' %}Separate several answers with commas. {% elif akind == 'interval' %}Use &lt;, &lt;=, &gt;, &gt;= and "or". {% endif %}Simple LaTeX also works.{% if 'dp' in spec %} Round as the question asks.{% endif %}</span>
+      </div>
+{% endif %}
       <div class="field">
         <label for="work">Working (optional, recommended)</label>
-        <textarea id="work" name="working" rows="6" data-autosave placeholder="Show your steps as you would in the exam.">{{ draft_working }}</textarea>
+        <textarea id="work" name="working" rows="6" placeholder="Show your steps as you would in the exam — recognisable intermediate results (e.g. the derivative) can earn method marks.">{{ draft_working }}</textarea>
       </div>

@@ -42,7 +42,10 @@ def maths_qs(db, code="1A", n=6):
 
 
 def right(q):
-    return q.answer["value"] if q.answer["type"] != "set" else ",".join(q.answer["values"])
+    """A correct response for any v2 answer type (num, set, interval, parts, mcq ...)."""
+    from app.services.maths_tpl_base import model_response
+
+    return model_response(q.answer)
 
 
 def subject_qs(db, code, **filters):

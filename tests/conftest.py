@@ -95,10 +95,10 @@ def answer_correctly(db, sess, fraction=1.0, confidence="confident"):
 
     for sq in sess.questions:
         q = sq.question
-        if q.answer and q.answer.get("type") == "set":
-            resp = ", ".join(q.answer["values"]) if fraction >= 0.5 else "999"
-        elif q.answer:
-            resp = q.answer["value"] if fraction >= 0.5 else "999999"
+        if q.answer:  # v2 (maths): interval / multi-part / rounded answer specs
+            from app.services.maths_tpl_base import model_response
+
+            resp = model_response(q.answer) if fraction >= 0.5 else "999999"
         else:
             resp = (q.model_answer or "A detailed response 'quoted' that suggests and reveals meaning; overall highly effective.") if fraction >= 0.5 else "idk"
         assessment.submit(db, q, resp, sq=sq, confidence=confidence, time_seconds=60)
