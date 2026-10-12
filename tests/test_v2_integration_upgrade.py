@@ -16,7 +16,7 @@ from app.database_setup import alembic_config, prepare_database
 
 FIXTURE = Path(__file__).parent / "fixtures" / "v1_database.sqlite.gz"
 CHAIN = ["0001", "0002_selection", "0003_working_photos", "0004_swap", "0005_followup", "0002_adaptive",
-         "0002_english_logic", "0002_legal_logic"]
+         "0002_english_logic", "0002_legal_logic", "0002_ingestion"]
 
 
 def test_migrations_form_one_linear_chain():
@@ -36,7 +36,7 @@ def test_empty_database_upgrades_to_head(data_dir):
         tables = {r[0] for r in c.execute(text("SELECT name FROM sqlite_master WHERE type='table'"))}
     eng.dispose()
     assert {"session_swaps", "feedback_questions", "practice_drafts", "exposure_events", "revision_sets",
-            "legal_evidence_checks", "working_photos"} <= tables
+            "legal_evidence_checks", "working_photos", "question_plan_items", "review_decisions"} <= tables
 
 
 def test_v1_database_upgrades_keeping_data_and_seeding_v2_content(data_dir):

@@ -1,32 +1,61 @@
 {% extends "base.html" %}
 {% block content %}
+{% macro qs_link(extra) -%}?{% for k, v in f.items() if k not in extra and k != 'page' %}{{ k }}={{ v|urlencode }}&{% endfor %}{% for k, v in extra.items() %}{{ k }}={{ v|urlencode }}&{% endfor %}{%- endmacro %}
 <div class="spread">
-  <div><h1>Question library</h1><p class="lead">{{ total }} question{{ 's' if total != 1 }}. Every question keeps its source and 2027 mapping.</p></div>
-  <div class="row"><a class="btn" href="/admin/review">Review queue{% if pending %} ({{ pending }}){% endif %}</a><a class="btn" href="/admin/import">Import a paper</a><a class="btn" href="/sources">Source registry</a></div>
+  <div><h1>Question library</h1><p class="lead">{{ total }} question{{ 's' if total != 1 }}. Every question keeps its source, its 2027 subtopic and its review history.</p></div>
+  <div class="row"><a class="btn" href="/admin/review">Review queue{% if pending %} ({{ pending }}){% endif %}</a><a class="btn" href="/admin/import">Import a paper</a><a class="btn" href="/sources">Source registry</a><a class="btn" href="#new-question">New question</a></div>
 </div>
-<form class="card row small" method="get">
+<form class="card ing-filters small" method="get">
+  <input type="search" name="q" value="{{ f.q or '' }}" placeholder="Search text, Q number or exam" class="ing-search">
   <select name="subject"><option value="">Subject</option>{% for c in ['MATHS','ENGLISH','LEGAL'] %}<option value="{{ c }}" {{ 'selected' if f.subject == c }}>{{ SUBJECT_SHORT[c] }}</option>{% endfor %}</select>
-  <input type="text" name="year" value="{{ f.year or '' }}" placeholder="Year" style="width:80px">
+  <input type="text" name="year" value="{{ f.year or '' }}" placeholder="Year" inputmode="numeric" class="ing-narrow">
   <select name="source"><option value="">Source</option>{% for s in sources %}<option value="{{ s.id }}" {{ 'selected' if f.source == s.id|string }}>{{ s.title|truncate(50) }}</option>{% endfor %}</select>
-  <select name="topic"><option value="">Topic / outcome</option>{% for t in topics %}<option value="{{ t.id }}" {{ 'selected' if f.topic == t.id|string }}>{{ t.name }}</option>{% endfor %}</select>
-  <input type="text" name="marks" value="{{ f.marks or '' }}" placeholder="Marks" style="width:70px">
+  <select name="topic"><option value="">Focus area</option>{% for t in topics %}<option value="{{ t.id }}" {{ 'selected' if f.topic == t.id|string }}>{{ t.name }}</option>{% endfor %}</select>
+  <select name="item"><option value="">Subtopic</option>{% for it in plan_items %}<option value="{{ it.id }}" {{ 'selected' if f.item == it.id|string }}>{{ it.code }} {{ it.title|truncate(40) }}</option>{% endfor %}</select>
+  <select name="outcome"><option value="">Outcome</option>{% for o in outcomes %}<option value="{{ o.id }}" {{ 'selected' if f.outcome == o.id|string }}>{{ o.code }}{{ '' if o.official else ' (placeholder)' }}</option>{% endfor %}</select>
+  <input type="text" name="marks" value="{{ f.marks or '' }}" placeholder="Marks" inputmode="numeric" class="ing-narrow">
   <select name="difficulty"><option value="">Difficulty</option>{% for d, l in [(1,'Foundation'),(2,'HSC-standard'),(3,'Challenging')] %}<option value="{{ d }}" {{ 'selected' if f.difficulty == d|string }}>{{ l }}</option>{% endfor %}</select>
   <select name="relevance"><option value="">Relevance</option>{% for r in relevances %}<option {{ 'selected' if f.relevance == r }}>{{ r }}</option>{% endfor %}</select>
-  <select name="approval"><option value="">Approval</option>{% for a in ['approved','pending','rejected'] %}<option {{ 'selected' if f.approval == a }}>{{ a }}</option>{% endfor %}</select>
+  <select name="approval"><option value="">Status</option>{% for a in approvals %}<option {{ 'selected' if f.approval == a }}>{{ a }}</option>{% endfor %}</select>
   <select name="origin"><option value="">Origin</option>{% for o, l in ORIGIN_LABELS.items() %}<option value="{{ o }}" {{ 'selected' if f.origin == o }}>{{ l }}</option>{% endfor %}</select>
   <select name="attempted"><option value="">Attempted?</option><option value="yes" {{ 'selected' if f.attempted == 'yes' }}>Attempted</option><option value="no" {{ 'selected' if f.attempted == 'no' }}>Not attempted</option></select>
-  <button class="btn small">Filter</button>
+  <select name="band"><option value="">Performance</option>{% for k, l in bands.items() %}<option value="{{ k }}" {{ 'selected' if f.band == k }}>{{ l }}</option>{% endfor %}</select>
+  <select name="revision"><option value="">Next revision</option>{% for k, l in revisions.items() %}<option value="{{ k }}" {{ 'selected' if f.revision == k }}>{{ l }}</option>{% endfor %}</select>
+  <button class="btn small primary">Filter</button>{% if f %}<a class="btn small" href="/questions">Clear</a>{% endif %}
 </form>
-<div class="card" style="margin-top:14px"><table>
-  <tr><th>#</th><th>Question</th><th>Subject</th><th>Marks</th><th>Diff.</th><th>Origin</th><th>Relevance</th><th>Status</th><th>Performance</th><th>Next revision</th></tr>
-  {% for q in qs %}{% set e = exposure.get(q.id) %}
-  <tr><td class="small"><a href="/questions/{{ q.id }}">{{ q.id }}</a></td><td class="small"><a href="/questions/{{ q.id }}">{{ q.question_text|striptags|truncate(90) }}</a></td>
-    <td class="small subj-{{ codes[q.subject_id] }}">{{ SUBJECT_SHORT[codes[q.subject_id]] }}</td><td>{{ q.marks }}</td><td>{{ q.difficulty }}</td>
+<div class="card ing-table-wrap" style="margin-top:14px"><table class="ing-table">
+  <tr>{% for key, label in [('id','#'),(None,'Question'),('source','Source'),('number','Q'),(None,'Subtopic'),('marks','Marks'),('difficulty','Diff.'),(None,'Origin'),(None,'Relevance'),(None,'Status'),(None,'Performance'),(None,'Next revision')] %}
+    <th>{% if key %}<a href="{{ qs_link({'sort': key, 'desc': 0 if (f.sort == key and f.desc == '1') else (1 if f.sort == key else 0)}) }}">{{ label }}{% if f.sort == key %}{{ ' ↓' if f.desc == '1' else ' ↑' }}{% endif %}</a>{% else %}{{ label }}{% endif %}</th>{% endfor %}</tr>
+  {% for q in qs %}{% set e = exposure.get(q.id) %}{% set it = plan.get(q.plan_item_id) %}
+  <tr><td class="small"><a href="/questions/{{ q.id }}">{{ q.id }}</a></td>
+    <td class="small"><a href="/questions/{{ q.id }}">{{ q.question_text|striptags|truncate(80) }}</a></td>
+    <td class="small">{{ (q.source.title if q.source else '—')|truncate(34) }}{% if q.source_year and q.source and q.source_year|string not in q.source.title %} {{ q.source_year }}{% endif %}</td>
+    <td class="small">{{ q.question_number or '—' }}</td>
+    <td class="small">{% if it %}{{ it.code }} <span class="pill {{ it.status }}">{{ it.status }}</span>{% else %}<span class="pill bad">UNMAPPED</span>{% endif %}</td>
+    <td>{{ q.marks }}</td><td>{{ q.difficulty }}</td>
     <td><span class="pill {{ q.historical_or_generated }}">{{ ORIGIN_LABELS[q.historical_or_generated] }}</span></td><td><span class="pill {{ q.relevance_status }}">{{ q.relevance_status }}</span></td>
-    <td><span class="pill {{ q.approval_status }}">{{ q.approval_status }}</span></td>
-    <td class="small">{{ ((e.score_history[-1]*100)|round|int ~ '%') if e and e.score_history else '—' }}</td><td class="small">{{ e.next_revision_date | fdate('%d %b') if e else '—' }}</td></tr>
-  {% endfor %}
+    <td><span class="pill {{ q.approval_status }}">{{ q.approval_status }}</span>{% if blocked[q.id] and q.approval_status == 'approved' %}<br><span class="tiny muted">{{ blocked[q.id] }}</span>{% endif %}</td>
+    <td class="small">{{ ((e.mastery*100)|round|int ~ '%') if e else '—' }}</td><td class="small">{{ e.next_revision_date | fdate('%d %b') if e and e.next_revision_date else '—' }}</td></tr>
+  {% else %}<tr><td colspan="12" class="muted">No questions match these filters.</td></tr>{% endfor %}
 </table>
-<div class="row" style="margin-top:10px">{% if page > 1 %}<a class="btn small" href="?page={{ page - 1 }}{% for k, v in f.items() if k != 'page' %}&{{ k }}={{ v|urlencode }}{% endfor %}">← Previous</a>{% endif %}{% if page * 50 < total %}<a class="btn small" href="?page={{ page + 1 }}{% for k, v in f.items() if k != 'page' %}&{{ k }}={{ v|urlencode }}{% endfor %}">Next →</a>{% endif %}</div>
+<div class="row" style="margin-top:10px">{% if page > 1 %}<a class="btn small" href="{{ qs_link({'page': page - 1}) }}">← Previous</a>{% endif %}<span class="small muted">Page {{ page }} of {{ ((total + page_size - 1) // page_size) or 1 }}</span>{% if page * page_size < total %}<a class="btn small" href="{{ qs_link({'page': page + 1}) }}">Next →</a>{% endif %}</div>
 </div>
+<details class="card" id="new-question" style="margin-top:16px"><summary><strong>New question</strong> <span class="small muted">— enter a question by hand (a trial paper or your own practice question)</span></summary>
+  <form method="post" action="/questions/new" style="margin-top:10px">
+    <div class="grid g3">
+      <div class="field"><label>Subject</label><select name="subject">{% for c in ['MATHS','ENGLISH','LEGAL'] %}<option value="{{ c }}">{{ SUBJECT_SHORT[c] }}</option>{% endfor %}</select></div>
+      <div class="field"><label>Subtopic</label><select name="plan_item_id" required>{% for it in plan_items %}<option value="{{ it.id }}">{{ codes[it.subject_id] }} · {{ it.code }} {{ it.title|truncate(40) }} ({{ it.status }})</option>{% endfor %}</select></div>
+      <div class="field"><label>Origin</label><select name="origin"><option value="GENERATED">My own question (GENERATED)</option><option value="TRIAL">Trial / school paper (TRIAL / NON-NESA)</option></select></div>
+    </div>
+    <div class="field"><label>Question</label><textarea name="text" rows="4" required></textarea></div>
+    <div class="grid g3">
+      <div class="field"><label>Marks</label><input type="number" name="marks" min="1" max="25" value="2"></div>
+      <div class="field"><label>Type</label><select name="question_type"><option value="short_answer">Short answer</option><option value="working">Working (Maths)</option><option value="extended">Extended response</option><option value="mcq">Multiple choice</option></select></div>
+      <div class="field"><label>Difficulty</label><select name="difficulty"><option value="1">Foundation</option><option value="2" selected>HSC-standard</option><option value="3">Challenging</option></select></div>
+    </div>
+    <div class="grid g2"><div class="field"><label>Answer (Maths number, or MCQ letter)</label><input type="text" name="answer_value"></div><div class="field"><label>Source title</label><input type="text" name="source_title" value="Manually entered questions"></div></div>
+    <div class="field"><label>Model answer (optional)</label><textarea name="model_answer" rows="3"></textarea></div>
+    <button class="btn primary">Add question</button>
+  </form>
+</details>
 {% endblock %}

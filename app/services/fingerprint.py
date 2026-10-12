@@ -41,3 +41,11 @@ def similarity(a: str, b: str) -> float:
 
 
 NEAR_DUPLICATE = 0.85
+
+
+def import_fingerprint(text: str, marks: int | None = None, options: list[str] | None = None) -> str:
+    """Fingerprint of an imported unit (sources-17): the text already carries the stem for a
+    sub-part, and marks and options are included, so a generic part such as '(ii) Hence find the
+    maximum value' from two different papers is not mistaken for one question."""
+    opts = "|".join(normalise_text(o) for o in (options or []))
+    return hashlib.sha256(f"{normalise_text(text)}#{marks or ''}#{opts}".encode()).hexdigest()

@@ -1,9 +1,33 @@
 {% extends "base.html" %}
 {% block content %}
+{% if source %}
+<a class="small" href="/sources">← Source registry</a>
+<h1>{{ source.title }}</h1>
+{% if flash %}<div class="notice">{{ flash }}</div>{% endif %}
+<p class="lead">Tier {{ source.tier }} · {{ source.organisation }} · {{ source.source_type }}{% if source.year %} · {{ source.year }}{% endif %}{{ ' · official' if source.official }}{% if source.url %} · <a href="{{ source.url }}" rel="noopener" target="_blank">web page</a>{% endif %}</p>
+<div class="card">
+  <h3>Documents</h3>
+  {% for d in docs.get(source.id, []) %}
+  <div class="box small">
+    <div class="spread"><strong>{{ d.kind|replace('_', ' ')|capitalize }}</strong><span><span class="pill {{ 'bad' if 'fail' in d.status or 'error' in d.status else '' }}">{{ d.status }}</span> {% if d.page_count %}{{ d.page_count }} pages · {% endif %}{{ d.created_at | fdate('%d %b %Y') }} · <a href="/sources/{{ source.id }}/pdf?kind={{ d.kind }}" target="_blank" rel="noopener">open PDF</a></span></div>
+    {% if d.meta and d.meta.counts %}<p>{% for k, v in d.meta.counts.items() %}{{ k|replace('_', ' ') }} {{ v }}{{ ' · ' if not loop.last }}{% endfor %}</p>{% endif %}
+    {% if d.meta and d.meta.expected %}<p>{% for e in d.meta.expected %}Section {{ e.section }}: expected {{ e.expected }}, detected {{ e.detected }}{{ ' · ' if not loop.last }}{% endfor %}</p>{% endif %}
+    {% if d.log %}<details><summary>Import log</summary><pre class="ing-log">{{ d.log }}</pre></details>{% endif %}
+  </div>
+  {% else %}<p class="muted small">No stored documents.</p>{% endfor %}
+  <form method="post" action="/sources/{{ source.id }}/remove-unused" onsubmit="return confirm('Remove every question from this source that was never attempted and never approved?');"><button class="btn small danger">Remove unused questions</button></form>
+</div>
+<div class="card" style="margin-top:14px"><h3>Questions ({{ questions|length }})</h3><table class="small">
+  {% for q in questions %}<tr><td><a href="/questions/{{ q.id }}">Q{{ q.question_number or q.id }}</a></td><td>{{ q.question_text|striptags|truncate(80) }}</td><td>{{ q.marks }}</td><td><span class="pill {{ q.relevance_status }}">{{ q.relevance_status }}</span></td><td><span class="pill {{ q.approval_status }}">{{ q.approval_status }}</span></td><td>{% if q.approval_status == 'pending' %}<a href="/admin/review/{{ q.id }}">review</a>{% endif %}</td></tr>{% endfor %}
+</table></div>
+{% else %}
 <h1>Source registry</h1>
 <p class="lead">Tier 1: authoritative NESA (2027 syllabus) · Tier 2: historical NESA · Tier 3: trial / school (NON-NESA) · Tier 4: generated.</p>
-<div class="card"><table>
-  <tr><th>Tier</th><th>Title</th><th>Organisation</th><th>Year</th><th>Type</th><th>Official</th><th>Questions</th><th>Retrieved</th><th>File / URL</th></tr>
-  {% for s, n in rows %}<tr><td>{{ s.tier }}</td><td>{{ s.title }}{% if s.notes %}<br><span class="tiny muted">{{ s.notes }}</span>{% endif %}</td><td class="small">{{ s.organisation }}</td><td>{{ s.year or '—' }}</td><td class="small">{{ s.source_type }}</td><td>{{ 'yes' if s.official else 'no' }}</td><td>{{ n }}</td><td class="small">{{ s.retrieved_date | fdate('%d %b %Y') }}</td><td class="small">{{ s.local_file or s.url or '—' }}</td></tr>{% endfor %}
+<div class="card ing-table-wrap"><table class="ing-table">
+  <tr><th>Tier</th><th>Title</th><th>Organisation</th><th>Year</th><th>Type</th><th>Official</th><th>Questions</th><th>Import</th><th>Retrieved</th><th>File</th></tr>
+  {% for s, n in rows %}{% set ds = docs.get(s.id, []) %}<tr><td>{{ s.tier }}</td><td><a href="/sources/{{ s.id }}">{{ s.title }}</a>{% if s.notes %}<br><span class="tiny muted">{{ s.notes }}</span>{% endif %}</td><td class="small">{{ s.organisation }}</td><td>{{ s.year or '—' }}</td><td class="small">{{ s.source_type }}</td><td>{{ 'yes' if s.official else 'no' }}</td><td>{{ n }}</td>
+    <td class="small">{% for d in ds if d.kind == 'paper' %}<span class="pill {{ 'bad' if 'fail' in d.status or 'error' in d.status else '' }}">{{ d.status }}</span>{% endfor %}</td>
+    <td class="small">{{ s.retrieved_date | fdate('%d %b %Y') }}</td><td class="small">{% if s.local_file %}<a href="/sources/{{ s.id }}/pdf" target="_blank" rel="noopener">PDF</a>{% elif s.url %}<a href="{{ s.url }}" target="_blank" rel="noopener">web</a>{% else %}—{% endif %}</td></tr>{% endfor %}
 </table></div>
+{% endif %}
 {% endblock %}

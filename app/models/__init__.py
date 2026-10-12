@@ -35,3 +35,4 @@ from app.models.swap import SessionSwap  # noqa: F401  (v2-swap)
 from app.models.followup import FeedbackQuestion  # noqa: F401  (v2-followup)
 from app.models.adaptive import ExposureEvent, PracticeDraft, RevisionSet  # noqa: F401  (v2-adaptive)
 from app.models.legal_logic import LegalEvidenceCheck  # noqa: F401  (v2-legal-logic)
+from app.models.ingestion import QuestionOutcome, QuestionPlanItem, QuestionStimulus, ReviewDecision  # noqa: F401  # v2-ingestion
