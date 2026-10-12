@@ -38,7 +38,10 @@ def _load() -> tuple[dict[str, Callable], set[str]]:
     for name in _MODULE_NAMES:
         try:
             mod = importlib.import_module(f"app.services.{name}")
-        except ModuleNotFoundError:
+        except ModuleNotFoundError as exc:
+            import logging
+
+            logging.getLogger(__name__).error("maths templates %s could not be loaded: %s", name, exc)
             continue
         found = _collect(mod)
         out.update(found)

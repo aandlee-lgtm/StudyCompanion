@@ -144,7 +144,20 @@ def self_test() -> int:
                 ok = ok and code == 200
         from app.services.maths_templates import generate
 
-        ok = ok and generate("1B", 1, 2) is not None
+        from app.services import maths_templates as mt
+
+        g = generate("1B", 1, 2)
+        out(f"maths templates loaded: {len(mt.TEMPLATES)}; 1B generated: {g is not None}")
+        if g is None:
+            try:  # say why, so a packaging problem is visible in the build log
+                fn = mt.TEMPLATES.get("1B")
+                out(f"1B template: {fn}")
+                if fn:
+                    import random as _r
+                    fn(_r.Random(1), 2)
+            except Exception:
+                out(traceback.format_exc())
+        ok = ok and g is not None
         get_engine().dispose()  # release the SQLite file so Windows can delete the folder
     except Exception:
         out(traceback.format_exc())

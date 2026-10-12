@@ -20,7 +20,10 @@ datas = [
 hiddenimports = (
     collect_submodules("app")
     + collect_submodules("uvicorn")
-    + ["sqlalchemy.dialects.sqlite", "python_multipart", "multipart", "fitz", "pdfplumber", "dotenv", "httpx"]
+    + collect_submodules("mpmath")
+    # maths templates are imported by name at run time (app/services/maths_templates._MODULE_NAMES)
+    + [f"app.services.{p.stem}" for p in (ROOT / "app" / "services").glob("maths_tpl_*.py")]
+    + ["PIL.Image", "PIL.ImageOps", "sqlalchemy.dialects.sqlite", "python_multipart", "multipart", "fitz", "pdfplumber", "dotenv", "httpx"]
 )
 
 a = Analysis(
