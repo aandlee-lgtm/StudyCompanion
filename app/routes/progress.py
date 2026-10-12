@@ -15,7 +15,8 @@ router = APIRouter()
 def progress(request: Request, window: str = "30", db: Session = Depends(get_db)):
     if window not in analytics.WINDOWS:
         window = "30"
-    return render(request, "progress.html", r=analytics.progress_report(db, window), readiness=analytics.readiness(db))
+    ds = analytics.Dataset(db)  # one load of the counted answers for both parts of the page
+    return render(request, "progress.html", r=analytics.progress_report(db, window, ds), readiness=analytics.readiness(db, ds))
 
 
 @router.get("/progress/week")

@@ -7,41 +7,78 @@
   </div>
 </div>
 
+<<<<<<< HEAD
 {% include "_legal_topics_notice.html" %}{# v2-legal-logic #}
 
 {% include "_selection_missed.html" %}
+=======
+{% for m in d.missed[:3] %}
+<div class="notice warn spread">
+  <span>You missed the session for <strong>{{ m.session_date | fdate('%A %d %B') }}</strong>. Nothing has piled up.</span>
+  <span class="row">
+    <form method="post" action="/missed/{{ m.id }}/resume"><button class="btn small">Resume missed session</button></form>
+    <form method="post" action="/missed/{{ m.id }}/revision"><button class="btn small">Move important revision forward</button></form>
+    <form method="post" action="/missed/{{ m.id }}/skip"><button class="btn small">Skip</button></form>
+  </span>
+</div>
+{% endfor %}
+{% for u in d.unfinished[:2] %}
+<div class="notice spread">
+  <span>The session for <strong>{{ u.session.session_date | fdate('%A %d %B') }}</strong> has {{ u.left }} question{{ 's' if u.left != 1 }} left (about {{ u.minutes | minutes }}). Your answers so far are saved.</span>
+  <a class="btn small" href="/session/{{ u.session.id }}">Finish it</a>
+</div>
+{% endfor %}
+>>>>>>> v2-analytics
 
 <div class="grid g2">
-  <div class="card hero">
+  <div class="card hero" id="today">
     <div class="label">Today</div>
     {% if d.session and d.session.questions %}
       {% set p = d.session_progress %}
+      {% if p %}
       <div class="stat">{{ p.n_done }} / {{ p.n_total }} questions</div>
-      <p class="muted">Expected {{ d.session.expected_minutes | minutes }} · about {{ p.remaining_minutes | minutes }} remaining</p>
-      <div class="bar"><span style="width: {{ p.pct }}%"></span></div>
+      <p class="muted">Expected {{ d.session.expected_minutes | minutes }}{% if d.session.status != 'completed' %} · about {{ p.remaining_minutes | minutes }} remaining{% endif %}</p>
+      <div class="bar" role="progressbar" aria-valuenow="{{ p.pct }}" aria-valuemin="0" aria-valuemax="100"><span style="width: {{ p.pct }}%"></span></div>
+      {% else %}
+      <div class="stat">{{ d.session.questions | length }} questions</div>
+      <p class="muted">Expected {{ d.session.expected_minutes | minutes }}</p>
+      {% endif %}
       <p class="row" style="margin-top:16px">
         {% if d.session.status == 'completed' %}<a class="btn" href="/session/{{ d.session.id }}/summary">See today's summary</a>
-        {% else %}<a class="btn primary big" href="/today">{{ 'Continue' if p.n_done else 'Start today' }}</a>{% endif %}
+        {% else %}<a class="btn primary big" href="/today">{{ 'Continue' if p and p.n_done else 'Start today' }}</a>{% endif %}
       </p>
     {% elif d.is_study_day %}
-      <div class="stat">11 questions</div>
-      <p class="muted">5 Mathematics · 3 English · 3 Legal Studies · about {{ target }} minutes</p>
+      {% set c = d.daily_counts %}
+      <div class="stat">{{ c.values() | sum }} questions</div>
+      <p class="muted">{{ c.MATHS }} Mathematics · {{ c.ENGLISH }} English · {{ c.LEGAL }} Legal Studies · about {{ target }} minutes</p>
       <p><a class="btn primary big" href="/today">Start today</a></p>
     {% else %}
       <div class="stat">No session today</div>
-      <p class="muted">Sessions run on your study days. You can still do an optional session or revision.</p>
+      <p class="muted">Next session: {{ d.next_study_day | fdate('%A %d %B') }}. You can still do an optional session or revision.</p>
       <p class="row"><a class="btn" href="/today">Optional session</a><a class="btn" href="/review">Revision</a></p>
     {% endif %}
   </div>
-  <div class="grid g2">
-    <div class="card kpi"><div class="label">Streak</div><div class="stat">{{ d.streak }}</div><div class="small muted">study days completed in a row</div></div>
-    <div class="card kpi"><div class="label">This week</div><div class="stat">{{ d.week.questions }}</div><div class="small muted">questions · {{ d.week.minutes | minutes }}{% if d.week.average is not none %} · average {{ d.week.average }}%{% endif %}</div></div>
-    <div class="card kpi"><div class="label">Revision due</div><div class="stat">{{ d.revision_due | length }}</div><div class="small muted"><a href="/review">View revision queue</a></div></div>
-    <div class="card kpi"><div class="label">HSC readiness</div><div class="stat">{{ d.readiness }}</div><div class="small muted"><a href="/progress#readiness">How this is calculated</a></div></div>
+  <div class="grid g2 an-kpis">
+    <div class="card kpi"><div class="label">Streak</div><div class="stat">{{ d.streak }}</div><div class="small muted">study day{{ 's' if d.streak != 1 }} completed in a row</div></div>
+    <div class="card kpi"><div class="label">This week</div><div class="stat">{{ d.week.questions }} <span class="an-unit">questions</span></div>
+      <div class="small muted">{{ d.week.minutes | minutes }} studied{% if d.week.average is not none %} · average {{ d.week.average }}%{% endif %} · {{ d.week.sessions }} session{{ 's' if d.week.sessions != 1 }} completed</div></div>
+    <div class="card kpi"><div class="label">Revision due</div>
+      <div class="stat">{{ d.revision.skills }} <span class="an-unit">skill{{ 's' if d.revision.skills != 1 }}</span></div>
+      <div class="small muted">{% if d.revision.names %}{{ d.revision.names | join(' · ') }}{% else %}Nothing due today{% endif %}{% if d.revision.exact %} · {{ d.revision.exact }} question{{ 's' if d.revision.exact != 1 }} due to be met again{% endif %}</div>
+      <div class="small"><a href="/review">Revision queue</a></div></div>
+    <div class="card kpi"><div class="label">HSC readiness</div>
+      {% set rd = d.readiness %}
+      {% if rd.enough %}<div class="stat">{{ rd.display }}<span class="an-unit">/100</span></div><div class="small muted">{{ rd.band }} · coverage {{ rd.coverage }}% × quality {{ rd.quality }}%</div>
+      {% else %}<div class="stat an-unit-stat">Not enough data</div><div class="small muted">{{ rd.data_points }} counted answer{{ 's' if rd.data_points != 1 }} so far</div>{% endif %}
+      <div class="small"><a href="/progress#readiness">How this is calculated</a></div></div>
   </div>
 </div>
 
-<h2>Subjects</h2>
+{% if d.insight %}
+<div class="card an-insight" style="margin-top:16px"><div class="label">What the last 30 days show</div><p>{{ d.insight }}</p><p class="small"><a href="/progress">Full analysis</a></p></div>
+{% endif %}
+
+<h2>Subject status</h2>
 <div class="grid g3">
   {% for code, ps in d.plan_status.items() %}
   <div class="card">
@@ -49,8 +86,12 @@
     <div class="small"><span class="label">Learning now</span><br>
       {% for it in ps.learning %}{{ it.code ~ ' ' if it.chapter else '' }}{{ it.title }}{% if not loop.last %}; {% endif %}{% else %}<span class="muted">Nothing marked LEARNING</span>{% endfor %}
     </div>
-    <div class="small" style="margin-top:8px"><span class="label">Next</span><br>{% if ps.next %}{{ ps.next.code ~ ' ' if ps.next.chapter else '' }}{{ ps.next.title }}{% else %}—{% endif %}</div>
-    {% if ps.mastery is not none %}<div class="small" style="margin-top:8px"><span class="label">Average mastery</span> {{ ps.mastery }}%</div>{% endif %}
+    <div class="small an-gap"><span class="label">Last 30 days</span><br>
+      {% if ps.recent is not none %}{{ ps.recent }}% across {{ ps.recent_n }} answer{{ 's' if ps.recent_n != 1 }}{% if ps.trend %} · <span class="an-trend {{ ps.trend }}">{{ {'up': 'up on the month before', 'down': 'down on the month before', 'steady': 'steady'}[ps.trend] }}</span>{% endif %}
+      {% else %}<span class="muted">Fewer than 3 answers</span>{% endif %}</div>
+    {% if ps.mastery is not none %}<div class="small an-gap"><span class="label">Average mastery (started topics)</span> {{ ps.mastery }}%</div>{% endif %}
+    {% set b = d.bank[code] %}
+    {% if b %}<div class="small an-gap"><span class="label">Question bank</span> <span class="pill {{ b.level }}">{{ b.headline }}</span></div>{% endif %}
   </div>
   {% endfor %}
 </div>
@@ -58,12 +99,14 @@
 <div class="grid g3" style="margin-top:16px">
   <div class="card">
     <h3>Weak areas</h3>
-    {% for item, m in d.weak %}<div class="spread small"><span>{{ item.code ~ ' ' if item.chapter else '' }}{{ item.title }}</span><span class="pill bad">{{ (m.mastery*100)|round|int }}%</span></div>
-    {% else %}<p class="small muted">None identified yet.</p>{% endfor %}
+    <p class="tiny muted">Last 60 days, topics with at least 3 answers below 60%.</p>
+    {% for w in d.weak %}<div class="spread small an-line"><span><span class="subj-{{ w.subject }}">{{ SUBJECT_SHORT[w.subject] }}</span> · {{ w.name }}{% if w.issue %}<br><span class="tiny muted">most common issue: {{ w.issue }}</span>{% endif %}</span><span class="pill bad">{{ w.pct }}% <span class="an-n">({{ w.n }})</span></span></div>
+    {% else %}<p class="small muted">None identified: no topic with 3 or more answers is below 60%.</p>{% endfor %}
   </div>
   <div class="card">
     <h3>Recent improvement</h3>
-    {% for line in d.improvement %}<p class="small">{{ line }}</p>{% else %}<p class="small muted">Shown once there is a week of results to compare.</p>{% endfor %}
+    <p class="tiny muted">Last 14 days compared with the 4 weeks before.</p>
+    {% for line in d.improvement %}<p class="small">{{ line }}</p>{% else %}<p class="small muted">No topic has risen by 10 points or more yet (each needs 3 answers in both periods).</p>{% endfor %}
   </div>
   <div class="card">
     <h3>Next topics</h3>
@@ -72,5 +115,21 @@
   </div>
 </div>
 
+<<<<<<< HEAD
 <div style="margin-top:16px">{% include "_selection_bank_health.html" %}</div>{# selection-17: needs `health` #}
+=======
+<h2>Question bank health</h2>
+<p class="small muted">How long the current topics can be practised with questions you have not seen before. Repeats are still useful, but fresh questions test understanding rather than memory.</p>
+<div class="grid g3">
+  {% for code, b in d.bank.items() %}
+  <div class="card an-bank">
+    <div class="spread"><h3 class="subj-{{ code }}">{{ SUBJECT_SHORT[code] }}</h3><span class="pill {{ b.level }}">{{ {'good': 'Healthy', 'warn': 'Running low', 'bad': 'Repeating'}[b.level] }}</span></div>
+    <p class="small"><strong>{{ b.headline }}.</strong></p>
+    {% for line in b.lines %}<p class="small muted">{{ line }}</p>{% endfor %}
+    {% if b.empty_learning %}<p class="small an-warn-text">No questions yet for: {{ b.empty_learning | join('; ') }}.</p>{% endif %}
+    {% if b.level != 'good' or b.empty_learning %}<p class="small"><a href="/admin/import">Import material</a> · <a href="/questions?subject={{ code }}">Question library</a></p>{% endif %}
+  </div>
+  {% endfor %}
+</div>
+>>>>>>> v2-analytics
 {% endblock %}

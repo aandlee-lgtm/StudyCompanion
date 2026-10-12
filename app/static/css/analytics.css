@@ -1,0 +1,34 @@
+/* Analytics screens: dashboard, progress, weekly and monthly reviews, session summary (owner: analytics). */
+.an-unit { font-size: .95rem; font-weight: 500; color: var(--muted); }
+.an-unit-stat { font-size: 1.2rem; }
+.an-gap { margin-top: 8px; }
+.an-line { padding: 4px 0; border-bottom: 1px solid var(--line); }
+.an-line:last-child { border-bottom: none; }
+.an-n { font-weight: 400; opacity: .8; }
+.an-trend.up { color: var(--good); } .an-trend.down { color: var(--bad); } .an-trend.steady { color: var(--muted); }
+.an-warn-text { color: var(--warn); }
+.an-insight { border-left: 3px solid var(--accent); }
+.an-insights { list-style: none; padding: 0; margin: 0; }
+.an-insights li { padding: 10px 0; border-bottom: 1px solid var(--line); }
+.an-insights li:last-child { border-bottom: none; }
+.an-insights li.warn { border-left: 3px solid var(--warn); padding-left: 12px; }
+.an-insights li.good { border-left: 3px solid var(--good); padding-left: 12px; }
+.an-insights li.info { border-left: 3px solid var(--line); padding-left: 12px; }
+.an-basis { display: block; font-size: .78rem; color: var(--muted); margin-top: 2px; }
+.an-metrics { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px 14px; }
+.an-metrics > div { min-width: 0; }
+.an-table { width: 100%; border-collapse: collapse; }
+.an-table th, .an-table td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.an-table td.num, .an-table th.num { text-align: right; white-space: nowrap; }
+.an-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.an-readiness { display: flex; gap: 18px; align-items: baseline; flex-wrap: wrap; }
+.an-readiness .stat { font-size: 2.4rem; }
+.an-sub { margin: 4px 0 0 0; padding-left: 18px; }
+.an-sub li { margin: 2px 0; }
+details.an-details > summary { cursor: pointer; color: var(--accent); font-size: .88rem; }
+.an-review dt { font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 600; margin-top: 14px; }
+.an-review dd { margin: 4px 0 0 0; }
+@media (max-width: 600px) {
+  .an-readiness .stat { font-size: 2rem; }
+  .an-table th, .an-table td { padding: 5px 4px; }
+}
