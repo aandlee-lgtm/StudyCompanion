@@ -190,6 +190,9 @@
           <div><div class="label">Your answer</div><p>{{ fb.student_answer }}</p></div>
           <div><div class="label">Mark</div><p>{{ fb.mark|round(1) }} / {{ fb.max }}</p></div>
         </div>
+        {% if fb.working or submitted_photos %}<div class="submitted-work"><div class="label">Your working</div>
+          {% if fb.working %}{{ fb.working | paras }}{% endif %}
+          {% for p in submitted_photos %}<a href="{{ p.url }}" target="_blank"><img src="{{ p.url }}" alt="Your working, page {{ p.page }}"></a>{% endfor %}</div>{% endif %}
         {% if fb.divergence %}<div class="notice bad"><strong>Where your reasoning diverged.</strong> {{ fb.divergence }}</div>{% endif %}
         {% if fb.concept %}<h3>Key idea</h3><p>{{ fb.concept }}</p>{% endif %}
         <p class="small muted">The correct answer and the full worked solution are hidden so you can try again with this hint. Choose “Show full solution” to see everything.</p>

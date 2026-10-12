@@ -16,3 +16,11 @@
 .maths-mcq { border: none; padding: 0; margin: 8px 0 12px; }
 .maths-mcq label.check { padding: 4px 0; }
 .maths-part select { min-width: 12rem; }
+
+.photo-working { border: 1px dashed var(--line); border-radius: 8px; padding: 10px; }
+.photo-working.drag { background: var(--soft, rgba(0,0,0,.04)); }
+.photo-thumbs { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+.photo-thumb { margin: 0; width: 140px; }
+.photo-thumb img { width: 140px; height: 105px; object-fit: cover; border: 1px solid var(--line); border-radius: 6px; }
+.photo-thumb figcaption { font-size: 12px; display: flex; justify-content: space-between; }
+.submitted-work img { max-width: 100%; border: 1px solid var(--line); border-radius: 6px; margin-top: 6px; }

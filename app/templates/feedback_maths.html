@@ -4,6 +4,13 @@
     <p>{{ fb.student_answer }}{% if fb.student_latex and not fb.parts %} <span class="muted small">read as \({{ fb.student_latex }}\)</span>{% elif fb.student_parsed and fb.student_parsed != fb.student_answer and not fb.parts %} <span class="muted small">(read as {{ fb.student_parsed }})</span>{% endif %}</p></div>
   <div><div class="label">Correct answer</div><p>\({{ fb.correct_answer }}\)</p></div>
 </div>
+{% if fb.working or submitted_photos %}
+<div class="submitted-work">
+  <div class="label">Your working</div>
+  {% if fb.working and not fb.working.startswith('(handwritten working:') %}{{ fb.working | paras }}{% endif %}
+  {% for p in submitted_photos %}<a href="{{ p.url }}" target="_blank"><img src="{{ p.url }}" alt="Your working, page {{ p.page }}"></a>{% endfor %}
+</div>
+{% endif %}
 {% if fb.parts %}
 <table class="maths-parts-table">
   <thead><tr><th>Part</th><th>Your answer</th><th>Correct</th><th>Mark</th></tr></thead>
@@ -32,4 +39,4 @@
 {% if fb.technique %}<h3>Exam technique</h3><p>{{ fb.technique }}</p>{% endif %}
 <h3>Syllabus</h3><p class="small">{{ fb.outcome or '—' }}{% if fb.skill %}<br><span class="muted">Skill assessed:</span> {{ fb.skill }}{% endif %}</p>
 {% if fb.revision %}<h3>Recommended revision</h3><p class="small">{{ fb.revision }}</p>{% endif %}
-{% if fb.working %}<details><summary>Your working</summary>{{ fb.working | paras }}</details>{% endif %}
+

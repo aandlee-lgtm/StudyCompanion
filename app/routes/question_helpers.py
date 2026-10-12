@@ -73,6 +73,12 @@ def role_label(a: Attempt) -> str:
     return text
 
 
+def _photos(db: Session, a: Attempt | None) -> list[dict]:
+    from app.services import working_photos
+
+    return [working_photos.public(p) for p in working_photos.for_attempt(db, a.id)] if a is not None else []
+
+
 def question_context(db: Session, q: Question, sq: SessionQuestion | None, retry: bool) -> dict:
     today = clock.today(st.get(db, "timezone"))
     cls = core.classify(db, q, sq, today)
@@ -105,6 +111,7 @@ def question_context(db: Session, q: Question, sq: SessionQuestion | None, retry
             "next_evidence": cls, "role_label": role_label, "ladder": criteria_ladder(q),
             "reading": q.stimulus.reading_set() if q.stimulus else [], "ask_confidence": st.get(db, "ask_confidence"),
             "rebuild": rebuild,
+            "submitted_photos": _photos(db, latest),
             "image": ("/media/" + q.question_image.split("/")[-1]) if q.question_image else None}
 
 
@@ -113,6 +120,11 @@ def do_submit(db: Session, q: Question, sq: SessionQuestion | None, answer: str,
         raise ValueError("Write an answer first, or choose 'Show answer / skip'.")
     attempt = assessment.submit(db, q, answer, sq=sq, working=working or None, confidence=confidence or None, time_seconds=time_seconds,
                                 skipped=skipped)
+    from app.services import working_photos
+
+    for photo in working_photos.pending_any(db, q.id):  # photos of working stay with this answer
+        photo.attempt_id = attempt.id
+    db.flush()
     if sq is not None:
         sq.draft_text = None
         sessions.maybe_complete(db, sq.session)

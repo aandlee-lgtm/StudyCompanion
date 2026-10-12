@@ -235,11 +235,18 @@ def mark_deterministic(db: Session, q: Question, response: str, working: str | N
         divergence = (res.diagnosis or "") + (f" Compare your working with step {step_no} of the worked solution." if step_no else "")
 
     method_note = None
+    from app.services import working_photos as wp
+
+    photos = wp.pending_any(db, q.id)  # photos of handwritten working, attached to the attempt after marking
+    if photos:
+        working = (working or "").strip() or f"(handwritten working: {len(photos)} photo{'s' if len(photos) != 1 else ''} attached)"
     if not correct and working and working.strip() and q.marks >= 2:
         provider = get_provider(settings)
         if provider.generative:
             try:
-                r = provider.mark_response(written_ctx(db, q, f"FINAL ANSWER: {response}\nWORKING:\n{working}", settings, maths=True))
+                ctx = written_ctx(db, q, f"FINAL ANSWER: {response}\nWORKING:\n{working}", settings, maths=True)
+                imgs = wp.images(photos) if photos and getattr(provider, "vision", False) else None
+                r = provider.mark_response(ctx, images=imgs) if imgs else provider.mark_response(ctx)
                 mark = min(float(q.marks) - 1, max(mark, r.mark_awarded))  # method marks only; the answer is wrong
                 method_note = f"Method marks assessed by AI from your working ({NO_OFFICIAL}): {r.marking_rationale or '; '.join(r.weaknesses[:2])}"
             except (AIError, AIUnavailable) as exc:

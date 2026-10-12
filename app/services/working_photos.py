@@ -132,6 +132,12 @@ def pending(db: Session, question_id: int, sq_id: int | None) -> list[WorkingPho
     return list(db.scalars(stmt.order_by(WorkingPhoto.page, WorkingPhoto.id)))
 
 
+def pending_any(db: Session, question_id: int) -> list[WorkingPhoto]:
+    """Unsubmitted photos for a question, whichever session they were added in."""
+    return list(db.scalars(select(WorkingPhoto).where(WorkingPhoto.question_id == question_id, WorkingPhoto.attempt_id.is_(None))
+                           .order_by(WorkingPhoto.page, WorkingPhoto.id)))
+
+
 def for_attempt(db: Session, attempt_id: int) -> list[WorkingPhoto]:
     return list(db.scalars(select(WorkingPhoto).where(WorkingPhoto.attempt_id == attempt_id).order_by(WorkingPhoto.page, WorkingPhoto.id)))
 

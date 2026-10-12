@@ -218,3 +218,44 @@ def test_reading_schema_limits():
     r = WorkingReading.model_validate({"part_answers": {f"p{i}": "x" * 900 for i in range(30)}, "final_answer": "1"})
     assert len(r.part_answers) == 12 and all(len(v) == 400 for v in r.part_answers.values())
     assert json.loads(r.model_dump_json())["final_answer"] == "1"
+
+
+# ------------------------------------------------------------- answer flow ---
+def _session_maths(client, db):
+    import re
+    r = client.get("/today", follow_redirects=True)
+    for link in sorted(set(re.findall(r'href="(/session/\d+/q/\d+)"', r.text))):
+        page = client.get(link).text
+        if "data-photos" in page:
+            qid = int(re.search(r'data-qid="(\d+)"', page).group(1))
+            sq = re.search(r'data-sq="(\d*)"', page).group(1)
+            return link, qid, sq
+    pytest.skip("no maths question in today's session")
+
+
+def test_photo_on_maths_question_is_kept_with_the_answer_and_shown(client, db):
+    link, qid, sq = _session_maths(client, db)
+    client.post("/api/working-photos", data={"question_id": qid, "sq_id": sq}, files=[("files", ("p.jpg", _photo(), "image/jpeg"))])
+    r = client.post(link + "/submit", data={"answer": "12345", "working": "my steps", "confidence": "unsure", "time_seconds": "30"},
+                    follow_redirects=True)
+    assert r.status_code == 200
+    db.expire_all()
+    a = db.scalars(select(Attempt).where(Attempt.question_id == qid)).first()
+    photos = wp.for_attempt(db, a.id)
+    assert len(photos) == 1 and wp.pending_any(db, qid) == []
+    page = client.get(link).text
+    assert "Your working" in page and f"/working-photos/{photos[0].id}" in page and "my steps" in page
+
+
+def test_photos_reach_ai_method_marking(client, db):
+    from tests.fakes import marking_json
+
+    link, qid, sq = _session_maths(client, db)
+    q = db.get(Question, qid)
+    if q.marks < 2:
+        pytest.skip("1-mark question: no method marks")
+    client.post("/api/working-photos", data={"question_id": qid, "sq_id": sq}, files=[("files", ("p.jpg", _photo(), "image/jpeg"))])
+    fake = FakeProvider(default=json.loads(marking_json(mark=1, possible=q.marks)))
+    factory.set_test_provider(fake)
+    client.post(link + "/submit", data={"answer": "12345", "working": "", "confidence": "unsure", "time_seconds": "30"})
+    assert any(imgs for imgs in fake.images), "the photo should be sent with the marking request"

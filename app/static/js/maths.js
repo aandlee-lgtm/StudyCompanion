@@ -63,3 +63,74 @@
     form.addEventListener("submit", compose);
   });
 })();
+
+// Photos of handwritten working (upload, remove, and ask Claude to read the final answer).
+(function () {
+  const box = document.querySelector('[data-photos]');
+  if (!box) return;
+  const qid = box.dataset.qid, sq = box.dataset.sq;
+  const thumbs = box.querySelector('[data-photo-thumbs]');
+  const status = box.querySelector('[data-photo-status]');
+  const readBtn = box.querySelector('[data-photo-read]');
+  const reading = box.querySelector('[data-photo-reading]');
+  const say = (t) => { status.textContent = t || ''; };
+  function render(data) {
+    thumbs.innerHTML = '';
+    (data.photos || []).forEach((p) => {
+      const fig = document.createElement('figure');
+      fig.className = 'photo-thumb';
+      fig.innerHTML = `<a href="${p.url}" target="_blank"><img src="${p.url}" alt="Working, page ${p.page}"></a>` +
+        `<figcaption>Page ${p.page} <button type="button" class="link small">Remove</button></figcaption>`;
+      fig.querySelector('button').onclick = async () => {
+        const r = await fetch(`/api/working-photos/${p.id}`, { method: 'DELETE' });
+        render(await r.json());
+      };
+      thumbs.appendChild(fig);
+    });
+    readBtn.hidden = !(data.photos || []).length;
+    if (data.errors && data.errors.length) say(data.errors.join(' ')); else if (data.photos) say(data.photos.length ? `${data.photos.length} page${data.photos.length > 1 ? 's' : ''} added` : '');
+  }
+  async function upload(files) {
+    if (!files || !files.length) return;
+    const fd = new FormData();
+    fd.append('question_id', qid);
+    if (sq) fd.append('sq_id', sq);
+    [...files].forEach((f) => fd.append('files', f));
+    say('Uploading…');
+    try { render(await (await fetch('/api/working-photos', { method: 'POST', body: fd })).json()); }
+    catch (e) { say('The photo could not be uploaded. Try again.'); }
+  }
+  box.querySelector('[data-photo-input]').addEventListener('change', (e) => { upload(e.target.files); e.target.value = ''; });
+  box.addEventListener('dragover', (e) => { e.preventDefault(); box.classList.add('drag'); });
+  box.addEventListener('dragleave', () => box.classList.remove('drag'));
+  box.addEventListener('drop', (e) => { e.preventDefault(); box.classList.remove('drag'); upload(e.dataTransfer.files); });
+  document.addEventListener('paste', (e) => {
+    const files = [...(e.clipboardData || {}).files || []].filter((f) => f.type.startsWith('image/'));
+    if (files.length) upload(files);
+  });
+  readBtn.addEventListener('click', async () => {
+    const fd = new FormData();
+    fd.append('question_id', qid);
+    if (sq) fd.append('sq_id', sq);
+    readBtn.disabled = true; say('Reading your handwriting… this can take a little while.');
+    try {
+      const r = await fetch('/api/working-photos/read', { method: 'POST', body: fd });
+      const data = await r.json();
+      if (!data.ok) { say(''); reading.hidden = false; reading.textContent = data.error; return; }
+      const rd = data.reading;
+      const ans = document.getElementById('ans');
+      const parts = Object.entries(rd.part_answers || {});
+      if (ans && parts.length) ans.value = parts.map(([k, v]) => `(${k}) ${v}`).join('\n');
+      else if (ans && rd.final_answer) ans.value = rd.final_answer;
+      if (ans) ans.dispatchEvent(new Event('input', { bubbles: true }));
+      const work = document.getElementById('work');
+      if (work && rd.working_text && !work.value.trim()) work.value = rd.working_text;
+      reading.hidden = false;
+      reading.textContent = (rd.legible ? 'Check what was read before you submit — fix anything that is wrong.' : 'The photo was hard to read — please check or type your answer.') +
+        (rd.unclear && rd.unclear.length ? ' Unclear: ' + rd.unclear.join('; ') : '');
+      say('');
+    } catch (e) { say('The photo could not be read. Type your answer instead.'); }
+    finally { readBtn.disabled = false; }
+  });
+  fetch(`/api/working-photos?question_id=${qid}${sq ? `&sq_id=${sq}` : ''}`).then((r) => r.json()).then(render).catch(() => {});
+})();

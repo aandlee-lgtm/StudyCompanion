@@ -44,3 +44,14 @@
         <label for="work">Working (optional, recommended)</label>
         <textarea id="work" name="working" rows="6" placeholder="Show your steps as you would in the exam — recognisable intermediate results (e.g. the derivative) can earn method marks.">{{ draft_working }}</textarea>
       </div>
+      <div class="field photo-working" data-photos data-qid="{{ q.id }}" data-sq="{{ sq.id if sq else '' }}" data-max="6">
+        <label>Photo of your working <span class="tiny muted">(optional — instead of, or as well as, typing it)</span></label>
+        <div class="row">
+          <label class="btn small"><input type="file" accept="image/*" multiple hidden data-photo-input> Add photo of working</label>
+          <button class="btn small" type="button" data-photo-read hidden>Read my answer from the photo</button>
+          <span class="tiny muted" data-photo-status></span>
+        </div>
+        <p class="tiny muted">Take the photo on your phone and AirDrop it to this Mac, then choose it here — or drag it onto this box, or paste it. Up to 6 pages. The photos are kept with your answer.</p>
+        <div class="photo-thumbs" data-photo-thumbs></div>
+        <div class="notice small" data-photo-reading hidden></div>
+      </div>
