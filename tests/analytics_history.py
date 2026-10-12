@@ -39,6 +39,8 @@ DEFAULT_SKILL = 0.62
 
 
 def _skill(code: str | None) -> float:
+    if code and code.startswith("LS-") and code.count("-") >= 2:  # Legal sub-areas share their topic's skill
+        code = "-".join(code.split("-")[:2])
     if code in STRONG_ITEMS:
         return STRONG_ITEMS[code]
     if code in WEAK_ITEMS:

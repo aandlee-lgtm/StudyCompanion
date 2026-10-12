@@ -244,7 +244,7 @@ def test_progress_numbers_and_specific_interpretations(hist):
     for i in rep["insights"]:
         assert any(ch.isdigit() for ch in i["text"]) and i["basis"]
     weakest = [w["name"] for w in rep["weakest"]]
-    assert "Human rights" in weakest
+    assert any(w.startswith("Human rights") for w in weakest)  # a Human rights sub-area
     assert all(w["n"] >= 3 and w["pct"] < 60 for w in rep["weakest"])
     assert rep["coverage"] and {c["level"] for c in rep["coverage"]} <= {"GOOD", "MODERATE", "LIMITED", "NONE"}
     # windows narrow the data

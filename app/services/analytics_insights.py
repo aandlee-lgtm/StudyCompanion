@@ -112,7 +112,16 @@ def _n(n: int, word: str = "answer") -> str:
 
 # ------------------------------------------------------------------ rules ---
 def _item_gap(ds: Dataset, code: str, facts: list[Fact]) -> list[Insight]:
-    groups = {k: v for k, v in _group(facts, lambda f: f.plan_item_id).items() if len(v) >= MIN_GROUP}
+    by_code = {i.code: iid for iid, i in ds.items.items()}
+
+    def topic(f: Fact):
+        # Legal sub-areas (LS-CRIME-TRIAL, ...) are compared at topic level (LS-CRIME), as students think of them
+        item = ds.items.get(f.plan_item_id)
+        if item is not None and code == "LEGAL" and item.code.count("-") >= 2:
+            return by_code.get("-".join(item.code.split("-")[:2]), f.plan_item_id)
+        return f.plan_item_id
+
+    groups = {k: v for k, v in _group(facts, topic).items() if len(v) >= MIN_GROUP}
     if len(groups) < 2:
         return []
     ranked = sorted(groups.items(), key=lambda kv: _avg(kv[1]))
