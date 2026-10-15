@@ -62,9 +62,10 @@ class ClaudeCodeProvider(AIProvider):
             raise AIError(f"Claude Code failed: {err[0][:200]}")
         if data.get("is_error") or data.get("subtype", "success") != "success":
             msg = str(data.get("result") or data.get("subtype") or "error")
-            if "login" in msg.lower() or "auth" in msg.lower():
+            low = msg.lower()
+            if "/login" in low or "not logged in" in low or "invalid api key" in low or "please log in" in low:
                 msg = "Claude Code is not signed in — open Terminal, run 'claude' and log in with your Claude account"
-            elif "limit" in msg.lower():
+            elif "usage limit" in low or "limit reached" in low:
                 msg = "Your Claude subscription's usage limit has been reached; the app will mark offline until it resets"
             raise AIError(msg[:300])
         text = data.get("result") or ""
