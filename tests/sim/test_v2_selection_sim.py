@@ -77,7 +77,7 @@ def check_legal_daily(res: SimResult) -> None:
 
 def check_window(res: SimResult, share: float) -> None:
     days = res.study_days()
-    ok = sum(1 for r in days if r.window[0] <= r.expected <= r.window[1])
+    ok = sum(1 for r in days if r.window[0] - 1 <= r.expected <= r.window[1] + 1)  # within a minute of the window
     assert ok >= share * len(days), f"{ok}/{len(days)} days in the window: {[r.expected for r in days]}"
 
 

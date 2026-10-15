@@ -36,6 +36,9 @@ def seeded_template(tmp_path_factory):
     from app.db import get_engine
 
     d = tmp_path_factory.mktemp("seeded_template")
+    from app.services import seed as _seed
+
+    _seed.RETIRE_AI = False  # the shared template keeps the full English bank (see data_dir)
     old = config.data_dir
     config.data_dir = d
     try:
