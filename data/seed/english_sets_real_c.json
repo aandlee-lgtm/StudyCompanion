@@ -1,0 +1,1960 @@
+{
+ "_note": "REAL published texts in the public domain in Australia (authors who died before 1955), reproduced verbatim for unseen-text practice; each set records author, provenance and source. Questions, marking criteria, checklists and model answers are app-authored (not official NESA marking guidelines). Every quotation in a model answer appears verbatim in its passage (verified by script).",
+ "sets": [
+  {
+   "key": "real-c-owen-hardy-soldiers",
+   "title": "Anthem for Doomed Youth",
+   "form": "Poetry",
+   "complexity": 3,
+   "author": "Wilfred Owen",
+   "provenance": "public_domain",
+   "source": "Anthem for Doomed Youth, in Poems (ed. Siegfried Sassoon), Chatto & Windus, 1920 (written 1917)",
+   "headnote": "Wilfred Owen, a British officer on the Western Front, drafted this sonnet in 1917 at Craiglockhart War Hospital, where he was being treated for shell shock. He was killed in November 1918 and the poem was published after his death.",
+   "theme_tags": [
+    "war",
+    "grief",
+    "ritual",
+    "loss of youth"
+   ],
+   "body": "What passing-bells for these who die as cattle?\n— Only the monstrous anger of the guns.\nOnly the stuttering rifles' rapid rattle\nCan patter out their hasty orisons.\nNo mockeries now for them; no prayers nor bells;\nNor any voice of mourning save the choirs,—\nThe shrill, demented choirs of wailing shells;\nAnd bugles calling for them from sad shires.\n\nWhat candles may be held to speed them all?\nNot in the hands of boys, but in their eyes\nShall shine the holy glimmers of goodbyes.\nThe pallor of girls' brows shall be their pall;\nTheir flowers the tenderness of patient minds,\nAnd each slow dusk a drawing-down of blinds.",
+   "pair": {
+    "title": "The Man He Killed",
+    "form": "Poetry",
+    "author": "Thomas Hardy",
+    "provenance": "public_domain",
+    "source": "The Man He Killed, in Time's Laughingstocks and Other Verses, Macmillan, 1909 (first published 1902)",
+    "headnote": "Thomas Hardy wrote this dramatic monologue during the Boer War (1899–1902). The speaker is an ordinary working man; a nipperkin is a small measure of drink, and to 'list is to enlist.",
+    "body": "“Had he and I but met\nBy some old ancient inn,\nWe should have sat us down to wet\nRight many a nipperkin!\n\n“But ranged as infantry,\nAnd staring face to face,\nI shot at him as he at me,\nAnd killed him in his place.\n\n“I shot him dead because —\nBecause he was my foe,\nJust so: my foe of course he was;\nThat's clear enough; although\n\n“He thought he'd 'list, perhaps,\nOff-hand like — just as I —\nWas out of work — had sold his traps —\nNo other reason why.\n\n“Yes; quaint and curious war is!\nYou shoot a fellow down\nYou'd treat if met where any bar is,\nOr help to half-a-crown.”"
+   },
+   "questions": [
+    {
+     "marks": 2,
+     "verb": "Identify",
+     "demand": "identify",
+     "text": "In Text 2, identify ONE way the speaker's language reveals his uncertainty about why he killed the other man.",
+     "skill_tags": [
+      "voice",
+      "punctuation",
+      "repetition"
+     ],
+     "criteria": [
+      {
+       "mark": 2,
+       "descriptor": "Precisely identifies one way the speaker's language reveals his uncertainty and explains its significance with apt, accurately quoted evidence"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Identifies a relevant feature of one way the speaker's language reveals his uncertainty with little or no explanation"
+      }
+     ],
+     "checklist": [
+      "Identifies a relevant feature, such as the repetition and dash in \"I shot him dead because — / Because he was my foe\"",
+      "Explains that the hesitation shows the speaker cannot find a convincing reason",
+      "Supports the answer with an accurate quotation"
+     ],
+     "next_steps": {
+      "0": "Find a line where the speaker stops, repeats himself or breaks off, and quote it.",
+      "1": "Explain what the hesitation reveals: the official reason for killing does not satisfy the speaker himself."
+     },
+     "model": "The speaker's hesitant repetition reveals his uncertainty. He begins confidently, \"I shot him dead because —\", but the dash breaks the line and he can only repeat himself: \"Because he was my foe.\" The over-insistent \"Just so: my foe of course he was; / That's clear enough\" sounds like a man trying to convince himself, and the stanza ends on \"although\", which undermines everything before it. The halting syntax shows that the official reason for killing does not satisfy him.",
+     "difficulty": 2
+    },
+    {
+     "marks": 4,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "In Text 1, analyse how Owen contrasts the rituals of a traditional funeral with the reality of death on the battlefield.",
+     "skill_tags": [
+      "sound devices",
+      "imagery",
+      "structure",
+      "sonnet form"
+     ],
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Provides a perceptive, sustained analysis of how Owen contrasts funeral rituals with the reality of battlefield death, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a thoughtful analysis of how Owen contrasts funeral rituals with the reality of battlefield death, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how Owen contrasts funeral rituals with the reality of battlefield death, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how Owen contrasts funeral rituals with the reality of battlefield death or identifies a relevant technique with little explanation of its effect"
+      }
+     ],
+     "checklist": [
+      "Makes a claim: the dead soldiers are denied every dignified ritual, which is replaced by the noise of war or moved to the grieving home",
+      "Analyses the rhetorical question and simile \"who die as cattle\" and the answer \"the monstrous anger of the guns\"",
+      "Analyses the alliteration and onomatopoeia of \"stuttering rifles' rapid rattle\" and \"wailing shells\"",
+      "Analyses the shift in the sestet to quiet domestic mourning, such as \"each slow dusk a drawing-down of blinds\"",
+      "Comments on the sonnet form and the move from loud octave to quiet sestet"
+     ],
+     "next_steps": {
+      "0": "State what the poem says about funerals for the soldiers, and quote the opening question.",
+      "1": "Analyse how sound imagery in the octave replaces the bells and prayers of a funeral, naming the techniques.",
+      "2": "Add analysis of the sestet: show how the rituals are relocated to the faces and homes of those left behind.",
+      "3": "Explain how the sonnet's structure, from noise to silence, shapes the contrast and Owen's purpose."
+     },
+     "model": "Owen's sonnet systematically measures the rituals of a Christian funeral against the battlefield and finds that the soldiers receive none of them. The opening rhetorical question, \"What passing-bells for these who die as cattle?\", sets up the contrast: bells honour the individual dead, but the simile reduces the soldiers to animals slaughtered in mass. The answer substitutes noise for ritual: \"Only the monstrous anger of the guns.\" The alliteration and onomatopoeia of \"the stuttering rifles' rapid rattle\" mimic gunfire, while \"patter out their hasty orisons\" turns prayer into something mechanical and rushed. Even the choir becomes \"The shrill, demented choirs of wailing shells\", personification that makes the artillery a mad parody of mourning, and the speaker dismisses conventional religion as \"mockeries\".\n\nThe sestet answers the second question by relocating the rituals to those left at home. Candles become \"the holy glimmers of goodbyes\" in boys' eyes, the funeral cloth becomes \"The pallor of girls' brows\", and the final image, \"each slow dusk a drawing-down of blinds\", turns a household custom of mourning into a daily, unending grief. The sonnet's movement from the clamour of the octave to this hushed, slow close enacts Owen's point: the only true funeral rites are the private sorrow of those who loved the dead.",
+     "difficulty": 2
+    },
+    {
+     "marks": 6,
+     "verb": "Compare",
+     "demand": "compare",
+     "text": "Compare how Text 1 and Text 2 challenge accepted attitudes towards soldiers and killing in war.",
+     "skill_tags": [
+      "comparison",
+      "voice",
+      "form",
+      "context"
+     ],
+     "criteria": [
+      {
+       "mark": 6,
+       "descriptor": "Provides a perceptive, integrated comparison of how the two poems challenge accepted attitudes towards soldiers and killing in war, analysing similarities and differences with well-chosen evidence from both texts"
+      },
+      {
+       "mark": 5,
+       "descriptor": "Provides a thoughtful comparison of how the two poems challenge accepted attitudes towards soldiers and killing in war, with relevant, analysed evidence from both texts"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Provides a sound comparison of how the two poems challenge accepted attitudes towards soldiers and killing in war, with relevant evidence from both texts and some explanation"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Discusses both texts in relation to how the two poems challenge accepted attitudes towards soldiers and killing in war, mostly separately, with some evidence"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Describes one or both texts with limited reference to how the two poems challenge accepted attitudes towards soldiers and killing in war"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Makes a limited or general comment about one or both texts"
+      }
+     ],
+     "checklist": [
+      "States a comparative thesis: Owen challenges the idea of a dignified death through elegiac outrage; Hardy challenges the idea of the enemy through a plain, puzzled voice",
+      "Contrasts the dehumanised mass \"these who die as cattle\" with the individual \"fellow\" of Text 2",
+      "Compares voice: Owen's formal, bitter lament against Hardy's colloquial dramatic monologue \"Off-hand like — just as I —\"",
+      "Compares form: the elegiac sonnet against the ballad-like quatrains and ironic final stanza",
+      "Evaluates the effect on the reader of \"quaint and curious war is!\" and \"a drawing-down of blinds\""
+     ],
+     "next_steps": {
+      "0": "Write a thesis that names the accepted attitude each poem challenges and how.",
+      "1": "Use one quotation from each poem that shows how the poet presents the soldiers.",
+      "2": "Analyse how each poet's voice challenges the reader: Owen's bitter elegy against Hardy's ordinary speaker.",
+      "3": "Compare the forms: explain how the sonnet and the simple quatrains each shape the poem's challenge.",
+      "4": "Integrate your comparison so that each paragraph discusses both poems, and analyse the closing lines of each.",
+      "5": "Refine your thesis with a judgement about the different emotional effects of the two challenges, supported by precise analysis."
+     },
+     "model": "Both poems challenge comfortable public attitudes to war, but from opposite directions. Owen, writing as an officer grieving his men, attacks the belief that soldiers die nobly and are honoured; Hardy, voicing an ordinary infantryman, attacks the belief that the man one kills is truly an enemy. Owen's challenge is elegiac and angry; Hardy's is quiet, ironic and all the more unsettling for its plainness.\n\nThe poems differ first in how they see the soldier. Owen's soldiers are an anonymous mass, \"these who die as cattle\", denied even individual burial rites, and his outrage lies in that dehumanisation. Hardy works in reverse: he restores individuality to the enemy. The man killed becomes a mirror of the speaker, one who \"thought he'd 'list, perhaps, / Off-hand like — just as I — / Was out of work\". The dashes imitate a mind slowly discovering that the \"foe\" was simply another poor man, so the accepted category of enemy collapses.\n\nVoice and form intensify each challenge. Owen adopts the elevated sonnet, the form of love and praise, and fills it with \"monstrous anger\" and \"wailing shells\", so the form itself becomes ironic: this is an anthem that refuses to celebrate. Hardy's short ballad-like quatrains and colloquial diction, \"Right many a nipperkin!\", give us a pub conversation rather than a lament. The jaunty rhythm clashes with the subject, and the hesitation of \"because — / Because he was my foe\" exposes the official justification as hollow.\n\nThe endings show the difference most clearly. Owen closes in mourning, \"each slow dusk a drawing-down of blinds\", moving the reader to grief for those at home. Hardy closes with understatement: \"Yes; quaint and curious war is!\" The inadequate adjectives are deliberately absurd, inviting the reader to supply the moral judgement the speaker cannot. Owen therefore makes us feel the cost of war, while Hardy makes us question its logic, and together they dismantle both the glory of dying and the justice of killing.",
+     "difficulty": 3
+    }
+   ],
+   "length_words": 228
+  },
+  {
+   "key": "real-c-tennyson-rossetti-journeys",
+   "title": "Crossing the Bar",
+   "form": "Poetry",
+   "complexity": 2,
+   "author": "Alfred, Lord Tennyson",
+   "provenance": "public_domain",
+   "source": "Crossing the Bar, in Demeter and Other Poems, Macmillan, 1889",
+   "headnote": "Alfred, Lord Tennyson, Poet Laureate of Britain, wrote this short lyric in 1889, aged eighty, and asked that it be placed at the end of all collections of his poems. The 'bar' is a sandbank across a harbour mouth.",
+   "theme_tags": [
+    "death",
+    "faith",
+    "journey",
+    "acceptance"
+   ],
+   "body": "Sunset and evening star,\nAnd one clear call for me!\nAnd may there be no moaning of the bar,\nWhen I put out to sea,\n\nBut such a tide as moving seems asleep,\nToo full for sound and foam,\nWhen that which drew from out the boundless deep\nTurns again home.\n\nTwilight and evening bell,\nAnd after that the dark!\nAnd may there be no sadness of farewell,\nWhen I embark;\n\nFor tho' from out our bourne of Time and Place\nThe flood may bear me far,\nI hope to see my Pilot face to face\nWhen I have crost the bar.",
+   "pair": {
+    "title": "Up-Hill",
+    "form": "Poetry",
+    "author": "Christina Rossetti",
+    "provenance": "public_domain",
+    "source": "Up-Hill, in Goblin Market and Other Poems, Macmillan, 1862",
+    "headnote": "Christina Rossetti was an English poet of strong religious faith. This poem, first published in 1861, is a dialogue between a traveller and an unnamed guide.",
+    "body": "Does the road wind up-hill all the way?\nYes, to the very end.\nWill the day's journey take the whole long day?\nFrom morn to night, my friend.\n\nBut is there for the night a resting-place?\nA roof for when the slow dark hours begin.\nMay not the darkness hide it from my face?\nYou cannot miss that inn.\n\nShall I meet other wayfarers at night?\nThose who have gone before.\nThen must I knock, or call when just in sight?\nThey will not keep you standing at that door.\n\nShall I find comfort, travel-sore and weak?\nOf labour you shall find the sum.\nWill there be beds for me and all who seek?\nYea, beds for all who come."
+   },
+   "questions": [
+    {
+     "marks": 3,
+     "verb": "Explain",
+     "demand": "explain",
+     "text": "In Text 1, explain how Tennyson uses the extended metaphor of a sea voyage to represent death.",
+     "skill_tags": [
+      "extended metaphor",
+      "imagery",
+      "symbolism"
+     ],
+     "criteria": [
+      {
+       "mark": 3,
+       "descriptor": "Provides a precise, well-reasoned explanation of how the sea voyage represents death, integrating well-chosen textual evidence and making the cause-and-effect relationship explicit"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides a sound explanation of how the sea voyage represents death with appropriate textual reference"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of how the sea voyage represents death, relying on paraphrase or retelling"
+      }
+     ],
+     "checklist": [
+      "Makes a clear claim: death is a calm departure on a voyage home, not an ending",
+      "Explains the setting out in \"When I put out to sea\" and the wish for \"no moaning of the bar\"",
+      "Explains the tide that \"Turns again home\" as the soul returning to its source",
+      "Explains the \"Pilot\" as God, met \"face to face\""
+     ],
+     "next_steps": {
+      "0": "State what the voyage stands for and quote the line where the speaker sets out.",
+      "1": "Explain one detail of the metaphor in more depth, such as the full, quiet tide, and what it suggests about how the speaker wants to die.",
+      "2": "Complete the explanation by showing where the voyage ends: explain the \"Pilot\" and the hope of meeting him."
+     },
+     "model": "Tennyson represents death as a calm sea voyage, so that dying becomes a departure rather than an ending. The \"clear call\" at sunset summons the speaker, and dying is simply the moment \"When I put out to sea.\" He prays for \"no moaning of the bar\", the sound of waves breaking over the sandbank, which doubles as the moaning of mourners: he hopes for a crossing without turbulence or grief. Instead he wants a tide \"Too full for sound and foam\", an image of quiet completeness, and the soul that \"drew from out the boundless deep / Turns again home\", suggesting death is a return to where life began. The voyage ends with the \"Pilot\", a metaphor for God, whom he hopes to see \"face to face\", turning the metaphor into an expression of faith.",
+     "difficulty": 1
+    },
+    {
+     "marks": 2,
+     "verb": "Identify",
+     "demand": "identify",
+     "text": "In Text 2, identify how the structure of the poem shapes its meaning.",
+     "skill_tags": [
+      "structure",
+      "dialogue"
+     ],
+     "criteria": [
+      {
+       "mark": 2,
+       "descriptor": "Precisely identifies how the structure shapes the poem's meaning and explains its significance with apt, accurately quoted evidence"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Identifies a relevant feature of how the structure shapes the poem's meaning with little or no explanation"
+      }
+     ],
+     "checklist": [
+      "Identifies the question-and-answer structure between the traveller and a guide",
+      "Explains that each anxious question receives a reassuring answer, ending with \"Yea, beds for all who come\"",
+      "Supports the answer with an accurate quotation"
+     ],
+     "next_steps": {
+      "0": "Identify the pattern the stanzas follow, and quote one question and its answer.",
+      "1": "Explain what this pattern suggests about the journey of life and the comfort the guide offers."
+     },
+     "model": "The poem is structured as a dialogue: in each stanza an anxious traveller asks questions and a calm guide answers. The traveller's fears, \"May not the darkness hide it from my face?\", are met with certainty, \"You cannot miss that inn.\" This pattern of doubt answered by reassurance mirrors a life of hardship sustained by faith, and the final reply, \"Yea, beds for all who come\", closes the poem in comfort and welcome.",
+     "difficulty": 1
+    },
+    {
+     "marks": 5,
+     "verb": "Compare",
+     "demand": "compare",
+     "text": "Compare how Text 1 and Text 2 use the image of a journey to explore attitudes to death.",
+     "skill_tags": [
+      "comparison",
+      "metaphor",
+      "voice",
+      "tone"
+     ],
+     "criteria": [
+      {
+       "mark": 5,
+       "descriptor": "Provides a perceptive, integrated comparison of how both poems use the image of a journey to explore attitudes to death, analysing similarities and differences with well-chosen evidence from both texts"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Provides a thoughtful comparison of how both poems use the image of a journey to explore attitudes to death, with relevant, analysed evidence from both texts"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a sound comparison of how both poems use the image of a journey to explore attitudes to death, with relevant evidence from both texts and some explanation"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Discusses both texts in relation to how both poems use the image of a journey to explore attitudes to death, mostly separately, with some evidence"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes one or both texts with limited reference to how both poems use the image of a journey to explore attitudes to death"
+      }
+     ],
+     "checklist": [
+      "States a comparative thesis: both present death as the end of a journey that leads to rest with God, but Tennyson's speaker is serene while Rossetti's traveller is anxious",
+      "Compares the vehicles of the metaphor: the voyage across \"the bar\" against the road that winds \"up-hill all the way\"",
+      "Compares voice: Tennyson's single prayerful speaker against Rossetti's dialogue of questions and answers",
+      "Compares the destinations: \"my Pilot face to face\" against the inn and \"beds for all who come\"",
+      "Uses well-chosen evidence from both poems in integrated paragraphs"
+     ],
+     "next_steps": {
+      "0": "Write a thesis that names the journey in each poem and the attitude to death it expresses.",
+      "1": "Support your thesis with one quotation from each poem showing the journey.",
+      "2": "Compare how each poet presents the difficulty of the journey, for example the calm tide against the uphill road.",
+      "3": "Compare the voices of the poems and explain how the dialogue in Text 2 differs from the prayer-like voice of Text 1.",
+      "4": "Integrate the comparison and finish with the destinations: analyse how the final lines of each poem express faith."
+     },
+     "model": "Both poets imagine death as the end of a journey that leads to rest with God, but they differ in where they place the emphasis. Tennyson's speaker looks forward with serene, almost eager acceptance to the voyage itself; Rossetti's traveller looks back on the effort of life and needs reassurance that rest will come.\n\nThe journeys themselves reveal this difference. In Text 1 the journey is a sea crossing begun at sunset, and the speaker asks only that it be gentle: \"may there be no moaning of the bar, / When I put out to sea\". Death is the short passage over a sandbank. In Text 2 the journey is life itself, a road that winds \"up-hill all the way\", lasting \"From morn to night\". Rossetti emphasises the length and labour of living, and death is the \"resting-place\" reached at nightfall.\n\nVoice reinforces these attitudes. Tennyson's single speaker uses exclamations and prayerful wishes, \"And may there be no sadness of farewell\", so his tone is composed and hopeful. Rossetti divides the voice into an anxious questioner, \"Shall I find comfort, travel-sore and weak?\", and a calm guide, dramatising doubt that must be answered.\n\nBoth poems end in faith. Tennyson hopes \"to see my Pilot face to face\", a personal meeting with God, while Rossetti's guide promises community and shelter: \"Those who have gone before\" and \"beds for all who come\". Tennyson's comfort is individual and visionary; Rossetti's is collective and domestic, but both turn death from a fear into a homecoming.",
+     "difficulty": 3
+    }
+   ],
+   "length_words": 222
+  },
+  {
+   "key": "real-c-blake-tyger",
+   "title": "The Tyger",
+   "form": "Poetry",
+   "complexity": 2,
+   "author": "William Blake",
+   "provenance": "public_domain",
+   "source": "The Tyger, in Songs of Innocence and of Experience, 1794",
+   "headnote": "William Blake was an English poet, painter and engraver who printed and hand-coloured his own books. This poem appears in Songs of Experience, a companion to his earlier Songs of Innocence, which contains a poem called 'The Lamb'.",
+   "theme_tags": [
+    "creation",
+    "God",
+    "good and evil",
+    "power"
+   ],
+   "body": "Tyger Tyger, burning bright,\nIn the forests of the night;\nWhat immortal hand or eye,\nCould frame thy fearful symmetry?\n\nIn what distant deeps or skies,\nBurnt the fire of thine eyes?\nOn what wings dare he aspire?\nWhat the hand, dare seize the fire?\n\nAnd what shoulder, & what art,\nCould twist the sinews of thy heart?\nAnd when thy heart began to beat,\nWhat dread hand? & what dread feet?\n\nWhat the hammer? what the chain,\nIn what furnace was thy brain?\nWhat the anvil? what dread grasp,\nDare its deadly terrors clasp!\n\nWhen the stars threw down their spears\nAnd water'd heaven with their tears:\nDid he smile his work to see?\nDid he who made the Lamb make thee?\n\nTyger Tyger burning bright,\nIn the forests of the night:\nWhat immortal hand or eye,\nDare frame thy fearful symmetry?",
+   "pair": null,
+   "questions": [
+    {
+     "marks": 3,
+     "verb": "Explain",
+     "demand": "explain",
+     "text": "Explain how Blake uses imagery of fire and light to represent the tiger.",
+     "skill_tags": [
+      "imagery",
+      "symbolism"
+     ],
+     "criteria": [
+      {
+       "mark": 3,
+       "descriptor": "Provides a precise, well-reasoned explanation of how fire and light imagery represents the tiger, integrating well-chosen textual evidence and making the cause-and-effect relationship explicit"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides a sound explanation of how fire and light imagery represents the tiger with appropriate textual reference"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of how fire and light imagery represents the tiger, relying on paraphrase or retelling"
+      }
+     ],
+     "checklist": [
+      "Makes a clear claim: fire imagery makes the tiger beautiful, dangerous and almost divine",
+      "Explains the paradox of \"burning bright\" against \"the forests of the night\"",
+      "Explains \"the fire of thine eyes\" and the Promethean daring of \"dare seize the fire\"",
+      "Links the imagery to the tiger's energy and danger"
+     ],
+     "next_steps": {
+      "0": "State what the fire imagery suggests about the tiger and quote the opening line.",
+      "1": "Explain the contrast between brightness and darkness in the first stanza and what it suggests.",
+      "2": "Extend your explanation to the second stanza: explain what the image of seizing fire suggests about the creator."
+     },
+     "model": "Blake represents the tiger as a living flame, a creature of terrible beauty. The opening apostrophe, \"Tyger Tyger, burning bright\", makes its striped coat glow like fire, and the contrast with \"the forests of the night\" makes that brightness more vivid and more threatening, as though the tiger were the only light in a dark and dangerous world. Fire also suggests energy and destruction: in the second stanza the speaker wonders where \"Burnt the fire of thine eyes\", so the tiger's gaze itself is fierce. Finally, the question \"What the hand, dare seize the fire?\" suggests that making the tiger required a daring, even dangerous creator, so the imagery of fire shapes both the beast and the mysterious power behind it.",
+     "difficulty": 1
+    },
+    {
+     "marks": 4,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "Analyse how Blake uses questions and the imagery of a blacksmith's forge to explore the tiger's creation.",
+     "skill_tags": [
+      "rhetorical questions",
+      "metaphor",
+      "sound",
+      "rhythm"
+     ],
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Provides a perceptive, sustained analysis of how questions and forge imagery explore the tiger's creation, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a thoughtful analysis of how questions and forge imagery explore the tiger's creation, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how questions and forge imagery explore the tiger's creation, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how questions and forge imagery explore the tiger's creation or identifies a relevant technique with little explanation of its effect"
+      }
+     ],
+     "checklist": [
+      "Makes a claim: the unanswered questions and industrial imagery present creation as violent, powerful labour beyond human understanding",
+      "Analyses the accumulation of questions and the absence of answers",
+      "Analyses the forge metaphor in \"What the hammer? what the chain, / In what furnace was thy brain?\"",
+      "Analyses the heavy stresses and plosive sounds that imitate hammer blows",
+      "Analyses the climactic question \"Did he who made the Lamb make thee?\""
+     ],
+     "next_steps": {
+      "0": "State what the questions and the forge imagery suggest about how the tiger was made.",
+      "1": "Analyse the extended forge metaphor of the fourth stanza, explaining how it presents the creator.",
+      "2": "Analyse how the rhythm and sound of the questions add to the effect, using a precise quotation.",
+      "3": "Show how the questions build to the comparison with \"the Lamb\", and explain what that question leaves unresolved."
+     },
+     "model": "Blake explores the tiger's creation through a relentless sequence of questions that are never answered, and through the extended metaphor of a blacksmith's forge. The effect is to present creation as violent, physical labour by a power the speaker can neither see nor comprehend.\n\nThe forge metaphor dominates the fourth stanza: \"What the hammer? what the chain, / In what furnace was thy brain? / What the anvil? what dread grasp\". The creator becomes a smith hammering the tiger into shape, and the tiger's brain is something heated and beaten like metal. The short, heavily stressed trochaic lines and repeated \"what\" fall like hammer blows, while the plosive sounds of \"dread\" and \"deadly\" make the work menacing. Even the body is forged: the creator must \"twist the sinews of thy heart\", a verb that suggests strain and force.\n\nThe questions accumulate until the most disturbing one: \"Did he who made the Lamb make thee?\" The gentle lamb and the fierce tiger may share one maker, which forces the reader to consider how a good creator could make something so terrible. The final stanza repeats the first but changes \"Could\" to \"Dare\", so the closing question moves from capability to audacity. The poem ends without answers, leaving the creator's nature a mystery.",
+     "difficulty": 2
+    },
+    {
+     "marks": 6,
+     "verb": "Evaluate",
+     "demand": "evaluate",
+     "text": "Evaluate the claim that Blake's poem is less about an animal than about the mystery of how good and evil can exist in the same creation.",
+     "skill_tags": [
+      "evaluation",
+      "symbolism",
+      "context",
+      "structure"
+     ],
+     "criteria": [
+      {
+       "mark": 6,
+       "descriptor": "Makes a perceptive, well-justified judgement about whether the poem is more about the mystery of good and evil in creation than about an animal, weighing evidence from across the text and analysing how language and form support the judgement"
+      },
+      {
+       "mark": 5,
+       "descriptor": "Makes a clear, reasoned judgement about whether the poem is more about the mystery of good and evil in creation than about an animal, supported by relevant, well-analysed evidence"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Makes a sound judgement about whether the poem is more about the mystery of good and evil in creation than about an animal with relevant evidence and some analysis"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Offers a judgement about whether the poem is more about the mystery of good and evil in creation than about an animal that is asserted more than argued, with some textual support"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Describes whether the poem is more about the mystery of good and evil in creation than about an animal with an implied or unsupported judgement"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Makes a limited or general comment about the text"
+      }
+     ],
+     "checklist": [
+      "Makes a clear judgement, for example largely agreeing, while acknowledging the vivid physical presence of the tiger",
+      "Weighs the physical description of the tiger (\"thy fearful symmetry\", \"the sinews of thy heart\") against its symbolic function",
+      "Analyses the pairing of the tiger with \"the Lamb\" and the Songs of Innocence and Experience context",
+      "Analyses the stars that \"threw down their spears\" as an image of cosmic rebellion or surrender",
+      "Analyses the circular structure and the shift from \"Could\" to \"Dare\"",
+      "Reaches a reasoned conclusion supported by evidence from across the poem"
+     ],
+     "next_steps": {
+      "0": "Write a clear judgement about the claim in your opening sentence.",
+      "1": "Support your judgement with a quotation showing how the tiger is described.",
+      "2": "Analyse how the poem's focus moves from the tiger to its creator, using the questions as evidence.",
+      "3": "Analyse the reference to \"the Lamb\" and explain why it makes the poem about good and evil, mentioning the Songs of Experience context.",
+      "4": "Weigh the counter-argument: consider how much of the poem's power comes from the physical animal itself.",
+      "5": "Write a conclusion that resolves the debate and refers to the poem's structure, such as the repeated final stanza and the change of one word."
+     },
+     "model": "The claim is largely persuasive. Blake gives the tiger an intense physical presence, but every image of the animal turns into a question about its maker, and the poem's real subject is the unsettling possibility that a single creator is responsible for both innocence and ferocity.\n\nThe tiger is certainly vivid. It is \"burning bright\", with fiery eyes, a heart of twisted \"sinews\" and a brain formed in a \"furnace\". Yet Blake never describes the tiger hunting or moving; he describes it being made. The repeated question, \"What immortal hand or eye, / Could frame thy fearful symmetry?\", shifts attention from the creature to the \"immortal hand\" behind it. \"Fearful symmetry\" is the poem's central paradox: the tiger's perfect design inspires both awe and terror, so beauty and danger are inseparable.\n\nThe climax confirms that the poem concerns good and evil. \"Did he who made the Lamb make thee?\" recalls the lamb of Songs of Innocence, a traditional symbol of Christ and gentleness. If one God made both, then the violence and danger of experience are part of the divine plan, and the speaker cannot tell whether that God \"smile[d] his work to see\". The preceding image, \"When the stars threw down their spears / And water'd heaven with their tears\", has the cosmic resonance of a fall or rebellion, widening the poem from zoology to theology.\n\nStructure deepens the mystery. The final stanza repeats the first almost exactly, creating a circle with no answer, but one word changes: \"Could frame\" becomes \"Dare frame\". The question is no longer whether such a creation was possible but how anyone dared it, which emphasises moral rather than physical power.\n\nIt would be too strong to say the animal does not matter: without its concrete, dazzling energy, the questions would be abstract. But the tiger functions as a symbol through which Blake confronts the coexistence of beauty, terror and goodness in creation, so the claim is convincing.",
+     "difficulty": 3
+    }
+   ],
+   "length_words": 143
+  },
+  {
+   "key": "real-c-wordsworth-daffodils",
+   "title": "I wandered lonely as a cloud",
+   "form": "Poetry",
+   "complexity": 1,
+   "author": "William Wordsworth",
+   "provenance": "public_domain",
+   "source": "I wandered lonely as a cloud, in Poems, Longman, 1815 (first version published 1807)",
+   "headnote": "William Wordsworth was an English Romantic poet who lived in the Lake District. The poem draws on a walk he took with his sister Dorothy beside Ullswater in April 1802; this is his revised version of 1815.",
+   "theme_tags": [
+    "nature",
+    "memory",
+    "imagination",
+    "solitude"
+   ],
+   "body": "I wandered lonely as a cloud\nThat floats on high o'er vales and hills,\nWhen all at once I saw a crowd,\nA host, of golden daffodils;\nBeside the lake, beneath the trees,\nFluttering and dancing in the breeze.\n\nContinuous as the stars that shine\nAnd twinkle on the milky way,\nThey stretched in never-ending line\nAlong the margin of a bay:\nTen thousand saw I at a glance,\nTossing their heads in sprightly dance.\n\nThe waves beside them danced; but they\nOut-did the sparkling waves in glee:\nA poet could not but be gay,\nIn such a jocund company:\nI gazed—and gazed—but little thought\nWhat wealth the show to me had brought:\n\nFor oft, when on my couch I lie\nIn vacant or in pensive mood,\nThey flash upon that inward eye\nWhich is the bliss of solitude;\nAnd then my heart with pleasure fills,\nAnd dances with the daffodils.",
+   "pair": null,
+   "questions": [
+    {
+     "marks": 2,
+     "verb": "Identify",
+     "demand": "identify",
+     "text": "Identify ONE technique Wordsworth uses in the first stanza to bring the daffodils to life.",
+     "skill_tags": [
+      "personification",
+      "imagery"
+     ],
+     "criteria": [
+      {
+       "mark": 2,
+       "descriptor": "Precisely identifies one technique that brings the daffodils to life in the first stanza and explains its significance with apt, accurately quoted evidence"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Identifies a relevant feature of one technique that brings the daffodils to life in the first stanza with little or no explanation"
+      }
+     ],
+     "checklist": [
+      "Identifies a relevant technique, such as personification or the collective nouns \"a crowd\" and \"A host\"",
+      "Explains the effect: the flowers seem a lively, welcoming company to the lonely speaker",
+      "Supports the answer with an accurate quotation"
+     ],
+     "next_steps": {
+      "0": "Name one technique from the first stanza and quote the words that show it.",
+      "1": "Explain how the technique makes the flowers seem alive and why that matters to the lonely speaker."
+     },
+     "model": "Wordsworth personifies the daffodils so that they become a living company. He calls them \"a crowd, / A host\", nouns usually used for people or angels, and shows them \"Fluttering and dancing in the breeze\". The verbs of movement give the flowers energy and joy, and the contrast with the speaker who \"wandered lonely as a cloud\" suggests that nature offers companionship to the isolated self.",
+     "difficulty": 1
+    },
+    {
+     "marks": 4,
+     "verb": "Explain",
+     "demand": "explain",
+     "text": "Explain how the final stanza changes the meaning of the poem's earlier descriptions.",
+     "skill_tags": [
+      "structure",
+      "memory",
+      "imagination"
+     ],
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Provides a precise, well-reasoned explanation of how the final stanza changes the meaning of the earlier descriptions, integrating well-chosen textual evidence and making the cause-and-effect relationship explicit"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a clear explanation of how the final stanza changes the meaning of the earlier descriptions, supported by relevant, accurately quoted evidence"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how the final stanza changes the meaning of the earlier descriptions, with general or partly relevant reference to the text"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of how the final stanza changes the meaning of the earlier descriptions, relying on paraphrase or retelling"
+      }
+     ],
+     "checklist": [
+      "Makes a clear claim: the final stanza turns a past experience into a lasting inner resource, so the poem becomes about memory and imagination",
+      "Explains the shift in tense and setting to \"when on my couch I lie\"",
+      "Explains the hint \"What wealth the show to me had brought\" in stanza 3",
+      "Explains \"that inward eye / Which is the bliss of solitude\" and the reversal of loneliness"
+     ],
+     "next_steps": {
+      "0": "State how the final stanza changes the poem's focus and quote the line that moves to the present.",
+      "1": "Explain how the end of the third stanza prepares for this shift, using the image of \"wealth\".",
+      "2": "Explain the phrase \"that inward eye\" and how solitude is now presented.",
+      "3": "Show the full change: compare the lonely speaker of the opening with the speaker whose heart \"dances\" at the end."
+     },
+     "model": "The final stanza changes the poem from a description of a beautiful scene into a reflection on the lasting power of memory and imagination. The first three stanzas are in the past tense and record what the speaker saw, but the last moves into a habitual present: \"For oft, when on my couch I lie\". The real value of the daffodils lies not in the moment itself but in its recollection.\n\nThe third stanza prepares for this turn. The speaker admits that he \"gazed—and gazed—but little thought / What wealth the show to me had brought\", the dashes slowing the line to suggest absorbed looking. The financial metaphor of \"wealth\" implies that the experience was stored and could be drawn on later.\n\nThe final stanza shows that wealth being spent. The daffodils \"flash upon that inward eye / Which is the bliss of solitude\": the imagination becomes a kind of sight, and solitude, a source of loneliness in the first line, is redefined as \"bliss\". The closing line, in which the heart \"dances with the daffodils\", completes the change: the speaker now joins in the dance he once only watched, so the poem ends with a transformed self rather than a picture.",
+     "difficulty": 2
+    },
+    {
+     "marks": 5,
+     "verb": "Synthesise",
+     "demand": "synthesise",
+     "text": "Synthesise what the poem suggests about the relationship between the individual and the natural world.",
+     "skill_tags": [
+      "synthesis",
+      "Romanticism",
+      "imagery",
+      "structure"
+     ],
+     "criteria": [
+      {
+       "mark": 5,
+       "descriptor": "Constructs a perceptive, coherent synthesis of what the poem suggests about the relationship between the individual and nature, combining insights from across the text(s) into a new understanding supported by well-chosen evidence"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Constructs a thoughtful synthesis of what the poem suggests about the relationship between the individual and nature, drawing together relevant, analysed evidence"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Draws together ideas about what the poem suggests about the relationship between the individual and nature with relevant evidence and some explanation"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Discusses relevant ideas about what the poem suggests about the relationship between the individual and nature without fully combining them"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of the text(s) with limited reference to what the poem suggests about the relationship between the individual and nature"
+      }
+     ],
+     "checklist": [
+      "Constructs a clear overall understanding, for example that nature heals isolation by entering the mind and becoming part of the self",
+      "Draws on the opening simile \"lonely as a cloud\", which places the speaker within nature yet apart from others",
+      "Draws on the cosmic hyperbole \"Continuous as the stars that shine\" and \"Ten thousand saw I at a glance\"",
+      "Draws on the shared joy of \"such a jocund company\" and the final union \"dances with the daffodils\"",
+      "Combines these ideas into a coherent conclusion about Romantic values"
+     ],
+     "next_steps": {
+      "0": "Write one sentence summing up what the poem suggests about the individual and nature.",
+      "1": "Support it with two pieces of evidence from different stanzas.",
+      "2": "Explain how the relationship develops across the poem, from observer to participant.",
+      "3": "Draw in the stars imagery and the idea of abundance, explaining what they add to your understanding.",
+      "4": "Combine your points into a single, developed conclusion about what nature gives the individual, linking to Romantic ideas about imagination."
+     },
+     "model": "Taken as a whole, the poem suggests that nature does more than delight the individual: it enters the mind, heals isolation and becomes a permanent part of the self.\n\nThe relationship begins with separation. The speaker \"wandered lonely as a cloud\", a simile that places him within the landscape yet drifting above it, detached from human company. The daffodils immediately offer company: they are \"a crowd, / A host\", so the natural world answers human loneliness with community. The second stanza expands this into something vast. The flowers are \"Continuous as the stars that shine / And twinkle on the milky way\", and the hyperbole \"Ten thousand saw I at a glance\" suggests an abundance that links a single lakeside to the whole cosmos. The individual is small, but he is included in an ordered, joyful universe.\n\nThe third stanza turns observation into participation in feeling: \"A poet could not but be gay, / In such a jocund company\". Joy here is almost involuntary, as though nature's mood simply passes into the human heart. Yet the poem insists that the deepest relationship is formed later, in memory. Through \"that inward eye\", the daffodils become part of the speaker's inner life and can return whenever he is \"In vacant or in pensive mood\".\n\nDrawing these ideas together, the poem presents a Romantic belief that nature and the imagination work in partnership. The individual does not simply look at nature; he absorbs it, and by the last line, where his heart \"dances with the daffodils\", the boundary between self and landscape has dissolved. Nature becomes a lasting source of joy that transforms solitude itself.",
+     "difficulty": 2
+    }
+   ],
+   "length_words": 151
+  },
+  {
+   "key": "real-c-owen-futility",
+   "title": "Futility",
+   "form": "Poetry",
+   "complexity": 3,
+   "author": "Wilfred Owen",
+   "provenance": "public_domain",
+   "source": "Futility, in Poems (ed. Siegfried Sassoon), Chatto & Windus, 1920 (first published in The Nation, 1918)",
+   "headnote": "Wilfred Owen wrote this short lyric in 1918 while serving in the First World War; it was one of only five poems published in his lifetime. A soldier has died in the snow, and his comrades carry him into the sunlight.",
+   "theme_tags": [
+    "war",
+    "death",
+    "creation",
+    "despair"
+   ],
+   "body": "Move him into the sun—\nGently its touch awoke him once,\nAt home, whispering of fields half-sown.\nAlways it woke him, even in France,\nUntil this morning and this snow.\nIf anything might rouse him now\nThe kind old sun will know.\n\nThink how it wakes the seeds—\nWoke once the clays of a cold star.\nAre limbs, so dear-achieved, are sides\nFull-nerved, still warm, too hard to stir?\nWas it for this the clay grew tall?\n—O what made fatuous sunbeams toil\nTo break earth's sleep at all?",
+   "pair": null,
+   "questions": [
+    {
+     "marks": 2,
+     "verb": "Identify",
+     "demand": "identify",
+     "text": "Identify how the sun is presented in the first stanza.",
+     "skill_tags": [
+      "personification",
+      "tone"
+     ],
+     "criteria": [
+      {
+       "mark": 2,
+       "descriptor": "Precisely identifies how the sun is presented in the first stanza and explains its significance with apt, accurately quoted evidence"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Identifies a relevant feature of how the sun is presented in the first stanza with little or no explanation"
+      }
+     ],
+     "checklist": [
+      "Identifies the personification of the sun as a gentle, caring presence",
+      "Quotes accurately, for example \"Gently its touch awoke him once\" or \"The kind old sun\"",
+      "Explains the hopeful, tender tone this creates"
+     ],
+     "next_steps": {
+      "0": "Identify the main technique used for the sun and quote one example.",
+      "1": "Explain what this presentation suggests about the speaker's hope that the sun can revive the soldier."
+     },
+     "model": "The sun is personified as a gentle, almost parental figure. Its \"touch\" once \"awoke him\" each morning, \"whispering of fields half-sown\", which links it to the soldier's peaceful life as a farm worker at home. Calling it \"The kind old sun\" gives it wisdom and tenderness, so the speaker's trust that it might \"rouse him now\" sounds hopeful, even childlike, which makes the later despair more painful.",
+     "difficulty": 2
+    },
+    {
+     "marks": 3,
+     "verb": "Explain",
+     "demand": "explain",
+     "text": "Explain how the second stanza widens the poem's focus from one soldier to the whole of creation.",
+     "skill_tags": [
+      "structure",
+      "imagery",
+      "rhetorical questions"
+     ],
+     "criteria": [
+      {
+       "mark": 3,
+       "descriptor": "Provides a precise, well-reasoned explanation of how the second stanza widens the focus from one soldier to all creation, integrating well-chosen textual evidence and making the cause-and-effect relationship explicit"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides a sound explanation of how the second stanza widens the focus from one soldier to all creation with appropriate textual reference"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of how the second stanza widens the focus from one soldier to all creation, relying on paraphrase or retelling"
+      }
+     ],
+     "checklist": [
+      "Makes a clear claim: the stanza moves from a single death to questioning the purpose of life itself",
+      "Explains the cosmic image \"Woke once the clays of a cold star\"",
+      "Explains the questions \"Was it for this the clay grew tall?\" and \"what made fatuous sunbeams toil\"",
+      "Comments on the shift from hope to bitterness"
+     ],
+     "next_steps": {
+      "0": "State how the second stanza differs in scope from the first and quote the line that refers to the earth's beginnings.",
+      "1": "Explain how the image of clay links the soldier's body to the creation of life on earth.",
+      "2": "Explain how the final questions turn the poem into a challenge to the meaning of existence, noting the word \"fatuous\"."
+     },
+     "model": "The second stanza expands from a single dead soldier to the creation of life itself. The speaker remembers that the sun \"wakes the seeds\" and \"Woke once the clays of a cold star\", imagining the sun bringing life to a barren earth. The soldier's body becomes the result of that vast process: his limbs are \"so dear-achieved\", the product of ages of growth. This raises an unbearable question: \"Was it for this the clay grew tall?\" If life evolved only to be destroyed in war, then creation seems pointless. The final question calls the sunbeams \"fatuous\", meaning foolish, so the \"kind old sun\" of the first stanza is now mocked. One death has made the speaker doubt the purpose of all existence.",
+     "difficulty": 2
+    },
+    {
+     "marks": 5,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "Analyse how Owen's control of form, sound and syntax conveys the speaker's movement from hope to despair.",
+     "skill_tags": [
+      "form",
+      "half-rhyme",
+      "syntax",
+      "tone"
+     ],
+     "criteria": [
+      {
+       "mark": 5,
+       "descriptor": "Provides a perceptive, sustained analysis of how form, sound and syntax convey the movement from hope to despair, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Provides a thoughtful analysis of how form, sound and syntax convey the movement from hope to despair, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a sound analysis of how form, sound and syntax convey the movement from hope to despair, using relevant evidence with some explanation of effect"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how form, sound and syntax convey the movement from hope to despair, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how form, sound and syntax convey the movement from hope to despair or identifies a relevant technique with little explanation of its effect"
+      }
+     ],
+     "checklist": [
+      "Makes a claim: the poem's structure enacts a collapse of hope into bitter questioning",
+      "Analyses the gentle imperative opening \"Move him into the sun\" against the questioning second stanza",
+      "Analyses the half-rhymes such as \"once\" / \"France\" and \"tall\" / \"toil\" / \"all\" as signs of something unresolved",
+      "Analyses the turning point \"Until this morning and this snow\"",
+      "Analyses the dashes and the final interjection \"—O what made fatuous sunbeams toil\""
+     ],
+     "next_steps": {
+      "0": "State what emotional movement the poem's form traces, and quote its opening line.",
+      "1": "Analyse how the first stanza's syntax is gentle and hopeful, naming at least one technique.",
+      "2": "Analyse the half-rhymes and explain why full rhyme would not suit the poem.",
+      "3": "Analyse the second stanza's chain of questions and how the syntax becomes broken.",
+      "4": "Integrate form, sound and syntax in a conclusion about how the poem ends in despair."
+     },
+     "model": "Owen shapes this two-stanza lyric so that its form traces the speaker's collapse from tender hope into anguished questioning.\n\nThe first stanza is built on gentle statements and an imperative. \"Move him into the sun—\" is a soft command, and \"Gently\" placed at the start of the next line slows the reading. The syntax is calm and narrative, recalling home and routine, and the line \"Always it woke him, even in France,\" stresses habit and continuity. That continuity is broken by \"Until this morning and this snow\": the monosyllables and repeated \"this\" pin down the moment of death, and the cold \"snow\" opposes the warmth of the sun. The stanza closes in tentative faith, \"The kind old sun will know\", but the conditional \"If anything\" already admits doubt.\n\nSound reinforces the unease. Owen uses half-rhyme throughout, \"once\" with \"France\", \"seeds\" with \"sides\", \"star\" with \"stir\". The near-misses give the poem a muted, dissonant music, as though harmony itself had failed, which suits a world in which the sun cannot do its work.\n\nIn the second stanza the syntax shifts from statement to question. The speaker asks whether limbs \"Full-nerved, still warm\" are \"too hard to stir\", the caesuras and piled adjectives conveying desperate disbelief. Then the questions grow larger and more bitter: \"Was it for this the clay grew tall?\" The final question is broken off by a dash and a cry, \"—O what made fatuous sunbeams toil / To break earth's sleep at all?\", and the half-rhyme of \"tall\", \"toil\" and \"all\" chimes like a dying fall. The poem ends not with an answer but with despair, its form mirroring a faith that has been disturbed beyond repair.",
+     "difficulty": 3
+    }
+   ],
+   "length_words": 89
+  },
+  {
+   "key": "real-c-keats-when-i-have-fears",
+   "title": "When I have fears that I may cease to be",
+   "form": "Poetry",
+   "complexity": 3,
+   "author": "John Keats",
+   "provenance": "public_domain",
+   "source": "When I have fears that I may cease to be (written 1818), in Life, Letters, and Literary Remains of John Keats (ed. R. M. Milnes), 1848",
+   "headnote": "John Keats, an English Romantic poet, wrote this sonnet in January 1818, aged twenty-two. He had trained as a surgeon and had nursed his mother and brother through tuberculosis; he died of the disease himself in 1821.",
+   "theme_tags": [
+    "mortality",
+    "ambition",
+    "love",
+    "time"
+   ],
+   "body": "When I have fears that I may cease to be\nBefore my pen has glean'd my teeming brain,\nBefore high-piled books, in charactery,\nHold like rich garners the full ripen'd grain;\nWhen I behold, upon the night's starr'd face,\nHuge cloudy symbols of a high romance,\nAnd think that I may never live to trace\nTheir shadows, with the magic hand of chance;\nAnd when I feel, fair creature of an hour,\nThat I shall never look upon thee more,\nNever have relish in the faery power\nOf unreflecting love;—then on the shore\nOf the wide world I stand alone, and think\nTill love and fame to nothingness do sink.",
+   "pair": null,
+   "questions": [
+    {
+     "marks": 2,
+     "verb": "Identify",
+     "demand": "identify",
+     "text": "Identify the extended metaphor in lines 1 to 4 and what it suggests about the speaker's ambitions.",
+     "skill_tags": [
+      "metaphor",
+      "imagery"
+     ],
+     "criteria": [
+      {
+       "mark": 2,
+       "descriptor": "Precisely identifies the harvest metaphor in lines 1 to 4 and explains its significance with apt, accurately quoted evidence"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Identifies a relevant feature of the harvest metaphor in lines 1 to 4 with little or no explanation"
+      }
+     ],
+     "checklist": [
+      "Identifies the harvest metaphor: the brain as a field and books as granaries",
+      "Quotes accurately, for example \"glean'd my teeming brain\" or \"rich garners the full ripen'd grain\"",
+      "Explains that it suggests abundant creative potential that needs time to be gathered"
+     ],
+     "next_steps": {
+      "0": "Identify the metaphor and quote the words that create it.",
+      "1": "Explain what the metaphor suggests about how much the speaker hopes to write and why time matters."
+     },
+     "model": "Lines 1 to 4 develop a harvest metaphor. The speaker's mind is a fertile field, a \"teeming brain\", which his pen must glean, and his future books are imagined as granaries: \"Hold like rich garners the full ripen'd grain\". The metaphor suggests an abundance of ideas waiting to be harvested, but harvests take time, so it also expresses the fear that death will come before the crop is gathered.",
+     "difficulty": 2
+    },
+    {
+     "marks": 4,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "Analyse how Keats uses the structure of the sonnet to build towards the final couplet.",
+     "skill_tags": [
+      "sonnet form",
+      "syntax",
+      "structure",
+      "anaphora"
+     ],
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Provides a perceptive, sustained analysis of how the sonnet's structure builds towards the final couplet, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a thoughtful analysis of how the sonnet's structure builds towards the final couplet, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how the sonnet's structure builds towards the final couplet, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how the sonnet's structure builds towards the final couplet or identifies a relevant technique with little explanation of its effect"
+      }
+     ],
+     "checklist": [
+      "Makes a claim: a single long sentence of accumulating fears builds tension that is released in the couplet",
+      "Analyses the anaphora of \"When I have fears\", \"When I behold\", \"And when I feel\"",
+      "Analyses the quatrains as three fears: poetic fame, imaginative vision, love",
+      "Analyses the turn at \"—then on the shore / Of the wide world I stand alone\" and the enjambment into the couplet",
+      "Analyses the falling movement of \"to nothingness do sink\""
+     ],
+     "next_steps": {
+      "0": "State how the sonnet is structured and quote the opening clause that begins the pattern.",
+      "1": "Analyse the repeated \"When\" clauses and explain how they build suspense in one long sentence.",
+      "2": "Show how each quatrain presents a different fear, and analyse where and how the poem turns.",
+      "3": "Analyse the effect of the final couplet's resolution, focusing on the closing image and rhythm."
+     },
+     "model": "Keats structures this Shakespearean sonnet as a single long sentence in which fear accumulates clause by clause until it is released in the couplet. The anaphora of time clauses, \"When I have fears\", \"When I behold\" and \"And when I feel\", delays the main verb, so the reader is held in suspense just as the speaker is held in anxiety.\n\nEach quatrain adds a new loss. The first fears the loss of poetic achievement, the \"high-piled books\" never written; the second the loss of imaginative vision, the \"Huge cloudy symbols of a high romance\" he may never \"trace\"; the third the loss of love, the \"fair creature of an hour\". The movement is from public ambition to private feeling, and the losses grow more personal.\n\nThe turn arrives late, in the middle of line 12: \"—then on the shore / Of the wide world I stand alone\". The dash marks the long-delayed main clause, and the enjambment pushes the reader across the line break to the edge of the \"wide world\", where the speaker appears as a solitary figure facing the sea. The couplet completes the sentence: he thinks \"Till love and fame to nothingness do sink.\" The inverted syntax places \"sink\" at the very end, so the rhythm itself falls. The structure turns the poem's fears into a contemplative calm: by facing mortality, the speaker sees that love and fame matter less than he believed.",
+     "difficulty": 2
+    },
+    {
+     "marks": 5,
+     "verb": "Evaluate",
+     "demand": "evaluate",
+     "text": "Evaluate how effectively the poem presents the conflict between human desire and mortality.",
+     "skill_tags": [
+      "evaluation",
+      "imagery",
+      "tone",
+      "context"
+     ],
+     "criteria": [
+      {
+       "mark": 5,
+       "descriptor": "Makes a perceptive, well-justified judgement about how effectively the poem presents the conflict between human desire and mortality, weighing evidence from across the text and analysing how language and form support the judgement"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Makes a clear, reasoned judgement about how effectively the poem presents the conflict between human desire and mortality, supported by relevant, well-analysed evidence"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Makes a sound judgement about how effectively the poem presents the conflict between human desire and mortality with relevant evidence and some analysis"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Offers a judgement about how effectively the poem presents the conflict between human desire and mortality that is asserted more than argued, with some textual support"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how effectively the poem presents the conflict between human desire and mortality with an implied or unsupported judgement"
+      }
+     ],
+     "checklist": [
+      "Makes a clear judgement about the effectiveness of the poem's presentation",
+      "Evaluates the images of desire: \"teeming brain\", \"a high romance\", \"the faery power / Of unreflecting love\"",
+      "Evaluates the images of mortality and transience: \"cease to be\", \"fair creature of an hour\"",
+      "Evaluates the ambiguous resolution \"to nothingness do sink\" (consolation or despair)",
+      "Considers context: Keats's medical training and early death"
+     ],
+     "next_steps": {
+      "0": "Open with a clear judgement about how effectively the conflict is presented.",
+      "1": "Support your judgement with one image of desire and one of mortality.",
+      "2": "Analyse how the language of abundance makes the threatened losses more powerful.",
+      "3": "Weigh the ending: decide whether the couplet resolves the conflict or deepens it, and justify your view.",
+      "4": "Strengthen your evaluation with relevant context and a conclusion that weighs the poem's achievement."
+     },
+     "model": "The poem presents the conflict between desire and mortality very effectively, because Keats makes desire so rich and sensuous that the threat of losing it becomes acute, and then ends with a resolution that is ambiguous rather than comforting.\n\nDesire is expressed through imagery of fullness. His mind is a \"teeming brain\", his future books \"rich garners\" full of \"ripen'd grain\", and the night sky offers \"Huge cloudy symbols of a high romance\". Even love has \"faery power\", a magical, carefree force described as \"unreflecting\". Every desire is for abundance and intensity. Against this, mortality is announced in the stark opening phrase \"cease to be\", and transience appears in the beloved, a \"fair creature of an hour\". The contrast between infinite aspiration and limited time is the poem's central tension, and the repeated \"Never\" in lines 10 and 11 hammers home what death will take.\n\nThe ending is the poem's most powerful feature because it refuses easy consolation. Standing \"on the shore / Of the wide world\", the speaker confronts vastness alone, and love and fame \"to nothingness do sink\". This could be read as a hard-won calm, in which the perspective of mortality frees him from ambition, or as despair, in which everything he values dissolves. The ambiguity is honest, and it makes the conflict feel unresolved rather than neatly solved.\n\nKnowing that Keats had watched his mother and brother die of tuberculosis, and would die at twenty-five, gives the poem great poignancy, but its effectiveness does not depend on biography. The precise imagery and controlled structure make the struggle between longing and limitation universal, which is why the poem succeeds.",
+     "difficulty": 3
+    }
+   ],
+   "length_words": 110
+  },
+  {
+   "key": "real-c-yeats-innisfree",
+   "title": "The Lake Isle of Innisfree",
+   "form": "Poetry",
+   "complexity": 1,
+   "author": "W. B. Yeats",
+   "provenance": "public_domain",
+   "source": "The Lake Isle of Innisfree, in The Countess Kathleen and Various Legends and Lyrics, 1892 (first published 1890)",
+   "headnote": "W. B. Yeats was an Irish poet. He wrote this lyric in 1888 while living in London, after a shop-window fountain reminded him of the lakes of County Sligo, where he spent much of his childhood. Innisfree is a small island in Lough Gill.",
+   "theme_tags": [
+    "place",
+    "longing",
+    "nature",
+    "escape"
+   ],
+   "body": "I will arise and go now, and go to Innisfree,\nAnd a small cabin build there, of clay and wattles made:\nNine bean-rows will I have there, a hive for the honey-bee,\nAnd live alone in the bee-loud glade.\n\nAnd I shall have some peace there, for peace comes dropping slow,\nDropping from the veils of the morning to where the cricket sings;\nThere midnight's all a glimmer, and noon a purple glow,\nAnd evening full of the linnet's wings.\n\nI will arise and go now, for always night and day\nI hear lake water lapping with low sounds by the shore;\nWhile I stand on the roadway, or on the pavements grey,\nI hear it in the deep heart's core.",
+   "pair": null,
+   "questions": [
+    {
+     "marks": 2,
+     "verb": "Identify",
+     "demand": "identify",
+     "text": "Identify TWO details that show the simple life the speaker imagines on Innisfree.",
+     "skill_tags": [
+      "imagery",
+      "setting"
+     ],
+     "criteria": [
+      {
+       "mark": 2,
+       "descriptor": "Precisely identifies two details of the simple life the speaker imagines and explains its significance with apt, accurately quoted evidence"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Identifies a relevant feature of two details of the simple life the speaker imagines with little or no explanation"
+      }
+     ],
+     "checklist": [
+      "Identifies two relevant details, such as the \"small cabin\" of \"clay and wattles\", the \"Nine bean-rows\" or the \"hive for the honey-bee\"",
+      "Explains that these suggest self-sufficiency, simplicity and closeness to nature",
+      "Quotes accurately"
+     ],
+     "next_steps": {
+      "0": "Find two concrete details of the life the speaker plans and quote them.",
+      "1": "Explain what the details have in common and what they suggest about the life he wants."
+     },
+     "model": "The speaker imagines a \"small cabin\" built \"of clay and wattles\", made by hand from natural materials, and a garden of \"Nine bean-rows\" with \"a hive for the honey-bee\". These details suggest a simple, self-sufficient life in which he would grow his own food and live in harmony with nature, far from the complexity of the modern world.",
+     "difficulty": 1
+    },
+    {
+     "marks": 3,
+     "verb": "Explain",
+     "demand": "explain",
+     "text": "Explain how the final stanza reveals the speaker's actual situation.",
+     "skill_tags": [
+      "structure",
+      "contrast",
+      "setting"
+     ],
+     "criteria": [
+      {
+       "mark": 3,
+       "descriptor": "Provides a precise, well-reasoned explanation of how the final stanza reveals the speaker's actual situation, integrating well-chosen textual evidence and making the cause-and-effect relationship explicit"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides a sound explanation of how the final stanza reveals the speaker's actual situation with appropriate textual reference"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of how the final stanza reveals the speaker's actual situation, relying on paraphrase or retelling"
+      }
+     ],
+     "checklist": [
+      "Makes a clear claim: the speaker is in a grey city, and Innisfree exists only as a longing in his mind",
+      "Explains the contrast of \"the roadway\" and \"the pavements grey\" with the colourful island",
+      "Explains the internal, persistent sound of the lake \"in the deep heart's core\""
+     ],
+     "next_steps": {
+      "0": "State where the speaker really is, and quote the line that reveals it.",
+      "1": "Explain the contrast between this setting and the island of the first two stanzas.",
+      "2": "Explain what \"the deep heart's core\" suggests about how strongly and permanently he longs for the place."
+     },
+     "model": "The final stanza reveals that the speaker is not on Innisfree at all but in a city. He hears the lake \"While I stand on the roadway, or on the pavements grey\", and the inverted adjective \"grey\" lingers on the dullness of urban life, contrasting sharply with the \"purple glow\" and \"glimmer\" of the island. The island has been a vision, and the repeated resolution \"I will arise and go now\" remains a wish rather than an action. Yet the lake is vividly present to him: he hears it \"always night and day\" and \"in the deep heart's core\". The longing is not a passing mood but a constant inner reality, which suggests Innisfree matters more as an ideal than as a real destination.",
+     "difficulty": 1
+    },
+    {
+     "marks": 6,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "Analyse how Yeats uses sound and rhythm to convey the peace the speaker longs for.",
+     "skill_tags": [
+      "sound devices",
+      "rhythm",
+      "repetition",
+      "imagery"
+     ],
+     "criteria": [
+      {
+       "mark": 6,
+       "descriptor": "Provides a perceptive, sustained analysis of how sound and rhythm convey the peace the speaker longs for, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 5,
+       "descriptor": "Provides a thoughtful analysis of how sound and rhythm convey the peace the speaker longs for, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Provides a sound analysis of how sound and rhythm convey the peace the speaker longs for, using relevant evidence with some explanation of effect"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides some explanation of how sound and rhythm convey the peace the speaker longs for, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Describes how sound and rhythm convey the peace the speaker longs for or identifies a relevant technique with little explanation of its effect"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Makes a limited or general comment about the text"
+      }
+     ],
+     "checklist": [
+      "Makes a claim: the poem's music enacts the slow, rhythmic peace the speaker seeks, so the reader experiences it too",
+      "Analyses the long, slow hexameter lines with mid-line pauses and the shorter final line of each stanza",
+      "Analyses the repetition of \"dropping\" in \"peace comes dropping slow, / Dropping from the veils of the morning\"",
+      "Analyses the alliteration and assonance of \"lake water lapping with low sounds\" and the compound \"bee-loud glade\"",
+      "Analyses the solemn, biblical echo of \"I will arise and go now\"",
+      "Analyses the stressed, slow ending \"the deep heart's core\""
+     ],
+     "next_steps": {
+      "0": "State how the poem's sound and rhythm relate to its idea of peace.",
+      "1": "Analyse one example of sound imagery, naming the technique and its effect.",
+      "2": "Analyse the line lengths and rhythm, including the effect of each stanza's short final line.",
+      "3": "Analyse the repetition in the second stanza and how it makes peace seem to fall gradually.",
+      "4": "Analyse the final stanza's alliteration of the letter l and the strong stresses of the last line.",
+      "5": "Draw your analysis together into a sustained argument about how the poem makes the reader feel the peace it describes."
+     },
+     "model": "Yeats makes the peace of Innisfree audible. The poem's slow rhythms, repetitions and soft sounds enact the tranquillity the speaker longs for, so that the reader experiences the island's calm even as the speaker remains in the city.\n\nThe rhythm is unhurried from the start. The long lines, each with a pause near the middle, \"I will arise and go now, and go to Innisfree\", move like a measured chant, and the archaic, biblical cadence of \"I will arise and go\" gives the decision a solemn weight. Each stanza then closes with a shorter line, \"And live alone in the bee-loud glade\", which settles the stanza like an exhalation. The compound \"bee-loud\" is a striking piece of sound imagery: the island is not silent, but filled with a steady, natural hum.\n\nThe second stanza turns peace into a physical substance. \"For peace comes dropping slow, / Dropping from the veils of the morning to where the cricket sings\": the repetition of \"dropping\" across the line break slows the reading, so peace seems to fall gradually, like dew or mist. The phrase \"the veils of the morning\" adds softness, and the stanza moves through the day, from morning to \"midnight's all a glimmer\", \"noon a purple glow\" and \"evening full of the linnet's wings\", its gentle listing imitating the slow passing of time in a place without urgency.\n\nThe final stanza intensifies the music. \"I hear lake water lapping with low sounds by the shore\" is dense with alliteration of the letter l and long vowels, imitating the soft, regular movement of water against the bank. This sound persists \"always night and day\", and it reaches inward in the last line, \"I hear it in the deep heart's core\", where four heavy stresses slow the voice almost to a stop. By ending with sound rather than sight, Yeats suggests that peace is something felt inside, and the poem's music lets the reader share that inner experience.",
+     "difficulty": 2
+    }
+   ],
+   "length_words": 121
+  },
+  {
+   "key": "real-c-dickinson-hope",
+   "title": "“Hope” is the thing with feathers",
+   "form": "Poetry",
+   "complexity": 2,
+   "author": "Emily Dickinson",
+   "provenance": "public_domain",
+   "source": "“Hope” is the thing with feathers (c. 1861), first published in Poems, Second Series, 1891; text from the poet's manuscript version",
+   "headnote": "Emily Dickinson was an American poet who lived most of her life in her family home in Amherst, Massachusetts, and published almost nothing in her lifetime. The dashes and capital letters in this short lyric are her own.",
+   "theme_tags": [
+    "hope",
+    "resilience",
+    "the soul",
+    "adversity"
+   ],
+   "body": "“Hope” is the thing with feathers –\nThat perches in the soul –\nAnd sings the tune without the words –\nAnd never stops – at all –\n\nAnd sweetest – in the Gale – is heard –\nAnd sore must be the storm –\nThat could abash the little Bird\nThat kept so many warm –\n\nI've heard it in the chillest land –\nAnd on the strangest Sea –\nYet – never – in Extremity,\nIt asked a crumb – of Me.",
+   "pair": null,
+   "questions": [
+    {
+     "marks": 3,
+     "verb": "Explain",
+     "demand": "explain",
+     "text": "Explain how Dickinson uses the extended metaphor of a bird to represent hope.",
+     "skill_tags": [
+      "extended metaphor",
+      "imagery"
+     ],
+     "criteria": [
+      {
+       "mark": 3,
+       "descriptor": "Provides a precise, well-reasoned explanation of how the bird metaphor represents hope, integrating well-chosen textual evidence and making the cause-and-effect relationship explicit"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides a sound explanation of how the bird metaphor represents hope with appropriate textual reference"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of how the bird metaphor represents hope, relying on paraphrase or retelling"
+      }
+     ],
+     "checklist": [
+      "Makes a clear claim: hope is a small, inward, constant presence that comforts without demanding anything",
+      "Explains \"the thing with feathers\" that \"perches in the soul\"",
+      "Explains \"sings the tune without the words\" as wordless, instinctive comfort",
+      "Explains \"It asked a crumb – of Me\" as hope's selflessness"
+     ],
+     "next_steps": {
+      "0": "State what the bird metaphor suggests about hope, and quote where the bird lives.",
+      "1": "Explain what the bird's song suggests about how hope works, using the phrase about the tune.",
+      "2": "Complete the explanation with the final lines: explain what it means that the bird never asks for anything."
+     },
+     "model": "Dickinson turns an abstract feeling into a small bird living inside a person. Hope is \"the thing with feathers\" that \"perches in the soul\", suggesting it is light, fragile and always ready, resting within us rather than arriving from outside. It \"sings the tune without the words\", so hope comforts instinctively, beyond reason or explanation, and it \"never stops – at all\", implying constancy. The bird even shelters others, having \"kept so many warm\". The metaphor ends with hope's generosity: although the speaker has carried it through hardship, \"It asked a crumb – of Me.\" Unlike a real bird that must be fed, hope sustains us without demanding anything in return.",
+     "difficulty": 1
+    },
+    {
+     "marks": 4,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "Analyse how Dickinson's use of punctuation and form shapes the reader's experience of the poem.",
+     "skill_tags": [
+      "punctuation",
+      "form",
+      "rhythm"
+     ],
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Provides a perceptive, sustained analysis of how punctuation and form shape the reader's experience, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a thoughtful analysis of how punctuation and form shape the reader's experience, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how punctuation and form shape the reader's experience, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how punctuation and form shape the reader's experience or identifies a relevant technique with little explanation of its effect"
+      }
+     ],
+     "checklist": [
+      "Makes a claim: the dashes and hymn-like quatrains create a voice that is both simple and hesitant, emphasising key words",
+      "Analyses the dashes in \"And never stops – at all –\" and \"Yet – never – in Extremity\"",
+      "Analyses the short quatrains and common metre, which echo a hymn",
+      "Analyses capitalisation of \"Gale\", \"Sea\", \"Extremity\", \"Me\"",
+      "Comments on the slant rhyme of \"Sea\" and \"Me\" or \"storm\" and \"warm\""
+     ],
+     "next_steps": {
+      "0": "State the overall effect of Dickinson's punctuation and form, and quote one line with dashes.",
+      "1": "Analyse how the dashes isolate and stress particular words.",
+      "2": "Analyse the quatrain form and metre, explaining what the hymn-like shape adds.",
+      "3": "Analyse capitalisation or rhyme as further evidence, and link your points to the poem's meaning."
+     },
+     "model": "Dickinson's punctuation and form make the reader slow down and feel the weight of individual words, so that a simple hymn-like poem becomes reflective and emphatic.\n\nThe dashes are her most distinctive device. In \"And never stops – at all –\", the dash creates a pause that isolates \"at all\", turning a casual phrase into a firm declaration of hope's constancy. In \"Yet – never – in Extremity,\" the word \"never\" is framed on both sides, as though the speaker pauses to insist on it. The dashes also mimic the halting movement of thought, as if the speaker is weighing her words, and they leave many lines open-ended, suggesting the song continues beyond them.\n\nThe form is equally purposeful. The short quatrains and alternating line lengths echo the common metre of church hymns, giving the poem a familiar, consoling music appropriate to a subject like hope. Yet Dickinson unsettles the pattern with slant rhyme, as in \"storm\" and \"warm\" or \"Sea\" and \"Me\", so the poem sounds harmonious but not quite resolved, mirroring hope in a world of hardship.\n\nCapitalisation adds emphasis: \"Gale\", \"Sea\" and \"Extremity\" are given the status of forces, while the final capitalised \"Me\" places the speaker herself in the closing position. The effect is a voice that seems simple but makes the reader linger on every turn of thought.",
+     "difficulty": 2
+    },
+    {
+     "marks": 6,
+     "verb": "Evaluate",
+     "demand": "evaluate",
+     "text": "Evaluate the view that Dickinson presents hope as a source of comfort that is stronger than any hardship.",
+     "skill_tags": [
+      "evaluation",
+      "imagery",
+      "structure",
+      "tone"
+     ],
+     "criteria": [
+      {
+       "mark": 6,
+       "descriptor": "Makes a perceptive, well-justified judgement about whether hope is presented as a comfort stronger than any hardship, weighing evidence from across the text and analysing how language and form support the judgement"
+      },
+      {
+       "mark": 5,
+       "descriptor": "Makes a clear, reasoned judgement about whether hope is presented as a comfort stronger than any hardship, supported by relevant, well-analysed evidence"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Makes a sound judgement about whether hope is presented as a comfort stronger than any hardship with relevant evidence and some analysis"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Offers a judgement about whether hope is presented as a comfort stronger than any hardship that is asserted more than argued, with some textual support"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Describes whether hope is presented as a comfort stronger than any hardship with an implied or unsupported judgement"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Makes a limited or general comment about the text"
+      }
+     ],
+     "checklist": [
+      "Makes a clear judgement, for example largely agreeing while noting the poem's acknowledgement of fragility and suffering",
+      "Weighs the image of hope as \"the little Bird\" against the force of \"the Gale\" and \"the storm\"",
+      "Analyses \"sore must be the storm / That could abash the little Bird\" as an admission that hope can be shaken",
+      "Analyses the hyperbolic extremes of \"the chillest land\" and \"the strangest Sea\"",
+      "Analyses the closing stanza's personal testimony and its ending \"It asked a crumb – of Me\"",
+      "Reaches a reasoned conclusion supported by evidence from across the poem"
+     ],
+     "next_steps": {
+      "0": "Open with a clear judgement about the view.",
+      "1": "Support your judgement with a quotation showing hope's endurance.",
+      "2": "Analyse how the second stanza shows hope in the face of hardship, focusing on the storm imagery.",
+      "3": "Weigh the counter-argument: consider what the words \"little\" and \"abash\" suggest about hope's fragility.",
+      "4": "Analyse the final stanza as personal evidence, explaining how the speaker's experience supports or qualifies the view.",
+      "5": "Write a nuanced conclusion that refines the view, supported by close analysis of language and form."
+     },
+     "model": "The view is largely convincing, but it needs refining. Dickinson presents hope as remarkably enduring, more persistent than any hardship the speaker has known, yet she also acknowledges that hope is small and that a severe enough storm could disturb it. Its strength lies not in power but in persistence.\n\nThe poem's central claim is hope's constancy. It \"never stops – at all\", and the dash and final placement of \"at all\" make this sound absolute. Hope is most audible precisely in adversity: \"And sweetest – in the Gale – is heard\". The paradox is important: the song is sweetest when conditions are worst, so hardship does not diminish hope but reveals its value.\n\nHowever, Dickinson does not make hope invincible. The bird is \"little\", a creature of feathers, and the lines \"And sore must be the storm – / That could abash the little Bird\" concede that some storm could, at least in principle, unsettle it. The verb \"abash\" means to disconcert or shame, not to destroy, which suggests that even at worst hope is silenced only momentarily. The point is not that hope is stronger than hardship in force, but that it would take an extraordinary hardship to overcome it, and that hope has \"kept so many warm\" through ordinary ones.\n\nThe final stanza grounds the claim in personal testimony. \"I've heard it in the chillest land – / And on the strangest Sea –\": the superlatives suggest the most extreme isolation and uncertainty, and the speaker has found hope present in both. The closing lines then add a different kind of strength: \"Yet – never – in Extremity, / It asked a crumb – of Me.\" Hope is not only resilient but entirely unselfish, demanding nothing even when the speaker has nothing to give.\n\nOverall, Dickinson suggests that hope is a comfort that outlasts hardship rather than one that defeats it. By admitting its smallness and vulnerability, she makes its persistence more moving, so the poem's vision of hope is both realistic and deeply consoling.",
+     "difficulty": 3
+    }
+   ],
+   "length_words": 84
+  },
+  {
+   "key": "real-c-yeats-when-you-are-old",
+   "title": "When You Are Old",
+   "form": "Poetry",
+   "complexity": 2,
+   "author": "W. B. Yeats",
+   "provenance": "public_domain",
+   "source": "When You Are Old, in The Countess Kathleen and Various Legends and Lyrics, 1892",
+   "headnote": "W. B. Yeats wrote this lyric in 1891, loosely adapting a sonnet by the French Renaissance poet Pierre de Ronsard. It is usually read as addressed to Maud Gonne, the Irish revolutionary whom Yeats loved for many years and who repeatedly refused his proposals of marriage.",
+   "theme_tags": [
+    "love",
+    "ageing",
+    "memory",
+    "regret"
+   ],
+   "body": "When you are old and grey and full of sleep,\nAnd nodding by the fire, take down this book,\nAnd slowly read, and dream of the soft look\nYour eyes had once, and of their shadows deep;\n\nHow many loved your moments of glad grace,\nAnd loved your beauty with love false or true,\nBut one man loved the pilgrim soul in you,\nAnd loved the sorrows of your changing face;\n\nAnd bending down beside the glowing bars,\nMurmur, a little sadly, how Love fled\nAnd paced upon the mountains overhead\nAnd hid his face amid a crowd of stars.",
+   "pair": null,
+   "questions": [
+    {
+     "marks": 3,
+     "verb": "Identify",
+     "demand": "identify",
+     "text": "Identify how the speaker distinguishes his love from the love of others in the second stanza.",
+     "skill_tags": [
+      "contrast",
+      "repetition"
+     ],
+     "criteria": [
+      {
+       "mark": 3,
+       "descriptor": "Precisely identifies how the speaker distinguishes his love from others' in the second stanza and explains its significance with apt, accurately quoted evidence"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Identifies how the speaker distinguishes his love from others' in the second stanza with a relevant reference to the text and some explanation"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Identifies a relevant feature of how the speaker distinguishes his love from others' in the second stanza with little or no explanation"
+      }
+     ],
+     "checklist": [
+      "Identifies the contrast between the \"many\" who loved her beauty and the \"one man\" who loved her soul",
+      "Explains \"the pilgrim soul in you\" and \"the sorrows of your changing face\" as love of her inner self and of her through time",
+      "Comments on the repetition of \"loved\" and the turn on \"But\""
+     ],
+     "next_steps": {
+      "0": "Identify the contrast in the second stanza and quote the line beginning \"But\".",
+      "1": "Explain what \"the pilgrim soul\" suggests about the kind of love the speaker offers.",
+      "2": "Show how the repetition of \"loved\" builds the contrast and why the speaker loves her \"changing face\"."
+     },
+     "model": "The second stanza contrasts the \"many\" who were attracted to the woman's surface with the \"one man\" who loved her inner self. Others loved her \"moments of glad grace\" and \"your beauty with love false or true\", a love tied to youth and appearance and possibly insincere. The turn on \"But\" sets the speaker apart: he \"loved the pilgrim soul in you\", her searching, restless spirit, and \"the sorrows of your changing face\". The repetition of \"loved\" four times makes the stanza a catalogue of devotions, culminating in his, which embraces her sadness and ageing. His love is presented as deeper and more lasting because it does not depend on beauty that time will take.",
+     "difficulty": 1
+    },
+    {
+     "marks": 5,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "Analyse how Yeats uses imagery and the imagined future to create a tone of tender regret.",
+     "skill_tags": [
+      "imagery",
+      "tone",
+      "structure",
+      "personification"
+     ],
+     "criteria": [
+      {
+       "mark": 5,
+       "descriptor": "Provides a perceptive, sustained analysis of how imagery and the imagined future create a tone of tender regret, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Provides a thoughtful analysis of how imagery and the imagined future create a tone of tender regret, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a sound analysis of how imagery and the imagined future create a tone of tender regret, using relevant evidence with some explanation of effect"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how imagery and the imagined future create a tone of tender regret, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how imagery and the imagined future create a tone of tender regret or identifies a relevant technique with little explanation of its effect"
+      }
+     ],
+     "checklist": [
+      "Makes a claim: by projecting the woman into old age, the speaker turns present rejection into a gentle, sorrowful prophecy",
+      "Analyses the domestic imagery of \"old and grey and full of sleep\" and \"nodding by the fire\"",
+      "Analyses the self-reflexive \"take down this book\" (the poem itself as memory)",
+      "Analyses the personification of Love who \"fled\" and \"hid his face amid a crowd of stars\"",
+      "Analyses the softening qualifier \"Murmur, a little sadly\""
+     ],
+     "next_steps": {
+      "0": "State the tone of the poem and how the imagined future creates it.",
+      "1": "Analyse the opening image of old age and the effect of the polysyndeton.",
+      "2": "Analyse the instruction to \"take down this book\" and explain what it suggests about the poem's purpose.",
+      "3": "Analyse the final stanza's personification of Love and its movement from the fireside to the stars.",
+      "4": "Integrate your points into a conclusion about how the tone combines tenderness with regret."
+     },
+     "model": "Yeats creates a tone of tender regret by imagining the beloved in old age, so that the speaker's present unreturned love is recast as a quiet prophecy of what she will one day understand.\n\nThe opening image is gentle and domestic: \"When you are old and grey and full of sleep, / And nodding by the fire\". The polysyndeton of \"and\" slows the line, mimicking the drowsy pace of age, and the fireside setting suggests comfort rather than decay. There is no bitterness here; the speaker imagines her old age with care.\n\nThe instruction to \"take down this book\" is self-reflexive: the book is the poem itself. The speaker imagines his words outlasting their love affair and returning her to memories of \"the soft look / Your eyes had once\". The poem becomes a vessel of memory, and its quiet authority suggests he knows its value will be recognised too late.\n\nThe final stanza intensifies the regret. Bending \"beside the glowing bars\" of the fire, she will \"Murmur, a little sadly\", a careful understatement that implies sorrow without despair. Love itself is then personified: he \"fled / And paced upon the mountains overhead / And hid his face amid a crowd of stars\". The imagery lifts from the hearth to the sky, making lost love vast, remote and almost divine. Love is not destroyed but withdrawn beyond reach. The combination of the intimate fireside and the distant stars captures the poem's tone exactly: a tender, wistful recognition of something precious that was offered and not taken.",
+     "difficulty": 3
+    },
+    {
+     "marks": 4,
+     "verb": "Evaluate",
+     "demand": "evaluate",
+     "text": "Evaluate whether the speaker's attitude towards the woman is selfless or self-interested.",
+     "skill_tags": [
+      "evaluation",
+      "voice",
+      "purpose"
+     ],
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Makes a perceptive, well-justified judgement about whether the speaker's attitude is selfless or self-interested, weighing evidence from across the text and analysing how language and form support the judgement"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Makes a clear, reasoned judgement about whether the speaker's attitude is selfless or self-interested, supported by relevant, well-analysed evidence"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Offers a judgement about whether the speaker's attitude is selfless or self-interested that is asserted more than argued, with some textual support"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes whether the speaker's attitude is selfless or self-interested with an implied or unsupported judgement"
+      }
+     ],
+     "checklist": [
+      "Makes a clear judgement, recognising that the poem combines devotion with a desire to be remembered and vindicated",
+      "Evaluates the selfless devotion in \"loved the pilgrim soul in you\"",
+      "Evaluates the self-interest implied by the commands \"take down this book\" and \"dream\"",
+      "Evaluates the implied rebuke in \"love false or true\" and the regret he imagines for her"
+     ],
+     "next_steps": {
+      "0": "Write a clear judgement that answers the question directly.",
+      "1": "Support your judgement with evidence of the speaker's devotion and analyse it.",
+      "2": "Weigh the other side: analyse evidence that the speaker wants her to regret rejecting him.",
+      "3": "Reach a balanced conclusion that explains how both attitudes coexist and supports it with precise analysis."
+     },
+     "model": "The speaker's attitude is best seen as devoted but not wholly selfless: his love is genuine, yet the poem is also a gentle act of persuasion that asks to be remembered.\n\nThe evidence for selflessness is strong. He loves \"the pilgrim soul in you\" and \"the sorrows of your changing face\", qualities that do not flatter him and that will outlast her youth. He imagines her old age tenderly, \"nodding by the fire\", without any wish for her suffering.\n\nYet the poem's structure suggests self-interest. It is a series of instructions, \"take down this book, / And slowly read, and dream\", imagining her reading his own words and recognising his worth. The comparison with the many who loved her \"with love false or true\" implies that he alone was sincere, and the final image of her murmuring \"a little sadly\" imagines her regret at refusing him.\n\nThe most convincing reading is that both attitudes coexist. His love is real, but he wants it to be understood, even if only when it is too late; the tenderness of the tone softens what is, at heart, a plea.",
+     "difficulty": 2
+    }
+   ],
+   "length_words": 100
+  },
+  {
+   "key": "real-c-arnold-dover-beach",
+   "title": "Dover Beach",
+   "form": "Poetry",
+   "complexity": 3,
+   "author": "Matthew Arnold",
+   "provenance": "public_domain",
+   "source": "Dover Beach, in New Poems, Macmillan, 1867 (probably written c. 1851)",
+   "headnote": "Matthew Arnold was an English poet and critic. The poem is set at night at Dover, on the English Channel, and is spoken to a companion, probably his wife. It was written as scientific discoveries were unsettling traditional religious belief in Victorian England.",
+   "theme_tags": [
+    "faith and doubt",
+    "love",
+    "the modern world",
+    "sea"
+   ],
+   "body": "The sea is calm to-night.\nThe tide is full, the moon lies fair\nUpon the straits;—on the French coast the light\nGleams and is gone; the cliffs of England stand,\nGlimmering and vast, out in the tranquil bay.\nCome to the window, sweet is the night-air!\nOnly, from the long line of spray\nWhere the sea meets the moon-blanch'd land,\nListen! you hear the grating roar\nOf pebbles which the waves draw back, and fling,\nAt their return, up the high strand,\nBegin, and cease, and then again begin,\nWith tremulous cadence slow, and bring\nThe eternal note of sadness in.\n\nSophocles long ago\nHeard it on the Ægæan, and it brought\nInto his mind the turbid ebb and flow\nOf human misery; we\nFind also in the sound a thought,\nHearing it by this distant northern sea.\n\nThe Sea of Faith\nWas once, too, at the full, and round earth's shore\nLay like the folds of a bright girdle furl'd.\nBut now I only hear\nIts melancholy, long, withdrawing roar,\nRetreating, to the breath\nOf the night-wind, down the vast edges drear\nAnd naked shingles of the world.\n\nAh, love, let us be true\nTo one another! for the world, which seems\nTo lie before us like a land of dreams,\nSo various, so beautiful, so new,\nHath really neither joy, nor love, nor light,\nNor certitude, nor peace, nor help for pain;\nAnd we are here as on a darkling plain\nSwept with confused alarms of struggle and flight,\nWhere ignorant armies clash by night.",
+   "pair": null,
+   "questions": [
+    {
+     "marks": 3,
+     "verb": "Explain",
+     "demand": "explain",
+     "text": "Explain how the mood of the first stanza changes.",
+     "skill_tags": [
+      "tone",
+      "imagery",
+      "sound"
+     ],
+     "criteria": [
+      {
+       "mark": 3,
+       "descriptor": "Provides a precise, well-reasoned explanation of how the mood of the first stanza changes, integrating well-chosen textual evidence and making the cause-and-effect relationship explicit"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides a sound explanation of how the mood of the first stanza changes with appropriate textual reference"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of how the mood of the first stanza changes, relying on paraphrase or retelling"
+      }
+     ],
+     "checklist": [
+      "Makes a clear claim: the stanza moves from serene visual beauty to a melancholy heard in the sea's sound",
+      "Explains the calm visual imagery of \"The sea is calm to-night\" and \"the tranquil bay\"",
+      "Explains the turn at \"Only\" and \"Listen! you hear the grating roar\"",
+      "Explains \"The eternal note of sadness\" as the stanza's final mood"
+     ],
+     "next_steps": {
+      "0": "State how the mood begins and ends, and quote the opening line.",
+      "1": "Explain the turning point and how the shift from sight to sound changes the mood.",
+      "2": "Explain the stanza's final line and what kind of sadness it introduces."
+     },
+     "model": "The first stanza begins in serene beauty but ends in sadness. The opening is calm and visual: \"The sea is calm to-night. / The tide is full, the moon lies fair\", and the cliffs stand \"Glimmering and vast, out in the tranquil bay\". The speaker even invites his companion to share the moment: \"sweet is the night-air!\" The word \"Only\" marks a turn from sight to sound. He asks her to \"Listen!\" to \"the grating roar / Of pebbles\", and the harsh adjective \"grating\" disturbs the peace. The repeated rhythm \"Begin, and cease, and then again begin\" imitates the endless motion of the waves, which bring \"The eternal note of sadness in\". Beneath the calm surface, the speaker hears a permanent melancholy.",
+     "difficulty": 2
+    },
+    {
+     "marks": 6,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "Analyse how Arnold uses the sea as an extended metaphor to explore the loss of religious faith.",
+     "skill_tags": [
+      "extended metaphor",
+      "imagery",
+      "sound",
+      "context"
+     ],
+     "criteria": [
+      {
+       "mark": 6,
+       "descriptor": "Provides a perceptive, sustained analysis of how the sea metaphor explores the loss of religious faith, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 5,
+       "descriptor": "Provides a thoughtful analysis of how the sea metaphor explores the loss of religious faith, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Provides a sound analysis of how the sea metaphor explores the loss of religious faith, using relevant evidence with some explanation of effect"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides some explanation of how the sea metaphor explores the loss of religious faith, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Describes how the sea metaphor explores the loss of religious faith or identifies a relevant technique with little explanation of its effect"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Makes a limited or general comment about the text"
+      }
+     ],
+     "checklist": [
+      "Makes a claim: the literal tide becomes \"The Sea of Faith\", whose retreat leaves the modern world exposed and bare",
+      "Analyses the full tide image \"at the full\" and the simile \"like the folds of a bright girdle furl'd\"",
+      "Analyses the sound of retreat in \"Its melancholy, long, withdrawing roar\"",
+      "Analyses the bleak imagery of \"the vast edges drear / And naked shingles of the world\"",
+      "Analyses the link to Sophocles and \"the turbid ebb and flow / Of human misery\"",
+      "Connects the metaphor to its Victorian context of religious doubt"
+     ],
+     "next_steps": {
+      "0": "State how the sea becomes a metaphor for faith, and quote the phrase that makes it explicit.",
+      "1": "Analyse the image of the sea at full tide and what it says about faith in the past.",
+      "2": "Analyse the sound of the retreating tide, naming techniques such as listing and long vowel sounds.",
+      "3": "Analyse the image of what the retreat leaves behind and its effect.",
+      "4": "Connect the second stanza's reference to Sophocles to the metaphor of the tide.",
+      "5": "Draw your analysis into a sustained argument that includes the Victorian context of doubt."
+     },
+     "model": "Arnold transforms the literal sea at Dover into an extended metaphor for religious faith, and the ebbing tide becomes an image of belief withdrawing from the modern world, leaving it exposed and comfortless.\n\nThe metaphor is prepared in the first stanza, where the speaker hears in the waves \"The eternal note of sadness\". The second stanza widens this to human history: Sophocles heard the same sound and thought of \"the turbid ebb and flow / Of human misery\". The tide's movement becomes a pattern of human suffering, so the sea is already a symbol before Arnold names it.\n\nThe third stanza makes the metaphor explicit: \"The Sea of Faith / Was once, too, at the full\". In the past, faith encircled the world \"like the folds of a bright girdle furl'd\", a simile of protection, unity and brightness, as though belief held the world together like a belt or sash. The past tense \"Was once\" immediately signals that this time is over.\n\nThe present is captured through sound: \"But now I only hear / Its melancholy, long, withdrawing roar\". The listing of adjectives and the long vowel sounds stretch the line out, enacting the slow retreat of the tide and the speaker's prolonged grief. The enjambment of \"Retreating, to the breath / Of the night-wind\" carries the sound away into darkness. What remains is \"the vast edges drear / And naked shingles of the world\", an image of bare pebbled beach that suggests a world stripped of meaning and protection. The inverted \"edges drear\" and the word \"naked\" make the loss feel cold and vulnerable.\n\nIn its Victorian context, when geology and evolutionary science were challenging literal readings of scripture, the metaphor captures a whole culture's crisis. Arnold does not argue against faith; he mourns its retreat. By grounding a spiritual loss in the physical sound and sight of an ebbing sea, he makes doubt something the reader can hear and feel.",
+     "difficulty": 3
+    },
+    {
+     "marks": 4,
+     "verb": "Synthesise",
+     "demand": "synthesise",
+     "text": "Synthesise what the poem suggests individuals can hold on to in a world without certainty.",
+     "skill_tags": [
+      "synthesis",
+      "imagery",
+      "structure"
+     ],
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Constructs a perceptive, coherent synthesis of what individuals can hold on to in a world without certainty, combining insights from across the text(s) into a new understanding supported by well-chosen evidence"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Constructs a thoughtful synthesis of what individuals can hold on to in a world without certainty, drawing together relevant, analysed evidence"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Discusses relevant ideas about what individuals can hold on to in a world without certainty without fully combining them"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of the text(s) with limited reference to what individuals can hold on to in a world without certainty"
+      }
+     ],
+     "checklist": [
+      "Constructs a clear overall understanding: personal love and loyalty are the only refuge in a world without faith or certainty",
+      "Draws on the appeal \"Ah, love, let us be true / To one another!\"",
+      "Draws on the deceptive world \"like a land of dreams\" that \"Hath really neither joy, nor love, nor light\"",
+      "Draws on the final image of \"ignorant armies\" that \"clash by night\""
+     ],
+     "next_steps": {
+      "0": "Write one sentence that answers the question directly.",
+      "1": "Support your answer with the speaker's appeal to his companion and explain it.",
+      "2": "Show how the description of the world in the final stanza makes this appeal necessary, using a quotation.",
+      "3": "Combine your points into a conclusion that also considers how fragile this refuge is, using the final image."
+     },
+     "model": "The poem suggests that, once religious faith has retreated, the only thing individuals can hold on to is faithfulness to one another, though even this refuge is fragile.\n\nThe final stanza turns from the sea to the companion: \"Ah, love, let us be true / To one another!\" The exclamation makes loyalty an urgent necessity rather than a romantic gesture. Fidelity between two people replaces the lost \"Sea of Faith\".\n\nThis is necessary because the world is deceptive. It \"seems / To lie before us like a land of dreams, / So various, so beautiful, so new\", but \"Hath really neither joy, nor love, nor light\". The long negative list strips away every consolation, including certainty and \"help for pain\".\n\nThe closing image shows how small the refuge is. The lovers stand \"as on a darkling plain\" where \"ignorant armies clash by night\", a vision of confusion and violence without purpose. Drawing these ideas together, the poem offers human love as the one remaining light, but a light kept alive in darkness and threat.",
+     "difficulty": 2
+    }
+   ],
+   "length_words": 257
+  },
+  {
+   "key": "real-c-chief-joseph-surrender",
+   "title": "I Will Fight No More Forever",
+   "form": "Speech",
+   "complexity": 2,
+   "author": "Chief Joseph (Nez Perce)",
+   "provenance": "public_domain",
+   "source": "Surrender speech, Bear Paw, Montana Territory, 5 October 1877, as recorded in English by Lt Charles Erskine Scott Wood; printed in Harper's Weekly, 17 November 1877",
+   "headnote": "Chief Joseph was a leader of the Nez Perce people of the American Northwest. In 1877, after a retreat of more than 1,500 miles from the US Army, the Nez Perce were surrounded near the Canadian border. This is the English version of his surrender message to General Oliver Howard, delivered through an interpreter; historians debate how closely the recorded words match what he said.",
+   "theme_tags": [
+    "war",
+    "loss",
+    "leadership",
+    "dignity in defeat"
+   ],
+   "body": "Tell General Howard I know his heart. What he told me before, I have it in my heart. I am tired of fighting. Our chiefs are killed. Looking Glass is dead. Too-hul-hul-sote is dead. The old men are all dead. It is the young men who say yes or no. He who led on the young men is dead. It is cold, and we have no blankets. The little children are freezing to death. My people, some of them, have run away to the hills, and have no blankets, no food; no one knows where they are—perhaps freezing to death. I want to have time to look for my children and see how many of them I can find. Maybe I shall find them among the dead. Hear me, my chiefs. I am tired; my heart is sick and sad. From where the sun now stands I will fight no more forever.",
+   "pair": null,
+   "questions": [
+    {
+     "marks": 2,
+     "verb": "Identify",
+     "demand": "identify",
+     "text": "Identify TWO reasons Chief Joseph gives for surrendering.",
+     "skill_tags": [
+      "purpose",
+      "evidence"
+     ],
+     "criteria": [
+      {
+       "mark": 2,
+       "descriptor": "Precisely identifies two reasons given for surrendering and explains its significance with apt, accurately quoted evidence"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Identifies a relevant feature of two reasons given for surrendering with little or no explanation"
+      }
+     ],
+     "checklist": [
+      "Identifies two distinct reasons, such as the deaths of the leaders and the suffering of the people from cold and hunger",
+      "Supports each with an accurate quotation, for example \"Our chiefs are killed\" and \"The little children are freezing to death\"",
+      "Links the reasons to his decision to stop fighting"
+     ],
+     "next_steps": {
+      "0": "Identify two separate reasons from the speech and quote each one.",
+      "1": "Explain how each reason leads to the decision to surrender, rather than just listing them."
+     },
+     "model": "First, the leadership of the Nez Perce has been destroyed: \"Our chiefs are killed\", including Looking Glass and \"The old men\", so there is no one left to lead the fight. Second, his people are suffering terribly from the winter: \"It is cold, and we have no blankets. The little children are freezing to death.\" Continuing to fight would cost more lives, so surrender becomes an act of protection.",
+     "difficulty": 1
+    },
+    {
+     "marks": 3,
+     "verb": "Explain",
+     "demand": "explain",
+     "text": "Explain how the speech's sentence structure contributes to its emotional impact.",
+     "skill_tags": [
+      "syntax",
+      "repetition",
+      "tone"
+     ],
+     "criteria": [
+      {
+       "mark": 3,
+       "descriptor": "Provides a precise, well-reasoned explanation of how sentence structure contributes to emotional impact, integrating well-chosen textual evidence and making the cause-and-effect relationship explicit"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides a sound explanation of how sentence structure contributes to emotional impact with appropriate textual reference"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of how sentence structure contributes to emotional impact, relying on paraphrase or retelling"
+      }
+     ],
+     "checklist": [
+      "Makes a clear claim: short, plain declarative sentences create a voice of exhaustion and grief without self-pity",
+      "Explains the repetition of \"is dead\" in a series of short sentences",
+      "Explains the longer, broken sentence about the people in the hills and the dash before \"perhaps freezing to death\"",
+      "Explains the effect of the restatement \"I am tired\""
+     ],
+     "next_steps": {
+      "0": "State the main feature of the sentence structure and its emotional effect, with a quotation.",
+      "1": "Explain how the repeated short sentences about the dead build grief.",
+      "2": "Explain how a longer or interrupted sentence changes the rhythm, and comment on the effect of the speech's plainness."
+     },
+     "model": "The speech relies on short, plain declarative sentences that create a voice of utter exhaustion. A sequence of brief statements, \"Our chiefs are killed. Looking Glass is dead. Too-hul-hul-sote is dead. The old men are all dead.\", works like a roll call of losses; the repetition of \"dead\" falls with a heavy, unchanging rhythm, conveying grief too deep for elaboration. When the speech turns to the scattered families, the sentence grows longer and breaks off at a dash: \"no one knows where they are—perhaps freezing to death\". The interruption suggests a thought too painful to complete. Joseph twice says \"I am tired\", and the plainness of these statements, free of complaint or rhetoric, gives them great dignity and makes the listener feel the full weight of defeat.",
+     "difficulty": 1
+    },
+    {
+     "marks": 5,
+     "verb": "Evaluate",
+     "demand": "evaluate",
+     "text": "Evaluate how effectively the speech conveys both defeat and dignity.",
+     "skill_tags": [
+      "evaluation",
+      "voice",
+      "imagery",
+      "audience"
+     ],
+     "criteria": [
+      {
+       "mark": 5,
+       "descriptor": "Makes a perceptive, well-justified judgement about how effectively the speech conveys both defeat and dignity, weighing evidence from across the text and analysing how language and form support the judgement"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Makes a clear, reasoned judgement about how effectively the speech conveys both defeat and dignity, supported by relevant, well-analysed evidence"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Makes a sound judgement about how effectively the speech conveys both defeat and dignity with relevant evidence and some analysis"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Offers a judgement about how effectively the speech conveys both defeat and dignity that is asserted more than argued, with some textual support"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how effectively the speech conveys both defeat and dignity with an implied or unsupported judgement"
+      }
+     ],
+     "checklist": [
+      "Makes a clear judgement about how effectively defeat and dignity are balanced",
+      "Evaluates the open admission of defeat in \"I am tired of fighting\" and \"my heart is sick and sad\"",
+      "Evaluates the dignified opening \"Tell General Howard I know his heart\"",
+      "Evaluates the direct address \"Hear me, my chiefs\" and the role of leader",
+      "Evaluates the closing image \"From where the sun now stands I will fight no more forever\""
+     ],
+     "next_steps": {
+      "0": "Open with a clear judgement about whether the speech conveys both defeat and dignity, and how well.",
+      "1": "Support your judgement with evidence of defeat and analyse its effect.",
+      "2": "Analyse evidence of dignity, such as how Joseph addresses his opponent and his own people.",
+      "3": "Evaluate the final sentence: analyse how its imagery and certainty combine defeat with dignity.",
+      "4": "Weigh the context, including the speech's translation and audience, in a conclusion that justifies your judgement."
+     },
+     "model": "The speech conveys defeat and dignity with remarkable effectiveness, because Joseph admits total loss without ever surrendering his authority or self-respect.\n\nDefeat is stated with unflinching honesty. \"I am tired of fighting\" opens his admission, and the speech closes its personal statement with \"I am tired; my heart is sick and sad.\" The roll call of the dead and the image of children \"freezing to death\" make clear that the Nez Perce cannot continue. There is no attempt to disguise the loss.\n\nYet the speech is framed with dignity. It opens not with pleading but with a message between equals: \"Tell General Howard I know his heart.\" Joseph speaks as one leader to another, trusting Howard's earlier word. His concern is not for himself but for his people: \"I want to have time to look for my children and see how many of them I can find.\" The imperative \"Hear me, my chiefs\" shows that he still speaks as a leader, explaining his decision to those he is responsible for.\n\nThe final sentence fuses the two qualities most powerfully. \"From where the sun now stands I will fight no more forever\" marks the moment of surrender with an image from the natural world, giving it the solemnity of an oath. The absolute \"no more forever\" accepts defeat completely, but the choice is presented as his own decision, made freely and with composure.\n\nIt is worth remembering that the words reached their audience through an interpreter and a recorder, so their polish may owe something to translation. Even so, the plain, measured voice that survives makes defeat feel noble rather than humiliating, which is why the speech remains so moving.",
+     "difficulty": 3
+    }
+   ],
+   "length_words": 152
+  },
+  {
+   "key": "real-c-lincoln-bixby-letter",
+   "title": "Letter to Mrs Bixby",
+   "form": "Letter",
+   "complexity": 2,
+   "author": "Abraham Lincoln",
+   "provenance": "public_domain",
+   "source": "Letter to Mrs Lydia Bixby, 21 November 1864, printed in the Boston Evening Transcript, 25 November 1864",
+   "headnote": "During the American Civil War, President Abraham Lincoln sent this letter of condolence to a Boston widow believed to have lost five sons fighting for the Union. Later research showed that two of the sons had died; some historians think Lincoln's secretary John Hay drafted the letter.",
+   "theme_tags": [
+    "grief",
+    "sacrifice",
+    "war",
+    "consolation"
+   ],
+   "body": "Dear Madam,—I have been shown in the files of the War Department a statement of the Adjutant General of Massachusetts that you are the mother of five sons who have died gloriously on the field of battle. I feel how weak and fruitless must be any word of mine which should attempt to beguile you from the grief of a loss so overwhelming. But I cannot refrain from tendering you the consolation that may be found in the thanks of the Republic they died to save. I pray that our Heavenly Father may assuage the anguish of your bereavement, and leave you only the cherished memory of the loved and lost, and the solemn pride that must be yours to have laid so costly a sacrifice upon the altar of freedom.\n\nYours, very sincerely and respectfully,\nA. Lincoln.",
+   "pair": null,
+   "questions": [
+    {
+     "marks": 4,
+     "verb": "Explain",
+     "demand": "explain",
+     "text": "Explain how the writer acknowledges the limits of his own words while still offering comfort.",
+     "skill_tags": [
+      "tone",
+      "humility",
+      "structure"
+     ],
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Provides a precise, well-reasoned explanation of how the writer acknowledges the limits of his words while offering comfort, integrating well-chosen textual evidence and making the cause-and-effect relationship explicit"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a clear explanation of how the writer acknowledges the limits of his words while offering comfort, supported by relevant, accurately quoted evidence"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how the writer acknowledges the limits of his words while offering comfort, with general or partly relevant reference to the text"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of how the writer acknowledges the limits of his words while offering comfort, relying on paraphrase or retelling"
+      }
+     ],
+     "checklist": [
+      "Makes a clear claim: the letter's humility makes its consolation more credible",
+      "Explains \"how weak and fruitless must be any word of mine\"",
+      "Explains the turn at \"But I cannot refrain from tendering you the consolation\"",
+      "Explains how comfort is located beyond the writer, in \"the thanks of the Republic\" and \"our Heavenly Father\""
+     ],
+     "next_steps": {
+      "0": "State how the writer admits the limits of his words, and quote the relevant phrase.",
+      "1": "Explain why this admission matters to a grieving reader.",
+      "2": "Explain the turn introduced by \"But\" and what consolation he still offers.",
+      "3": "Show where the comfort finally comes from, explaining how the writer directs it away from himself."
+     },
+     "model": "The letter begins its consolation by admitting that consolation is almost impossible. The writer says he feels \"how weak and fruitless must be any word of mine which should attempt to beguile you from the grief of a loss so overwhelming.\" The adjectives \"weak and fruitless\" are humble, and the verb \"beguile\" suggests that words could only distract her rather than heal her. By recognising the scale of her loss first, he avoids seeming glib.\n\nThe turn comes with \"But I cannot refrain from tendering you the consolation\". \"Cannot refrain\" suggests an obligation he feels personally, and \"tendering\" is a formal, respectful word, as though offering a gift. Crucially, the comfort is not his own: it lies in \"the thanks of the Republic they died to save\" and in a prayer that \"our Heavenly Father may assuage the anguish\". By placing consolation in the nation and in God, rather than in his own eloquence, the writer remains consistent with his opening humility while still giving the mother something to hold.",
+     "difficulty": 2
+    },
+    {
+     "marks": 2,
+     "verb": "Identify",
+     "demand": "identify",
+     "text": "Identify ONE feature of the letter's language that makes it formal and public in tone.",
+     "skill_tags": [
+      "register",
+      "diction"
+     ],
+     "criteria": [
+      {
+       "mark": 2,
+       "descriptor": "Precisely identifies one feature that makes the letter formal and public and explains its significance with apt, accurately quoted evidence"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Identifies a relevant feature of one feature that makes the letter formal and public with little or no explanation"
+      }
+     ],
+     "checklist": [
+      "Identifies a relevant feature, such as Latinate formal diction (\"tendering\", \"assuage\", \"bereavement\") or institutional references (\"the War Department\")",
+      "Explains how this suits a letter from a President on behalf of the nation",
+      "Quotes accurately"
+     ],
+     "next_steps": {
+      "0": "Identify one feature of formal language and quote an example.",
+      "1": "Explain why this formality suits a letter from the head of a nation at war."
+     },
+     "model": "The letter uses elevated, Latinate diction, such as \"tendering\", \"assuage\" and \"bereavement\", together with references to official institutions, \"the War Department\" and \"the Adjutant General of Massachusetts\". This formality suits a President writing on behalf of \"the Republic\": the letter speaks not only as one person to another but as the nation honouring a family's loss.",
+     "difficulty": 1
+    },
+    {
+     "marks": 6,
+     "verb": "Evaluate",
+     "demand": "evaluate",
+     "text": "Evaluate the view that the letter honours the mother's grief while also serving the nation's purposes in war.",
+     "skill_tags": [
+      "evaluation",
+      "purpose",
+      "context",
+      "rhetoric"
+     ],
+     "criteria": [
+      {
+       "mark": 6,
+       "descriptor": "Makes a perceptive, well-justified judgement about whether the letter honours the mother's grief while serving the nation's purposes, weighing evidence from across the text and analysing how language and form support the judgement"
+      },
+      {
+       "mark": 5,
+       "descriptor": "Makes a clear, reasoned judgement about whether the letter honours the mother's grief while serving the nation's purposes, supported by relevant, well-analysed evidence"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Makes a sound judgement about whether the letter honours the mother's grief while serving the nation's purposes with relevant evidence and some analysis"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Offers a judgement about whether the letter honours the mother's grief while serving the nation's purposes that is asserted more than argued, with some textual support"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Describes whether the letter honours the mother's grief while serving the nation's purposes with an implied or unsupported judgement"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Makes a limited or general comment about the text"
+      }
+     ],
+     "checklist": [
+      "Makes a clear judgement that addresses both parts of the view",
+      "Evaluates the personal recognition of grief in \"a loss so overwhelming\" and \"the anguish of your bereavement\"",
+      "Evaluates the patriotic framing of the deaths: \"died gloriously on the field of battle\" and \"the Republic they died to save\"",
+      "Analyses the sacrificial metaphor \"laid so costly a sacrifice upon the altar of freedom\"",
+      "Considers context: publication in a newspaper during the war, and the inaccurate count of sons"
+     ],
+     "next_steps": {
+      "0": "Open with a clear judgement about both parts of the view.",
+      "1": "Support the first part with evidence of how the letter recognises the mother's grief.",
+      "2": "Support the second part with evidence of how the letter frames the deaths in national terms.",
+      "3": "Analyse the closing metaphor of the \"altar of freedom\" and what it asks the mother to feel.",
+      "4": "Bring in context, such as the letter's publication and wartime purpose, and weigh how it affects your judgement.",
+      "5": "Write a conclusion that resolves the tension between private grief and public purpose, with precise analysis."
+     },
+     "model": "The view is persuasive. The letter genuinely honours the mother's grief, but it also frames that grief in a way that supports the Union's war effort, and the two purposes are woven together so closely that they are hard to separate.\n\nThe letter's respect for private grief is clear. It acknowledges \"a loss so overwhelming\" and admits that any words must be \"weak and fruitless\". It prays that God will \"assuage the anguish of your bereavement\", naming her pain directly rather than dismissing it. The hope that she will keep \"the cherished memory of the loved and lost\" is tender, recognising her sons as individuals she loved, not simply soldiers.\n\nYet the letter also turns these deaths into national meaning. The sons \"died gloriously on the field of battle\", an adverb that presents war death as honourable, and the consolation offered is \"the thanks of the Republic they died to save\". This reframes private loss as a contribution to a cause, implicitly justifying the war's cost. The final metaphor is the clearest example: she is to feel \"the solemn pride that must be yours to have laid so costly a sacrifice upon the altar of freedom.\" The religious image of an altar makes her sons' deaths a sacred offering, and the modal \"must be yours\" gently tells her what to feel. Grief is to be accompanied, even transformed, by pride.\n\nContext strengthens this reading. The letter was printed in a Boston newspaper within days, so it reached a public audience at a time when the Union needed continued support for the war. Its emphasis on glory and freedom would have spoken to every grieving family. The later discovery that not all five sons had died for the Union adds an irony, suggesting that the letter's symbolic purpose mattered as much as its factual basis.\n\nOverall, the letter does both things at once. Its humility and compassion are real, but its consolation is inseparable from a national story of sacrifice, which is precisely what makes it such a powerful public document.",
+     "difficulty": 3
+    }
+   ],
+   "length_words": 138
+  },
+  {
+   "key": "real-c-shakespeare-sonnet-18",
+   "title": "Sonnet 18 (Shall I compare thee to a summer's day?)",
+   "form": "Poetry",
+   "complexity": 2,
+   "author": "William Shakespeare",
+   "provenance": "public_domain",
+   "source": "Sonnet 18, in Shake-speares Sonnets, Thomas Thorpe, 1609 (spelling modernised as in standard editions)",
+   "headnote": "William Shakespeare's 154 sonnets were published in 1609. Sonnet 18 belongs to a group addressed to a young man whom the speaker admires; in Elizabethan English a 'lease' is a fixed-term rental and 'thou ow'st' means 'you own'.",
+   "theme_tags": [
+    "love",
+    "beauty",
+    "time",
+    "poetry and immortality"
+   ],
+   "body": "Shall I compare thee to a summer's day?\nThou art more lovely and more temperate:\nRough winds do shake the darling buds of May,\nAnd summer's lease hath all too short a date;\nSometime too hot the eye of heaven shines,\nAnd often is his gold complexion dimm'd;\nAnd every fair from fair sometime declines,\nBy chance or nature's changing course untrimm'd;\nBut thy eternal summer shall not fade,\nNor lose possession of that fair thou ow'st;\nNor shall Death brag thou wander'st in his shade,\nWhen in eternal lines to time thou grow'st:\nSo long as men can breathe or eyes can see,\nSo long lives this, and this gives life to thee.",
+   "pair": null,
+   "questions": [
+    {
+     "marks": 3,
+     "verb": "Explain",
+     "demand": "explain",
+     "text": "Explain why the speaker decides that a summer's day is an inadequate comparison for the person he loves.",
+     "skill_tags": [
+      "comparison",
+      "imagery",
+      "argument"
+     ],
+     "criteria": [
+      {
+       "mark": 3,
+       "descriptor": "Provides a precise, well-reasoned explanation of why a summer's day is an inadequate comparison, integrating well-chosen textual evidence and making the cause-and-effect relationship explicit"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides a sound explanation of why a summer's day is an inadequate comparison with appropriate textual reference"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of why a summer's day is an inadequate comparison, relying on paraphrase or retelling"
+      }
+     ],
+     "checklist": [
+      "Makes a clear claim: summer is imperfect and brief, while the beloved is more constant and lovely",
+      "Explains \"more lovely and more temperate\"",
+      "Explains the flaws of summer: \"Rough winds\", \"summer's lease hath all too short a date\", \"too hot the eye of heaven\"",
+      "Explains that the comparison is overturned rather than accepted"
+     ],
+     "next_steps": {
+      "0": "State why the comparison fails and quote the speaker's answer to his own question.",
+      "1": "Explain two flaws the speaker finds in summer, quoting each.",
+      "2": "Explain how listing summer's flaws turns a conventional compliment into a stronger one."
+     },
+     "model": "The speaker raises a conventional comparison only to reject it. His answer to the opening question is that the beloved is \"more lovely and more temperate\", meaning more beautiful and more even in nature. Summer, by contrast, is flawed. It is unstable, since \"Rough winds do shake the darling buds of May\", and it is brief: \"summer's lease hath all too short a date\", a legal metaphor suggesting that summer is only rented for a limited term. Even the sun is unreliable, \"Sometime too hot\" and often \"dimm'd\" by cloud. By cataloguing summer's imperfections, the speaker turns a familiar compliment into a stronger one: the beloved surpasses the best that nature can offer.",
+     "difficulty": 1
+    },
+    {
+     "marks": 4,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "Analyse how the sonnet's volta (turn) and final couplet change the direction of the poem.",
+     "skill_tags": [
+      "sonnet form",
+      "volta",
+      "couplet",
+      "repetition"
+     ],
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Provides a perceptive, sustained analysis of how the volta and final couplet change the poem's direction, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a thoughtful analysis of how the volta and final couplet change the poem's direction, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how the volta and final couplet change the poem's direction, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how the volta and final couplet change the poem's direction or identifies a relevant technique with little explanation of its effect"
+      }
+     ],
+     "checklist": [
+      "Makes a claim: the turn moves from nature's decline to the beloved's permanence, and the couplet reveals that poetry is what makes this possible",
+      "Analyses the volta at \"But thy eternal summer shall not fade\"",
+      "Analyses the personification of Death in \"Nor shall Death brag thou wander'st in his shade\"",
+      "Analyses the pun on \"eternal lines\" and the parallelism of the couplet",
+      "Analyses the self-referential \"this\" in \"So long lives this, and this gives life to thee\""
+     ],
+     "next_steps": {
+      "0": "State how the poem changes direction and quote the line where the turn occurs.",
+      "1": "Analyse the metaphor of \"eternal summer\" and how it reverses the first eight lines.",
+      "2": "Analyse how Death is personified and defeated in the third quatrain, including the phrase \"eternal lines\".",
+      "3": "Analyse the final couplet's structure and the meaning of \"this\", explaining what the poem finally claims about itself."
+     },
+     "model": "The first eight lines dwell on decline: summer fades and \"every fair from fair sometime declines\". At line 9 the volta reverses this movement: \"But thy eternal summer shall not fade\". The beloved's beauty becomes a summer that does not end, an oxymoron that defies the natural cycle just described.\n\nThe third quatrain extends this defiance to death itself. \"Nor shall Death brag thou wander'st in his shade\" personifies Death as a boastful figure who will be denied his triumph, and the repeated negatives, \"shall not\", \"Nor lose\", \"Nor shall\", build a sense of certainty. The reason is given in the next line: the beloved will live \"When in eternal lines to time thou grow'st\". \"Lines\" puns on lines of poetry and on lineage, but the couplet makes the primary meaning clear.\n\nThe final couplet is balanced and emphatic: \"So long as men can breathe or eyes can see, / So long lives this, and this gives life to thee.\" The parallel \"So long\" clauses stretch the claim across all of human time, and the repeated \"this\" points to the sonnet itself. The poem shifts from praising the beloved to praising its own power: poetry, not nature, is what grants immortality.",
+     "difficulty": 2
+    },
+    {
+     "marks": 5,
+     "verb": "Synthesise",
+     "demand": "synthesise",
+     "text": "Synthesise what the sonnet suggests about the relationship between time, beauty and art.",
+     "skill_tags": [
+      "synthesis",
+      "theme",
+      "imagery",
+      "form"
+     ],
+     "criteria": [
+      {
+       "mark": 5,
+       "descriptor": "Constructs a perceptive, coherent synthesis of the relationship between time, beauty and art, combining insights from across the text(s) into a new understanding supported by well-chosen evidence"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Constructs a thoughtful synthesis of the relationship between time, beauty and art, drawing together relevant, analysed evidence"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Draws together ideas about the relationship between time, beauty and art with relevant evidence and some explanation"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Discusses relevant ideas about the relationship between time, beauty and art without fully combining them"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of the text(s) with limited reference to the relationship between time, beauty and art"
+      }
+     ],
+     "checklist": [
+      "Constructs a clear overall understanding: time destroys natural beauty, but art can preserve it by placing it beyond time",
+      "Draws on images of time's damage: \"summer's lease\", \"every fair from fair sometime declines\"",
+      "Draws on \"By chance or nature's changing course untrimm'd\" as the forces of change",
+      "Draws on \"eternal lines to time thou grow'st\" and the closing couplet as art's victory",
+      "Considers the irony that the beloved survives only as words, unnamed and undescribed"
+     ],
+     "next_steps": {
+      "0": "Write one sentence summing up the relationship between time, beauty and art in the poem.",
+      "1": "Support it with evidence of how time affects beauty in the first eight lines.",
+      "2": "Explain how art is presented as the answer to time, using the third quatrain.",
+      "3": "Draw in the final couplet and explain how it completes the relationship.",
+      "4": "Combine your ideas into a new understanding, considering the irony of what kind of life the poem actually gives the beloved."
+     },
+     "model": "The sonnet suggests that time inevitably destroys natural beauty, but that art can rescue beauty from time by fixing it in words that outlast the body.\n\nIn the first eight lines, time governs everything beautiful. Summer exists on a \"lease\" with \"all too short a date\", and the sun's \"gold complexion\" is \"dimm'd\". The general law is stated plainly: \"every fair from fair sometime declines, / By chance or nature's changing course untrimm'd\". Whether by accident or by the ordinary processes of nature, beauty is stripped away. Beauty here is not a lasting possession but something on loan.\n\nArt enters as the answer to this law. The beloved's \"eternal summer shall not fade\" because they will live \"in eternal lines\", growing alongside time rather than being consumed by it. The verb \"grow'st\" is striking: in poetry the beloved does not decline but increases, reversing nature's pattern. The final couplet makes the claim universal: \"So long as men can breathe or eyes can see, / So long lives this, and this gives life to thee.\" Art's life depends only on readers, and while there are readers it confers life.\n\nDrawing these ideas together, the poem presents beauty as the subject, time as the enemy and art as the victor. Yet there is an irony. The beloved is never named or physically described, so what survives is not the person but the poem's praise. The sonnet's confidence is therefore partly a claim for poetry itself: Shakespeare's verse has indeed outlived its subject, which suggests that art's real triumph over time is its own survival, carrying beauty as an idea rather than as a living face.",
+     "difficulty": 3
+    }
+   ],
+   "length_words": 114
+  }
+ ]
+}

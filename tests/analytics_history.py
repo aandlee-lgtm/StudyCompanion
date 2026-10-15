@@ -117,8 +117,9 @@ def build_history(db, weeks: int = 6, start: date = START, seed: int = 7, missed
             limit = 4 if idx in partial_days else len(sess.questions)
             total_t = 0
             for n, sq in enumerate(sess.questions[:limit]):
-                skip = rng.random() < 0.05
-                a = answer_question(db, sq, rng, items.get(sq.question.plan_item_id), idx, skip=skip)
+                qrng = random.Random(f"{seed}:{idx}:{n}:{items.get(sq.question.plan_item_id)}")  # outcomes independent of bank size
+                skip = qrng.random() < 0.05
+                a = answer_question(db, sq, qrng, items.get(sq.question.plan_item_id), idx, skip=skip)
                 total_t += a.time_seconds
                 h.answered += 1
             sess.elapsed_seconds = total_t + 120

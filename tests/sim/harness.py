@@ -202,7 +202,7 @@ def _prepare_with_v1_seed_only(data_dir: Path, url: str) -> None:
     v1 = data_dir / "v1_seed"
     v1.mkdir(exist_ok=True)
     for f in seed_mod.SEED_DIR.glob("*.json"):
-        if f.name not in V2_SEED_FILES:
+        if f.name not in V2_SEED_FILES and not f.name.startswith("english_sets"):
             shutil.copy(f, v1 / f.name)
     mods = (seed_mod, legal_content)  # each loader module reads its own SEED_DIR
     orig = [m.SEED_DIR for m in mods]
