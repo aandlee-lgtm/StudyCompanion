@@ -465,11 +465,14 @@ def first_attempts(db: Session, sess: DailySession) -> dict[int, Attempt]:
 
 
 def counts_for_streak(db: Session, sess: DailySession) -> bool:
-    """A study day counts at >= 80% of its questions answered or >= 60 active minutes."""
+    """A study day counts when at least one question was answered (owner request 2026-10-15: anything is
+    better than nothing), or the configured fraction / active minutes were reached."""
     if sess.status == "completed":
         return True
     if not sess.questions:
         return False
+    if _answered(sess) >= 1:
+        return True
     frac = _answered(sess) / len(sess.questions)
     minutes = sess.elapsed_seconds / 60
     return frac >= float(st.get(db, "streak_min_fraction") or 0.8) or minutes >= float(st.get(db, "streak_min_minutes") or 60)

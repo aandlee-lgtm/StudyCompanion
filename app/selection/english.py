@@ -61,7 +61,8 @@ def _recent_forms(ctx: StudentContext, pool: Pool) -> list[str]:
 MAX_UNITS = 40  # passages considered in full on one day (a large imported bank stays fast)
 
 
-def _best_units(ctx: StudentContext, units: dict[tuple, list[Scored]], n: int, cooldown: int) -> list[tuple[tuple, list[Scored]]]:
+def _best_units(ctx: StudentContext, units: dict[tuple, list[Scored]], n: int, cooldown: int,
+                demote: set | None = None) -> list[tuple[tuple, list[Scored]]]:
     """The passages worth building sets from: unread ones first, then by the value of their best
     questions. Bounded so that hundreds of reading sets cost no more than forty."""
     ranked = []
@@ -71,9 +72,10 @@ def _best_units(ctx: StudentContext, units: dict[tuple, list[Scored]], n: int, c
         last = max((ctx.stimulus_last_read[m] for m in key if m in ctx.stimulus_last_read), default=None)
         fresh = last is None or (ctx.today - last).days >= cooldown
         top = sorted((s.score - 0.5 * s.tier for s in members), reverse=True)[: max(1, n)]
-        ranked.append((not fresh, -sum(top), key, members))
-    ranked.sort(key=lambda r: (r[0], r[1], r[2]))
-    return [(key, members) for _f, _v, key, members in ranked[:MAX_UNITS]]
+        demoted = bool(demote) and any(m in demote for m in key)  # AI-written passages when one was read recently
+        ranked.append((demoted, not fresh, -sum(top), key, members))
+    ranked.sort(key=lambda r: (r[0], r[1], r[2], r[3]))
+    return [(key, members) for _d, _f, _v, key, members in ranked[:MAX_UNITS]]
 
 
 def pick_english(ctx: StudentContext, pool: Pool, n: int | None = None) -> tuple[list[Option], dict]:
@@ -92,8 +94,17 @@ def pick_english(ctx: StudentContext, pool: Pool, n: int | None = None) -> tuple
         course = course + [s for s in extra if s not in course][: 6 - len(course)]
     recent_forms = _recent_forms(ctx, pool)
 
+    # Owner request 2026-10-12: at most ~10% of unseen passages may be AI-written ("Original text (HSC Companion)").
+    # An AI-written passage is offered freely only if none was read in the last 14 days (about 1 in 10 study days);
+    # otherwise re-reading a real text is preferred over it.
+    def _ai_written(st_) -> bool:
+        return bool(st_ and (st_.author or "").startswith("Original text"))
+    ai_ids = {s.question.stimulus_id for s in pool.cands if s.question.stimulus_id and _ai_written(s.question.stimulus)}
+    recent_ai = any((ctx.today - d).days < 14 for sid, d in ctx.stimulus_last_read.items() if sid in ai_ids)
+    facts["ai_passage_recent"] = recent_ai
+
     passage_opts: list[Option] = []
-    for key, members in _best_units(ctx, units, n, cooldown):
+    for key, members in _best_units(ctx, units, n, cooldown, ai_ids if recent_ai else None):
         last = max((ctx.stimulus_last_read[m] for m in key if m in ctx.stimulus_last_read), default=None)
         fresh_passage = last is None or (ctx.today - last).days >= cooldown
         verified = [pool.verify(s) for s in members]
@@ -106,6 +117,8 @@ def pick_english(ctx: StudentContext, pool: Pool, n: int | None = None) -> tuple
         reading = reading_minutes(stim.reading_set()) if stim else 0.0
         form = stim.form if stim else None
         base_pen = 0.0 if fresh_passage else REREAD_PENALTY
+        if _ai_written(stim) and recent_ai:
+            base_pen += REREAD_PENALTY + 1.0
         if form and form in recent_forms:
             base_pen += 0.15 * (3 - recent_forms.index(form)) / 3
         if fresh_passage and len(elig) >= min(2, n):

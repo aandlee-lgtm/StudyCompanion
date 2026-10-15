@@ -150,7 +150,8 @@
       <form method="post" action="/attempt/{{ a.id }}/model-viewed" class="inline"><input type="hidden" name="back" value="{{ base }}"><button class="btn">Show full solution</button></form>
       {% endif %}
       <button class="btn" data-toggle="fb-detail" data-label-show="Show detailed feedback" data-label-hide="Hide detailed feedback">Hide detailed feedback</button>
-      {% if pos and pos < total %}<a class="btn" href="/session/{{ s.id }}/q/{{ pos + 1 }}">Next question →</a>{% elif pos %}<a class="btn" href="/session/{{ s.id }}/summary">Finish session</a>{% endif %}
+      {% if pos and pos < total %}<a class="btn" href="/session/{{ s.id }}/q/{{ pos + 1 }}">Next question →</a>
+        {% if s.status not in ('completed', 'closed') %}<form method="post" action="/session/{{ s.id }}/close" class="inline"><button class="btn">Done for today</button></form>{% endif %}{% elif pos %}<a class="btn" href="/session/{{ s.id }}/summary">Finish session</a>{% endif %}
     </div>
   </div>
   <div id="why-{{ a.id }}" class="notice why-box" hidden></div>

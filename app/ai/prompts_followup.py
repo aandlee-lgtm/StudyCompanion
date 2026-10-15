@@ -35,6 +35,7 @@ SYSTEM = (
 )
 
 CHIPS: list[tuple[str, str]] = [
+    ("review", "Review my answer and show me how to improve it"),
     ("first_wrong", "Explain the first step I got wrong"),
     ("simpler", "Explain this in simpler words"),
     ("similar", "Show me a similar example"),
@@ -43,6 +44,15 @@ CHIPS: list[tuple[str, str]] = [
 CHIP_LABELS = dict(CHIPS)
 
 CHIP_INSTRUCTIONS = {
+    "review": (
+        "Coach the student on THIS answer (asked automatically after every submission, right or wrong). In \"answer\": "
+        "first say in one or two sentences what the answer does well, quoting the student's own words or working; then "
+        "the most important things to improve, each quoting what they wrote, saying why it costs marks and what to do "
+        "instead. In \"steps\": 2-4 concrete next steps in priority order. In \"example\": a better version of the "
+        "student's own answer (for Mathematics, their working corrected line by line; for English and Legal Studies, "
+        "their response rewritten to the next band, keeping their ideas and voice). If the answer earned full marks, "
+        "say what made it work and show how to make it more efficient or sophisticated. Do not change the mark."
+    ),
     "first_wrong": (
         "Find the FIRST place where the student's answer, working or response departs from what was needed (the worked "
         "solution, the correct option, the model response or the criteria). When the feedback names a divergence or a step "

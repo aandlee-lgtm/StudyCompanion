@@ -40,6 +40,13 @@ def get_provider(settings: dict | None = None) -> AIProvider:
             return AnthropicProvider(model=_model(settings, kind), effort=settings.get("ai_effort") or "high")
         except AIError as exc:
             return OfflineProvider(reason=str(exc))
+    if kind == "claude_code":  # the student's Claude subscription, via Claude Code on this Mac
+        from app.ai.claude_code_provider import ClaudeCodeProvider
+
+        try:
+            return ClaudeCodeProvider()
+        except AIError as exc:
+            return OfflineProvider(reason=str(exc))
     if kind == "openai":
         try:
             from app.ai.openai_compat import OpenAICompatibleProvider
@@ -57,6 +64,7 @@ def status(settings: dict | None = None) -> dict:
     key_present = {
         "anthropic": bool(os.environ.get("ANTHROPIC_API_KEY") or os.environ.get("ANTHROPIC_AUTH_TOKEN")),
         "openai": bool(os.environ.get("OPENAI_API_KEY")),
+        "claude_code": True,  # no key: uses the Claude Code sign-in
     }.get(kind, False)
     return {
         "provider": p.name,

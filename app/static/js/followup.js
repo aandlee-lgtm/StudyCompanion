@@ -130,4 +130,16 @@
     var form = box.form;
     if (form.requestSubmit) form.requestSubmit(); else form.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
   });
+
+  // Claude reviews every answer once, automatically (owner request 2026-10-12).
+  function autoReview() {
+    if (!window.fetch) return;
+    document.querySelectorAll("[data-fu-panel][data-fu-auto-review]").forEach(function (panel) {
+      panel.removeAttribute("data-fu-auto-review");
+      var form = panel.querySelector("[data-fu-form]");
+      var btn = form && form.querySelector('button[name=chip][value="review"]');
+      if (btn) ask(form, btn);
+    });
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", autoReview); else autoReview();
 })();

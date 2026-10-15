@@ -2,9 +2,9 @@
    needs `a` (the attempt whose feedback is shown) and, optionally, `base` (this page's URL). #}
 {% if a is defined and a and followup_view is defined %}{% set fu = followup_view(a) %}{% set fu_ai = fu.ai %}
 {% set fu_solution = 'worked solution' if (a.feedback.payload.kind if a.feedback else '') in ['maths','mcq','self_mark','skipped'] else 'model response' %}
-<section class="card fu no-print" id="followup-{{ a.id }}" data-fu-panel aria-labelledby="fu-h-{{ a.id }}">
+<section class="card fu no-print" id="followup-{{ a.id }}" data-fu-panel {{ 'data-fu-auto-review' if fu.auto_review }} aria-labelledby="fu-h-{{ a.id }}">
   <div class="spread">
-    <h2 id="fu-h-{{ a.id }}" class="fu-title">Ask about this feedback</h2>
+    <h2 id="fu-h-{{ a.id }}" class="fu-title">{{ 'Claude’s review and your questions' if fu.ai else 'Ask about this feedback' }}</h2>
     <span class="tiny muted" data-fu-count>{{ fu.used }} of {{ fu.max }} questions used</span>
   </div>
   {% if fu.ai %}

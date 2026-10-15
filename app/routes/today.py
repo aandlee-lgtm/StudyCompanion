@@ -142,7 +142,7 @@ def session_close(sid: int, db: Session = Depends(get_db)):
     sess = _session_or_404(db, sid)
     sessions.close_session(db, sess)
     db.commit()
-    return RedirectResponse("/sessions", status_code=303)
+    return RedirectResponse(f"/session/{sid}/summary", status_code=303)
 
 
 @router.post("/session/{sid}/mode")

@@ -198,8 +198,7 @@ def seed_english(db: Session, seed_dir: Path | None = None) -> dict:
             question(q, item=item, category="course", stim=None, sol=_english_solution(q, module=q["module"]),
                      reason=f"Course-linked practice for '{item.title}' using the student's prescribed text(s).")
     # ---- v2 reading sets
-    path = base / "english_sets.json"
-    if path.exists():
+    for path in sorted(base.glob("english_sets*.json")):  # english_sets.json (original texts) + english_sets_real_*.json
         for s in json.loads(path.read_text(encoding="utf-8")).get("sets", []):
             meta = {"key": s["key"], "theme_tags": s.get("theme_tags") or [], "length_words": s.get("length_words") or len((s["body"] or "").split())}
             main = stimulus(s["title"], s["form"], s["body"], s.get("author"), headnote=s.get("headnote"), complexity=s.get("complexity"),

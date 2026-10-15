@@ -36,7 +36,12 @@
 {% if swap_notice %}<div class="notice {{ 'warn' if swap_notice.outcome == 'removed' else 'good' }} sel-swap-note" id="swap-note" role="status">{{ swap_notice.message }}</div>{% endif %}
 
 {% if s.status == 'completed' %}<div class="notice good spread"><span>Session complete.</span><a class="btn small" href="/session/{{ s.id }}/summary">See the summary</a></div>
-{% elif s.status == 'closed' %}<div class="notice spread"><span>You closed this session with {{ p.n_total - p.n_done }} question{{ 's' if p.n_total - p.n_done != 1 }} not attempted (they do not count against you).</span><a class="btn small" href="/session/{{ s.id }}/summary">Summary</a></div>
+{% elif s.status == 'closed' %}<div class="notice spread"><span>Done for the day: {{ p.n_done }} question{{ 's' if p.n_done != 1 }} answered. The other {{ p.n_total - p.n_done }} were not attempted — they don't count against you and come back another day.</span><a class="btn small" href="/session/{{ s.id }}/summary">Summary</a></div>
+{% elif not is_past and p.n_done and p.n_done < p.n_total %}
+<div class="notice spread">
+  <span>You've answered {{ p.n_done }} of {{ p.n_total }}. Keep going, or stop here — anything you do counts towards your streak, and unanswered questions simply come back another day.</span>
+  <form method="post" action="/session/{{ s.id }}/close"><button class="btn small">Done for today</button></form>
+</div>
 {% elif is_past and p.n_done %}
 <div class="notice warn spread">
   <span>This session is unfinished: {{ p.n_total - p.n_done }} question{{ 's' if p.n_total - p.n_done != 1 }} (about {{ p.remaining_minutes | minutes }}) left.</span>

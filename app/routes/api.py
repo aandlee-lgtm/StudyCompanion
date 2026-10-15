@@ -28,3 +28,30 @@ def math_preview(text: str = Form(""), kind: str = Form("expr"), var: str = Form
     if not out.get("ok") and not out.get("message"):
         out["message"] = "Keep typing… (e.g. 3x^2 - 2, sqrt(2)/2, e^(2x), 2pi/3)" if (text or "").strip() else ""
     return JSONResponse(out)
+
+
+@router.post("/api/ai-test")
+def ai_test():
+    """Settings → Test connection: mark a tiny request with the configured provider."""
+    from app.ai.factory import get_provider
+    from app.db import SessionLocal
+    from app.services import settings as st
+
+    db = SessionLocal()
+    try:
+        settings = st.all_settings(db)
+    finally:
+        db.close()
+    kind = (settings.get("ai_provider_override") or "").lower()
+    if kind == "claude_code":
+        from app.ai.claude_code_provider import check
+
+        return JSONResponse(check())
+    p = get_provider(settings)
+    if not p.generative:
+        return JSONResponse({"ok": False, "message": f"No AI provider is active ({getattr(p, 'reason', 'offline')})."})
+    try:
+        reply = p._complete("Reply with exactly: OK", "Say OK.")
+    except Exception as exc:  # noqa: BLE001 - shown to the student
+        return JSONResponse({"ok": False, "message": str(exc)[:300]})
+    return JSONResponse({"ok": True, "message": f"Connected to {p.name} — reply: {reply.strip()[:40]}"})

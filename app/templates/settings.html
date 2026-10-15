@@ -52,11 +52,23 @@
       · API key {{ 'found' if ai.api_key_present else 'not set' }}{% if ai.reason and ai.provider == 'offline' %} · {{ ai.reason }}{% endif %}</p>
     <p class="small">To turn on AI marking, edit <code>{{ data_dir }}/.env</code> (or <code>.env</code> in the project folder when running from source):
       <code>HSC_AI_PROVIDER=anthropic</code> with <code>ANTHROPIC_API_KEY=…</code> (Claude), or <code>HSC_AI_PROVIDER=openai</code> with <code>OPENAI_API_KEY=…</code> (any OpenAI-compatible service). Then restart the app.</p>
+    <div class="notice small"><strong>Use your Claude subscription (no key needed).</strong> 1) Install Claude Code: open Terminal and run
+      <code>curl -fsSL https://claude.ai/install.sh | bash</code>. 2) Run <code>claude</code> once and log in with your Claude account, then type <code>/exit</code>.
+      3) Choose “My Claude subscription” below, save, and press <em>Test connection</em>. Every answer is then marked and reviewed by Claude, using your subscription’s allowance.
+      <span class="row" style="margin-top:6px"><button class="btn small" type="button" data-ai-test>Test connection</button> <span class="small" data-ai-test-result></span></span></div>
+    <script>
+      document.querySelector('[data-ai-test]').addEventListener('click', async (e) => {
+        const out = document.querySelector('[data-ai-test-result]'); out.textContent = 'Testing… (can take up to a minute)';
+        try { const j = await (await fetch('/api/ai-test', {method: 'POST'})).json(); out.textContent = (j.ok ? '✓ ' : '✗ ') + j.message; }
+        catch (err) { out.textContent = '✗ Could not reach the app.'; }
+      });
+    </script>
     <p class="small muted">Keys are read only from the environment and are never stored in the database or in backups. Only the question, its context and your answer are sent to the AI service.</p>
     <div class="grid g3">
       <div class="field"><label>Provider</label><select name="ai_provider_override">
         <option value="" {{ 'selected' if not s.ai_provider_override }}>From .env ({{ ai.configured }})</option>
-        <option value="anthropic" {{ 'selected' if s.ai_provider_override == 'anthropic' }}>Anthropic (Claude)</option>
+        <option value="claude_code" {{ 'selected' if s.ai_provider_override == 'claude_code' }}>My Claude subscription (via Claude Code)</option>
+        <option value="anthropic" {{ 'selected' if s.ai_provider_override == 'anthropic' }}>Anthropic API key (Claude)</option>
         <option value="openai" {{ 'selected' if s.ai_provider_override == 'openai' }}>OpenAI-compatible</option>
         <option value="offline" {{ 'selected' if s.ai_provider_override == 'offline' }}>Offline</option></select></div>
       <div class="field"><label>Model (blank = default)</label><input type="text" name="ai_model_override" value="{{ s.ai_model_override or '' }}" placeholder="claude-opus-5-5"></div>
