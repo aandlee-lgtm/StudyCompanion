@@ -132,3 +132,22 @@ def test_every_seeded_english_question_has_marking_data(db):
     for s in stims:  # app-written texts say so; real texts are credited to their authors as public-domain
         assert s.attribution and ("Original text" in s.attribution if s.provenance == "generated_original"
                                   else s.provenance == "public_domain" and "Public-domain text" in s.attribution)
+
+
+def test_at_most_ten_percent_of_served_passages_are_ai_written(data_dir, monkeypatch):
+    """Owner request: real public-domain texts; AI-written passages at most 10% of those served."""
+    from app.database_setup import prepare_database
+    from app.db import SessionLocal
+    from app.services import seed as seed_mod
+
+    monkeypatch.setattr(seed_mod, "RETIRE_AI", True)
+    prepare_database(f"sqlite:///{data_dir / 'r.db'}")
+    s = SessionLocal()
+    eng = s.execute(select(Subject).where(Subject.code == "ENGLISH")).scalar_one()
+    served = {}
+    for q in s.execute(select(Question).where(Question.subject_id == eng.id, Question.approved.is_(True),
+                                              Question.stimulus_id.is_not(None))).scalars():
+        served[q.stimulus_id] = q.stimulus.provenance
+    ai = sum(1 for p in served.values() if p != "public_domain")
+    assert len(served) >= 25 and ai / len(served) <= 0.10
+    s.close()

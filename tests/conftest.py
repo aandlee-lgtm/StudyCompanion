@@ -19,6 +19,10 @@ TUESDAY = date(2026, 10, 13)
 @pytest.fixture()
 def data_dir(tmp_path, monkeypatch):
     monkeypatch.setattr(config, "data_dir", tmp_path)
+    from app.services import seed as _seed
+
+    # Most tests exercise the full English bank; retirement of AI-written passages has its own test.
+    monkeypatch.setattr(_seed, "RETIRE_AI", False)
     yield tmp_path
     clock.set_today(None)
     factory.set_test_provider(None)

@@ -18,13 +18,13 @@
     "\\(2 + 3d = 2r^2 \\Rightarrow 2 + 3(r - 1) = 2r^2 \\Rightarrow 2r^2 - 3r + 1 = 0\\).",
     "\\((2r - 1)(r - 1) = 0\\), so \\(r = \\tfrac12\\) (since \\(r \\ne 1\\))."
    ],
-   "concept": "Linking AP and GP conditions creates simultaneous equations in \\(d\\) and \\(r\\).",
-   "technique": "Write each sequence's general term before equating, and use the given restriction to reject a root.",
+   "concept": "Once you link the AP and GP conditions, you get simultaneous equations in \\(d\\) and \\(r\\).",
+   "technique": "Write down each sequence's general term before you equate anything, then use the given restriction to throw out a root.",
    "common_errors": [
     {
      "answer": "1",
      "category": "interpretation",
-     "diagnosis": "\\(r = 1\\) is excluded by the question."
+     "diagnosis": "The question rules out \\(r = 1\\), so that root has to go."
     }
    ]
   },
@@ -47,8 +47,8 @@
     "\\(y'' = 0\\) at \\(x = 1\\); \\(y''\\) changes sign from negative to positive, so concavity changes.",
     "\\(y(1) = 1 - 3 - 9 + 5 = -6\\). Point of inflection \\((1, -6)\\)."
    ],
-   "concept": "Systematic curve sketching uses \\(y'\\) for turning points and \\(y''\\) for concavity and inflections.",
-   "technique": "Show the sign change of \\(y''\\) in a table to justify the inflection.",
+   "concept": "Curve sketching is systematic: \\(y'\\) gives you turning points, and \\(y''\\) gives you concavity and inflections.",
+   "technique": "Justify the inflection by showing the sign change of \\(y''\\) in a table.",
    "common_errors": []
   },
   {
@@ -70,8 +70,8 @@
     "The left-hand gradient is \\(-1\\) and the right-hand gradient is \\(+1\\).",
     "The gradients from each side differ (a sharp corner), so \\(f\\) is not differentiable at \\(x = 2\\)."
    ],
-   "concept": "Differentiability requires the left and right gradients to agree; continuity alone is not enough.",
-   "technique": "Compare one-sided limits of the gradient."
+   "concept": "For differentiability the left and right gradients have to agree. Being continuous isn't enough.",
+   "technique": "Compare the one-sided limits of the gradient."
   },
   {
    "plan": "2H",
@@ -91,13 +91,13 @@
     "\\(V' = 0\\) at \\(x = 2\\) (\\(x = 6\\) gives zero volume).",
     "\\(V'\\) changes from positive to negative at \\(x = 2\\), so a maximum: \\(x = 2\\) cm (volume 128 cm³)."
    ],
-   "concept": "Optimisation: model, restrict the domain, differentiate, justify the maximum.",
-   "technique": "State the domain of \\(x\\) — it justifies rejecting \\(x = 6\\).",
+   "concept": "Optimisation runs in four moves: build the model, restrict the domain, differentiate, then justify that you have a maximum.",
+   "technique": "State the domain of \\(x\\) early. It's your reason for rejecting \\(x = 6\\).",
    "common_errors": [
     {
      "answer": "6",
      "category": "interpretation",
-     "diagnosis": "\\(x = 6\\) makes the base zero, so the volume is zero: reject it using the domain."
+     "diagnosis": "At \\(x = 6\\) the base disappears and the volume is zero, so use the domain to reject it."
     }
    ]
   },
@@ -118,13 +118,13 @@
     "The line is above the parabola between them.",
     "\\(\\displaystyle\\int_{-1}^{3}(2x + 3 - x^2)\\,dx = \\left[x^2 + 3x - \\frac{x^3}{3}\\right]_{-1}^{3} = 9 - \\left(-\\frac{5}{3}\\right) = \\frac{32}{3}\\)."
    ],
-   "concept": "Area between curves is \\(\\int (\\text{upper} - \\text{lower})\\,dx\\) between intersection points.",
-   "technique": "Find intersections first and decide which curve is on top.",
+   "concept": "The area between two curves is \\(\\int (\\text{upper} - \\text{lower})\\,dx\\), taken between their intersection points.",
+   "technique": "Find the intersections first, then work out which curve is on top.",
    "common_errors": [
     {
      "answer": "-32/3",
      "category": "sign",
-     "diagnosis": "You subtracted upper minus lower the wrong way round."
+     "diagnosis": "You've subtracted the wrong way round. It should be upper minus lower."
     }
    ]
   },
@@ -145,13 +145,13 @@
     "\\(x(0) = 0\\), \\(x(1) = 4\\), \\(x(3) = 0\\), \\(x(4) = 4\\).",
     "Distance \\(= 4 + 4 + 4 = 12\\) m."
    ],
-   "concept": "Distance travelled adds the lengths of each leg between changes of direction; displacement does not.",
-   "technique": "Find when \\(v = 0\\) first, then evaluate \\(x\\) at those times.",
+   "concept": "Distance travelled adds up the length of each leg between changes of direction. Displacement doesn't do that.",
+   "technique": "Find when \\(v = 0\\) first, then work out \\(x\\) at each of those times.",
    "common_errors": [
     {
      "answer": "4",
      "category": "interpretation",
-     "diagnosis": "That is the displacement \\(x(4) - x(0)\\), not the distance travelled."
+     "diagnosis": "That's the displacement \\(x(4) - x(0)\\), not the distance travelled."
     }
    ]
   }

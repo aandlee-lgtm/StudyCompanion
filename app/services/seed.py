@@ -112,7 +112,23 @@ def _english_solution(q: dict, *, texts_scope: list[int] | None = None, complexi
     return {k: v for k, v in sol.items() if v not in (None, [], {}, "")}
 
 
-def seed_english(db: Session, seed_dir: Path | None = None) -> dict:
+# Owner request (2026-10-12/15): at most 10% of unseen passages may be AI-written. Real public-domain texts make up
+# the rest. These three AI-written sets are kept because they cover forms the real texts cannot (media, hybrid, drama).
+RETIRE_AI = True  # tests of older behaviour may switch this off
+AI_SETS_KEPT = {"bagging-area", "frogwatch-blog", "penalty-scene"}
+
+
+def _retire_ai_passages(db: Session, eng) -> None:
+    """Existing databases: hide unseen questions on AI-written passages that are no longer kept."""
+    for st in db.execute(select(Stimulus).where(Stimulus.subject_id == eng.id, Stimulus.provenance == "generated_original")).scalars():
+        key = (st.meta or {}).get("set") or (st.meta or {}).get("key") or ""
+        if key.split("--")[0] in AI_SETS_KEPT:
+            continue
+        for q in db.execute(select(Question).where(Question.stimulus_id == st.id, Question.approved.is_(True))).scalars():
+            q.approved = False
+
+
+def seed_english(db: Session, seed_dir: Path | None = None, retire_ai: bool | None = None) -> dict:
     """Load English Advanced content: v1 ``questions_english.json`` plus, when present, the v2 reading
     sets (``english_sets.json``) and course-linked / Craft tasks (``english_course.json``).
 
@@ -226,6 +242,8 @@ def seed_english(db: Session, seed_dir: Path | None = None) -> dict:
                                         set_key=s["key"], passages=[r.body or "" for r in reading])
                 question(q, item=unseen, category="unseen", stim=main, sol=sol, reason=unseen_reason)
     # ---- v2 course-linked and Craft tasks
+    if RETIRE_AI if retire_ai is None else retire_ai:
+        _retire_ai_passages(db, eng)  # loaded (so history and links survive) but no longer served
     path = base / "english_course.json"
     if path.exists():
         for q in json.loads(path.read_text(encoding="utf-8")).get("questions", []):
