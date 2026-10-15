@@ -129,4 +129,6 @@ def test_every_seeded_english_question_has_marking_data(db):
         assert m["ladder"][0]["mark"] == q.marks, q.question_text
         assert all(str(k) in m["next_steps"] for k in range(q.marks)), q.question_text
     stims = db.execute(select(Stimulus).where(Stimulus.subject_id == eng.id)).scalars().all()
-    assert all(s.attribution and "Original text" in s.attribution for s in stims)
+    for s in stims:  # app-written texts say so; real texts are credited to their authors as public-domain
+        assert s.attribution and ("Original text" in s.attribution if s.provenance == "generated_original"
+                                  else s.provenance == "public_domain" and "Public-domain text" in s.attribution)

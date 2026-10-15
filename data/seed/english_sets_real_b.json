@@ -1,0 +1,468 @@
+{
+ "_note": "REAL published texts in the public domain in Australia (authors who died before 1955), reproduced verbatim for unseen-text practice; each set records author, provenance and source. Questions, marking criteria, checklists and model answers are app-authored (not official NESA marking guidelines). Every quotation in a model answer appears verbatim in its passage (verified by script).",
+ "sets": [
+  {
+   "key": "real-b-austen-pride-prejudice-opening",
+   "title": "Pride and Prejudice (Chapter 1)",
+   "form": "Prose fiction",
+   "complexity": 2,
+   "author": "Jane Austen",
+   "provenance": "public_domain",
+   "source": "Pride and Prejudice, Volume I, Chapter 1, T. Egerton, London, 1813",
+   "headnote": "Jane Austen's novel was published in 1813. This extract is the opening of Chapter 1, in which Mrs Bennet, a mother of five unmarried daughters, brings her husband news of a new neighbour.",
+   "theme_tags": [
+    "marriage",
+    "money and class",
+    "irony",
+    "family"
+   ],
+   "body": "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.\n\nHowever little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families, that he is considered the rightful property of some one or other of their daughters.\n\n'My dear Mr. Bennet,' said his lady to him one day, 'have you heard that Netherfield Park is let at last?'\n\nMr. Bennet replied that he had not.\n\n'But it is,' returned she; 'for Mrs. Long has just been here, and she told me all about it.'\n\nMr. Bennet made no answer.\n\n'Do you not want to know who has taken it?' cried his wife impatiently.\n\n'You want to tell me, and I have no objection to hearing it.'\n\nThis was invitation enough.\n\n'Why, my dear, you must know, Mrs. Long says that Netherfield is taken by a young man of large fortune from the north of England; that he came down on Monday in a chaise and four to see the place, and was so much delighted with it that he agreed with Mr. Morris immediately; that he is to take possession before Michaelmas, and some of his servants are to be in the house by the end of next week.'\n\n'What is his name?'\n\n'Bingley.'\n\n'Is he married or single?'\n\n'Oh! single, my dear, to be sure! A single man of large fortune; four or five thousand a year. What a fine thing for our girls!'",
+   "pair": null,
+   "questions": [
+    {
+     "marks": 2,
+     "verb": "Identify",
+     "demand": "identify",
+     "text": "Identify the irony in the opening sentence and briefly explain its effect.",
+     "skill_tags": [
+      "irony",
+      "narrative voice"
+     ],
+     "criteria": [
+      {
+       "mark": 2,
+       "descriptor": "Precisely identifies the irony of the opening sentence and explains its significance with apt, accurately quoted evidence"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Identifies a relevant feature of the irony of the opening sentence with little or no explanation"
+      }
+     ],
+     "checklist": [
+      "Identifies the gap between the sentence's grand claim and the real situation",
+      "Quotes the opening phrase accurately, for example \"a truth universally acknowledged\"",
+      "Uses the second paragraph to show who actually does the wanting",
+      "States the effect on the reader, such as amusement or a critical distance from the society"
+     ],
+     "next_steps": {
+      "0": "Start by naming the irony in one sentence: what the opening claims, and what is really true.",
+      "1": "Add the effect: explain how the second paragraph reverses the claim and what attitude this invites in the reader."
+     },
+     "model": "The opening sentence is ironic because its grand, philosophical phrasing, \"a truth universally acknowledged\", introduces something that is neither universal nor true. The second paragraph reveals the real situation: it is the \"surrounding families\" who want the wealthy man, regarding him as \"the rightful property\" of their daughters. The irony reverses the apparent claim, so from the first line readers are invited to laugh at a society whose \"truth\" is really the self-interest of families with daughters to marry.",
+     "difficulty": 1
+    },
+    {
+     "marks": 4,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "Analyse how Austen uses dialogue to characterise Mr and Mrs Bennet.",
+     "skill_tags": [
+      "characterisation",
+      "dialogue",
+      "syntax"
+     ],
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Provides a perceptive, sustained analysis of how dialogue characterises Mr and Mrs Bennet, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a thoughtful analysis of how dialogue characterises Mr and Mrs Bennet, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how dialogue characterises Mr and Mrs Bennet, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how dialogue characterises Mr and Mrs Bennet or identifies a relevant technique with little explanation of its effect"
+      }
+     ],
+     "checklist": [
+      "Contrasts the amount and manner of each character's speech",
+      "Analyses the syntax of Mrs Bennet's long speech (piled clauses, repeated \"that\")",
+      "Analyses Mr Bennet's silence and his dry reply \"You want to tell me, and I have no objection to hearing it\"",
+      "Considers the narrator's comments, such as \"This was invitation enough\"",
+      "Draws a conclusion about the marriage the dialogue reveals"
+     ],
+     "next_steps": {
+      "0": "Choose one line of dialogue from each character and say what it shows about them.",
+      "1": "Name a technique in each character's speech (for example sentence length or rhetorical question) and quote it.",
+      "2": "Explain how the techniques create the effect: why does Mrs Bennet's syntax sound breathless, and why is Mr Bennet's reply funny?",
+      "3": "Link the two characterisations together and show what the contrast suggests about the Bennets' marriage."
+     },
+     "model": "Austen characterises the Bennets through the contrast between the quantity and the manner of their speech. Mrs Bennet dominates the exchange. Her opening question, \"have you heard that Netherfield Park is let at last?\", is less a question than an announcement, and when her husband stays silent she presses on, crying \"impatiently\". Her long speech about the newcomer is a breathless chain of clauses linked by semicolons and a repeated \"that\" (\"that he came down on Monday ... that he agreed ... that he is to take possession\"), a syntax that mimics gossip passed on second-hand from \"Mrs. Long\". Its climax, \"What a fine thing for our girls!\", exposes the single concern behind the chatter.\n\nMr Bennet, by contrast, is characterised largely by what he withholds. The narrator reports that he \"made no answer\", and when he does speak his reply is dry and ironic: \"You want to tell me, and I have no objection to hearing it.\" This balanced sentence shows that he sees through his wife's eagerness and is amused by it, and the narrator's laconic \"This was invitation enough\" shares his wit. Together the dialogue establishes a mismatched marriage in which one partner talks to fill silence and the other uses silence as a weapon.",
+     "difficulty": 2
+    },
+    {
+     "marks": 5,
+     "verb": "Evaluate",
+     "demand": "evaluate",
+     "text": "To what extent does the opening sentence establish the concerns and tone of the passage as a whole?",
+     "skill_tags": [
+      "irony",
+      "structure",
+      "satire",
+      "context"
+     ],
+     "criteria": [
+      {
+       "mark": 5,
+       "descriptor": "Makes a perceptive, well-justified judgement about how far the opening sentence establishes the passage's concerns and tone, weighing evidence from across the text and analysing how language and form support the judgement"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Makes a clear, reasoned judgement about how far the opening sentence establishes the passage's concerns and tone, supported by relevant, well-analysed evidence"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Makes a sound judgement about how far the opening sentence establishes the passage's concerns and tone with relevant evidence and some analysis"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Offers a judgement about how far the opening sentence establishes the passage's concerns and tone that is asserted more than argued, with some textual support"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes how far the opening sentence establishes the passage's concerns and tone with an implied or unsupported judgement"
+      }
+     ],
+     "checklist": [
+      "Makes a clear judgement (for example: largely, but not entirely) and sustains it",
+      "Analyses the mock-philosophical style of the opening sentence and its pairing of fortune and marriage",
+      "Shows how the second paragraph and the dialogue test or confirm the opening's claim",
+      "Uses Mrs Bennet's financial language, such as \"four or five thousand a year\", as evidence",
+      "Considers what the opening does not establish, such as the tension within the Bennet marriage"
+     ],
+     "next_steps": {
+      "0": "State a judgement in your first sentence: how far does the opening sentence set up the rest of the passage?",
+      "1": "Support your judgement with at least two quotations, one from the opening and one from the dialogue.",
+      "2": "Analyse the language of your evidence: explain how words such as \"property\" or \"fortune\" create irony.",
+      "3": "Weigh both sides: show what the opening sentence establishes and what the dialogue adds that the sentence does not.",
+      "4": "Refine your judgement so that it is qualified and sustained to the conclusion, linking the passage's tone to its satire of marriage as a financial arrangement."
+     },
+     "model": "The opening sentence establishes the passage's concerns and tone very effectively, although its full meaning only becomes clear as the dialogue unfolds. On its own, \"It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife\" sounds like the first proposition of a moral essay. Its abstract nouns and confident generalisation create a mock-philosophical tone, and the pairing of \"fortune\" with \"wife\" announces the central concern: the link between money and marriage.\n\nThe second paragraph immediately tests this \"truth\". By shifting from what the man wants to what is \"so well fixed in the minds of the surrounding families\", Austen exposes that the desire belongs to the families, who treat him as \"the rightful property\" of their daughters. The legal and commercial word \"property\" sharpens the irony by inverting who is possessed.\n\nThe dialogue then dramatises the generalisation in a single household. Mrs Bennet's news reduces the stranger to his assets: he is \"a young man of large fortune\", and the first questions asked about him are his name and whether he is \"married or single\". Her valuation, \"four or five thousand a year\", repeats the opening's language of fortune in comic, concrete figures, proving that the \"truth\" is simply a mother's wish dressed up as law.\n\nHowever, the opening does not establish everything. Its uniform irony gives no hint of the domestic tension between husband and wife, conveyed through Mr Bennet's silence and the narrator's \"This was invitation enough\". Overall, the sentence sets the satirical tone and the money-and-marriage concern with precision, while the dialogue adds the human comedy of a marriage that already exposes the limits of the arrangement it celebrates.",
+     "difficulty": 3
+    }
+   ],
+   "length_words": 268
+  },
+  {
+   "key": "real-b-dickens-hard-times-facts",
+   "title": "Hard Times (The One Thing Needful)",
+   "form": "Prose fiction",
+   "complexity": 2,
+   "author": "Charles Dickens",
+   "provenance": "public_domain",
+   "source": "Hard Times, Book the First, Chapter 1 ('The One Thing Needful'), Household Words, 1854",
+   "headnote": "Charles Dickens's novel Hard Times was serialised in 1854 and is set in an industrial town in the north of England. In this opening chapter a school's wealthy patron addresses a schoolmaster in front of a class of children. Words omitted from the extract are marked […].",
+   "theme_tags": [
+    "education",
+    "imagination",
+    "utilitarianism",
+    "power"
+   ],
+   "body": "'Now, what I want is, Facts. Teach these boys and girls nothing but Facts. Facts alone are wanted in life. Plant nothing else, and root out everything else. You can only form the minds of reasoning animals upon Facts: nothing else will ever be of any service to them. This is the principle on which I bring up my own children, and this is the principle on which I bring up these children. Stick to Facts, sir!'\n\nThe scene was a plain, bare, monotonous vault of a school-room, and the speaker's square forefinger emphasized his observations by underscoring every sentence with a line on the schoolmaster's sleeve. The emphasis was helped by the speaker's square wall of a forehead, which had his eyebrows for its base, while his eyes found commodious cellarage in two dark caves, overshadowed by the wall. The emphasis was helped by the speaker's mouth, which was wide, thin, and hard set. The emphasis was helped by the speaker's voice, which was inflexible, dry, and dictatorial. […]\n\n'In this life, we want nothing but Facts, sir; nothing but Facts!'\n\nThe speaker, and the schoolmaster, and the third grown person present, all backed a little, and swept with their eyes the inclined plane of little vessels then and there arranged in order, ready to have imperial gallons of facts poured into them until they were full to the brim.",
+   "pair": null,
+   "questions": [
+    {
+     "marks": 3,
+     "verb": "Identify",
+     "demand": "identify",
+     "text": "Identify TWO language features in the speaker's opening speech and explain the effect of each.",
+     "skill_tags": [
+      "rhetoric",
+      "repetition",
+      "voice"
+     ],
+     "criteria": [
+      {
+       "mark": 3,
+       "descriptor": "Precisely identifies two language features of the opening speech and their effect and explains its significance with apt, accurately quoted evidence"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Identifies two language features of the opening speech and their effect with a relevant reference to the text and some explanation"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Identifies a relevant feature of two language features of the opening speech and their effect with little or no explanation"
+      }
+     ],
+     "checklist": [
+      "Names two distinct features (for example repetition of \"Facts\", imperatives, short declaratives, the gardening metaphor)",
+      "Supports each feature with an accurate short quotation",
+      "Explains the effect of each feature on how the speaker is presented",
+      "Notes the capital letter that turns Facts into something like a creed"
+     ],
+     "next_steps": {
+      "0": "Find two techniques in the opening speech and quote a short example of each.",
+      "1": "For each technique, explain what it shows about the speaker or his beliefs, not just what it is.",
+      "2": "Make your effects precise: link both features to a single impression, such as the speaker's dogmatic and controlling attitude."
+     },
+     "model": "One feature is relentless repetition: \"Facts\" appears in nearly every sentence, capitalised as though it were a sacred word, so the speaker sounds less like a teacher than a preacher reciting a creed. The repetition also makes the speech monotonous, enacting the narrowness of the education he demands.\n\nA second feature is the imperative mood, as in \"Teach these boys and girls nothing but Facts\" and \"Stick to Facts, sir!\" These commands, addressed to the schoolmaster, establish the speaker's authority and impatience, and the gardening metaphor \"Plant nothing else, and root out everything else\" suggests that any imaginative growth in a child is a weed to be destroyed.",
+     "difficulty": 1
+    },
+    {
+     "marks": 4,
+     "verb": "Explain",
+     "demand": "explain",
+     "text": "Explain how the final paragraph represents the children.",
+     "skill_tags": [
+      "metaphor",
+      "imagery",
+      "perspective"
+     ],
+     "criteria": [
+      {
+       "mark": 4,
+       "descriptor": "Provides a precise, well-reasoned explanation of how the final paragraph represents the children, integrating well-chosen textual evidence and making the cause-and-effect relationship explicit"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a clear explanation of how the final paragraph represents the children, supported by relevant, accurately quoted evidence"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of how the final paragraph represents the children, with general or partly relevant reference to the text"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes aspects of how the final paragraph represents the children, relying on paraphrase or retelling"
+      }
+     ],
+     "checklist": [
+      "Identifies the extended metaphor of the children as \"little vessels\"",
+      "Explains the effect of measuring language such as \"imperial gallons\" and \"full to the brim\"",
+      "Notes that the children never speak or act in the passage",
+      "Links the representation to the speaker's theory of education and to Dickens's critique of it"
+     ],
+     "next_steps": {
+      "0": "Quote the phrase that describes the children and say what kind of image it is.",
+      "1": "Explain what the image suggests about how the adults see the children, using a second quotation.",
+      "2": "Show the cause and effect clearly: how does the vocabulary of containers and measurement make the reader feel about this kind of schooling?",
+      "3": "Connect your explanation to the whole passage: show how the passive, silent children are the end point of the speaker's insistence on Facts."
+     },
+     "model": "The final paragraph represents the children as objects rather than people. Dickens describes them through the eyes of the adults, who \"swept with their eyes the inclined plane of little vessels\", an extended metaphor that turns rows of pupils sitting on tiered benches into containers lined up for filling. The children have no names, voices or actions; they are simply \"arranged in order\", a phrase that suggests goods on a shelf.\n\nThe metaphor then shifts into the language of measurement. The children are \"ready to have imperial gallons of facts poured into them until they were full to the brim\". Imperial gallons are a unit for liquids sold in bulk, so knowledge becomes a commodity measured by volume, and education becomes a mechanical act done to children rather than with them. The hyperbole of \"full to the brim\" exposes the absurdity of this idea and invites the reader to share Dickens's alarm. Because the speaker has just insisted that \"we want nothing but Facts\", the passive, silent vessels show where his theory leads: children emptied of imagination so that they can be filled.",
+     "difficulty": 2
+    },
+    {
+     "marks": 6,
+     "verb": "Evaluate",
+     "demand": "evaluate",
+     "text": "Evaluate how effectively Dickens satirises the speaker and his view of education in this passage.",
+     "skill_tags": [
+      "satire",
+      "characterisation",
+      "repetition",
+      "imagery"
+     ],
+     "criteria": [
+      {
+       "mark": 6,
+       "descriptor": "Makes a perceptive, well-justified judgement about the effectiveness of Dickens's satire of the speaker and his view of education, weighing evidence from across the text and analysing how language and form support the judgement"
+      },
+      {
+       "mark": 5,
+       "descriptor": "Makes a clear, reasoned judgement about the effectiveness of Dickens's satire of the speaker and his view of education, supported by relevant, well-analysed evidence"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Makes a sound judgement about the effectiveness of Dickens's satire of the speaker and his view of education with relevant evidence and some analysis"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Offers a judgement about the effectiveness of Dickens's satire of the speaker and his view of education that is asserted more than argued, with some textual support"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Describes the effectiveness of Dickens's satire of the speaker and his view of education with an implied or unsupported judgement"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Makes a limited or general comment about the text"
+      }
+     ],
+     "checklist": [
+      "Makes and sustains a judgement about how effective the satire is",
+      "Analyses the speaker's own words as self-condemning (repetition, imperatives, \"reasoning animals\")",
+      "Analyses the physical description, especially the anaphora \"The emphasis was helped by\" and the triads of adjectives",
+      "Analyses the imagery of square shapes, walls and caves",
+      "Analyses the final image of the children as \"little vessels\"",
+      "Considers a limitation or counterpoint, such as the caricature's lack of subtlety"
+     ],
+     "next_steps": {
+      "0": "Answer the question directly: say whether the speaker is mocked in this passage, and quote one detail that makes him seem ridiculous.",
+      "1": "Make a clear judgement about how effective the satire is and support it with one quotation from the passage.",
+      "2": "Choose two or more techniques and explain what they show about the speaker.",
+      "3": "Analyse how each technique makes the speaker ridiculous or sinister, and how this criticises his view of education.",
+      "4": "Organise your response around a judgement rather than a list of techniques, linking each paragraph back to how effective the satire is.",
+      "5": "Weigh the satire's strengths against a possible limitation, and use precise analysis of word choice, syntax and imagery to justify a sustained, nuanced judgement."
+     },
+     "model": "Dickens's satire is highly effective because he lets the speaker condemn himself and then reinforces the judgement through description, so that by the end the reader sees his philosophy as both ridiculous and harmful.\n\nThe speech is the first weapon. Its repetition of \"Facts\" and its stream of imperatives (\"Stick to Facts, sir!\") present a man who confuses volume with argument. His claim that \"You can only form the minds of reasoning animals upon Facts\" is revealing: by calling children \"reasoning animals\" he denies them feeling and imagination, and the gardening metaphor \"root out everything else\" makes education an act of destruction. Because these are his own words, the satire feels earned rather than imposed.\n\nThe narrator then turns the man into his philosophy. The scene is a \"plain, bare, monotonous vault\", and the speaker himself is built from right angles: a \"square forefinger\" and a \"square wall of a forehead\". The anaphora \"The emphasis was helped by\" recurs three times, mimicking the speaker's own hammering style, while the triads \"wide, thin, and hard set\" and \"inflexible, dry, and dictatorial\" catalogue him like a list of facts. The comic metaphor of eyes in \"commodious cellarage in two dark caves\" makes him grotesque, almost architectural, a man with no inner life.\n\nThe final image completes the argument. The children are \"little vessels\" awaiting \"imperial gallons of facts\", a metaphor that converts learning into bulk measurement and children into containers. Here the satire moves from mockery to warning: the cost of this theory is borne by those who never speak.\n\nA possible limitation is that the caricature is so exaggerated that it leaves no room for the speaker's perspective; a reader might feel that the argument is won too easily. Yet this exaggeration is the point of satire, and its relentless rhythm makes the reader feel the oppressiveness of the classroom. Overall, Dickens's combination of self-condemning speech, mechanical description and the chilling final metaphor makes the satire memorable and persuasive.",
+     "difficulty": 3
+    }
+   ],
+   "length_words": 231
+  },
+  {
+   "key": "real-b-lincoln-gettysburg-address",
+   "title": "The Gettysburg Address",
+   "form": "Speech",
+   "complexity": 2,
+   "author": "Abraham Lincoln",
+   "provenance": "public_domain",
+   "source": "Address delivered at the dedication of the cemetery at Gettysburg, 19 November 1863 (the 'Bliss copy')",
+   "headnote": "Abraham Lincoln, President of the United States, gave this short speech in November 1863 during the American Civil War, at the dedication of a national cemetery on the battlefield of Gettysburg, where more than 7,000 soldiers had been killed in July. The complete speech is reproduced.",
+   "theme_tags": [
+    "sacrifice",
+    "nationhood",
+    "democracy",
+    "memory"
+   ],
+   "body": "Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.\n\nNow we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.\n\nBut, in a larger sense, we can not dedicate—we can not consecrate—we can not hallow—this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us—that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion—that we here highly resolve that these dead shall not have died in vain—that this nation, under God, shall have a new birth of freedom—and that government of the people, by the people, for the people, shall not perish from the earth.",
+   "pair": null,
+   "questions": [
+    {
+     "marks": 2,
+     "verb": "Identify",
+     "demand": "identify",
+     "text": "Identify the turning point in the speech and explain its significance.",
+     "skill_tags": [
+      "structure",
+      "purpose"
+     ],
+     "criteria": [
+      {
+       "mark": 2,
+       "descriptor": "Precisely identifies the speech's turning point and explains its significance with apt, accurately quoted evidence"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Identifies a relevant feature of the speech's turning point with little or no explanation"
+      }
+     ],
+     "checklist": [
+      "Locates the turn at \"But, in a larger sense\" at the start of the third paragraph",
+      "Explains that the speech moves from dedicating ground to dedicating the living",
+      "Uses a short quotation from either side of the turn"
+     ],
+     "next_steps": {
+      "0": "Find the word or phrase where the speech changes direction and quote it.",
+      "1": "Explain what changes at that point: what the audience thought they had come to do, and what Lincoln now asks of them."
+     },
+     "model": "The turning point comes at \"But, in a larger sense\", which opens the final paragraph. Until then Lincoln has accepted the ceremony's stated purpose, saying it is \"altogether fitting and proper\" to dedicate the cemetery. After the turn he denies that the living can \"dedicate\" the ground at all, because the soldiers have already done so. This is significant because it redirects the purpose of the gathering from honouring the dead to committing the living to \"the unfinished work\".",
+     "difficulty": 1
+    },
+    {
+     "marks": 5,
+     "verb": "Analyse",
+     "demand": "analyse",
+     "text": "Analyse how Lincoln uses repetition and parallel structure to persuade his audience.",
+     "skill_tags": [
+      "rhetoric",
+      "repetition",
+      "parallelism",
+      "syntax"
+     ],
+     "criteria": [
+      {
+       "mark": 5,
+       "descriptor": "Provides a perceptive, sustained analysis of Lincoln's use of repetition and parallel structure, integrating well-chosen evidence and explaining precisely how language and form shape meaning"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Provides a thoughtful analysis of Lincoln's use of repetition and parallel structure, with relevant evidence and clear links between techniques, effect and meaning"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Provides a sound analysis of Lincoln's use of repetition and parallel structure, using relevant evidence with some explanation of effect"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Provides some explanation of Lincoln's use of repetition and parallel structure, with a reference to the text that is not fully explored"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Describes Lincoln's use of repetition and parallel structure or identifies a relevant technique with little explanation of its effect"
+      }
+     ],
+     "checklist": [
+      "Analyses the tricolon \"we can not dedicate—we can not consecrate—we can not hallow\" and its rising intensity",
+      "Analyses the antithesis between what we \"say here\" and what they \"did here\"",
+      "Analyses the repeated \"dedicate\"/\"dedicated\" and how its meaning shifts",
+      "Analyses the closing chain of \"that\" clauses and the tricolon \"of the people, by the people, for the people\"",
+      "Explains how these patterns create a ceremonial, memorable and unifying voice"
+     ],
+     "next_steps": {
+      "0": "Identify one example of repetition or parallelism and quote it accurately.",
+      "1": "Explain what one example emphasises, then find a second pattern elsewhere in the speech.",
+      "2": "Analyse the effect of each pattern on the audience: how does the rhythm make an idea feel weighty, memorable or inevitable?",
+      "3": "Show how the patterns develop across the speech, for example how the meaning of \"dedicate\" shifts from ground to people.",
+      "4": "Build a sustained argument about how the patterns work together to move the audience from mourning to resolve, analysing sound and syntax precisely."
+     },
+     "model": "Lincoln's speech persuades largely through pattern: repeated words and balanced structures give a very short address the weight of ritual and make its argument feel inevitable.\n\nThe word \"dedicate\" is the speech's spine. The nation was \"dedicated to the proposition that all men are created equal\"; the audience has \"come to dedicate a portion of that field\"; and finally it is \"for us the living, rather, to be dedicated here\". Through repetition the word's object shifts from an idea, to the ground, to the listeners themselves, so the audience is gradually made the subject of the dedication.\n\nThe turning point is built from a tricolon with dashes: \"we can not dedicate—we can not consecrate—we can not hallow—this ground\". Each verb is more sacred than the last, and the dashes create pauses that slow the delivery, so the humility of the living grows as the language rises. It is followed by antithesis: \"The world will little note, nor long remember what we say here, but it can never forget what they did here.\" The balanced opposition of saying and doing elevates the soldiers above the speaker himself.\n\nThe final sentence then stacks four clauses introduced by \"that\", each separated by a dash, building momentum towards the climax. Its last clause rests on a second tricolon, \"of the people, by the people, for the people\", whose repeated noun and changing prepositions make democracy itself sound complete and indivisible. Because the rhythm is so strong, the audience is carried from grief to resolve, and the speech's argument becomes easy to remember and repeat.",
+     "difficulty": 3
+    },
+    {
+     "marks": 6,
+     "verb": "Synthesise",
+     "demand": "synthesise",
+     "text": "Drawing on the whole speech, synthesise how Lincoln transforms an occasion of mourning into a call to action.",
+     "skill_tags": [
+      "purpose",
+      "structure",
+      "audience",
+      "time"
+     ],
+     "criteria": [
+      {
+       "mark": 6,
+       "descriptor": "Constructs a perceptive, coherent synthesis of how the speech transforms mourning into a call to action, combining insights from across the text(s) into a new understanding supported by well-chosen evidence"
+      },
+      {
+       "mark": 5,
+       "descriptor": "Constructs a thoughtful synthesis of how the speech transforms mourning into a call to action, drawing together relevant, analysed evidence"
+      },
+      {
+       "mark": 4,
+       "descriptor": "Draws together ideas about how the speech transforms mourning into a call to action with relevant evidence and some explanation"
+      },
+      {
+       "mark": 3,
+       "descriptor": "Discusses relevant ideas about how the speech transforms mourning into a call to action without fully combining them"
+      },
+      {
+       "mark": 2,
+       "descriptor": "Describes aspects of the text(s) with limited reference to how the speech transforms mourning into a call to action"
+      },
+      {
+       "mark": 1,
+       "descriptor": "Makes a limited or general comment relevant to the question"
+      }
+     ],
+     "checklist": [
+      "Shows the movement through past, present and future across the three paragraphs",
+      "Combines analysis of structure, diction and rhetoric rather than treating them separately",
+      "Explains how the dead are honoured in a way that obliges the living",
+      "Analyses the language of birth, life and death (\"brought forth\", \"conceived\", \"a new birth of freedom\")",
+      "Considers the audience at a battlefield cemetery during an unfinished war",
+      "Reaches a new, overall understanding of the speech's purpose"
+     ],
+     "next_steps": {
+      "0": "Explain in one or two sentences how the speech moves from honouring the dead to asking something of the living, with a quotation.",
+      "1": "Trace the speech's movement from past to present to future, quoting from each paragraph.",
+      "2": "Analyse the language that links the dead to the living, such as \"unfinished work\" or \"increased devotion\".",
+      "3": "Bring together structure, imagery and rhetoric in each paragraph rather than discussing them in separate lists.",
+      "4": "Consider the audience and occasion: explain why the call to action would be powerful for listeners standing on a battlefield in an unfinished war.",
+      "5": "Conclude with a synthesised insight, for example that Lincoln makes mourning itself an act of commitment to the nation's future."
+     },
+     "model": "Lincoln transforms mourning into a call to action by arranging the speech as a journey through time, from the nation's birth, to its present ordeal, to a future that depends on the listeners, and by turning the debt owed to the dead into a duty for the living.\n\nThe opening reaches back to the nation's origins. \"Four score and seven years ago\" has a biblical cadence, and the metaphors of birth, \"brought forth\" and \"conceived in Liberty\", present the nation as a living body whose survival is at stake. The second paragraph moves to the present: the war is \"testing whether that nation ... can long endure\", and the soldiers died \"that that nation might live\". Grief is immediately framed as part of a larger story about national life and death.\n\nThe final paragraph performs the transformation. Lincoln first empties the ceremony of its expected purpose, insisting through the tricolon \"we can not dedicate—we can not consecrate—we can not hallow\" that the dead have already done what words cannot. Having humbled the living, he then gives them a task. The soldiers' achievement becomes \"the unfinished work\", and mourning is converted into motivation: \"from these honored dead we take increased devotion\". The repetition of \"devotion\" binds the listeners' feeling to the soldiers' sacrifice, the \"last full measure of devotion\", so that to mourn properly is to continue fighting.\n\nThe future is then announced in a cascade of resolutions: that the dead \"shall not have died in vain\", that the nation \"shall have a new birth of freedom\", and that democratic government \"shall not perish from the earth\". The birth imagery of the opening returns, completing the cycle, and the modal \"shall\" turns hope into commitment.\n\nFor an audience standing among fresh graves in an unfinished war, this structure offers consolation and obligation together. Lincoln's deepest insight is that commemoration is not an ending: the only fitting memorial is the living people's renewed dedication to the idea for which the soldiers died.",
+     "difficulty": 3
+    }
+   ],
+   "length_words": 264
+  }
+ ]
+}

@@ -130,13 +130,17 @@ def seed_english(db: Session, seed_dir: Path | None = None) -> dict:
     counts = {"stimuli": 0, "questions": 0, "updated": 0}
 
     def stimulus(title: str, form: str, body: str, author: str | None, *, headnote: str | None = None, complexity: int | None = None,
-                 meta: dict | None = None) -> Stimulus:
+                 meta: dict | None = None, provenance: str | None = None, source: str | None = None) -> Stimulus:
         st = db.execute(select(Stimulus).where(Stimulus.subject_id == eng.id, Stimulus.title == title)).scalars().first()
         author = author or "Original text (HSC Companion)"
+        if provenance == "public_domain":  # a real published text (public domain), not app-written
+            attribution = f"{author}, {source}. Public-domain text." if source else f"{author}. Public-domain text."
+        else:
+            provenance = "generated_original"
+            attribution = f"{author}. Original text written for HSC Companion — not a NESA or published text."
         if st is None:
             st = Stimulus(subject_id=eng.id, title=title, form=form, body=body, author=author,
-                          attribution=f"{author}. Original text written for HSC Companion — not a NESA or published text.",
-                          provenance="generated_original", source_id=src.id)
+                          attribution=attribution, provenance=provenance, source_id=src.id)
             db.add(st)
             counts["stimuli"] += 1
         if st.source_id == src.id:
@@ -202,14 +206,16 @@ def seed_english(db: Session, seed_dir: Path | None = None) -> dict:
         for s in json.loads(path.read_text(encoding="utf-8")).get("sets", []):
             meta = {"key": s["key"], "theme_tags": s.get("theme_tags") or [], "length_words": s.get("length_words") or len((s["body"] or "").split())}
             main = stimulus(s["title"], s["form"], s["body"], s.get("author"), headnote=s.get("headnote"), complexity=s.get("complexity"),
-                            meta={**meta, "role": "text1" if s.get("pair") else "single"})
+                            meta={**meta, "role": "text1" if s.get("pair") else "single"},
+                            provenance=s.get("provenance"), source=s.get("source"))
             reading = [main]
             if s.get("pair"):
                 p = s["pair"]
                 partner = stimulus(p["title"], p.get("form") or s["form"], p["body"], p.get("author") or s.get("author"),
                                    headnote=p.get("headnote") or None, complexity=p.get("complexity") or s.get("complexity"),
                                    meta={"key": f"{s['key']}--text2", "set": s["key"], "role": "text2",
-                                         "length_words": len((p["body"] or "").split())})
+                                         "length_words": len((p["body"] or "").split())},
+                                   provenance=p.get("provenance") or s.get("provenance"), source=p.get("source"))
                 if main.paired_with_id is None and not partner.paired_with_id:
                     main.paired_with_id = partner.id
                 db.flush()
